@@ -104,6 +104,7 @@ pulpcore_packages:
     python-dotenv: {}
     python-drf-access-policy: {}
     python-drf-nested-routers: {}
+    python-drf-spectacular: {}
     python-drf-yasg: {}
     python-dynaconf: {}
     python-ecdsa: {}
