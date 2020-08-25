@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.5.1
+Version:        3.6.1
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -34,8 +34,8 @@ Requires:       python3-jsonschema >= 3.0
 Requires:       python3-libcomps >= 0.1.12
 Conflicts:      python3-libcomps >= 0.2
 Requires:       python3-productmd >= 1.25
-Requires:       python3-pulpcore < 3.6
-Requires:       python3-pulpcore >= 3.4
+Requires:       python3-pulpcore < 3.7
+Requires:       python3-pulpcore >= 3.6
 Requires:       python3-setuptools
 Requires:       python3-solv
 
@@ -43,8 +43,7 @@ Requires:       python3-solv
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{version}  -p1
-
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -64,6 +63,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Aug 25 2020 Evgeni Golov 3.6.1-1
+- Update to 3.6.1
+
 * Thu Aug 13 2020 Justin Sherrill <jsherril@redhat.com> 3.5.1-1
 - update to 3.5.1
 
