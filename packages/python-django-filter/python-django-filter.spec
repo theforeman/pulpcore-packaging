@@ -2,8 +2,8 @@
 %global pypi_name django-filter
 
 Name:           python-%{pypi_name}
-Version:        2.2.0
-Release:        2%{?dist}
+Version:        2.3.0
+Release:        1%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
@@ -20,7 +20,7 @@ BuildRequires:  python3-setuptools
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django >= 1.11
+Requires:       python3-django >= 2.2
 
 %description -n python3-%{pypi_name}
 %{summary}
@@ -43,6 +43,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/django_filter-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Aug 25 2020 Evgeni Golov 2.3.0-1
+- Update to 2.3.0
+
 * Fri Feb 28 2020 Zach Huntington-Meath <zhunting@redhat.com> - 2.2.0-2
 - Bump release to build for el8
 
