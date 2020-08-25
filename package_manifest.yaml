@@ -178,6 +178,7 @@ pulpcore_packages:
     python-typing: {}
     python-typing-extensions: {}
     python-uritemplate: {}
+    python-url-normalize: {}
     python-urllib3: {}
     python-webencodings: {}
     python-whitenoise: {}
