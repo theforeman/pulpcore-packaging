@@ -180,6 +180,7 @@ pulpcore_packages:
     python-uritemplate: {}
     python-url-normalize: {}
     python-urllib3: {}
+    python-urlman: {}
     python-webencodings: {}
     python-whitenoise: {}
     python-xlrd: {}
