@@ -1,24 +1,18 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name dynaconf
 
-%global real_version %{version}rc1
-
 Name:           python-%{pypi_name}
-Version:        3.0.0
-Release:        0.1.rc1%{?dist}
+Version:        3.1.0
+Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
 URL:            https://github.com/rochacbruno/dynaconf
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{real_version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-box
-BuildRequires:  python3-click
-BuildRequires:  python3-dotenv
 BuildRequires:  python3-setuptools >= 38.6.0
-BuildRequires:  python3-toml
 
 %description
 %{summary}
@@ -26,17 +20,14 @@ BuildRequires:  python3-toml
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-box
-Requires:       python3-click
-Requires:       python3-dotenv
 Requires:       python3-setuptools
-Requires:       python3-toml
+Requires:       python3-typing
 
 %description -n python3-%{pypi_name}
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{real_version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -51,9 +42,12 @@ rm -rf %{pypi_name}.egg-info
 %doc README.md
 %{_bindir}/dynaconf
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{real_version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Aug 25 2020 Evgeni Golov 3.1.0-1
+- Update to 3.1.0
+
 * Wed Mar 18 2020 Samir Jha 3.0.0-0.1.rc1
 - Update to 3.0.0rc1
 
