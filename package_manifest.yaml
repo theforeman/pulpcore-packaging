@@ -94,6 +94,7 @@ pulpcore_packages:
     python-django: {}
     python-django-currentuser: {}
     python-django-filter: {}
+    python-django-guardian: {}
     python-django-import-export: {}
     python-django-prometheus: {}
     python-django-readonly-field: {}
