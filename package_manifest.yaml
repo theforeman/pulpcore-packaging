@@ -96,6 +96,7 @@ pulpcore_packages:
     python-django-filter: {}
     python-django-guardian: {}
     python-django-import-export: {}
+    python-django-lifecycle: {}
     python-django-prometheus: {}
     python-django-readonly-field: {}
     python-djangorestframework: {}
