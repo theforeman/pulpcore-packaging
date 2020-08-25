@@ -102,6 +102,7 @@ pulpcore_packages:
     python-djangorestframework: {}
     python-djangorestframework-queryfields: {}
     python-dotenv: {}
+    python-drf-access-policy: {}
     python-drf-nested-routers: {}
     python-drf-yasg: {}
     python-dynaconf: {}
