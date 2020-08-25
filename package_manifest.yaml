@@ -164,6 +164,7 @@ pulpcore_packages:
     python-pyyaml: {}
     python-redis: {}
     python-requests: {}
+    python-rich: {}
     python-rq: {}
     python-ruamel-yaml: {}
     python-ruamel-yaml-clib: {}
