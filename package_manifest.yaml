@@ -86,6 +86,7 @@ pulpcore_packages:
     python-coreapi: {}
     python-coreschema: {}
     python-cryptography: {}
+    python-dataclasses: {}
     python-dateutil: {}
     python-debian: {}
     python-defusedxml: {}
