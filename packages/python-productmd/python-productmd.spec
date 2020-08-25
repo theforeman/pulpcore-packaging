@@ -2,13 +2,13 @@
 %global pypi_name productmd
 
 Name:           python-%{pypi_name}
-Version:        1.26
+Version:        1.27
 Release:        1%{?dist}
 Summary:        Product, compose and installation media metadata library
 
 License:        LGPLv2.1
 URL:            https://github.com/release-engineering/productmd
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.bz2
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -44,5 +44,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Aug 25 2020 Evgeni Golov 1.27-1
+- Update to 1.27
+
 * Thu Apr 30 2020 Evgeni Golov - 1.26-1
 - Initial package.
