@@ -2,7 +2,7 @@
 %global pypi_name django-prometheus
 
 Name:           python-%{pypi_name}
-Version:        2.0.0
+Version:        2.1.0
 Release:        1%{?dist}
 Summary:        Django middlewares to monitor your application with Prometheus
 
@@ -45,5 +45,8 @@ sed -i 's/"pytest-runner"//' setup.py
 %{python3_sitelib}/django_prometheus-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Aug 25 2020 Evgeni Golov 2.1.0-1
+- Update to 2.1.0
+
 * Fri Jul 17 2020 Evgeni Golov - 2.0.0-1
 - Initial package.
