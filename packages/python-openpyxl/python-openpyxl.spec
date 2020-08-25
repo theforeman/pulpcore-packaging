@@ -2,7 +2,7 @@
 %global pypi_name openpyxl
 
 Name:           python-%{pypi_name}
-Version:        3.0.4
+Version:        3.0.5
 Release:        1%{?dist}
 Summary:        A Python library to read/write Excel 2010 xlsx/xlsm files
 
@@ -43,6 +43,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Aug 25 2020 Evgeni Golov 3.0.5-1
+- Update to 3.0.5
+
 * Mon Jul 20 2020 Evgeni Golov 3.0.4-1
 - Update to 3.0.4
 
