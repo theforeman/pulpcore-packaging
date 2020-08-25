@@ -2,7 +2,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        1.4.2
+Version:        2.0.0
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -19,6 +19,8 @@ Conflicts:      python3-pyjwkest >= 1.5
 Requires:       python3-pyjwt >= 1.7.1
 Conflicts:      python3-pyjwt >= 1.8
 BuildRequires:  python3-setuptools
+Requires:       python3-url-normalize >= 1.4.2
+Conflicts:      python3-url-normalize >= 1.5
 
 %description
 %{summary}
@@ -28,13 +30,15 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
 Requires:       python3-ecdsa >= 0.13.2
 Conflicts:      python3-ecdsa >= 0.14
-Requires:       python3-pulpcore < 3.5
-Requires:       python3-pulpcore >= 3.4
+Requires:       python3-pulpcore < 3.7
+Requires:       python3-pulpcore >= 3.6
 Requires:       python3-pyjwkest >= 1.4.0
 Conflicts:      python3-pyjwkest >= 1.5
 Requires:       python3-pyjwt >= 1.7.1
 Conflicts:      python3-pyjwt >= 1.8
 Requires:       python3-setuptools
+Requires:       python3-url-normalize >= 1.4.2
+Conflicts:      python3-url-normalize >= 1.5
 
 %description -n python3-%{pypi_name}
 %{summary}
@@ -57,6 +61,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Aug 25 2020 Evgeni Golov 2.0.0-1
+- Update to 2.0.0
+
 * Fri Jul 17 2020 Justin Sherrill <jsherril@redhat.com> 1.4.2-1
 - upgrade to 1.4.2
 
