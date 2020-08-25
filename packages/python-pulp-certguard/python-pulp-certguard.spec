@@ -2,13 +2,13 @@
 %global pypi_name pulp-certguard
 
 Name:           python-%{pypi_name}
-Version:        0.1.0
-Release:        0.2.rc5%{?dist}
-Summary:        X.509 Certguards plugin for the Pulp Project
+Version:        1.0.2
+Release:        1%{?dist}
+Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
-URL:            http://www.pulpproject.org
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}rc5.tar.gz
+URL:            https://pulp-certguard.readthedocs.io/
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -23,8 +23,8 @@ a certificate proving their entitlement to content before receiving the content.
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
 Requires:       python3-pyOpenSSL
-Requires:       python3-pulpcore < 3.5
-Requires:       python3-pulpcore >= 3.3.0
+Requires:       python3-pulpcore < 3.7
+Requires:       python3-pulpcore >= 3.3
 Requires:       python3-setuptools
 
 %description -n python3-%{pypi_name}
@@ -33,7 +33,7 @@ Instances of X509CertGuard are useful for requiring clients to submit
 a certificate proving their entitlement to content before receiving the content.
 
 %prep
-%autosetup -n %{pypi_name}-%{version}rc5
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -47,9 +47,12 @@ rm -rf %{pypi_name}.egg-info
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_certguard
-%{python3_sitelib}/pulp_certguard-%{version}rc5-py%{python3_version}.egg-info
+%{python3_sitelib}/pulp_certguard-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Aug 25 2020 Evgeni Golov 1.0.2-1
+- Update to 1.0.2
+
 * Fri Jun 19 2020 Eric D. Helms <ericdhelms@gmail.com> - 0.1.0-0.2.rc5
 - Adjust pyopenssl requires to pyOpenSSL
 
