@@ -1,0 +1,20 @@
+# vim: ts=2:sw=2:et
+#
+# Please keep blacklist/whitelist sorted
+#
+[requirements]
+tito=0.6.1
+
+[buildconfig]
+builder = obal.tito_extensions.git_annex_spec_builder.GitAnnexSpecBuilder
+tagger = tito.tagger.ReleaseTagger
+lib_dir = rel-eng/custom/
+
+[pulpcore-3.4-el7]
+disttag = .el7
+
+[pulpcore-3.4-el8]
+disttag = .el8
+blacklist =
+  python-iniparse
+  subscription-manager
