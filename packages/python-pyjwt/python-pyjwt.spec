@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        1.7.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -22,6 +22,7 @@ BuildRequires:  python3-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{srcname}}
 Provides:       python3-jwt = %{version}-%{release}
+Obsoletes:      python3-jwt < %{version}-%{release}
 Requires:       python3-cryptography >= 1.4
 Requires:       python3-setuptools
 
@@ -47,6 +48,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Aug 27 2020 Evgeni Golov - 1.7.1-3
+- Obsolete python3-jwt
+
 * Fri Feb 28 2020 Zach Huntington-Meath <zhunting@redhat.com> - 1.7.1-2
 - Bump release to build for el8
 
