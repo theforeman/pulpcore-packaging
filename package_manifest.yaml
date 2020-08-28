@@ -93,6 +93,7 @@ pulpcore_packages:
     python-diff-match-patch: {}
     python-django: {}
     python-django-currentuser: {}
+    python-django-cursor-pagination: {}
     python-django-filter: {}
     python-django-guardian: {}
     python-django-import-export: {}
