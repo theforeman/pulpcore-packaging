@@ -1,16 +1,14 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-importer
 
-%global full_version %{version}rc9
-
 Name:           python-%{pypi_name}
 Version:        0.2.8
-Release:        0.1.rc9%{?dist}
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
 URL:            https://github.com/ansible/galaxy-importer
-Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/galaxy_importer-%{full_version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/galaxy_importer-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -51,7 +49,7 @@ Requires:       python3-semantic-version >= 2.8.4
 %{summary}
 
 %prep
-%autosetup -n galaxy_importer-%{full_version}
+%autosetup -n galaxy_importer-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -67,9 +65,12 @@ sed -i -E '/\s+ansible($|-lint)/d' setup.cfg
 %license galaxy_importer/utils/spdx_licenses.py galaxy_importer/utils/spdx_licenses.json
 %doc README.md
 %{python3_sitelib}/galaxy_importer
-%{python3_sitelib}/galaxy_importer-%{full_version}-py%{python3_version}.egg-info
+%{python3_sitelib}/galaxy_importer-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Aug 31 2020 Evgeni Golov 0.2.8-1
+- Update to 0.2.8
+
 * Mon Aug 10 2020 Evgeni Golov 0.2.8-0.1.rc9
 - Update to 0.2.8rc9
 
