@@ -2,7 +2,7 @@
 %global pypi_name rich
 
 Name:           python-%{pypi_name}
-Version:        5.2.1
+Version:        6.0.0
 Release:        1%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
@@ -50,5 +50,8 @@ Requires:       python3-typing-extensions >= 3.7.4
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Sep 01 2020 Evgeni Golov 6.0.0-1
+- Update to 6.0.0
+
 * Tue Aug 25 2020 Evgeni Golov - 5.2.1-1
 - Initial package.
