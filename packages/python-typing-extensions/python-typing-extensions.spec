@@ -2,7 +2,7 @@
 %global pypi_name typing-extensions
 
 Name:           python-%{pypi_name}
-Version:        3.7.4.2
+Version:        3.7.4.3
 Release:        1%{?dist}
 Summary:        Backported and Experimental Type Hints for Python 3
 
@@ -45,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/typing_extensions-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Sep 01 2020 Evgeni Golov 3.7.4.3-1
+- Update to 3.7.4.3
+
 * Tue Apr 14 2020 Evgeni Golov 3.7.4.2-1
 - Update to 3.7.4.2
 
