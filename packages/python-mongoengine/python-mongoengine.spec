@@ -2,8 +2,8 @@
 %global pypi_name mongoengine
 
 Name:           python-%{pypi_name}
-Version:        0.19.1
-Release:        3%{?dist}
+Version:        0.20.0
+Release:        1%{?dist}
 Summary:        MongoEngine is a Python Object-Document Mapper for working with MongoDB
 
 License:        MIT
@@ -20,8 +20,8 @@ BuildRequires:  python3-setuptools
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-pymongo >= 3.10.0
-Requires:       python3-six >= 1.10.0
+Requires:       python3-pymongo < 4.0
+Requires:       python3-pymongo >= 3.4
 
 %description -n python3-%{pypi_name}
 %{summary}
@@ -44,6 +44,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Sep 01 2020 Evgeni Golov 0.20.0-1
+- Update to 0.20.0
+
 * Tue Mar 17 2020 Eric D. Helms <ericdhelms@gmail.com> - 0.19.1-3
 - Bump pymongo requires
 
