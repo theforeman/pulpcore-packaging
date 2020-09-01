@@ -23,6 +23,7 @@ repoclosures:
         el7:
           - el7-base
           - el7-updates
+          - el7-scl
           - el7-epel
     pulpcore-repoclosure-el8:
       repoclosure_target_repos:
@@ -54,6 +55,7 @@ pulpcore_packages:
       el7:
         - el7-base
         - el7-updates
+        - el7-scl
         - el7-epel
       el8:
         - el8-baseos
