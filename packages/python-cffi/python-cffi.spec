@@ -2,7 +2,7 @@
 %global pypi_name cffi
 
 Name:           python-%{pypi_name}
-Version:        1.14.1
+Version:        1.14.2
 Release:        1%{?dist}
 Summary:        Foreign Function Interface for Python calling C code
 
@@ -47,6 +47,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Sep 01 2020 Evgeni Golov 1.14.2-1
+- Update to 1.14.2
+
 * Mon Aug 10 2020 Evgeni Golov 1.14.1-1
 - Update to 1.14.1
 
