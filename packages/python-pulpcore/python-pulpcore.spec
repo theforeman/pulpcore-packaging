@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.6.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -101,6 +101,7 @@ Requires:       python3-dynaconf < 4.0
 Requires:       python3-dynaconf >= 2.2
 Requires:       python3-gnupg >= 0.4.6
 Conflicts:      python3-gnupg >= 0.5
+Requires:       python3-jinja2
 Requires:       python3-gunicorn < 20.1
 Requires:       python3-gunicorn >= 19.9
 Requires:       python3-psycopg2 < 2.9
@@ -145,6 +146,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Sep 03 2020 Justin Sherrill <jsherril@redhat.com> 3.6.2-2
+- add missing jinja2 dep
+
 * Thu Sep 03 2020 Evgeni Golov 3.6.2-1
 - Update to 3.6.2
 
