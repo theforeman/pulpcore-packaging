@@ -2,7 +2,7 @@
 %global pypi_name psycopg2
 
 Name:           python-%{pypi_name}
-Version:        2.8.5
+Version:        2.8.6
 Release:        1%{?dist}
 Summary:        psycopg2 - Python-PostgreSQL Database Adapter
 
@@ -36,12 +36,15 @@ rm -rf %{pypi_name}.egg-info
 %py3_install
 
 %files -n python3-%{pypi_name}
-%license doc/src/license.rst LICENSE doc/COPYING.LESSER
-%doc doc/README.rst README.rst
+%license LICENSE doc/src/license.rst doc/COPYING.LESSER
+%doc README.rst doc/README.rst
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Sep 07 2020 Evgeni Golov 2.8.6-1
+- Update to 2.8.6
+
 * Tue Apr 14 2020 Evgeni Golov 2.8.5-1
 - Update to 2.8.5
 
