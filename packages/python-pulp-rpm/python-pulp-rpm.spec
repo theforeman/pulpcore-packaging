@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.6.1
+Version:        3.6.2
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -63,6 +63,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Sep 07 2020 Evgeni Golov 3.6.2-1
+- Update to 3.6.2
+
 * Tue Aug 25 2020 Evgeni Golov 3.6.1-1
 - Update to 3.6.1
 
