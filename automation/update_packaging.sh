@@ -13,4 +13,10 @@ else
   ENV_FILE_ARG=""
 fi
 
-podman run --rm --volume ${RESULT_DIR}:/app/packaging/:Z  ${ENV_FILE_ARG} tfm-pulpcore-builder
+if [[ -d /sys/fs/selinux ]]; then
+  SELINUX_FLAG=":Z"
+else
+  SELINUX_FLAG=""
+fi
+
+podman run --rm --volume ${RESULT_DIR}:/app/packaging/${SELINUX_FLAG}  ${ENV_FILE_ARG} tfm-pulpcore-builder
