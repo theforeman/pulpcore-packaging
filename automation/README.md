@@ -28,8 +28,11 @@ podman build --tag tfm-pulpcore-builder .
 
 ### Run
 
+Execute `update_packaging.sh` which will do the following:
+
 1. create an empty directory to host the resulting packages
-2. pass the directory as a volume for `/app/packaging` to the container:
+2. check if there is an `packaging.env` file
+3. pass the directory and optionally the `packaging.env` file to the container:
 ```
 podman run --rm --volume $(pwd)/packaging/:/app/packaging/:Z  --env-file packaging.env tfm-pulpcore-builder
 ```
