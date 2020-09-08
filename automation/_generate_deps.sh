@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 PULPCORE_REQUIREMENTS="/app/requirements.txt"
 PULPCORE_FULL_REQUIREMENTS="/app/pulpcore-requirements.txt"
 PACKAGING_WORKDIR="/app/packaging"
