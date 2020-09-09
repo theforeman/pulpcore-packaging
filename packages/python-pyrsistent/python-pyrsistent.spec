@@ -2,7 +2,7 @@
 %global pypi_name pyrsistent
 
 Name:           python-%{pypi_name}
-Version:        0.16.0
+Version:        0.17.0
 Release:        1%{?dist}
 Summary:        Persistent/Functional/Immutable data structures
 
@@ -12,7 +12,6 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
 
 %description
 %{summary}
@@ -20,7 +19,6 @@ BuildRequires:  python3-six
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-six
 
 %description -n python3-%{pypi_name}
 %{summary}
@@ -45,6 +43,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/pvectorc.cpython-3*m-x86_64-linux-gnu.so
 
 %changelog
+* Wed Sep 09 2020 Evgeni Golov 0.17.0-1
+- Update to 0.17.0
+
 * Thu Jun 04 2020 Evgeni Golov 0.16.0-1
 - Update to 0.16.0
 
