@@ -4,12 +4,13 @@
 
 Name:           python-%{srcname}
 Version:        2.2.16
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD
 URL:            https://www.djangoproject.com/
 Source0:        https://files.pythonhosted.org/packages/source/D/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         0001-FIPS-Mark-use-of-MD5-not-security-relevant.patch
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -31,7 +32,7 @@ Requires:       python3-sqlparse >= 0.2.2
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -60,6 +61,9 @@ mv %{buildroot}%{_bindir}/django-admin %{buildroot}%{_bindir}/python3-django-adm
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Sep 10 2020 Matthias Dellweg 2.2.16-2
+- Add a patch to support running in a FIPS environment
+
 * Tue Sep 01 2020 Evgeni Golov 2.2.16-1
 - Update to 2.2.16
 
