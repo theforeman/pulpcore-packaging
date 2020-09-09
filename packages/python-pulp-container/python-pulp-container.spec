@@ -2,7 +2,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.0.0
+Version:        2.0.1
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -14,6 +14,8 @@ BuildArch:      noarch
 BuildRequires:  python3-devel
 Requires:       python3-ecdsa >= 0.13.2
 Conflicts:      python3-ecdsa >= 0.14
+BuildRequires:  python3-pulpcore < 3.7
+BuildRequires:  python3-pulpcore >= 3.6
 Requires:       python3-pyjwkest >= 1.4.0
 Conflicts:      python3-pyjwkest >= 1.5
 Requires:       python3-pyjwt >= 1.7.1
@@ -61,6 +63,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Sep 09 2020 Evgeni Golov 2.0.1-1
+- Update to 2.0.1
+
 * Tue Aug 25 2020 Evgeni Golov 2.0.0-1
 - Update to 2.0.0
 
