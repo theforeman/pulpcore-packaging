@@ -2,7 +2,7 @@
 %global pypi_name rq
 
 Name:           python-%{pypi_name}
-Version:        1.4.3
+Version:        1.5.2
 Release:        1%{?dist}
 Summary:        RQ is a simple, lightweight, library for creating background jobs, and processing them
 
@@ -20,8 +20,8 @@ BuildRequires:  python3-setuptools
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-click >= 5.0
-Requires:       python3-redis >= 3.0.0
+Requires:       python3-click >= 5.0.0
+Requires:       python3-redis >= 3.5.0
 Requires:       python3-setuptools
 
 %description -n python3-%{pypi_name}
@@ -48,6 +48,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Sep 10 2020 Evgeni Golov 1.5.2-1
+- Update to 1.5.2
+
 * Mon Jul 20 2020 Evgeni Golov 1.4.3-1
 - Update to 1.4.3
 
