@@ -3,12 +3,13 @@
 
 Name:           python-%{pypi_name}
 Version:        0.9.12
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
 URL:            https://github.com/tfranzel/drf-spectacular
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         0001-Use-sha256-instead-of-blake2b-for-FIPS.patch
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -37,7 +38,7 @@ Requires:       python3-uritemplate >= 2.0.0
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -60,5 +61,7 @@ sed -i 's/long_description = readme.read.*/long_description = description/' setu
 %{python3_sitelib}/drf_spectacular-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Sep 11 2020 Matthias Dellweg - 0.9.12-2
+- Added a patch for FIPS
 * Tue Aug 25 2020 Evgeni Golov - 0.9.12-1
 - Initial package.

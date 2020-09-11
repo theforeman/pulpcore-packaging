@@ -1,0 +1,25 @@
+From 5714a5655442ee59aa579bb5cf47f7e7214c239d Mon Sep 17 00:00:00 2001
+From: Matthias Dellweg <mdellweg@redhat.com>
+Date: Fri, 11 Sep 2020 14:33:49 +0200
+Subject: [PATCH] Use sha256 instead of blake2b for FIPS
+
+---
+ drf_spectacular/plumbing.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drf_spectacular/plumbing.py b/drf_spectacular/plumbing.py
+index cc5d8bd..bbe7746 100644
+--- a/drf_spectacular/plumbing.py
++++ b/drf_spectacular/plumbing.py
+@@ -560,7 +560,7 @@ def load_enum_name_overrides():
+ 
+ 
+ def list_hash(lst):
+-    return hashlib.blake2b(json.dumps(list(lst), sort_keys=True).encode()).hexdigest()
++    return hashlib.sha256(json.dumps(list(lst), sort_keys=True).encode()).hexdigest()
+ 
+ 
+ def resolve_regex_path_parameter(path_regex, variable, available_formats):
+-- 
+2.28.0
+
