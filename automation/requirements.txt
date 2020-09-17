@@ -6,4 +6,4 @@ pulp-rpm==3.6.2
 pulp-certguard==1.0.2
 galaxy-importer==0.2.8
 pulp-ansible==0.3.0
-galaxy-ng==4.2.0b1
+galaxy-ng==4.2.0b2
