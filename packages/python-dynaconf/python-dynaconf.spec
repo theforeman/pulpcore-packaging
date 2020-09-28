@@ -2,7 +2,7 @@
 %global pypi_name dynaconf
 
 Name:           python-%{pypi_name}
-Version:        3.1.0
+Version:        3.1.1
 Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
@@ -45,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Sep 28 2020 Evgeni Golov 3.1.1-1
+- Update to 3.1.1
+
 * Tue Aug 25 2020 Evgeni Golov 3.1.0-1
 - Update to 3.1.0
 
