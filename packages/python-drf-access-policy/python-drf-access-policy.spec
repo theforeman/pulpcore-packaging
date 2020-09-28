@@ -2,7 +2,7 @@
 %global pypi_name drf-access-policy
 
 Name:           python-%{pypi_name}
-Version:        0.6.2
+Version:        0.7.0
 Release:        1%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
@@ -41,5 +41,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/drf_access_policy-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Sep 28 2020 Evgeni Golov 0.7.0-1
+- Update to 0.7.0
+
 * Tue Aug 25 2020 Evgeni Golov - 0.6.2-1
 - Initial package.
