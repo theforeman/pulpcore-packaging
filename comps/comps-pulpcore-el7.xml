@@ -47,6 +47,7 @@
       <packagereq type="default">python3-defusedxml</packagereq>
       <packagereq type="default">python3-diff-match-patch</packagereq>
       <packagereq type="default">python3-django</packagereq>
+      <packagereq type="default">python3-django-cleanup</packagereq>
       <packagereq type="default">python3-django-currentuser</packagereq>
       <packagereq type="default">python3-django-cursor-pagination</packagereq>
       <packagereq type="default">python3-django-filter</packagereq>
