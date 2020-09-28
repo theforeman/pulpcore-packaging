@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.6.2
+Version:        3.7.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -34,8 +34,8 @@ Requires:       python3-jsonschema >= 3.0
 Requires:       python3-libcomps >= 0.1.12
 Conflicts:      python3-libcomps >= 0.2
 Requires:       python3-productmd >= 1.25
-Requires:       python3-pulpcore < 3.7
-Requires:       python3-pulpcore >= 3.6
+Requires:       python3-pulpcore < 3.9
+Requires:       python3-pulpcore >= 3.7
 Requires:       python3-setuptools
 Requires:       python3-solv
 
@@ -63,6 +63,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Sep 28 2020 Evgeni Golov 3.7.0-1
+- Update to 3.7.0
+
 * Mon Sep 07 2020 Evgeni Golov 3.6.2-1
 - Update to 3.6.2
 
