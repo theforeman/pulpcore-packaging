@@ -2,7 +2,7 @@
 %global pypi_name bleach
 
 Name:           python-%{pypi_name}
-Version:        3.1.5
+Version:        3.2.1
 Release:        1%{?dist}
 Summary:        An easy safelist-based HTML-sanitizing tool
 
@@ -12,8 +12,10 @@ Source0:        https://files.pythonhosted.org/packages/source/b/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+BuildRequires:  python3-packaging
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six >= 1.9.0
+BuildRequires:  python3-webencodings
 
 %description
 %{summary}
@@ -40,11 +42,14 @@ rm -rf %{pypi_name}.egg-info
 %py3_install
 
 %files -n python3-%{pypi_name}
-%license LICENSE bleach/_vendor/html5lib-1.0.1.dist-info/LICENSE.txt
+%license LICENSE
 %doc README.rst bleach/_vendor/README.rst tests_website/README.rst
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Sep 28 2020 Evgeni Golov 3.2.1-1
+- Update to 3.2.1
+
 * Tue Jun 23 2020 Evgeni Golov - 3.1.5-1
 - Initial package.
