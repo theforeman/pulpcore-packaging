@@ -1,0 +1,175 @@
+From 7c455de46d6c60bc45ed6eba928826ddfefd7758 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mat=C4=9Bj?= <amatej@redhat.com>
+Date: Fri, 24 Jul 2020 09:45:49 +0200
+Subject: [PATCH 1/3] Fix segfault when trying to use malformed modular
+ metadata
+
+Libmodulemd doesn't always provide the error so we have to check before
+accessing the message.
+---
+ src/createrepo_c.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/createrepo_c.c b/src/createrepo_c.c
+index 232351f..8c90ebd 100644
+--- a/src/createrepo_c.c
++++ b/src/createrepo_c.c
+@@ -842,7 +842,8 @@ main(int argc, char **argv)
+                                                                      &failures,
+                                                                      &tmp_err);
+             if (!result) {
+-                g_critical("Could not update module index from file %s: %s", element->data, tmp_err->message);
++                g_critical("Could not update module index from file %s: %s", element->data,
++                           (tmp_err ? tmp_err->message : "Unknown error"));
+                 g_clear_error(&tmp_err);
+                 g_clear_pointer(&moduleindex, g_object_unref);
+                 g_clear_pointer(&merger, g_object_unref);
+@@ -895,7 +896,8 @@ main(int argc, char **argv)
+         CR_FILE *modules_file = NULL;
+         modules_file = cr_open(modules_metadata_path, CR_CW_MODE_WRITE, compression, &tmp_err);
+         if (modules_file == NULL) {
+-            g_critical("%s: Cannot open source file %s: %s", __func__, modules_metadata_path, tmp_err->message);
++            g_critical("%s: Cannot open source file %s: %s", __func__, modules_metadata_path,
++                       (tmp_err ? tmp_err->message : "Unknown error"));
+             g_clear_error(&tmp_err);
+             free(moduleindex_str);
+             free(modules_metadata_path);
+
+From 8b51a3622ef4577929d462488ddc0c04eebf308f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mat=C4=9Bj?= <amatej@redhat.com>
+Date: Fri, 24 Jul 2020 12:53:47 +0200
+Subject: [PATCH 2/3] Add a test for parsing huge snippet (RhBug:1859689)
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1859689
+---
+ tests/python/tests/test_xml_parser.py | 36 +++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+diff --git a/tests/python/tests/test_xml_parser.py b/tests/python/tests/test_xml_parser.py
+index e2c48f0..8856096 100644
+--- a/tests/python/tests/test_xml_parser.py
++++ b/tests/python/tests/test_xml_parser.py
+@@ -476,6 +476,42 @@ def warningcb(warn_type, msg):
+         self.assertEqual(userdata["pkgcb_calls"], 2)
+         self.assertEqual(userdata["warnings"], [])
+ 
++    def test_xml_parser_filelists_snippet_huge(self):
++
++        userdata = {
++                "pkgs": [],
++                "pkgcb_calls": 0,
++                "warnings": []
++            }
++
++        def newpkgcb(pkgId, name, arch):
++            pkg = cr.Package()
++            userdata["pkgs"].append(pkg)
++            return pkg
++
++        def pkgcb(pkg):
++            userdata["pkgcb_calls"] += 1
++
++        def warningcb(warn_type, msg):
++            userdata["warnings"].append((warn_type, msg))
++
++        # generete huge filelists snippet
++        content = """
++                  <package pkgid="68743563000b2a85e7d9d7ce318719217f3bfee6167cd862efd201ff96c1ecbb" name="flat-remix-icon-theme" arch="noarch">
++                  <version epoch="0" ver="0.0.20200511" rel="1.fc33"/>
++                  """
++        for i in range(145951):
++            content += "<file>/usr/share/icons/Flat-Remix-Yellow/status/symbolic/user-available-symbolic.svg</file>"
++        content += "</package>"
++
++        cr.xml_parse_filelists_snippet(content, newpkgcb, pkgcb, warningcb)
++
++        self.assertEqual([pkg.name for pkg in userdata["pkgs"]],
++            ['flat-remix-icon-theme'])
++        self.assertEqual(userdata["pkgcb_calls"], 1)
++        self.assertEqual(userdata["warnings"], [])
++
++
+ 
+     def test_xml_parser_filelists_repo02_only_pkgcb(self):
+ 
+
+From e634a1cee85386fd03cdd20cca56b8f998d34849 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mat=C4=9Bj?= <amatej@redhat.com>
+Date: Fri, 24 Jul 2020 12:41:50 +0200
+Subject: [PATCH 3/3] Parse xml snippet in smaller parts (RhBug:1859689)
+
+If string passed to xmlParseChunk (function froml ibxml2) is too
+big the function errors out, its safer to parse the snippet in
+smaller parts.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1859689
+---
+ src/xml_parser.c | 48 ++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 32 insertions(+), 16 deletions(-)
+
+diff --git a/src/xml_parser.c b/src/xml_parser.c
+index 4727daa..9375107 100644
+--- a/src/xml_parser.c
++++ b/src/xml_parser.c
+@@ -243,29 +243,45 @@ cr_xml_parser_generic_from_string(xmlParserCtxtPtr parser,
+     /* Note: This function uses .err members of cr_ParserData! */
+ 
+     int ret = CRE_OK;
++    int block_size = XML_BUFFER_SIZE;
++    const char *next_data = xml_string;
++    const char *end_of_string = xml_string + strlen(xml_string);
++    int finished = 0;
+ 
+     assert(parser);
+     assert(pd);
+     assert(xml_string);
+     assert(!err || *err == NULL);
+ 
+-    if (xmlParseChunk(parser, xml_string, strlen(xml_string), 1)) {
+-        ret = CRE_XMLPARSER;
+-        xmlErrorPtr xml_err = xmlCtxtGetLastError(parser);
+-        g_critical("%s: parsing error '%s': %s",
+-                   __func__,
+-                   xml_string,
+-                   xml_err->message);
+-        g_set_error(err, ERR_DOMAIN, CRE_XMLPARSER,
+-                    "Parse error '%s' at line: %d (%s)",
+-                    xml_string,
+-                    (int) xml_err->line,
+-                    (char *) xml_err->message);
+-    }
++    const char *data;
++    while (!finished) {
++        data = next_data;
++
++        // Check if we are in the last loop
++        next_data = data + block_size;
++        if (next_data > end_of_string) {
++            block_size = strlen(data);
++            finished = 1;
++        }
++
++        if (xmlParseChunk(parser, data, block_size, finished)) {
++            ret = CRE_XMLPARSER;
++            xmlErrorPtr xml_err = xmlCtxtGetLastError(parser);
++            g_critical("%s: parsing error '%s': %s",
++                       __func__,
++                       data,
++                       xml_err->message);
++            g_set_error(err, ERR_DOMAIN, CRE_XMLPARSER,
++                        "Parse error '%s' at line: %d (%s)",
++                        data,
++                        (int) xml_err->line,
++                        (char *) xml_err->message);
++        }
+ 
+-    if (pd->err) {
+-        ret = pd->err->code;
+-        g_propagate_error(err, pd->err);
++        if (pd->err) {
++            ret = pd->err->code;
++            g_propagate_error(err, pd->err);
++        }
+     }
+ 
+     return ret;

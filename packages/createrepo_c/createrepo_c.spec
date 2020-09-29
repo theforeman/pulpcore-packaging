@@ -33,10 +33,11 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.15.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         225.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -275,5 +276,8 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Tue Sep 29 2020 Justin Sherrill <jsherril@redhat.com> 0.15.10-2
+- add patch for xml parsing improvements'
+
 * Mon May 04 2020 Evgeni Golov - 0.15.10-1
 - update to upstream 0.15.10
