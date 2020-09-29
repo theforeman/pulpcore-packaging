@@ -1,10 +1,10 @@
 %define selinux_variants mls strict targeted
-%define selinux_modules pulpcore_port pulpcore
+%define selinux_modules pulpcore_port pulpcore pulpcore_rhsmcertd
 %define debug_package %{nil}
 
 Name:           pulpcore-selinux
-Version:        1.0.0
-Release:        2%{?dist}
+Version:        1.1.1
+Release:        1%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -75,9 +75,16 @@ fi
 %defattr(-,root,root,0755)
 %{_datadir}/selinux/*/pulpcore.pp
 %{_datadir}/selinux/*/pulpcore_port.pp
+%{_datadir}/selinux/*/pulpcore_rhsmcertd.pp
 
 
 %changelog
+* Wed Sep 30 2020 Evgeni Golov - 1.1.1-1
+- Release pulpcore-selinux 1.1.1
+
+* Tue Sep 29 2020 Evgeni Golov - 1.1.0-1
+- Release pulpcore-selinux 1.1.0
+
 * Mon Mar 09 2020 Zach Huntington-Meath <zhunting@redhat.com> - 1.0.0-2
 - Bump to build on el8 & define the debug package as null to prevent errors
 
