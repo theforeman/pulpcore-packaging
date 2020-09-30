@@ -2,7 +2,7 @@
 %global pypi_name pulpcore
 
 Name:           python-%{pypi_name}
-Version:        3.6.3
+Version:        3.7.1
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -12,7 +12,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-Requires:       python3-django >= 2.2.14
+Requires:       python3-django >= 2.2.16
 Conflicts:      python3-django >= 2.3
 BuildRequires:  python3-pyyaml < 5.4.0
 BuildRequires:  python3-pyyaml >= 5.1.1
@@ -20,6 +20,9 @@ BuildRequires:  python3-aiodns
 BuildRequires:  python3-aiofiles
 BuildRequires:  python3-aiohttp
 BuildRequires:  python3-backoff
+BuildRequires:  python3-django
+Requires:       python3-django-cleanup >= 5.1.0
+Conflicts:      python3-django-cleanup >= 5.2
 Requires:       python3-django-currentuser >= 0.5.1
 Conflicts:      python3-django-currentuser >= 0.6
 Requires:       python3-django-filter >= 2.3.0
@@ -30,17 +33,17 @@ Requires:       python3-django-import-export >= 2.3.0
 Conflicts:      python3-django-import-export >= 2.4
 Requires:       python3-django-lifecycle >= 0.7.7
 Conflicts:      python3-django-lifecycle >= 0.8
-Requires:       python3-djangorestframework >= 3.10.3
-Conflicts:      python3-djangorestframework >= 3.11
+Requires:       python3-djangorestframework >= 3.11.1
+Conflicts:      python3-djangorestframework >= 3.12
 Requires:       python3-djangorestframework-queryfields >= 1.0.0
 Conflicts:      python3-djangorestframework-queryfields >= 1.1
-Requires:       python3-drf-access-policy >= 0.6.2
-Conflicts:      python3-drf-access-policy >= 0.7
+Requires:       python3-drf-access-policy >= 0.7.0
+Conflicts:      python3-drf-access-policy >= 0.8
 Requires:       python3-drf-nested-routers >= 0.91
 Conflicts:      python3-drf-nested-routers >= 0.92
-BuildRequires:  python3-drf-spectacular >= 0.9.12
+BuildRequires:  python3-dynaconf
 BuildRequires:  python3-dynaconf < 4.0
-BuildRequires:  python3-dynaconf >= 2.2
+BuildRequires:  python3-dynaconf >= 3.0
 Requires:       python3-gnupg >= 0.4.6
 Conflicts:      python3-gnupg >= 0.5
 BuildRequires:  python3-gunicorn < 20.1
@@ -71,7 +74,7 @@ Using Pulp you can:
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django >= 2.2.14
+Requires:       python3-django >= 2.2.16
 Conflicts:      python3-django >= 2.3
 Requires:       python3-pyyaml < 5.4.0
 Requires:       python3-pyyaml >= 5.1.1
@@ -79,6 +82,9 @@ Requires:       python3-aiodns
 Requires:       python3-aiofiles
 Requires:       python3-aiohttp
 Requires:       python3-backoff
+Requires:       python3-django
+Requires:       python3-django-cleanup >= 5.1.0
+Conflicts:      python3-django-cleanup >= 5.2
 Requires:       python3-django-currentuser >= 0.5.1
 Conflicts:      python3-django-currentuser >= 0.6
 Requires:       python3-django-filter >= 2.3.0
@@ -89,17 +95,19 @@ Requires:       python3-django-import-export >= 2.3.0
 Conflicts:      python3-django-import-export >= 2.4
 Requires:       python3-django-lifecycle >= 0.7.7
 Conflicts:      python3-django-lifecycle >= 0.8
-Requires:       python3-djangorestframework >= 3.10.3
-Conflicts:      python3-djangorestframework >= 3.11
+Requires:       python3-djangorestframework >= 3.11.1
+Conflicts:      python3-djangorestframework >= 3.12
 Requires:       python3-djangorestframework-queryfields >= 1.0.0
 Conflicts:      python3-djangorestframework-queryfields >= 1.1
-Requires:       python3-drf-access-policy >= 0.6.2
-Conflicts:      python3-drf-access-policy >= 0.7
+Requires:       python3-drf-access-policy >= 0.7.0
+Conflicts:      python3-drf-access-policy >= 0.8
 Requires:       python3-drf-nested-routers >= 0.91
 Conflicts:      python3-drf-nested-routers >= 0.92
-Requires:       python3-drf-spectacular >= 0.9.12
+Requires:       python3-drf-spectacular >= 0.9.13
+Conflicts:      python3-drf-spectacular >= 0.9.14
+Requires:       python3-dynaconf
 Requires:       python3-dynaconf < 4.0
-Requires:       python3-dynaconf >= 2.2
+Requires:       python3-dynaconf >= 3.0
 Requires:       python3-gnupg >= 0.4.6
 Conflicts:      python3-gnupg >= 0.5
 Requires:       python3-gunicorn < 20.1
@@ -147,6 +155,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Sep 30 2020 Evgeni Golov 3.7.1-1
+- Update to 3.7.1
+
 * Mon Sep 07 2020 Evgeni Golov 3.6.3-1
 - Update to 3.6.3
 
