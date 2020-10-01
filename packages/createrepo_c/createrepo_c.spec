@@ -32,7 +32,7 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        0.15.10
+Version:        0.16.1
 Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
@@ -275,5 +275,8 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Thu Oct 01 2020 Evgeni Golov - 0.16.1-1
+- Release createrepo_c 0.16.1
+
 * Mon May 04 2020 Evgeni Golov - 0.15.10-1
 - update to upstream 0.15.10
