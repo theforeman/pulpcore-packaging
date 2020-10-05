@@ -1,11 +1,11 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
 
-%global full_version %{version}b3
+%global full_version %{version}rc1
 
 Name:           python-%{pypi_name}
 Version:        4.2.0
-Release:        0.1.b3%{?dist}
+Release:        0.1.rc1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -30,7 +30,7 @@ Requires:       python3-certifi
 Requires:       python3-dateutil
 Requires:       python3-django-prometheus >= 2.0.0
 Requires:       python3-drf-spectacular
-Requires:       python3-pulp-ansible >= 1:0.4.0
+Requires:       python3-pulp-ansible >= 1:0.4.1
 Conflicts:      python3-pulp-ansible >= 1:0.5
 Requires:       python3-pulpcore < 3.9
 Requires:       python3-pulpcore >= 3.7
@@ -59,6 +59,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/galaxy_ng-%{full_version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Oct 05 2020 Evgeni Golov 4.2.0-0.1.rc1
+- Update to 4.2.0rc1
+
 * Mon Sep 28 2020 Evgeni Golov 4.2.0-0.1.b3
 - Update to 4.2.0b3
 
