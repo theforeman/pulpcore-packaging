@@ -70,6 +70,7 @@ pulpcore_packages:
     postgresql-debversion: {}
     postgresql-evr: {}
     pulpcore-selinux: {}
+    pulpcore-wrappers: {}
     python-aiodns: {}
     python-aiofiles: {}
     python-aiohttp: {}
