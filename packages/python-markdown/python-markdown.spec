@@ -3,7 +3,7 @@
 %global srcname markdown
 
 Name:           python-%{srcname}
-Version:        3.2.2
+Version:        3.3
 Release:        1%{?dist}
 Summary:        Python implementation of Markdown
 
@@ -13,6 +13,9 @@ Source0:        https://files.pythonhosted.org/packages/source/M/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+BuildRequires:  python3-coverage
+BuildRequires:  python3-importlib-metadata
+BuildRequires:  python3-pyyaml
 BuildRequires:  python3-setuptools
 
 %description
@@ -21,7 +24,9 @@ BuildRequires:  python3-setuptools
 %package -n     python3-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{srcname}}
+Requires:       python3-coverage
 Requires:       python3-importlib-metadata
+Requires:       python3-pyyaml
 Requires:       python3-setuptools
 
 %description -n python3-%{srcname}
@@ -46,5 +51,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ian Ballou 3.3-1
+- Update to 3.3
+
 * Tue Jun 23 2020 Evgeni Golov - 3.2.2-1
 - Initial package.
