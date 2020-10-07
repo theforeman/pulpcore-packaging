@@ -163,6 +163,7 @@ pulpcore_packages:
     python-pyjwt: {}
     python-pymongo: {}
     python-pyOpenSSL: {}
+    python-pyopenssl: {}
     python-pyparsing: {}
     python-pyrsistent: {}
     python-pytz: {}

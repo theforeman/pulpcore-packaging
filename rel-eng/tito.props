@@ -21,5 +21,6 @@ blacklist =
 
 
 [katello-pulpcore-nightly-el7]
-whitelist = 
+whitelist =
         python-pulp-2to3-migration
+        python-pyopenssl
