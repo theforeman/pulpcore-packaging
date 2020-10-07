@@ -1,9 +1,9 @@
-# Created by pyp2rpm-3.3.2
+# Created by pyp2rpm-3.3.3
 %global pypi_name python-debian
 %global srcname debian
 
 Name:           python-%{srcname}
-Version:        0.1.37
+Version:        0.1.38
 Release:        1%{?dist}
 Summary:        Debian package related modules
 
@@ -18,27 +18,16 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 
 %description
-This package provides Python 3 modules that abstract many formats of Debian
-related files. Currently handled are: * Debtags information (debian.debtags
-module) * debian/changelog (debian.changelog module) * Packages files, pdiffs
-(debian.debian_support module) * Control files of single or multiple
-RFC822-style paragraphs, e.g. debian/control, .changes, .dsc, Packages,
-Sources, Release, etc....
+%{summary}
 
 %package -n     python3-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{srcname}}
-
 Requires:       python3-chardet
 Requires:       python3-six
-%description -n python3-%{srcname}
-This package provides Python 3 modules that abstract many formats of Debian
-related files. Currently handled are: * Debtags information (debian.debtags
-module) * debian/changelog (debian.changelog module) * Packages files, pdiffs
-(debian.debian_support module) * Control files of single or multiple
-RFC822-style paragraphs, e.g. debian/control, .changes, .dsc, Packages,
-Sources, Release, etc....
 
+%description -n python3-%{srcname}
+%{summary}
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
@@ -53,12 +42,15 @@ rm -rf %{pypi_name}.egg-info
 
 %files -n python3-%{srcname}
 %doc README.rst
-%{python3_sitelib}/__pycache__/*
+%{python3_sitelib}/__pycache__/deb822.*
 %{python3_sitelib}/deb822.py
 %{python3_sitelib}/debian
 %{python3_sitelib}/debian_bundle
-%{python3_sitelib}/python_debian-%{version}-py?.?.egg-info
+%{python3_sitelib}/python_debian-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ian Ballou 0.1.38-1
+- Update to 0.1.38
+
 * Thu Apr 30 2020 Markus Bucher <bucher@atix.de> - 0.1.37-1
 - Initial package.
