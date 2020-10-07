@@ -3,7 +3,7 @@
 %global srcname pygments
 
 Name:           python-%{srcname}
-Version:        2.6.1
+Version:        2.7.1
 Release:        1%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
@@ -13,8 +13,6 @@ Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-
-BuildArch:      noarch
 
 %description
 %{summary}
@@ -42,9 +40,12 @@ rm -rf %{pypi_name}.egg-info
 %license LICENSE
 %doc README.rst
 %{_bindir}/pygmentize
-%{python3_sitelib}/pygments
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/pygments
+%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ian Ballou 2.7.1-1
+- Update to 2.7.1
+
 * Tue Aug 25 2020 Evgeni Golov - 2.6.1-1
 - Initial package.
