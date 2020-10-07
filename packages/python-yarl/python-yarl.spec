@@ -2,7 +2,7 @@
 %global pypi_name yarl
 
 Name:           python-%{pypi_name}
-Version:        1.5.1
+Version:        1.6.0
 Release:        1%{?dist}
 Summary:        Yet another URL library
 
@@ -47,6 +47,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ian Ballou 1.6.0-1
+- Update to 1.6.0
+
 * Mon Aug 10 2020 Evgeni Golov 1.5.1-1
 - Update to 1.5.1
 
