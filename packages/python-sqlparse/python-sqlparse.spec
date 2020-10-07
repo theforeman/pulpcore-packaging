@@ -2,11 +2,11 @@
 %global pypi_name sqlparse
 
 Name:           python-%{pypi_name}
-Version:        0.3.1
+Version:        0.4.0
 Release:        1%{?dist}
-Summary:        Non-validating SQL parser
+Summary:        A non-validating SQL parser
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://github.com/andialbrecht/sqlparse
 Source0:        https://files.pythonhosted.org/packages/source/s/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -44,6 +44,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ian Ballou 0.4.0-1
+- Update to 0.4.0
+
 * Wed Mar 18 2020 Samir Jha 0.3.1-1
 - Update to 0.3.1
 
