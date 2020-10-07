@@ -2,7 +2,7 @@
 %global pypi_name zipp
 
 Name:           python-%{pypi_name}
-Version:        3.1.0
+Version:        3.3.0
 Release:        1%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
@@ -12,6 +12,18 @@ Source0:        https://files.pythonhosted.org/packages/source/z/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+BuildConflicts: python3-pytest = 3.7.3
+BuildRequires:  python3-func-timeout
+BuildRequires:  python3-jaraco-itertools
+BuildRequires:  python3-jaraco-packaging >= 3.2
+BuildRequires:  python3-jaraco-test >= 3.2.0
+BuildRequires:  python3-pytest >= 3.5
+BuildRequires:  python3-pytest-black >= 0.3.7
+BuildRequires:  python3-pytest-checkdocs >= 1.2.3
+BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-pytest-flake8
+BuildRequires:  python3-pytest-mypy
+BuildRequires:  python3-rst-linker >= 1.9
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools-scm >= 3.4.1
 
@@ -21,6 +33,19 @@ BuildRequires:  python3-setuptools-scm >= 3.4.1
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
+Conflicts:      python3-pytest = 3.7.3
+Requires:       python3-func-timeout
+Requires:       python3-jaraco-itertools
+Requires:       python3-jaraco-packaging >= 3.2
+Requires:       python3-jaraco-test >= 3.2.0
+Requires:       python3-pytest >= 3.5
+Requires:       python3-pytest-black >= 0.3.7
+Requires:       python3-pytest-checkdocs >= 1.2.3
+Requires:       python3-pytest-cov
+Requires:       python3-pytest-flake8
+Requires:       python3-pytest-mypy
+Requires:       python3-rst-linker >= 1.9
+Requires:       python3-sphinx
 
 %description -n python3-%{pypi_name}
 %{summary}
@@ -29,9 +54,6 @@ Summary:        %{summary}
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
-# Force setuptools_scm usage for older setuptools
-sed -i 's/setuptools.setup.*/setuptools.setup(use_scm_version=True)/' setup.py
 
 %build
 %py3_build
@@ -44,9 +66,13 @@ sed -i 's/setuptools.setup.*/setuptools.setup(use_scm_version=True)/' setup.py
 %doc README.rst
 %{python3_sitelib}/__pycache__/%{pypi_name}.*
 %{python3_sitelib}/%{pypi_name}.py
+%{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ian Ballou 3.3.0-1
+- Update to 3.3.0
+
 * Thu Jun 04 2020 Evgeni Golov 3.1.0-1
 - Update to 3.1.0
 
