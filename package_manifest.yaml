@@ -143,6 +143,7 @@ pulpcore_packages:
     python-productmd: {}
     python-prometheus-client: {}
     python-psycopg2: {}
+    python-pulp-2to3-migration: {}
     python-pulp-ansible: {}
     python-pulp-certguard: {}
     python-pulp-rpm: {}

@@ -18,3 +18,8 @@ disttag = .el8
 blacklist =
   python-iniparse
   subscription-manager
+
+
+[katello-pulpcore-nightly-el7]
+whitelist = 
+        python-pulp-2to3-migration
