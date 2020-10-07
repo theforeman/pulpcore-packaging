@@ -1,21 +1,30 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
 
-%global full_version %{version}rc1
-
 Name:           python-%{pypi_name}
-Version:        4.2.0
-Release:        0.1.rc1%{?dist}
+Version:        4.2.0rc1
+Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://github.com/ansible/galaxy_ng/
-Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/%{pypi_name}-%{full_version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+Requires:       python3-Django >= 2.2.3
+Conflicts:      python3-Django >= 2.3
+BuildRequires:  python3-certifi
+BuildRequires:  python3-dateutil
+BuildRequires:  python3-django-prometheus >= 2.0.0
+BuildRequires:  python3-drf-spectacular
+Requires:       python3-pulp-ansible >= 0.4.1
+Conflicts:      python3-pulp-ansible >= 0.5
+BuildRequires:  python3-pulpcore < 3.9
+BuildRequires:  python3-pulpcore >= 3.7
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six >= 1.10
+BuildRequires:  python3-urllib3 >= 1.15
 BuildRequires:  python3-wheel
 
 %description
@@ -24,14 +33,14 @@ BuildRequires:  python3-wheel
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django >= 2.2.3
-Conflicts:      python3-django >= 2.3
+Requires:       python3-Django >= 2.2.3
+Conflicts:      python3-Django >= 2.3
 Requires:       python3-certifi
 Requires:       python3-dateutil
 Requires:       python3-django-prometheus >= 2.0.0
 Requires:       python3-drf-spectacular
-Requires:       python3-pulp-ansible >= 1:0.4.1
-Conflicts:      python3-pulp-ansible >= 1:0.5
+Requires:       python3-pulp-ansible >= 0.4.1
+Conflicts:      python3-pulp-ansible >= 0.5
 Requires:       python3-pulpcore < 3.9
 Requires:       python3-pulpcore >= 3.7
 Requires:       python3-setuptools
@@ -42,7 +51,7 @@ Requires:       python3-urllib3 >= 1.15
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{full_version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -56,9 +65,12 @@ rm -rf %{pypi_name}.egg-info
 %doc README.md
 %{python3_sitelib}/galaxy_ng
 %{python3_sitelib}/galaxy_pulp
-%{python3_sitelib}/galaxy_ng-%{full_version}-py%{python3_version}.egg-info
+%{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ian Ballou 4.2.0rc1-1
+- Update to 4.2.0rc1
+
 * Mon Oct 05 2020 Evgeni Golov 4.2.0-0.1.rc1
 - Update to 4.2.0rc1
 
