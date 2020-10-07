@@ -3,7 +3,7 @@
 %global srcname ruamel-yaml
 
 Name:           python-%{srcname}
-Version:        0.16.10
+Version:        0.16.12
 Release:        1%{?dist}
 Summary:        ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
 
@@ -21,7 +21,10 @@ BuildRequires:  python3-setuptools
 %package -n     python3-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{srcname}}
-Requires:       python3-ruamel-yaml-clib
+Requires:       python3-ruamel-ordereddict
+Requires:       python3-ruamel-yaml-clib >= 0.1.2
+Requires:       python3-ruamel-yaml-jinja2 >= 0.2
+Requires:       python3-ryd
 
 %description -n python3-%{srcname}
 %{summary}
@@ -35,7 +38,7 @@ rm -rf %{pypi_name}.egg-info
 %py3_build
 
 %install
-%{__python3} setup.py install --single-version-externally-managed --skip-build --root $RPM_BUILD_ROOT
+%py3_install
 
 %files -n python3-%{srcname}
 %license LICENSE
@@ -45,6 +48,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ian Ballou 0.16.12-1
+- Update to 0.16.12
+
 * Wed Mar 18 2020 Samir Jha 0.16.10-1
 - Update to 0.16.10
 
