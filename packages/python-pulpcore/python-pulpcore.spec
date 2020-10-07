@@ -1,9 +1,10 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
+%global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
 Version:        3.6.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -135,18 +136,32 @@ rm -rf %{pypi_name}.egg-info
 %build
 %py3_build
 
+for wrapper in %{wrappers}
+do
+  printf '#!/bin/bash\nexec %s "$@"\n' ${wrapper} > ${wrapper}
+done
+
 %install
 %py3_install
+
+for wrapper in %{wrappers}
+do
+  install -D -m 755 ${wrapper} %{buildroot}%{_libexecdir}/%{pypi_name}/${wrapper}
+done
 
 %files -n python3-%{pypi_name}
 %license LICENSE
 %doc README.md
 %{_bindir}/pulp-content
 %{_bindir}/pulpcore-manager
+%{_libexecdir}/%{pypi_name}/*
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 07 2020 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 3.6.3-2
+- Add libexec wrappers for gunicorn and rq
+
 * Mon Sep 07 2020 Evgeni Golov 3.6.3-1
 - Update to 3.6.3
 
