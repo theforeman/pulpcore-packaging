@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.7.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -108,7 +108,7 @@ Requires:       python3-drf-spectacular >= 0.9.13
 Conflicts:      python3-drf-spectacular >= 0.9.14
 Requires:       python3-dynaconf
 Requires:       python3-dynaconf < 4.0
-Requires:       python3-dynaconf >= 3.0
+Requires:       python3-dynaconf >= 3.0.0-1
 Requires:       python3-gnupg >= 0.4.6
 Conflicts:      python3-gnupg >= 0.5
 Requires:       python3-gunicorn < 20.1
@@ -167,6 +167,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Oct 09 2020 Evgeni Golov - 3.7.1-3
+- Bump dynaconf Requires to skip RCs
+
 * Wed Oct 07 2020 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 3.7.1-2
 - Add libexec wrappers for gunicorn and rq
 
