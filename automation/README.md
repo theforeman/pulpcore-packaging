@@ -4,6 +4,8 @@ This repository contains scripts and container files that can be used to add and
 
 The container is designed to be run against an empty directory, and produce a set of commits against `pulpcore-packaging` containing the generated packages.
 
+Any commands in this document should be executed from the `automation/` directory of the repository.
+
 ## Dependencies
 
 * podman, docker, or some other container runtime
