@@ -3,8 +3,8 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.7.1
-Release:        3%{?dist}
+Version:        3.7.2
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -32,8 +32,8 @@ Requires:       python3-django-guardian >= 2.3.0
 Conflicts:      python3-django-guardian >= 2.4
 Requires:       python3-django-import-export >= 2.3.0
 Conflicts:      python3-django-import-export >= 2.4
-Requires:       python3-django-lifecycle >= 0.7.7
-Conflicts:      python3-django-lifecycle >= 0.8
+Requires:       python3-django-lifecycle >= 0.8
+Conflicts:      python3-django-lifecycle >= 0.9
 Requires:       python3-djangorestframework >= 3.11.1
 Conflicts:      python3-djangorestframework >= 3.12
 Requires:       python3-djangorestframework-queryfields >= 1.0.0
@@ -94,8 +94,8 @@ Requires:       python3-django-guardian >= 2.3.0
 Conflicts:      python3-django-guardian >= 2.4
 Requires:       python3-django-import-export >= 2.3.0
 Conflicts:      python3-django-import-export >= 2.4
-Requires:       python3-django-lifecycle >= 0.7.7
-Conflicts:      python3-django-lifecycle >= 0.8
+Requires:       python3-django-lifecycle >= 0.8
+Conflicts:      python3-django-lifecycle >= 0.9
 Requires:       python3-djangorestframework >= 3.11.1
 Conflicts:      python3-djangorestframework >= 3.12
 Requires:       python3-djangorestframework-queryfields >= 1.0.0
@@ -167,6 +167,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Oct 23 2020 Evgeni Golov - 3.7.2-1
+- Release python-pulpcore 3.7.2
+
 * Fri Oct 09 2020 Evgeni Golov - 3.7.1-3
 - Bump dynaconf Requires to skip RCs
 
