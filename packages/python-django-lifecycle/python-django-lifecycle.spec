@@ -2,7 +2,7 @@
 %global pypi_name django-lifecycle
 
 Name:           python-%{pypi_name}
-Version:        0.7.7
+Version:        0.8.0
 Release:        1%{?dist}
 Summary:        Declarative model lifecycle hooks
 
@@ -44,5 +44,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/django_lifecycle-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Oct 23 2020 Evgeni Golov - 0.8.0-1
+- Release python-django-lifecycle 0.8.0
+
 * Tue Aug 25 2020 Evgeni Golov - 0.7.7-1
 - Initial package.
