@@ -1,7 +1,7 @@
 ---
 all:
   vars:
-    pulpcore_version: "3.7"
+    pulpcore_version: "3.8"
   children:
     packages: {}
     repoclosures: {}
