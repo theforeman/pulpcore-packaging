@@ -2,7 +2,7 @@
 %global pypi_name zipp
 
 Name:           python-%{pypi_name}
-Version:        3.1.0
+Version:        3.4.0
 Release:        1%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
@@ -47,6 +47,9 @@ sed -i 's/setuptools.setup.*/setuptools.setup(use_scm_version=True)/' setup.py
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Oct 29 2020 Evgeni Golov 3.4.0-1
+- Update to 3.4.0
+
 * Thu Jun 04 2020 Evgeni Golov 3.1.0-1
 - Update to 3.1.0
 

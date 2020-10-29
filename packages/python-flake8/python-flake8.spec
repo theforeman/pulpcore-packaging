@@ -2,7 +2,7 @@
 %global pypi_name flake8
 
 Name:           python-%{pypi_name}
-Version:        3.8.3
+Version:        3.8.4
 Release:        1%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
@@ -51,5 +51,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Oct 29 2020 Evgeni Golov 3.8.4-1
+- Update to 3.8.4
+
 * Tue Jun 23 2020 Evgeni Golov - 3.8.3-1
 - Initial package.
