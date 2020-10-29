@@ -2,7 +2,7 @@
 %global pypi_name djangorestframework
 
 Name:           python-%{pypi_name}
-Version:        3.11.1
+Version:        3.11.2
 Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
@@ -12,7 +12,6 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-django >= 1.11
 BuildRequires:  python3-setuptools
 
 %description
@@ -45,6 +44,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Oct 29 2020 Evgeni Golov 3.11.2-1
+- Update to 3.11.2
+
 * Mon Sep 28 2020 Evgeni Golov 3.11.1-1
 - Update to 3.11.1
 
