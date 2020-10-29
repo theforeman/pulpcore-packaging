@@ -2,8 +2,8 @@
 %global pypi_name aiohttp
 
 Name:           python-%{pypi_name}
-Version:        3.6.2
-Release:        4%{?dist}
+Version:        3.7.2
+Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -25,10 +25,10 @@ Requires:       python3-async-timeout >= 3.0
 Requires:       python3-attrs >= 17.3.0
 Requires:       python3-chardet < 4.0
 Requires:       python3-chardet >= 2.0
-Requires:       python3-idna-ssl
-Requires:       python3-multidict < 5.0
+Requires:       python3-idna-ssl >= 1.0
+Requires:       python3-multidict < 7.0
 Requires:       python3-multidict >= 4.5
-Requires:       python3-typing-extensions
+Requires:       python3-typing-extensions >= 3.6.5
 Requires:       python3-yarl < 2.0
 Requires:       python3-yarl >= 1.0
 
@@ -36,7 +36,7 @@ Requires:       python3-yarl >= 1.0
 %{summary}
 
 %prep
-%setup -n %{pypi_name}-%{version} -q 
+%setup -n %{pypi_name}-%{version} -q
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 %patch0 -p1
@@ -54,6 +54,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Oct 29 2020 Evgeni Golov 3.7.2-1
+- Update to 3.7.2
+
 * Tue Apr 14 2020 Justin Sherrill <jsherril@redhat.com> 3.6.2-4
 - fixing patch application
 
