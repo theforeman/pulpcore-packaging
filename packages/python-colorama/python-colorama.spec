@@ -2,7 +2,7 @@
 %global pypi_name colorama
 
 Name:           python-%{pypi_name}
-Version:        0.4.3
+Version:        0.4.4
 Release:        1%{?dist}
 Summary:        Cross-platform colored terminal text
 
@@ -29,6 +29,8 @@ Summary:        %{summary}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
+sed -i '/long_description=/ s/=.*/="colorama",/' setup.py
+
 %build
 %py3_build
 
@@ -42,5 +44,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Oct 29 2020 Evgeni Golov 0.4.4-1
+- Update to 0.4.4
+
 * Tue Aug 25 2020 Evgeni Golov - 0.4.3-1
 - Initial package.
