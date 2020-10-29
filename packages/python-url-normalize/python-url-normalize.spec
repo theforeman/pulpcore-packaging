@@ -2,7 +2,7 @@
 %global pypi_name url-normalize
 
 Name:           python-%{pypi_name}
-Version:        1.4.2
+Version:        1.4.3
 Release:        1%{?dist}
 Summary:        URL normalization for Python
 
@@ -20,8 +20,7 @@ BuildRequires:  python3-setuptools
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-six < 2.0
-Requires:       python3-six >= 1.11
+Requires:       python3-six
 
 %description -n python3-%{pypi_name}
 %{summary}
@@ -36,10 +35,14 @@ Requires:       python3-six >= 1.11
 %py3_install
 
 %files -n python3-%{pypi_name}
+%license LICENSE
 %doc README.md
 %{python3_sitelib}/url_normalize
 %{python3_sitelib}/url_normalize-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Oct 29 2020 Evgeni Golov 1.4.3-1
+- Update to 1.4.3
+
 * Tue Aug 25 2020 Evgeni Golov - 1.4.2-1
 - Initial package.
