@@ -3,7 +3,7 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.7.3
+Version:        3.8.1
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -24,27 +24,26 @@ BuildRequires:  python%{python3_pkgversion}-backoff
 BuildRequires:  python%{python3_pkgversion}-django
 Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.1
 Conflicts:      python%{python3_pkgversion}-django-currentuser >= 0.6
-Requires:       python%{python3_pkgversion}-django-filter >= 2.3.0
-Conflicts:      python%{python3_pkgversion}-django-filter >= 2.4
+Requires:       python%{python3_pkgversion}-django-filter >= 2.4.0
+Conflicts:      python%{python3_pkgversion}-django-filter >= 2.5
 Requires:       python%{python3_pkgversion}-django-guardian >= 2.3.0
 Conflicts:      python%{python3_pkgversion}-django-guardian >= 2.4
-Requires:       python%{python3_pkgversion}-django-import-export >= 2.3.0
-Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.4
+Requires:       python%{python3_pkgversion}-django-import-export >= 2.4.0
+Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.5
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.8.0
 Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.9
 BuildRequires:  python%{python3_pkgversion}-django-prometheus
-Requires:       python%{python3_pkgversion}-djangorestframework >= 3.11.1
-Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.12
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.12.1
+Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.13
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
-Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.7.0
-Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.8
-Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.91
-Conflicts:      python%{python3_pkgversion}-drf-nested-routers >= 0.92
-BuildRequires:  python%{python3_pkgversion}-drf-spectacular >= 0.9.13
+Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.8.1
+Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.9
+BuildRequires:  python%{python3_pkgversion}-drf-nested-routers >= 0.92.1
+BuildRequires:  python%{python3_pkgversion}-drf-spectacular >= 0.9.14
 BuildRequires:  python%{python3_pkgversion}-dynaconf
-BuildRequires:  python%{python3_pkgversion}-dynaconf < 4.0
-BuildRequires:  python%{python3_pkgversion}-dynaconf >= 3.0
+Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.2
+Conflicts:      python%{python3_pkgversion}-dynaconf >= 3.2
 Requires:       python%{python3_pkgversion}-gnupg >= 0.4.6
 Conflicts:      python%{python3_pkgversion}-gnupg >= 0.5
 BuildRequires:  python%{python3_pkgversion}-gunicorn < 20.1
@@ -87,28 +86,30 @@ Requires:       python%{python3_pkgversion}-backoff
 Requires:       python%{python3_pkgversion}-django
 Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.1
 Conflicts:      python%{python3_pkgversion}-django-currentuser >= 0.6
-Requires:       python%{python3_pkgversion}-django-filter >= 2.3.0
-Conflicts:      python%{python3_pkgversion}-django-filter >= 2.4
+Requires:       python%{python3_pkgversion}-django-filter >= 2.4.0
+Conflicts:      python%{python3_pkgversion}-django-filter >= 2.5
 Requires:       python%{python3_pkgversion}-django-guardian >= 2.3.0
 Conflicts:      python%{python3_pkgversion}-django-guardian >= 2.4
-Requires:       python%{python3_pkgversion}-django-import-export >= 2.3.0
-Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.4
+Requires:       python%{python3_pkgversion}-django-import-export >= 2.4.0
+Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.5
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.8.0
 Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.9
 Requires:       python%{python3_pkgversion}-django-prometheus
-Requires:       python%{python3_pkgversion}-djangorestframework >= 3.11.1
-Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.12
+Requires:       python%{python3_pkgversion}-django-storages
+Requires:       python%{python3_pkgversion}-django-storages
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.12.1
+Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.13
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
-Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.7.0
-Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.8
-Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.91
-Conflicts:      python%{python3_pkgversion}-drf-nested-routers >= 0.92
-Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.9.13
-Conflicts:      python%{python3_pkgversion}-drf-spectacular >= 0.9.14
+Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.8.1
+Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.9
+Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.92.1
+Conflicts:      python%{python3_pkgversion}-drf-nested-routers >= 0.92.2
+Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.9.14
+Conflicts:      python%{python3_pkgversion}-drf-spectacular >= 0.9.15
 Requires:       python%{python3_pkgversion}-dynaconf
-Requires:       python%{python3_pkgversion}-dynaconf < 4.0
-Requires:       python%{python3_pkgversion}-dynaconf >= 3.0
+Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.2
+Conflicts:      python%{python3_pkgversion}-dynaconf >= 3.2
 Requires:       python%{python3_pkgversion}-gnupg >= 0.4.6
 Conflicts:      python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       python%{python3_pkgversion}-gunicorn < 20.1
@@ -167,6 +168,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Dec 11 2020 Evgeni Golov 3.8.1-1
+- Update to 3.8.1
+
 * Tue Nov 03 2020 Evgeni Golov 3.7.3-1
 - Update to 3.7.3
 
