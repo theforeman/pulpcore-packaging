@@ -2,7 +2,7 @@
 %global pypi_name djangorestframework
 
 Name:           python-%{pypi_name}
-Version:        3.11.2
+Version:        3.12.1
 Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
@@ -11,19 +11,19 @@ URL:            https://www.django-rest-framework.org/
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-django >= 2.2
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %description
 %{summary}
 
-%package -n     python3-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-Provides:       python3-django-rest-framework = %{version}-%{release}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django >= 1.11
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       python%{python3_pkgversion}-django >= 2.2
 
-%description -n python3-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 %prep
@@ -37,13 +37,16 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%files -n python3-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.md
 %doc README.md
 %{python3_sitelib}/rest_framework
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Nov 02 2020 Evgeni Golov 3.12.1-1
+- Update to 3.12.1
+
 * Thu Oct 29 2020 Evgeni Golov 3.11.2-1
 - Update to 3.11.2
 
