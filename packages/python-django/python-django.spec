@@ -3,8 +3,8 @@
 %global srcname django
 
 Name:           python-%{srcname}
-Version:        2.2.16
-Release:        2%{?dist}
+Version:        2.2.17
+Release:        1%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD
@@ -13,22 +13,22 @@ Source0:        https://files.pythonhosted.org/packages/source/D/%{pypi_name}/%{
 Patch0:         0001-FIPS-Mark-use-of-MD5-not-security-relevant.patch
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-pytz
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-sqlparse >= 0.2.2
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pytz
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-sqlparse >= 0.2.2
 
 %description
 %{summary}
 
-%package -n     python3-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{srcname}}
-Requires:       python3-pytz
-Requires:       python3-setuptools
-Requires:       python3-sqlparse >= 0.2.2
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+Requires:       python%{python3_pkgversion}-pytz
+Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-sqlparse >= 0.2.2
 
-%description -n python3-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
 %prep
@@ -52,7 +52,7 @@ popd
 # rename django-admin so we don't conflict with python2-django
 mv %{buildroot}%{_bindir}/django-admin %{buildroot}%{_bindir}/python3-django-admin
 
-%files -n python3-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE LICENSE.python django/contrib/admin/static/admin/css/vendor/select2/LICENSE-SELECT2.md django/contrib/admin/static/admin/fonts/LICENSE.txt django/contrib/admin/static/admin/img/LICENSE django/contrib/admin/static/admin/js/vendor/jquery/LICENSE.txt django/contrib/admin/static/admin/js/vendor/select2/LICENSE.md django/contrib/admin/static/admin/js/vendor/xregexp/LICENSE.txt django/contrib/gis/gdal/LICENSE django/contrib/gis/geos/LICENSE django/dispatch/license.txt docs/_theme/djangodocs/static/fontawesome/LICENSE.txt
 %doc README.rst django/contrib/admin/static/admin/fonts/README.txt django/contrib/admin/static/admin/img/README.txt docs/_theme/djangodocs/static/fontawesome/README.md extras/README.TXT tests/README.rst
 %{_bindir}/python3-django-admin
@@ -61,6 +61,9 @@ mv %{buildroot}%{_bindir}/django-admin %{buildroot}%{_bindir}/python3-django-adm
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Nov 02 2020 Evgeni Golov 2.2.17-1
+- Update to 2.2.17
+
 * Thu Sep 10 2020 Matthias Dellweg 2.2.16-2
 - Add a patch to support running in a FIPS environment
 
