@@ -2,7 +2,7 @@
 %global pypi_name drf-spectacular
 
 Name:           python-%{pypi_name}
-Version:        0.9.13
+Version:        0.9.14
 Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
@@ -11,29 +11,29 @@ URL:            https://github.com/tfranzel/drf-spectacular
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-django >= 2.2
-BuildRequires:  python3-pyyaml >= 5.1
-BuildRequires:  python3-djangorestframework >= 3.10
-BuildRequires:  python3-inflection >= 0.3.1
-BuildRequires:  python3-jsonschema >= 2.6.0
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-uritemplate >= 2.0.0
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-django >= 2.2
+BuildRequires:  python%{python3_pkgversion}-pyyaml >= 5.1
+BuildRequires:  python%{python3_pkgversion}-djangorestframework >= 3.10
+BuildRequires:  python%{python3_pkgversion}-inflection >= 0.3.1
+BuildRequires:  python%{python3_pkgversion}-jsonschema >= 2.6.0
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-uritemplate >= 2.0.0
 
 %description
 %{summary}
 
-%package -n     python3-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django >= 2.2
-Requires:       python3-pyyaml >= 5.1
-Requires:       python3-djangorestframework >= 3.10
-Requires:       python3-inflection >= 0.3.1
-Requires:       python3-jsonschema >= 2.6.0
-Requires:       python3-uritemplate >= 2.0.0
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       python%{python3_pkgversion}-django >= 2.2
+Requires:       python%{python3_pkgversion}-pyyaml >= 5.1
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.10
+Requires:       python%{python3_pkgversion}-inflection >= 0.3.1
+Requires:       python%{python3_pkgversion}-jsonschema >= 2.6.0
+Requires:       python%{python3_pkgversion}-uritemplate >= 2.0.0
 
-%description -n python3-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 %prep
@@ -49,7 +49,7 @@ sed -i 's/long_description = readme.read.*/long_description = description/' setu
 %install
 %py3_install
 
-%files -n python3-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE docs/license.rst
 %doc README.rst docs/readme.rst
 %{python3_sitelib}/drf_spectacular
@@ -60,6 +60,9 @@ sed -i 's/long_description = readme.read.*/long_description = description/' setu
 %{python3_sitelib}/drf_spectacular-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Nov 02 2020 Evgeni Golov 0.9.14-1
+- Update to 0.9.14
+
 * Mon Sep 28 2020 Evgeni Golov 0.9.13-1
 - Update to 0.9.13
 
