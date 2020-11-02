@@ -2,8 +2,8 @@
 %global pypi_name drf-nested-routers
 
 Name:           python-%{pypi_name}
-Version:        0.91
-Release:        2%{?dist}
+Version:        0.92.1
+Release:        1%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
 License:        Apache
@@ -11,19 +11,19 @@ URL:            https://github.com/alanjds/drf-nested-routers
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %description
 %{summary}
 
-%package -n     python3-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django >= 1.11
-Requires:       python3-django-rest-framework >= 3.6.0
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       python%{python3_pkgversion}-django >= 1.11
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.6.0
 
-%description -n python3-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 %prep
@@ -37,7 +37,7 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%files -n python3-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md README.rst
 %{python3_sitelib}/rest_framework_nested
@@ -45,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/drf_nested_routers-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Nov 02 2020 Evgeni Golov 0.92.1-1
+- Update to 0.92.1
+
 * Fri Feb 28 2020 Zach Huntington-Meath <zhunting@redhat.com> - 0.91-2
 - Bump release to build for el8
 
