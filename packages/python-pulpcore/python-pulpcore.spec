@@ -3,7 +3,7 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.7.2
+Version:        3.7.3
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -12,55 +12,55 @@ URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-Requires:       python3-django >= 2.2.16
-Conflicts:      python3-django >= 2.3
-BuildRequires:  python3-pyyaml < 5.4.0
-BuildRequires:  python3-pyyaml >= 5.1.1
-BuildRequires:  python3-aiodns
-BuildRequires:  python3-aiofiles
-BuildRequires:  python3-aiohttp
-BuildRequires:  python3-backoff
-BuildRequires:  python3-django
-Requires:       python3-django-cleanup >= 5.1.0
-Conflicts:      python3-django-cleanup >= 5.2
-Requires:       python3-django-currentuser >= 0.5.1
-Conflicts:      python3-django-currentuser >= 0.6
-Requires:       python3-django-filter >= 2.3.0
-Conflicts:      python3-django-filter >= 2.4
-Requires:       python3-django-guardian >= 2.3.0
-Conflicts:      python3-django-guardian >= 2.4
-Requires:       python3-django-import-export >= 2.3.0
-Conflicts:      python3-django-import-export >= 2.4
-Requires:       python3-django-lifecycle >= 0.8
-Conflicts:      python3-django-lifecycle >= 0.9
-Requires:       python3-djangorestframework >= 3.11.1
-Conflicts:      python3-djangorestframework >= 3.12
-Requires:       python3-djangorestframework-queryfields >= 1.0.0
-Conflicts:      python3-djangorestframework-queryfields >= 1.1
-Requires:       python3-drf-access-policy >= 0.7.0
-Conflicts:      python3-drf-access-policy >= 0.8
-Requires:       python3-drf-nested-routers >= 0.91
-Conflicts:      python3-drf-nested-routers >= 0.92
-BuildRequires:  python3-dynaconf
-BuildRequires:  python3-dynaconf < 4.0
-BuildRequires:  python3-dynaconf >= 3.0
-Requires:       python3-gnupg >= 0.4.6
-Conflicts:      python3-gnupg >= 0.5
-BuildRequires:  python3-gunicorn < 20.1
-BuildRequires:  python3-gunicorn >= 19.9
-BuildRequires:  python3-jinja2
-BuildRequires:  python3-psycopg2 < 2.9
-BuildRequires:  python3-psycopg2 >= 2.7
-Requires:       python3-pygtrie >= 2.3.3
-Conflicts:      python3-pygtrie >= 2.4
-BuildRequires:  python3-redis >= 3.4.0
-BuildRequires:  python3-rq < 1.6
-BuildRequires:  python3-rq >= 1.1
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools >= 39.2.0
-BuildRequires:  python3-whitenoise < 5.3.0
-BuildRequires:  python3-whitenoise >= 5.0.0
+BuildRequires:  python%{python3_pkgversion}-devel
+Requires:       python%{python3_pkgversion}-django >= 2.2.16
+Conflicts:      python%{python3_pkgversion}-django >= 2.3
+BuildRequires:  python%{python3_pkgversion}-pyyaml < 5.4.0
+BuildRequires:  python%{python3_pkgversion}-pyyaml >= 5.1.1
+BuildRequires:  python%{python3_pkgversion}-aiodns
+BuildRequires:  python%{python3_pkgversion}-aiofiles
+BuildRequires:  python%{python3_pkgversion}-aiohttp
+BuildRequires:  python%{python3_pkgversion}-backoff
+BuildRequires:  python%{python3_pkgversion}-django
+Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.1
+Conflicts:      python%{python3_pkgversion}-django-currentuser >= 0.6
+Requires:       python%{python3_pkgversion}-django-filter >= 2.3.0
+Conflicts:      python%{python3_pkgversion}-django-filter >= 2.4
+Requires:       python%{python3_pkgversion}-django-guardian >= 2.3.0
+Conflicts:      python%{python3_pkgversion}-django-guardian >= 2.4
+Requires:       python%{python3_pkgversion}-django-import-export >= 2.3.0
+Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.4
+Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.8.0
+Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.9
+BuildRequires:  python%{python3_pkgversion}-django-prometheus
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.11.1
+Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.12
+Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
+Conflicts:      python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
+Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.7.0
+Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.8
+Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.91
+Conflicts:      python%{python3_pkgversion}-drf-nested-routers >= 0.92
+BuildRequires:  python%{python3_pkgversion}-drf-spectacular >= 0.9.13
+BuildRequires:  python%{python3_pkgversion}-dynaconf
+BuildRequires:  python%{python3_pkgversion}-dynaconf < 4.0
+BuildRequires:  python%{python3_pkgversion}-dynaconf >= 3.0
+Requires:       python%{python3_pkgversion}-gnupg >= 0.4.6
+Conflicts:      python%{python3_pkgversion}-gnupg >= 0.5
+BuildRequires:  python%{python3_pkgversion}-gunicorn < 20.1
+BuildRequires:  python%{python3_pkgversion}-gunicorn >= 19.9
+BuildRequires:  python%{python3_pkgversion}-jinja2
+BuildRequires:  python%{python3_pkgversion}-psycopg2 < 2.9
+BuildRequires:  python%{python3_pkgversion}-psycopg2 >= 2.7
+Requires:       python%{python3_pkgversion}-pygtrie >= 2.3.3
+Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.4
+BuildRequires:  python%{python3_pkgversion}-redis >= 3.4.0
+BuildRequires:  python%{python3_pkgversion}-rq < 1.6
+BuildRequires:  python%{python3_pkgversion}-rq >= 1.1
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-setuptools >= 39.2.0
+BuildRequires:  python%{python3_pkgversion}-whitenoise < 5.3.0
+BuildRequires:  python%{python3_pkgversion}-whitenoise >= 5.0.0
 
 %description
 Pulp is a platform for managing repositories of content, such as software
@@ -72,61 +72,61 @@ Using Pulp you can:
 - Manage content from multiple sources in one place
 - Promote content through different repos in an organized way
 
-%package -n     python3-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django >= 2.2.16
-Conflicts:      python3-django >= 2.3
-Requires:       python3-pyyaml < 5.4.0
-Requires:       python3-pyyaml >= 5.1.1
-Requires:       python3-aiodns
-Requires:       python3-aiofiles
-Requires:       python3-aiohttp
-Requires:       python3-backoff
-Requires:       python3-django
-Requires:       python3-django-cleanup >= 5.1.0
-Conflicts:      python3-django-cleanup >= 5.2
-Requires:       python3-django-currentuser >= 0.5.1
-Conflicts:      python3-django-currentuser >= 0.6
-Requires:       python3-django-filter >= 2.3.0
-Conflicts:      python3-django-filter >= 2.4
-Requires:       python3-django-guardian >= 2.3.0
-Conflicts:      python3-django-guardian >= 2.4
-Requires:       python3-django-import-export >= 2.3.0
-Conflicts:      python3-django-import-export >= 2.4
-Requires:       python3-django-lifecycle >= 0.8
-Conflicts:      python3-django-lifecycle >= 0.9
-Requires:       python3-djangorestframework >= 3.11.1
-Conflicts:      python3-djangorestframework >= 3.12
-Requires:       python3-djangorestframework-queryfields >= 1.0.0
-Conflicts:      python3-djangorestframework-queryfields >= 1.1
-Requires:       python3-drf-access-policy >= 0.7.0
-Conflicts:      python3-drf-access-policy >= 0.8
-Requires:       python3-drf-nested-routers >= 0.91
-Conflicts:      python3-drf-nested-routers >= 0.92
-Requires:       python3-drf-spectacular >= 0.9.13
-Conflicts:      python3-drf-spectacular >= 0.9.14
-Requires:       python3-dynaconf
-Requires:       python3-dynaconf < 4.0
-Requires:       python3-dynaconf >= 3.0.0-1
-Requires:       python3-gnupg >= 0.4.6
-Conflicts:      python3-gnupg >= 0.5
-Requires:       python3-gunicorn < 20.1
-Requires:       python3-gunicorn >= 19.9
-Requires:       python3-jinja2
-Requires:       python3-psycopg2 < 2.9
-Requires:       python3-psycopg2 >= 2.7
-Requires:       python3-pygtrie >= 2.3.3
-Conflicts:      python3-pygtrie >= 2.4
-Requires:       python3-redis >= 3.4.0
-Requires:       python3-rq < 1.6
-Requires:       python3-rq >= 1.1
-Requires:       python3-setuptools
-Requires:       python3-setuptools >= 39.2.0
-Requires:       python3-whitenoise < 5.3.0
-Requires:       python3-whitenoise >= 5.0.0
 
-%description -n python3-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
+Summary:        %{summary}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       python%{python3_pkgversion}-django >= 2.2.16
+Conflicts:      python%{python3_pkgversion}-django >= 2.3
+Requires:       python%{python3_pkgversion}-pyyaml < 5.4.0
+Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
+Requires:       python%{python3_pkgversion}-aiodns
+Requires:       python%{python3_pkgversion}-aiofiles
+Requires:       python%{python3_pkgversion}-aiohttp
+Requires:       python%{python3_pkgversion}-backoff
+Requires:       python%{python3_pkgversion}-django
+Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.1
+Conflicts:      python%{python3_pkgversion}-django-currentuser >= 0.6
+Requires:       python%{python3_pkgversion}-django-filter >= 2.3.0
+Conflicts:      python%{python3_pkgversion}-django-filter >= 2.4
+Requires:       python%{python3_pkgversion}-django-guardian >= 2.3.0
+Conflicts:      python%{python3_pkgversion}-django-guardian >= 2.4
+Requires:       python%{python3_pkgversion}-django-import-export >= 2.3.0
+Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.4
+Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.8.0
+Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.9
+Requires:       python%{python3_pkgversion}-django-prometheus
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.11.1
+Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.12
+Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
+Conflicts:      python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
+Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.7.0
+Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.8
+Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.91
+Conflicts:      python%{python3_pkgversion}-drf-nested-routers >= 0.92
+Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.9.13
+Conflicts:      python%{python3_pkgversion}-drf-spectacular >= 0.9.14
+Requires:       python%{python3_pkgversion}-dynaconf
+Requires:       python%{python3_pkgversion}-dynaconf < 4.0
+Requires:       python%{python3_pkgversion}-dynaconf >= 3.0
+Requires:       python%{python3_pkgversion}-gnupg >= 0.4.6
+Conflicts:      python%{python3_pkgversion}-gnupg >= 0.5
+Requires:       python%{python3_pkgversion}-gunicorn < 20.1
+Requires:       python%{python3_pkgversion}-gunicorn >= 19.9
+Requires:       python%{python3_pkgversion}-jinja2
+Requires:       python%{python3_pkgversion}-psycopg2 < 2.9
+Requires:       python%{python3_pkgversion}-psycopg2 >= 2.7
+Requires:       python%{python3_pkgversion}-pygtrie >= 2.3.3
+Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.4
+Requires:       python%{python3_pkgversion}-redis >= 3.4.0
+Requires:       python%{python3_pkgversion}-rq < 1.6
+Requires:       python%{python3_pkgversion}-rq >= 1.1
+Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-setuptools >= 39.2.0
+Requires:       python%{python3_pkgversion}-whitenoise < 5.3.0
+Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
+
+%description -n python%{python3_pkgversion}-%{pypi_name}
 Pulp is a platform for managing repositories of content, such as software
 packages, and pushing that content out to large numbers of consumers.
 
@@ -157,7 +157,7 @@ do
   install -D -m 755 ${wrapper} %{buildroot}%{_libexecdir}/%{pypi_name}/${wrapper}
 done
 
-%files -n python3-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
 %{_bindir}/pulp-content
@@ -167,6 +167,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Nov 03 2020 Evgeni Golov 3.7.3-1
+- Update to 3.7.3
+
 * Fri Oct 23 2020 Evgeni Golov - 3.7.2-1
 - Release python-pulpcore 3.7.2
 
