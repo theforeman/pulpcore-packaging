@@ -4,10 +4,10 @@
 
 Name:           python-%{srcname}
 Version:        0.14.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Add .env support to your django/flask apps in development and deployments
 
-License:        None
+License:        BSD-3-Clause
 URL:            https://github.com/theskumar/python-dotenv
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -48,6 +48,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/python_dotenv-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 0.14.0-2
+- Fix License tag in spec file
+
 * Mon Jul 20 2020 Evgeni Golov 0.14.0-1
 - Update to 0.14.0
 

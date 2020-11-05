@@ -3,10 +3,10 @@
 
 Name:           python-%{pypi_name}
 Version:        1.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Serialize a partial subset of fields in the API
 
-License:        None
+License:        MIT
 URL:            https://github.com/wimglenn/djangorestframework-queryfields
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -41,6 +41,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/djangorestframework_queryfields-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 1.0.0-3
+- Fix License tag in spec file
+
 * Fri Feb 28 2020 Zach Huntington-Meath <zhunting@redhat.com> - 1.0.0-2
 - Bump release to build for el8
 

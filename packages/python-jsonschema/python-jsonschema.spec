@@ -3,10 +3,10 @@
 
 Name:           python-%{pypi_name}
 Version:        3.2.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
-License:        None
+License:        MIT
 URL:            https://github.com/Julian/jsonschema
 Source0:        https://files.pythonhosted.org/packages/source/j/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -49,6 +49,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 3.2.0-4
+- Fix License tag in spec file
+
 * Fri Feb 28 2020 Zach Huntington-Meath <zhunting@redhat.com> - 3.2.0-3
 - Bump release to build for el8
 

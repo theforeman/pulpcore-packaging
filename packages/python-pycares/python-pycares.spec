@@ -3,10 +3,10 @@
 
 Name:           python-%{pypi_name}
 Version:        3.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface for c-ares
 
-License:        None
+License:        MIT
 URL:            http://github.com/saghul/pycares
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
@@ -44,5 +44,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 3.1.1-2
+- Fix License tag in spec file
+
 * Wed Mar 18 2020 Samir Jha - 3.1.1-1
 - Initial package.

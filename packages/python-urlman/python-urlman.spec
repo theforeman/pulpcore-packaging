@@ -3,10 +3,10 @@
 
 Name:           python-%{pypi_name}
 Version:        1.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django URL pattern helpers
 
-License:        None
+License:        Apache-2.0
 URL:            https://github.com/andrewgodwin/urlman
 Source0:        https://files.pythonhosted.org/packages/source/u/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -42,5 +42,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 1.3.0-2
+- Fix License tag in spec file
+
 * Tue Aug 25 2020 Evgeni Golov - 1.3.0-1
 - Initial package.

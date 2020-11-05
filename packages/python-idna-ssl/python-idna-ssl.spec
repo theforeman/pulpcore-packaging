@@ -3,10 +3,10 @@
 
 Name:           python-%{pypi_name}
 Version:        1.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Patch ssl.match_hostname for Unicode(idna) domains support
 
-License:        None
+License:        MIT
 URL:            https://github.com/aio-libs/idna-ssl
 Source0:        https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -44,6 +44,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/idna_ssl-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 1.1.0-3
+- Fix License tag in spec file
+
 * Fri Feb 28 2020 Zach Huntington-Meath <zhunting@redhat.com> - 1.1.0-2
 - Bump release to build for el8
 
