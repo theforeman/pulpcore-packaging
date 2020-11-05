@@ -3,10 +3,10 @@
 
 Name:           python-%{pypi_name}
 Version:        2.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Simple DNS resolver for asyncio
 
-License:        None
+License:        MIT
 URL:            http://github.com/saghul/aiodns
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -44,6 +44,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 2.0.0-3
+- Fix License tag in spec file
+
 * Wed Apr 01 2020 Evgeni Golov - 2.0.0-2
 - Add python3-typing to Requires
 

@@ -3,10 +3,10 @@
 
 Name:           python-%{pypi_name}
 Version:        1.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python API and tools to manipulate OpenDocument files
 
-License:        None
+License:        GPLv2+ or Apache-2.0
 URL:            https://github.com/eea/odfpy
 Source0:        https://files.pythonhosted.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -65,5 +65,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 1.4.1-2
+- Fix License tag in spec file
+
 * Tue Apr 28 2020 Evgeni Golov - 1.4.1-1
 - Initial package.

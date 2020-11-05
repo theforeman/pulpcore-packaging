@@ -3,10 +3,10 @@
 
 Name:           python-%{pypi_name}
 Version:        3.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
-License:        None
+License:        MIT
 URL:            https://github.com/jaraco/zipp
 Source0:        https://files.pythonhosted.org/packages/source/z/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -47,6 +47,9 @@ sed -i 's/setuptools.setup.*/setuptools.setup(use_scm_version=True)/' setup.py
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov - 3.4.0-2
+- Fix License tag in spec file
+
 * Thu Oct 29 2020 Evgeni Golov 3.4.0-1
 - Update to 3.4.0
 
