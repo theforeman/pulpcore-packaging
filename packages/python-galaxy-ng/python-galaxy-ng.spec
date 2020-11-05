@@ -1,11 +1,10 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
-
-%global full_version %{version}rc2
+%global full_version %{version}rc3
 
 Name:           python-%{pypi_name}
 Version:        4.2.0
-Release:        0.1.rc2%{?dist}
+Release:        0.1.rc3%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -13,27 +12,27 @@ URL:            https://github.com/ansible/galaxy_ng/
 Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/%{pypi_name}-%{full_version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
 
 %description
 %{summary}
 
-%package -n     python3-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django >= 2.2.3
-Conflicts:      python3-django >= 2.3
-Requires:       python3-django-prometheus >= 2.0.0
-Requires:       python3-drf-spectacular
-Requires:       python3-pulp-ansible >= 1:0.5
-Conflicts:      python3-pulp-ansible >= 1:0.6
-Requires:       python3-pulpcore < 3.9
-Requires:       python3-pulpcore >= 3.7
-Requires:       python3-setuptools
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       python%{python3_pkgversion}-django >= 2.2.3
+Conflicts:      python%{python3_pkgversion}-django >= 2.3
+Requires:       python%{python3_pkgversion}-django-prometheus >= 2.0.0
+Requires:       python%{python3_pkgversion}-drf-spectacular
+Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.5.0
+Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.6
+Requires:       python%{python3_pkgversion}-pulpcore < 3.9
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.7
+Requires:       python%{python3_pkgversion}-setuptools
 
-%description -n python3-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 %prep
@@ -47,12 +46,15 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%files -n python3-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %doc README.md
 %{python3_sitelib}/galaxy_ng
 %{python3_sitelib}/galaxy_ng-%{full_version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Nov 05 2020 Evgeni Golov 4.2.0-0.1.rc3
+- Update to 4.2.0rc3
+
 * Tue Nov 03 2020 Evgeni Golov 4.2.0-0.1.rc2
 - Update to 4.2.0rc2
 
