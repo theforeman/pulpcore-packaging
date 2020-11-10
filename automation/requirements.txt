@@ -4,6 +4,5 @@ pulp-container==2.1.0
 pulp-deb==2.7.0
 pulp-rpm==3.7.0
 pulp-certguard==1.0.3
-galaxy-importer==0.2.8
-pulp-ansible==0.5.0
+pulp-ansible==0.5.1
 galaxy-ng==4.2.0rc3
