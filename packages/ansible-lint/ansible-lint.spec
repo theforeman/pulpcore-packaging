@@ -3,7 +3,7 @@
 
 Name:           %{pypi_name}
 Version:        4.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Best practices checker for Ansible
 
 License:        Apache-2.0
@@ -29,9 +29,6 @@ BuildRequires:  python3-setuptools_scm_git_archive
 %endif
 BuildRequires:  ansible >= 2.8
 
-%description
-%{summary}
-
 %if 0%{?rhel} == 7
 Requires:       PyYAML
 Requires:       python-pathlib
@@ -44,6 +41,9 @@ Requires:       python3-six
 Requires:       python3-typing-extensions
 %endif
 Requires:       ansible >= 2.8
+
+%description
+%{summary}
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
@@ -78,5 +78,8 @@ cp %{SOURCE1} setup.py
 %{_bindir}/ansible-lint
 
 %changelog
+* Tue Nov 10 2020 Evgeni Golov 4.2.0-2
+- fix requires
+
 * Mon Jul 27 2020 Evgeni Golov 4.2.0-1
 - package ansible-lint

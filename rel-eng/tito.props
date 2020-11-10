@@ -12,6 +12,8 @@ lib_dir = rel-eng/custom/
 
 [pulpcore-3.7-el7]
 disttag = .el7
+blacklist =
+  ansible-lint
 
 [pulpcore-3.7-el8]
 disttag = .el8
