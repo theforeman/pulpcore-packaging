@@ -2,7 +2,7 @@
 %global pypi_name galaxy-importer
 
 Name:           python-%{pypi_name}
-Version:        0.2.9
+Version:        0.2.11
 Release:        1%{?dist}
 Summary:        Galaxy content importer
 
@@ -70,6 +70,9 @@ sed -i -E '/\s+ansible($|-lint)/d' setup.cfg
 %{python3_sitelib}/galaxy_importer-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Nov 13 2020 Evgeni Golov - 0.2.11-1
+- Release python-galaxy-importer 0.2.11
+
 * Thu Nov 05 2020 Evgeni Golov 0.2.9-1
 - Update to 0.2.9
 
