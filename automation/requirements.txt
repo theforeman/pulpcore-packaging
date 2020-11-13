@@ -5,4 +5,4 @@ pulp-deb==2.7.0
 pulp-rpm==3.7.0
 pulp-certguard==1.0.3
 pulp-ansible==0.5.1
-galaxy-ng==4.2.0rc3
+galaxy-ng==4.2.0

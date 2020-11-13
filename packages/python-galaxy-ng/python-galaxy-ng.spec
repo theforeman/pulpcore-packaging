@@ -1,15 +1,14 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
-%global full_version %{version}rc3
 
 Name:           python-%{pypi_name}
 Version:        4.2.0
-Release:        0.1.rc3%{?dist}
+Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://github.com/ansible/galaxy_ng/
-Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/%{pypi_name}-%{full_version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -26,6 +25,8 @@ Requires:       python%{python3_pkgversion}-django >= 2.2.3
 Conflicts:      python%{python3_pkgversion}-django >= 2.3
 Requires:       python%{python3_pkgversion}-django-prometheus >= 2.0.0
 Requires:       python%{python3_pkgversion}-drf-spectacular
+Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.2.11
+Requires:       python%{python3_pkgversion}-galaxy-importer < 0.2.12
 Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.5.0
 Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.6
 Requires:       python%{python3_pkgversion}-pulpcore < 3.9
@@ -36,7 +37,7 @@ Requires:       python%{python3_pkgversion}-setuptools
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{full_version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -49,9 +50,12 @@ rm -rf %{pypi_name}.egg-info
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %doc README.md
 %{python3_sitelib}/galaxy_ng
-%{python3_sitelib}/galaxy_ng-%{full_version}-py%{python3_version}.egg-info
+%{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Nov 13 2020 Evgeni Golov 4.2.0-1
+- Update to 4.2.0
+
 * Thu Nov 05 2020 Evgeni Golov 4.2.0-0.1.rc3
 - Update to 4.2.0rc3
 
