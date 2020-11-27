@@ -4,7 +4,7 @@
 
 Name:           pulpcore-selinux
 Version:        1.2.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -13,10 +13,12 @@ Source0:        https://codeload.github.com/pulp/%{name}/tar.gz/%{version}#/%{na
 
 BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy-devel
+BuildRequires:  systemd
 Requires:       selinux-policy >= %{_selinux_policy_version}
 Requires:       python3-pulpcore
 Requires(post): policycoreutils, python3-pulpcore
 Requires(postun): policycoreutils
+%{?systemd_requires}
 
 %description
 The SELinux policy for Pulp 3.Y releases.
@@ -57,6 +59,7 @@ do
       %{_datadir}/selinux/${selinuxvariant}/${selinuxmodule}.pp &> /dev/null || :
   done
 done
+systemctl daemon-reexec &>/dev/null || :
 /sbin/fixfiles -R python3-pulpcore restore || :
 
 %postun
@@ -68,6 +71,7 @@ if [ $1 -eq 0 ] ; then
       /usr/sbin/semodule -s ${selinuxvariant} -r ${selinuxmodule} &> /dev/null || :
     done
   done
+  systemctl daemon-reexec &>/dev/null || :
   /sbin/fixfiles -R python3-pulpcore restore || :
 fi
 
@@ -79,6 +83,11 @@ fi
 
 
 %changelog
+* Fri Nov 27 2020 Evgeni Golov - 1.2.3-2
+- reexec systemd after policy changes to make socket labeling work
+  this is needed for systemd before 245, where the following bug is fixed
+  https://github.com/systemd/systemd/issues/9997
+
 * Tue Nov 03 2020 Evgeni Golov - 1.2.3-1
 - Release pulpcore-selinux 1.2.3
 
