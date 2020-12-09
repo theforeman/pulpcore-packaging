@@ -50,7 +50,6 @@
       <packagereq type="default">python3-django</packagereq>
       <packagereq type="default">python3-django-cleanup</packagereq>
       <packagereq type="default">python3-django-currentuser</packagereq>
-      <packagereq type="default">python3-django-cursor-pagination</packagereq>
       <packagereq type="default">python3-django-filter</packagereq>
       <packagereq type="default">python3-django-guardian</packagereq>
       <packagereq type="default">python3-django-import-export</packagereq>
