@@ -4,7 +4,7 @@
 # We use a wrong source RPM name here, as the original one triggers a bug in tito
 # See https://github.com/dgoodwin/tito/pull/333
 Name:           python-pulp_2to3_migration
-Version:        0.5.1
+Version:        0.6.0
 Release:        1%{?dist}
 Summary:        Pulp 2 to Pulp 3 migration tool
 
@@ -22,7 +22,6 @@ BuildRequires:  python3-setuptools
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-django-cursor-pagination
 Requires:       python3-jsonschema >= 3.0
 Requires:       python3-mongoengine
 Requires:       python3-pulpcore < 3.9
@@ -51,6 +50,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_2to3_migration-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Dec 09 2020 Justin Sherrill <jsherril@redhat.com> 0.6.0-1
+- update to 0.6.0
+
 * Tue Oct 27 2020 Justin Sherrill <jsherril@redhat.com> 0.5.1-1
 - update to 0.5.1
 
