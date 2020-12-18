@@ -2,7 +2,7 @@
 %global pypi_name galaxy-ng
 
 Name:           python-%{pypi_name}
-Version:        4.2.0
+Version:        4.2.1
 Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
@@ -25,10 +25,10 @@ Requires:       python%{python3_pkgversion}-django >= 2.2.3
 Conflicts:      python%{python3_pkgversion}-django >= 2.3
 Requires:       python%{python3_pkgversion}-django-prometheus >= 2.0.0
 Requires:       python%{python3_pkgversion}-drf-spectacular
-Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.2.11
-Requires:       python%{python3_pkgversion}-galaxy-importer < 0.2.12
-Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.5.0
-Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.6
+Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.2.12
+Requires:       python%{python3_pkgversion}-galaxy-importer < 0.2.13
+Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.5.5
+Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.5.6
 Requires:       python%{python3_pkgversion}-pulpcore < 3.9
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.7
 Requires:       python%{python3_pkgversion}-setuptools
@@ -53,6 +53,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Dec 18 2020 Evgeni Golov - 4.2.1-1
+- Release python-galaxy-ng 4.2.1
+
 * Fri Nov 13 2020 Evgeni Golov 4.2.0-1
 - Update to 4.2.0
 
