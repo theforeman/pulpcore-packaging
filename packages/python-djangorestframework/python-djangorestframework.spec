@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.12.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -20,6 +20,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
+Provides:       python3-django-rest-framework = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-django >= 2.2
 
@@ -44,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Dec 21 2020 Evgeni Golov - 3.12.1-2
+- Add provides for python3-django-rest-framework
+
 * Mon Nov 02 2020 Evgeni Golov 3.12.1-1
 - Update to 3.12.1
 
