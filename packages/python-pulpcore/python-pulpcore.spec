@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.8.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -95,8 +95,6 @@ Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.5
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.8.0
 Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.9
 Requires:       python%{python3_pkgversion}-django-prometheus
-Requires:       python%{python3_pkgversion}-django-storages
-Requires:       python%{python3_pkgversion}-django-storages
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.12.1
 Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.13
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
@@ -168,6 +166,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Dec 21 2020 Evgeni Golov - 3.8.1-2
+- Drop django-storages requirement, it was an oversight to add it
+
 * Fri Dec 11 2020 Evgeni Golov 3.8.1-1
 - Update to 3.8.1
 
