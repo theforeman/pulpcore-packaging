@@ -3,9 +3,9 @@
 # Use the same directory of the main package for subpackage licence and docs
 %global _docdir_fmt %{name}
 
-Name:           python-%{modname}
+Name:           python3-%{modname}
 Version:        0.4
-Release:        32%{?dist}
+Release:        33%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
@@ -18,6 +18,14 @@ Patch1:         %{name}-python3-compat.patch
 # Fixup the module to have proper setup.py information
 Patch2:         %{name}-setup-fixes.patch
 
+%{?python_provide:%python_provide python3-%{modname}}
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-six
+BuildRequires:  python3-test
+Requires:       python3-six
+Obsoletes:      platform-python-%{modname} < %{version}-%{release}
+
 BuildArch: noarch
 
 %global _description \
@@ -28,18 +36,6 @@ lines are preserved when data is updated), and is more convenient to\
 use.
 
 %description %{_description}
-
-%package -n python3-%{modname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{modname}}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
-BuildRequires:  python3-test
-Requires:       python3-six
-Obsoletes:      platform-python-%{modname} < %{version}-%{release}
-
-%description -n python3-%{modname} %{_description}
 
 Python 3 version.
 
@@ -67,6 +63,9 @@ rm -vfr %{buildroot}%{_docdir}/*
 %{python3_sitelib}/%{modname}-%{version}-*.egg-info
 
 %changelog
+* Mon Jan  4 2021 Evgeni Golov - 0.4-33
+- Rename source to python3-iniparse
+
 * Fri Jun 05 2020 Justin Sherrill <jsherril@redhat.com> 0.4-32
 - fix python2 requires for el7
 
