@@ -18,5 +18,5 @@ blacklist =
 [pulpcore-3.8-el8]
 disttag = .el8
 blacklist =
-  python-iniparse
+  python3-iniparse
   subscription-manager
