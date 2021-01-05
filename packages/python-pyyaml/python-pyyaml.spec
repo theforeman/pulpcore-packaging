@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        5.3.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
@@ -25,6 +25,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{srcname}}
 %{?python_provide:%python_provide python3-%{pypi_name}}
 Provides:       python3-%{pypi_name} = %{version}-%{release}
+%{?python_provide:%python_provide python3-yaml}
+Provides:       python3-yaml = %{version}-%{release}
 
 %description -n python3-%{srcname}
 %{summary}
@@ -45,6 +47,9 @@ Provides:       python3-%{pypi_name} = %{version}-%{release}
 %{python3_sitearch}/_yaml.cpython-3?m-%{_arch}-linux-gnu.so
 
 %changelog
+* Tue Jan  5 2021 Evgeni Golov - 5.3.1-3
+- Also provide 'yaml' name
+
 * Tue Aug 25 2020 Evgeni Golov - 5.3.1-2
 - Provide PyYAML name too
 
