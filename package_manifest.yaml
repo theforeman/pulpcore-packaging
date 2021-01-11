@@ -74,6 +74,7 @@ pulpcore_packages:
     python-aiofiles: {}
     python-aiohttp: {}
     python-ansible-builder: {}
+    python-async-lru: {}
     python-async-timeout: {}
     python-attrs: {}
     python-backoff: {}
