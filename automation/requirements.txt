@@ -1,8 +1,8 @@
 pulpcore==3.8.1
-pulp-file==1.3.0
-pulp-container==2.1.0
-pulp-deb==2.7.0
-pulp-rpm==3.7.0
-pulp-certguard==1.0.3
-pulp-ansible==0.5.2
-galaxy-ng==4.2.0
+pulp-file==1.5.0
+pulp-container==2.2.0
+pulp-deb==2.8.0
+pulp-rpm==3.8.0
+pulp-certguard==1.1.0
+pulp-ansible==0.6.0
+galaxy-ng==4.2.1
