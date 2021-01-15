@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.7.0
+Version:        3.8.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -11,15 +11,15 @@ URL:            http://www.pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %description
 %{summary}
 
-%package -n     python3-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 %if 0%{?rhel} == 7
 Requires:       python36-gobject
 Requires:       libmodulemd2
@@ -27,19 +27,19 @@ Requires:       libmodulemd2
 Requires:       python3-gobject
 Requires:       libmodulemd >= 2.0
 %endif
-Requires:       python3-createrepo_c < 1.0
-Requires:       python3-createrepo_c >= 0.15.10
-Requires:       python3-django-readonly-field
-Requires:       python3-jsonschema >= 3.0
-Requires:       python3-libcomps >= 0.1.12
-Conflicts:      python3-libcomps >= 0.2
-Requires:       python3-productmd >= 1.25
-Requires:       python3-pulpcore < 3.9
-Requires:       python3-pulpcore >= 3.7
-Requires:       python3-setuptools
-Requires:       python3-solv
+Requires:       python%{python3_pkgversion}-createrepo_c < 1.0
+Requires:       python%{python3_pkgversion}-createrepo_c >= 0.15.10
+Requires:       python%{python3_pkgversion}-django-readonly-field
+Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
+Requires:       python%{python3_pkgversion}-libcomps >= 0.1.12
+Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
+Requires:       python%{python3_pkgversion}-productmd >= 1.25
+Requires:       python%{python3_pkgversion}-pulpcore < 3.10
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.7
+Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-solv
 
-%description -n python3-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 %prep
@@ -56,13 +56,16 @@ sed -i "/solv/d" requirements.txt
 %install
 %py3_install
 
-%files -n python3-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_rpm
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jan 11 2021 Evgeni Golov 3.8.0-1
+- Update to 3.8.0
+
 * Mon Sep 28 2020 Evgeni Golov 3.7.0-1
 - Update to 3.7.0
 

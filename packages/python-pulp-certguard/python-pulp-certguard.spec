@@ -2,7 +2,7 @@
 %global pypi_name pulp-certguard
 
 Name:           python-%{pypi_name}
-Version:        1.0.3
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
@@ -11,23 +11,23 @@ URL:            https://pulp-certguard.readthedocs.io/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %description
 A Pulp plugin that provides an X.509 capable ContentGuard for pulpcore.
 Instances of X509CertGuard are useful for requiring clients to submit
 a certificate proving their entitlement to content before receiving the content.
 
-%package -n     python3-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-pyOpenSSL
-Requires:       python3-pulpcore < 3.9
-Requires:       python3-pulpcore >= 3.3
-Requires:       python3-setuptools
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       python%{python3_pkgversion}-pyOpenSSL
+Requires:       python%{python3_pkgversion}-pulpcore < 3.11
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.3
+Requires:       python%{python3_pkgversion}-setuptools
 
-%description -n python3-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin that provides an X.509 capable ContentGuard for pulpcore.
 Instances of X509CertGuard are useful for requiring clients to submit
 a certificate proving their entitlement to content before receiving the content.
@@ -43,13 +43,16 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%files -n python3-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_certguard
 %{python3_sitelib}/pulp_certguard-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jan 11 2021 Evgeni Golov 1.1.0-1
+- Update to 1.1.0
+
 * Mon Sep 28 2020 Evgeni Golov 1.0.3-1
 - Update to 1.0.3
 

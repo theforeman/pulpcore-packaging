@@ -2,7 +2,7 @@
 %global pypi_name pulp-ansible
 
 Name:           python-%{pypi_name}
-Version:        0.5.5
+Version:        0.6.0
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -22,6 +22,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-PyYAML
+Requires:       python%{python3_pkgversion}-async-lru
 Requires:       python%{python3_pkgversion}-galaxy-importer
 Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       python%{python3_pkgversion}-packaging
@@ -51,6 +52,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_ansible-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jan 11 2021 Evgeni Golov 1:0.6.0-1
+- Update to 0.6.0
+
 * Fri Dec 18 2020 Evgeni Golov - 1:0.5.5-1
 - Release python-pulp-ansible 0.5.5
 
