@@ -54,6 +54,7 @@
       <packagereq type="default">python3-django-currentuser</packagereq>
       <packagereq type="default">python3-django-filter</packagereq>
       <packagereq type="default">python3-django-guardian</packagereq>
+      <packagereq type="default">python3-django-guid</packagereq>
       <packagereq type="default">python3-django-import-export</packagereq>
       <packagereq type="default">python3-django-lifecycle</packagereq>
       <packagereq type="default">python3-django-prometheus</packagereq>
