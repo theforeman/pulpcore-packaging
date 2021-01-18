@@ -2,7 +2,7 @@
 %global pypi_name drf-spectacular
 
 Name:           python-%{pypi_name}
-Version:        0.9.14
+Version:        0.11.0
 Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
@@ -13,7 +13,7 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-django >= 2.2
-BuildRequires:  python%{python3_pkgversion}-pyyaml >= 5.1
+BuildRequires:  python%{python3_pkgversion}-PyYAML >= 5.1
 BuildRequires:  python%{python3_pkgversion}-djangorestframework >= 3.10
 BuildRequires:  python%{python3_pkgversion}-inflection >= 0.3.1
 BuildRequires:  python%{python3_pkgversion}-jsonschema >= 2.6.0
@@ -27,7 +27,7 @@ BuildRequires:  python%{python3_pkgversion}-uritemplate >= 2.0.0
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-django >= 2.2
-Requires:       python%{python3_pkgversion}-pyyaml >= 5.1
+Requires:       python%{python3_pkgversion}-PyYAML >= 5.1
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.10
 Requires:       python%{python3_pkgversion}-inflection >= 0.3.1
 Requires:       python%{python3_pkgversion}-jsonschema >= 2.6.0
@@ -60,6 +60,9 @@ sed -i 's/long_description = readme.read.*/long_description = description/' setu
 %{python3_sitelib}/drf_spectacular-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jan 11 2021 Evgeni Golov 0.11.0-1
+- Update to 0.11.0
+
 * Mon Nov 02 2020 Evgeni Golov 0.9.14-1
 - Update to 0.9.14
 
