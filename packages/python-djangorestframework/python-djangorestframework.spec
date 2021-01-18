@@ -2,8 +2,8 @@
 %global pypi_name djangorestframework
 
 Name:           python-%{pypi_name}
-Version:        3.12.1
-Release:        2%{?dist}
+Version:        3.12.2
+Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -45,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jan 11 2021 Evgeni Golov 3.12.2-1
+- Update to 3.12.2
+
 * Mon Dec 21 2020 Evgeni Golov - 3.12.1-2
 - Add provides for python3-django-rest-framework
 
