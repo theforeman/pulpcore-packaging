@@ -2,7 +2,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.1.0
+Version:        2.2.0
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -11,36 +11,36 @@ URL:            https://pulpproject.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-Requires:       python3-ecdsa >= 0.13.2
-Conflicts:      python3-ecdsa >= 0.14
-Requires:       python3-pyjwkest >= 1.4.0
-Conflicts:      python3-pyjwkest >= 1.5
-Requires:       python3-pyjwt >= 1.7.1
-Conflicts:      python3-pyjwt >= 1.8
-BuildRequires:  python3-setuptools
-Requires:       python3-url-normalize >= 1.4.2
-Conflicts:      python3-url-normalize >= 1.5
+BuildRequires:  python%{python3_pkgversion}-devel
+Requires:       python%{python3_pkgversion}-ecdsa >= 0.13.2
+Conflicts:      python%{python3_pkgversion}-ecdsa >= 0.14
+Requires:       python%{python3_pkgversion}-pyjwkest >= 1.4.0
+Conflicts:      python%{python3_pkgversion}-pyjwkest >= 1.5
+Requires:       python%{python3_pkgversion}-pyjwt >= 1.7.1
+Conflicts:      python%{python3_pkgversion}-pyjwt >= 1.8
+BuildRequires:  python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.2
+Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 
 %description
 %{summary}
 
-%package -n     python3-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-ecdsa >= 0.13.2
-Conflicts:      python3-ecdsa >= 0.14
-Requires:       python3-pulpcore < 3.9
-Requires:       python3-pulpcore >= 3.7
-Requires:       python3-pyjwkest >= 1.4.0
-Conflicts:      python3-pyjwkest >= 1.5
-Requires:       python3-pyjwt >= 1.7.1
-Conflicts:      python3-pyjwt >= 1.8
-Requires:       python3-setuptools
-Requires:       python3-url-normalize >= 1.4.2
-Conflicts:      python3-url-normalize >= 1.5
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       python%{python3_pkgversion}-ecdsa >= 0.13.2
+Conflicts:      python%{python3_pkgversion}-ecdsa >= 0.14
+Requires:       python%{python3_pkgversion}-pulpcore < 3.11
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.9
+Requires:       python%{python3_pkgversion}-pyjwkest >= 1.4.0
+Conflicts:      python%{python3_pkgversion}-pyjwkest >= 1.5
+Requires:       python%{python3_pkgversion}-pyjwt >= 1.7.1
+Conflicts:      python%{python3_pkgversion}-pyjwt >= 1.8
+Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.2
+Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 
-%description -n python3-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 %prep
@@ -54,13 +54,16 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%files -n python3-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_container
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jan 11 2021 Evgeni Golov 2.2.0-1
+- Update to 2.2.0
+
 * Mon Sep 28 2020 Evgeni Golov 2.1.0-1
 - Update to 2.1.0
 
