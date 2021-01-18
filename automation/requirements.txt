@@ -1,4 +1,4 @@
-pulpcore==3.8.1
+pulpcore==3.9.0
 pulp-file==1.5.0
 pulp-container==2.2.0
 pulp-deb==2.8.0
