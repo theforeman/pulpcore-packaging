@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.18.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Clean single-source support for Python 3 and 2
 
 License:        MIT
@@ -39,8 +39,8 @@ rm -rf %{pypi_name}.egg-info
 %files -n python3-%{pypi_name}
 %license docs/_themes/LICENSE LICENSE.txt
 %doc README.rst
-%{_bindir}/futurize
-%{_bindir}/pasteurize
+%exclude %{_bindir}/futurize
+%exclude %{_bindir}/pasteurize
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/libfuturize
 %{python3_sitelib}/libpasteurize
@@ -48,6 +48,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jan 25 2021 Evgeni Golov - 0.18.2-3
+- Don't ship futurize and pasteurize in bin
+
 * Fri Feb 28 2020 Zach Huntington-Meath <zhunting@redhat.com> - 0.18.2-2
 - Bump release to build for el8
 
