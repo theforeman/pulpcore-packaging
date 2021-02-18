@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.7.0
+Version:        3.9.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -27,19 +27,19 @@ Requires:       libmodulemd2
 Requires:       python3-gobject
 Requires:       libmodulemd >= 2.0
 %endif
-Requires:       python3-createrepo_c < 1.0
-Requires:       python3-createrepo_c >= 0.15.10
-Requires:       python3-django-readonly-field
-Requires:       python3-jsonschema >= 3.0
-Requires:       python3-libcomps >= 0.1.12
-Conflicts:      python3-libcomps >= 0.2
-Requires:       python3-productmd >= 1.25
-Requires:       python3-pulpcore < 3.9
-Requires:       python3-pulpcore >= 3.7
-Requires:       python3-setuptools
-Requires:       python3-solv
+Requires:       python%{python3_pkgversion}-createrepo_c < 1.0
+Requires:       python%{python3_pkgversion}-createrepo_c >= 0.17.0
+Requires:       python%{python3_pkgversion}-django-readonly-field
+Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
+Requires:       python%{python3_pkgversion}-libcomps >= 0.1.15
+Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
+Requires:       python%{python3_pkgversion}-productmd >= 1.25
+Requires:       python%{python3_pkgversion}-pulpcore < 3.10
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.7
+Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-solv
 
-%description -n python3-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 %prep
@@ -63,6 +63,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Feb 18 2021 Justin Sherrill <jsherril@redhat.com> 3.9.0-1
+- update to 3.9.0
+
 * Mon Sep 28 2020 Evgeni Golov 3.7.0-1
 - Update to 3.7.0
 
