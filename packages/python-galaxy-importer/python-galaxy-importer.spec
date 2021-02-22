@@ -2,7 +2,7 @@
 %global pypi_name galaxy-importer
 
 Name:           python-%{pypi_name}
-Version:        0.2.12
+Version:        0.2.15
 Release:        1%{?dist}
 Summary:        Galaxy content importer
 
@@ -33,9 +33,9 @@ Requires:       python%{python3_pkgversion}-ansible-builder < 1.0
 Requires:       python%{python3_pkgversion}-attrs < 21
 Requires:       python%{python3_pkgversion}-attrs >= 19.3.0
 Requires:       python%{python3_pkgversion}-bleach < 4
-Requires:       python%{python3_pkgversion}-bleach >= 3.1.3
-Requires:       python%{python3_pkgversion}-bleach-whitelist < 1
-Requires:       python%{python3_pkgversion}-bleach-whitelist >= 0.0.10
+Requires:       python%{python3_pkgversion}-bleach >= 3.3.0
+Requires:       python%{python3_pkgversion}-bleach-allowlist < 2
+Requires:       python%{python3_pkgversion}-bleach-allowlist >= 1.0.3
 Requires:       python%{python3_pkgversion}-flake8 < 4
 Requires:       python%{python3_pkgversion}-flake8 >= 3.7.9
 Requires:       python%{python3_pkgversion}-markdown < 4
@@ -70,6 +70,9 @@ sed -i -E '/\s+ansible($|-lint)/d' setup.cfg
 %{python3_sitelib}/galaxy_importer-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Feb 22 2021 Evgeni Golov - 0.2.15-1
+- Release python-galaxy-importer 0.2.15
+
 * Wed Dec 09 2020 Evgeni Golov - 0.2.12-1
 - Release python-galaxy-importer 0.2.12
 
