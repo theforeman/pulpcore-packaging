@@ -80,6 +80,7 @@ pulpcore_packages:
     python-attrs: {}
     python-backoff: {}
     python-bleach: {}
+    python-bleach-allowlist: {}
     python-bleach-whitelist: {}
     python-box: {}
     python-certifi: {}
