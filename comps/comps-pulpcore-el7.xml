@@ -30,6 +30,7 @@
       <packagereq type="default">python3-attrs</packagereq>
       <packagereq type="default">python3-backoff</packagereq>
       <packagereq type="default">python3-bleach</packagereq>
+      <packagereq type="default">python3-bleach-allowlist</packagereq>
       <packagereq type="default">python3-bleach-whitelist</packagereq>
       <packagereq type="default">python3-box</packagereq>
       <packagereq type="default">python3-certifi</packagereq>
