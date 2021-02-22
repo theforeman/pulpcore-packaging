@@ -2,7 +2,7 @@
 %global pypi_name bleach
 
 Name:           python-%{pypi_name}
-Version:        3.2.1
+Version:        3.3.0
 Release:        1%{?dist}
 Summary:        An easy safelist-based HTML-sanitizing tool
 
@@ -48,6 +48,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Feb 22 2021 Evgeni Golov - 3.3.0-1
+- Release python-bleach 3.3.0
+
 * Mon Sep 28 2020 Evgeni Golov 3.2.1-1
 - Update to 3.2.1
 
