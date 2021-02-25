@@ -29,6 +29,7 @@ Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         250.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -89,7 +90,6 @@ These development files are for easy manipulation with a repodata.
 Summary:        Python 3 bindings for the createrepo_c library
 %{?python_provide:%python_provide python3-%{name}}
 BuildRequires:  python3-devel
-BuildRequires:  python3-sphinx
 Requires:       %{name}-libs = %{version}-%{release}
 
 %description -n python3-%{name}
@@ -104,23 +104,10 @@ mkdir build-py3
 # Build createrepo_c with Pyhon 3
 pushd build-py3
   %cmake .. \
-      -DPYTHON_DESIRED:FILEPATH=%{__python3} \
       -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
       -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
       -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF}
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
-  # Build C documentation
-  make doc-c
-popd
-
-%check
-# Run Python 3 tests
-pushd build-py3
-  # Compile C tests
-  make tests
-
-  # Run Python 3 tests
-  make ARGS="-V" test
 popd
 
 %install
@@ -165,7 +152,6 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{_libdir}/lib%{name}.so.*
 
 %files devel
-%doc build-py3/doc/html
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/
