@@ -1,0 +1,56 @@
+From ef38747e872c4d50e033b4fa2bc5a289b69b705a Mon Sep 17 00:00:00 2001
+From: Evgeni Golov <evgeni@golov.de>
+Date: Thu, 25 Feb 2021 16:46:58 +0100
+Subject: [PATCH] find Python 3 and libs on CentOS 7 too
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+CentOS 7 has an old CMake (2.8.12) which is really not smart about finding Python interpreters.
+
+If we pass `EXACT` to `FIND_PACKAGE`, we end up with the following error:
+
+```
+  Could NOT find PythonInterp: Found unsuitable version "3.6.8", but required
+  is exact version "3" (found /usr/bin/python3)
+```
+
+Which is *kinda* true, `3.6.8 != 3`. But in reality, we want *a* Python 3, so let's just not ask for an `EXACT` match here.
+The same does not fail on newer CMakes which understand that we only care about the major version of Python here.
+
+But after adjusting that, we get the following:
+
+```
+-- Could NOT find PythonLibs (missing:  PYTHON_LIBRARIES PYTHON_INCLUDE_DIRS) (Required is at least version "3")
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.6.8", minimum required is "3")
+…
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+PYTHON_INCLUDE_DIR (ADVANCED)
+   used as include directory in directory /builddir/build/BUILD/createrepo_c-0.17.0/src/python
+PYTHON_LIBRARY (ADVANCED)
+    linked by target "_createrepo_c" in directory /builddir/build/BUILD/createrepo_c-0.17.0/src/python
+```
+
+This can be avoided by *first* searching for the binary, and *then* for the libraries.
+
+I also marked the libraries as `REQUIRED` as we really need them :)
+---
+ src/python/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
+index 855127f..ecc262d 100644
+--- a/src/python/CMakeLists.txt
++++ b/src/python/CMakeLists.txt
+@@ -10,8 +10,8 @@ ENDMACRO(PYTHON_UNSET)
+ if (NOT SKBUILD)
+     PYTHON_UNSET()
+     SET(Python_ADDITIONAL_VERSIONS 3.0 CACHE INTERNAL "")
+-    FIND_PACKAGE(PythonLibs 3 EXACT)
+-    FIND_PACKAGE(PythonInterp 3 EXACT REQUIRED)
++    FIND_PACKAGE(PythonInterp 3 REQUIRED)
++    FIND_PACKAGE(PythonLibs 3 REQUIRED)
+ endif (NOT SKBUILD)
+ 
+ EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from sys import stdout; from distutils import sysconfig; stdout.write(sysconfig.get_python_lib(True))" OUTPUT_VARIABLE PYTHON_INSTALL_DIR)
