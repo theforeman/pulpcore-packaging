@@ -1,0 +1,31 @@
+From a233dd13494670f3cf13ea41fc66893aba1c3766 Mon Sep 17 00:00:00 2001
+From: Brian Bouterse <bmbouter@redhat.com>
+Date: Tue, 2 Mar 2021 16:33:10 -0500
+Subject: [PATCH] Have hearbeats occur more frequently
+
+Exactly one heartbeat occurs and it's hardcoded to 15 seconds before the
+`default_worker_ttl`. For reliability heartbeats should occur more
+frequently, 3-times within each TTL with an interarrival time of
+`default_worker_ttl` / 3.
+
+fixes #1426
+---
+ rq/worker.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rq/worker.py b/rq/worker.py
+index 8aa07bd..4cd8a69 100644
+--- a/rq/worker.py
++++ b/rq/worker.py
+@@ -568,7 +568,7 @@ class Worker(object):
+                         self.log.info('Worker %s: stopping on request', self.key)
+                         break
+ 
+-                    timeout = None if burst else max(1, self.default_worker_ttl - 15)
++                    timeout = None if burst else max(1, int(self.default_worker_ttl / 3))
+                     result = self.dequeue_job_and_maintain_ttl(timeout)
+                     if result is None:
+                         if burst:
+-- 
+2.26.2
+
