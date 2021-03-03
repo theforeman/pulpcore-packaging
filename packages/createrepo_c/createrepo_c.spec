@@ -109,6 +109,15 @@ pushd build-py3
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
 popd
 
+%check
+# Run Python 3 tests
+pushd build-py3
+  # Compile C tests
+  make tests
+  # Run Python 3 tests
+  make ARGS="-V" test
+popd
+
 %install
 pushd build-py3
   # Install createrepo_c with Python 3
