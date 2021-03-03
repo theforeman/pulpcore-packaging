@@ -4,12 +4,13 @@
 
 Name:           python-%{pypi_name}
 Version:        3.7.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         0001-Adjusts-worker-timeout-to-300-seconds.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -137,7 +138,7 @@ Using Pulp you can:
 - Promote content through different repos in an organized way
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -167,6 +168,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Mar 03 2021 Brian Bouterse - 3.7.3-2
+- Increase Pulp worker timeout to 300 seconds
+
 * Tue Nov 03 2020 Evgeni Golov 3.7.3-1
 - Update to 3.7.3
 
