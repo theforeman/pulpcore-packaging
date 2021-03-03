@@ -3,12 +3,13 @@
 
 Name:           python-%{pypi_name}
 Version:        1.5.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RQ is a simple, lightweight, library for creating background jobs, and processing them
 
 License:        BSD
 URL:            https://github.com/nvie/rq/
 Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         0001-Have-hearbeats-occur-more-frequently.patch
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -28,7 +29,7 @@ Requires:       python3-setuptools
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -48,6 +49,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Mar 03 2021 Brian Bouterse - 1.5.2-2
+- Have heartbeats occur more frequently within the worker TTL
+
 * Thu Sep 10 2020 Evgeni Golov 1.5.2-1
 - Update to 1.5.2
 

@@ -1,0 +1,14 @@
+diff --git a/pulpcore/tasking/constants.py b/pulpcore/tasking/constants.py
+index 3be25f9c0..e31cc8972 100644
+--- a/pulpcore/tasking/constants.py
++++ b/pulpcore/tasking/constants.py
+@@ -4,7 +4,7 @@ TASKING_CONSTANTS = SimpleNamespace(
+     # The name of resource manager entries in the workers table
+     RESOURCE_MANAGER_WORKER_NAME="resource-manager",
+     # The amount of time (in seconds) after which a worker process is considered missing.
+-    WORKER_TTL=30,
++    WORKER_TTL=300,
+     # The amount of time (in seconds) between checks
+     JOB_MONITORING_INTERVAL=5,
+     # The Redis key used to force-kill a job
+
