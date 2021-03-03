@@ -24,12 +24,11 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        0.17.0
+Version:        0.17.1
 Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         250.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -161,6 +160,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Mar 03 2021 Evgeni Golov - 0.17.1-1
+- Release createrepo_c 0.17.1
+
 * Thu Feb 18 2021 Justin Sherrill <jsherril@redhat.com> 0.17.0-1
 - update to 0.17.0
 
