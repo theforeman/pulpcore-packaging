@@ -3,12 +3,13 @@
 
 Name:           python-%{pypi_name}
 Version:        3.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            http://www.pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         8245.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -43,7 +44,7 @@ Requires:       python%{python3_pkgversion}-solv
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version} -p1
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -63,6 +64,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Mar 11 2021 Justin Sherrill <jsherril@redhat.com> 3.9.0-2
+- add patch for issue 8245
+
 * Thu Feb 18 2021 Justin Sherrill <jsherril@redhat.com> 3.9.0-1
 - update to 3.9.0
 
