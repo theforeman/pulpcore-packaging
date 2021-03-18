@@ -2,7 +2,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.2.0
+Version:        2.2.1
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -61,6 +61,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Mar 18 2021 Justin Sherrill <jsherril@redhat.com> 2.2.1-1
+- update to 2.2.1
+
 * Mon Jan 11 2021 Evgeni Golov 2.2.0-1
 - Update to 2.2.0
 
