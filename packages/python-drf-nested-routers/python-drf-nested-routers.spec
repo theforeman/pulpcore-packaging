@@ -2,7 +2,7 @@
 %global pypi_name drf-nested-routers
 
 Name:           python-%{pypi_name}
-Version:        0.92.1
+Version:        0.93.3
 Release:        1%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
@@ -45,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/drf_nested_routers-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Mar 19 2021 Evgeni Golov 0.93.3-1
+- Update to 0.93.3
+
 * Mon Nov 02 2020 Evgeni Golov 0.92.1-1
 - Update to 0.92.1
 
