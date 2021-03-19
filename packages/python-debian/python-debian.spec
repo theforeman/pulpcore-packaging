@@ -3,7 +3,7 @@
 %global srcname debian
 
 Name:           python-%{srcname}
-Version:        0.1.38
+Version:        0.1.39
 Release:        1%{?dist}
 Summary:        Debian package related modules
 
@@ -12,21 +12,21 @@ URL:            https://salsa.debian.org/python-debian-team/python-debian
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-chardet
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-chardet
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-six
 
 %description
 %{summary}
 
-%package -n     python3-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{srcname}}
-Requires:       python3-chardet
-Requires:       python3-six
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+Requires:       python%{python3_pkgversion}-chardet
+Requires:       python%{python3_pkgversion}-six
 
-%description -n python3-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
 %prep
@@ -40,7 +40,7 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
-%files -n python3-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %doc README.rst
 %{python3_sitelib}/__pycache__/deb822.*
 %{python3_sitelib}/deb822.py
@@ -49,6 +49,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/python_debian-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Mar 19 2021 Evgeni Golov 0.1.39-1
+- Update to 0.1.39
+
 * Thu Oct 29 2020 Evgeni Golov 0.1.38-1
 - Update to 0.1.38
 
