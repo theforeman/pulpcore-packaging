@@ -2,7 +2,7 @@
 %global pypi_name pytz
 
 Name:           python-%{pypi_name}
-Version:        2020.4
+Version:        2021.1
 Release:        1%{?dist}
 Summary:        World timezone definitions, modern and historical
 
@@ -42,6 +42,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Mar 19 2021 Evgeni Golov 2021.1-1
+- Update to 2021.1
+
 * Mon Nov 02 2020 Evgeni Golov 2020.4-1
 - Update to 2020.4
 
