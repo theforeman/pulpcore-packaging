@@ -76,6 +76,7 @@ pulpcore_packages:
     python-ansible-builder: {}
     python-async-lru: {}
     python-async-timeout: {}
+    python-asyncio-throttle: {}
     python-attrs: {}
     python-backoff: {}
     python-bleach: {}
