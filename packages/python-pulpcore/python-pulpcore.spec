@@ -3,64 +3,65 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.9.1
-Release:        2%{?dist}
+Version:        3.11.0
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         0001-Adjusts-worker-timeout-to-300-seconds.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-Requires:       python%{python3_pkgversion}-django >= 2.2.17
+Requires:       python%{python3_pkgversion}-django >= 2.2.19
 Conflicts:      python%{python3_pkgversion}-django >= 2.3
-BuildRequires:  python%{python3_pkgversion}-PyYAML < 5.4.0
+BuildRequires:  python%{python3_pkgversion}-PyYAML < 5.5.0
 BuildRequires:  python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       python%{python3_pkgversion}-aiodns >= 2.0.0
 Conflicts:      python%{python3_pkgversion}-aiodns >= 2.1
 BuildRequires:  python%{python3_pkgversion}-aiofiles = 0.6.0
-Requires:       python%{python3_pkgversion}-aiohttp >= 3.7.2
+Requires:       python%{python3_pkgversion}-aiohttp >= 3.7.4
 Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.8
+Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
+Conflicts:      python%{python3_pkgversion}-asyncio-throttle >= 1.1
 Requires:       python%{python3_pkgversion}-backoff >= 1.10.0
 Conflicts:      python%{python3_pkgversion}-backoff >= 1.11
 BuildRequires:  python%{python3_pkgversion}-django
-Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.1
+Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.2
 Conflicts:      python%{python3_pkgversion}-django-currentuser >= 0.6
 Requires:       python%{python3_pkgversion}-django-filter >= 2.4.0
 Conflicts:      python%{python3_pkgversion}-django-filter >= 2.5
 Requires:       python%{python3_pkgversion}-django-guardian >= 2.3.0
 Conflicts:      python%{python3_pkgversion}-django-guardian >= 2.4
 BuildRequires:  python%{python3_pkgversion}-django-guid < 3.0
-Requires:       python%{python3_pkgversion}-django-import-export >= 2.4.0
-Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.5
-Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.8.0
-Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.9
+Requires:       python%{python3_pkgversion}-django-import-export >= 2.5.0
+Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.6
+Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.9.1
+Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.10
 BuildRequires:  python%{python3_pkgversion}-django-prometheus
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.12.2
 Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.13
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
-Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.8.1
+Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.8.7
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.9
-BuildRequires:  python%{python3_pkgversion}-drf-nested-routers >= 0.92.1
-BuildRequires:  python%{python3_pkgversion}-drf-spectacular >= 0.11.0
+BuildRequires:  python%{python3_pkgversion}-drf-nested-routers >= 0.93.3
+BuildRequires:  python%{python3_pkgversion}-drf-spectacular >= 0.13.2
 BuildRequires:  python%{python3_pkgversion}-dynaconf
-Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.2
+Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.4
 Conflicts:      python%{python3_pkgversion}-dynaconf >= 3.2
-Requires:       python%{python3_pkgversion}-gnupg >= 0.4.6
+Requires:       python%{python3_pkgversion}-gnupg >= 0.4.7
 Conflicts:      python%{python3_pkgversion}-gnupg >= 0.5
 BuildRequires:  python%{python3_pkgversion}-gunicorn < 20.1
 BuildRequires:  python%{python3_pkgversion}-gunicorn >= 19.9
 BuildRequires:  python%{python3_pkgversion}-jinja2
 BuildRequires:  python%{python3_pkgversion}-psycopg2 < 2.9
 BuildRequires:  python%{python3_pkgversion}-psycopg2 >= 2.7
-Requires:       python%{python3_pkgversion}-pygtrie >= 2.3.3
-Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.4
+Requires:       python%{python3_pkgversion}-pygtrie >= 2.4.2
+Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.5
 BuildRequires:  python%{python3_pkgversion}-redis >= 3.4.0
-BuildRequires:  python%{python3_pkgversion}-rq >= 1.7
 BuildRequires:  python%{python3_pkgversion}-rq < 1.8
+BuildRequires:  python%{python3_pkgversion}-rq >= 1.7
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools >= 39.2.0
 BuildRequires:  python%{python3_pkgversion}-whitenoise < 5.3.0
@@ -76,59 +77,60 @@ Using Pulp you can:
 - Manage content from multiple sources in one place
 - Promote content through different repos in an organized way
 
-
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-django >= 2.2.17
+Requires:       python%{python3_pkgversion}-django >= 2.2.19
 Conflicts:      python%{python3_pkgversion}-django >= 2.3
-Requires:       python%{python3_pkgversion}-PyYAML < 5.4.0
+Requires:       python%{python3_pkgversion}-PyYAML < 5.5.0
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       python%{python3_pkgversion}-aiodns >= 2.0.0
 Conflicts:      python%{python3_pkgversion}-aiodns >= 2.1
 Requires:       python%{python3_pkgversion}-aiofiles = 0.6.0
-Requires:       python%{python3_pkgversion}-aiohttp >= 3.7.2
+Requires:       python%{python3_pkgversion}-aiohttp >= 3.7.4
 Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.8
+Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
+Conflicts:      python%{python3_pkgversion}-asyncio-throttle >= 1.1
 Requires:       python%{python3_pkgversion}-backoff >= 1.10.0
 Conflicts:      python%{python3_pkgversion}-backoff >= 1.11
 Requires:       python%{python3_pkgversion}-django
-Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.1
+Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.2
 Conflicts:      python%{python3_pkgversion}-django-currentuser >= 0.6
 Requires:       python%{python3_pkgversion}-django-filter >= 2.4.0
 Conflicts:      python%{python3_pkgversion}-django-filter >= 2.5
 Requires:       python%{python3_pkgversion}-django-guardian >= 2.3.0
 Conflicts:      python%{python3_pkgversion}-django-guardian >= 2.4
 Requires:       python%{python3_pkgversion}-django-guid < 3.0
-Requires:       python%{python3_pkgversion}-django-import-export >= 2.4.0
-Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.5
-Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.8.0
-Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.9
+Requires:       python%{python3_pkgversion}-django-import-export >= 2.5.0
+Conflicts:      python%{python3_pkgversion}-django-import-export >= 2.6
+Requires:       python%{python3_pkgversion}-django-lifecycle >= 0.9.1
+Conflicts:      python%{python3_pkgversion}-django-lifecycle >= 0.10
 Requires:       python%{python3_pkgversion}-django-prometheus
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.12.2
 Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.13
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
-Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.8.1
+Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.8.7
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.9
-Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.92.1
-Conflicts:      python%{python3_pkgversion}-drf-nested-routers >= 0.92.2
-Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.11.0
-Conflicts:      python%{python3_pkgversion}-drf-spectacular >= 0.11.1
+Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.3
+Conflicts:      python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
+Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.13.2
+Conflicts:      python%{python3_pkgversion}-drf-spectacular >= 0.13.3
 Requires:       python%{python3_pkgversion}-dynaconf
-Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.2
+Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.4
 Conflicts:      python%{python3_pkgversion}-dynaconf >= 3.2
-Requires:       python%{python3_pkgversion}-gnupg >= 0.4.6
+Requires:       python%{python3_pkgversion}-gnupg >= 0.4.7
 Conflicts:      python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       python%{python3_pkgversion}-gunicorn < 20.1
 Requires:       python%{python3_pkgversion}-gunicorn >= 19.9
 Requires:       python%{python3_pkgversion}-jinja2
 Requires:       python%{python3_pkgversion}-psycopg2 < 2.9
 Requires:       python%{python3_pkgversion}-psycopg2 >= 2.7
-Requires:       python%{python3_pkgversion}-pygtrie >= 2.3.3
-Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.4
+Requires:       python%{python3_pkgversion}-pygtrie >= 2.4.2
+Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.5
 Requires:       python%{python3_pkgversion}-redis >= 3.4.0
-Requires:       python%{python3_pkgversion}-rq >= 1.7
 Requires:       python%{python3_pkgversion}-rq < 1.8
+Requires:       python%{python3_pkgversion}-rq >= 1.7
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       python%{python3_pkgversion}-whitenoise < 5.3.0
@@ -145,7 +147,7 @@ Using Pulp you can:
 - Promote content through different repos in an organized way
 
 %prep
-%autosetup -p1 -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -175,6 +177,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Mar 19 2021 Evgeni Golov 3.11.0-1
+- Update to 3.11.0
+
 * Wed Mar 03 2021 Brian Bouterse - 3.9.1-2
 - Increase Pulp worker timeout to 300 seconds
 

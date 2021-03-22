@@ -2,14 +2,13 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.9.0
-Release:        2%{?dist}
+Version:        3.9.1
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            http://www.pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         8245.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -28,23 +27,24 @@ Requires:       libmodulemd2
 Requires:       python3-gobject
 Requires:       libmodulemd >= 2.0
 %endif
-Requires:       python%{python3_pkgversion}-createrepo_c < 1.0
 Requires:       python%{python3_pkgversion}-createrepo_c >= 0.17.0
+Conflicts:      python%{python3_pkgversion}-createrepo_c >= 0.18
 Requires:       python%{python3_pkgversion}-django-readonly-field
 Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.25
-Requires:       python%{python3_pkgversion}-pulpcore < 3.10
+Requires:       python%{python3_pkgversion}-pulpcore < 3.12
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.7
 Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-solv
+Requires:       python%{python3_pkgversion}-solv >= 0.7.17
+Conflicts:      python%{python3_pkgversion}-solv >= 0.8
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{version} -p1
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -64,6 +64,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Mar 19 2021 Evgeni Golov 3.9.1-1
+- Update to 3.9.1
+
 * Thu Mar 11 2021 Justin Sherrill <jsherril@redhat.com> 3.9.0-2
 - add patch for issue 8245
 
