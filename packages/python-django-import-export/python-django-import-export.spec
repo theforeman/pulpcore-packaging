@@ -2,7 +2,7 @@
 %global pypi_name django-import-export
 
 Name:           python-%{pypi_name}
-Version:        2.4.0
+Version:        2.5.0
 Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
@@ -45,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/django_import_export-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Mar 19 2021 Evgeni Golov 2.5.0-1
+- Update to 2.5.0
+
 * Mon Nov 02 2020 Evgeni Golov 2.4.0-1
 - Update to 2.4.0
 
