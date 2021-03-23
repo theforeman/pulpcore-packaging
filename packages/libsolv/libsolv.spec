@@ -26,8 +26,8 @@
 %bcond_with    zstd
 
 Name:           lib%{libname}
-Version:        0.7.12
-Release:        2%{?dist}
+Version:        0.7.17
+Release:        1%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -275,6 +275,9 @@ Python 3 version.
 %endif
 
 %changelog
+* Tue Mar 23 2021 Evgeni Golov - 0.7.17-1
+- Release libsolv 0.7.17
+
 * Tue Aug 18 2020 Evgeni Golov - 0.7.12-2
 - Only build Python2 bindings on EL7
 
