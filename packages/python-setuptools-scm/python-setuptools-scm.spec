@@ -2,8 +2,8 @@
 %global pypi_name setuptools-scm
 
 Name:           python-%{pypi_name}
-Version:        3.4.3
-Release:        2%{?dist}
+Version:        3.5.0
+Release:        1%{?dist}
 Summary:        the blessed package to manage your versions by scm tags
 
 License:        MIT
@@ -54,6 +54,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/setuptools_scm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Mar 31 2021 Evgeni Golov - 3.5.0-1
+- Release python-setuptools-scm 3.5.0
+
 * Fri Feb 28 2020 Zach Huntington-Meath <zhunting@redhat.com> - 3.4.3-2
 - Bump release to build for el8
 
