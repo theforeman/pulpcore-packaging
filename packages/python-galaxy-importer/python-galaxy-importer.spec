@@ -2,7 +2,7 @@
 %global pypi_name galaxy-importer
 
 Name:           python-%{pypi_name}
-Version:        0.2.12
+Version:        0.3.0
 Release:        1%{?dist}
 Summary:        Galaxy content importer
 
@@ -25,17 +25,15 @@ Requires:       ansible
 Requires:       /usr/bin/ansible-test
 %if 0%{?rhel} == 8
 # We only have ansible-lint built on EL8
-Requires:       ansible-lint < 5.0
-Requires:       ansible-lint >= 4.2.0
+Requires:       python%{python3_pkgversion}-ansible-lint < 6.0
+Requires:       python%{python3_pkgversion}-ansible-lint >= 5.0.0
 %endif
-Requires:       python%{python3_pkgversion}-ansible-builder >= 0.2.1
-Requires:       python%{python3_pkgversion}-ansible-builder < 1.0
 Requires:       python%{python3_pkgversion}-attrs < 21
 Requires:       python%{python3_pkgversion}-attrs >= 19.3.0
 Requires:       python%{python3_pkgversion}-bleach < 4
-Requires:       python%{python3_pkgversion}-bleach >= 3.1.3
-Requires:       python%{python3_pkgversion}-bleach-whitelist < 1
-Requires:       python%{python3_pkgversion}-bleach-whitelist >= 0.0.10
+Requires:       python%{python3_pkgversion}-bleach >= 3.3.0
+Requires:       python%{python3_pkgversion}-bleach-allowlist < 2
+Requires:       python%{python3_pkgversion}-bleach-allowlist >= 1.0.3
 Requires:       python%{python3_pkgversion}-flake8 < 4
 Requires:       python%{python3_pkgversion}-flake8 >= 3.7.9
 Requires:       python%{python3_pkgversion}-markdown < 4
@@ -64,12 +62,18 @@ sed -i -E '/\s+ansible($|-lint)/d' setup.cfg
 %py3_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license galaxy_importer/utils/spdx_licenses.py galaxy_importer/utils/spdx_licenses.json
+%license galaxy_importer/utils/spdx_licenses.json galaxy_importer/utils/spdx_licenses.py
 %doc README.md
 %{python3_sitelib}/galaxy_importer
 %{python3_sitelib}/galaxy_importer-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Mar 31 2021 Evgeni Golov 0.3.0-1
+- Update to 0.3.0
+
+* Mon Feb 22 2021 Evgeni Golov - 0.2.15-1
+- Release python-galaxy-importer 0.2.15
+
 * Wed Dec 09 2020 Evgeni Golov - 0.2.12-1
 - Release python-galaxy-importer 0.2.12
 
