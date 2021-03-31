@@ -129,6 +129,7 @@ pulpcore_packages:
     python-idna-ssl: {}
     python-importlib-metadata: {}
     python-inflection: {}
+    python-wcmatch: {}
     python3-iniparse:
       koji_tags:
         - name: pulpcore-{{ pulpcore_version }}-el7
