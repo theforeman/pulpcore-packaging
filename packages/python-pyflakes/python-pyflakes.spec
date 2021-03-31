@@ -2,7 +2,7 @@
 %global pypi_name pyflakes
 
 Name:           python-%{pypi_name}
-Version:        2.3.0
+Version:        2.3.1
 Release:        1%{?dist}
 Summary:        passive checker of Python programs
 
@@ -44,6 +44,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Mar 31 2021 Evgeni Golov 2.3.1-1
+- Update to 2.3.1
+
 * Fri Mar 19 2021 Evgeni Golov 2.3.0-1
 - Update to 2.3.0
 
