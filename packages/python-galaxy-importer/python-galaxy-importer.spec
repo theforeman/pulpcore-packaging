@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -25,8 +25,8 @@ Requires:       ansible
 Requires:       /usr/bin/ansible-test
 %if 0%{?rhel} == 8
 # We only have ansible-lint built on EL8
-Requires:       python%{python3_pkgversion}-ansible-lint < 6.0
-Requires:       python%{python3_pkgversion}-ansible-lint >= 5.0.0
+Requires:       ansible-lint < 6.0
+Requires:       ansible-lint >= 5.0.0
 %endif
 Requires:       python%{python3_pkgversion}-attrs < 21
 Requires:       python%{python3_pkgversion}-attrs >= 19.3.0
@@ -68,6 +68,9 @@ sed -i -E '/\s+ansible($|-lint)/d' setup.cfg
 %{python3_sitelib}/galaxy_importer-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Mar 31 2021 Evgeni Golov - 0.3.0-2
+- Fix ansible-lint requires
+
 * Wed Mar 31 2021 Evgeni Golov 0.3.0-1
 - Update to 0.3.0
 
