@@ -36,6 +36,7 @@
       <packagereq type="default">python3-bleach-allowlist</packagereq>
       <packagereq type="default">python3-bleach-whitelist</packagereq>
       <packagereq type="default">python3-box</packagereq>
+      <packagereq type="default">python3-bracex</packagereq>
       <packagereq type="default">python3-certifi</packagereq>
       <packagereq type="default">python3-cffi</packagereq>
       <packagereq type="default">python3-chardet</packagereq>
@@ -70,6 +71,7 @@
       <packagereq type="default">python3-drf-yasg</packagereq>
       <packagereq type="default">python3-dynaconf</packagereq>
       <packagereq type="default">python3-ecdsa</packagereq>
+      <packagereq type="default">python3-enrich</packagereq>
       <packagereq type="default">python3-et-xmlfile</packagereq>
       <packagereq type="default">python3-flake8</packagereq>
       <packagereq type="default">python3-future</packagereq>
@@ -142,6 +144,7 @@
       <packagereq type="default">python3-url-normalize</packagereq>
       <packagereq type="default">python3-urllib3</packagereq>
       <packagereq type="default">python3-urlman</packagereq>
+      <packagereq type="default">python3-wcmatch</packagereq>
       <packagereq type="default">python3-webencodings</packagereq>
       <packagereq type="default">python3-whitenoise</packagereq>
       <packagereq type="default">python3-xlrd</packagereq>
