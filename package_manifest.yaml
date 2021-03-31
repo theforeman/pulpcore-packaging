@@ -117,6 +117,7 @@ pulpcore_packages:
     python-drf-yasg: {}
     python-dynaconf: {}
     python-ecdsa: {}
+    python-enrich: {}
     python-et-xmlfile: {}
     python-flake8: {}
     python-future: {}
