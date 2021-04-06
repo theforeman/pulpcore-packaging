@@ -3,8 +3,8 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.7.3
-Release:        2%{?dist}
+Version:        3.7.4
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -168,6 +168,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Apr 06 2021 Evgeni Golov - 3.7.4-1
+- Release python-pulpcore 3.7.4
+
 * Wed Mar 03 2021 Brian Bouterse - 3.7.3-2
 - Increase Pulp worker timeout to 300 seconds
 
