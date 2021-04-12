@@ -2,14 +2,13 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.9.0
-Release:        2%{?dist}
+Version:        3.10.0
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            http://www.pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         8245.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -64,6 +63,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Apr 12 2021 Ian Ballou <ianballou67@gmail.com> 3.10.0-1
+- Update pulp-rpm to 3.10.0
+
 * Thu Mar 11 2021 Justin Sherrill <jsherril@redhat.com> 3.9.0-2
 - add patch for issue 8245
 
