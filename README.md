@@ -16,6 +16,14 @@ To build locally or release RPMs from this repo, you also require:
 * [tito](https://github.com/dgoodwin/tito) 0.6.1 or higher
 * [mock](http://fedoraproject.org/wiki/Projects/Mock) or koji client and an account (certificate) on koji.katello.org
 
+## Built repos and usage within Katello
+
+The packages built using this repository are deployed to:
+
+https://yum.theforeman.org/pulpcore/
+
+These repositories are included in Katello installations using the `katello-repos` RPM package.
+
 ## License
 
 Spec files are generally based on Fedora spec files, which means that unless a
