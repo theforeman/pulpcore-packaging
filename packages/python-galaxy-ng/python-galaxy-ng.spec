@@ -1,11 +1,11 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
 
-%global full_version %{version}a1
+%global full_version %{version}a2
 
 Name:           python-%{pypi_name}
 Version:        4.3.0
-Release:        0.1.a1%{?dist}
+Release:        0.1.a2%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -31,7 +31,7 @@ Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.3.0
 Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.3.1
 Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.7.1
 Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.7.2
-Requires:       python%{python3_pkgversion}-pulp-container >= 2.3.1
+Requires:       python%{python3_pkgversion}-pulp-container >= 2.5.1
 Requires:       python%{python3_pkgversion}-pulpcore < 3.12
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.11
 Requires:       python%{python3_pkgversion}-setuptools
@@ -56,6 +56,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/galaxy_ng-%{full_version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Apr 19 2021 Evgeni Golov 4.3.0-0.1.a2
+- Update to 4.3.0a2
+
 * Thu Apr 01 2021 Evgeni Golov 4.3.0-0.1.a1
 - Update to 4.3.0a1
 
