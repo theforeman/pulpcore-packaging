@@ -3,12 +3,13 @@
 
 Name:           python-%{pypi_name}
 Version:        2.5.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://pulpproject.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         8672.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -44,7 +45,7 @@ Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version} -p1
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -61,6 +62,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed May 05 2021 Justin Sherrill <jsherril@redhat.com> 2.5.2-2
+- add patch for issue 8672
+
 * Mon Apr 26 2021 Evgeni Golov - 2.5.2-1
 - Release python-pulp-container 2.5.2
 
