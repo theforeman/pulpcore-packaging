@@ -3,14 +3,13 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.11.0
-Release:        2%{?dist}
+Version:        3.11.1
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         8603.patch 
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -148,7 +147,7 @@ Using Pulp you can:
 - Promote content through different repos in an organized way
 
 %prep
-%autosetup -n %{pypi_name}-%{version} -p 1
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -178,6 +177,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed May 12 2021 Evgeni Golov 3.11.1-1
+- Update to 3.11.1
+
 * Wed Apr 28 2021 Justin Sherrill <jsherril@redhat.com> 3.11.0-2
 - add patch for issue 8603
 
