@@ -2,7 +2,7 @@
 %global pypi_name django-currentuser
 
 Name:           python-%{pypi_name}
-Version:        0.5.2
+Version:        0.5.3
 Release:        1%{?dist}
 Summary:        Conveniently store reference to request user on thread/db level
 
@@ -20,7 +20,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-django < 3.2
+Requires:       python%{python3_pkgversion}-django < 3.3
 Requires:       python%{python3_pkgversion}-django >= 1.11.17
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -44,6 +44,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/django_currentuser-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed May 12 2021 Evgeni Golov 0.5.3-1
+- Update to 0.5.3
+
 * Fri Mar 19 2021 Evgeni Golov 0.5.2-1
 - Update to 0.5.2
 
