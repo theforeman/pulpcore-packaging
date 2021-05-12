@@ -2,8 +2,8 @@
 %global pypi_name galaxy-importer
 
 Name:           python-%{pypi_name}
-Version:        0.3.0
-Release:        3%{?dist}
+Version:        0.3.2
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -26,24 +26,24 @@ Requires:       /usr/bin/ansible-test
 %if 0%{?rhel} == 8
 # We only have ansible-lint built on EL8
 Requires:       ansible-lint < 6.0
-Requires:       ansible-lint >= 5.0.0
+Requires:       ansible-lint >= 5.0.8
 %endif
-Requires:       python%{python3_pkgversion}-attrs < 21
-Requires:       python%{python3_pkgversion}-attrs >= 19.3.0
+Requires:       python%{python3_pkgversion}-attrs < 22
+Requires:       python%{python3_pkgversion}-attrs >= 21.2.0
 Requires:       python%{python3_pkgversion}-bleach < 4
 Requires:       python%{python3_pkgversion}-bleach >= 3.3.0
 Requires:       python%{python3_pkgversion}-bleach-allowlist < 2
 Requires:       python%{python3_pkgversion}-bleach-allowlist >= 1.0.3
 Requires:       python%{python3_pkgversion}-flake8 < 4
-Requires:       python%{python3_pkgversion}-flake8 >= 3.7.9
+Requires:       python%{python3_pkgversion}-flake8 >= 3.9.2
 Requires:       python%{python3_pkgversion}-markdown < 4
-Requires:       python%{python3_pkgversion}-markdown >= 3.2.1
+Requires:       python%{python3_pkgversion}-markdown >= 3.3.4
 Requires:       python%{python3_pkgversion}-pyyaml < 6
-Requires:       python%{python3_pkgversion}-pyyaml >= 5.2
+Requires:       python%{python3_pkgversion}-pyyaml >= 5.4.1
 Requires:       python%{python3_pkgversion}-requests < 3
-Requires:       python%{python3_pkgversion}-requests >= 2.23.0
+Requires:       python%{python3_pkgversion}-requests >= 2.25.1
 Requires:       python%{python3_pkgversion}-semantic-version < 3
-Requires:       python%{python3_pkgversion}-semantic-version >= 2.8.4
+Requires:       python%{python3_pkgversion}-semantic-version >= 2.8.5
 Requires:       tar
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -54,7 +54,7 @@ Requires:       tar
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
-sed -i -E '/\s+ansible($|-lint)/d' setup.cfg
+sed -i -E '/\s+ansible($|-core|-lint)/d' setup.cfg
 
 %build
 %py3_build
@@ -64,13 +64,16 @@ sed -i -E '/\s+ansible($|-lint)/d' setup.cfg
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license galaxy_importer/utils/spdx_licenses.json galaxy_importer/utils/spdx_licenses.py
+%license LICENSE
 %doc README.md
 %{python3_sitelib}/galaxy_importer
 %{python3_sitelib}/galaxy_importer-%{version}-py%{python3_version}.egg-info
 %config(noreplace) %attr(0755,root,root) %{_sysconfdir}/galaxy-importer
 
 %changelog
+* Wed May 12 2021 Evgeni Golov 0.3.2-1
+- Update to 0.3.2
+
 * Wed Apr 14 2021 Yanis Guenane - 0.3.0-3
 - Add tar as a runtime Requires
 - Manage /etc/galaxy-importer folder
