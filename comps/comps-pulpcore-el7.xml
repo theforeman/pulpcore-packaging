@@ -138,6 +138,7 @@
       <packagereq type="default">python3-sqlparse</packagereq>
       <packagereq type="default">python3-subscription-manager-rhsm</packagereq>
       <packagereq type="default">python3-tablib</packagereq>
+      <packagereq type="default">python3-tenacity</packagereq>
       <packagereq type="default">python3-toml</packagereq>
       <packagereq type="default">python3-typing</packagereq>
       <packagereq type="default">python3-typing-extensions</packagereq>
