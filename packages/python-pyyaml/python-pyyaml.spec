@@ -1,18 +1,19 @@
+%global debug_package %{nil}
 # Created by pyp2rpm-3.3.3
 %global pypi_name PyYAML
 %global srcname pyyaml
 
 Name:           python-%{srcname}
-Version:        5.3.1
-Release:        3%{?dist}
+Version:        5.4.1
+Release:        1%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
-URL:            https://github.com/yaml/pyyaml
+URL:            https://pyyaml.org/
 Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 BuildRequires:  gcc
 BuildRequires:  libyaml-devel
@@ -20,19 +21,21 @@ BuildRequires:  libyaml-devel
 %description
 %{summary}
 
-%package -n     python3-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{srcname}}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 %{?python_provide:%python_provide python3-%{pypi_name}}
 Provides:       python3-%{pypi_name} = %{version}-%{release}
 %{?python_provide:%python_provide python3-yaml}
 Provides:       python3-yaml = %{version}-%{release}
 
-%description -n python3-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
+# Remove bundled egg-info
+rm -rf %{pypi_name}.egg-info
 
 %build
 %py3_build
@@ -40,13 +43,16 @@ Provides:       python3-yaml = %{version}-%{release}
 %install
 %py3_install
 
-%files -n python3-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
+%{python3_sitearch}/_yaml
 %{python3_sitearch}/yaml
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
-%{python3_sitearch}/_yaml.cpython-3?m-%{_arch}-linux-gnu.so
 
 %changelog
+* Wed May 12 2021 Evgeni Golov 5.4.1-1
+- Update to 5.4.1
+
 * Tue Jan  5 2021 Evgeni Golov - 5.3.1-3
 - Also provide 'yaml' name
 
