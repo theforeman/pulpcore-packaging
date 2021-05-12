@@ -2,7 +2,7 @@
 %global pypi_name asyncio-throttle
 
 Name:           python-%{pypi_name}
-Version:        1.0.1
+Version:        1.0.2
 Release:        1%{?dist}
 Summary:        Simple, easy-to-use throttler for asyncio
 
@@ -42,5 +42,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/asyncio_throttle-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed May 12 2021 Evgeni Golov 1.0.2-1
+- Update to 1.0.2
+
 * Fri Mar 19 2021 Evgeni Golov - 1.0.1-1
 - Initial package.
