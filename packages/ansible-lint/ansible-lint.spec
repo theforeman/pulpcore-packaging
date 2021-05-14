@@ -2,7 +2,7 @@
 %global pypi_name ansible-lint
 
 Name:           %{pypi_name}
-Version:        5.0.6
+Version:        5.0.8
 Release:        1%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
@@ -25,6 +25,7 @@ Requires:       python%{python3_pkgversion}-rich >= 9.5.1
 Requires:       python%{python3_pkgversion}-ruamel-yaml < 1
 Requires:       python%{python3_pkgversion}-ruamel-yaml >= 0.15.37
 Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-tenacity
 Requires:       python%{python3_pkgversion}-typing-extensions
 Requires:       python%{python3_pkgversion}-wcmatch >= 7.0
 
@@ -50,6 +51,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ansible_lint-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri May 14 2021 Evgeni Golov - 5.0.8-1
+- Release ansible-lint 5.0.8
+
 * Wed Mar 31 2021 Evgeni Golov - 5.0.6-1
 - Update to 5.0.6
 
