@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.10.0
+Version:        3.11.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -34,7 +34,7 @@ Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.25
-Requires:       python%{python3_pkgversion}-pulpcore < 3.12
+Requires:       python%{python3_pkgversion}-pulpcore < 3.13
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.7
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-solv >= 0.7.17
@@ -64,6 +64,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed May 19 2021 Evgeni Golov - 3.11.0-1
+- Release python-pulp-rpm 3.11.0
+
 * Thu Apr 08 2021 Ian Ballou <ianballou67@gmail.com> 3.10.0-1
 - Update to 3.10.0
 
