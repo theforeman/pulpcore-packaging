@@ -130,6 +130,7 @@ pulpcore_packages:
     python-importlib-metadata: {}
     python-inflection: {}
     python-pulp-rpm-client: {}
+    python-pulpcore-client: {}
     python-tenacity: {}
     python-wcmatch: {}
     python3-iniparse:
