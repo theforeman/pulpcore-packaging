@@ -107,7 +107,9 @@
       <packagereq type="default">python3-pulp-deb</packagereq>
       <packagereq type="default">python3-pulp-file</packagereq>
       <packagereq type="default">python3-pulp-rpm</packagereq>
+      <packagereq type="default">python3-pulp-rpm-client</packagereq>
       <packagereq type="default">python3-pulpcore</packagereq>
+      <packagereq type="default">python3-pulpcore-client</packagereq>
       <packagereq type="default">python3-pyOpenSSL</packagereq>
       <packagereq type="default">python3-pycares</packagereq>
       <packagereq type="default">python3-pycodestyle</packagereq>
