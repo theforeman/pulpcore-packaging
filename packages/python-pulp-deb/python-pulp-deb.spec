@@ -2,7 +2,7 @@
 %global pypi_name pulp-deb
 
 Name:           python-%{pypi_name}
-Version:        2.9.1
+Version:        2.9.2
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -46,6 +46,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_deb-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue May 25 2021 Quirin Pamp - 2.9.2-1
+- Update to 2.9.2
+
 * Thu Apr 15 2021 Quirin Pamp - 2.9.1-1
 - Release python-pulp-deb 2.9.1
 
