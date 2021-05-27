@@ -68,6 +68,7 @@ pulpcore_packages:
     libcomps: {}
     libsolv: {}
     postgresql-debversion: {}
+    postgresql-debversion-evr: {}
     postgresql-evr: {}
     pulpcore-selinux: {}
     python-aiodns: {}
