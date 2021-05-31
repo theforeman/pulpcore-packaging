@@ -3,7 +3,7 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.11.1
+Version:        3.11.2
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -13,7 +13,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-Requires:       python%{python3_pkgversion}-django >= 2.2.19
+Requires:       python%{python3_pkgversion}-django >= 2.2.23
 Conflicts:      python%{python3_pkgversion}-django >= 2.3
 BuildRequires:  python%{python3_pkgversion}-PyYAML < 5.5.0
 BuildRequires:  python%{python3_pkgversion}-PyYAML >= 5.1.1
@@ -80,7 +80,7 @@ Using Pulp you can:
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-django >= 2.2.19
+Requires:       python%{python3_pkgversion}-django >= 2.2.23
 Conflicts:      python%{python3_pkgversion}-django >= 2.3
 Requires:       python%{python3_pkgversion}-PyYAML < 5.5.0
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.1.1
@@ -177,6 +177,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon May 31 2021 Evgeni Golov - 3.11.2-1
+- Release python-pulpcore 3.11.2
+
 * Wed May 12 2021 Evgeni Golov 3.11.1-1
 - Update to 3.11.1
 
