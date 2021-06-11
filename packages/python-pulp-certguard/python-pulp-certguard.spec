@@ -2,7 +2,7 @@
 %global pypi_name pulp-certguard
 
 Name:           python-%{pypi_name}
-Version:        1.2.0
+Version:        1.3.0
 Release:        1%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
@@ -23,7 +23,7 @@ a certificate proving their entitlement to content before receiving the content.
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-pyOpenSSL
-Requires:       python%{python3_pkgversion}-pulpcore < 3.13
+Requires:       python%{python3_pkgversion}-pulpcore < 3.14
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.10
 Requires:       python%{python3_pkgversion}-setuptools
 
@@ -50,6 +50,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_certguard-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Jun 11 2021 Evgeni Golov 1.3.0-1
+- Update to 1.3.0
+
 * Fri Mar 19 2021 Evgeni Golov 1.2.0-1
 - Update to 1.2.0
 
