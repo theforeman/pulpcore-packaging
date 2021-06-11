@@ -73,6 +73,7 @@ pulpcore_packages:
     python-aiodns: {}
     python-aiofiles: {}
     python-aiohttp: {}
+    python-aiohttp-xmlrpc: {}
     python-ansible-builder: {}
     python-async-lru: {}
     python-async-timeout: {}
