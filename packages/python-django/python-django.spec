@@ -3,7 +3,7 @@
 %global srcname django
 
 Name:           python-%{srcname}
-Version:        2.2.23
+Version:        2.2.24
 Release:        1%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
@@ -61,6 +61,9 @@ mv %{buildroot}%{_bindir}/django-admin %{buildroot}%{_bindir}/python3-django-adm
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Jun 11 2021 Evgeni Golov 2.2.24-1
+- Update to 2.2.24
+
 * Mon May 31 2021 Evgeni Golov - 2.2.23-1
 - Release python-django 2.2.23
 
