@@ -2,8 +2,8 @@
 %global pypi_name rq
 
 Name:           python-%{pypi_name}
-Version:        1.7.0
-Release:        2%{?dist}
+Version:        1.8.1
+Release:        1%{?dist}
 Summary:        RQ is a simple, lightweight, library for creating background jobs, and processing them
 
 License:        BSD
@@ -49,6 +49,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Jun 11 2021 Evgeni Golov 1.8.1-1
+- Update to 1.8.1
+
 * Wed Mar 03 2021 Brian Bouterse - 1.7.0-2
 - Have heartbeats occur more frequently within the worker TTL
 
