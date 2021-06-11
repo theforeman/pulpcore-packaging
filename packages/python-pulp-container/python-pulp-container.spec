@@ -2,7 +2,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.5.3
+Version:        2.6.0
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -30,8 +30,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-ecdsa >= 0.13.2
 Conflicts:      python%{python3_pkgversion}-ecdsa >= 0.14
-Requires:       python%{python3_pkgversion}-pulpcore < 3.13
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.11
+Requires:       python%{python3_pkgversion}-pulpcore < 3.14
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.12.1
 Requires:       python%{python3_pkgversion}-pyjwkest >= 1.4.0
 Conflicts:      python%{python3_pkgversion}-pyjwkest >= 1.5
 Requires:       python%{python3_pkgversion}-pyjwt >= 1.7.1
@@ -44,7 +44,7 @@ Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 %{summary}
 
 %prep
-%autosetup -n %{pypi_name}-%{version} -p1
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -61,6 +61,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Jun 11 2021 Evgeni Golov 2.6.0-1
+- Update to 2.6.0
+
 * Mon May 31 2021 Evgeni Golov - 2.5.3-1
 - Release python-pulp-container 2.5.3
 
