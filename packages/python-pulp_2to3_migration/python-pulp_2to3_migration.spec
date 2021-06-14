@@ -4,7 +4,7 @@
 # We use a wrong source RPM name here, as the original one triggers a bug in tito
 # See https://github.com/dgoodwin/tito/pull/333
 Name:           python-pulp_2to3_migration
-Version:        0.11.1
+Version:        0.11.2
 Release:        1%{?dist}
 Summary:        Pulp 2 to Pulp 3 migration tool
 
@@ -50,8 +50,11 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_2to3_migration-%{version}-py%{python3_version}.egg-info
 
 %changelog
-* Sun May 09 2021 Zach Huntington-Meath <zhunting@redhat.com> - 0.11.1-1
-- Release python-pulp_2to3_migration 0.11.1
+* Mon Jun 14 2021 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> 0.11.2-1
+- Update to 0.11.2
+
+* Mon May 24 2021 Justin Sherrill <jsherril@redhat.com> 0.11.1-1
+- update to 0.11.1
 
 * Tue Apr 13 2021 Evgeni Golov - 0.11.0-1
 - Release python-pulp_2to3_migration 0.11.0
