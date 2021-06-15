@@ -2,7 +2,7 @@
 %global pypi_name pulp-deb
 
 Name:           python-%{pypi_name}
-Version:        2.11.2
+Version:        2.13.0
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -21,8 +21,8 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-debian >= 0.1.36
-Requires:       python%{python3_pkgversion}-pulpcore < 3.13
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.10
+Requires:       python%{python3_pkgversion}-pulpcore < 3.15
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.12
 Requires:       python%{python3_pkgversion}-setuptools
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -46,6 +46,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_deb-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Jun 11 2021 Evgeni Golov 2.13.0-1
+- Update to 2.13.0
+
 * Tue May 25 2021 Quirin Pamp 2.11.2-1
 - Update to 2.11.2
 
