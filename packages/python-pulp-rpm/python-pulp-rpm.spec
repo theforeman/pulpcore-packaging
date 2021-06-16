@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.12.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -39,6 +39,7 @@ Requires:       python%{python3_pkgversion}-pulpcore >= 3.12
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-solv >= 0.7.17
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
+Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -64,6 +65,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Jun 16 2021 Evgeni Golov 3.12.0-2
+- Depend on aiohttp-xmlrpc
+
 * Fri Jun 11 2021 Evgeni Golov 3.12.0-1
 - Update to 3.12.0
 
