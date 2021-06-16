@@ -25,6 +25,7 @@
       <packagereq type="default">python3-aiodns</packagereq>
       <packagereq type="default">python3-aiofiles</packagereq>
       <packagereq type="default">python3-aiohttp</packagereq>
+      <packagereq type="default">python3-aiohttp-xmlrpc</packagereq>
       <packagereq type="default">python3-ansible-builder</packagereq>
       <packagereq type="default">python3-async-lru</packagereq>
       <packagereq type="default">python3-async-timeout</packagereq>
@@ -88,6 +89,7 @@
       <packagereq type="default">python3-jinja2</packagereq>
       <packagereq type="default">python3-jsonschema</packagereq>
       <packagereq type="default">python3-libcomps</packagereq>
+      <packagereq type="default">python3-lxml</packagereq>
       <packagereq type="default">python3-markdown</packagereq>
       <packagereq type="default">python3-markuppy</packagereq>
       <packagereq type="default">python3-markupsafe</packagereq>

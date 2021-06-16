@@ -73,6 +73,7 @@ pulpcore_packages:
     python-aiodns: {}
     python-aiofiles: {}
     python-aiohttp: {}
+    python-aiohttp-xmlrpc: {}
     python-ansible-builder: {}
     python-async-lru: {}
     python-async-timeout: {}
@@ -129,6 +130,7 @@ pulpcore_packages:
     python-idna-ssl: {}
     python-importlib-metadata: {}
     python-inflection: {}
+    python-lxml: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
     python-tenacity: {}
