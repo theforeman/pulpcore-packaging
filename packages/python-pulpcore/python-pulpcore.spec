@@ -1,10 +1,10 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
-%global wrappers gunicorn rq
+%global wrappers gunicorn rq pulpcore-worker
 
 Name:           python-%{pypi_name}
 Version:        3.13.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -177,6 +177,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Jun 17 2021 Evgeni Golov - 3.13.0-2
+- place the worker wrapper in libexec
+
 * Fri Jun 11 2021 Evgeni Golov 3.13.0-1
 - Update to 3.13.0
 
