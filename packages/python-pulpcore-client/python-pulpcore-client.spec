@@ -2,7 +2,7 @@
 %global pypi_name pulpcore-client
 
 Name:           python-%{pypi_name}
-Version:        3.11.1
+Version:        3.13.0
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -49,5 +49,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulpcore_client-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Jun 17 2021 Evgeni Golov - 3.13.0-1
+- Release python-pulpcore-client 3.13.0
+
 * Fri May 21 2021 Evgeni Golov - 3.11.1-1
 - Initial package.

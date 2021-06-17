@@ -6,4 +6,6 @@ pulp-deb==2.13.0
 pulp-rpm==3.12.0
 pulp-certguard==1.3.0
 pulp-ansible==0.8.0
+pulpcore-client==3.13.0
+pulp-rpm-client==3.12.0
 #galaxy-ng==4.3.1
