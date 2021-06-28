@@ -2,7 +2,7 @@
 %global pypi_name toml
 
 Name:           python-%{pypi_name}
-Version:        0.10.1
+Version:        0.10.2
 Release:        1%{?dist}
 Summary:        Python Library for Tom's Obvious, Minimal Language
 
@@ -42,6 +42,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jun 28 2021 Evgeni Golov - 0.10.2-1
+- Release python-toml 0.10.2
+
 * Thu Jun 04 2020 Evgeni Golov 0.10.1-1
 - Update to 0.10.1
 
