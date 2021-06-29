@@ -2,7 +2,7 @@
 %global pypi_name productmd
 
 Name:           python-%{pypi_name}
-Version:        1.31
+Version:        1.33
 Release:        1%{?dist}
 Summary:        Product, compose and installation media metadata library
 
@@ -44,6 +44,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Jun 29 2021 Evgeni Golov - 1.33-1
+- Release python-productmd 1.33
+
 * Thu Feb 25 2021 Justin Sherrill <jsherril@redhat.com> 1.31-1
 - update to 1.31
 
