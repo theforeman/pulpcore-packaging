@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm-client
 
 Name:           python-%{pypi_name}
-Version:        3.12.0
+Version:        3.13.2
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -49,6 +49,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_rpm_client-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Jun 29 2021 Evgeni Golov - 3.13.2-1
+- Release python-pulp-rpm-client 3.13.2
+
 * Thu Jun 17 2021 Evgeni Golov - 3.12.0-1
 - Release python-pulp-rpm-client 3.12.0
 
