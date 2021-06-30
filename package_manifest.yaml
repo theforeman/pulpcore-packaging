@@ -147,6 +147,7 @@ pulpcore_packages:
     python-psycopg2: {}
     python-pulp-ansible: {}
     python-pulp-certguard: {}
+    python-pulp-cli: {}
     python-pulp-rpm: {}
     python-pulp_2to3_migration: {}
     python-pulp-container: {}
