@@ -89,6 +89,7 @@ pulpcore_packages:
     python-cffi: {}
     python-chardet: {}
     python-click: {}
+    python-click-shell: {}
     python-colorama: {}
     python-commonmark: {}
     python-coreapi: {}
