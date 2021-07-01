@@ -2,7 +2,7 @@
 %global pypi_name galaxy-ng
 
 Name:           python-%{pypi_name}
-Version:        4.2.3
+Version:        4.2.4
 Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
@@ -41,6 +41,10 @@ Requires:       python%{python3_pkgversion}-setuptools
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
+# drop the ansible requirement, we don't ship ansible for Python3
+# and keeping the req makes the plugin fail to load
+sed -i '/ansible~=2.10.0/d' setup.py
+
 %build
 %py3_build
 
@@ -53,6 +57,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Jul 01 2021 Evgeni Golov - 4.2.4-1
+- Release python-galaxy-ng 4.2.4
+
 * Mon Apr 26 2021 Evgeni Golov - 4.2.3-1
 - Release python-galaxy-ng 4.2.3
 
