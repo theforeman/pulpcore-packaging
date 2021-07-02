@@ -74,6 +74,7 @@ pulpcore_packages:
     python-aiofiles: {}
     python-aiohttp: {}
     python-aiohttp-xmlrpc: {}
+    python-aioredis: {}
     python-ansible-builder: {}
     python-async-lru: {}
     python-async-timeout: {}
