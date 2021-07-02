@@ -2,7 +2,7 @@
 %global pypi_name pulp-file
 
 Name:           python-%{pypi_name}
-Version:        1.8.0
+Version:        1.8.1
 Release:        1%{?dist}
 Summary:        File plugin for the Pulp Project
 
@@ -45,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_file-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Jul 02 2021 Evgeni Golov - 1.8.1-1
+- Release python-pulp-file 1.8.1
+
 * Tue Jun 29 2021 Evgeni Golov - 1.8.0-1
 - Release python-pulp-file 1.8.0
 
