@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.13.2
+Version:        3.13.3
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -65,6 +65,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Jul 07 2021 Justin Sherrill <jsherril@redhat.com> 3.13.3-1
+- upgrade to 3.13.3
+
 * Tue Jun 29 2021 Evgeni Golov - 3.13.2-1
 - Release python-pulp-rpm 3.13.2
 
