@@ -3,7 +3,7 @@
 %global srcname debian
 
 Name:           python-%{srcname}
-Version:        0.1.39
+Version:        0.1.40
 Release:        1%{?dist}
 Summary:        Debian package related modules
 
@@ -49,6 +49,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/python_debian-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Jul 13 2021 Evgeni Golov 0.1.40-1
+- Update to 0.1.40
+
 * Fri Mar 19 2021 Evgeni Golov 0.1.39-1
 - Update to 0.1.39
 
