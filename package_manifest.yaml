@@ -137,6 +137,7 @@ pulpcore_packages:
     python-lxml: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
+    python-socks: {}
     python-tenacity: {}
     python-wcmatch: {}
     python3-iniparse:
