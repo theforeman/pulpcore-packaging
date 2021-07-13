@@ -122,6 +122,7 @@ pulpcore_packages:
     python-ecdsa: {}
     python-enrich: {}
     python-et-xmlfile: {}
+    python-filelock: {}
     python-flake8: {}
     python-future: {}
     python-galaxy-importer: {}
