@@ -1,10 +1,10 @@
 # Created by pyp2rpm-3.3.6
 %global pypi_name aioredis
-%global real_version %{version}a1
+%global real_version %{version}b1
 
 Name:           python-%{pypi_name}
 Version:        2.0.0
-Release:        0.1.a1%{?dist}
+Release:        0.1.b1%{?dist}
 Summary:        asyncio (PEP 3156) Redis support
 
 License:        MIT
@@ -23,9 +23,9 @@ BuildRequires:  python%{python3_pkgversion}-typing-extensions
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
 Requires:       python%{python3_pkgversion}-async-timeout
 Requires:       python%{python3_pkgversion}-typing-extensions
+
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
@@ -33,9 +33,6 @@ Requires:       python%{python3_pkgversion}-typing-extensions
 %autosetup -n %{pypi_name}-%{real_version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
-# workaround until https://github.com/aio-libs/aioredis-py/pull/1043 is released
-sed -i '/long_description=/ s/=.*/="aioredis",/' setup.py
 
 %build
 %py3_build
@@ -50,5 +47,8 @@ sed -i '/long_description=/ s/=.*/="aioredis",/' setup.py
 %{python3_sitelib}/%{pypi_name}-%{real_version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Jul 13 2021 Evgeni Golov 2.0.0-0.1.b1
+- Update to 2.0.0b1
+
 * Fri Jul 02 2021 Evgeni Golov - 2.0.0-0.1.a1
 - Initial package.
