@@ -136,6 +136,7 @@ pulpcore_packages:
     python-inflection: {}
     python-lxml: {}
     python-pkginfo: {}
+    python-pulp-python: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
     python-socks: {}
