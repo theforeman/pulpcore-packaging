@@ -2,7 +2,7 @@
 %global pypi_name wcmatch
 
 Name:           python-%{pypi_name}
-Version:        8.1.2
+Version:        8.2
 Release:        1%{?dist}
 Summary:        Wildcard/glob file name matcher
 
@@ -12,6 +12,7 @@ Source0:        https://files.pythonhosted.org/packages/source/w/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-bracex >= 2.1.1
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %description
@@ -43,5 +44,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Jul 13 2021 Evgeni Golov 8.2-1
+- Update to 8.2
+
 * Wed Mar 31 2021 Evgeni Golov - 8.1.2-1
 - Initial package.
