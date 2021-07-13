@@ -82,6 +82,7 @@ pulpcore_packages:
     python-asyncio-throttle: {}
     python-attrs: {}
     python-backoff: {}
+    python-bandersnatch: {}
     python-bleach: {}
     python-bleach-allowlist: {}
     python-bleach-whitelist: {}
