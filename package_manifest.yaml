@@ -132,6 +132,7 @@ pulpcore_packages:
     python-idna: {}
     python-idna-ssl: {}
     python-importlib-metadata: {}
+    python-importlib-resources: {}
     python-inflection: {}
     python-lxml: {}
     python-pulp-rpm-client: {}
