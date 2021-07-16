@@ -2,7 +2,7 @@
 %global pypi_name galaxy-ng
 
 Name:           python-%{pypi_name}
-Version:        4.2.4
+Version:        4.2.5
 Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
@@ -57,6 +57,9 @@ sed -i '/ansible~=2.10.0/d' setup.py
 %{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Jul 16 2021 Evgeni Golov - 4.2.5-1
+- Release python-galaxy-ng 4.2.5
+
 * Thu Jul 01 2021 Evgeni Golov - 4.2.4-1
 - Release python-galaxy-ng 4.2.4
 
