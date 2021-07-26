@@ -3,7 +3,7 @@
 %global wrappers gunicorn rq pulpcore-worker
 
 Name:           python-%{pypi_name}
-Version:        3.14.1
+Version:        3.14.3
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -179,6 +179,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jul 26 2021 Justin Sherrill <jsherril@redhat.com> 3.14.3-1
+- upgrade to 3.14.3
+
 * Wed Jul 07 2021 Justin Sherrill <jsherril@redhat.com> 3.14.1-1
 - update to 3.14.1
 
