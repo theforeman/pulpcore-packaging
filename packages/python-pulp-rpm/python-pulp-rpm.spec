@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.13.3
+Version:        3.14.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -34,8 +34,8 @@ Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
-Requires:       python%{python3_pkgversion}-pulpcore < 3.15
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.13
+Requires:       python%{python3_pkgversion}-pulpcore < 3.16
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.14.2
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-solv >= 0.7.17
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
@@ -65,6 +65,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jul 26 2021 Justin Sherrill <jsherril@redhat.com> 3.14.0-1
+- update to 3.14.0
+
 * Wed Jul 07 2021 Justin Sherrill <jsherril@redhat.com> 3.13.3-1
 - upgrade to 3.13.3
 
