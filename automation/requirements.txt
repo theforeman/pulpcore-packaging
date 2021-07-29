@@ -1,7 +1,7 @@
 cryptography<3.4
 pulpcore==3.14.3
 pulp-file==1.8.1
-pulp-container==2.7.0
+pulp-container==2.7.1
 pulp-deb==2.13.0
 pulp-rpm==3.14.0
 pulp-certguard==1.4.0
