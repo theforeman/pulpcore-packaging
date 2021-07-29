@@ -27,7 +27,7 @@ Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.3.1
 Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       python%{python3_pkgversion}-packaging
 Requires:       python%{python3_pkgversion}-pulpcore < 3.15
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.12.1
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.14
 Requires:       python%{python3_pkgversion}-semantic-version
 Requires:       python%{python3_pkgversion}-setuptools
 
