@@ -25,6 +25,7 @@
       <packagereq type="default">python3-aiodns</packagereq>
       <packagereq type="default">python3-aiofiles</packagereq>
       <packagereq type="default">python3-aiohttp</packagereq>
+      <packagereq type="default">python3-aiohttp-socks</packagereq>      
       <packagereq type="default">python3-aiohttp-xmlrpc</packagereq>
       <packagereq type="default">python3-aioredis</packagereq>
       <packagereq type="default">python3-ansible-builder</packagereq>
@@ -141,6 +142,7 @@
       <packagereq type="default">python3-setuptools-scm</packagereq>
       <packagereq type="default">python3-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">python3-six</packagereq>
+      <packagereq type="default">python3-socks</packagereq>
       <packagereq type="default">python3-solv</packagereq>
       <packagereq type="default">python3-sqlparse</packagereq>
       <packagereq type="default">python3-subscription-manager-rhsm</packagereq>

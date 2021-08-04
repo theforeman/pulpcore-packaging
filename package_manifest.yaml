@@ -73,6 +73,7 @@ pulpcore_packages:
     python-aiodns: {}
     python-aiofiles: {}
     python-aiohttp: {}
+    python-aiohttp-socks: {}
     python-aiohttp-xmlrpc: {}
     python-aioredis: {}
     python-ansible-builder: {}
@@ -191,6 +192,7 @@ pulpcore_packages:
     python-semantic-version: {}
     python-setuptools-scm: {}
     python-setuptools_scm_git_archive: {}
+    python-socks: {}
     python-six: {}
     python-sqlparse: {}
     python-tablib: {}
