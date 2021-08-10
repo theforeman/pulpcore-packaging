@@ -26,6 +26,7 @@
       <packagereq type="default">python3-aiodns</packagereq>
       <packagereq type="default">python3-aiofiles</packagereq>
       <packagereq type="default">python3-aiohttp</packagereq>
+      <packagereq type="default">python3-aiohttp-socks</packagereq>
       <packagereq type="default">python3-aiohttp-xmlrpc</packagereq>
       <packagereq type="default">python3-aioredis</packagereq>
       <packagereq type="default">python3-ansible-builder</packagereq>
@@ -34,6 +35,7 @@
       <packagereq type="default">python3-asyncio-throttle</packagereq>
       <packagereq type="default">python3-attrs</packagereq>
       <packagereq type="default">python3-backoff</packagereq>
+      <packagereq type="default">python3-bandersnatch</packagereq>
       <packagereq type="default">python3-bleach</packagereq>
       <packagereq type="default">python3-bleach-allowlist</packagereq>
       <packagereq type="default">python3-bleach-whitelist</packagereq>
@@ -76,6 +78,7 @@
       <packagereq type="default">python3-ecdsa</packagereq>
       <packagereq type="default">python3-enrich</packagereq>
       <packagereq type="default">python3-et-xmlfile</packagereq>
+      <packagereq type="default">python3-filelock</packagereq>
       <packagereq type="default">python3-flake8</packagereq>
       <packagereq type="default">python3-future</packagereq>
       <packagereq type="default">python3-galaxy-importer</packagereq>
@@ -85,6 +88,7 @@
       <packagereq type="default">python3-idna</packagereq>
       <packagereq type="default">python3-idna-ssl</packagereq>
       <packagereq type="default">python3-importlib-metadata</packagereq>
+      <packagereq type="default">python3-importlib-resources</packagereq>
       <packagereq type="default">python3-inflection</packagereq>
       <packagereq type="default">python3-itypes</packagereq>
       <packagereq type="default">python3-jdcal</packagereq>
@@ -101,6 +105,7 @@
       <packagereq type="default">python3-odfpy</packagereq>
       <packagereq type="default">python3-openpyxl</packagereq>
       <packagereq type="default">python3-packaging</packagereq>
+      <packagereq type="default">python3-pkginfo</packagereq>
       <packagereq type="default">python3-productmd</packagereq>
       <packagereq type="default">python3-prometheus-client</packagereq>
       <packagereq type="default">python3-psycopg2</packagereq>
@@ -111,6 +116,7 @@
       <packagereq type="default">python3-pulp-container</packagereq>
       <packagereq type="default">python3-pulp-deb</packagereq>
       <packagereq type="default">python3-pulp-file</packagereq>
+      <packagereq type="default">python3-pulp-python</packagereq>
       <packagereq type="default">python3-pulp-rpm</packagereq>
       <packagereq type="default">python3-pulp-rpm-client</packagereq>
       <packagereq type="default">python3-pulpcore</packagereq>
@@ -141,6 +147,7 @@
       <packagereq type="default">python3-setuptools-scm</packagereq>
       <packagereq type="default">python3-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">python3-six</packagereq>
+      <packagereq type="default">python3-socks</packagereq>
       <packagereq type="default">python3-solv</packagereq>
       <packagereq type="default">python3-sqlparse</packagereq>
       <packagereq type="default">python3-tablib</packagereq>
