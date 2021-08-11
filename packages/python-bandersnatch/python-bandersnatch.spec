@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        4.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Mirroring tool that implements the client (mirror) side of PEP 381
 
 License:        Academic Free License, version 3
@@ -36,6 +36,8 @@ Requires:       python%{python3_pkgversion}-setuptools
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
+sed -i '/setuptools/ s/>40.0.0//' setup.cfg
+
 %build
 %py3_build
 
@@ -52,5 +54,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Aug 11 2021 Evgeni Golov - 4.4.0-2
+- Patch out setuptools version requirement
+
 * Tue Jul 13 2021 Evgeni Golov - 4.4.0-1
 - Initial package.
