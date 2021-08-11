@@ -142,6 +142,7 @@ pulpcore_packages:
     python-pulp-python: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
+    python-schema: {}
     python-socks: {}
     python-tenacity: {}
     python-wcmatch: {}
