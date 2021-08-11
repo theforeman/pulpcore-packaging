@@ -95,6 +95,7 @@ pulpcore_packages:
     python-click-shell: {}
     python-colorama: {}
     python-commonmark: {}
+    python-contextlib2: {}
     python-coreapi: {}
     python-coreschema: {}
     python-cryptography: {}
