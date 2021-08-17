@@ -91,6 +91,7 @@ pulpcore_packages:
     python-click-shell: {}
     python-colorama: {}
     python-commonmark: {}
+    python-contextlib2: {}
     python-coreapi: {}
     python-coreschema: {}
     python-cryptography: {}
@@ -132,6 +133,7 @@ pulpcore_packages:
     python-inflection: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
+    python-schema: {}
     python-tenacity: {}
     python-wcmatch: {}
     python3-iniparse:

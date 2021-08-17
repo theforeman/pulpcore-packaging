@@ -2,7 +2,7 @@
 %global pypi_name pulp-cli
 
 Name:           python-%{pypi_name}
-Version:        0.10.1
+Version:        0.11.0
 Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
@@ -21,16 +21,17 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       python%{python3_pkgversion}-PyYAML < 5.5
-Requires:       python%{python3_pkgversion}-PyYAML >= 5.4.1
+Requires:       python%{python3_pkgversion}-PyYAML < 6.0
+Requires:       python%{python3_pkgversion}-PyYAML >= 5.3
 Requires:       python%{python3_pkgversion}-click < 9
 Requires:       python%{python3_pkgversion}-click >= 7.1.2
 Requires:       python%{python3_pkgversion}-click-shell < 3
 Requires:       python%{python3_pkgversion}-click-shell >= 2.1
 Requires:       python%{python3_pkgversion}-packaging
 Requires:       python%{python3_pkgversion}-pygments
-Requires:       python%{python3_pkgversion}-requests < 2.26
-Requires:       python%{python3_pkgversion}-requests >= 2.25.1
+Requires:       python%{python3_pkgversion}-requests < 3.0
+Requires:       python%{python3_pkgversion}-requests >= 2.24
+Requires:       python%{python3_pkgversion}-schema = 0.7.4
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-toml = 0.10.2
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -58,6 +59,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_cli-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Aug 11 2021 Evgeni Golov - 0.11.0-1
+- Release python-pulp-cli 0.11.0
+
 * Wed Jun 30 2021 Evgeni Golov - 0.10.1-1
 - Initial package.
 

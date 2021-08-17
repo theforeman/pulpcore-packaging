@@ -43,6 +43,7 @@
       <packagereq type="default">python3-click-shell</packagereq>
       <packagereq type="default">python3-colorama</packagereq>
       <packagereq type="default">python3-commonmark</packagereq>
+      <packagereq type="default">python3-contextlib2</packagereq>
       <packagereq type="default">python3-coreapi</packagereq>
       <packagereq type="default">python3-coreschema</packagereq>
       <packagereq type="default">python3-createrepo_c</packagereq>
@@ -134,6 +135,7 @@
       <packagereq type="default">python3-rq</packagereq>
       <packagereq type="default">python3-ruamel-yaml</packagereq>
       <packagereq type="default">python3-ruamel-yaml-clib</packagereq>
+      <packagereq type="default">python3-schema</packagereq>
       <packagereq type="default">python3-semantic-version</packagereq>
       <packagereq type="default">python3-setuptools-scm</packagereq>
       <packagereq type="default">python3-setuptools_scm_git_archive</packagereq>
