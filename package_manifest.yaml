@@ -88,6 +88,7 @@ pulpcore_packages:
     python-click-shell: {}
     python-colorama: {}
     python-commonmark: {}
+    python-contextlib2: {}
     python-coreapi: {}
     python-coreschema: {}
     python-cryptography: {}
@@ -126,6 +127,7 @@ pulpcore_packages:
     python-idna-ssl: {}
     python-importlib-metadata: {}
     python-inflection: {}
+    python-schema: {}
     python3-iniparse:
       koji_tags:
         - name: pulpcore-{{ pulpcore_version }}-el7
