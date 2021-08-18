@@ -1,10 +1,10 @@
 # Created by pyp2rpm-3.3.6
 %global pypi_name aioredis
-%global real_version %{version}b1
+%global real_version %{version}
 
 Name:           python-%{pypi_name}
 Version:        2.0.0
-Release:        0.1.b1%{?dist}
+Release:        1%{?dist}
 Summary:        asyncio (PEP 3156) Redis support
 
 License:        MIT
@@ -47,6 +47,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{real_version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Aug 18 2021 Odilon Sousa <osousa@redhat.com> - 2.0.0-1
+- Release python-aioredis 2.0.0
+
 * Tue Jul 13 2021 Evgeni Golov 2.0.0-0.1.b1
 - Update to 2.0.0b1
 
