@@ -220,3 +220,4 @@ pulpcore_packages:
       koji_tags:
         - name: pulpcore-{{ pulpcore_version }}-el7
           dist: '.el7'
+    tfm-python38: {}

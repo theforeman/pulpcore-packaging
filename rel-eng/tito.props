@@ -20,3 +20,4 @@ disttag = .el8
 blacklist =
   python3-iniparse
   subscription-manager
+  tfm-python38
