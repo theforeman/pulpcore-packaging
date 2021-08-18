@@ -85,8 +85,10 @@ pulpcore_packages:
     python-cffi: {}
     python-chardet: {}
     python-click: {}
+    python-click-shell: {}
     python-colorama: {}
     python-commonmark: {}
+    python-contextlib2: {}
     python-coreapi: {}
     python-coreschema: {}
     python-cryptography: {}
@@ -124,6 +126,7 @@ pulpcore_packages:
     python-idna-ssl: {}
     python-importlib-metadata: {}
     python-inflection: {}
+    python-schema: {}
     python3-iniparse:
       koji_tags:
         - name: pulpcore-{{ pulpcore_version }}-el7
@@ -146,6 +149,7 @@ pulpcore_packages:
     python-psycopg2: {}
     python-pulp-ansible: {}
     python-pulp-certguard: {}
+    python-pulp-cli: {}
     python-pulp-rpm: {}
     python-pulp_2to3_migration: {}
     python-pulp-container: {}
