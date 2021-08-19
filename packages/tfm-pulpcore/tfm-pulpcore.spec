@@ -11,6 +11,9 @@
 %global scl_python rh-python38
 %global scl_prefix_python %{scl_python}-
 
+%global pulpcore_sitelib %(echo %{python38python3_sitelib} | sed 's|/opt/rh/|%{_scl_prefix}/|;s|%{scl_python}|%{scl}|')
+%global pulpcore_sitearch %(echo %{python38python3_sitearch} | sed 's|/opt/rh/|%{_scl_prefix}/|;s|%{scl_python}|%{scl}|')
+
 %global install_scl 1
 
 # Do not produce empty debuginfo package.
@@ -52,6 +55,7 @@ Requires: %{scl_prefix_python}scldevel
 Package shipping essential configuration macros to build %scl Software Collection.
 
 %package scldevel
+Requires: %{scl_prefix_python}scldevel
 Summary: Package shipping development files for %scl
 
 %description scldevel
@@ -102,14 +106,46 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_scl_scripts}/root
 mkdir -p %{buildroot}%{_root_prefix}/lib/rpm/redhat
 cat >> %{buildroot}%{_scl_scripts}/enable << EOF
+. scl_source enable %{scl_python}
 export PATH=%{_bindir}\${PATH:+:\${PATH}}
 export LD_LIBRARY_PATH=%{_libdir}\${LD_LIBRARY_PATH:+:\${LD_LIBRARY_PATH}}
 export MANPATH=%{_mandir}:\${MANPATH}
+export PYTHONPATH="%{pulpcore_sitelib}:%{pulpcore_sitearch}:\${PYTHONPATH:+:\${PYTHONPATH}}"
 EOF
 %scl_install
 
-cat >> %{buildroot}%{_scl_scripts}/enable << EOF
-. scl_source enable %{scl_python}
+mkdir -p %{buildroot}%{pulpcore_sitelib}
+mkdir -p %{buildroot}%{pulpcore_sitearch}
+
+# additional rpm macros for builds in the collection to set the vendor correctly
+cat >> %{buildroot}%{_root_sysconfdir}/rpm/macros.%{scl}-config << EOF
+%%scl_vendor %{scl_vendor}
+%%_scl_prefix %{_scl_prefix}
+%%scl_package_override() %%{expand:%{?python38_os_install_post:%global __os_install_post %python38_os_install_post}
+%%global __python_requires %%python38_python_requires
+%%global __python_provides %%python38_python_provides
+# macros commonly used in specfiles
+%%global __python3 %%python38__python3
+%%global __python %%python38__python3
+%%global python3_version %%python38python3_version
+%%global python3_version_nodots %%python38python3_version_nodots
+%%global python3_platform %%python38python3_platform
+%%global py3dir %%python38py3dir
+%%global py3_build %%python38py3_build
+%%global py3_build_egg %%python38py3_build_egg
+%%global py3_build_wheel %%python38py3_build_wheel
+%%global py3_install_egg %%python38py3_install_egg
+%%global py3_install_wheel() %%%%{expand:%%{python38py3_install_wheel_start}%%%%{1}%%{python38py3_install_wheel_end}}
+%%global python3_sitelib %pulpcore_sitelib
+%%global python3_sitearch %pulpcore_sitearch
+%%global pulpcorepy3_install() %%{expand:\\\\\\
+  %%{?scl:scl enable rh-python38 '}\\\\\\
+  CFLAGS="\${CFLAGS:-\${RPM_OPT_FLAGS}}" LDFLAGS="\${LDFLAGS:-\${RPM_LD_FLAGS}}"\\\\\\
+  %%{python38__python3} %%{python38py_setup} %%{?py_setup_args} install -O1 --skip-build --root %%{buildroot} --install-purelib %%{python3_sitelib} --install-platlib %%{python3_sitearch} --install-scripts %%{_bindir} %%{?*}\\\\\\
+  %%{?scl:'}
+}
+%%global py3_install %%pulpcorepy3_install
+}
 EOF
 
 # Create the scldevel subpackage macros
@@ -129,6 +165,8 @@ install -m 644 %{scl_name}.7 %{buildroot}%{_mandir}/man7/%{scl_name}.7
 %files runtime -f filesystem
 %doc README LICENSE
 %scl_files
+%pulpcore_sitearch
+%pulpcore_sitelib
 %{_mandir}/man7/%{scl_name}.*
 
 %files build
