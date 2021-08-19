@@ -1,7 +1,7 @@
 %global __python /usr/bin/python3
-%global scl_name_base tfm-pulpcore
-%global scl_name_version 38
-%global scl %{scl_name_base}%{scl_name_version}
+%global scl_name_prefix tfm-
+%global scl_name_base pulpcore
+%global scl %{scl_name_prefix}%{scl_name_base}
 
 %scl_package %scl
 
