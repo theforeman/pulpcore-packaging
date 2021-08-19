@@ -71,6 +71,7 @@ Empty package pulling in %{scl_prefix_python}python-devel
 This package is only required to ease definition of dependencies inside the SCL
 
 %package python3-setuptools
+Provides: %{scl_prefix}python3-setuptools = 41.6.0
 Summary: Empty package pulling in %{scl_prefix_python}python-setuptools
 Requires: %{scl_prefix_python}python-setuptools
 
