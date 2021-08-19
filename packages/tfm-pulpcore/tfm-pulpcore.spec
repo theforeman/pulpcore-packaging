@@ -1,4 +1,7 @@
 %global __python /usr/bin/python3
+%global scl_vendor theforeman
+%global _scl_prefix /opt/%{scl_vendor}
+%{!?scl_vendor_in_name: %global scl_vendor_in_name 0}
 %global scl_name_prefix tfm-
 %global scl_name_base pulpcore
 %global scl %{scl_name_prefix}%{scl_name_base}
