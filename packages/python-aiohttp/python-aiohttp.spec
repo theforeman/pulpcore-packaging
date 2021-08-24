@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.7.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -37,6 +37,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl < 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.0
 
+# aiohttp depends on stdlib's mimetypes which reads /etc/mime.types
+Requires:       /etc/mime.types
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -73,6 +75,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 27 2021 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 3.7.4-3
+- Depend on /etc/mime.types
+
 * Mon Sep 06 2021 Evgeni Golov - 3.7.4-2
 - Build against Python 3.8
 
