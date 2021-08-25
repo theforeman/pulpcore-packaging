@@ -2,7 +2,7 @@
 %global pypi_name drf-spectacular
 
 Name:           python-%{pypi_name}
-Version:        0.17.2
+Version:        0.17.3
 Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
@@ -60,6 +60,9 @@ sed -i 's/long_description = readme.read.*/long_description = description/' setu
 %{python3_sitelib}/drf_spectacular-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Aug 25 2021 Odilon Sousa <osousa@redhat.com> - 0.17.3-1
+- Release python-drf-spectacular 0.17.3
+
 * Fri Jul 02 2021 Evgeni Golov - 0.17.2-1
 - Release python-drf-spectacular 0.17.2
 
