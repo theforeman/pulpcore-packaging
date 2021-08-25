@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.14.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -116,9 +116,9 @@ Requires:       python%{python3_pkgversion}-drf-access-policy >= 0.9.0
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 0.10
 Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.3
 Conflicts:      python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
-Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.17.2
-Conflicts:      python%{python3_pkgversion}-drf-spectacular >= 0.17.3
-Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.4
+Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.17.3
+Conflicts:      python%{python3_pkgversion}-drf-spectacular >= 0.18.0
+Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.5
 Conflicts:      python%{python3_pkgversion}-dynaconf >= 3.2
 Requires:       python%{python3_pkgversion}-gnupg >= 0.4.7
 Conflicts:      python%{python3_pkgversion}-gnupg >= 0.5
@@ -179,6 +179,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Aug 25 2021 Odilon Sousa <osousa@redhat.com> - 3.14.5-2
+- Release python-pulpcore 3.14.5
+
 * Wed Aug 25 2021 Odilon Sousa <osousa@redhat.com> - 3.14.5-1
 - Release python-pulpcore 3.14.5
 
