@@ -2,7 +2,7 @@
 %global pypi_name dynaconf
 
 Name:           python-%{pypi_name}
-Version:        3.1.4
+Version:        3.1.5
 Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
@@ -45,6 +45,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Aug 25 2021 Odilon Sousa <osousa@redhat.com> - 3.1.5-1
+- Release python-dynaconf 3.1.5
+
 * Fri Mar 19 2021 Evgeni Golov 3.1.4-1
 - Update to 3.1.4
 
