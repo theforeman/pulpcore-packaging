@@ -9,7 +9,6 @@ Summary:        RPM plugin for the Pulp Project
 License:        GPLv2+
 URL:            http://www.pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         8245.patch
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
