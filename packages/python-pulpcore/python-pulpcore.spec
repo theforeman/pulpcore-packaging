@@ -3,7 +3,7 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.7.6
+Version:        3.7.8
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -22,6 +22,8 @@ BuildRequires:  python%{python3_pkgversion}-aiodns
 BuildRequires:  python%{python3_pkgversion}-aiofiles
 BuildRequires:  python%{python3_pkgversion}-aiohttp
 BuildRequires:  python%{python3_pkgversion}-backoff
+BuildRequires:  python%{python3_pkgversion}-click >= 7.0
+BuildRequires:  python%{python3_pkgversion}-click < 8
 BuildRequires:  python%{python3_pkgversion}-django
 Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.1
 Conflicts:      python%{python3_pkgversion}-django-currentuser >= 0.6
@@ -85,6 +87,8 @@ Requires:       python%{python3_pkgversion}-aiodns
 Requires:       python%{python3_pkgversion}-aiofiles
 Requires:       python%{python3_pkgversion}-aiohttp
 Requires:       python%{python3_pkgversion}-backoff
+Requires:       python%{python3_pkgversion}-click >= 7.0
+Requires:       python%{python3_pkgversion}-click < 8
 Requires:       python%{python3_pkgversion}-django
 Requires:       python%{python3_pkgversion}-django-currentuser >= 0.5.1
 Conflicts:      python%{python3_pkgversion}-django-currentuser >= 0.6
@@ -168,6 +172,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Aug 30 2021 Odilon Sousa <osousa@redhat.com> - 3.7.8-1
+- Release python-pulpcore 3.7.8
+
 * Sun May 09 2021 Zach Huntington-Meath <zhunting@redhat.com> - 3.7.6-1
 - Release python-pulpcore 3.7.6
 
