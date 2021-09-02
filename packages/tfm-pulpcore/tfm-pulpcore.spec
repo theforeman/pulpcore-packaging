@@ -22,7 +22,7 @@
 Summary: Package that installs %scl
 Name: %scl_name
 Version: 1.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2+
 Source1: README
 Source2: LICENSE
@@ -122,7 +122,7 @@ mkdir -p %{buildroot}%{pulpcore_sitearch}
 cat >> %{buildroot}%{_root_sysconfdir}/rpm/macros.%{scl}-config << EOF
 %%scl_vendor %{scl_vendor}
 %%_scl_prefix %{_scl_prefix}
-%%scl_package_override() %%{expand:%{?python38_os_install_post:%global __os_install_post %python38_os_install_post}
+%%scl_package_override() %%{expand:%{?python38_os_install_post:%%global __os_install_post %%python38_os_install_post}
 %%global __python_requires %%python38_python_requires
 %%global __python_provides %%python38_python_provides
 # macros commonly used in specfiles
@@ -181,5 +181,8 @@ install -m 644 %{scl_name}.7 %{buildroot}%{_mandir}/man7/%{scl_name}.7
 %files python3-setuptools
 
 %changelog
+* Thu Sep 02 2021 Evgeni Golov - 1.0-2
+- Correct SCL macro definition
+
 * Tue Aug 17 2021 Evgeni Golov - 1.0-1
 - Initial package.
