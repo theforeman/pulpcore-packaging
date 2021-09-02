@@ -172,6 +172,12 @@
       <packagereq type="default">rh-postgresql12-postgresql-debversion</packagereq>
       <packagereq type="default">rh-postgresql12-postgresql-evr</packagereq>
       <packagereq type="default">ruby-solv</packagereq>
+      <packagereq type="default">tfm-pulpcore</packagereq>
+      <packagereq type="default">tfm-pulpcore-build</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-devel</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-setuptools</packagereq>
+      <packagereq type="default">tfm-pulpcore-runtime</packagereq>
+      <packagereq type="default">tfm-pulpcore-scldevel</packagereq>
     </packagelist>
   </group>
 </comps>
