@@ -133,6 +133,7 @@ pulpcore_packages:
     python-idna-ssl: {}
     python-importlib-metadata: {}
     python-inflection: {}
+    python-jmespath: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
     python-schema: {}
