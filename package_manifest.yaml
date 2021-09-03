@@ -78,6 +78,7 @@ pulpcore_packages:
     python-async-timeout: {}
     python-asyncio-throttle: {}
     python-attrs: {}
+    python-azure-common: {}
     python-backoff: {}
     python-bleach: {}
     python-bleach-allowlist: {}
