@@ -83,6 +83,7 @@ pulpcore_packages:
     python-bleach-allowlist: {}
     python-bleach-whitelist: {}
     python-boto3: {}
+    python-botocore: {}
     python-box: {}
     python-bracex: {}
     python-certifi: {}
