@@ -136,6 +136,7 @@ pulpcore_packages:
     python-jmespath: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
+    python-s3transfer: {}
     python-schema: {}
     python-tenacity: {}
     python-wcmatch: {}
