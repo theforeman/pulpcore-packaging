@@ -79,6 +79,7 @@ pulpcore_packages:
     python-asyncio-throttle: {}
     python-attrs: {}
     python-azure-common: {}
+    python-azure-storage-blob: {}
     python-backoff: {}
     python-bleach: {}
     python-bleach-allowlist: {}
