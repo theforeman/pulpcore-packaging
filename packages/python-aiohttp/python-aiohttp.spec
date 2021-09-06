@@ -1,9 +1,12 @@
+%{?scl:%scl_package python-%{pypi_name}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name aiohttp
 
-Name:           python-%{pypi_name}
+Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.7.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -11,48 +14,68 @@ URL:            https://github.com/aio-libs/aiohttp
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Patch0:         allow-larger-headers.patch
 
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
 
 %description
 %{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
+
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-async-timeout < 4.0
-Requires:       python%{python3_pkgversion}-async-timeout >= 3.0
-Requires:       python%{python3_pkgversion}-attrs >= 17.3.0
-Requires:       python%{python3_pkgversion}-chardet < 4.0
-Requires:       python%{python3_pkgversion}-chardet >= 2.0
-Requires:       python%{python3_pkgversion}-idna-ssl >= 1.0
-Requires:       python%{python3_pkgversion}-multidict < 7.0
-Requires:       python%{python3_pkgversion}-multidict >= 4.5
-Requires:       python%{python3_pkgversion}-typing-extensions >= 3.6.5
-Requires:       python%{python3_pkgversion}-yarl < 2.0
-Requires:       python%{python3_pkgversion}-yarl >= 1.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout < 4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 3.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.3.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet < 4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet >= 2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna-ssl >= 1.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-multidict < 7.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-multidict >= 4.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.6.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl < 2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.0
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python%{python3_pkgversion}-%{pypi_name}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.txt vendor/http-parser/LICENSE-MIT
 %doc README.rst vendor/http-parser/README.md
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Mon Sep 06 2021 Evgeni Golov - 3.7.4-2
+- Build against Python 3.8
+
 * Fri Mar 19 2021 Evgeni Golov 3.7.4-1
 - Update to 3.7.4
 
