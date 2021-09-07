@@ -93,6 +93,8 @@ pulpcore_packages:
     python-bleach: {}
     python-bleach-allowlist: {}
     python-bleach-whitelist: {}
+    python-boto3: {}
+    python-botocore: {}
     python-box: {}
     python-bracex: {}
     python-certifi: {}
@@ -136,6 +138,7 @@ pulpcore_packages:
     python-ecdsa: {}
     python-enrich: {}
     python-et-xmlfile: {}
+    python-jmespath: {}
     python-filelock: {}
     python-flake8: {}
     python-future: {}
@@ -163,6 +166,7 @@ pulpcore_packages:
     python-python3-openid: {}
     python-requests-oauthlib: {}
     python-rhsm: {}
+    python-s3transfer: {}
     python-schema: {}
     python-social-auth-app-django: {}
     python-social-auth-core: {}
