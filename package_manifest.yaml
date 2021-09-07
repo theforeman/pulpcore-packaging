@@ -85,6 +85,8 @@ pulpcore_packages:
     python-bleach: {}
     python-bleach-allowlist: {}
     python-bleach-whitelist: {}
+    python-boto3: {}
+    python-botocore: {}
     python-box: {}
     python-bracex: {}
     python-certifi: {}
@@ -134,8 +136,10 @@ pulpcore_packages:
     python-idna-ssl: {}
     python-importlib-metadata: {}
     python-inflection: {}
+    python-jmespath: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
+    python-s3transfer: {}
     python-schema: {}
     python-tenacity: {}
     python-wcmatch: {}

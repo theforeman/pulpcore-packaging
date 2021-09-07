@@ -37,6 +37,8 @@
       <packagereq type="default">python3-bleach</packagereq>
       <packagereq type="default">python3-bleach-allowlist</packagereq>
       <packagereq type="default">python3-bleach-whitelist</packagereq>
+      <packagereq type="default">python3-boto3</packagereq>
+      <packagereq type="default">python3-botocore</packagereq>
       <packagereq type="default">python3-box</packagereq>
       <packagereq type="default">python3-bracex</packagereq>
       <packagereq type="default">python3-certifi</packagereq>
@@ -91,6 +93,7 @@
       <packagereq type="default">python3-itypes</packagereq>
       <packagereq type="default">python3-jdcal</packagereq>
       <packagereq type="default">python3-jinja2</packagereq>
+      <packagereq type="default">python3-jmespath</packagereq>
       <packagereq type="default">python3-jsonschema</packagereq>
       <packagereq type="default">python3-libcomps</packagereq>
       <packagereq type="default">python3-markdown</packagereq>
@@ -138,6 +141,7 @@
       <packagereq type="default">python3-rq</packagereq>
       <packagereq type="default">python3-ruamel-yaml</packagereq>
       <packagereq type="default">python3-ruamel-yaml-clib</packagereq>
+      <packagereq type="default">python3-s3transfer</packagereq>
       <packagereq type="default">python3-schema</packagereq>
       <packagereq type="default">python3-semantic-version</packagereq>
       <packagereq type="default">python3-setuptools-scm</packagereq>
