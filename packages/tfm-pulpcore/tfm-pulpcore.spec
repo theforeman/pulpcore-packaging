@@ -22,7 +22,7 @@
 Summary: Package that installs %scl
 Name: %scl_name
 Version: 1.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv2+
 Source1: README
 Source2: LICENSE
@@ -142,7 +142,7 @@ cat >> %{buildroot}%{_root_sysconfdir}/rpm/macros.%{scl}-config << EOF
 %%global pulpcorepy3_install() %%{expand:\\\\\\
   %%{?scl:scl enable rh-python38 '}\\\\\\
   CFLAGS="\${CFLAGS:-\${RPM_OPT_FLAGS}}" LDFLAGS="\${LDFLAGS:-\${RPM_LD_FLAGS}}"\\\\\\
-  %%{python38__python3} %%{python38py_setup} %%{?py_setup_args} install -O1 --skip-build --root %%{buildroot} --install-purelib %%{python3_sitelib} --install-platlib %%{python3_sitearch} --install-scripts %%{_bindir} %%{?*}\\\\\\
+  %%{python38__python3} %%{python38py_setup} %%{?py_setup_args} install -O1 --skip-build --root %%{buildroot} --install-purelib %%{python3_sitelib} --install-platlib %%{python3_sitearch} --install-scripts %%{_bindir} --install-data %%{_prefix} %%{?*}\\\\\\
   %%{?scl:'}
 }
 %%global py3_install %%pulpcorepy3_install
@@ -181,6 +181,9 @@ install -m 644 %{scl_name}.7 %{buildroot}%{_mandir}/man7/%{scl_name}.7
 %files python3-setuptools
 
 %changelog
+* Tue Sep 07 2021 Evgeni Golov - 1.0-3
+- Properly install data to _prefix
+
 * Thu Sep 02 2021 Evgeni Golov - 1.0-2
 - Correct SCL macro definition
 
