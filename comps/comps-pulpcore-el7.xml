@@ -30,6 +30,9 @@
       <packagereq type="default">python3-async-timeout</packagereq>
       <packagereq type="default">python3-asyncio-throttle</packagereq>
       <packagereq type="default">python3-attrs</packagereq>
+      <packagereq type="default">python3-azure-common</packagereq>
+      <packagereq type="default">python3-azure-storage-blob</packagereq>
+      <packagereq type="default">python3-azure-storage-common</packagereq>
       <packagereq type="default">python3-backoff</packagereq>
       <packagereq type="default">python3-bleach</packagereq>
       <packagereq type="default">python3-bleach-allowlist</packagereq>
