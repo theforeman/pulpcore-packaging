@@ -28,6 +28,10 @@
       <packagereq type="default">python3-azure-storage-common</packagereq>
       <packagereq type="default">python3-createrepo_c</packagereq>
       <packagereq type="default">python3-libcomps</packagereq>
+      <packagereq type="default">python3-boto3</packagereq>
+      <packagereq type="default">python3-botocore</packagereq>
+      <packagereq type="default">python3-jmespath</packagereq>
+      <packagereq type="default">python3-s3transfer</packagereq>
       <packagereq type="default">python3-solv</packagereq>
       <packagereq type="default">python38-aiodns</packagereq>
       <packagereq type="default">python38-aiofiles</packagereq>
