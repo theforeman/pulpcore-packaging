@@ -18,6 +18,7 @@ pip3 install -r $PULPCORE_REQUIREMENTS
 pip3 freeze |sed '/gobject/d; /scikit/d; /libcomps/d; /solv/d; /createrepo/d; /distro/d; /^ansible/d' > $PULPCORE_FULL_REQUIREMENTS
 
 pip3 install git+https://github.com/evgeni/pyp2rpm.git@foreman#egg=pyp2rpm
+pip3 install spec2scl
 
 if [ -d $PACKAGING_WORKDIR ]; then
 
