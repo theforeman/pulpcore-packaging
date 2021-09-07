@@ -39,6 +39,7 @@
       <packagereq type="default">python3-azure-storage-common</packagereq>
       <packagereq type="default">python3-boto3</packagereq>
       <packagereq type="default">python3-botocore</packagereq>
+      <packagereq type="default">python3-django-storages</packagereq>
       <packagereq type="default">python3-jmespath</packagereq>
       <packagereq type="default">python3-s3transfer</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-backoff</packagereq>
