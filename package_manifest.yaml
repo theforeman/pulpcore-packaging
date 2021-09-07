@@ -84,6 +84,9 @@ pulpcore_packages:
     python-async-timeout: {}
     python-asyncio-throttle: {}
     python-attrs: {}
+    python-azure-common: {}
+    python-azure-storage-blob: {}
+    python-azure-storage-common: {}
     python-backoff: {}
     python-bandersnatch: {}
     python-bindep: {}
