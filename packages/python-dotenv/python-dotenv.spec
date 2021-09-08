@@ -1,10 +1,13 @@
+%{?scl:%scl_package python-%{srcname}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name python-dotenv
 %global srcname dotenv
 
-Name:           python-%{srcname}
+Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.14.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Add .env support to your django/flask apps in development and deployments
 
 License:        BSD-3-Clause
@@ -12,42 +15,62 @@ URL:            https://github.com/theskumar/python-dotenv
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-click >= 5.0
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-typing
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-click >= 5.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing
+
 
 %description
 %{summary}
 
-%package -n     python3-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{srcname}}
-Requires:       python3-click >= 5.0
-Requires:       python3-typing
 
-%description -n python3-%{srcname}
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+Summary:        %{summary}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 5.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing
+
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python3-%{srcname}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc README.md
 %{_bindir}/dotenv
 %{python3_sitelib}/dotenv
 %{python3_sitelib}/python_dotenv-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Wed Sep 08 2021 Evgeni Golov - 0.14.0-3
+- Build against Python 3.8
+
 * Thu Nov 05 2020 Evgeni Golov - 0.14.0-2
 - Fix License tag in spec file
 
