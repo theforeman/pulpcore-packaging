@@ -5,8 +5,8 @@
 %global pypi_name galaxy-importer
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.3.2
-Release:        3%{?dist}
+Version:        0.4.0
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -33,6 +33,8 @@ Requires:       /usr/bin/ansible-test
 Requires:       ansible-lint < 6.0
 Requires:       ansible-lint >= 5.0.8
 %endif
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder < 2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder >= 1.0.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs < 22
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 21.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach < 4
@@ -50,7 +52,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.25.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.8.5
 Requires:       tar
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -91,6 +92,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 0.4.0-1
+- Update to 0.4.0
+
 * Wed Sep 08 2021 Evgeni Golov - 0.3.2-3
 - Correct non-SCL dependencies
 
