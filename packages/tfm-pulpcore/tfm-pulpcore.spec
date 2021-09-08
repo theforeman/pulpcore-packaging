@@ -22,7 +22,7 @@
 Summary: Package that installs %scl
 Name: %scl_name
 Version: 1.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: GPLv2+
 Source1: README
 Source2: LICENSE
@@ -70,6 +70,14 @@ Requires: %{scl_prefix_python}python-devel
 Empty package pulling in %{scl_prefix_python}python-devel
 This package is only required to ease definition of dependencies inside the SCL
 
+%package python3-test
+Summary: Empty package pulling in %{scl_prefix_python}python-test
+Requires: %{scl_prefix_python}python-test
+
+%description python3-test
+Empty package pulling in %{scl_prefix_python}python-test
+This package is only required to ease definition of dependencies inside the SCL
+
 %package python3-setuptools
 Provides: %{scl_prefix}python3-setuptools = 41.6.0
 Summary: Empty package pulling in %{scl_prefix_python}python-setuptools
@@ -77,6 +85,15 @@ Requires: %{scl_prefix_python}python-setuptools
 
 %description python3-setuptools
 Empty package pulling in %{scl_prefix_python}python-setuptools
+This package is only required to ease definition of dependencies inside the SCL
+
+%package python3-wheel
+Provides: %{scl_prefix}python3-wheel = 0.33.6
+Summary: Empty package pulling in %{scl_prefix_python}python-wheel
+Requires: %{scl_prefix_python}python-wheel
+
+%description python3-wheel
+Empty package pulling in %{scl_prefix_python}python-wheel
 This package is only required to ease definition of dependencies inside the SCL
 
 %prep
@@ -178,9 +195,16 @@ install -m 644 %{scl_name}.7 %{buildroot}%{_mandir}/man7/%{scl_name}.7
 
 %files python3-devel
 
+%files python3-test
+
 %files python3-setuptools
 
+%files python3-wheel
+
 %changelog
+* Wed Sep 08 2021 Evgeni Golov - 1.0-4
+- Add test and wheel subpackages
+
 * Tue Sep 07 2021 Evgeni Golov - 1.0-3
 - Properly install data to _prefix
 
