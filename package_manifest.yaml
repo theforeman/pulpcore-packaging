@@ -140,6 +140,7 @@ pulpcore_packages:
     python-importlib-resources: {}
     python-inflection: {}
     python-lxml: {}
+    python-pbr: {}
     python-pkginfo: {}
     python-pulp-python: {}
     python-pulp-rpm-client: {}

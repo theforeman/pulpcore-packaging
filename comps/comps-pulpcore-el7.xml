@@ -108,6 +108,7 @@
       <packagereq type="default">tfm-pulpcore-python3-odfpy</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-openpyxl</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-packaging</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-pbr</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pkginfo</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-productmd</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-prometheus-client</packagereq>
