@@ -1,8 +1,11 @@
+%{?scl:%scl_package python-%{pypi_name}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-file
 
-Name:           python-%{pypi_name}
-Version:        1.8.2
+Name:           %{?scl_prefix}python-%{pypi_name}
+Version:        1.9.1
 Release:        1%{?dist}
 Summary:        File plugin for the Pulp Project
 
@@ -11,40 +14,60 @@ URL:            https://pulpproject.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
 
 %description
 A Pulp plugin to support hosting arbitrary files.
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
+
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-pulpcore < 3.15
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.13
-Requires:       python%{python3_pkgversion}-setuptools
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.17
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin to support hosting arbitrary files.
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python%{python3_pkgversion}-%{pypi_name}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_file
 %{python3_sitelib}/pulp_file-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 1.9.1-1
+- Update to 1.9.1
+
 * Tue Aug 17 2021 Odilon Sousa <osousa@redhat.com> - 1.8.2-1
 - Release python-pulp-file 1.8.2
 
