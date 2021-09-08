@@ -1,55 +1,78 @@
+%{?scl:%scl_package python-%{pypi_name}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name cryptography
 
-Name:           python-%{pypi_name}
+Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.9.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
 URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
-BuildRequires:  python3-devel
-BuildConflicts: python3-cffi = 1.11.3
-BuildRequires:  python3-cffi >= 1.8
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-six >= 1.4.1
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildConflicts: %{?scl_prefix}python%{python3_pkgversion}-cffi = 1.11.3
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.8
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.4.1
 
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
 
+
 %description
 %{summary}
 
-%package -n     python3-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Conflicts:      python3-cffi = 1.11.3
-Requires:       python3-cffi >= 1.8
-Requires:       python3-six >= 1.4.1
 
-%description -n python3-%{pypi_name}
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+Summary:        %{summary}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Conflicts:      %{?scl_prefix}python3-cffi = 1.11.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.8
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.4.1
+
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python3-%{pypi_name}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE LICENSE.APACHE LICENSE.BSD LICENSE.PSF
 %doc README.rst
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Wed Sep 08 2021 Evgeni Golov - 2.9.2-2
+- Build against Python 3.8
+
 * Tue Apr 28 2020 Evgeni Golov 2.9.2-1
 - Update to 2.9.2
 
