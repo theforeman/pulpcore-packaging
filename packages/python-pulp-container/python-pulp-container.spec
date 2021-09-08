@@ -1,8 +1,11 @@
+%{?scl:%scl_package python-%{pypi_name}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-container
 
-Name:           python-%{pypi_name}
-Version:        2.7.1
+Name:           %{?scl_prefix}python-%{pypi_name}
+Version:        2.8.0
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -11,56 +14,67 @@ URL:            https://pulpproject.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python%{python3_pkgversion}-devel
-Requires:       python%{python3_pkgversion}-ecdsa >= 0.13.2
-Conflicts:      python%{python3_pkgversion}-ecdsa >= 0.14
-Requires:       python%{python3_pkgversion}-pyjwkest >= 1.4.0
-Conflicts:      python%{python3_pkgversion}-pyjwkest >= 1.5
-Requires:       python%{python3_pkgversion}-pyjwt >= 1.7.1
-Conflicts:      python%{python3_pkgversion}-pyjwt >= 1.8
-BuildRequires:  python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.2
-Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
 
 %description
 %{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
+
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-ecdsa >= 0.13.2
-Conflicts:      python%{python3_pkgversion}-ecdsa >= 0.14
-Requires:       python%{python3_pkgversion}-pulpcore < 3.15
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.14
-Requires:       python%{python3_pkgversion}-pyjwkest >= 1.4.0
-Conflicts:      python%{python3_pkgversion}-pyjwkest >= 1.5
-Requires:       python%{python3_pkgversion}-pyjwt >= 1.7.1
-Conflicts:      python%{python3_pkgversion}-pyjwt >= 1.8
-Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.2
-Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.13.2
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.14
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.14.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 1.7.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 1.8
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.2
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.5
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python%{python3_pkgversion}-%{pypi_name}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_container
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 2.8.0-1
+- Update to 2.8.0
+
 * Wed Jul 28 2021 Odilon Sousa <osousa@redhat.com> - 2.7.1-1
 - Release python-pulp-container 2.7.1
 
