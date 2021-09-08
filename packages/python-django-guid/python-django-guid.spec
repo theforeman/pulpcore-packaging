@@ -5,17 +5,16 @@
 %global pypi_name django-guid
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.2.1
-Release:        2%{?dist}
-Summary:        Middleware that makes a request GUID available from anywhere and injects it into your logs
+Version:        3.2.0
+Release:        1%{?dist}
+Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
 License:        BSD
-URL:            https://github.com/JonasKs/django-guid
+URL:            https://github.com/snok/django-guid
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -26,7 +25,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django < 4.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.1.1
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -37,8 +37,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 %{?scl:EOF}
 
 
@@ -57,14 +55,16 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
-%doc README.rst
-%{python3_sitelib}/demoproj
+%license LICENSE
+%doc docs/README_PYPI.rst
 %{python3_sitelib}/django_guid
-%{python3_sitelib}/tests
 %{python3_sitelib}/django_guid-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 3.2.0-1
+- Update to 3.2.0
+
 * Wed Sep 08 2021 Evgeni Golov - 2.2.1-2
 - Build against Python 3.8
 
