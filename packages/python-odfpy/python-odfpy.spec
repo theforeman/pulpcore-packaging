@@ -1,9 +1,12 @@
+%{?scl:%scl_package python-%{pypi_name}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name odfpy
 
-Name:           python-%{pypi_name}
+Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python API and tools to manipulate OpenDocument files
 
 License:        GPLv2+ or Apache-2.0
@@ -11,32 +14,48 @@ URL:            https://github.com/eea/odfpy
 Source0:        https://files.pythonhosted.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
 
 %description
 %{summary}
 
-%package -n     python3-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{pypi_name}}
-Requires:       python3-defusedxml
 
-%description -n python3-%{pypi_name}
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+Summary:        %{summary}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-defusedxml
+
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python3-%{pypi_name}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license APACHE-LICENSE-2.0.txt GPL-LICENSE-2.txt
 %doc contrib/ODFFile/README.txt README.md
 %{_bindir}/csv2ods
@@ -64,7 +83,11 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/odf
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Mon Sep 06 2021 Evgeni Golov - 1.4.1-3
+- Build against Python 3.8
+
 * Thu Nov 05 2020 Evgeni Golov - 1.4.1-2
 - Fix License tag in spec file
 
