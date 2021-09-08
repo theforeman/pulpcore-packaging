@@ -5,8 +5,8 @@
 %global pypi_name drf-access-policy
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.9.0
-Release:        2%{?dist}
+Version:        1.0.1
+Release:        1%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
 License:        MIT
@@ -25,6 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing
 
 
@@ -62,6 +63,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 1.0.1-1
+- Update to 1.0.1
+
 * Mon Sep 06 2021 Evgeni Golov - 0.9.0-2
 - Build against Python 3.8
 
