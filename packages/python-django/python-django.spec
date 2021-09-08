@@ -6,20 +6,17 @@
 %global srcname django
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        2.2.24
-Release:        2%{?dist}
+Version:        3.2.7
+Release:        1%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://www.djangoproject.com/
 Source0:        https://files.pythonhosted.org/packages/source/D/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         0001-FIPS-Mark-use-of-MD5-not-security-relevant.patch
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pytz
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-sqlparse >= 0.2.2
 
 
 %description
@@ -29,6 +26,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-sqlparse >= 0.2.2
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-asgiref < 4
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-asgiref >= 3.3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytz
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-sqlparse >= 0.2.2
@@ -41,7 +40,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-sqlparse >= 0.2.2
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%autosetup -p1 -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -65,22 +64,22 @@ set -ex
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-
-# rename django-admin so we don't conflict with python2-django
-mv %{buildroot}%{_bindir}/django-admin %{buildroot}%{_bindir}/python3-django-admin
 %{?scl:EOF}
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %license LICENSE LICENSE.python django/contrib/admin/static/admin/css/vendor/select2/LICENSE-SELECT2.md django/contrib/admin/static/admin/fonts/LICENSE.txt django/contrib/admin/static/admin/img/LICENSE django/contrib/admin/static/admin/js/vendor/jquery/LICENSE.txt django/contrib/admin/static/admin/js/vendor/select2/LICENSE.md django/contrib/admin/static/admin/js/vendor/xregexp/LICENSE.txt django/contrib/gis/gdal/LICENSE django/contrib/gis/geos/LICENSE django/dispatch/license.txt docs/_theme/djangodocs/static/fontawesome/LICENSE.txt
-%doc README.rst django/contrib/admin/static/admin/fonts/README.txt django/contrib/admin/static/admin/img/README.txt docs/_theme/djangodocs/static/fontawesome/README.md extras/README.TXT tests/README.rst
-%{_bindir}/python3-django-admin
-%exclude %{_bindir}/django-admin.py
+%doc README.rst django/contrib/admin/static/admin/fonts/README.txt django/contrib/admin/static/admin/img/README.txt docs/README.rst docs/_theme/djangodocs/static/fontawesome/README.md extras/README.TXT tests/README.rst
+%{_bindir}/django-admin
+%{_bindir}/django-admin.py
 %{python3_sitelib}/django
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 3.2.7-1
+- Update to 3.2.7
+
 * Wed Sep 08 2021 Evgeni Golov - 2.2.24-2
 - Build against Python 3.8
 
