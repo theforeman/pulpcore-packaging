@@ -5,8 +5,8 @@
 %global pypi_name click
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        7.1.2
-Release:        2%{?dist}
+Version:        8.0.1
+Release:        1%{?dist}
 Summary:        Composable command line interface toolkit
 
 License:        BSD-3-Clause
@@ -15,6 +15,8 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-colorama
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -25,6 +27,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-colorama
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -62,6 +66,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 8.0.1-1
+- Update to 8.0.1
+
 * Mon Sep 06 2021 Evgeni Golov - 7.1.2-2
 - Build against Python 3.8
 
