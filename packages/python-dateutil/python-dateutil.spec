@@ -1,10 +1,13 @@
+%{?scl:%scl_package python-%{srcname}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name python-dateutil
 %global srcname dateutil
 
-Name:           python-%{srcname}
+Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.8.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -12,41 +15,61 @@ URL:            https://dateutil.readthedocs.io
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools-scm
-BuildRequires:  python3-six >= 1.5
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5
+
 
 %description
 %{summary}
 
-%package -n     python3-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{srcname}}
-Requires:       python3-six >= 1.5
-Obsoletes:      python36-dateutil
 
-%description -n python3-%{srcname}
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+Summary:        %{summary}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5
+Obsoletes:      %{?scl_prefix}python36-dateutil
+
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python3-%{srcname}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/dateutil
 %{python3_sitelib}/python_dateutil-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Wed Sep 08 2021 Evgeni Golov - 2.8.1-4
+- Build against Python 3.8
+
 * Mon Aug 24 2020 Evgeni Golov - 2.8.1-3
 - Fix Obsoletes
 
