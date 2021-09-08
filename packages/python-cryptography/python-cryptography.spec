@@ -5,8 +5,8 @@
 %global pypi_name cryptography
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.9.2
-Release:        2%{?dist}
+Version:        3.4.8
+Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
@@ -14,10 +14,9 @@ URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildConflicts: %{?scl_prefix}python%{python3_pkgversion}-cffi = 1.11.3
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.8
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.12
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.4.1
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-rust >= 0.11.4
 
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
@@ -30,9 +29,7 @@ BuildRequires:  gcc
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Conflicts:      %{?scl_prefix}python3-cffi = 1.11.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.8
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.4.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.12
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -45,13 +42,16 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+
+# our setuptools-rust has a broken version number
+sed -i '/setuptools_rust/ s/>=0.11.4//' setup.py
 %{?scl:EOF}
 
 
 %build
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%py3_build
+CRYPTOGRAPHY_DONT_BUILD_RUST=1 %py3_build
 %{?scl:EOF}
 
 
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 3.4.8-1
+- Update to 3.4.8
+
 * Wed Sep 08 2021 Evgeni Golov - 2.9.2-2
 - Build against Python 3.8
 
