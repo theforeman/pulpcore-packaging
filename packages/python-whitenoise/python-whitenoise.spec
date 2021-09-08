@@ -5,12 +5,12 @@
 %global pypi_name whitenoise
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.2.0
-Release:        2%{?dist}
+Version:        5.3.0
+Release:        1%{?dist}
 Summary:        Radically simplified static file serving for WSGI applications
 
 License:        MIT
-URL:            http://whitenoise.evans.io
+URL:            https://whitenoise.evans.io
 Source0:        https://files.pythonhosted.org/packages/source/w/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 5.3.0-1
+- Update to 5.3.0
+
 * Mon Sep 06 2021 Evgeni Golov - 5.2.0-2
 - Build against Python 3.8
 
