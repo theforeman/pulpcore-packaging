@@ -5,8 +5,8 @@
 %global pypi_name bleach
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.3.0
-Release:        2%{?dist}
+Version:        3.3.1
+Release:        1%{?dist}
 Summary:        An easy safelist-based HTML-sanitizing tool
 
 License:        Apache Software License
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 3.3.1-1
+- Update to 3.3.1
+
 * Wed Sep 08 2021 Evgeni Golov - 3.3.0-2
 - Build against Python 3.8
 
