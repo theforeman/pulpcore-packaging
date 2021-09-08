@@ -106,6 +106,7 @@
       <packagereq type="default">python38-odfpy</packagereq>
       <packagereq type="default">python38-openpyxl</packagereq>
       <packagereq type="default">python38-packaging</packagereq>
+      <packagereq type="default">python38-pbr</packagereq>
       <packagereq type="default">python38-pkginfo</packagereq>
       <packagereq type="default">python38-productmd</packagereq>
       <packagereq type="default">python38-prometheus-client</packagereq>
