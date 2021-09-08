@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.3.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -26,12 +26,12 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 # We don't care if Ansible is Python 2 or 3 as we just call the CLI
-Requires:       %{?scl_prefix}ansible
+Requires:       ansible
 Requires:       /usr/bin/ansible-test
 %if 0%{?rhel} == 8
 # We only have ansible-lint built on EL8
-Requires:       %{?scl_prefix}ansible-lint < 6.0
-Requires:       %{?scl_prefix}ansible-lint >= 5.0.8
+Requires:       ansible-lint < 6.0
+Requires:       ansible-lint >= 5.0.8
 %endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs < 22
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 21.2.0
@@ -49,7 +49,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.25.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.8.5
-Requires:       %{?scl_prefix}tar
+Requires:       tar
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -91,6 +91,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov - 0.3.2-3
+- Correct non-SCL dependencies
+
 * Mon Sep 06 2021 Evgeni Golov - 0.3.2-2
 - Build against Python 3.8
 
