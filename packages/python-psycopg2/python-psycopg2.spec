@@ -5,8 +5,8 @@
 %global pypi_name psycopg2
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.8.6
-Release:        2%{?dist}
+Version:        2.9.1
+Release:        1%{?dist}
 Summary:        psycopg2 - Python-PostgreSQL Database Adapter
 
 License:        LGPL with exceptions
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 08 2021 Evgeni Golov 2.9.1-1
+- Update to 2.9.1
+
 * Mon Sep 06 2021 Evgeni Golov - 2.8.6-2
 - Build against Python 3.8
 
