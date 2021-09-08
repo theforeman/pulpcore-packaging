@@ -86,6 +86,7 @@ pulpcore_packages:
     python-attrs: {}
     python-backoff: {}
     python-bandersnatch: {}
+    python-bindep: {}
     python-bleach: {}
     python-bleach-allowlist: {}
     python-bleach-whitelist: {}

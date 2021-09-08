@@ -37,6 +37,7 @@
       <packagereq type="default">python38-attrs</packagereq>
       <packagereq type="default">python38-backoff</packagereq>
       <packagereq type="default">python38-bandersnatch</packagereq>
+      <packagereq type="default">python38-bindep</packagereq>
       <packagereq type="default">python38-bleach</packagereq>
       <packagereq type="default">python38-bleach-allowlist</packagereq>
       <packagereq type="default">python38-bleach-whitelist</packagereq>
