@@ -146,6 +146,7 @@
       <packagereq type="default">python38-ruamel-yaml-clib</packagereq>
       <packagereq type="default">python38-schema</packagereq>
       <packagereq type="default">python38-semantic-version</packagereq>
+      <packagereq type="default">python38-setuptools-rust</packagereq>
       <packagereq type="default">python38-setuptools-scm</packagereq>
       <packagereq type="default">python38-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">python38-six</packagereq>
