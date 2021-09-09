@@ -30,6 +30,7 @@
       <packagereq type="default">python38-aiohttp-xmlrpc</packagereq>
       <packagereq type="default">python38-aioredis</packagereq>
       <packagereq type="default">python38-ansible-builder</packagereq>
+      <packagereq type="default">python38-asgiref</packagereq>
       <packagereq type="default">python38-async-lru</packagereq>
       <packagereq type="default">python38-async-timeout</packagereq>
       <packagereq type="default">python38-asyncio-throttle</packagereq>
