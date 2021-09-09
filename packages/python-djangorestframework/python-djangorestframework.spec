@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.12.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -25,7 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-Provides:       %{?scl_prefix}python3-django-rest-framework = %{version}-%{release}
+Provides:       %{?scl_prefix}python%{python3_pkgversion}-django-rest-framework = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 09 2021 Evgeni Golov - 3.12.4-3
+- Correct django-rest-framework Provides to mention Python 3.8
+
 * Wed Sep 08 2021 Evgeni Golov - 3.12.4-2
 - Build against Python 3.8
 
