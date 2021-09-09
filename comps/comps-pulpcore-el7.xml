@@ -146,6 +146,7 @@
       <packagereq type="default">tfm-pulpcore-python3-ruamel-yaml-clib</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-schema</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-semantic-version</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-setuptools-rust</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-setuptools-scm</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-six</packagereq>
