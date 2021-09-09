@@ -1,10 +1,13 @@
+# explicitly define, as we build on top of an scl, not inside with scl_package
+%{?scl:%global scl_prefix %{scl}-}
+
 %define selinux_variants mls strict targeted
 %define selinux_modules pulpcore_port pulpcore pulpcore_rhsmcertd
 %define debug_package %{nil}
 
 Name:           pulpcore-selinux
 Version:        1.2.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -15,8 +18,8 @@ BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy-devel
 BuildRequires:  systemd
 Requires:       selinux-policy >= %{_selinux_policy_version}
-Requires:       python3-pulpcore
-Requires(post): policycoreutils, python3-pulpcore
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore
+Requires(post): policycoreutils, %{?scl_prefix}python%{python3_pkgversion}-pulpcore
 Requires(postun): policycoreutils
 %{?systemd_requires}
 
@@ -83,6 +86,9 @@ fi
 
 
 %changelog
+* Thu Sep 09 2021 Evgeni Golov - 1.2.5-2
+- Correctly depend on Python3.8 pulpcore
+
 * Wed Aug 25 2021 Odilon Sousa <osousa@redhat.com> - 1.2.5-1
 - Release pulpcore-selinux 1.2.5
 
