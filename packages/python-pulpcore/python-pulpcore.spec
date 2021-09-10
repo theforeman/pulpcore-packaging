@@ -1,10 +1,12 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{!?_root_bindir:%global _root_bindir %{_bindir}}
 %{!?_root_libexecdir:%global _root_libexecdir %{_libexecdir}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
 %global wrappers gunicorn rq pulpcore-worker
+%global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.15.2
@@ -128,6 +130,13 @@ do
   printf '#!/bin/bash\n%{?scl:source scl_source enable tfm-pulpcore \n}exec %s "$@"\n' ${wrapper} > ${wrapper}
 done
 
+%if 0%{?scl:1}
+for wrapper in %{scl_wrappers}
+do
+  printf '#!/bin/bash\n%{?scl:source scl_source enable tfm-pulpcore \n}exec %s "$@"\n' ${wrapper} > ${wrapper}
+done
+%endif
+
 
 %install
 %{?scl:scl enable %{scl} - << \EOF}
@@ -140,9 +149,20 @@ do
   install -D -m 755 ${wrapper} %{buildroot}%{_root_libexecdir}/%{pypi_name}/${wrapper}
 done
 
+%if 0%{?scl:1}
+for wrapper in %{scl_wrappers}
+do
+  install -D -m 755 ${wrapper} %{buildroot}%{_root_bindir}/${wrapper}
+done
+%endif
+
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
+%if 0%{?scl:1}
+%{_root_bindir}/pulp-content
+%{_root_bindir}/pulpcore-manager
+%endif
 %{_bindir}/pulp-content
 %{_bindir}/pulpcore-manager
 %{_bindir}/pulpcore-worker
