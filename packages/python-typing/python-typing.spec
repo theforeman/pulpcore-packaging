@@ -5,8 +5,8 @@
 %global pypi_name typing
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.7.4.3
-Release:        2%{?dist}
+Version:        3.10.0.0
+Release:        1%{?dist}
 Summary:        Type Hints for Python
 
 License:        PSF
@@ -56,13 +56,16 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python3_sitelib}/__pycache__/%{pypi_name}.*
 %{python3_sitelib}/%{pypi_name}.py
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Sep 10 2021 Evgeni Golov - 3.10.0.0-1
+- Release python-typing 3.10.0.0
+
 * Mon Sep 06 2021 Evgeni Golov - 3.7.4.3-2
 - Build against Python 3.8
 
