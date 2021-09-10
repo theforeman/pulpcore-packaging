@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.7.4.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Backported and Experimental Type Hints for Python 3
 
 License:        PSF
@@ -16,7 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing >= 3.7.4
 
 
 %description
@@ -26,7 +25,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing >= 3.7.4
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing >= 3.7.4
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 10 2021 Evgeni Golov - 3.7.4.3-3
+- Don't require typing, our Python is new enough
+
 * Wed Sep 08 2021 Evgeni Golov - 3.7.4.3-2
 - Build against Python 3.8
 
