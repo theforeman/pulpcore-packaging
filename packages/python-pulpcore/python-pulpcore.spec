@@ -1,5 +1,6 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{!?_root_libexecdir:%global _root_libexecdir %{_libexecdir}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
@@ -124,7 +125,7 @@ set -ex
 
 for wrapper in %{wrappers}
 do
-  printf '#!/bin/bash\nexec %s "$@"\n' ${wrapper} > ${wrapper}
+  printf '#!/bin/bash\n%{?scl:source scl_source enable tfm-pulpcore \n}exec %s "$@"\n' ${wrapper} > ${wrapper}
 done
 
 
@@ -136,7 +137,7 @@ set -ex
 
 for wrapper in %{wrappers}
 do
-  install -D -m 755 ${wrapper} %{buildroot}%{_libexecdir}/%{pypi_name}/${wrapper}
+  install -D -m 755 ${wrapper} %{buildroot}%{_root_libexecdir}/%{pypi_name}/${wrapper}
 done
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -145,7 +146,7 @@ done
 %{_bindir}/pulp-content
 %{_bindir}/pulpcore-manager
 %{_bindir}/pulpcore-worker
-%{_libexecdir}/%{pypi_name}/*
+%{_root_libexecdir}/%{pypi_name}/*
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
