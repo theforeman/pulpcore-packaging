@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.1.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -26,7 +26,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 38.6.0
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 10 2021 Evgeni Golov - 3.1.5-3
+- Don't require typing, our Python is new enough
+
 * Mon Sep 06 2021 Evgeni Golov - 3.1.5-2
 - Build against Python 3.8
 

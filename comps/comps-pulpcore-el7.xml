@@ -158,7 +158,6 @@
       <packagereq type="default">tfm-pulpcore-python3-tablib</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-tenacity</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-toml</packagereq>
-      <packagereq type="default">tfm-pulpcore-python3-typing</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-typing-extensions</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-uritemplate</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-url-normalize</packagereq>

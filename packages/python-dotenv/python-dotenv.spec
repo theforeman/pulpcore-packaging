@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.14.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Add .env support to your django/flask apps in development and deployments
 
 License:        BSD-3-Clause
@@ -18,7 +18,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-click >= 5.0
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing
 
 
 %description
@@ -29,7 +28,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 5.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -68,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 10 2021 Evgeni Golov - 0.14.0-4
+- Don't require typing, our Python is new enough
+
 * Wed Sep 08 2021 Evgeni Golov - 0.14.0-3
 - Build against Python 3.8
 

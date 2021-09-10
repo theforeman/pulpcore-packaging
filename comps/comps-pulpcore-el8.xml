@@ -157,7 +157,6 @@
       <packagereq type="default">python38-tablib</packagereq>
       <packagereq type="default">python38-tenacity</packagereq>
       <packagereq type="default">python38-toml</packagereq>
-      <packagereq type="default">python38-typing</packagereq>
       <packagereq type="default">python38-typing-extensions</packagereq>
       <packagereq type="default">python38-uritemplate</packagereq>
       <packagereq type="default">python38-url-normalize</packagereq>
