@@ -49,8 +49,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-backoff >= 1.11.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-backoff >= 1.12
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click < 9.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 3.4.8
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 3.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.5.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 2.4.0
@@ -110,6 +109,10 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+
+# relax cryptography requirement
+# see https://pulp.plan.io/issues/9367
+sed -i '/cryptography/ s/~=.*//' requirements.txt
 %{?scl:EOF}
 
 
