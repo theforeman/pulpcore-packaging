@@ -39,8 +39,10 @@ repoclosures:
 
 pulpcore_packages:
   vars:
+    scl: 'tfm-pulpcore'
     koji_tags:
       - name: pulpcore-{{ pulpcore_version }}-el7
+        scl: 'tfm-pulpcore'
         dist: '.el7'
       - name: pulpcore-{{ pulpcore_version }}-el8
         dist: '.el8'
