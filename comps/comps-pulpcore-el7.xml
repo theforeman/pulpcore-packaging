@@ -58,6 +58,7 @@
       <packagereq type="default">tfm-pulpcore-python3-debian</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-defusedxml</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-diff-match-patch</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-distro</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-django</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-django-cleanup</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-django-currentuser</packagereq>

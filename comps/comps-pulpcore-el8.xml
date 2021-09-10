@@ -59,6 +59,7 @@
       <packagereq type="default">python38-debian</packagereq>
       <packagereq type="default">python38-defusedxml</packagereq>
       <packagereq type="default">python38-diff-match-patch</packagereq>
+      <packagereq type="default">python38-distro</packagereq>
       <packagereq type="default">python38-django</packagereq>
       <packagereq type="default">python38-django-cleanup</packagereq>
       <packagereq type="default">python38-django-currentuser</packagereq>

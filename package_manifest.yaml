@@ -105,6 +105,7 @@ pulpcore_packages:
     python-debian: {}
     python-defusedxml: {}
     python-diff-match-patch: {}
+    python-distro: {}
     python-django: {}
     python-django-cleanup: {}
     python-django-currentuser: {}
