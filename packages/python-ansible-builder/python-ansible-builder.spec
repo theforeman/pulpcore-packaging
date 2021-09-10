@@ -5,8 +5,8 @@
 %global pypi_name ansible-builder
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.2.2
-Release:        2%{?dist}
+Version:        1.0.1
+Release:        1%{?dist}
 Summary:        A tool for building Ansible Execution Environments
 
 License:        Apache-2.0
@@ -15,6 +15,7 @@ Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pbr
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -25,8 +26,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyyaml >= 3.12.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-requirements-parser >= 0.2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-bindep
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-requirements-parser
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -58,6 +60,7 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%license LICENSE.md
 %doc README.md
 %{_bindir}/ansible-builder
 %{python3_sitelib}/ansible_builder
@@ -65,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 10 2021 Evgeni Golov - 1.0.1-1
+- Release python-ansible-builder 1.0.1
+
 * Mon Sep 06 2021 Evgeni Golov - 0.2.2-2
 - Build against Python 3.8
 
