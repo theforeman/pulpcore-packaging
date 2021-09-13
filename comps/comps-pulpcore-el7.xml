@@ -140,6 +140,7 @@
       <packagereq type="default">tfm-pulpcore-python3-pycryptodomex</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pyflakes</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pygments</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-pygobject</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pygtrie</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pyjwkest</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pyjwt</packagereq>
