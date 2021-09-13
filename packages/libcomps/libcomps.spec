@@ -1,3 +1,14 @@
+# explicitly define, as we build on top of an scl, not inside with scl_package
+%if 0%{?scl:1}
+%global scl_prefix %{scl}-
+%global python3_sitearch /opt/theforeman/tfm-pulpcore/root/usr/lib64/python3.8/site-packages/
+%global python3_version %python38python3_version
+%global __os_install_post %python38_os_install_post
+%global __python_requires %python38_python_requires
+%global __python_provides %python38_python_provides
+%global __python3 %python38__python
+%endif
+
 # Always build Python3 bindings
 %bcond_without python3
 
@@ -13,7 +24,7 @@
 
 Name:           libcomps
 Version:        0.1.15
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -49,12 +60,12 @@ BuildRequires:  doxygen
 %description doc
 Documentation files for libcomps library.
 
-%package -n python-%{name}-doc
+%package -n {?scl_prefix}python-%{name}-doc
 Summary:        Documentation files for python bindings libcomps library
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 %if %{with python3}
-BuildRequires:  python3-sphinx
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-sphinx
 %endif
 %if %{with python2}
 %if 0%{?rhel} && 0%{?rhel} <= 7
@@ -64,7 +75,7 @@ BuildRequires:  python2-sphinx
 %endif
 %endif
 
-%description -n python-%{name}-doc
+%description -n %{?scl_prefix}python-%{name}-doc
 Documentation files for python bindings libcomps library.
 %endif
 
@@ -80,21 +91,31 @@ Python 2 bindings for libcomps library.
 %endif
 
 %if %{with python3}
-%package -n python3-%{name}
+%package -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Summary:        Python 3 bindings for libcomps library
-BuildRequires:  python3-devel
-%{?python_provide:%python_provide python3-%{name}}
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Obsoletes:      platform-python-%{name} < %{version}-%{release}
+Obsoletes:      %{?scl_prefix}platform-python-%{name} < %{version}-%{release}
 
-%description -n python3-%{name}
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Python3 bindings for libcomps library.
 %endif
 
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -p1 -n %{name}-%{name}-%{version}
 # workaround for https://github.com/rpm-software-management/libcomps/pull/64
 sed -i 's/EXACT//' libcomps/src/python/src/CMakeLists.txt
+
+# force to look for the right PythonLibs, otherwise it might find Py2 libs while building for Py3
+sed -i 's/PythonLibs/PythonLibs ${pversion}/' libcomps/src/python/src/CMakeLists.txt
+
+# it can't detect our special PYTHONPATH and uses the compiled-in from the SCL Python
+%if 0%{?scl:1}
+sed -i "/OUTPUT_VARIABLE PYTHON_INSTALL_DIR/ s#))#).replace('rh/rh-python38', 'theforeman/tfm-pulpcore'))#" libcomps/src/python/src/CMakeLists.txt
+%endif
 
 %if %{with python2}
 mkdir build-py2
@@ -105,8 +126,12 @@ mkdir build-py3
 %if %{with doc}
 mkdir build-doc
 %endif
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %if %{with python2}
 pushd build-py2
   %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=2 -DENABLE_DOCS=OFF -DENABLE_TESTS=OFF
@@ -116,7 +141,8 @@ popd
 
 %if %{with python3}
 pushd build-py3
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3
+  # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
+  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3 %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
   %make_build
 popd
 %endif
@@ -134,8 +160,12 @@ pushd build-doc
   make %{?_smp_mflags} pydocs
 popd
 %endif
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %if %{with python2}
 pushd build-py2
   %make_install
@@ -147,8 +177,12 @@ pushd build-py3
   %make_install
 popd
 %endif
+%{?scl:EOF}
+
 
 %check
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 # only run tests on python3 as they are broken on py2/EL7
 
 %if %{with python3}
@@ -157,6 +191,8 @@ pushd build-py3
   make pytest
 popd
 %endif
+
+%{?scl:EOF}
 
 %if %{undefined ldconfig_scriptlets}
 %post -p /sbin/ldconfig
@@ -179,7 +215,7 @@ popd
 %files doc
 %doc build-doc/docs/libcomps-doc/html
 
-%files -n python-%{name}-doc
+%files -n %{?scl_prefix}python-%{name}-doc
 %doc build-doc/src/python/docs/html
 %endif
 
@@ -190,12 +226,15 @@ popd
 %endif
 
 %if %{with python3}
-%files -n python3-%{name}
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 %endif
 
 %changelog
+* Tue Sep 14 2021 Evgeni Golov - 0.1.15-2
+- Build against Python 3.8
+
 * Wed Apr 01 2020 Ales Matej <amatej@redhat.com> - 0.1.15-1
 - Update to 0.1.15
 - Do not skip type=mandatory in xml output (RhBug:1771224)
