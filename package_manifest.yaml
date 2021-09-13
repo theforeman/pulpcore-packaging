@@ -119,6 +119,7 @@ pulpcore_packages:
     python-django-import-export: {}
     python-django-ipware: {}
     python-django-lifecycle: {}
+    python-django-picklefield: {}
     python-django-prometheus: {}
     python-django-readonly-field: {}
     python-djangorestframework: {}
