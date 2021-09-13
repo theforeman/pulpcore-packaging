@@ -1,55 +1,77 @@
+%{?scl:%scl_package python-%{pypi_name}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-certguard
 
-Name:           python-%{pypi_name}
-Version:        1.4.0
+Name:           %{?scl_prefix}python-%{pypi_name}
+Version:        1.5.0
 Release:        1%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
-URL:            https://pulp-certguard.readthedocs.io/
+URL:            https://docs.pulpproject.org/pulp_certguard/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
 
 %description
 A Pulp plugin that provides an X.509 capable ContentGuard for pulpcore.
 Instances of X509CertGuard are useful for requiring clients to submit
 a certificate proving their entitlement to content before receiving the content.
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
+
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-pyOpenSSL
-Requires:       python%{python3_pkgversion}-pulpcore < 3.15
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.10
-Requires:       python%{python3_pkgversion}-setuptools
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.10
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin that provides an X.509 capable ContentGuard for pulpcore.
 Instances of X509CertGuard are useful for requiring clients to submit
 a certificate proving their entitlement to content before receiving the content.
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python%{python3_pkgversion}-%{pypi_name}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_certguard
 %{python3_sitelib}/pulp_certguard-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Mon Sep 13 2021 Evgeni Golov 1.5.0-1
+- Update to 1.5.0
+
 * Fri Jul 02 2021 Evgeni Golov - 1.4.0-1
 - Release python-pulp-certguard 1.4.0
 
