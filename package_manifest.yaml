@@ -147,6 +147,7 @@ pulpcore_packages:
     python-inflection: {}
     python-lxml: {}
     python-marshmallow: {}
+    python-oauthlib: {}
     python-parsley: {}
     python-pbr: {}
     python-pkginfo: {}
