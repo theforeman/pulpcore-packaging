@@ -110,6 +110,7 @@ pulpcore_packages:
     python-diff-match-patch: {}
     python-distro: {}
     python-django: {}
+    python-django-automated-logging: {}
     python-django-cleanup: {}
     python-django-currentuser: {}
     python-django-filter: {}
