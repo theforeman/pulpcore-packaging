@@ -133,6 +133,7 @@
       <packagereq type="default">python38-pulpcore</packagereq>
       <packagereq type="default">python38-pulpcore-client</packagereq>
       <packagereq type="default">python38-pyOpenSSL</packagereq>
+      <packagereq type="default">python38-pycairo</packagereq>
       <packagereq type="default">python38-pycares</packagereq>
       <packagereq type="default">python38-pycodestyle</packagereq>
       <packagereq type="default">python38-pycparser</packagereq>
