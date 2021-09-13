@@ -1,60 +1,88 @@
+%{?scl:%scl_package python-%{pypi_name}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
+%global real_version 4.4.0a1
 
-Name:           python-%{pypi_name}
-Version:        4.3.1
-Release:        1%{?dist}
+Name:           %{?scl_prefix}python-%{pypi_name}
+Version:        4.4.0
+Release:        0.1.a1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://github.com/ansible/galaxy_ng/
-Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/%{pypi_name}-%{real_version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-wheel
+
 
 %description
 %{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
+
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-django >= 2.2.23
-Conflicts:      python%{python3_pkgversion}-django >= 2.3
-Requires:       python%{python3_pkgversion}-django-prometheus >= 2.0.0
-Requires:       python%{python3_pkgversion}-drf-spectacular
-Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.3.2
-Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.3.3
-Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.7.3
-Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.7.4
-Requires:       python%{python3_pkgversion}-pulp-container >= 2.5.2
-Requires:       python%{python3_pkgversion}-pulpcore < 3.12
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.11.2
-Requires:       python%{python3_pkgversion}-setuptools
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-automated-logging
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-prometheus >= 2.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer = 0.4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible < 0.11.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 0.10.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container < 2.9.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container >= 2.8.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.16.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django < 4.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django >= 3.1.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-core < 4.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-core >= 3.3.1
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
+
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
+%autosetup -n %{pypi_name}-%{real_version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python%{python3_pkgversion}-%{pypi_name}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
 %{python3_sitelib}/galaxy_ng
-%{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/galaxy_ng-%{real_version}-py%{python3_version}.egg-info
+
 
 %changelog
+* Mon Sep 13 2021 Evgeni Golov 4.4.0-0.1.a1
+- Update to 4.4.0a1
+
 * Fri Jun 04 2021 Evgeni Golov - 4.3.1-1
 - Release python-galaxy-ng 4.3.1
 
