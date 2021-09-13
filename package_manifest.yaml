@@ -158,6 +158,7 @@ pulpcore_packages:
     python-requests-oauthlib: {}
     python-schema: {}
     python-social-auth-app-django: {}
+    python-social-auth-core: {}
     python-socks: {}
     python-tenacity: {}
     python-wcmatch: {}
