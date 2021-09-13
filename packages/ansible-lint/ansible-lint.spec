@@ -3,7 +3,7 @@
 
 Name:           %{pypi_name}
 Version:        5.0.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
 License:        MIT
@@ -51,6 +51,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ansible_lint-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Sep 13 2021 Evgeni Golov - 5.0.8-2
+- Build against Python 3.8
+
 * Fri May 14 2021 Evgeni Golov - 5.0.8-1
 - Release ansible-lint 5.0.8
 
