@@ -5,8 +5,8 @@
 %global pypi_name dynaconf
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.1.5
-Release:        3%{?dist}
+Version:        3.1.7
+Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 13 2021 Evgeni Golov 3.1.7-1
+- Update to 3.1.7
+
 * Fri Sep 10 2021 Evgeni Golov - 3.1.5-3
 - Don't require typing, our Python is new enough
 
