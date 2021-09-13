@@ -155,6 +155,7 @@ pulpcore_packages:
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
     python-python3-openid: {}
+    python-requests-oauthlib: {}
     python-schema: {}
     python-socks: {}
     python-tenacity: {}
