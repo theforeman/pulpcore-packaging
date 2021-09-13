@@ -157,6 +157,7 @@ pulpcore_packages:
     python-python3-openid: {}
     python-requests-oauthlib: {}
     python-schema: {}
+    python-social-auth-app-django: {}
     python-socks: {}
     python-tenacity: {}
     python-wcmatch: {}
