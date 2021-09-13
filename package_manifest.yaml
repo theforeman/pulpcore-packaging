@@ -117,6 +117,7 @@ pulpcore_packages:
     python-django-guardian: {}
     python-django-guid: {}
     python-django-import-export: {}
+    python-django-ipware: {}
     python-django-lifecycle: {}
     python-django-prometheus: {}
     python-django-readonly-field: {}
