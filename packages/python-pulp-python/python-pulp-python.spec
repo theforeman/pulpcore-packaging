@@ -5,7 +5,7 @@
 %global pypi_name pulp-python
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.5.0
+Version:        3.5.1
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 13 2021 Evgeni Golov 3.5.1-1
+- Update to 3.5.1
+
 * Wed Sep 08 2021 Evgeni Golov 3.5.0-1
 - Update to 3.5.0
 
