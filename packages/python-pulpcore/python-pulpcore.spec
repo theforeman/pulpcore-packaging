@@ -3,8 +3,8 @@
 %global wrappers gunicorn rq pulpcore-worker
 
 Name:           python-%{pypi_name}
-Version:        3.14.5
-Release:        2%{?dist}
+Version:        3.14.6
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -179,6 +179,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Sep 15 2021 Odilon Sousa <osousa@redhat.com> - 3.14.6-1
+- Release python-pulpcore 3.14.6
+
 * Wed Aug 25 2021 Odilon Sousa <osousa@redhat.com> - 3.14.5-2
 - Release python-pulpcore 3.14.5
 
