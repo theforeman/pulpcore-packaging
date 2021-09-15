@@ -14,6 +14,7 @@
 %bcond_without python2
 %endif
 
+
 Name:           libcomps
 Version:        0.1.15
 Release:        2%{?dist}
@@ -122,41 +123,40 @@ mkdir build-doc
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %if %{with python2}
 pushd build-py2
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=2 -DENABLE_DOCS=OFF -DENABLE_TESTS=OFF
+  %cmake ../libcomps/ -DINCLUDE_INSTALL_DIR:PATH=%{_root_includedir} -DCMAKE_INSTALL_LIBDIR=%{_root_libdir} -DPYTHON_DESIRED:STRING=2 -DENABLE_DOCS=OFF -DENABLE_TESTS=OFF
   %make_build
 popd
 %endif
 
 %if %{with python3}
+%{?scl:scl enable %{scl} - << \EOF}
 pushd build-py3
   # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3 %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
+  %cmake ../libcomps/ -DINCLUDE_INSTALL_DIR:PATH=%{_root_includedir} -DCMAKE_INSTALL_LIBDIR=%{_root_libdir} -DPYTHON_DESIRED:STRING=3 %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so -DPYTHON_EXECUTABLE=/opt/rh/rh-python38/root/usr/bin/python3.8}
   %make_build
 popd
+%{?scl:EOF}
 %endif
 
 %if %{with doc}
 pushd build-doc
 %if %{with python2}
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=2
+  %cmake ../libcomps/ -DINCLUDE_INSTALL_DIR:PATH=%{_root_includedir} -DCMAKE_INSTALL_LIBDIR=%{_root_libdir} -DPYTHON_DESIRED:STRING=2
 %else
 %if %{with python3}
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3
+  %cmake ../libcomps/ -DINCLUDE_INSTALL_DIR:PATH=%{_root_includedir} -DCMAKE_INSTALL_LIBDIR=%{_root_libdir} -DPYTHON_DESIRED:STRING=3
 %endif
 %endif
   make %{?_smp_mflags} docs
   make %{?_smp_mflags} pydocs
 popd
 %endif
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %if %{with python2}
 pushd build-py2
@@ -165,26 +165,27 @@ popd
 %endif
 
 %if %{with python3}
+%{?scl:scl enable %{scl} - << \EOF}
 pushd build-py3
   %make_install
 popd
-%endif
 %{?scl:EOF}
+%endif
 
 
 %check
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 # only run tests on python3 as they are broken on py2/EL7
 
 %if %{with python3}
+%{?scl:scl enable %{scl} - << \EOF}
 pushd build-py3
   make test
   make pytest
 popd
+%{?scl:EOF}
 %endif
 
-%{?scl:EOF}
 
 %if %{undefined ldconfig_scriptlets}
 %post -p /sbin/ldconfig
@@ -196,11 +197,11 @@ popd
 %files
 %license COPYING
 %doc README.md
-%{_libdir}/%{name}.so.*
+%{_root_libdir}/%{name}.so.*
 
 %files devel
-%{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/%{name}.pc
+%{_root_libdir}/%{name}.so
+%{_root_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/
 
 %if %{with doc}
