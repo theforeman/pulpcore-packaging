@@ -7,12 +7,13 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.2.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com/
 Source0:        https://files.pythonhosted.org/packages/source/D/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         0001-Fixed-28401-Allow-hashlib.md5-calls-to-work-with-FIP.patch
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
@@ -40,7 +41,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-sqlparse >= 0.2.2
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version} -p 1
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -77,6 +78,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 15 2021 Matthias Dellweg 3.2.7-3
+- Add a patch for FIPS compliency.
+
 * Fri Sep 10 2021 Evgeni Golov 3.2.7-2
 - Exclude django-admin.py again, we never shipped that.
 
