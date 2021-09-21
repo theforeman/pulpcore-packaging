@@ -2,7 +2,7 @@
 %global pypi_name galaxy-importer
 
 Name:           python-%{pypi_name}
-Version:        0.3.2
+Version:        0.3.4
 Release:        1%{?dist}
 Summary:        Galaxy content importer
 
@@ -71,6 +71,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 %config(noreplace) %attr(0755,root,root) %{_sysconfdir}/galaxy-importer
 
 %changelog
+* Tue Sep 21 2021 Odilon Sousa <osousa@redhat.com> - 0.3.4-1
+- Release python-galaxy-importer 0.3.4
+
 * Wed May 12 2021 Evgeni Golov 0.3.2-1
 - Update to 0.3.2
 
