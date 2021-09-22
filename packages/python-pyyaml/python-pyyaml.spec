@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        5.4.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
@@ -30,9 +30,9 @@ BuildRequires:  libyaml-devel
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Provides:       %{?scl_prefix}python3-%{pypi_name} = %{version}-%{release}
+Provides:       %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name} = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-yaml}
-Provides:       %{?scl_prefix}python3-yaml = %{version}-%{release}
+Provides:       %{?scl_prefix}python%{python3_pkgversion}-yaml = %{version}-%{release}
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 22 2021 Evgeni Golov - 5.4.1-3
+- Correct provides for Python 3.8
+
 * Wed Sep 08 2021 Evgeni Golov - 5.4.1-2
 - Build against Python 3.8
 

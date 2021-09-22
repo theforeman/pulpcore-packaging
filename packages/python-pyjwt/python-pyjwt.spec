@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.7.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -26,8 +26,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-Provides:       %{?scl_prefix}python3-jwt = %{version}-%{release}
-Obsoletes:      %{?scl_prefix}python3-jwt < %{version}-%{release}
+Provides:       %{?scl_prefix}python%{python3_pkgversion}-jwt = %{version}-%{release}
+Obsoletes:      %{?scl_prefix}python%{python3_pkgversion}-jwt < %{version}-%{release}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 22 2021 Evgeni Golov - 1.7.1-5
+- Correct provides for Python 3.8
+
 * Mon Sep 06 2021 Evgeni Golov - 1.7.1-4
 - Build against Python 3.8
 
