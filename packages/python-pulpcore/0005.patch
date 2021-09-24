@@ -1,0 +1,40 @@
+From ee07fa3ae58953696caf8adf14cb4f4ae2e22c28 Mon Sep 17 00:00:00 2001
+From: Grant Gainey <ggainey@redhat.com>
+Date: Sun, 25 Apr 2021 15:36:01 -0400
+Subject: [PATCH] Fix artifact_stages to not uniquify based on an empty
+ checksum-type.
+
+backports #8625
+https://pulp.plan.io/issues/8625
+
+fixes #8651
+https://pulp.plan.io/issues/8651
+
+(cherry picked from commit eda2c890214a76e6f6ffa18cc939d04273b1fa13)
+---
+ CHANGES/8651.bugfix                       | 1 +
+ pulpcore/plugin/stages/artifact_stages.py | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 CHANGES/8651.bugfix
+
+diff --git a/CHANGES/8651.bugfix b/CHANGES/8651.bugfix
+new file mode 100644
+index 0000000000..2c58f1e960
+--- /dev/null
++++ b/CHANGES/8651.bugfix
+@@ -0,0 +1 @@
++Backported a fix for on-demand sync/migration of repositories that don't have sha256 checksums.
+diff --git a/pulpcore/plugin/stages/artifact_stages.py b/pulpcore/plugin/stages/artifact_stages.py
+index d47443cc60..7dfca463ed 100644
+--- a/pulpcore/plugin/stages/artifact_stages.py
++++ b/pulpcore/plugin/stages/artifact_stages.py
+@@ -306,7 +306,8 @@ def _needed_remote_artifacts(self, batch):
+                         break
+                 else:
+                     remote_artifact = self._create_remote_artifact(d_artifact, content_artifact)
+-                    needed_ras[remote_artifact.sha256] = remote_artifact
++                    key = f"{str(content_artifact.pk)}-{str(d_artifact.remote.pk)}"
++                    needed_ras[key] = remote_artifact
+ 
+         return list(needed_ras.values())
+ 

@@ -1,0 +1,52 @@
+From 459aedd0947b9a5c357542666870719fec9db751 Mon Sep 17 00:00:00 2001
+From: Brian Bouterse <bmbouter@redhat.com>
+Date: Fri, 12 Feb 2021 17:15:50 -0500
+Subject: [PATCH] Adds additional d_artifact.remote check
+
+Not all d_artifact objects have remotes, e.g. the migration plugin does
+not. Other places in the code account for this, but there is one area
+that does not. This adds an additional check to one codepath that checks
+for equality of `d_artifact.remote.pk` only if `d_artifact.remote`
+exists.
+
+backports #7876
+https://pulp.plan.io/issues/7876
+re #8485
+https://pulp.plan.io/issues/8485
+
+(cherry picked from commit 25745275c0f3a7bd832946749ed27381694d612f)
+---
+ CHANGES/7876.bugfix                       |  2 ++
+ pulpcore/plugin/stages/artifact_stages.py | 10 +++++-----
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+ create mode 100644 CHANGES/7876.bugfix
+
+diff --git a/CHANGES/7876.bugfix b/CHANGES/7876.bugfix
+new file mode 100644
+index 0000000000..ffd6104e9e
+--- /dev/null
++++ b/CHANGES/7876.bugfix
+@@ -0,0 +1,2 @@
++Fixed a bug experienced by the migration plugin where all content objects are assumed to have a
++remote associated with them.
+diff --git a/pulpcore/plugin/stages/artifact_stages.py b/pulpcore/plugin/stages/artifact_stages.py
+index 3f865f999e..77de81e834 100644
+--- a/pulpcore/plugin/stages/artifact_stages.py
++++ b/pulpcore/plugin/stages/artifact_stages.py
+@@ -292,11 +292,11 @@ def _needed_remote_artifacts(self, batch):
+                     raise ValueError(
+                         msg.format(rp=content_artifact.relative_path, c=d_content.content)
+                     )
+-                for remote_artifact in content_artifact._remote_artifact_saver_ras:
+-                    if remote_artifact.remote_id == d_artifact.remote.pk:
+-                        break
+-                else:
+-                    if d_artifact.remote:
++                if d_artifact.remote:
++                    for remote_artifact in content_artifact._remote_artifact_saver_ras:
++                        if remote_artifact.remote_id == d_artifact.remote.pk:
++                            break
++                    else:
+                         remote_artifact = self._create_remote_artifact(d_artifact, content_artifact)
+                         needed_ras.append(remote_artifact)
+         return needed_ras

@@ -1,0 +1,66 @@
+From 94a0c35b2a5a5c3222683954e0b026c1399a84e0 Mon Sep 17 00:00:00 2001
+From: Grant Gainey <ggainey@redhat.com>
+Date: Tue, 30 Mar 2021 16:56:55 -0400
+Subject: [PATCH] Fixed artifact_stages edge case for
+ multi-artifact/multi-remote batches.
+
+Only encountered when 2to3-migrating specific content in specific orders.
+
+backports #8377
+https://pulp.plan.io/issues/8377
+re #8485
+https://pulp.plan.io/issues/8485
+
+(cherry picked from commit b23c9294b9ed555078053b4968ed5b933ab1e9c9)
+---
+ CHANGES/8377.bugfix                       |  1 +
+ pulpcore/plugin/stages/artifact_stages.py | 21 ++++++++++++---------
+ 2 files changed, 13 insertions(+), 9 deletions(-)
+ create mode 100644 CHANGES/8377.bugfix
+
+diff --git a/CHANGES/8377.bugfix b/CHANGES/8377.bugfix
+new file mode 100644
+index 0000000000..2092663d78
+--- /dev/null
++++ b/CHANGES/8377.bugfix
+@@ -0,0 +1 @@
++Fixed artifact-stage to handle an edge-case when multiple multi-artifact content, from different remotes, is in a single batch.
+diff --git a/pulpcore/plugin/stages/artifact_stages.py b/pulpcore/plugin/stages/artifact_stages.py
+index 77de81e834..c3b7b82cf9 100644
+--- a/pulpcore/plugin/stages/artifact_stages.py
++++ b/pulpcore/plugin/stages/artifact_stages.py
+@@ -283,8 +283,11 @@ def _needed_remote_artifacts(self, batch):
+         )
+         needed_ras = []
+         for d_content in batch:
+-            for content_artifact in d_content.content._remote_artifact_saver_cas:
+-                for d_artifact in d_content.d_artifacts:
++            for d_artifact in d_content.d_artifacts:
++                if not d_artifact.remote:
++                    continue
++
++                for content_artifact in d_content.content._remote_artifact_saver_cas:
+                     if d_artifact.relative_path == content_artifact.relative_path:
+                         break
+                 else:
+@@ -292,13 +295,13 @@ def _needed_remote_artifacts(self, batch):
+                     raise ValueError(
+                         msg.format(rp=content_artifact.relative_path, c=d_content.content)
+                     )
+-                if d_artifact.remote:
+-                    for remote_artifact in content_artifact._remote_artifact_saver_ras:
+-                        if remote_artifact.remote_id == d_artifact.remote.pk:
+-                            break
+-                    else:
+-                        remote_artifact = self._create_remote_artifact(d_artifact, content_artifact)
+-                        needed_ras.append(remote_artifact)
++
++                for remote_artifact in content_artifact._remote_artifact_saver_ras:
++                    if remote_artifact.remote_id == d_artifact.remote.pk:
++                        break
++                else:
++                    remote_artifact = self._create_remote_artifact(d_artifact, content_artifact)
++                    needed_ras.append(remote_artifact)
+         return needed_ras
+ 
+     @staticmethod

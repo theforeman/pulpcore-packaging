@@ -1,0 +1,227 @@
+From 16d9cd110b63b486ac0b606482e42718cdf79d4c Mon Sep 17 00:00:00 2001
+From: Tatiana Tereshchenko <ttereshc@redhat.com>
+Date: Sun, 22 Aug 2021 22:42:31 +0200
+Subject: [PATCH] Loosens the constraints around what can be in a
+ new-repository-version.
+
+There are RPM repositories "in the wild" that violate Pulp's assumptions
+about what is 'legal' in an incoming repository version. This commit
+changes some fatal errors into log-warnings, along with some heuristics
+around how to get a 'reasonable' repository in the face of suboptimal
+data.
+
+To control activation of this behavior, RemoteArtifactSaver recognizes
+a ctor-keyword "fix_mismatched_remote_artifacts". This defaults to
+False; if provided as True, invokes the new behavior.
+
+This change also adds handling for an exception during
+repo-version-failure-cleanup that could result in losing error info.
+
+backports #8133
+
+fixes #9227
+
+(cherry picked from commit 349f2137d970f87190749b417cfa137dc0f99ff5)
+---
+ CHANGES/9227.bugfix                       |  2 +
+ CHANGES/plugin_api/9227.bugfix            |  5 +++
+ pulpcore/app/files.py                     | 33 +++++++++-----
+ pulpcore/app/models/publication.py        |  9 +++-
+ pulpcore/plugin/repo_version_utils.py     |  3 +-
+ pulpcore/plugin/stages/artifact_stages.py | 53 +++++++++++++++++++++--
+ pulpcore/tests/unit/test_files.py         |  4 +-
+ 7 files changed, 91 insertions(+), 18 deletions(-)
+ create mode 100644 CHANGES/9227.bugfix
+ create mode 100644 CHANGES/plugin_api/9227.bugfix
+
+diff --git a/CHANGES/9227.bugfix b/CHANGES/9227.bugfix
+new file mode 100644
+index 0000000000..fc7f8354c7
+--- /dev/null
++++ b/CHANGES/9227.bugfix
+@@ -0,0 +1,2 @@
++In stages-pipeline and new-version sanity-checks, added full error-info on path-problems.
++(backported from #8133)
+diff --git a/CHANGES/plugin_api/9227.bugfix b/CHANGES/plugin_api/9227.bugfix
+new file mode 100644
+index 0000000000..762522cf01
+--- /dev/null
++++ b/CHANGES/plugin_api/9227.bugfix
+@@ -0,0 +1,5 @@
++Added kwarg to RemoteArtifactSaver init to allow enabling handling of rare error edge-case.
++
++`fix_mismatched_remote_artifacts=True` enables workaround for a failure-scenario that
++(so far) is only encountered by pulp_rpm. Current behavior is the default.
++(backported from #8133)
+diff --git a/pulpcore/app/files.py b/pulpcore/app/files.py
+index e8f16d07ed..ba4045a987 100644
+--- a/pulpcore/app/files.py
++++ b/pulpcore/app/files.py
+@@ -127,21 +127,34 @@ def validate_file_paths(paths):
+     overlap_error = _("The path for file '{path}' overlaps: {conflicts}")
+ 
+     path_trie = StringTrie(separator="/")
++    dups = []
++    overlaps = []
+     for path in paths:
+         if path in path_trie:
+             # path duplicates a path already in the trie
+-            raise ValueError(_("Path is duplicated: {path}").format(path=path))
+-
+-        if path_trie.has_subtrie(path):
++            dups.append(path)
++        elif path_trie.has_subtrie(path):
+             # overlap where path is 'a/b' and trie has 'a/b/c'
+             conflicts = [item[0] for item in path_trie.items(prefix=path)]
+-            raise ValueError(overlap_error.format(path=path, conflicts=(", ").join(conflicts)))
+-
+-        prefixes = list(path_trie.prefixes(path))
+-        if prefixes:
+-            # overlap where path is 'a/b/c' and trie has 'a/b'
+-            conflicts = [prefix.key for prefix in prefixes]
+-            raise ValueError(overlap_error.format(path=path, conflicts=(", ").join(conflicts)))
++            overlaps.append(overlap_error.format(path=path, conflicts=", ".join(conflicts)))
++        else:
++            prefixes = list(path_trie.prefixes(path))
++            if prefixes:
++                # overlap where path is 'a/b/c' and trie has 'a/b'
++                conflicts = [prefix.key for prefix in prefixes]
++                overlaps.append(overlap_error.format(path=path, conflicts=", ".join(conflicts)))
+ 
+         # if there are no overlaps, add it to our trie and continue
+         path_trie[path] = True
++
++    if dups or overlaps:
++        dups_msg = ""
++        overlaps_msg = ""
++        if dups:
++            dups_msg = _("Paths are duplicated: {paths}").format(paths=",".join(dups))
++        if overlaps:
++            overlaps_msg = "\n".join(overlaps)
++
++        raise ValueError(
++            _("Path errors found. {dups}\n{overlaps}").format(dups=dups_msg, overlaps=overlaps_msg)
++        )
+diff --git a/pulpcore/app/models/publication.py b/pulpcore/app/models/publication.py
+index 44aa054e8a..2ed4a612e3 100644
+--- a/pulpcore/app/models/publication.py
++++ b/pulpcore/app/models/publication.py
+@@ -131,7 +131,14 @@ def __exit__(self, exc_type, exc_val, exc_tb):
+             exc_tb (types.TracebackType): (optional) stack trace.
+         """
+         if exc_val:
+-            self.delete()
++            # If an exception got us here, the Publication we were trying to create is
++            # Bad, and we should delete the attempt. HOWEVER - some exceptions happen before we
++            # even get that far. In those cases, calling delete() results in a new not-very-useful
++            # exception being raised and reported to the user, rather than the actual problem.
++            try:
++                self.delete()
++            except Exception:
++                raise exc_val.with_traceback(exc_tb)
+         else:
+             try:
+                 self.finalize_new_publication()
+diff --git a/pulpcore/plugin/repo_version_utils.py b/pulpcore/plugin/repo_version_utils.py
+index 4d8b4a8f4f..ec77e8b628 100644
+--- a/pulpcore/plugin/repo_version_utils.py
++++ b/pulpcore/plugin/repo_version_utils.py
+@@ -119,11 +119,10 @@ def validate_version_paths(version):
+     paths = ContentArtifact.objects.filter(content__pk__in=version.content).values_list(
+         "relative_path", flat=True
+     )
+-
+     try:
+         validate_file_paths(paths)
+     except ValueError as e:
+-        raise ValueError(_("Cannot create repository version. {err}.").format(err=e))
++        raise ValueError(_("Repository version errors : {err}").format(err=e))
+ 
+ 
+ def validate_repo_version(version):
+diff --git a/pulpcore/plugin/stages/artifact_stages.py b/pulpcore/plugin/stages/artifact_stages.py
+index 7dfca463ed..769a200c84 100644
+--- a/pulpcore/plugin/stages/artifact_stages.py
++++ b/pulpcore/plugin/stages/artifact_stages.py
+@@ -233,6 +233,10 @@ class RemoteArtifactSaver(Stage):
+     :class:`~pulpcore.plugin.stages.DeclarativeArtifact`.
+     """
+ 
++    def __init__(self, fix_mismatched_remote_artifacts=False, *args, **kwargs):
++        super().__init__(*args, **kwargs)
++        self.fix_mismatched_remote_artifacts = fix_mismatched_remote_artifacts
++
+     async def run(self):
+         """
+         The coroutine for this stage.
+@@ -296,10 +300,51 @@ def _needed_remote_artifacts(self, batch):
+                     if d_artifact.relative_path == content_artifact.relative_path:
+                         break
+                 else:
+-                    msg = _('No declared artifact with relative path "{rp}" for content "{c}"')
+-                    raise ValueError(
+-                        msg.format(rp=content_artifact.relative_path, c=d_content.content)
+-                    )
++                    if self.fix_mismatched_remote_artifacts:
++                        # We couldn't match an DeclarativeArtifact to a ContentArtifact by rel_path.
++                        # If there are any paths available (i.e., other ContentArtifacts for this
++                        # Artifact), complain to the logs, pick the rel_path from the last
++                        # ContentArtifact we examined, and continue.
++                        #
++                        # If we can't find anything to choose from (can that even happen?), fail
++                        # the process.
++                        avail_paths = ",".join(
++                            [
++                                ca.relative_path
++                                for ca in d_content.content._remote_artifact_saver_cas
++                            ]
++                        )
++                        if avail_paths:
++                            msg = _(
++                                "No declared artifact with relative path '{rp}' for content '{c}'"
++                                " from remote '{rname}'. Using last from available-paths : '{ap}'"
++                            )
++                            log.warning(
++                                msg.format(
++                                    rp=d_artifact.relative_path,
++                                    c=d_content.content.filename,
++                                    rname=d_artifact.remote.name,
++                                    ap=avail_paths,
++                                )
++                            )
++                            d_artifact.relative_path = content_artifact.relative_path
++                        else:
++                            msg = _(
++                                "No declared artifact with relative path '{rp}' for content '{c}'"
++                                " from remote '{rname}', and no paths available."
++                            )
++                            raise ValueError(
++                                msg.format(
++                                    rp=d_artifact.relative_path,
++                                    c=d_content.content.filename,
++                                    rname=d_artifact.remote.name,
++                                )
++                            )
++                    else:
++                        msg = _('No declared artifact with relative path "{rp}" for content "{c}"')
++                        raise ValueError(
++                            msg.format(rp=d_artifact.relative_path, c=d_content.content)
++                        )
+ 
+                 for remote_artifact in content_artifact._remote_artifact_saver_ras:
+                     if remote_artifact.remote_id == d_artifact.remote.pk:
+diff --git a/pulpcore/tests/unit/test_files.py b/pulpcore/tests/unit/test_files.py
+index 0167776ca1..bc32059838 100644
+--- a/pulpcore/tests/unit/test_files.py
++++ b/pulpcore/tests/unit/test_files.py
+@@ -19,7 +19,9 @@ def test_dupes(self):
+         Test for two duplicate paths.
+         """
+         paths = ["a/b", "PULP_MANIFEST", "PULP_MANIFEST"]
+-        with self.assertRaisesRegex(ValueError, "Path is duplicated: PULP_MANIFEST"):
++        with self.assertRaisesRegex(
++            ValueError, "Path errors found. Paths are duplicated: PULP_MANIFEST"
++        ):
+             validate_file_paths(paths)
+ 
+     def test_overlaps(self):

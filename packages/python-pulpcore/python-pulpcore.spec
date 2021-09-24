@@ -4,13 +4,18 @@
 
 Name:           python-%{pypi_name}
 Version:        3.9.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Patch0:         0001-Adjusts-worker-timeout-to-300-seconds.patch
+Patch1:         0002.patch
+Patch2:         0003.patch
+Patch3:         0004.patch
+Patch4:         0005.patch
+Patch5:         0006.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -175,6 +180,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Sep 24 2021 Justin Sherrill <jsherril@redhat.com> 3.9.1-3
+- add patches to support pulp-rpm 3.11
+
 * Wed Mar 03 2021 Brian Bouterse - 3.9.1-2
 - Increase Pulp worker timeout to 300 seconds
 

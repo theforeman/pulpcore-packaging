@@ -1,0 +1,74 @@
+From 575f9713a7ab979309515b6208ae4d0c40cff0f3 Mon Sep 17 00:00:00 2001
+From: Grant Gainey <ggainey@redhat.com>
+Date: Wed, 31 Mar 2021 16:04:21 -0400
+Subject: [PATCH] Teach artifact_stages:_needed_remote_artifacts() to not
+ return dupes.
+
+backports #8489
+https://pulp.plan.io/issues/8489
+closes #8485
+https://pulp.plan.io/issues/8485
+
+(cherry picked from commit 47e5cc2a69464caaefbb50f994de03d72fb780e4)
+---
+ CHANGES/7876.bugfix                       |  2 --
+ CHANGES/8377.bugfix                       |  1 -
+ CHANGES/8485.bugfix                       |  1 +
+ pulpcore/plugin/stages/artifact_stages.py | 12 +++++++++---
+ 4 files changed, 10 insertions(+), 6 deletions(-)
+ delete mode 100644 CHANGES/7876.bugfix
+ delete mode 100644 CHANGES/8377.bugfix
+ create mode 100644 CHANGES/8485.bugfix
+
+diff --git a/CHANGES/7876.bugfix b/CHANGES/7876.bugfix
+deleted file mode 100644
+index ffd6104e9e..0000000000
+--- a/CHANGES/7876.bugfix
++++ /dev/null
+@@ -1,2 +0,0 @@
+-Fixed a bug experienced by the migration plugin where all content objects are assumed to have a
+-remote associated with them.
+diff --git a/CHANGES/8377.bugfix b/CHANGES/8377.bugfix
+deleted file mode 100644
+index 2092663d78..0000000000
+--- a/CHANGES/8377.bugfix
++++ /dev/null
+@@ -1 +0,0 @@
+-Fixed artifact-stage to handle an edge-case when multiple multi-artifact content, from different remotes, is in a single batch.
+diff --git a/CHANGES/8485.bugfix b/CHANGES/8485.bugfix
+new file mode 100644
+index 0000000000..c08e8fecc1
+--- /dev/null
++++ b/CHANGES/8485.bugfix
+@@ -0,0 +1 @@
++Backported fixes for artifact handling important for pulp-2to3-migration plugin use cases.
+diff --git a/pulpcore/plugin/stages/artifact_stages.py b/pulpcore/plugin/stages/artifact_stages.py
+index c3b7b82cf9..d47443cc60 100644
+--- a/pulpcore/plugin/stages/artifact_stages.py
++++ b/pulpcore/plugin/stages/artifact_stages.py
+@@ -281,7 +281,12 @@ def _needed_remote_artifacts(self, batch):
+                 to_attr="_remote_artifact_saver_cas",
+             ),
+         )
+-        needed_ras = []
++
++        # Now return the list of RemoteArtifacts that need to be saved.
++        #
++        # We can end up with duplicates (diff pks, same sha256) in the sequence below,
++        # so we store by-sha256 and then return the final values
++        needed_ras = {}  # { str(<sha256>): RemoteArtifact, ... }
+         for d_content in batch:
+             for d_artifact in d_content.d_artifacts:
+                 if not d_artifact.remote:
+@@ -301,8 +306,9 @@ def _needed_remote_artifacts(self, batch):
+                         break
+                 else:
+                     remote_artifact = self._create_remote_artifact(d_artifact, content_artifact)
+-                    needed_ras.append(remote_artifact)
+-        return needed_ras
++                    needed_ras[remote_artifact.sha256] = remote_artifact
++
++        return list(needed_ras.values())
+ 
+     @staticmethod
+     def _create_remote_artifact(d_artifact, content_artifact):
