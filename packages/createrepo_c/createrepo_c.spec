@@ -1,3 +1,14 @@
+# explicitly define, as we build on top of an scl, not inside with scl_package
+%if 0%{?scl:1}
+%global scl_prefix %{scl}-
+%global python3_sitearch /opt/theforeman/tfm-pulpcore/root/usr/lib64/python3.8/site-packages/
+%global python3_version 3.8
+%global __os_install_post %python38_os_install_post
+%global __python_requires %python38_python_requires
+%global __python_provides %python38_python_provides
+%global __python3 /opt/rh/rh-python38/root/usr/bin/python3
+%endif
+
 %global libmodulemd_version 2.3.0
 
 %define __cmake_in_source_build 1
@@ -25,7 +36,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -85,31 +96,46 @@ Requires:   %{name}-libs%{?_isa} = %{version}-%{release}
 This package contains the createrepo_c C library and header files.
 These development files are for easy manipulation with a repodata.
 
-%package -n python%{python3_pkgversion}-%{name}
+%package -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Summary:        Python 3 bindings for the createrepo_c library
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
-BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 Requires:       %{name}-libs = %{version}-%{release}
 
-%description -n python%{python3_pkgversion}-%{name}
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Python 3 bindings for the createrepo_c library.
 
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -p1
 
 mkdir build-py3
 
+# it can't detect our special PYTHONPATH and uses the compiled-in from the SCL Python
+%if 0%{?scl:1}
+sed -i "/OUTPUT_VARIABLE PYTHON_INSTALL_DIR/ s#))#).replace('rh/rh-python38', 'theforeman/tfm-pulpcore'))#" src/python/CMakeLists.txt
+sed -i "/PYTHON_UNSET()/d" src/python/CMakeLists.txt
+%endif
+%{?scl:EOF}
+
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 # Build createrepo_c with Pyhon 3
 pushd build-py3
   %cmake .. \
       -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
       -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
-      -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF}
+      -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
+      %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
 popd
+%{?scl:EOF}
 
 %check
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 # Run Python 3 tests
 pushd build-py3
   # Compile C tests
@@ -117,8 +143,11 @@ pushd build-py3
   # Run Python 3 tests
   make ARGS="-V" test
 popd
+%{?scl:EOF}
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 pushd build-py3
   # Install createrepo_c with Python 3
   make install DESTDIR=%{buildroot}
@@ -129,6 +158,7 @@ ln -sr %{buildroot}%{_bindir}/createrepo_c %{buildroot}%{_bindir}/createrepo
 ln -sr %{buildroot}%{_bindir}/mergerepo_c %{buildroot}%{_bindir}/mergerepo
 ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
+%{?scl:EOF}
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %post libs -p /sbin/ldconfig
@@ -164,11 +194,14 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/
 
-%files -n python%{python3_pkgversion}-%{name}
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Oct 05 2021 Evgeni Golov - 0.17.6-2
+- Build against Python 3.8
+
 * Tue Sep 28 2021 Evgeni Golov - 0.17.6-1
 - Release createrepo_c 0.17.6
 
