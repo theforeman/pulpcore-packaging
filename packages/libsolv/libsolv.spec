@@ -1,3 +1,14 @@
+# explicitly define, as we build on top of an scl, not inside with scl_package
+%if 0%{?scl:1}
+%global scl_prefix %{scl}-
+%global python3_sitearch /opt/theforeman/tfm-pulpcore/root/usr/lib64/python3.8/site-packages/
+%global python3_version %python38python3_version
+%global __os_install_post %python38_os_install_post
+%global __python_requires %python38_python_requires
+%global __python_provides %python38_python_provides
+%global __python3 %python38__python
+%endif
+
 %global libname solv
 
 # Only build Python2 bindings on EL7
@@ -27,7 +38,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.20
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -129,23 +140,33 @@ Python 2 version.
 %endif
 
 %if %{with python3_bindings}
-%package -n python%{python3_pkgversion}-%{libname}
+%package -n %{?scl_prefix}python%{python3_pkgversion}-%{libname}
 Summary:        Python bindings for the %{name} library
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{libname}}
 BuildRequires:  swig
-BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description -n python%{python3_pkgversion}-%{libname}
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{libname}
 Python bindings for the %{name} library.
 
 Python 3 version.
 %endif
 
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -p1
 
+# it can't detect our special PYTHONPATH and uses the compiled-in from the SCL Python
+%if 0%{?scl:1}
+sed -i "/OUTPUT_VARIABLE PYTHON3_INSTALL_DIR/ s#))#).replace('rh/rh-python38', 'theforeman/tfm-pulpcore'))#" bindings/python3/CMakeLists.txt
+%endif
+%{?scl:EOF}
+
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %cmake . -B"%{_vpath_builddir}" -GNinja          \
   -DFEDORA=1                                     \
   -DENABLE_RPMDB=ON                              \
@@ -186,12 +207,19 @@ Python 3 version.
 %endif
   %{nil}
 %ninja_build -C "%{_vpath_builddir}"
+%{?scl:EOF}
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %ninja_install -C "%{_vpath_builddir}"
+%{?scl:EOF}
 
 %check
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %ninja_test -C "%{_vpath_builddir}"
+%{?scl:EOF}
 
 %files
 %license LICENSE*
@@ -268,13 +296,18 @@ Python 3 version.
 %endif
 
 %if %{with python3_bindings}
-%files -n python%{python3_pkgversion}-%{libname}
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{libname}
 %{python3_sitearch}/_%{libname}.so
 %{python3_sitearch}/%{libname}.py
+%if 0%{?!scl:1}
 %{python3_sitearch}/__pycache__/%{libname}.*
+%endif
 %endif
 
 %changelog
+* Tue Sep 28 2021 Evgeni Golov - 0.7.20-2
+- Build against Python 3.8
+
 * Tue Sep 28 2021 Evgeni Golov - 0.7.20-1
 - Release libsolv 0.7.20
 
