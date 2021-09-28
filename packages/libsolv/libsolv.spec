@@ -26,7 +26,7 @@
 %bcond_with    zstd
 
 Name:           lib%{libname}
-Version:        0.7.17
+Version:        0.7.20
 Release:        1%{?dist}
 Summary:        Package dependency solver
 
@@ -129,14 +129,14 @@ Python 2 version.
 %endif
 
 %if %{with python3_bindings}
-%package -n python3-%{libname}
+%package -n python%{python3_pkgversion}-%{libname}
 Summary:        Python bindings for the %{name} library
-%{?python_provide:%python_provide python3-%{libname}}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{libname}}
 BuildRequires:  swig
-BuildRequires:  python3-devel
+BuildRequires:  python%{python3_pkgversion}-devel
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description -n python3-%{libname}
+%description -n python%{python3_pkgversion}-%{libname}
 Python bindings for the %{name} library.
 
 Python 3 version.
@@ -268,13 +268,16 @@ Python 3 version.
 %endif
 
 %if %{with python3_bindings}
-%files -n python3-%{libname}
+%files -n python%{python3_pkgversion}-%{libname}
 %{python3_sitearch}/_%{libname}.so
 %{python3_sitearch}/%{libname}.py
 %{python3_sitearch}/__pycache__/%{libname}.*
 %endif
 
 %changelog
+* Tue Sep 28 2021 Evgeni Golov - 0.7.20-1
+- Release libsolv 0.7.20
+
 * Tue Mar 23 2021 Evgeni Golov - 0.7.17-1
 - Release libsolv 0.7.17
 
