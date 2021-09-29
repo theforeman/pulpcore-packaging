@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Library for developers to extract data from Microsoft Excel (tm)
 
 License:        BSD
@@ -25,6 +25,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -63,6 +66,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 29 2021 Evgeni Golov - 2.0.1-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 06 2021 Evgeni Golov - 2.0.1-2
 - Build against Python 3.8
 

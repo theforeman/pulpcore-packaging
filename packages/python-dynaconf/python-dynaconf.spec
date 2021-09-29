@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.1.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -26,6 +26,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 38.6.0
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -64,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 29 2021 Evgeni Golov - 3.1.7-2
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 13 2021 Evgeni Golov 3.1.7-1
 - Update to 3.1.7
 

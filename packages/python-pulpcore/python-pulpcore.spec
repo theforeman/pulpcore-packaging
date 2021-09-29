@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.15.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -93,6 +93,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 5.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -172,6 +175,9 @@ done
 
 
 %changelog
+* Wed Sep 29 2021 Evgeni Golov - 3.15.2-2
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Wed Sep 08 2021 Evgeni Golov 3.15.2-1
 - Update to 3.15.2
 

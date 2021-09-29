@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python implementation of JWT, JWE, JWS and JWK
 
 License:        Apache 2.0
@@ -29,6 +29,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-future
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycryptodomex
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -72,6 +75,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 29 2021 Evgeni Golov - 1.4.2-4
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 06 2021 Evgeni Golov - 1.4.2-3
 - Build against Python 3.8
 
