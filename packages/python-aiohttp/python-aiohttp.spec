@@ -3,13 +3,14 @@
 
 Name:           python-%{pypi_name}
 Version:        3.7.4
-Release:        1%{?dist}
+Release:        1.1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
 URL:            https://github.com/aio-libs/aiohttp
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         allow-larger-headers.patch
+Patch0:         0001-allow-larger-headers.patch
+Patch1:         0002-Adds-Secure-Proxy-support.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -53,6 +54,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Sep 29 2021 Brian Bouterse <bmbouter@redhat.com> 3.7.4-1.1
+- Adds patch to enable secure proxy support
+
 * Fri Mar 19 2021 Evgeni Golov 3.7.4-1
 - Update to 3.7.4
 
