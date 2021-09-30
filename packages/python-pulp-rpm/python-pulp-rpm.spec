@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.14.4
+Version:        3.14.5
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -27,7 +27,7 @@ Requires:       libmodulemd2
 Requires:       python3-gobject
 Requires:       libmodulemd >= 2.0
 %endif
-Requires:       python%{python3_pkgversion}-createrepo_c >= 0.17.0
+Requires:       python%{python3_pkgversion}-createrepo_c >= 0.17.6
 Conflicts:      python%{python3_pkgversion}-createrepo_c >= 0.18
 Requires:       python%{python3_pkgversion}-django-readonly-field
 Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
@@ -65,6 +65,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Sep 30 2021 Zach Huntington-Meath <zhunting@redhat.com> 3.14.5-1
+- upgrade to 3.14.5
+
 * Thu Sep 23 2021 Ian Ballou <ianballou67@gmail.com> 3.14.4-1
 - upgrade to 3.14.4
 
