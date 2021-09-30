@@ -24,7 +24,7 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        0.17.1
+Version:        0.17.6
 Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
@@ -85,13 +85,13 @@ Requires:   %{name}-libs%{?_isa} = %{version}-%{release}
 This package contains the createrepo_c C library and header files.
 These development files are for easy manipulation with a repodata.
 
-%package -n python3-%{name}
+%package -n python%{python3_pkgversion}-%{name}
 Summary:        Python 3 bindings for the createrepo_c library
-%{?python_provide:%python_provide python3-%{name}}
-BuildRequires:  python3-devel
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
+BuildRequires:  python%{python3_pkgversion}-devel
 Requires:       %{name}-libs = %{version}-%{release}
 
-%description -n python3-%{name}
+%description -n python%{python3_pkgversion}-%{name}
 Python 3 bindings for the createrepo_c library.
 
 %prep
@@ -164,11 +164,14 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/
 
-%files -n python3-%{name}
+%files -n python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Sep 28 2021 Evgeni Golov - 0.17.6-1
+- Release createrepo_c 0.17.6
+
 * Wed Mar 03 2021 Evgeni Golov - 0.17.1-1
 - Release createrepo_c 0.17.1
 
