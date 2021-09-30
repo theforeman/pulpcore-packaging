@@ -3,8 +3,8 @@
 %define debug_package %{nil}
 
 Name:           pulpcore-selinux
-Version:        1.2.3
-Release:        2%{?dist}
+Version:        1.2.6
+Release:        1%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -83,6 +83,15 @@ fi
 
 
 %changelog
+* Thu Sep 30 2021 Zach Huntington-Meath <zhunting@redhat.com> - 1.2.6-1
+- Release pulpcore-selinux 1.2.6
+
+* Wed Aug 25 2021 Odilon Sousa <osousa@redhat.com> - 1.2.5-1
+- Release pulpcore-selinux 1.2.5
+
+* Thu Feb 04 2021 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> 1.2.4-1
+- Update to 1.2.4
+
 * Fri Nov 27 2020 Evgeni Golov - 1.2.3-2
 - reexec systemd after policy changes to make socket labeling work
   this is needed for systemd before 245, where the following bug is fixed
