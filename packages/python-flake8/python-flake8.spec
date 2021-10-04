@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.9.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
 License:        MIT
@@ -33,6 +33,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle >= 2.7.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes < 2.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes >= 2.3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -71,6 +74,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 29 2021 Evgeni Golov - 3.9.2-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 06 2021 Evgeni Golov - 3.9.2-2
 - Build against Python 3.8
 

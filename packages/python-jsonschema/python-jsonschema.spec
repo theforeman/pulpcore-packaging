@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.2.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
@@ -31,6 +31,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyrsistent >= 0.14.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.11.0
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -69,6 +72,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 29 2021 Evgeni Golov - 3.2.0-6
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 06 2021 Evgeni Golov - 3.2.0-5
 - Build against Python 3.8
 

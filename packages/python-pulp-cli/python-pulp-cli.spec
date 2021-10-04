@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.11.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -39,6 +39,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.24
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-schema = 0.7.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml = 0.10.2
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -79,6 +82,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 29 2021 Evgeni Golov - 0.11.0-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 13 2021 Evgeni Golov - 0.11.0-2
 - Build against Python 3.8
 
