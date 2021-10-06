@@ -1,8 +1,11 @@
+%{?scl:%scl_package python-%{pypi_name}}
+%{!?scl:%global pkg_name %{name}}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-rpm
 
-Name:           python-%{pypi_name}
-Version:        3.14.2
+Name:           %{?scl_prefix}python-%{pypi_name}
+Version:        3.15.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -11,60 +14,81 @@ URL:            http://www.pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
 
 %description
 %{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
+
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 %if 0%{?rhel} == 7
-Requires:       python36-gobject
 Requires:       libmodulemd2
 %else
-Requires:       python3-gobject
 Requires:       libmodulemd >= 2.0
 %endif
-Requires:       python%{python3_pkgversion}-createrepo_c >= 0.17.0
-Conflicts:      python%{python3_pkgversion}-createrepo_c >= 0.18
-Requires:       python%{python3_pkgversion}-django-readonly-field
-Requires:       python%{python3_pkgversion}-jsonschema >= 3.0
-Requires:       python%{python3_pkgversion}-libcomps >= 0.1.15
-Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
-Requires:       python%{python3_pkgversion}-productmd >= 1.33
-Requires:       python%{python3_pkgversion}-pulpcore < 3.15
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.14.5
-Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-solv >= 0.7.17
-Conflicts:      python%{python3_pkgversion}-solv >= 0.8
-Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.22
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.17.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.18
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 3.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.1.15
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.34
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.17
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.7.17
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.8
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
+
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
 # remove "solv" dependency from setup.py as python3-solv does not provide an egg
 sed -i "/solv/d" requirements.txt
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
+%{?scl:EOF}
 
-%files -n python%{python3_pkgversion}-%{pypi_name}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_rpm
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
+
 %changelog
+* Mon Sep 13 2021 Evgeni Golov 3.15.0-1
+- Update to 3.15.0
+
 * Wed Aug 25 2021 Odilon Sousa <osousa@redhat.com> - 3.14.2-1
 - Release python-pulp-rpm 3.14.2
 
