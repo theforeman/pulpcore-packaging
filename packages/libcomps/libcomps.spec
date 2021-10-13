@@ -12,6 +12,14 @@
 # Always build Python3 bindings
 %bcond_without python3
 
+# Our EL8 buildroots default to Python 3.8, but we also need a 3.6 build of libcomps
+# to make dnf happy
+%if 0%{?rhel} == 8
+%bcond_without python36
+%else
+%bcond_with python36
+%endif
+
 # Never build docs by default
 %bcond_with doc
 
@@ -24,7 +32,7 @@
 
 Name:           libcomps
 Version:        0.1.15
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -102,6 +110,18 @@ Obsoletes:      %{?scl_prefix}platform-python-%{name} < %{version}-%{release}
 Python3 bindings for libcomps library.
 %endif
 
+%if %{with python36}
+%package -n python3-%{name}
+Summary:        Python 3 bindings for libcomps library
+BuildRequires:  python36-devel
+Provides:       python36-%{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+Obsoletes:      platform-python-%{name} < %{version}-%{release}
+
+%description -n python3-%{name}
+Python3 bindings for libcomps library.
+%endif
+
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
@@ -123,6 +143,9 @@ mkdir build-py2
 %if %{with python3}
 mkdir build-py3
 %endif
+%if %{with python36}
+mkdir build-py36
+%endif
 %if %{with doc}
 mkdir build-doc
 %endif
@@ -142,7 +165,15 @@ popd
 %if %{with python3}
 pushd build-py3
   # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3 %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
+  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3 -DPYTHON_EXECUTABLE=%{__python3} %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
+  %make_build
+popd
+%endif
+
+%if %{with python36}
+pushd build-py36
+  # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
+  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3.6 -DPYTHON_EXECUTABLE=/usr/bin/python3.6
   %make_build
 popd
 %endif
@@ -174,6 +205,12 @@ popd
 
 %if %{with python3}
 pushd build-py3
+  %make_install
+popd
+%endif
+
+%if %{with python36}
+pushd build-py36
   %make_install
 popd
 %endif
@@ -231,7 +268,16 @@ popd
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 %endif
 
+%if %{with python36}
+%files -n python3-%{name}
+/usr/lib64/python3.6/site-packages/%{name}/
+/usr/lib64/python3.6/site-packages/%{name}-%{version}-py*.egg-info
+%endif
+
 %changelog
+* Wed Oct 13 2021 Evgeni Golov - 0.1.15-3
+- Also build libcomps against Python 3.6 on EL8
+
 * Tue Sep 14 2021 Evgeni Golov - 0.1.15-2
 - Build against Python 3.8
 
