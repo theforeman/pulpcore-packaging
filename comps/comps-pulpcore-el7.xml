@@ -155,6 +155,7 @@
       <packagereq type="default">tfm-pulpcore-python3-requests-oauthlib</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-requirements-parser</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-rich</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-rhsm</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-rq</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-ruamel-yaml</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-ruamel-yaml-clib</packagereq>

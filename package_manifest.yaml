@@ -158,6 +158,7 @@ pulpcore_packages:
     python-pygobject: {}
     python-python3-openid: {}
     python-requests-oauthlib: {}
+    python-rhsm: {}
     python-schema: {}
     python-social-auth-app-django: {}
     python-social-auth-core: {}
