@@ -156,6 +156,7 @@
       <packagereq type="default">python38-requests-oauthlib</packagereq>
       <packagereq type="default">python38-requirements-parser</packagereq>
       <packagereq type="default">python38-rich</packagereq>
+      <packagereq type="default">python38-rhsm</packagereq>
       <packagereq type="default">python38-rq</packagereq>
       <packagereq type="default">python38-ruamel-yaml</packagereq>
       <packagereq type="default">python38-ruamel-yaml-clib</packagereq>
