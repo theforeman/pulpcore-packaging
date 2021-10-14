@@ -1,11 +1,14 @@
+%{?scl:%scl_package python-%{modname}}
+%{!?scl:%global pkg_name %{name}}
+
 %global modname iniparse
 
 # Use the same directory of the main package for subpackage licence and docs
-%global _docdir_fmt %{name}
+%global _docdir_fmt %{pkg_name}
 
-Name:           python3-%{modname}
+Name:           %{?scl_prefix}python-%{modname}
 Version:        0.4
-Release:        33%{?dist}
+Release:        34%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
@@ -14,17 +17,9 @@ Patch0:         fix-issue-28.patch
 # The patch upstream (http://code.google.com/p/iniparse/issues/detail?id=22)
 # is Python3-only. The patch below uses python-six to create a version that works
 # with both Python major versions and is more error-prone.
-Patch1:         %{name}-python3-compat.patch
+Patch1:         %{pkg_name}-python3-compat.patch
 # Fixup the module to have proper setup.py information
-Patch2:         %{name}-setup-fixes.patch
-
-%{?python_provide:%python_provide python3-%{modname}}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
-BuildRequires:  python3-test
-Requires:       python3-six
-Obsoletes:      platform-python-%{modname} < %{version}-%{release}
+Patch2:         %{pkg_name}-setup-fixes.patch
 
 BuildArch: noarch
 
@@ -35,34 +30,68 @@ files (order of sections & options, indentation, comments, and blank\
 lines are preserved when data is updated), and is more convenient to\
 use.
 
+
 %description %{_description}
+
+%package -n %{?scl_prefix}python%{python3_pkgversion}-%{modname}
+Summary:        %{summary}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{modname}}
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-test
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-six
+Obsoletes:      %{?scl_prefix}platform-python-%{modname} < %{version}-%{release}
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{modname} %{_description}
 
 Python 3 version.
 
 %prep
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %setup -q -n %{modname}-%{version}
 %patch0 -p1
 %patch1 -p0
 %patch2 -p0
 chmod -c -x html/index.html
+%{?scl:EOF}
+
 
 %build
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_build
+%{?scl:EOF}
+
 
 %install
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %py3_install
 rm -vfr %{buildroot}%{_docdir}/*
+%{?scl:EOF}
+
 
 %check
+%{?scl:scl enable %{scl} - << \EOF}
+set -ex
 %{__python3} runtests.py
+%{?scl:EOF}
 
-%files -n python3-%{modname}
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{modname}
 %license LICENSE LICENSE-PSF
 %doc README Changelog html/
 %{python3_sitelib}/%{modname}/
 %{python3_sitelib}/%{modname}-%{version}-*.egg-info
 
+
 %changelog
+* Thu Oct 14 2021 Evgeni Golov - 0.4-34
+- Build python-iniparse against Python 3.8
+- Rename source back to python-iniparse, as the clash is gone thanks to the SCL
+
 * Mon Jan  4 2021 Evgeni Golov - 0.4-33
 - Rename source to python3-iniparse
 

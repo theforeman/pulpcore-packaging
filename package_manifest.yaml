@@ -165,10 +165,7 @@ pulpcore_packages:
     python-socks: {}
     python-tenacity: {}
     python-wcmatch: {}
-    python3-iniparse:
-      koji_tags:
-        - name: pulpcore-{{ pulpcore_version }}-el7
-          dist: '.el7'
+    python-iniparse: {}
     python-itypes: {}
     python-jdcal: {}
     python-jinja2: {}

@@ -98,6 +98,7 @@
       <packagereq type="default">python38-importlib-metadata</packagereq>
       <packagereq type="default">python38-importlib-resources</packagereq>
       <packagereq type="default">python38-inflection</packagereq>
+      <packagereq type="default">python38-iniparse</packagereq>
       <packagereq type="default">python38-itypes</packagereq>
       <packagereq type="default">python38-jdcal</packagereq>
       <packagereq type="default">python38-jinja2</packagereq>
