@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.8.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -37,6 +37,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.5
 
+Provides:       pulpcore-plugin(container) = %{version}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -73,6 +75,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 18 2021 Evgeni Golov - 2.8.1-2
+- Add provides for 'pulpcore-plugin' and obsolete old name
+
 * Mon Sep 13 2021 Evgeni Golov 2.8.1-1
 - Update to 2.8.1
 

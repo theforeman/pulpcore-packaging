@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
@@ -31,6 +31,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+Provides:       pulpcore-plugin(certguard) = %{version}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin that provides an X.509 capable ContentGuard for pulpcore.
@@ -69,6 +71,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 18 2021 Evgeni Golov - 1.5.0-2
+- Add provides for 'pulpcore-plugin' and obsolete old name
+
 * Mon Sep 13 2021 Evgeni Golov 1.5.0-1
 - Update to 1.5.0
 

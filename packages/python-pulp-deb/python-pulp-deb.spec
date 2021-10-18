@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.15.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -30,6 +30,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.17
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+Provides:       pulpcore-plugin(deb) = %{version}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -66,6 +68,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 18 2021 Evgeni Golov - 2.15.0-2
+- Add provides for 'pulpcore-plugin' and obsolete old name
+
 * Wed Sep 08 2021 Evgeni Golov 2.15.0-1
 - Update to 2.15.0
 
