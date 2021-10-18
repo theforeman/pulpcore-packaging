@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.4.0
-Release:        0.1.a2%{?dist}
+Release:        0.2.a2%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -32,8 +32,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-prometheus >= 2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer = 0.4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible < 0.11.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 0.10.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible < 1:0.11.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 1:0.10.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container < 2.9.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container >= 2.8.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.16.0
@@ -44,6 +44,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-core < 4.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-core >= 3.3.1
 
+Provides:       pulpcore-plugin(galaxy-ng) = %{version}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -80,6 +82,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 18 2021 Evgeni Golov - 4.4.0-0.2.a2
+- Add provides for 'pulpcore-plugin' and obsolete old name
+
 * Mon Sep 27 2021 Evgeni Golov 4.4.0-0.1.a2
 - Update to 4.4.0a2
 

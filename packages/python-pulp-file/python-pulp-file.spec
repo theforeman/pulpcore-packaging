@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.9.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        File plugin for the Pulp Project
 
 License:        GPLv2+
@@ -29,6 +29,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.17
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+Provides:       pulpcore-plugin(file) = %{version}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin to support hosting arbitrary files.
@@ -65,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 18 2021 Evgeni Golov - 1.9.1-2
+- Add provides for 'pulpcore-plugin' and obsolete old name
+
 * Wed Sep 08 2021 Evgeni Golov 1.9.1-1
 - Update to 1.9.1
 

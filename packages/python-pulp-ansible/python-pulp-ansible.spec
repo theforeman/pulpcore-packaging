@@ -6,7 +6,8 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
+Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
 License:        GPLv2+
@@ -36,6 +37,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+Provides:       pulpcore-plugin(ansible) = %{version}
+Obsoletes:      python3-%{pypi_name} < %{epoch}:%{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -72,6 +75,10 @@ set -ex
 
 
 %changelog
+* Mon Oct 18 2021 Evgeni Golov - 1:0.10.0-2
+- Add provides for 'pulpcore-plugin' and obsolete old name
+- Fix Epoch that was forgotten in 0.10.0-1
+
 * Wed Sep 08 2021 Evgeni Golov 0.10.0-1
 - Update to 0.10.0
 
