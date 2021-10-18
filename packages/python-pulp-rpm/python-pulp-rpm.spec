@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.14.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -41,6 +41,8 @@ Requires:       python%{python3_pkgversion}-solv >= 0.7.17
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc
 
+Provides:       pulpcore-plugin(rpm) = %{version}
+
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
@@ -65,6 +67,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 3.14.6-2
+- Add provides for 'pulpcore-plugin'
+
 * Wed Oct 06 2021 Odilon Sousa <osousa@redhat.com> - 3.14.6-1
 - Release python-pulp-rpm 3.14.6
 

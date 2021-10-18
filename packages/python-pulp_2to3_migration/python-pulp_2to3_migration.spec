@@ -5,7 +5,7 @@
 # See https://github.com/dgoodwin/tito/pull/333
 Name:           python-pulp_2to3_migration
 Version:        0.12.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp 2 to Pulp 3 migration tool
 
 License:        GPLv2+
@@ -29,6 +29,8 @@ Requires:       python3-pulpcore >= 3.13
 Requires:       python3-semantic-version
 Requires:       python3-setuptools
 
+Provides:       pulpcore-plugin(2to3-migration) = %{version}
+
 %description -n python3-%{pypi_name}
 %{summary}
 
@@ -50,6 +52,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_2to3_migration-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 0.12.0-2
+- Add provides for 'pulpcore-plugin'
+
 * Fri Jun 25 2021 Evgeni Golov - 0.12.0-1
 - Release python-pulp_2to3_migration 0.12.0
 

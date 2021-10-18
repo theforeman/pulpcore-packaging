@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.8.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        File plugin for the Pulp Project
 
 License:        GPLv2+
@@ -23,6 +23,8 @@ Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-pulpcore < 3.15
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.13
 Requires:       python%{python3_pkgversion}-setuptools
+
+Provides:       pulpcore-plugin(file) = %{version}
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin to support hosting arbitrary files.
@@ -45,6 +47,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_file-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 1.8.2-2
+- Add provides for 'pulpcore-plugin'
+
 * Tue Aug 17 2021 Odilon Sousa <osousa@redhat.com> - 1.8.2-1
 - Release python-pulp-file 1.8.2
 

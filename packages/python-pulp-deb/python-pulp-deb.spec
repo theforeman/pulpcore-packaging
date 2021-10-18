@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.14.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -24,6 +24,8 @@ Requires:       python%{python3_pkgversion}-debian >= 0.1.36
 Requires:       python%{python3_pkgversion}-pulpcore < 3.16
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.14
 Requires:       python%{python3_pkgversion}-setuptools
+
+Provides:       pulpcore-plugin(deb) = %{version}
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -46,6 +48,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_deb-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 2.14.1-2
+- Add provides for 'pulpcore-plugin'
+
 * Mon Aug 02 2021 Quirin Pamp 2.14.1-1
 - Update to 2.14.1
 
