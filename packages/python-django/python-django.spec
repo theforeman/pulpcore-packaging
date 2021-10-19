@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.2.7
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -32,6 +32,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-asgiref >= 3.3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytz
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-sqlparse >= 0.2.2
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{srcname} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -78,6 +81,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 3.2.7-4
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Wed Sep 15 2021 Matthias Dellweg 3.2.7-3
 - Add a patch for FIPS compliency.
 

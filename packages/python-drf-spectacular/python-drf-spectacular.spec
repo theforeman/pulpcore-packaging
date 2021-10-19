@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.17.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
@@ -37,6 +37,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >=
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-inflection >= 0.3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 2.6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -80,6 +83,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 0.17.3-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Wed Sep 08 2021 Evgeni Golov - 0.17.3-2
 - Build against Python 3.8
 

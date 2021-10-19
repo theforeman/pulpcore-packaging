@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.12.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -28,6 +28,9 @@ Summary:        %{summary}
 Provides:       %{?scl_prefix}python%{python3_pkgversion}-django-rest-framework = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 3.12.4-4
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Thu Sep 09 2021 Evgeni Golov - 3.12.4-3
 - Correct django-rest-framework Provides to mention Python 3.8
 

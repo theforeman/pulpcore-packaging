@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -52,6 +52,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.25.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.8.5
 Requires:       tar
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -92,6 +95,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 0.4.0-2
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Wed Sep 08 2021 Evgeni Golov 0.4.0-1
 - Update to 0.4.0
 
