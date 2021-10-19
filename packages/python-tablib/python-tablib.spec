@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 
 License:        MIT
@@ -32,6 +32,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-openpyxl >= 2.6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyyaml
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-xlrd
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-xlwt
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -69,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 3.0.0-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 06 2021 Evgeni Golov - 3.0.0-2
 - Build against Python 3.8
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.4.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Implementation of per object permissions for Django
 
 License:        BSD
@@ -27,6 +27,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -64,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 2.4.0-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Wed Sep 08 2021 Evgeni Golov - 2.4.0-2
 - Build against Python 3.8
 

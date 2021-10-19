@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.5.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -28,6 +28,9 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-diff-match-patch
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 0.14.0
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 19 2021 Evgeni Golov - 2.5.0-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 06 2021 Evgeni Golov - 2.5.0-2
 - Build against Python 3.8
 
