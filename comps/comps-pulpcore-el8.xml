@@ -129,6 +129,7 @@
       <packagereq type="default">python38-pulp-container</packagereq>
       <packagereq type="default">python38-pulp-deb</packagereq>
       <packagereq type="default">python38-pulp-file</packagereq>
+      <packagereq type="default">python38-pulp-ostree</packagereq>
       <packagereq type="default">python38-pulp-python</packagereq>
       <packagereq type="default">python38-pulp-rpm</packagereq>
       <packagereq type="default">python38-pulp-rpm-client</packagereq>
