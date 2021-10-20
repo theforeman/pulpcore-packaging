@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.15.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -97,6 +97,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
 
+Provides:       %{pypi_name} = %{version}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Pulp is a platform for managing repositories of content, such as software
@@ -175,6 +176,9 @@ done
 
 
 %changelog
+* Wed Oct 20 2021 Evgeni Golov - 3.15.2-3
+- Add provides for 'pulpcore'
+
 * Wed Sep 29 2021 Evgeni Golov - 3.15.2-2
 - Obsolete the old Python 3.6 package for smooth upgrade
 
