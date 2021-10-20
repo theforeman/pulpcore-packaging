@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.14.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -137,6 +137,8 @@ Requires:       python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       python%{python3_pkgversion}-whitenoise < 5.3.0
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
 
+Provides:       %{pypi_name} = %{version}
+
 %description -n python%{python3_pkgversion}-%{pypi_name}
 Pulp is a platform for managing repositories of content, such as software
 packages, and pushing that content out to large numbers of consumers.
@@ -179,6 +181,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 20 2021 Evgeni Golov - 3.14.8-2
+- Add provides for 'pulpcore'
+
 * Wed Oct 06 2021 Odilon Sousa <osousa@redhat.com> - 3.14.8-1
 - Release python-pulpcore 3.14.8
 
