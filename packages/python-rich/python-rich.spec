@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        10.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        MIT
@@ -35,6 +35,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments < 3.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments >= 2.6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions < 4.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -70,6 +73,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 20 2021 Evgeni Golov - 10.0.1-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 06 2021 Evgeni Golov - 10.0.1-2
 - Build against Python 3.8
 
