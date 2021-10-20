@@ -3,11 +3,11 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
-%global real_version 4.4.0a2
+%global real_version 4.4.0b1
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.4.0
-Release:        0.2.a2%{?dist}
+Release:        0.2.b1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -27,7 +27,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-wheel
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-automated-logging
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-automated-logging = 6.1.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-prometheus >= 2.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 20 2021 Odilon Sousa <osousa@redhat.com> - 4.4.0-0.2.b1
+- Release python-galaxy-ng 4.4.0b1
+
 * Mon Oct 18 2021 Evgeni Golov - 4.4.0-0.2.a2
 - Add provides for 'pulpcore-plugin' and obsolete old name
 
