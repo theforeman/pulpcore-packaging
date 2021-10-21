@@ -10,7 +10,7 @@ FOREMAN_PACKAGING_GIT="https://github.com/theforeman/foreman-packaging"
 FOREMAN_PACKAGING_BRANCH="rpm/develop"
 PULPCORE_PACKAGING="${PACKAGING_WORKDIR}/pulpcore"
 PULPCORE_PACKAGING_GIT="https://github.com/theforeman/pulpcore-packaging"
-PULPCORE_PACKAGING_BRANCH="rpm/3.15"
+PULPCORE_PACKAGING_BRANCH="rpm/3.16"
 PULPCORE_TAG="katello-pulpcore-nightly-el7"
 
 pip3 install scikit-build
