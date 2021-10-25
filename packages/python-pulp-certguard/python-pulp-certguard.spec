@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.4.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
@@ -26,6 +26,9 @@ Requires:       python%{python3_pkgversion}-pyOpenSSL
 Requires:       python%{python3_pkgversion}-pulpcore < 3.15
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.10
 Requires:       python%{python3_pkgversion}-setuptools
+
+# this is a soft-dependency in certguard, but for Katello we always want it
+Requires:       python%{python3_pkgversion}-subscription-manager-rhsm
 
 Provides:       pulpcore-plugin(certguard) = %{version}
 
@@ -52,6 +55,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_certguard-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Oct 25 2021 Evgeni Golov - 1.4.0-3
+- Always require the rhsm Python module
+
 * Tue Oct 19 2021 Evgeni Golov - 1.4.0-2
 - Add provides for 'pulpcore-plugin'
 
