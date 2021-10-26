@@ -4,7 +4,7 @@
 
 Name:           pulpcore-selinux
 Version:        1.2.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -15,8 +15,8 @@ BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy-devel
 BuildRequires:  systemd
 Requires:       selinux-policy >= %{_selinux_policy_version}
-Requires:       python3-pulpcore
-Requires(post): policycoreutils, python3-pulpcore
+Requires:       pulpcore
+Requires(post): policycoreutils, pulpcore
 Requires(postun): policycoreutils
 %{?systemd_requires}
 
@@ -83,6 +83,10 @@ fi
 
 
 %changelog
+* Tue Oct 26 2021 Evgeni Golov - 1.2.6-2
+- Use "pulpcore" to depend on the correct pulpcore,
+  regardless of the underlying Python
+
 * Thu Sep 30 2021 Zach Huntington-Meath <zhunting@redhat.com> - 1.2.6-1
 - Release pulpcore-selinux 1.2.6
 
