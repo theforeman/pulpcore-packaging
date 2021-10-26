@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.0.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Make Django model fields readonly
 
 License:        MIT
@@ -27,6 +27,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 1.11
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -64,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 26 2021 Evgeni Golov - 1.0.5-3
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Wed Sep 08 2021 Evgeni Golov - 1.0.5-2
 - Build against Python 3.8
 
