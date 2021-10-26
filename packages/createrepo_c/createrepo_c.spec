@@ -36,7 +36,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.6
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -101,6 +101,9 @@ Summary:        Python 3 bindings for the createrepo_c library
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 Requires:       %{name}-libs = %{version}-%{release}
+%if 0%{?scl:1}
+Obsoletes:      python3-%{name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Python 3 bindings for the createrepo_c library.
@@ -199,6 +202,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Oct 26 2021 Evgeni Golov - 0.17.6-3
+- Obsolete non-SCL Python 3 packages on EL7
+
 * Tue Oct 05 2021 Evgeni Golov - 0.17.6-2
 - Build against Python 3.8
 

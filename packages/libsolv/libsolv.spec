@@ -38,7 +38,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.20
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -146,6 +146,9 @@ Summary:        Python bindings for the %{name} library
 BuildRequires:  swig
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+%if 0%{?scl:1}
+Obsoletes:      python3-%{libname} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{libname}
 Python bindings for the %{name} library.
@@ -305,6 +308,9 @@ set -ex
 %endif
 
 %changelog
+* Tue Oct 26 2021 Evgeni Golov - 0.7.20-3
+- Obsolete non-SCL Python 3 packages on EL7
+
 * Tue Sep 28 2021 Evgeni Golov - 0.7.20-2
 - Build against Python 3.8
 
