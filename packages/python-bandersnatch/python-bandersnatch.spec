@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.4.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Mirroring tool that implements the client (mirror) side of PEP 381
 
 License:        Academic Free License, version 3
@@ -32,6 +32,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-filelock
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-resources
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -74,6 +77,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 26 2021 Evgeni Golov - 4.4.0-4
+- Obsolete the old Python 3.6 package for smooth upgrade
+
 * Mon Sep 06 2021 Evgeni Golov - 4.4.0-3
 - Build against Python 3.8
 
