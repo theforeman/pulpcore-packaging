@@ -32,7 +32,7 @@
 
 Name:           libcomps
 Version:        0.1.15
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -105,6 +105,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Obsoletes:      %{?scl_prefix}platform-python-%{name} < %{version}-%{release}
+%if 0%{?scl:1}
+Obsoletes:      python3-%{name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Python3 bindings for libcomps library.
@@ -275,6 +278,9 @@ popd
 %endif
 
 %changelog
+* Tue Oct 26 2021 Evgeni Golov - 0.1.15-4
+- Obsolete non-SCL Python 3 packages on EL7
+
 * Wed Oct 13 2021 Evgeni Golov - 0.1.15-3
 - Also build libcomps against Python 3.6 on EL8
 
