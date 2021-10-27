@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.21.35
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        Apache License 2.0
@@ -68,5 +68,8 @@ set -ex
 
 
 %changelog
+* Wed Oct 27 2021 Evgeni Golov - 1.21.35-2
+- Rebuild against Python 3.8
+
 * Fri Sep 03 2021 Evgeni Golov - 1.21.35-1
 - Initial package.

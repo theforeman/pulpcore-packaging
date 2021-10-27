@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1.27
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Microsoft Azure Client Library for Python (Common)
 
 License:        MIT License
@@ -61,5 +61,8 @@ set -ex
 
 
 %changelog
+* Wed Oct 27 2021 Evgeni Golov - 1.1.27-2
+- Rebuild against Python 3.8
+
 * Fri Sep 03 2021 Evgeni Golov - 1.1.27-1
 - Initial package.

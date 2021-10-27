@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        JSON Matching Expressions
 
 License:        MIT
@@ -63,5 +63,8 @@ set -ex
 
 
 %changelog
+* Wed Oct 27 2021 Evgeni Golov - 0.10.0-2
+- Rebuild against Python 3.8
+
 * Fri Sep 03 2021 Evgeni Golov - 0.10.0-1
 - Initial package.

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.11.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
@@ -66,5 +66,8 @@ set -ex
 
 
 %changelog
+* Wed Oct 27 2021 Evgeni Golov - 1.11.1-2
+- Rebuild against Python 3.8
+
 * Fri Sep 03 2021 Evgeni Golov - 1.11.1-1
 - Initial package.
