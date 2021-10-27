@@ -9,6 +9,13 @@
 %global __python3 /opt/rh/rh-python38/root/usr/bin/python3
 %endif
 
+# Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
+%if 0%{?rhel} == 8
+%bcond_without python36
+%else
+%bcond_with python36
+%endif
+
 %global libmodulemd_version 2.3.0
 
 %define __cmake_in_source_build 1
@@ -36,7 +43,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -108,18 +115,33 @@ Obsoletes:      python3-%{name} < %{version}-%{release}
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Python 3 bindings for the createrepo_c library.
 
+%if %{with python36}
+%package -n python3-%{name}
+Summary:        Python 3 bindings for the createrepo_c library
+BuildRequires:  python36-devel
+Provides:       python36-%{name} = %{version}-%{release}
+Requires:       %{name}-libs = %{version}-%{release}
+
+%description -n python3-%{name}
+Python 3 bindings for the createrepo_c library.
+
+%endif
+
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -p1
 
 mkdir build-py3
+%if %{with python36}
+mkdir build-py36
+%endif
 
 # it can't detect our special PYTHONPATH and uses the compiled-in from the SCL Python
 %if 0%{?scl:1}
 sed -i "/OUTPUT_VARIABLE PYTHON_INSTALL_DIR/ s#))#).replace('rh/rh-python38', 'theforeman/tfm-pulpcore'))#" src/python/CMakeLists.txt
-sed -i "/PYTHON_UNSET()/d" src/python/CMakeLists.txt
 %endif
+sed -i "/PYTHON_UNSET()/d" src/python/CMakeLists.txt
 %{?scl:EOF}
 
 %build
@@ -131,9 +153,24 @@ pushd build-py3
       -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
       -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
       -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
+      %{?!scl:-DPYTHON_EXECUTABLE=/usr/bin/python3.8 -DPYTHON_LIBRARY=/usr/lib64/libpython3.8.so} \
       %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
 popd
+
+%if %{with python36}
+# Build createrepo_c with Python 3.6
+pushd build-py36
+  %cmake .. \
+      -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
+      -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
+      -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
+      -DPYTHON_EXECUTABLE=/usr/bin/python3.6 \
+      -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m \
+      -DPYTHON_LIBRARY=/usr/lib64/libpython3.6m.so
+  make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
+popd
+%endif
 %{?scl:EOF}
 
 %check
@@ -155,6 +192,13 @@ pushd build-py3
   # Install createrepo_c with Python 3
   make install DESTDIR=%{buildroot}
 popd
+
+%if %{with python36}
+pushd build-py36
+  # Install createrepo_c with Python 3.6
+  make install DESTDIR=%{buildroot}
+popd
+%endif
 
 %if 0%{?fedora} || 0%{?rhel} > 7
 ln -sr %{buildroot}%{_bindir}/createrepo_c %{buildroot}%{_bindir}/createrepo
@@ -201,7 +245,16 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
+%if %{with python36}
+%files -n python3-%{name}
+/usr/lib64/python3.6/site-packages/%{name}/
+/usr/lib64/python3.6/site-packages/%{name}-%{version}-py*.egg-info
+%endif
+
 %changelog
+* Wed Oct 27 2021 Evgeni Golov - 0.17.6-4
+- Also build createrepo_c against Python 3.6 on EL8
+
 * Tue Oct 26 2021 Evgeni Golov - 0.17.6-3
 - Obsolete non-SCL Python 3 packages on EL7
 
