@@ -9,6 +9,14 @@
 %global __python3 %python38__python
 %endif
 
+# Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
+# to make dnf happy
+%if 0%{?rhel} == 8
+%bcond_without python36
+%else
+%bcond_with python36
+%endif
+
 %global libname solv
 
 # Only build Python2 bindings on EL7
@@ -38,7 +46,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.20
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -156,6 +164,20 @@ Python bindings for the %{name} library.
 Python 3 version.
 %endif
 
+%if %{with python36}
+%package -n python3-%{libname}
+Summary:        Python bindings for the %{name} library
+BuildRequires:  swig
+BuildRequires:  python36-devel
+Provides:       python36-%{libname} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description -n python3-%{libname}
+Python bindings for the %{name} library.
+
+Python 3 version.
+%endif
+
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
@@ -166,6 +188,10 @@ set -ex
 sed -i "/OUTPUT_VARIABLE PYTHON3_INSTALL_DIR/ s#))#).replace('rh/rh-python38', 'theforeman/tfm-pulpcore'))#" bindings/python3/CMakeLists.txt
 %endif
 %{?scl:EOF}
+
+%if %{with python36}
+mkdir build-py36
+%endif
 
 %build
 %{?scl:scl enable %{scl} - << \EOF}
@@ -212,11 +238,55 @@ set -ex
 %ninja_build -C "%{_vpath_builddir}"
 %{?scl:EOF}
 
+%if %{with python36}
+pushd build-py36
+%cmake .. -B"%{_vpath_builddir}" -GNinja         \
+  -DFEDORA=1                                     \
+  -DENABLE_RPMDB=ON                              \
+  -DENABLE_RPMDB_BYRPMHEADER=ON                  \
+  -DENABLE_RPMDB_LIBRPM=ON                       \
+  -DENABLE_RPMPKG_LIBRPM=ON                      \
+  -DENABLE_RPMMD=ON                              \
+  %{?with_comps:-DENABLE_COMPS=ON}               \
+  %{?with_appdata:-DENABLE_APPDATA=ON}           \
+  -DUSE_VENDORDIRS=ON                            \
+  -DWITH_LIBXML2=ON                              \
+  -DENABLE_LZMA_COMPRESSION=ON                   \
+  -DENABLE_BZIP2_COMPRESSION=ON                  \
+  %{?with_zstd:-DENABLE_ZSTD_COMPRESSION=ON}     \
+%if %{with zchunk}
+  -DENABLE_ZCHUNK_COMPRESSION=ON                 \
+  -DWITH_SYSTEM_ZCHUNK=ON                        \
+%endif
+  %{?with_helix_repo:-DENABLE_HELIXREPO=ON}      \
+  %{?with_suse_repo:-DENABLE_SUSEREPO=ON}        \
+  %{?with_debian_repo:-DENABLE_DEBIAN=ON}        \
+  %{?with_arch_repo:-DENABLE_ARCHREPO=ON}        \
+  %{?with_multi_semantics:-DMULTI_SEMANTICS=ON}  \
+  %{?with_complex_deps:-DENABLE_COMPLEX_DEPS=1}  \
+  %{?with_perl_bindings:-DENABLE_PERL=ON}        \
+  %{?with_ruby_bindings:-DENABLE_RUBY=ON}        \
+  -DENABLE_PYTHON=ON                             \
+  -DPYTHON_EXECUTABLE=/usr/bin/python3.6         \
+  -DPYTHON_LIBRARY=/usr/lib64/libpython3.6m.so   \
+  -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m   \
+  -DPython_ADDITIONAL_VERSIONS=3.6               \
+  %{nil}
+%ninja_build -C "%{_vpath_builddir}"
+popd
+
+%endif
 %install
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %ninja_install -C "%{_vpath_builddir}"
 %{?scl:EOF}
+
+%if %{with python36}
+pushd build-py36
+%ninja_install -C "%{_vpath_builddir}"
+popd
+%endif
 
 %check
 %{?scl:scl enable %{scl} - << \EOF}
@@ -307,7 +377,17 @@ set -ex
 %endif
 %endif
 
+%if %{with python36}
+%files -n python3-%{libname}
+/usr/lib64/python3.6/site-packages/_%{libname}.so
+/usr/lib64/python3.6/site-packages/%{libname}.py
+/usr/lib64/python3.6/site-packages/__pycache__/%{libname}.*
+%endif
+
 %changelog
+* Wed Oct 27 2021 Evgeni Golov - 0.7.20-4
+- Also build libsolv against Python 3.6 on EL8
+
 * Tue Oct 26 2021 Evgeni Golov - 0.7.20-3
 - Obsolete non-SCL Python 3 packages on EL7
 
