@@ -1,9 +1,12 @@
+# Disable strict aliasing
+%global optflags %{optflags} -fno-strict-aliasing
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name pycares
 
 Name:           python-%{pypi_name}
 Version:        4.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -44,6 +47,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Nov 01 2021 Patrick Creech <pcreech@redhat.com> - 4.0.0-2
+- Use -fno-strict-aliasing
+
 * Fri Jun 11 2021 Evgeni Golov 4.0.0-1
 - Update to 4.0.0
 
