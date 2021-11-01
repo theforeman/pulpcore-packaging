@@ -101,6 +101,7 @@ pulpcore_packages:
     python-certifi: {}
     python-cffi: {}
     python-chardet: {}
+    python-charset-normalizer: {}
     python-click: {}
     python-click-shell: {}
     python-colorama: {}
