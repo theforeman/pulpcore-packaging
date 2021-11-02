@@ -85,6 +85,7 @@ pulpcore_packages:
     python-asyncio-throttle: {}
     python-attrs: {}
     python-azure-common: {}
+    python-azure-core: {}
     python-azure-storage-blob: {}
     python-azure-storage-common: {}
     python-backoff: {}
