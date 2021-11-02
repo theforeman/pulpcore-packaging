@@ -157,6 +157,7 @@ pulpcore_packages:
     python-isodate: {}
     python-lxml: {}
     python-marshmallow: {}
+    python-msrest: {}
     python-oauthlib: {}
     python-parsley: {}
     python-pbr: {}
