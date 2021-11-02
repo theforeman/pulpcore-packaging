@@ -154,6 +154,7 @@ pulpcore_packages:
     python-importlib-metadata: {}
     python-importlib-resources: {}
     python-inflection: {}
+    python-isodate: {}
     python-lxml: {}
     python-marshmallow: {}
     python-oauthlib: {}
