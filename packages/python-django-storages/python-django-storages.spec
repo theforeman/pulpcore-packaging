@@ -5,8 +5,8 @@
 %global pypi_name django-storages
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.11.1
-Release:        2%{?dist}
+Version:        1.12.3
+Release:        1%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
@@ -26,8 +26,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-azure-storage-blob < 12.0.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-azure-storage-blob >= 1.3.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-azure-storage-blob >= 12.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-boto3 >= 1.4.4
 
 
@@ -66,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 02 2021 Evgeni Golov - 1.12.3-1
+- Release python-django-storages 1.12.3
+
 * Wed Oct 27 2021 Evgeni Golov - 1.11.1-2
 - Rebuild against Python 3.8
 
