@@ -5,12 +5,12 @@
 %global pypi_name et-xmlfile
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.0.1
-Release:        2%{?dist}
+Version:        1.1.0
+Release:        1%{?dist}
 Summary:        An implementation of lxml.xmlfile for the standard library
 
 License:        MIT
-URL:            https://bitbucket.org/openpyxl/et_xmlfile
+URL:            https://foss.heptapod.net/openpyxl/et_xmlfile
 Source0:        https://files.pythonhosted.org/packages/source/e/%{pypi_name}/et_xmlfile-%{version}.tar.gz
 BuildArch:      noarch
 
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 1.1.0-1
+- Update to 1.1.0
+
 * Mon Sep 06 2021 Evgeni Golov - 1.0.1-2
 - Build against Python 3.8
 
