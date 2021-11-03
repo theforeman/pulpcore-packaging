@@ -5,11 +5,11 @@
 %global pypi_name idna
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.10
-Release:        2%{?dist}
+Version:        3.3
+Release:        1%{?dist}
 Summary:        Internationalized Domain Names in Applications (IDNA)
 
-License:        BSD-like
+License:        BSD-3-Clause
 URL:            https://github.com/kjd/idna
 Source0:        https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -55,13 +55,16 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE.rst
+%license LICENSE.md
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 3.3-1
+- Update to 3.3
+
 * Mon Sep 06 2021 Evgeni Golov - 2.10-2
 - Build against Python 3.8
 
