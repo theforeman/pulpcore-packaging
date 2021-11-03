@@ -5,8 +5,8 @@
 %global pypi_name pytz
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2021.1
-Release:        2%{?dist}
+Version:        2021.3
+Release:        1%{?dist}
 Summary:        World timezone definitions, modern and historical
 
 License:        MIT
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 2021.3-1
+- Update to 2021.3
+
 * Mon Sep 06 2021 Evgeni Golov - 2021.1-2
 - Build against Python 3.8
 
