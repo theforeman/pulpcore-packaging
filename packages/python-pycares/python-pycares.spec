@@ -5,8 +5,8 @@
 %global pypi_name pycares
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.0.0
-Release:        2%{?dist}
+Version:        4.1.2
+Release:        1%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -58,12 +58,15 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE deps/c-ares/LICENSE.md
-%doc README.rst deps/c-ares/README.cares deps/c-ares/README.md deps/c-ares/README.msvc deps/c-ares/test/README.md
+%doc PYPIREADME.rst README.rst deps/c-ares/README.cares deps/c-ares/README.md deps/c-ares/README.msvc deps/c-ares/test/README.md
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 4.1.2-1
+- Update to 4.1.2
+
 * Wed Sep 08 2021 Evgeni Golov - 4.0.0-2
 - Build against Python 3.8
 
