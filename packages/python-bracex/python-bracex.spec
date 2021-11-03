@@ -5,8 +5,8 @@
 %global pypi_name bracex
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.1.1
-Release:        2%{?dist}
+Version:        2.2
+Release:        1%{?dist}
 Summary:        Bash style brace expander
 
 License:        MIT License
@@ -37,8 +37,6 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
-sed -i 's/desc = f.read()/desc = "bracex"/' setup.py
 %{?scl:EOF}
 
 
@@ -64,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 2.2-1
+- Update to 2.2
+
 * Mon Sep 06 2021 Evgeni Golov - 2.1.1-2
 - Build against Python 3.8
 
