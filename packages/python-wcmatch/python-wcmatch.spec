@@ -5,8 +5,8 @@
 %global pypi_name wcmatch
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        8.2
-Release:        2%{?dist}
+Version:        8.3
+Release:        1%{?dist}
 Summary:        Wildcard/glob file name matcher
 
 License:        MIT License
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 8.3-1
+- Update to 8.3
+
 * Wed Sep 08 2021 Evgeni Golov - 8.2-2
 - Build against Python 3.8
 
