@@ -5,8 +5,8 @@
 %global pypi_name yarl
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.6.3
-Release:        2%{?dist}
+Version:        1.7.2
+Release:        1%{?dist}
 Summary:        Yet another URL library
 
 License:        Apache 2
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 1.7.2-1
+- Update to 1.7.2
+
 * Wed Sep 08 2021 Evgeni Golov - 1.6.3-2
 - Build against Python 3.8
 
