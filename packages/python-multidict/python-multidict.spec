@@ -5,8 +5,8 @@
 %global pypi_name multidict
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.1.0
-Release:        2%{?dist}
+Version:        5.2.0
+Release:        1%{?dist}
 Summary:        multidict implementation
 
 License:        Apache 2
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 5.2.0-1
+- Update to 5.2.0
+
 * Mon Sep 06 2021 Evgeni Golov - 5.1.0-2
 - Build against Python 3.8
 
