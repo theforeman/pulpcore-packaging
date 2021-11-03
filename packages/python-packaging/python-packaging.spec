@@ -5,8 +5,8 @@
 %global pypi_name packaging
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        21.0
-Release:        2%{?dist}
+Version:        21.2
+Release:        1%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -15,6 +15,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pyparsing < 3
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pyparsing >= 2.0.2
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -26,6 +27,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing >= 2.0.2
 
 
@@ -64,6 +66,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 21.2-1
+- Update to 21.2
+
 * Wed Sep 08 2021 Evgeni Golov - 21.0-2
 - Build against Python 3.8
 
