@@ -5,9 +5,9 @@
 %global pypi_name uritemplate
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.0.1
-Release:        3%{?dist}
-Summary:        URI templates
+Version:        4.1.1
+Release:        1%{?dist}
+Summary:        Implementation of RFC 6570 URI Templates
 
 License:        BSD 3-Clause License or Apache License, Version 2.0
 URL:            https://uritemplate.readthedocs.org
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 03 2021 Odilon Sousa 4.1.1-1
+- Update to 4.1.1
+
 * Mon Sep 06 2021 Evgeni Golov - 3.0.1-3
 - Build against Python 3.8
 
