@@ -17,6 +17,8 @@ Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+BuildArch:      noarch
+
 
 %description
 %{summary}
@@ -26,6 +28,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{srcname} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -59,13 +64,13 @@ set -ex
 %license LICENSE
 %doc README.rst
 %{_bindir}/pygmentize
-%{python3_sitearch}/pygments
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/pygments
+%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
-* Wed Nov 03 2021 Odilon Sousa 2.10.0-1
-- Update to 2.10.0
+* Thu Nov 04 2021 Odilon Sousa <osousa@redhat.com> - 2.10.0-1
+- Release python-pygments 2.10.0
 
 * Wed Sep 29 2021 Evgeni Golov - 2.8.1-3
 - Obsolete the old Python 3.6 package for smooth upgrade
