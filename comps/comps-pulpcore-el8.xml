@@ -139,6 +139,7 @@
       <packagereq type="default">python38-pulp-ansible</packagereq>
       <packagereq type="default">python38-pulp-certguard</packagereq>
       <packagereq type="default">python38-pulp-cli</packagereq>
+      <packagereq type="default">python38-pulp-cli-deb</packagereq>
       <packagereq type="default">python38-pulp-container</packagereq>
       <packagereq type="default">python38-pulp-deb</packagereq>
       <packagereq type="default">python38-pulp-file</packagereq>

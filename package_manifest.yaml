@@ -198,6 +198,7 @@ pulpcore_packages:
     python-pulp-ansible: {}
     python-pulp-certguard: {}
     python-pulp-cli: {}
+    python-pulp-cli-deb: {}
     python-pulp-rpm: {}
     python-pulp_2to3_migration: {}
     python-pulp-container: {}
