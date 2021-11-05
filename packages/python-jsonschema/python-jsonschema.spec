@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.2.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
@@ -31,9 +31,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyrsistent >= 0.14.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.11.0
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -66,12 +63,15 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license json/LICENSE
 %doc json/README.md README.rst
-%{_bindir}/jsonschema
+%exclude %{_bindir}/jsonschema
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Nov 05 2021 Satoe Imaishi - 3.2.0-7
+- Don't obsolete python 3.6 package and exclude files in bin
+
 * Wed Sep 29 2021 Evgeni Golov - 3.2.0-6
 - Obsolete the old Python 3.6 package for smooth upgrade
 

@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.3.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -29,9 +29,6 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{srcname} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -64,12 +61,15 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %license LICENSE.md
 %doc README.md
-%{_bindir}/markdown_py
+%exclude %{_bindir}/markdown_py
 %{python3_sitelib}/markdown
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Nov 05 2021 Satoe Imaishi - 3.3.4-4
+- Don't obsolete python 3.6 package and exclude files in bin
+
 * Wed Sep 29 2021 Evgeni Golov - 3.3.4-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 

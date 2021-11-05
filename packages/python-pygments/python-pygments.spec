@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.8.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
 License:        BSD License
@@ -28,9 +28,6 @@ BuildArch:      noarch
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{srcname} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -63,12 +60,15 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc README.rst
-%{_bindir}/pygmentize
+%exclude %{_bindir}/pygmentize
 %{python3_sitelib}/pygments
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Nov 05 2021 Satoe Imaishi - 2.8.1-4
+- Don't obsolete python 3.6 package and exclude files in bin
+
 * Wed Sep 29 2021 Evgeni Golov - 2.8.1-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 

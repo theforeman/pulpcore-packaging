@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python implementation of JWT, JWE, JWS and JWK
 
 License:        Apache 2.0
@@ -29,9 +29,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-future
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycryptodomex
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -63,18 +60,21 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %doc README.rst
-%{_bindir}/gen_symkey.py
-%{_bindir}/jwdecrypt.py
-%{_bindir}/jwenc.py
-%{_bindir}/jwk_create.py
-%{_bindir}/jwk_export.py
-%{_bindir}/jwkutil.py
-%{_bindir}/peek.py
+%exclude %{_bindir}/gen_symkey.py
+%exclude %{_bindir}/jwdecrypt.py
+%exclude %{_bindir}/jwenc.py
+%exclude %{_bindir}/jwk_create.py
+%exclude %{_bindir}/jwk_export.py
+%exclude %{_bindir}/jwkutil.py
+%exclude %{_bindir}/peek.py
 %{python3_sitelib}/jwkest
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Nov 05 2021 Satoe Imaishi - 1.4.2-5
+- Don't obsolete python 3.6 package and exclude files in bin
+
 * Wed Sep 29 2021 Evgeni Golov - 1.4.2-4
 - Obsolete the old Python 3.6 package for smooth upgrade
 
