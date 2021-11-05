@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python API and tools to manipulate OpenDocument files
 
 License:        GPLv2+ or Apache-2.0
@@ -26,9 +26,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-defusedxml
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -61,17 +58,17 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license APACHE-LICENSE-2.0.txt GPL-LICENSE-2.txt
 %doc contrib/ODFFile/README.txt README.md
-%{_bindir}/csv2ods
-%{_bindir}/mailodf
-%{_bindir}/odf2mht
-%{_bindir}/odf2xhtml
-%{_bindir}/odf2xml
-%{_bindir}/odfimgimport
-%{_bindir}/odflint
-%{_bindir}/odfmeta
-%{_bindir}/odfoutline
-%{_bindir}/odfuserfield
-%{_bindir}/xml2odf
+%exclude %{_bindir}/csv2ods
+%exclude %{_bindir}/mailodf
+%exclude %{_bindir}/odf2mht
+%exclude %{_bindir}/odf2xhtml
+%exclude %{_bindir}/odf2xml
+%exclude %{_bindir}/odfimgimport
+%exclude %{_bindir}/odflint
+%exclude %{_bindir}/odfmeta
+%exclude %{_bindir}/odfoutline
+%exclude %{_bindir}/odfuserfield
+%exclude %{_bindir}/xml2odf
 %{_mandir}/*/csv2ods*
 %{_mandir}/*/mailodf*
 %{_mandir}/*/odf2mht*
@@ -88,6 +85,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 05 2021 Satoe Imaishi - 1.4.1-5
+- Don't obsolete python 3.6 package and exclude files in bin
+
 * Wed Sep 29 2021 Evgeni Golov - 1.4.1-4
 - Obsolete the old Python 3.6 package for smooth upgrade
 

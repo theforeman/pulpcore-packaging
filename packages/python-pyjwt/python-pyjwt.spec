@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.7.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -30,9 +30,6 @@ Provides:       %{?scl_prefix}python%{python3_pkgversion}-jwt = %{version}-%{rel
 Obsoletes:      %{?scl_prefix}python%{python3_pkgversion}-jwt < %{version}-%{release}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{srcname} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -65,12 +62,15 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc README.rst
-%{_bindir}/pyjwt
+%exclude %{_bindir}/pyjwt
 %{python3_sitelib}/jwt
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Nov 05 2021 Satoe Imaishi - 1.7.1-7
+- Don't obsolete python 3.6 package and exclude files in bin
+
 * Wed Sep 29 2021 Evgeni Golov - 1.7.1-6
 - Obsolete the old Python 3.6 package for smooth upgrade
 
