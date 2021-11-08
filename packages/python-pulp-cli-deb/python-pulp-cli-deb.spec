@@ -3,16 +3,15 @@
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name pulp-cli-deb
-%global pypi_version 0.0.1
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        %{pypi_version}
+Version:        0.0.1 
 Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
-URL:            None
-Source0:        %{pypi_source}
+URL:            https://github.com/pulp/pulp-cli-deb
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python3-devel
@@ -39,7 +38,7 @@ Requires:       %{?scl_prefix}python3-setuptools
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%autosetup -n %{pypi_name}-%{pypi_version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 %{?scl:EOF}
@@ -61,7 +60,7 @@ set -ex
 
 %files -n %{?scl_prefix}python3-%{pypi_name}
 %{python3_sitelib}/pulpcore
-%{python3_sitelib}/pulp_cli_deb-%{pypi_version}-py%{python3_version}.egg-info
+%{python3_sitelib}/pulp_cli_deb-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
