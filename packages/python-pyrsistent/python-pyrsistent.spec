@@ -5,8 +5,8 @@
 %global pypi_name pyrsistent
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.17.3
-Release:        2%{?dist}
+Version:        0.18.0
+Release:        1%{?dist}
 Summary:        Persistent/Functional/Immutable data structures
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.18.0-1
+- Release python-pyrsistent 0.18.0
+
 * Mon Sep 06 2021 Evgeni Golov - 0.17.3-2
 - Build against Python 3.8
 
