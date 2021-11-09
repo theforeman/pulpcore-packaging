@@ -6,12 +6,12 @@
 %global srcname ruamel-yaml-clib
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        0.2.0
-Release:        3%{?dist}
+Version:        0.2.6
+Release:        1%{?dist}
 Summary:        C version of reader, parser and emitter for ruamel
 
 License:        MIT
-URL:            https://bitbucket.org/ruamel/yaml.clib
+URL:            https://sourceforge.net/p/ruamel-yaml-clib/code/ci/default/tree
 Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.2.6-1
+- Release python-ruamel-yaml-clib 0.2.6
+
 * Wed Sep 08 2021 Evgeni Golov - 0.2.0-3
 - Build against Python 3.8
 
