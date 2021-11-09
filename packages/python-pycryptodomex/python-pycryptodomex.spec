@@ -5,8 +5,8 @@
 %global pypi_name pycryptodomex
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.10.1
-Release:        2%{?dist}
+Version:        3.11.0
+Release:        1%{?dist}
 Summary:        Cryptographic library for Python
 
 License:        BSD, Public Domain
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 3.11.0-1
+- Release python-pycryptodomex 3.11.0
+
 * Mon Sep 06 2021 Evgeni Golov - 3.10.1-2
 - Build against Python 3.8
 
