@@ -5,8 +5,8 @@
 %global pypi_name typing-extensions
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.7.4.3
-Release:        3%{?dist}
+Version:        3.10.0.2
+Release:        1%{?dist}
 Summary:        Backported and Experimental Type Hints for Python 3
 
 License:        PSF
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 3.10.0.2-1
+- Release python-typing-extensions 3.10.0.2
+
 * Fri Sep 10 2021 Evgeni Golov - 3.7.4.3-3
 - Don't require typing, our Python is new enough
 
