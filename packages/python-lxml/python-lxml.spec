@@ -5,8 +5,8 @@
 %global pypi_name lxml
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.6.3
-Release:        2%{?dist}
+Version:        4.6.4
+Release:        1%{?dist}
 Summary:        Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
 
 License:        BSD
@@ -58,13 +58,16 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
-%license LICENSES.txt doc/licenses/ZopePublicLicense.txt
+%license LICENSES.txt doc/licenses/BSD.txt
 %doc README.rst src/lxml/isoschematron/resources/xsl/iso-schematron-xslt1/readme.txt
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 4.6.4-1
+- Release python-lxml 4.6.4
+
 * Mon Sep 06 2021 Evgeni Golov - 4.6.3-2
 - Build against Python 3.8
 
