@@ -6,7 +6,7 @@
 %global srcname pygobject
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.40.1
+Version:        3.42.0
 Release:        1%{?dist}
 Summary:        Python bindings for GObject Introspection
 
@@ -70,5 +70,8 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 3.42.0-1
+- Release python-pygobject 3.42.0
+
 * Mon Sep 13 2021 Evgeni Golov - 3.40.1-1
 - Initial package.
