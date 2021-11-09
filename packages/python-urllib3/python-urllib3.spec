@@ -5,8 +5,8 @@
 %global pypi_name urllib3
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.26.6
-Release:        2%{?dist}
+Version:        1.26.7
+Release:        1%{?dist}
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 
 License:        MIT
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 1.26.7-1
+- Release python-urllib3 1.26.7
+
 * Mon Sep 06 2021 Evgeni Golov - 1.26.6-2
 - Build against Python 3.8
 
