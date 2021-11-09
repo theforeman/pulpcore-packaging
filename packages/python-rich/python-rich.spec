@@ -5,8 +5,8 @@
 %global pypi_name rich
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        10.0.1
-Release:        3%{?dist}
+Version:        10.12.0
+Release:        1%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        MIT
@@ -73,6 +73,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 10.12.0-1
+- Release python-rich 10.12.0
+
 * Wed Oct 20 2021 Evgeni Golov - 10.0.1-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
