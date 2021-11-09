@@ -5,8 +5,8 @@
 %global pypi_name galaxy-importer
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.4.0
-Release:        2%{?dist}
+Version:        0.4.1
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -95,6 +95,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.4.1-1
+- Release python-galaxy-importer 0.4.1
+
 * Tue Oct 19 2021 Evgeni Golov - 0.4.0-2
 - Obsolete the old Python 3.6 package for smooth upgrade
 
