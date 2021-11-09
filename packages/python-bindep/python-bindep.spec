@@ -5,7 +5,7 @@
 %global pypi_name bindep
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.9.0
+Version:        2.10.1
 Release:        1%{?dist}
 Summary:        Binary dependency utility
 
@@ -68,5 +68,8 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 2.10.1-1
+- Release python-bindep 2.10.1
+
 * Wed Sep 08 2021 Evgeni Golov - 2.9.0-1
 - Initial package.
