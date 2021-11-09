@@ -5,8 +5,8 @@
 %global pypi_name six
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.15.0
-Release:        2%{?dist}
+Version:        1.16.0
+Release:        1%{?dist}
 Summary:        Python 2 and 3 compatibility utilities
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 1.16.0-1
+- Release python-six 1.16.0
+
 * Mon Sep 06 2021 Evgeni Golov - 1.15.0-2
 - Build against Python 3.8
 
