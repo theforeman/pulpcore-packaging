@@ -6,8 +6,8 @@
 %global srcname django
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.2.7
-Release:        4%{?dist}
+Version:        3.2.9
+Release:        1%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -81,6 +81,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 3.2.9-1
+- Release python-django 3.2.9
+
 * Tue Oct 19 2021 Evgeni Golov - 3.2.7-4
 - Obsolete the old Python 3.6 package for smooth upgrade
 
