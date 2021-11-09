@@ -6,8 +6,8 @@
 %global srcname dateutil
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        2.8.1
-Release:        4%{?dist}
+Version:        2.8.2
+Release:        1%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 2.8.2-1
+- Release python-dateutil 2.8.2
+
 * Wed Sep 08 2021 Evgeni Golov - 2.8.1-4
 - Build against Python 3.8
 
