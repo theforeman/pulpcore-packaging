@@ -5,8 +5,8 @@
 %global pypi_name sqlparse
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.4.1
-Release:        3%{?dist}
+Version:        0.4.2
+Release:        1%{?dist}
 Summary:        A non-validating SQL parser
 
 License:        BSD-3-Clause
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.4.2-1
+- Release python-sqlparse 0.4.2
+
 * Wed Sep 29 2021 Evgeni Golov - 0.4.1-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
