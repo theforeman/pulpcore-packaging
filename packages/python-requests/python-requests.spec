@@ -5,8 +5,8 @@
 %global pypi_name requests
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.25.1
-Release:        2%{?dist}
+Version:        2.26.0
+Release:        1%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 2.26.0-1
+- Release python-requests 2.26.0
+
 * Mon Sep 06 2021 Evgeni Golov - 2.25.1-2
 - Build against Python 3.8
 
