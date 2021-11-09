@@ -5,8 +5,8 @@
 %global pypi_name cffi
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.14.5
-Release:        2%{?dist}
+Version:        1.15.0
+Release:        1%{?dist}
 Summary:        Foreign Function Interface for Python calling C code
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 1.15.0-1
+- Release python-cffi 1.15.0
+
 * Wed Sep 08 2021 Evgeni Golov - 1.14.5-2
 - Build against Python 3.8
 
