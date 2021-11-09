@@ -5,8 +5,8 @@
 %global pypi_name django-lifecycle
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.9.1
-Release:        3%{?dist}
+Version:        0.9.3
+Release:        1%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.9.3-1
+- Release python-django-lifecycle 0.9.3
+
 * Tue Oct 19 2021 Evgeni Golov - 0.9.1-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
