@@ -5,8 +5,8 @@
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.15.0
-Release:        2%{?dist}
+Version:        2.16.0
+Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Thu Nov 11 2021 Quirin Pamp - 2.16.0-1
+- Update to 2.16.0
+
 * Mon Oct 18 2021 Evgeni Golov - 2.15.0-2
 - Add provides for 'pulpcore-plugin' and obsolete old name
 
