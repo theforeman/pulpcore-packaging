@@ -5,8 +5,8 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.15.0
-Release:        2%{?dist}
+Version:        3.16.1
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -33,7 +33,7 @@ Requires:       libmodulemd >= 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.22
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.17.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.17.6
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.18
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 3.0
@@ -41,7 +41,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.34
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.17
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.18
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.7.17
@@ -88,6 +88,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 3.16.1-1
+- Release python-pulp-rpm 3.16.1
+
 * Mon Oct 18 2021 Evgeni Golov - 3.15.0-2
 - Add provides for 'pulpcore-plugin' and obsolete old name
 
