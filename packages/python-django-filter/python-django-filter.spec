@@ -5,8 +5,8 @@
 %global pypi_name django-filter
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.4.0
-Release:        3%{?dist}
+Version:        21.1
+Release:        1%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 21.1-1
+- Release python-django-filter 21.1
+
 * Tue Oct 19 2021 Evgeni Golov - 2.4.0-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
