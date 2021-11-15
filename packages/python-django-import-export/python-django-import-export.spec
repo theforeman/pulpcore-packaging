@@ -5,8 +5,8 @@
 %global pypi_name django-import-export
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.5.0
-Release:        3%{?dist}
+Version:        2.6.1
+Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 2.6.1-1
+- Release python-django-import-export 2.6.1
+
 * Tue Oct 19 2021 Evgeni Golov - 2.5.0-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
