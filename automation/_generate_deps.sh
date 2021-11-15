@@ -13,12 +13,14 @@ PULPCORE_PACKAGING_GIT="https://github.com/theforeman/pulpcore-packaging"
 PULPCORE_PACKAGING_BRANCH="rpm/3.16"
 PULPCORE_TAG="katello-pulpcore-nightly-el7"
 
+pip3 install --upgrade pip
 pip3 install scikit-build
 pip3 install -r $PULPCORE_REQUIREMENTS
-pip3 freeze |sed '/gobject/d; /scikit/d; /libcomps/d; /solv/d; /createrepo/d; /distro/d; /^ansible/d' > $PULPCORE_FULL_REQUIREMENTS
+pip3 freeze |sed '/gobject/d; /scikit/d; /libcomps/d; /solv/d; /createrepo/d; /distro/d; /^ansible/d; /^jsonschema/d' > $PULPCORE_FULL_REQUIREMENTS
 
 pip3 install git+https://github.com/evgeni/pyp2rpm.git@foreman#egg=pyp2rpm
 pip3 install spec2scl
+pip3 install setuptools-rust
 
 if [ -d $PACKAGING_WORKDIR ]; then
 
