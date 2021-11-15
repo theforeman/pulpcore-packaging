@@ -5,12 +5,12 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
-%global wrappers gunicorn rq pulpcore-worker
+%global wrappers gunicorn pulpcore-worker
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.15.2
-Release:        4%{?dist}
+Version:        3.16.0
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -55,14 +55,14 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-click < 9.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.5.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.6
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 2.4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 21.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.4.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.5.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.6
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.6.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.7
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.9.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-prometheus
@@ -70,11 +70,11 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >=
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.0.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.1.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-nested-routers = 0.93.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular = 0.17.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular = 0.20.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.4.7
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
@@ -86,8 +86,6 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.4.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-redis >= 3.4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-rq >= 1.9.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-rq >= 1.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 5.4.0
@@ -175,6 +173,9 @@ done
 
 
 %changelog
+* Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 3.16.0-1
+- Release python-pulpcore 3.16.0
+
 * Tue Oct 26 2021 Evgeni Golov - 3.15.2-4
 - Also obsolete python3-pulpcore on EL7
 
