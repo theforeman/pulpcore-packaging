@@ -5,7 +5,7 @@
 %global pypi_name drf-access-policy
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.0.1
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 1.1.0-1
+- Release python-drf-access-policy 1.1.0
+
 * Wed Sep 08 2021 Evgeni Golov 1.0.1-1
 - Update to 1.0.1
 
