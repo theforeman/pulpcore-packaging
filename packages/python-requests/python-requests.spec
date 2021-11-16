@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.26.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -29,7 +29,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-certifi >= 2017.4.17
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet < 5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet >= 3.0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.3.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna < 3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL >= 0.14
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 < 1.27
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 16 2021 Evgeni Golov - 2.26.0-2
+- Allow idna 4, 2.26 supports it
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 2.26.0-1
 - Release python-requests 2.26.0
 
