@@ -5,8 +5,8 @@
 %global pypi_name pulp-cli
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.11.0
-Release:        3%{?dist}
+Version:        0.12.0
+Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 16 2021 Odilon Sousa <osousa@redhat.com> - 0.12.0-1
+- Release python-pulp-cli 0.12.0
+
 * Wed Sep 29 2021 Evgeni Golov - 0.11.0-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
