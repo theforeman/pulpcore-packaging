@@ -5,8 +5,8 @@
 %global pypi_name pulp-python
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.5.1
-Release:        2%{?dist}
+Version:        3.5.2
+Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 16 2021 Odilon Sousa <osousa@redhat.com> - 3.5.2-1
+- Release python-pulp-python 3.5.2
+
 * Mon Oct 18 2021 Evgeni Golov - 3.5.1-2
 - Add provides for 'pulpcore-plugin' and obsolete old name
 
