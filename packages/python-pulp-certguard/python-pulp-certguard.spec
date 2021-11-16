@@ -5,8 +5,8 @@
 %global pypi_name pulp-certguard
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.5.0
-Release:        3%{?dist}
+Version:        1.5.1
+Release:        1%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 16 2021 Odilon Sousa <osousa@redhat.com> - 1.5.1-1
+- Release python-pulp-certguard 1.5.1
+
 * Tue Oct 19 2021 Evgeni Golov - 1.5.0-3
 - Always require the rhsm Python module
 
