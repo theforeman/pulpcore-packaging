@@ -5,8 +5,8 @@
 %global pypi_name pulp-file
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.9.1
-Release:        2%{?dist}
+Version:        1.10.1
+Release:        1%{?dist}
 Summary:        File plugin for the Pulp Project
 
 License:        GPLv2+
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 16 2021 Odilon Sousa <osousa@redhat.com> - 1.10.1-1
+- Release python-pulp-file 1.10.1
+
 * Mon Oct 18 2021 Evgeni Golov - 1.9.1-2
 - Add provides for 'pulpcore-plugin' and obsolete old name
 
