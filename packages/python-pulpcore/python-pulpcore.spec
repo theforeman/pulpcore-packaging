@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.16.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -56,7 +56,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.5.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 21.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 2.5
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 22
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.4.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.0
@@ -173,6 +173,9 @@ done
 
 
 %changelog
+* Tue Nov 16 2021 Odilon Sousa <osousa@redhat.com> - 3.16.0-2
+- Solving conflict with django-filter
+
 * Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 3.16.0-1
 - Release python-pulpcore 3.16.0
 
