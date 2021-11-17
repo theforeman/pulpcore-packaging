@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.26.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -26,8 +26,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-certifi >= 2017.4.17
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet < 5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet >= 3.0.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer < 3.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer >= 2.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.3.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna >= 2.5
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 17 2021 Evgeni Golov - 2.26.0-3
+- Use charset-normalizer instead of chardet
+
 * Tue Nov 16 2021 Evgeni Golov - 2.26.0-2
 - Allow idna 4, 2.26 supports it
 
