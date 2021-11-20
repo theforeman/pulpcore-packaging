@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.8.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -29,7 +29,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5
-Obsoletes:      %{?scl_prefix}python36-dateutil
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -67,6 +66,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 20 2021 Patrick Creech <pcreech@redhat.com> - 2.8.1-5
+- Don't obsolete python36-dateutil
+
 * Wed Sep 08 2021 Evgeni Golov - 2.8.1-4
 - Build against Python 3.8
 
