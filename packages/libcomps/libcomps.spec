@@ -101,12 +101,9 @@ Python3 bindings for libcomps library.
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%autosetup -p1 -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 # workaround for https://github.com/rpm-software-management/libcomps/pull/64
 sed -i 's/EXACT//' libcomps/src/python/src/CMakeLists.txt
-
-# force to look for the right PythonLibs, otherwise it might find Py2 libs while building for Py3
-sed -i 's/PythonLibs/PythonLibs ${pversion}/' libcomps/src/python/src/CMakeLists.txt
 
 # it can't detect our special PYTHONPATH and uses the compiled-in from the SCL Python
 %if 0%{?scl:1}
