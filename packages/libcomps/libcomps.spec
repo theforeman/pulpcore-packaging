@@ -31,13 +31,13 @@
 %endif
 
 Name:           libcomps
-Version:        0.1.15
-Release:        4%{?dist}
+Version:        0.1.18
+Release:        1%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/libcomps
-Source0:        %{url}/archive/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
@@ -278,6 +278,9 @@ popd
 %endif
 
 %changelog
+* Mon Nov 22 2021 Evgeni Golov - 0.1.18-1
+- Release libcomps 0.1.18
+
 * Tue Oct 26 2021 Evgeni Golov - 0.1.15-4
 - Obsolete non-SCL Python 3 packages on EL7
 
