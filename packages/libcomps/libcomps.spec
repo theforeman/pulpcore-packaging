@@ -23,13 +23,6 @@
 # Never build docs by default
 %bcond_with doc
 
-# Do not build python2 bindings for RHEL > 7 and Fedora > 29
-%if 0%{?rhel} > 7 || 0%{?fedora} > 29
-%bcond_with python2
-%else
-%bcond_without python2
-%endif
-
 Name:           libcomps
 Version:        0.1.18
 Release:        1%{?dist}
@@ -68,34 +61,14 @@ BuildRequires:  doxygen
 %description doc
 Documentation files for libcomps library.
 
-%package -n {?scl_prefix}python-%{name}-doc
+%package -n %{?scl_prefix}python-%{name}-doc
 Summary:        Documentation files for python bindings libcomps library
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
-%if %{with python3}
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-sphinx
-%endif
-%if %{with python2}
-%if 0%{?rhel} && 0%{?rhel} <= 7
-BuildRequires:  python-sphinx
-%else
-BuildRequires:  python2-sphinx
-%endif
-%endif
 
 %description -n %{?scl_prefix}python-%{name}-doc
 Documentation files for python bindings libcomps library.
-%endif
-
-%if %{with python2}
-%package -n python2-%{name}
-Summary:        Python 2 bindings for libcomps library
-%{?python_provide:%python_provide python2-%{name}}
-BuildRequires:  python2-devel
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-
-%description -n python2-%{name}
-Python 2 bindings for libcomps library.
 %endif
 
 %if %{with python3}
@@ -140,9 +113,6 @@ sed -i 's/PythonLibs/PythonLibs ${pversion}/' libcomps/src/python/src/CMakeLists
 sed -i "/OUTPUT_VARIABLE PYTHON_INSTALL_DIR/ s#))#).replace('rh/rh-python38', 'theforeman/tfm-pulpcore'))#" libcomps/src/python/src/CMakeLists.txt
 %endif
 
-%if %{with python2}
-mkdir build-py2
-%endif
 %if %{with python3}
 mkdir build-py3
 %endif
@@ -158,12 +128,6 @@ mkdir build-doc
 %build
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%if %{with python2}
-pushd build-py2
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=2 -DENABLE_DOCS=OFF -DENABLE_TESTS=OFF
-  %make_build
-popd
-%endif
 
 %if %{with python3}
 pushd build-py3
@@ -183,12 +147,8 @@ popd
 
 %if %{with doc}
 pushd build-doc
-%if %{with python2}
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=2
-%else
 %if %{with python3}
   %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3
-%endif
 %endif
   make %{?_smp_mflags} docs
   make %{?_smp_mflags} pydocs
@@ -200,11 +160,6 @@ popd
 %install
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%if %{with python2}
-pushd build-py2
-  %make_install
-popd
-%endif
 
 %if %{with python3}
 pushd build-py3
@@ -257,12 +212,6 @@ popd
 
 %files -n %{?scl_prefix}python-%{name}-doc
 %doc build-doc/src/python/docs/html
-%endif
-
-%if %{with python2}
-%files -n python2-%{name}
-%{python2_sitearch}/%{name}/
-%{python2_sitearch}/%{name}-%{version}-py%{python2_version}.egg-info
 %endif
 
 %if %{with python3}
