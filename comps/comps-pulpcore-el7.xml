@@ -150,6 +150,7 @@
       <packagereq type="default">tfm-pulpcore-python3-pulpcore-client</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pyOpenSSL</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pycairo</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-pycairo-devel</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pycares</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pycodestyle</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pycparser</packagereq>
