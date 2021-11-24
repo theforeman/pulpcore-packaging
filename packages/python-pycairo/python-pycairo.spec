@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.20.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface for cairo
 
 License:        LGPL-2.1-only OR MPL-1.1
@@ -26,9 +26,18 @@ BuildRequires:  cairo-devel
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
+
+
+%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}-devel
+Summary:        %{summary} - devel
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}%{?_isa} = %{version}-%{release}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-devel
+
+%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}-devel
+This package contains files required to build wrappers for cairo add-on
+libraries so that they interoperate with py3cairo.
 
 
 %prep
@@ -59,10 +68,16 @@ set -ex
 %doc README.rst
 %{python3_sitearch}/cairo
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+
+
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}-devel
 %{_libdir}/pkgconfig/py3cairo.pc
 %{_includedir}/pycairo
 
 
 %changelog
+* Wed Nov 24 2021 Evgeni Golov - 1.20.1-2
+- Split devel files into own package
+
 * Mon Sep 13 2021 Evgeni Golov - 1.20.1-1
 - Initial package.
