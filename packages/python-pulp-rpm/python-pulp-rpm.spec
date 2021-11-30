@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.16.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -26,9 +26,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 %if 0%{?rhel} == 7
-Requires:       libmodulemd2
+Requires:       libmodulemd2 >= 2.12
 %else
-Requires:       libmodulemd >= 2.0
+Requires:       libmodulemd >= 2.12
 %endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.22
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 4.0
@@ -88,6 +88,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 29 2021 Justin Sherrill <jsherril@redhat.com> 3.16.1-2
+- require libmodulemd for rhel 9
+
 * Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 3.16.1-1
 - Release python-pulp-rpm 3.16.1
 
