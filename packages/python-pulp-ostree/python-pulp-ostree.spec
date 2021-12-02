@@ -7,7 +7,7 @@
 %global prerelease a2
 %global prereleaserpm %{?prerelease:.}%{?prerelease}
 
-%global release 1 
+%global release 2
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.0
@@ -32,7 +32,7 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject >= 3.40.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject < 3.50
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject < 3.41
 
 Requires:       ostree
 
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Thu Dec 02 2021 Justin Sherrill <jsherril@redhat.com> 2.0.0-0.2.a2
+- fix pygobject requires
+
 * Wed Oct 20 2021 Justin Sherrill <jsherril@redhat.com> 2.0.0-0.1.a2
 - initial build
 
