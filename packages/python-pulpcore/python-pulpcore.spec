@@ -9,8 +9,8 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.16.0
-Release:        2%{?dist}
+Version:        3.16.1
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -173,6 +173,9 @@ done
 
 
 %changelog
+* Thu Dec 02 2021 Justin Sherrill <jsherril@redhat.com> 3.16.1-1
+- update to 3.16.1
+
 * Tue Nov 16 2021 Odilon Sousa <osousa@redhat.com> - 3.16.0-2
 - Solving conflict with django-filter
 
