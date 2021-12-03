@@ -3,7 +3,7 @@
 %global wrappers gunicorn rq
 
 Name:           python-%{pypi_name}
-Version:        3.7.8
+Version:        3.7.9
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -172,6 +172,9 @@ done
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Dec 03 2021 Odilon Sousa <osousa@redhat.com> - 3.7.9-1
+- Release python-pulpcore 3.7.9
+
 * Mon Aug 30 2021 Odilon Sousa <osousa@redhat.com> - 3.7.8-1
 - Release python-pulpcore 3.7.8
 
