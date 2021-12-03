@@ -2,7 +2,7 @@
 %global pypi_name galaxy-ng
 
 Name:           python-%{pypi_name}
-Version:        4.2.6
+Version:        4.2.7
 Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
@@ -30,7 +30,7 @@ Requires:       python%{python3_pkgversion}-galaxy-importer < 0.2.16
 Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.5.8
 Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.5.9
 Requires:       python%{python3_pkgversion}-pulpcore < 3.9
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.7.5
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.7.9
 Requires:       python%{python3_pkgversion}-setuptools
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -57,6 +57,9 @@ sed -i '/ansible~=2.10.0/d' setup.py
 %{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Dec 03 2021 Odilon Sousa <osousa@redhat.com> - 4.2.7-1
+- Release python-galaxy-ng 4.2.7
+
 * Fri Aug 27 2021 Odilon Sousa <osousa@redhat.com> - 4.2.6-1
 - Release python-galaxy-ng 4.2.6
 
