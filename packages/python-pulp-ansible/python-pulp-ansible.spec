@@ -2,7 +2,7 @@
 %global pypi_name pulp-ansible
 
 Name:           python-%{pypi_name}
-Version:        0.5.8
+Version:        0.5.10
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -51,6 +51,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_ansible-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Dec 03 2021 Odilon Sousa <osousa@redhat.com> - 1:0.5.10-1
+- Release python-pulp-ansible 0.5.10
+
 * Mon Apr 26 2021 Evgeni Golov - 1:0.5.8-1
 - Release python-pulp-ansible 0.5.8
 
