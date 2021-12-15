@@ -3,8 +3,8 @@
 %define debug_package %{nil}
 
 Name:           pulpcore-selinux
-Version:        1.2.6
-Release:        2%{?dist}
+Version:        1.2.7
+Release:        1%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -83,6 +83,9 @@ fi
 
 
 %changelog
+* Wed Dec 15 2021 Odilon Sousa <osousa@redhat.com> - 1.2.7-1
+- Release pulpcore-selinux 1.2.7
+
 * Tue Oct 26 2021 Evgeni Golov - 1.2.6-2
 - Use "pulpcore" to depend on the correct pulpcore,
   regardless of the underlying Python
