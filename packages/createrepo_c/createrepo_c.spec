@@ -42,8 +42,8 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        0.17.6
-Release:        4%{?dist}
+Version:        0.17.7
+Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -153,6 +153,7 @@ pushd build-py3
       -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
       -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
       -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
+      -DWITH_LEGACY_HASHES=ON \
       %{?!scl:-DPYTHON_EXECUTABLE=/usr/bin/python3.8 -DPYTHON_LIBRARY=/usr/lib64/libpython3.8.so} \
       %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
@@ -165,6 +166,7 @@ pushd build-py36
       -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
       -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
       -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
+      -DWITH_LEGACY_HASHES=ON \
       -DPYTHON_EXECUTABLE=/usr/bin/python3.6 \
       -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m \
       -DPYTHON_LIBRARY=/usr/lib64/libpython3.6m.so
@@ -252,6 +254,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Wed Dec 15 2021 Evgeni Golov - 0.17.7-1
+- Release createrepo_c 0.17.7
+
 * Wed Oct 27 2021 Evgeni Golov - 0.17.6-4
 - Also build createrepo_c against Python 3.6 on EL8
 
