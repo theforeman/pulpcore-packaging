@@ -5,21 +5,21 @@
 %global pypi_name pulp-cli-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.0.1 
+Version:        0.0.1
 Release:        1%{?dist}
-Summary:        Command line interface to talk to pulpcore's REST API
+Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
 URL:            https://github.com/pulp/pulp-cli-deb
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python3-devel
-BuildRequires:  %{?scl_prefix}python3-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
 %description
-
+%{summary}
 
 
 %package -n     %{?scl_prefix}python3-%{pypi_name}
@@ -31,7 +31,7 @@ Requires:       %{?scl_prefix}python3-click
 Requires:       %{?scl_prefix}python3-setuptools
 
 %description -n %{?scl_prefix}python3-%{pypi_name}
-
+%{summary}
 
 
 
