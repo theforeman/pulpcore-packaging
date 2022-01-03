@@ -43,7 +43,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.7
-Release:        1%{?dist}
+Release:        3.1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -254,6 +254,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Mon Jan 03 2022 Evgeni Golov - 0.17.7-3.1
+- Bump createrepo_c to be greater than CentOS
+
 * Wed Dec 15 2021 Evgeni Golov - 0.17.7-1
 - Release createrepo_c 0.17.7
 
