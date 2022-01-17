@@ -4,7 +4,7 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-ostree
 
-%global prerelease a2
+%global prerelease a4
 %global prereleaserpm %{?prerelease:.}%{?prerelease}
 
 %global release 2
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 17 2022 Justin Sherrill <jsherril@redhat.com> 2.0.0-0.2.a4
+- update to 2.0.0a4
+
 * Thu Dec 02 2021 Justin Sherrill <jsherril@redhat.com> 2.0.0-0.2.a2
 - fix pygobject requires
 
