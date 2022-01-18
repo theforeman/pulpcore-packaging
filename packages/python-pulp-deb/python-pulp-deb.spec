@@ -5,7 +5,7 @@
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.16.1
+Version:        2.16.0
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -15,6 +15,9 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-debian >= 0.1.36
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.18
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -26,12 +29,10 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-debian >= 0.1.36
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.17
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.18
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
-Provides:       pulpcore-plugin(deb) = %{version}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -68,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 18 2022 Odilon Sousa 2.16.0-1
+- Update to 2.16.0
+
 * Thu Jan 13 2022 Quirin Pamp - 2.16.1-1
 - Update to 2.16.1
 
