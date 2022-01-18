@@ -5,7 +5,7 @@
 %global pypi_name psycopg2
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.9.1
+Version:        2.9.3
 Release:        1%{?dist}
 Summary:        psycopg2 - Python-PostgreSQL Database Adapter
 
@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  postgresql-devel
 
 
 %description
@@ -62,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 18 2022 Odilon Sousa 2.9.3-1
+- Update to 2.9.3
+
 * Wed Sep 08 2021 Evgeni Golov 2.9.1-1
 - Update to 2.9.1
 
