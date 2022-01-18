@@ -5,8 +5,8 @@
 %global pypi_name enrich
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.2.6
-Release:        3%{?dist}
+Version:        1.2.7
+Release:        1%{?dist}
 Summary:        enrich
 
 License:        MIT
@@ -15,6 +15,13 @@ Source0:        https://files.pythonhosted.org/packages/source/e/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-mock >= 3.0.5
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pytest >= 5.4.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pytest-cov >= 2.7.1
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pytest-mock >= 3.3.1
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pytest-plus
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pytest-xdist >= 1.29.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-rich >= 9.5.1
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm >= 3.5.0
 
@@ -26,10 +33,13 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm >= 3.5.
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-mock >= 3.0.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest >= 5.4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest-cov >= 2.7.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest-mock >= 3.3.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest-plus
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest-xdist >= 1.29.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-rich >= 9.5.1
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -67,6 +77,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 18 2022 Odilon Sousa 1.2.7-1
+- Update to 1.2.7
+
 * Wed Oct 20 2021 Evgeni Golov - 1.2.6-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
