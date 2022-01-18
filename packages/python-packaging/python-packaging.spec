@@ -5,7 +5,7 @@
 %global pypi_name packaging
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        21.2
+Version:        21.3
 Release:        1%{?dist}
 Summary:        Core utilities for Python packages
 
@@ -15,7 +15,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pyparsing < 3
+BuildConflicts: %{?scl_prefix}python%{python3_pkgversion}-pyparsing = 3.0.5
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pyparsing >= 2.0.2
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -27,7 +27,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing < 3
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyparsing = 3.0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing >= 2.0.2
 
 
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 18 2022 Odilon Sousa 21.3-1
+- Update to 21.3
+
 * Wed Nov 03 2021 Odilon Sousa 21.2-1
 - Update to 21.2
 
