@@ -5,8 +5,8 @@
 %global pypi_name pkginfo
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.7.1
-Release:        3%{?dist}
+Version:        1.8.2
+Release:        1%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -15,6 +15,8 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-coverage
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-nose
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -25,10 +27,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-coverage
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-nose
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -60,13 +61,16 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.txt
-%doc docs/examples/mypackage-0.1/README.txt README.txt
+%doc README.txt docs/examples/mypackage-0.1/README.txt
 %{_bindir}/pkginfo
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Jan 18 2022 Odilon Sousa 1.8.2-1
+- Update to 1.8.2
+
 * Tue Oct 26 2021 Evgeni Golov - 1.7.1-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
