@@ -7,7 +7,8 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.40.1
-Release:        1%{?dist}
+Release:        2%{?dist}
+Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
 License:        GNU LGPL
@@ -70,5 +71,8 @@ set -ex
 
 
 %changelog
+* Tue Jan 25 2022 Evgeni Golov - 1:3.40.1-2
+- Bump epoch, there was a 3.42 version in the repo and users might have installed that.
+
 * Mon Sep 13 2021 Evgeni Golov - 3.40.1-1
 - Initial package.
