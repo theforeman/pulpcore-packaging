@@ -7,7 +7,7 @@
 %global prerelease a4
 %global prereleaserpm %{?prerelease:.}%{?prerelease}
 
-%global release 2
+%global release 3
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.0
@@ -31,8 +31,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject >= 3.40.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject < 3.41
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject >= 1:3.40.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject < 1:3.41
 
 Requires:       ostree
 
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Thu Jan 27 2022 Evgeni Golov - 2.0.0-0.3.a4
+- Update pygobject dependency to include epoch
+
 * Mon Jan 17 2022 Justin Sherrill <jsherril@redhat.com> 2.0.0-0.2.a4
 - update to 2.0.0a4
 
