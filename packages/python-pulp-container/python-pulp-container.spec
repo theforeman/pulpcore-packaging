@@ -2,8 +2,8 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.8.1
-Release:        0.2%{?dist}
+Version:        2.8.4
+Release:        0.1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -63,6 +63,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Jan 27 2022 Odilon Sousa <osousa@redhat.com> - 2.8.4-0.1
+- Release python-pulp-container 2.8.4
+
 * Tue Oct 19 2021 Evgeni Golov - 2.8.1-0.2
 - Add provides for 'pulpcore-plugin'
 
