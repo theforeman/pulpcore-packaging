@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        %{pypi_version}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distro - an OS platform information API
 
 License:        Apache License, Version 2.0
@@ -59,12 +59,15 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
-%{_bindir}/distro
+%exclude %{_bindir}/distro
 %{python3_sitelib}/__pycache__/*
 %{python3_sitelib}/%{pypi_name}.py
 %{python3_sitelib}/%{pypi_name}-%{pypi_version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Jan 28 2022 Evgeni Golov - 1.6.0-2
+- don't include binary to avoid conflicts
+
 * Fri Sep 10 2021 Evgeni Golov - 1.6.0-1
 - Initial package.
