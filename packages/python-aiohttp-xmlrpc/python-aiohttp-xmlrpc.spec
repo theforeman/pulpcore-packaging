@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.3.2
-Release:        1%{?dist}
+Release:        0.1%{?dist}
 Summary:        aiohttp XML-RPC server handler and client
 
 License:        MIT
@@ -43,7 +43,7 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/aiohttp_xmlrpc-%{version}-py%{python3_version}.egg-info
 
 %changelog
-* Fri Jan 28 2022 Odilon Sousa <osousa@redhat.com> - 1.3.2-1
+* Fri Jan 28 2022 Odilon Sousa <osousa@redhat.com> - 1.3.2-0.1
 - Release python-aiohttp-xmlrpc 1.3.2
 
 * Fri Jun 11 2021 Evgeni Golov - 1.3.1-1
