@@ -2,7 +2,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.14.8
+Version:        3.14.12
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -35,11 +35,12 @@ Requires:       python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Requires:       python%{python3_pkgversion}-pulpcore < 3.15
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.14.5
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.14.11
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-solv >= 0.7.17
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
-Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc
+Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.3.2
+Conflicts:      python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.3.3
 
 Provides:       pulpcore-plugin(rpm) = %{version}
 
@@ -67,6 +68,9 @@ sed -i "/solv/d" requirements.txt
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Jan 31 2022 Odilon Sousa <osousa@redhat.com> - 3.14.12-1
+- Release python-pulp-rpm 3.14.12
+
 * Mon Dec 06 2021 Odilon Sousa <osousa@redhat.com> - 3.14.8-1
 - Release python-pulp-rpm 3.14.8
 
