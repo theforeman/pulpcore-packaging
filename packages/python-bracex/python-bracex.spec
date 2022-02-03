@@ -5,7 +5,7 @@
 %global pypi_name bracex
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.2
+Version:        2.2.1
 Release:        1%{?dist}
 Summary:        Bash style brace expander
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa 2.2.1-1
+- Update to 2.2.1
+
 * Wed Nov 03 2021 Odilon Sousa 2.2-1
 - Update to 2.2
 
