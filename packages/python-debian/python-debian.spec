@@ -6,7 +6,7 @@
 %global srcname debian
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        0.1.42
+Version:        0.1.43
 Release:        1%{?dist}
 Summary:        Debian package related modules
 
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa 0.1.43-1
+- Update to 0.1.43
+
 * Wed Nov 03 2021 Odilon Sousa 0.1.42-1
 - Update to 0.1.42
 
