@@ -6,7 +6,7 @@
 %global srcname jinja2
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.0.2
+Version:        3.0.3
 Release:        1%{?dist}
 Summary:        A very fast and expressive template engine
 
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 3.0.3-1
+- Release python-jinja2 3.0.3
+
 * Mon Nov 08 2021 Odilon Sousa <osousa@redhat.com> - 3.0.2-1
 - Release python-jinja2 3.0.2
 
