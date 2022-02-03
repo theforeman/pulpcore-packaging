@@ -6,8 +6,8 @@
 %global real_version %{version}
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.0.0
-Release:        2%{?dist}
+Version:        2.0.1
+Release:        1%{?dist}
 Summary:        asyncio (PEP 3156) Redis support
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 2.0.1-1
+- Release python-aioredis 2.0.1
+
 * Wed Sep 08 2021 Evgeni Golov - 2.0.0-2
 - Build against Python 3.8
 
