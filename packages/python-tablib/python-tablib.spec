@@ -5,7 +5,7 @@
 %global pypi_name tablib
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.1.0
+Version:        3.2.0
 Release:        1%{?dist}
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 3.2.0-1
+- Release python-tablib 3.2.0
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 3.1.0-1
 - Release python-tablib 3.1.0
 
