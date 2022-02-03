@@ -6,8 +6,8 @@
 %global srcname markdown
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.3.4
-Release:        4%{?dist}
+Version:        3.3.6
+Release:        1%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 3.3.6-1
+- Release python-markdown 3.3.6
+
 * Fri Nov 05 2021 Satoe Imaishi - 3.3.4-4
 - Don't obsolete python 3.6 package and exclude files in bin
 
