@@ -5,8 +5,8 @@
 %global pypi_name aiohttp-socks
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.6.0
-Release:        2%{?dist}
+Version:        0.7.1
+Release:        1%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -27,7 +27,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 2.3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 19.2.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-socks >= 1.2.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-socks < 3.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-socks >= 2.0.0
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +66,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa 0.7.1-1
+- Update to 0.7.1
+
 * Mon Sep 06 2021 Evgeni Golov - 0.6.0-2
 - Build against Python 3.8
 
