@@ -5,8 +5,8 @@
 %global pypi_name pkginfo
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.7.1
-Release:        3%{?dist}
+Version:        1.8.2
+Release:        1%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 1.8.2-1
+- Release python-pkginfo 1.8.2
+
 * Tue Oct 26 2021 Evgeni Golov - 1.7.1-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
