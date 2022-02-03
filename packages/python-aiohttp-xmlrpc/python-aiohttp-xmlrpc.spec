@@ -5,7 +5,7 @@
 %global pypi_name aiohttp-xmlrpc
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.3.2
+Version:        1.5.0
 Release:        1%{?dist}
 Summary:        aiohttp XML-RPC server handler and client
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 1.5.0-1
+- Release python-aiohttp-xmlrpc 1.5.0
+
 * Wed Nov 03 2021 Odilon Sousa <osousa@redhat.com> - 1.3.2-1
 - Release python-aiohttp-xmlrpc 1.3.2
 
