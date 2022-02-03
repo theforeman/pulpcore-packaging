@@ -5,7 +5,7 @@
 %global pypi_name multidict
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.2.0
+Version:        6.0.2
 Release:        1%{?dist}
 Summary:        multidict implementation
 
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa 6.0.2-1
+- Update to 6.0.2
+
 * Wed Nov 03 2021 Odilon Sousa 5.2.0-1
 - Update to 5.2.0
 
