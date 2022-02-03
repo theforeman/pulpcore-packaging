@@ -5,7 +5,7 @@
 %global pypi_name psycopg2
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.9.1
+Version:        2.9.3
 Release:        1%{?dist}
 Summary:        psycopg2 - Python-PostgreSQL Database Adapter
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 2.9.3-1
+- Release python-psycopg2 2.9.3
+
 * Wed Sep 08 2021 Evgeni Golov 2.9.1-1
 - Update to 2.9.1
 
