@@ -5,8 +5,8 @@
 %global pypi_name pycparser
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.20
-Release:        2%{?dist}
+Version:        2.21
+Release:        1%{?dist}
 Summary:        C parser in Python
 
 License:        BSD
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 2.21-1
+- Release python-pycparser 2.21
+
 * Mon Sep 06 2021 Evgeni Golov - 2.20-2
 - Build against Python 3.8
 
