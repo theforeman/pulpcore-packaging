@@ -5,7 +5,7 @@
 %global pypi_name pbr
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.6.0
+Version:        5.8.0
 Release:        1%{?dist}
 Summary:        Python Build Reasonableness
 
@@ -66,5 +66,8 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 5.8.0-1
+- Release python-pbr 5.8.0
+
 * Wed Sep 08 2021 Evgeni Golov - 5.6.0-1
 - Initial package.
