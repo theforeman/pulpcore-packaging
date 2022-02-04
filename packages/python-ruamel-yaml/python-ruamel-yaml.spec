@@ -6,7 +6,7 @@
 %global srcname ruamel-yaml
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        0.17.17
+Version:        0.17.20
 Release:        1%{?dist}
 Summary:        ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
 
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 0.17.20-1
+- Release python-ruamel-yaml 0.17.20
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.17.17-1
 - Release python-ruamel-yaml 0.17.17
 
