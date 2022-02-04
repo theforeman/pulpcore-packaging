@@ -5,7 +5,7 @@
 %global pypi_name asgiref
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.4.1
+Version:        3.5.0
 Release:        1%{?dist}
 Summary:        ASGI specs, helper code, and adapters
 
@@ -63,5 +63,8 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 3.5.0-1
+- Release python-asgiref 3.5.0
+
 * Wed Sep 08 2021 Evgeni Golov - 3.4.1-1
 - Initial package.
