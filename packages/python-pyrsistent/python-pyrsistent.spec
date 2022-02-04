@@ -5,7 +5,7 @@
 %global pypi_name pyrsistent
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.18.0
+Version:        0.18.1
 Release:        1%{?dist}
 Summary:        Persistent/Functional/Immutable data structures
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 0.18.1-1
+- Release python-pyrsistent 0.18.1
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.18.0-1
 - Release python-pyrsistent 0.18.0
 
