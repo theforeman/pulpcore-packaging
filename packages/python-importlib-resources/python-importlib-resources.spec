@@ -5,8 +5,8 @@
 %global pypi_name importlib-resources
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.0.0
-Release:        2%{?dist}
+Version:        5.4.0
+Release:        1%{?dist}
 Summary:        Read resources from Python packages
 
 License:        Apache2
@@ -27,7 +27,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm >= 3.4.
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-zipp >= 0.4
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-zipp >= 3.1.0
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 5.4.0-1
+- Release python-importlib-resources 5.4.0
+
 * Wed Sep 08 2021 Evgeni Golov - 5.0.0-2
 - Build against Python 3.8
 
