@@ -5,8 +5,8 @@
 %global pypi_name requests
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.26.0
-Release:        3%{?dist}
+Version:        2.27.1
+Release:        1%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 2.27.1-1
+- Release python-requests 2.27.1
+
 * Wed Nov 17 2021 Evgeni Golov - 2.26.0-3
 - Use charset-normalizer instead of chardet
 
