@@ -5,8 +5,8 @@
 %global pypi_name django-guid
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.2.0
-Release:        2%{?dist}
+Version:        3.2.1
+Release:        1%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
 License:        BSD
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 3.2.1-1
+- Release python-django-guid 3.2.1
+
 * Tue Oct 19 2021 Evgeni Golov - 3.2.0-2
 - Obsolete the old Python 3.6 package for smooth upgrade
 
