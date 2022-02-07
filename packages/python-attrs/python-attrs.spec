@@ -5,8 +5,8 @@
 %global pypi_name attrs
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        21.2.0
-Release:        2%{?dist}
+Version:        21.4.0
+Release:        1%{?dist}
 Summary:        Classes Without Boilerplate
 
 License:        MIT
@@ -58,10 +58,14 @@ set -ex
 %license LICENSE docs/license.rst
 %doc README.rst
 %{python3_sitelib}/attr
+%{python3_sitelib}/attrs
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Feb 07 2022 Odilon Sousa <osousa@redhat.com> - 21.4.0-1
+- Release python-attrs 21.4.0
+
 * Mon Sep 06 2021 Evgeni Golov - 21.2.0-2
 - Build against Python 3.8
 
