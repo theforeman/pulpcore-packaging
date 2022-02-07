@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-frozenlist >= 1.1.0
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
