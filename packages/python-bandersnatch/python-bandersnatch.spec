@@ -5,8 +5,8 @@
 %global pypi_name bandersnatch
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.4.0
-Release:        4%{?dist}
+Version:        5.1.1
+Release:        1%{?dist}
 Summary:        Mirroring tool that implements the client (mirror) side of PEP 381
 
 License:        Academic Free License, version 3
@@ -29,6 +29,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-socks
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-filelock
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-humanfriendly
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-resources
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
@@ -77,6 +78,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 07 2022 Odilon Sousa <osousa@redhat.com> - 5.1.1-1
+- Release python-bandersnatch 5.1.1
+
 * Tue Oct 26 2021 Evgeni Golov - 4.4.0-4
 - Obsolete the old Python 3.6 package for smooth upgrade
 
