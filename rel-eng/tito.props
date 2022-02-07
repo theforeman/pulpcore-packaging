@@ -24,3 +24,4 @@ blacklist =
   python2-libcomps
   subscription-manager
   tfm-pulpcore
+  
