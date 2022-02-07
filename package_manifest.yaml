@@ -145,6 +145,7 @@ pulpcore_packages:
     python-frozenlist: {}
     python-gitdb: {}
     python-gitpython: {}
+    python-humanfriendly: {}
     python-jmespath: {}
     python-filelock: {}
     python-flake8: {}
