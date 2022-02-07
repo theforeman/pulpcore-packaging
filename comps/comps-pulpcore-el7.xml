@@ -34,6 +34,7 @@
       <packagereq type="default">tfm-pulpcore-python3-aiohttp-socks</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-aiohttp-xmlrpc</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-aioredis</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-aiosignal</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-ansible-builder</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-asgiref</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-async-lru</packagereq>
@@ -103,6 +104,7 @@
       <packagereq type="default">tfm-pulpcore-python3-et-xmlfile</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-filelock</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-flake8</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-frozenlist</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-future</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-galaxy-importer</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-galaxy-ng</packagereq>

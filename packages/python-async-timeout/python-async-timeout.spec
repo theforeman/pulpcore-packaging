@@ -5,17 +5,18 @@
 %global pypi_name async-timeout
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.0.1
-Release:        3%{?dist}
+Version:        4.0.2
+Release:        1%{?dist}
 Summary:        Timeout context manager for asyncio programs
 
 License:        Apache 2
-URL:            https://github.com/aio-libs/async_timeout/
+URL:            https://github.com/aio-libs/async-timeout
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.6.5
 
 
 %description
@@ -25,6 +26,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.6.5
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -62,6 +64,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 07 2022 Odilon Sousa 4.0.2-1
+- Update to 4.0.2
+
 * Mon Sep 06 2021 Evgeni Golov - 3.0.1-3
 - Build against Python 3.8
 
