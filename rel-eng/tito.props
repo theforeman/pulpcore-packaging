@@ -32,3 +32,4 @@ whitelist =
         python-frozenlist
         python-gitdb
         python-gitpython
+        python-humanfriendly
