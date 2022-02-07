@@ -5,7 +5,7 @@
 %global pypi_name django-import-export
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.6.1
+Version:        2.7.1
 Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
@@ -25,12 +25,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-Django >= 2.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-diff-match-patch
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 0.14.0
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 3.0.0
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -68,6 +65,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 07 2022 Odilon Sousa 2.7.1-1
+- Update to 2.7.1
+
 * Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 2.6.1-1
 - Release python-django-import-export 2.6.1
 
