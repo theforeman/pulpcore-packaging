@@ -32,6 +32,7 @@
       <packagereq type="default">python38-aiohttp-socks</packagereq>
       <packagereq type="default">python38-aiohttp-xmlrpc</packagereq>
       <packagereq type="default">python38-aioredis</packagereq>
+      <packagereq type="default">python38-aiosignal</packagereq>
       <packagereq type="default">python38-ansible-builder</packagereq>
       <packagereq type="default">python38-asgiref</packagereq>
       <packagereq type="default">python38-async-lru</packagereq>
@@ -100,6 +101,7 @@
       <packagereq type="default">python38-et-xmlfile</packagereq>
       <packagereq type="default">python38-filelock</packagereq>
       <packagereq type="default">python38-flake8</packagereq>
+      <packagereq type="default">python38-frozenlist</packagereq>
       <packagereq type="default">python38-future</packagereq>
       <packagereq type="default">python38-galaxy-importer</packagereq>
       <packagereq type="default">python38-galaxy-ng</packagereq>
