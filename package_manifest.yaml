@@ -78,6 +78,7 @@ pulpcore_packages:
     python-aiohttp-socks: {}
     python-aiohttp-xmlrpc: {}
     python-aioredis: {}
+    python-aiosignal: {}
     python-ansible-builder: {}
     python-asgiref: {}
     python-async-lru: {}
