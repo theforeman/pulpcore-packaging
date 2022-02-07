@@ -30,3 +30,4 @@ whitelist =
         python-beautifulsoup4
         python-deprecated
         python-frozenlist
+        python-gitdb
