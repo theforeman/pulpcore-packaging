@@ -31,3 +31,4 @@ whitelist =
         python-deprecated
         python-frozenlist
         python-gitdb
+        python-gitpython
