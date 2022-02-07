@@ -27,3 +27,6 @@ blacklist =
 [katello-pulpcore-nightly-el7]
 whitelist = 
         python-aiosignal
+        python-beautifulsoup4
+        python-deprecated
+        python-frozenlist
