@@ -5,7 +5,7 @@
 %global pypi_name pycryptodomex
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.14.0
+Version:        3.14.1
 Release:        1%{?dist}
 Summary:        Cryptographic library for Python
 
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 07 2022 Odilon Sousa 3.14.1-1
+- Update to 3.14.1
+
 * Thu Feb 03 2022 Odilon Sousa 3.14.0-1
 - Update to 3.14.0
 
