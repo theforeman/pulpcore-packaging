@@ -145,6 +145,7 @@ pulpcore_packages:
     python-ecdsa: {}
     python-enrich: {}
     python-et-xmlfile: {}
+    python-frozenlist: {}
     python-jmespath: {}
     python-filelock: {}
     python-flake8: {}
