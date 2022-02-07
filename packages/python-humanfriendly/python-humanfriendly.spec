@@ -15,11 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/h/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-capturer >= 2.1
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-coloredlogs >= 2.0
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-monotonic
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pyreadline
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pyreadline3
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -30,10 +25,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-monotonic
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyreadline
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyreadline3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
