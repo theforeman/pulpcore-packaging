@@ -5,8 +5,8 @@
 %global pypi_name aiofiles
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.7.0
-Release:        2%{?dist}
+Version:        0.8.0
+Release:        1%{?dist}
 Summary:        File support for asyncio
 
 License:        Apache 2.0
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 07 2022 Odilon Sousa <osousa@redhat.com> - 0.8.0-1
+- Release python-aiofiles 0.8.0
+
 * Mon Sep 06 2021 Evgeni Golov - 0.7.0-2
 - Build against Python 3.8
 
