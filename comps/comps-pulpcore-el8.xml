@@ -52,6 +52,7 @@
       <packagereq type="default">python38-botocore</packagereq>
       <packagereq type="default">python38-box</packagereq>
       <packagereq type="default">python38-bracex</packagereq>
+      <packagereq type="default">python38-brotli</packagereq>
       <packagereq type="default">python38-cchardet</packagereq>
       <packagereq type="default">python38-certifi</packagereq>
       <packagereq type="default">python38-cffi</packagereq>
