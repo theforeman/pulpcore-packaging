@@ -22,14 +22,3 @@ disttag = .el8
 blacklist =
   subscription-manager
   tfm-pulpcore
-
-
-[katello-pulpcore-nightly-el7]
-whitelist = 
-        python-aiosignal
-        python-beautifulsoup4
-        python-deprecated
-        python-frozenlist
-        python-gitdb
-        python-gitpython
-        python-humanfriendly
