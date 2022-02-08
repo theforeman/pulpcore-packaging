@@ -5,8 +5,8 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.16.1
-Release:        2%{?dist}
+Version:        3.17.3
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -32,7 +32,7 @@ Requires:       libmodulemd >= 2.12
 %endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.22
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.17.6
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.18
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field
@@ -41,8 +41,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.34
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.18
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.17.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.7.17
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.8
@@ -88,6 +88,9 @@ set -ex
 
 
 %changelog
+* Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.17.3-1
+- Release python-pulp-rpm 3.17.3
+
 * Mon Nov 29 2021 Justin Sherrill <jsherril@redhat.com> 3.16.1-2
 - require libmodulemd for rhel 9
 
