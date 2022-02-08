@@ -5,7 +5,7 @@
 %global pypi_name pulp-ansible
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.10.1
+Version:        0.12.0
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -29,11 +29,12 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-lru >= 1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-async-lru >= 1.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer >= 0.3.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer >= 0.4.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitpython >= 3.1.24
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.17
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.16.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -75,6 +76,9 @@ set -ex
 
 
 %changelog
+* Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 1:0.12.0-1
+- Release python-pulp-ansible 0.12.0
+
 * Wed Oct 20 2021 Odilon Sousa <osousa@redhat.com> - 1:0.10.1-1
 - Release python-pulp-ansible 0.10.1
 
