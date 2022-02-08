@@ -103,6 +103,7 @@ pulpcore_packages:
     python-botocore: {}
     python-box: {}
     python-bracex: {}
+    python-cchardet: {}
     python-certifi: {}
     python-cffi: {}
     python-chardet: {}
