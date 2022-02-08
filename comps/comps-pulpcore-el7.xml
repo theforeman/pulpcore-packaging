@@ -52,6 +52,7 @@
       <packagereq type="default">tfm-pulpcore-python3-botocore</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-box</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-bracex</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-cchardet</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-certifi</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-cffi</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-chardet</packagereq>
