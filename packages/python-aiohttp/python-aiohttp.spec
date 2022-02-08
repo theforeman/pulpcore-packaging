@@ -5,19 +5,33 @@
 %global pypi_name aiohttp
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.7.4
-Release:        4%{?dist}
+Version:        3.8.1
+Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
 URL:            https://github.com/aio-libs/aiohttp
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Patch0:         0001-allow-larger-headers.patch
-Patch1:         0002-Adds-Secure-Proxy-support.patch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-brotli
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-aiodns
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-aiosignal >= 1.1.2
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-async-timeout < 5.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 4.0.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.3.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-cchardet
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer < 3.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer >= 2.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-frozenlist >= 1.1.1
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-idna-ssl >= 1.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-multidict < 7.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-multidict >= 4.5
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-yarl < 2.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.0
 
 %description
 %{summary}
@@ -26,15 +40,18 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout < 4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 3.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-brotli
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiodns
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiosignal >= 1.1.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout < 5.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet < 4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet >= 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna-ssl >= 1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-multidict < 7.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-multidict >= 4.5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.6.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl < 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.0
 
@@ -69,13 +86,16 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE.txt vendor/http-parser/LICENSE-MIT
-%doc README.rst vendor/http-parser/README.md
+%license LICENSE.txt vendor/llhttp/LICENSE-MIT
+%doc README.rst vendor/llhttp/README.md
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.8.1-1
+- Release python-aiohttp 3.8.1
+
 * Wed Sep 29 2021 Brian Bouterse <bmbouter@redhat.com> 3.7.4-4
 - Adds patch to enable secure proxy support
 
