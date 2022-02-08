@@ -8,5 +8,5 @@ pulp-certguard==1.5.2
 pulp-ansible==0.10.1
 pulp-python==3.6.0
 pulpcore-client==3.17.3
-pulp-rpm-client==3.16.1
+pulp-rpm-client==3.17.3
 #galaxy-ng==4.3.1
