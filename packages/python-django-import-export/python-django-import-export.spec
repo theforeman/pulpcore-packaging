@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -25,7 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-Django >= 2.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-diff-match-patch
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 3.0.0
 
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 09 2022 Zach Huntington-Meath 2.7.1-2
+- lower case django requirement
+
 * Mon Feb 07 2022 Odilon Sousa 2.7.1-1
 - Update to 2.7.1
 

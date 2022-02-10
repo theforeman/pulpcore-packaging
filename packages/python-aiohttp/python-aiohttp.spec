@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.8.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -46,8 +46,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiosignal >= 1.1.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout < 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.3.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet < 4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet >= 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna-ssl >= 1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-multidict < 7.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-multidict >= 4.5
@@ -93,6 +91,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 09 2022 Zach Huntington-Meath <zhunting@redhat.com> - 3.8.1-2
+- Adjust version of chardet required
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.8.1-1
 - Release python-aiohttp 3.8.1
 
