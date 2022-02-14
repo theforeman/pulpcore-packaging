@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.10.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        File plugin for the Pulp Project
 
 License:        GPLv2+
@@ -25,8 +25,8 @@ A Pulp plugin to support hosting arbitrary files.
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.17
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.18
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.16.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(file) = %{version}
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 14 2022 Patrick Creech <pcreech@redhat.com> - 1.10.1-2
+- Fixup dependency issues
+
 * Tue Nov 16 2021 Odilon Sousa <osousa@redhat.com> - 1.10.1-1
 - Release python-pulp-file 1.10.1
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -25,7 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-bandersnatch = 5.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-bandersnatch >= 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pkginfo
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 14 2022 Patrick Creech <pcreech@redhat.com> - 3.6.0-2
+- Fixup dependency issues
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.6.0-1
 - Release python-pulp-python 3.6.0
 

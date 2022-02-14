@@ -5,8 +5,8 @@
 %global pypi_name ecdsa
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.13.3
-Release:        3%{?dist}
+Version:        0.14.1
+Release:        1%{?dist}
 Summary:        ECDSA cryptographic signature library (pure python)
 
 License:        MIT
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 14 2022 Patrick Creech <pcreech@redhat.com> - 0.14.1-1
+- Release python-ecdsa 0.14.1
+
 * Mon Sep 06 2021 Evgeni Golov - 0.13.3-3
 - Build against Python 3.8
 
