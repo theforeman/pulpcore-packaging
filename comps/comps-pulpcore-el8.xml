@@ -105,6 +105,7 @@
       <packagereq type="default">python38-galaxy-ng</packagereq>
       <packagereq type="default">python38-gnupg</packagereq>
       <packagereq type="default">python38-gunicorn</packagereq>
+      <packagereq type="default">python38-humanfriendly</packagereq>
       <packagereq type="default">python38-idna</packagereq>
       <packagereq type="default">python38-idna-ssl</packagereq>
       <packagereq type="default">python38-importlib-metadata</packagereq>

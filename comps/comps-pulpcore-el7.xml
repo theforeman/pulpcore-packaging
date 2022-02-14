@@ -106,6 +106,7 @@
       <packagereq type="default">tfm-pulpcore-python3-galaxy-ng</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-gnupg</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-gunicorn</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-humanfriendly</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-idna</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-idna-ssl</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-importlib-metadata</packagereq>
