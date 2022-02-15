@@ -105,6 +105,7 @@
       <packagereq type="default">python38-future</packagereq>
       <packagereq type="default">python38-galaxy-importer</packagereq>
       <packagereq type="default">python38-galaxy-ng</packagereq>
+      <packagereq type="default">python38-gitdb</packagereq>
       <packagereq type="default">python38-gitpython</packagereq>
       <packagereq type="default">python38-gnupg</packagereq>
       <packagereq type="default">python38-gunicorn</packagereq>
