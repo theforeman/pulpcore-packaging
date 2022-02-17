@@ -191,6 +191,7 @@
       <packagereq type="default">python38-setuptools-scm</packagereq>
       <packagereq type="default">python38-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">python38-six</packagereq>
+      <packagereq type="default">python38-smmap</packagereq>
       <packagereq type="default">python38-social-auth-app-django</packagereq>
       <packagereq type="default">python38-social-auth-core</packagereq>
       <packagereq type="default">python38-socks</packagereq>
