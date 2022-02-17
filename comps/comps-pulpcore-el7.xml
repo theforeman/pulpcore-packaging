@@ -192,6 +192,7 @@
       <packagereq type="default">tfm-pulpcore-python3-setuptools-scm</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-six</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-smmap</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-social-auth-app-django</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-social-auth-core</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-socks</packagereq>
