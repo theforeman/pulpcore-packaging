@@ -183,6 +183,7 @@ pulpcore_packages:
     python-social-auth-app-django: {}
     python-social-auth-core: {}
     python-socks: {}
+    python-soupsieve: {}
     python-tenacity: {}
     python-wcmatch: {}
     python-iniparse: {}

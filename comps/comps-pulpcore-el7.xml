@@ -196,6 +196,7 @@
       <packagereq type="default">tfm-pulpcore-python3-social-auth-app-django</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-social-auth-core</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-socks</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-soupsieve</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-solv</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-sqlparse</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-subscription-manager-rhsm</packagereq>

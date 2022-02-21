@@ -195,6 +195,7 @@
       <packagereq type="default">python38-social-auth-app-django</packagereq>
       <packagereq type="default">python38-social-auth-core</packagereq>
       <packagereq type="default">python38-socks</packagereq>
+      <packagereq type="default">python38-soupsieve</packagereq>
       <packagereq type="default">python38-solv</packagereq>
       <packagereq type="default">python38-sqlparse</packagereq>
       <packagereq type="default">python38-tablib</packagereq>
