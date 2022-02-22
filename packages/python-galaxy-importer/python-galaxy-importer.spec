@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.2.15
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -21,7 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 # We don't care if Ansible is Python 2 or 3 as we just call the CLI
-Requires:       ansible
+Requires:       /usr/bin/ansible
 Requires:       /usr/bin/ansible-test
 %if 0%{?rhel} == 8
 # We only have ansible-lint built on EL8
@@ -70,6 +70,9 @@ sed -i -E '/\s+ansible($|-lint)/d' setup.cfg
 %{python3_sitelib}/galaxy_importer-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Feb 22 2022 Odilon Sousa <osousa@redhat.com> - 0.2.15-2
+- Require /usr/bin/ansible
+
 * Mon Feb 22 2021 Evgeni Golov - 0.2.15-1
 - Release python-galaxy-importer 0.2.15
 

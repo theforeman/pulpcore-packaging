@@ -3,7 +3,7 @@
 
 Name:           %{pypi_name}
 Version:        4.2.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Best practices checker for Ansible
 
 License:        Apache-2.0
@@ -27,7 +27,10 @@ BuildRequires:  python3-ruamel-yaml
 BuildRequires:  python3-setuptools-scm
 BuildRequires:  python3-setuptools_scm_git_archive
 %endif
-BuildRequires:  ansible >= 2.8
+# This should be
+# BuildRequires:  (ansible >= 2.9 or ansible-core)
+# But our tooling currently fails with rich deps
+BuildRequires:  /usr/bin/ansible
 
 %if 0%{?rhel} == 7
 Requires:       PyYAML
@@ -40,7 +43,10 @@ Requires:       python3-ruamel-yaml >= 0.15.34
 Requires:       python3-six
 Requires:       python3-typing-extensions
 %endif
-Requires:       ansible >= 2.8
+# This should be
+# Requires:       (ansible >= 2.9 or ansible-core)
+# But our tooling currently fails with rich deps
+Requires:       /usr/bin/ansible
 
 %description
 %{summary}
@@ -78,6 +84,9 @@ cp %{SOURCE1} setup.py
 %{_bindir}/ansible-lint
 
 %changelog
+* Tue Feb 22 2022 Odilon Sousa <osousa@redhat.com> - 4.2.0-3
+- Require ansible OR ansible-core
+
 * Tue Nov 10 2020 Evgeni Golov 4.2.0-2
 - fix requires
 
