@@ -4,7 +4,7 @@
 # Created by pyp2rpm-3.3.7
 %global pypi_name soupsieve
 
-Name:           python-%{pypi_name}
+Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.3.1
 Release:        2%{?dist}
 Summary:        A modern CSS selector implementation for Beautiful Soup
