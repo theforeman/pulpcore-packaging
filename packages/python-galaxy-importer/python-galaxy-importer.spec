@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.4.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -26,7 +26,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 # We don't care if Ansible is Python 2 or 3 as we just call the CLI
-Requires:       ansible
+Requires:       /usr/bin/ansible
 Requires:       /usr/bin/ansible-test
 %if 0%{?rhel} == 8
 # We only have ansible-lint built on EL8
@@ -95,6 +95,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Thu Mar 03 2022 Odilon Sousa <osousa@redhat.com> - 0.4.0-3
+- Require /usr/bin/ansible
+
 * Tue Oct 19 2021 Evgeni Golov - 0.4.0-2
 - Obsolete the old Python 3.6 package for smooth upgrade
 
