@@ -3,7 +3,7 @@
 
 Name:           %{pypi_name}
 Version:        5.0.8
-Release:        1%{?dist}
+Release:        1.1%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
 License:        MIT
@@ -17,7 +17,10 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 3.5.0
 BuildRequires:  python%{python3_pkgversion}-setuptools_scm_git_archive
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       ansible >= 2.9
+# This should be
+# Requires:       (ansible >= 2.9 or ansible-core)
+# But our tooling currently fails with rich deps
+Requires:       /usr/bin/ansible
 Requires:       python%{python3_pkgversion}-enrich >= 1.2.6
 Requires:       python%{python3_pkgversion}-packaging
 Requires:       python%{python3_pkgversion}-pyyaml
@@ -51,6 +54,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ansible_lint-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Feb 22 2022 Evgeni Golov - 5.0.8-1.1
+- Require ansible OR ansible-core
+
 * Fri May 14 2021 Evgeni Golov - 5.0.8-1
 - Release ansible-lint 5.0.8
 
