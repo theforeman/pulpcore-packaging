@@ -224,6 +224,7 @@ pulpcore_packages:
     python-pymongo: {}
     python-pyOpenSSL: {}
     python-pyparsing: {}
+    python-pypi-simple: {}
     python-pyrsistent: {}
     python-pytz: {}
     python-pyyaml: {}
