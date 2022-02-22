@@ -172,6 +172,7 @@
       <packagereq type="default">python38-pyjwt</packagereq>
       <packagereq type="default">python38-pymongo</packagereq>
       <packagereq type="default">python38-pyparsing</packagereq>
+      <packagereq type="default">python38-pypi-simple</packagereq>
       <packagereq type="default">python38-pyrsistent</packagereq>
       <packagereq type="default">python38-python3-openid</packagereq>
       <packagereq type="default">python38-pytz</packagereq>
