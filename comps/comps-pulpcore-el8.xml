@@ -45,6 +45,7 @@
       <packagereq type="default">python38-azure-storage-common</packagereq>
       <packagereq type="default">python38-backoff</packagereq>
       <packagereq type="default">python38-bandersnatch</packagereq>
+      <packagereq type="default">python38-beautifulsoup4</packagereq>
       <packagereq type="default">python38-bindep</packagereq>
       <packagereq type="default">python38-bleach</packagereq>
       <packagereq type="default">python38-bleach-allowlist</packagereq>

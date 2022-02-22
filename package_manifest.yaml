@@ -91,6 +91,7 @@ pulpcore_packages:
     python-azure-storage-common: {}
     python-backoff: {}
     python-bandersnatch: {}
+    python-beautifulsoup4: {}
     python-bindep: {}
     python-bleach: {}
     python-bleach-allowlist: {}
