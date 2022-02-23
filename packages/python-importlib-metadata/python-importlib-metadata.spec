@@ -5,8 +5,8 @@
 %global pypi_name importlib-metadata
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.7.0
-Release:        2%{?dist}
+Version:        4.10.1
+Release:        1%{?dist}
 Summary:        Read metadata from Python packages
 
 License:        Apache Software License
@@ -28,7 +28,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-zipp >= 0.5
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-zipp >= 0.5
-
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.6.4
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -40,6 +40,8 @@ set -ex
 %autosetup -n importlib_metadata-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# create a minimal setup.py, the rest will be done by setuptools
+printf 'from setuptools import setup\nsetup(use_scm_version=True)' > setup.py
 %{?scl:EOF}
 
 
@@ -65,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 23 2022 Odilon Sousa <osousa@redhat.com> - 4.10.1-1
+- Release python-importlib-metadata 4.10.1
+
 * Wed Sep 08 2021 Evgeni Golov - 1.7.0-2
 - Build against Python 3.8
 
