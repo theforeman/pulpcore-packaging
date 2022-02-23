@@ -35,7 +35,6 @@ repoclosures:
           - el8-baseos
           - el8-appstream
           - el8-powertools
-          - el8-configmanagement-ansible
 
 pulpcore_packages:
   vars:
@@ -61,7 +60,6 @@ pulpcore_packages:
         - el8-baseos
         - el8-appstream
         - el8-powertools
-        - el8-configmanagement-ansible
   hosts:
     ansible-lint: {}
     createrepo_c: {}
