@@ -3,10 +3,10 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
-%global real_version 4.4.1
+%global real_version 4.4.2
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.4.1
+Version:        4.4.2
 Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 02 2022 Odilon Sousa <osousa@redhat.com> - 4.4.2-1
+- Release python-galaxy-ng 4.4.2
+
 * Thu Jan 06 2022 Odilon Sousa <osousa@redhat.com> - 4.4.1-1
 - Release python-galaxy-ng 4.4.1
 
