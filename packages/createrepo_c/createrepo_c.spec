@@ -155,7 +155,8 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 # Exclude everything shipped by the RHEL package
 %exclude %{_mandir}
 %exclude %{bash_completion}
-%exclude %{_libdir}
+%exclude %{_libdir}/pkgconfig/
+%exclude %{_libdir}/lib%{name}.so*
 %exclude %{_includedir}
 %exclude  %{_bindir}
 
