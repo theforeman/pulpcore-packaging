@@ -9,13 +9,6 @@
 %global __python3 /opt/rh/rh-python38/root/usr/bin/python3
 %endif
 
-# Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
-%if 0%{?rhel} == 8
-%bcond_without python36
-%else
-%bcond_with python36
-%endif
-
 %global libmodulemd_version 2.3.0
 
 %define __cmake_in_source_build 1
@@ -88,44 +81,14 @@ A set of utilities (createrepo_c, mergerepo_c, modifyrepo_c)
 for generating a common metadata repository from a directory of
 rpm packages and maintaining it.
 
-%package libs
-Summary:    Library for repodata manipulation
-
-%description libs
-Libraries for applications using the createrepo_c library
-for easy manipulation with a repodata.
-
-%package devel
-Summary:    Library for repodata manipulation
-Requires:   %{name}-libs%{?_isa} = %{version}-%{release}
-
-%description devel
-This package contains the createrepo_c C library and header files.
-These development files are for easy manipulation with a repodata.
-
 %package -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Summary:        Python 3 bindings for the createrepo_c library
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-Requires:       %{name}-libs = %{version}-%{release}
-%if 0%{?scl:1}
-Obsoletes:      python3-%{name} < %{version}-%{release}
-%endif
+Requires:       %{name}-libs = %{version}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Python 3 bindings for the createrepo_c library.
-
-%if %{with python36}
-%package -n python3-%{name}
-Summary:        Python 3 bindings for the createrepo_c library
-BuildRequires:  python36-devel
-Provides:       python36-%{name} = %{version}-%{release}
-Requires:       %{name}-libs = %{version}-%{release}
-
-%description -n python3-%{name}
-Python 3 bindings for the createrepo_c library.
-
-%endif
 
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
@@ -133,9 +96,6 @@ set -ex
 %autosetup -p1
 
 mkdir build-py3
-%if %{with python36}
-mkdir build-py36
-%endif
 
 # it can't detect our special PYTHONPATH and uses the compiled-in from the SCL Python
 %if 0%{?scl:1}
@@ -159,20 +119,6 @@ pushd build-py3
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
 popd
 
-%if %{with python36}
-# Build createrepo_c with Python 3.6
-pushd build-py36
-  %cmake .. \
-      -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
-      -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
-      -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
-      -DWITH_LEGACY_HASHES=ON \
-      -DPYTHON_EXECUTABLE=/usr/bin/python3.6 \
-      -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m \
-      -DPYTHON_LIBRARY=/usr/lib64/libpython3.6m.so
-  make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
-popd
-%endif
 %{?scl:EOF}
 
 %check
@@ -195,13 +141,6 @@ pushd build-py3
   make install DESTDIR=%{buildroot}
 popd
 
-%if %{with python36}
-pushd build-py36
-  # Install createrepo_c with Python 3.6
-  make install DESTDIR=%{buildroot}
-popd
-%endif
-
 %if 0%{?fedora} || 0%{?rhel} > 7
 ln -sr %{buildroot}%{_bindir}/createrepo_c %{buildroot}%{_bindir}/createrepo
 ln -sr %{buildroot}%{_bindir}/mergerepo_c %{buildroot}%{_bindir}/mergerepo
@@ -209,49 +148,16 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 %{?scl:EOF}
 
-%if 0%{?rhel} && 0%{?rhel} <= 7
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
-%else
-%ldconfig_scriptlets libs
-%endif
-
-%files
-%doc README.md
-%{_mandir}/man8/createrepo_c.8*
-%{_mandir}/man8/mergerepo_c.8*
-%{_mandir}/man8/modifyrepo_c.8*
-%{_mandir}/man8/sqliterepo_c.8*
-%{bash_completion}
-%{_bindir}/createrepo_c
-%{_bindir}/mergerepo_c
-%{_bindir}/modifyrepo_c
-%{_bindir}/sqliterepo_c
-
-%if 0%{?fedora} || 0%{?rhel} > 7
-%{_bindir}/createrepo
-%{_bindir}/mergerepo
-%{_bindir}/modifyrepo
-%endif
-
-%files libs
-%license COPYING
-%{_libdir}/lib%{name}.so.*
-
-%files devel
-%{_libdir}/lib%{name}.so
-%{_libdir}/pkgconfig/%{name}.pc
-%{_includedir}/%{name}/
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
-
-%if %{with python36}
-%files -n python3-%{name}
-/usr/lib64/python3.6/site-packages/%{name}/
-/usr/lib64/python3.6/site-packages/%{name}-%{version}-py*.egg-info
-%endif
+# Exclude everything shipped by the RHEL package
+%exclude %{_mandir}
+%exclude %{bash_completion}
+%exclude %{_libdir}
+%exclude %{_includedir}
+%exclude  %{_bindir}
 
 %changelog
 * Tue Jan 04 2022 Evgeni Golov - 0.17.7-3.2
