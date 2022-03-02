@@ -43,10 +43,12 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.7
-Release:        3.2%{?dist}
+Release:        4.1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch1:         0001-Preserve-changed-API-for-cr_compress_file_with_stat-RhBug1973588.patch
+Patch2:         0002-Default---keep-all-metadata-to-TRUE-and-add---discard-additional-metadata.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -254,6 +256,11 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Wed Mar 02 2022 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 0.17.7-4.1
+- Include patches from CentOS 8 Stream
+- Fix memory leak of `tmp_err` (RhBug:2005781)
+- Switch default of --keep-all-metadata to TRUE and add --discard-additional-metadata (RhBug:1992209)
+
 * Tue Jan 04 2022 Evgeni Golov - 0.17.7-3.2
 - Rebuild createrepo_c once more
 
