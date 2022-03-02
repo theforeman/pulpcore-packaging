@@ -9,8 +9,8 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.15.2
-Release:        4%{?dist}
+Version:        3.15.4
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -175,6 +175,9 @@ done
 
 
 %changelog
+* Wed Mar 02 2022 Odilon Sousa <osousa@redhat.com> - 3.15.4-1
+- Release python-pulpcore 3.15.4
+
 * Tue Oct 26 2021 Evgeni Golov - 3.15.2-4
 - Also obsolete python3-pulpcore on EL7
 
