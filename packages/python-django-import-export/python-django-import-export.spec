@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.7.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -28,7 +28,9 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-diff-match-patch
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 3.0.0
-
+%if 0%{?!scl:1}
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -65,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 03 2022 Odilon Sousa <osousa@redhat.com> - 2.7.1-3
+- Add obsolete again for smooth upgrade 
+
 * Mon Feb 14 2022 Patrick Creech <pcreech@redhat.com> - 2.7.1-2
 - fixup dependency issues
 
