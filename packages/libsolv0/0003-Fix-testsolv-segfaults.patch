@@ -1,0 +1,25 @@
+From 6de825c4d27022e48570824f0be77132c5b6d45a Mon Sep 17 00:00:00 2001
+From: Jaroslav Rohel <jrohel@redhat.com>
+Date: Tue, 11 Dec 2018 10:27:15 +0100
+Subject: [PATCH] Fix: testsolv segfaults
+
+---
+ ext/testcase.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ext/testcase.c b/ext/testcase.c
+index fe2636c..c8dd14e 100644
+--- a/ext/testcase.c
++++ b/ext/testcase.c
+@@ -2795,7 +2795,7 @@ testcase_read(Pool *pool, FILE *fp, const char *testcase, Queue *job, char **res
+ 	{
+ 	  int i = strlen(pieces[1]);
+ 	  s = strchr(pieces[1], '(');
+-	  if (!s && pieces[1][i - 1] != ')')
++	  if (!s || pieces[1][i - 1] != ')')
+ 	    {
+ 	      pool_error(pool, 0, "testcase_read: bad namespace '%s'", pieces[1]);
+ 	    }
+--
+libgit2 0.27.7
+

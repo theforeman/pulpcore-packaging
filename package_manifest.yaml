@@ -85,6 +85,10 @@ pulpcore_packages:
     createrepo_c: {}
     libcomps: {}
     libsolv: {}
+    libsolv0:
+      koji_tags:
+        - name: pulpcore-{{ pulpcore_version }}-el7
+          dist: '.el7'
     postgresql-debversion: {}
     postgresql-evr: {}
     pulpcore-selinux: {}
