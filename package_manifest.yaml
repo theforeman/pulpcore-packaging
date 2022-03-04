@@ -274,6 +274,10 @@ pulpcore_packages:
     python-xlwt: {}
     python-yarl: {}
     python-zipp: {}
+    python2-libcomps:
+      koji_tags:
+        - name: pulpcore-{{ pulpcore_version }}-el7
+          dist: '.el7'
     subscription-manager:
       koji_tags:
         - name: pulpcore-{{ pulpcore_version }}-el7
