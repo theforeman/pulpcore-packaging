@@ -16,7 +16,7 @@
 
 Name:           python2-%{lib_name}
 Version:        0.1.15
-Release:        4%{?dist}
+Release:        5.pulp%{?dist}
 Summary:        Python 2 bindings for libcomps library
 
 License:        GPLv2+
@@ -249,6 +249,9 @@ popd
 %endif
 
 %changelog
+* Fri Mar 04 2022 Evgeni Golov - 0.1.15-5.pulp
+- Adjust version to be unique
+
 * Tue Oct 26 2021 Evgeni Golov - 0.1.15-4
 - Obsolete non-SCL Python 3 packages on EL7
 
