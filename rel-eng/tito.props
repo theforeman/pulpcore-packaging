@@ -20,5 +20,6 @@ scl = tfm-pulpcore
 [pulpcore-3.16-el8]
 disttag = .el8
 blacklist =
+  python2-libcomps
   subscription-manager
   tfm-pulpcore

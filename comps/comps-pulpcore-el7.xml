@@ -20,6 +20,7 @@
       <packagereq type="default">libsolv-devel</packagereq>
       <packagereq type="default">libsolv-tools</packagereq>
       <packagereq type="default">pulpcore-selinux</packagereq>
+      <packagereq type="default">python2-libcomps</packagereq>
       <packagereq type="default">python2-solv</packagereq>
       <packagereq type="default">rh-postgresql12-postgresql-debversion</packagereq>
       <packagereq type="default">rh-postgresql12-postgresql-evr</packagereq>
