@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.1.26
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        GitPython is a python library used to interact with Git repositories
 
 License:        BSD
@@ -26,6 +26,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+Requires:       git
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitdb < 5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitdb >= 4.0.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4.3
@@ -66,5 +67,8 @@ set -ex
 
 
 %changelog
+* Thu Mar 17 2022 Odilon Sousa <osousa@redhat.com> - 3.1.26-2
+- Adding git as a dependency for git-python 
+
 * Mon Feb 07 2022 Odilon Sousa - 3.1.26-1
 - Initial package.
