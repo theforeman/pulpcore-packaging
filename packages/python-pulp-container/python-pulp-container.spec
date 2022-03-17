@@ -5,7 +5,7 @@
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.8.3
+Version:        2.8.6
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -75,6 +75,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 17 2022 Odilon Sousa <osousa@redhat.com> - 2.8.6-1
+- Release python-pulp-container 2.8.6
+
 * Fri Dec 10 2021 Odilon Sousa <osousa@redhat.com> - 2.8.3-1
 - Release python-pulp-container 2.8.3
 
