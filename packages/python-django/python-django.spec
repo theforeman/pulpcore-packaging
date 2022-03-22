@@ -6,7 +6,7 @@
 %global srcname django
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.2.9
+Version:        3.2.12
 Release:        1%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
@@ -81,6 +81,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 3.2.12-1
+- Release python-django 3.2.12
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 3.2.9-1
 - Release python-django 3.2.9
 
