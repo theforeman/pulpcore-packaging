@@ -9,7 +9,7 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.16.5
+Version:        3.16.6
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -43,8 +43,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiodns >= 3.0.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiodns >= 3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiofiles = 0.7.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.7.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.8
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.8.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.0.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.0
@@ -86,6 +86,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.4.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-redis >= 3.4.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-redis >= 4.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 5.4.0
@@ -173,6 +174,9 @@ done
 
 
 %changelog
+* Fri Mar 25 2022 Odilon Sousa <osousa@redhat.com> - 3.16.6-1
+- Release python-pulpcore 3.16.6
+
 * Fri Mar 18 2022 Ian Ballou <ianballou67@gmail.com> - 3.16.5-1
 - Release python-pulpcore 3.16.5
 
