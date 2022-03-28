@@ -65,6 +65,9 @@ set -ex
 %py3_build
 %{?scl:EOF}
 
+%if 0%{?scl:1}
+printf '#!/bin/bash\n%{?scl:source scl_source enable tfm-pulpcore \n}exec pulp "$@"\n' > pulp-cli-wrapper
+%endif
 
 %install
 %{?scl:scl enable %{scl} - << \EOF}
@@ -72,10 +75,16 @@ set -ex
 %py3_install
 %{?scl:EOF}
 
+%if 0%{?scl:1}
+install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
+%endif
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
+%if 0%{?scl:1}
+%{_root_bindir}/pulp
+%endif
 %{_bindir}/pulp
 %{python3_sitelib}/pulp_cli
 %{python3_sitelib}/pulpcore
@@ -86,6 +95,7 @@ set -ex
 %changelog
 * Mon Mar 28 2022 Evgeni Golov - 0.12.0-2
 - Add provides for pulp-cli
+- Add SCL wrapper so /usr/bin/pulp always works
 
 * Tue Nov 16 2021 Odilon Sousa <osousa@redhat.com> - 0.12.0-1
 - Release python-pulp-cli 0.12.0
