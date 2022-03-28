@@ -1,7 +1,7 @@
 ---
 all:
   vars:
-    pulpcore_version: "3.17"
+    pulpcore_version: "3.18"
   children:
     packages: {}
     repoclosures: {}
@@ -14,17 +14,16 @@ packages:
 
 repoclosures:
   hosts:
-    pulpcore-repoclosure-el7:
+    pulpcore-repoclosure-el9:
       repoclosure_target_repos:
-        el7:
-          - "el7-pulpcore-{{ pulpcore_version }}"
-      repoclosure_target_dist: el7
+        el9:
+          - "el9-pulpcore-{{ pulpcore_version }}"
+      repoclosure_target_dist: el9
       repoclosure_lookaside_repos:
-        el7:
-          - el7-base
-          - el7-updates
-          - el7-scl
-          - el7-epel
+        el9:
+          - el9-baseos
+          - el9-appstream
+          - el9-powertools
     pulpcore-repoclosure-el8:
       repoclosure_target_repos:
         el8:
@@ -40,24 +39,22 @@ pulpcore_packages:
   vars:
     scl: 'tfm-pulpcore'
     koji_tags:
-      - name: pulpcore-{{ pulpcore_version }}-el7
-        scl: 'tfm-pulpcore'
-        dist: '.el7'
+      - name: pulpcore-{{ pulpcore_version }}-el9
+        dist: '.el9'
       - name: pulpcore-{{ pulpcore_version }}-el8
         dist: '.el8'
     releasers:
       - koji-katello-pulpcore
     repoclosure_target_repos:
-      el7:
-        - "el7-pulpcore-{{ pulpcore_version }}"
+      el9:
+        - "el9-pulpcore-{{ pulpcore_version }}"
       el8:
         - "el8-pulpcore-{{ pulpcore_version }}"
     repoclosure_lookaside_repos:
-      el7:
-        - el7-base
-        - el7-updates
-        - el7-scl
-        - el7-epel
+      el9:
+        - el9-baseos
+        - el9-appstream
+        - el9-powertools
       el8:
         - el8-baseos
         - el8-appstream
@@ -255,8 +252,3 @@ pulpcore_packages:
     python-xlwt: {}
     python-yarl: {}
     python-zipp: {}
-    subscription-manager:
-      koji_tags:
-        - name: pulpcore-{{ pulpcore_version }}-el7
-          dist: '.el7'
-    tfm-pulpcore: {}
