@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.4.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -37,7 +37,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 1:0.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container < 2.9.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container >= 2.8.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.16.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django < 4.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django >= 3.1.0
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 29 2022 Odilon Sousa <osousa@redhat.com> - 4.4.3-3
+- Fix pulpcore requirement
+
 * Tue Mar 29 2022 Odilon Sousa <osousa@redhat.com> - 4.4.3-2
 - Fix pulp-ansible requirement
 
