@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.4.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -33,7 +33,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer = 0.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible < 1:0.11.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 1:0.10.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 1:0.10.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container < 2.9.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container >= 2.8.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.16.0
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 29 2022 Odilon Sousa <osousa@redhat.com> - 4.4.3-2
+- Fix pulp-ansible requirement
+
 * Thu Mar 17 2022 Odilon Sousa <osousa@redhat.com> - 4.4.3-1
 - Release python-galaxy-ng 4.4.3
 
