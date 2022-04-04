@@ -5,8 +5,8 @@
 %global pypi_name schema
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.7.4
-Release:        3%{?dist}
+Version:        0.7.5
+Release:        1%{?dist}
 Summary:        Simple data validation library
 
 License:        MIT
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Thu May 26 2022 Odilon Sousa - 0.7.5-1
+- Release python-schema 0.7.5
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.7.4-3
 - Build against python 3.9
 
