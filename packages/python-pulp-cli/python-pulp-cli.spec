@@ -5,8 +5,8 @@
 %global pypi_name pulp-cli
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.12.0
-Release:        4%{?dist}
+Version:        0.14.0
+Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -36,7 +36,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests < 3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.24
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-schema = 0.7.4
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-schema = 0.7.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml = 0.10.2
 %if 0%{?!scl:1}
@@ -96,6 +96,9 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
+* Thu May 26 2022 Odilon Sousa <osousa@redhat.com> - 0.14.0-1
+- Release python-pulp-cli 0.14.0
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.12.0-4
 - Obsolete the old Python 3.8 package for smooth upgrade
 
