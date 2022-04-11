@@ -2,7 +2,7 @@
 %global pypi_name galaxy-ng
 
 Name:           python-%{pypi_name}
-Version:        4.3.3
+Version:        4.3.4
 Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
@@ -27,8 +27,8 @@ Requires:       python%{python3_pkgversion}-django-prometheus >= 2.0.0
 Requires:       python%{python3_pkgversion}-drf-spectacular
 Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.3.4
 Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.3.5
-Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.7.3
-Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.7.4
+Requires:       python%{python3_pkgversion}-pulp-ansible >= 1:0.7.4
+Conflicts:      python%{python3_pkgversion}-pulp-ansible >= 1:0.7.5
 Requires:       python%{python3_pkgversion}-pulp-container >= 2.5.2
 Requires:       python%{python3_pkgversion}-pulpcore < 3.12
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.11.2
@@ -55,6 +55,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Apr 11 2022 Evgeni Golov - 4.3.4-1
+- Release python-galaxy-ng 4.3.4
+
 * Tue Sep 21 2021 Odilon Sousa <osousa@redhat.com> - 4.3.3-1
 - Release python-galaxy-ng 4.3.3
 
