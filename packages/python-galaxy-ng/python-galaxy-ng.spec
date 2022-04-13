@@ -2,7 +2,7 @@
 %global pypi_name galaxy-ng
 
 Name:           python-%{pypi_name}
-Version:        4.3.4
+Version:        4.3.5
 Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
@@ -55,6 +55,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/galaxy_ng-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Apr 13 2022 Evgeni Golov - 4.3.5-1
+- Release python-galaxy-ng 4.3.5
+
 * Mon Apr 11 2022 Evgeni Golov - 4.3.4-1
 - Release python-galaxy-ng 4.3.4
 
