@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -28,6 +28,8 @@ Conflicts:      python3-url-normalize >= 1.5
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{pypi_name}}
+Requires:       python3-django >= 2.2.16
+Conflicts:      python3-django >= 2.2.21
 Requires:       python3-ecdsa >= 0.13.2
 Conflicts:      python3-ecdsa >= 0.14
 Requires:       python3-pulpcore < 3.9
@@ -61,6 +63,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/pulp_container-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Apr 14 2022 Evgeni Golov - 2.1.2-2
+- Correct supported django versions
+
 * Mon May 10 2021 Zach Huntington-Meath <zhunting@redhat.com> - 2.1.2-1
 - Release python-pulp-container 2.1.2
 
