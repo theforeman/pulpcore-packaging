@@ -1,15 +1,11 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
-%{!?_root_bindir:%global _root_bindir %{_bindir}}
-%{!?_root_libexecdir:%global _root_libexecdir %{_libexecdir}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
-%global wrappers gunicorn pulpcore-worker
-%global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.3
+Version:        3.18.4
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -19,25 +15,77 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-Django >= 3.2.13
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-Django >= 3.3
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.1.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiodns >= 3.0.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiodns >= 3.1
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-aiofiles = 0.8.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.8.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.9
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.0.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-backoff >= 1.11.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-backoff >= 1.12
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-click < 9.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 36.0.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 36.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.5.3
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.6
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 21.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 21.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.4.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.7.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.8
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.9.6
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.10
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django-prometheus
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django-storages
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django-storages >= 1.12.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.14
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.1.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.2
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-drf-nested-routers = 0.93.4
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular = 0.21.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.4.8
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.1.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.2
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-jinja2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.3
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.4.2
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.5
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-redis >= 3.4.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.3
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.5
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 6.1.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
 
 
 %description
-Pulp is a platform for managing repositories of content, such as software
-packages, and pushing that content out to large numbers of consumers.
-
-Using Pulp you can:
-- Locally mirror all or part of a repository
-- Host your own content in a new repository
-- Manage content from multiple sources in one place
-- Promote content through different repos in an organized way
+%{summary}
 
 
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2.9
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django >= 3.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-Django >= 3.2.13
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-Django >= 3.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiodns >= 3.0.0
@@ -45,35 +93,38 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiodns >= 3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiofiles = 0.8.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.8.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.9
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.0.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-backoff >= 1.11.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-backoff >= 1.12
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click < 9.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 36.0.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 36.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.5.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 21.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 22
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 21.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.4.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.7.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.7.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.8
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.9.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.9.6
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-prometheus
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.12.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-storages
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-storages >= 1.12.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.14
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-nested-routers = 0.93.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular = 0.21.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular = 0.21.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.4.8
@@ -81,30 +132,22 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.4.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-redis >= 3.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 5.4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.3
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 6.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
 
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-
-Provides:       %{pypi_name} = %{version}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
-Pulp is a platform for managing repositories of content, such as software
-packages, and pushing that content out to large numbers of consumers.
-
-Using Pulp you can:
-- Locally mirror all or part of a repository
-- Host your own content in a new repository
-- Manage content from multiple sources in one place
-- Promote content through different repos in an organized way
+%{summary}
 
 
 %prep
@@ -113,10 +156,6 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
-# relax cryptography requirement
-# see https://pulp.plan.io/issues/9367
-sed -i '/cryptography/ s/~=.*//' requirements.txt
 %{?scl:EOF}
 
 
@@ -126,18 +165,6 @@ set -ex
 %py3_build
 %{?scl:EOF}
 
-for wrapper in %{wrappers}
-do
-  printf '#!/bin/bash\n%{?scl:source scl_source enable tfm-pulpcore \n}exec %s "$@"\n' ${wrapper} > ${wrapper}
-done
-
-%if 0%{?scl:1}
-for wrapper in %{scl_wrappers}
-do
-  printf '#!/bin/bash\n%{?scl:source scl_source enable tfm-pulpcore \n}exec %s "$@"\n' ${wrapper} > ${wrapper}
-done
-%endif
-
 
 %install
 %{?scl:scl enable %{scl} - << \EOF}
@@ -145,34 +172,21 @@ set -ex
 %py3_install
 %{?scl:EOF}
 
-for wrapper in %{wrappers}
-do
-  install -D -m 755 ${wrapper} %{buildroot}%{_root_libexecdir}/%{pypi_name}/${wrapper}
-done
-
-%if 0%{?scl:1}
-for wrapper in %{scl_wrappers}
-do
-  install -D -m 755 ${wrapper} %{buildroot}%{_root_bindir}/${wrapper}
-done
-%endif
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
-%if 0%{?scl:1}
-%{_root_bindir}/pulp-content
-%{_root_bindir}/pulpcore-manager
-%endif
 %{_bindir}/pulp-content
 %{_bindir}/pulpcore-manager
 %{_bindir}/pulpcore-worker
-%{_root_libexecdir}/%{pypi_name}/*
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 3.18.4-1
+- Update to 3.18.4
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.17.3-1
 - Release python-pulpcore 3.17.3
 
