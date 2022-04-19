@@ -5,8 +5,8 @@
 %global pypi_name pycairo
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.20.1
-Release:        2%{?dist}
+Version:        1.21.0
+Release:        1%{?dist}
 Summary:        Python interface for cairo
 
 License:        LGPL-2.1-only OR MPL-1.1
@@ -16,7 +16,6 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
-BuildRequires:  cairo-devel
 
 %description
 %{summary}
@@ -26,18 +25,9 @@ BuildRequires:  cairo-devel
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
-
-
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}-devel
-Summary:        %{summary} - devel
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}%{?_isa} = %{version}-%{release}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-devel
-
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}-devel
-This package contains files required to build wrappers for cairo add-on
-libraries so that they interoperate with py3cairo.
 
 
 %prep
@@ -70,12 +60,10 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}-devel
-%{_libdir}/pkgconfig/py3cairo.pc
-%{_includedir}/pycairo
-
-
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 1.21.0-1
+- Update to 1.21.0
+
 * Wed Nov 24 2021 Evgeni Golov - 1.20.1-2
 - Split devel files into own package
 
