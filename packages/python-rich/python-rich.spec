@@ -5,11 +5,11 @@
 %global pypi_name rich
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        10.12.0
+Version:        12.0.1
 Release:        1%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
-License:        MIT
+License:        None
 URL:            https://github.com/willmcgugan/rich
 Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -25,19 +25,16 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-colorama < 0.5.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-colorama >= 0.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-commonmark < 0.10.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-commonmark >= 0.9.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dataclasses < 0.9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dataclasses >= 0.7
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ipywidgets < 8.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ipywidgets >= 7.5.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments < 3.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments >= 2.6.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions < 4.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions < 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -73,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 12.0.1-1
+- Update to 12.0.1
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 10.12.0-1
 - Release python-rich 10.12.0
 
