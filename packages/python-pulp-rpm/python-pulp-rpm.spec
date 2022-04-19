@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.3
+Version:        3.17.4
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -25,30 +25,23 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 7
-Requires:       libmodulemd2 >= 2.12
-%else
-Requires:       libmodulemd >= 2.12
-%endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.22
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.3.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.17.6
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.18
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.23
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc > 1.3.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo-c >= 0.17.6
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo-c >= 0.18
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.34
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.17.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.16.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.7.17
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.8
 
-Provides:       pulpcore-plugin(rpm) = %{version}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -60,9 +53,6 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
-# remove "solv" dependency from setup.py as python3-solv does not provide an egg
-sed -i "/solv/d" requirements.txt
 %{?scl:EOF}
 
 
@@ -88,6 +78,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 3.17.4-1
+- Update to 3.17.4
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.17.3-1
 - Release python-pulp-rpm 3.17.3
 
