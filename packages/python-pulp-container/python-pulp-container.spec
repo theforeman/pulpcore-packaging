@@ -5,7 +5,7 @@
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.10.0
+Version:        2.10.3
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -16,7 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
 
 %description
 %{summary}
@@ -37,8 +36,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.5
 
-Provides:       pulpcore-plugin(container) = %{version}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -75,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 2.10.3-1
+- Update to 2.10.3
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 2.10.0-1
 - Release python-pulp-container 2.10.0
 
