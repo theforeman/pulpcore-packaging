@@ -5,7 +5,7 @@
 %global pypi_name django-lifecycle
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.9.3
+Version:        0.9.6
 Release:        1%{?dist}
 Summary:        Declarative model lifecycle hooks
 
@@ -25,11 +25,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-Django >= 2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 21.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urlman >= 1.2.0
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -67,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 0.9.6-1
+- Update to 0.9.6
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.9.3-1
 - Release python-django-lifecycle 0.9.3
 
