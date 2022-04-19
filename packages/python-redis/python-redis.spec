@@ -5,12 +5,12 @@
 %global pypi_name redis
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.5.3
-Release:        2%{?dist}
-Summary:        Python client for Redis key-value store
+Version:        4.2.2
+Release:        1%{?dist}
+Summary:        Python client for Redis database and key-value store
 
 License:        MIT
-URL:            https://github.com/andymccurdy/redis-py
+URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
@@ -25,6 +25,15 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 4.0.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 36.0.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-deprecated >= 1.2.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-hiredis >= 1.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata >= 1.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 20.4
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyopenssl = 20.0.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.26.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -56,12 +65,15 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 4.2.2-1
+- Update to 4.2.2
+
 * Mon Sep 06 2021 Evgeni Golov - 3.5.3-2
 - Build against Python 3.8
 
