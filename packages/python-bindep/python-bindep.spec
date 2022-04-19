@@ -5,7 +5,7 @@
 %global pypi_name bindep
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.10.2
+Version:        2.11.0
 Release:        1%{?dist}
 Summary:        Binary dependency utility
 
@@ -27,7 +27,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-Parsley
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-distro
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-distro >= 1.7.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pbr >= 2.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -68,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 2.11.0-1
+- Update to 2.11.0
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 2.10.2-1
 - Release python-bindep 2.10.2
 
