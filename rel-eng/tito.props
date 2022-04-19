@@ -22,3 +22,8 @@ blacklist =
   subscription-manager
   tfm-pulpcore
 
+
+
+[katello-pulpcore-nightly-el7]
+whitelist = 
+        python-deprecated

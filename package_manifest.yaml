@@ -113,6 +113,7 @@ pulpcore_packages:
     python-dateutil: {}
     python-debian: {}
     python-defusedxml: {}
+    python-deprecated: {}
     python-diff-match-patch: {}
     python-distro: {}
     python-django: {}
