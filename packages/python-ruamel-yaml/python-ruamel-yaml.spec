@@ -6,7 +6,7 @@
 %global srcname ruamel-yaml
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        0.17.20
+Version:        0.17.21
 Release:        1%{?dist}
 Summary:        ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
 
@@ -26,7 +26,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml-clib
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml-clib >= 0.2.6
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml-jinja2 >= 0.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ryd
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -52,7 +54,7 @@ set -ex
 %install
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%{__python3} setup.py install --single-version-externally-managed --skip-build --root $RPM_BUILD_ROOT --install-purelib %{python3_sitelib} --install-platlib %{python3_sitearch} --install-scripts %{_bindir} --install-data %{_datadir}
+%py3_install
 %{?scl:EOF}
 
 
@@ -65,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 0.17.21-1
+- Update to 0.17.21
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 0.17.20-1
 - Release python-ruamel-yaml 0.17.20
 
