@@ -5,7 +5,7 @@
 %global pypi_name click
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        8.0.3
+Version:        8.1.2
 Release:        1%{?dist}
 Summary:        Composable command line interface toolkit
 
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 8.1.2-1
+- Update to 8.1.2
+
 * Wed Nov 03 2021 Odilon Sousa 8.0.3-1
 - Update to 8.0.3
 
