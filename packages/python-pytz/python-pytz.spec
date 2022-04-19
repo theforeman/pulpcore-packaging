@@ -5,7 +5,7 @@
 %global pypi_name pytz
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2021.3
+Version:        2022.1
 Release:        1%{?dist}
 Summary:        World timezone definitions, modern and historical
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 2022.1-1
+- Update to 2022.1
+
 * Wed Nov 03 2021 Odilon Sousa 2021.3-1
 - Update to 2021.3
 
