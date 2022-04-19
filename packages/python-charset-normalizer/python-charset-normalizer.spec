@@ -5,7 +5,7 @@
 %global pypi_name charset-normalizer
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.0.11
+Version:        2.0.12
 Release:        1%{?dist}
 Summary:        The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet
 
@@ -26,6 +26,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-unicodedata2
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -64,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 2.0.12-1
+- Update to 2.0.12
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 2.0.11-1
 - Release python-charset-normalizer 2.0.11
 
