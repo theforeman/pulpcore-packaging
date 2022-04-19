@@ -23,7 +23,7 @@ repoclosures:
         el9:
           - el9-baseos
           - el9-appstream
-          - el9-powertools
+          - el9-crb
     pulpcore-repoclosure-el8:
       repoclosure_target_repos:
         el8:
@@ -54,7 +54,7 @@ pulpcore_packages:
       el9:
         - el9-baseos
         - el9-appstream
-        - el9-powertools
+        - el9-crb
       el8:
         - el8-baseos
         - el8-appstream
