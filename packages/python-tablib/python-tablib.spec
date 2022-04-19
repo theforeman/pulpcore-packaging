@@ -5,7 +5,7 @@
 %global pypi_name tablib
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.2.0
+Version:        3.2.1
 Release:        1%{?dist}
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 
@@ -29,12 +29,11 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-markuppy
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-odfpy
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-openpyxl >= 2.6.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pandas
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyyaml
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-tabulate
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-xlrd
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-xlwt
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -72,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 3.2.1-1
+- Update to 3.2.1
+
 * Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 3.2.0-1
 - Release python-tablib 3.2.0
 
