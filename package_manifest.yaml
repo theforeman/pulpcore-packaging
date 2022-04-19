@@ -256,5 +256,6 @@ pulpcore_packages:
     python-wrapt: {}
     python-xlrd: {}
     python-xlwt: {}
+    python-yamllint: {}
     python-yarl: {}
     python-zipp: {}

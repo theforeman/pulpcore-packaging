@@ -32,3 +32,4 @@ whitelist =
         python-subprocess-tee
         python-types-setuptools
         python-wrapt
+        python-yamllint
