@@ -5,7 +5,7 @@
 %global pypi_name whitenoise
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.3.0
+Version:        6.0.0
 Release:        1%{?dist}
 Summary:        Radically simplified static file serving for WSGI applications
 
@@ -25,6 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-Brotli
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -62,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 6.0.0-1
+- Update to 6.0.0
+
 * Wed Sep 08 2021 Evgeni Golov 5.3.0-1
 - Update to 5.3.0
 
