@@ -5,7 +5,7 @@
 %global pypi_name urllib3
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.26.8
+Version:        1.26.9
 Release:        1%{?dist}
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 
@@ -25,7 +25,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -62,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 1.26.9-1
+- Update to 1.26.9
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 1.26.8-1
 - Release python-urllib3 1.26.8
 
