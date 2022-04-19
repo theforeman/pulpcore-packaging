@@ -25,5 +25,6 @@ blacklist =
 
 
 [katello-pulpcore-nightly-el7]
-whitelist = 
+whitelist =
         python-deprecated
+        python-pathspec

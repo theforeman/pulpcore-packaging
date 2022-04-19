@@ -164,6 +164,7 @@ pulpcore_packages:
     python-msrest: {}
     python-oauthlib: {}
     python-parsley: {}
+    python-pathspec: {}
     python-pbr: {}
     python-pkginfo: {}
     python-pulp-ostree: {}
