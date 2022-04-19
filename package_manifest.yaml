@@ -185,6 +185,7 @@ pulpcore_packages:
     python-soupsieve: {}
     python-subprocess-tee: {}
     python-tenacity: {}
+    python-types-setuptools: {}
     python-wcmatch: {}
     python-iniparse: {}
     python-itypes: {}

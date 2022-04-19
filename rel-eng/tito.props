@@ -30,3 +30,4 @@ whitelist =
         python-pathspec
         python-pyopenssl
         python-subprocess-tee
+        python-types-setuptools
