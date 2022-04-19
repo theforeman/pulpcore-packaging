@@ -5,7 +5,7 @@
 %global pypi_name drf-spectacular
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.21.0
+Version:        0.21.2
 Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
@@ -15,13 +15,7 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.10
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-inflection >= 0.3.1
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 2.6.0
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
 
 
 %description
@@ -31,15 +25,15 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-Django >= 2.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.10
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular-sidecar
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular-sidecar
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-inflection >= 0.3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 2.6.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -52,8 +46,6 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
-sed -i 's/long_description = readme.read.*/long_description = description/' setup.py
 %{?scl:EOF}
 
 
@@ -83,6 +75,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 0.21.2-1
+- Update to 0.21.2
+
 * Mon Feb 07 2022 Odilon Sousa <osousa@redhat.com> - 0.21.0-1
 - Release python-drf-spectacular 0.21.0
 
