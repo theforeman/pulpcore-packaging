@@ -9,7 +9,7 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.6
+Version:        3.17.7
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -36,7 +36,7 @@ Using Pulp you can:
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2.9
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2.13
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django >= 3.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1.1
@@ -173,6 +173,9 @@ done
 
 
 %changelog
+* Tue Apr 19 2022 Evgeni Golov - 3.17.7-1
+- Release python-pulpcore 3.17.7
+
 * Thu Mar 31 2022 Ian Ballou <ianballou67@gmail.com> - 3.17.6-1
 - Release python-pulpcore 3.17.6
 
