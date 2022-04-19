@@ -28,3 +28,4 @@ blacklist =
 whitelist =
         python-deprecated
         python-pathspec
+        python-pyopenssl

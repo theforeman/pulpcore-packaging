@@ -173,6 +173,7 @@ pulpcore_packages:
     python-pulpcore-client: {}
     python-pycairo: {}
     python-pygobject: {}
+    python-pyopenssl: {}
     python-python3-openid: {}
     python-requests-oauthlib: {}
     python-rhsm: {}
