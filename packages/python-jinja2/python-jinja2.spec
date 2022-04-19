@@ -6,7 +6,7 @@
 %global srcname jinja2
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.0.3
+Version:        3.1.1
 Release:        1%{?dist}
 Summary:        A very fast and expressive template engine
 
@@ -17,7 +17,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-markupsafe >= 2.0
 
 
 %description
@@ -27,7 +26,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-markupsafe >= 2.0
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-markupsafe >= 2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-Babel >= 2.7
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-MarkupSafe >= 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -59,13 +59,16 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
-%license LICENSE.rst
+%license LICENSE.rst docs/license.rst
 %doc README.rst
 %{python3_sitelib}/jinja2
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 3.1.1-1
+- Update to 3.1.1
+
 * Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 3.0.3-1
 - Release python-jinja2 3.0.3
 
