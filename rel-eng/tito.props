@@ -31,3 +31,4 @@ whitelist =
         python-pyopenssl
         python-subprocess-tee
         python-types-setuptools
+        python-wrapt

@@ -253,6 +253,7 @@ pulpcore_packages:
     python-urlman: {}
     python-webencodings: {}
     python-whitenoise: {}
+    python-wrapt: {}
     python-xlrd: {}
     python-xlwt: {}
     python-yarl: {}
