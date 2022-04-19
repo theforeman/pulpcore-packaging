@@ -5,8 +5,8 @@
 %global pypi_name semantic-version
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.8.5
-Release:        2%{?dist}
+Version:        2.9.0
+Release:        1%{?dist}
 Summary:        A library implementing the 'SemVer' scheme
 
 License:        BSD
@@ -16,7 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 0.8
 
 
 %description
@@ -26,6 +25,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 0.8
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-colorama <= 0.4.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-readme-renderer < 25.0
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -63,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 2.9.0-1
+- Update to 2.9.0
+
 * Mon Sep 06 2021 Evgeni Golov - 2.8.5-2
 - Build against Python 3.8
 
