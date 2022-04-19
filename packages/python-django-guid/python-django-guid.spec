@@ -5,7 +5,7 @@
 %global pypi_name django-guid
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.2.1
+Version:        3.2.2
 Release:        1%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
@@ -25,11 +25,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django < 4.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django < 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.1.1
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +62,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 3.2.2-1
+- Update to 3.2.2
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 3.2.1-1
 - Release python-django-guid 3.2.1
 
