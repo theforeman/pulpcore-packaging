@@ -5,8 +5,8 @@
 %global pypi_name djangorestframework
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.12.4
-Release:        4%{?dist}
+Version:        3.13.1
+Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -25,12 +24,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-Provides:       %{?scl_prefix}python%{python3_pkgversion}-django-rest-framework = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytz
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -68,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 3.13.1-1
+- Update to 3.13.1
+
 * Tue Oct 19 2021 Evgeni Golov - 3.12.4-4
 - Obsolete the old Python 3.6 package for smooth upgrade
 
