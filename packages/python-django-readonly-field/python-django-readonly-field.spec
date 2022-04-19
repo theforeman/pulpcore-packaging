@@ -5,8 +5,8 @@
 %global pypi_name django-readonly-field
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.0.5
-Release:        3%{?dist}
+Version:        1.1.1
+Release:        1%{?dist}
 Summary:        Make Django model fields readonly
 
 License:        MIT
@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django >= 1.11
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -26,10 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 1.11
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-Django
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -61,12 +57,16 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
-%doc README.rst
+%doc README.rst docs/readme.rst
 %{python3_sitelib}/django_readonly_field
+%{python3_sitelib}/tests
 %{python3_sitelib}/django_readonly_field-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 1.1.1-1
+- Update to 1.1.1
+
 * Tue Oct 26 2021 Evgeni Golov - 1.0.5-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
