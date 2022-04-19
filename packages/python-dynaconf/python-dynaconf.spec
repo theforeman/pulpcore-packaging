@@ -5,8 +5,8 @@
 %global pypi_name dynaconf
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.1.7
-Release:        2%{?dist}
+Version:        3.1.8
+Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -25,10 +25,26 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 38.6.0
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-codecov
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-configobj
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-dotenv
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8-debugger
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8-print
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8-todo
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flask >= 0.12
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-hvac
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pep8-naming
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest-cov
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest-mock
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytest-xdist
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-radon
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-redis
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -67,6 +83,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 19 2022 Yanis Guenane 3.1.8-1
+- Update to 3.1.8
+
 * Wed Sep 29 2021 Evgeni Golov - 3.1.7-2
 - Obsolete the old Python 3.6 package for smooth upgrade
 
