@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.20.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python interface for cairo
 
 License:        LGPL-2.1-only OR MPL-1.1
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Odilon Sousa <osousa@redhat.com> - 1.20.1-3
+- Rebuild against python 3.9
+
 * Wed Nov 24 2021 Evgeni Golov - 1.20.1-2
 - Split devel files into own package
 
