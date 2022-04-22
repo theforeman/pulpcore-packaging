@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        setuptools_scm plugin for git archives
 
 License:        MIT
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane - 1.1-3
+- Build against Python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 1.1-2
 - Build against Python 3.8
 
