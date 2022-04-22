@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.10.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        JSON Matching Expressions
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.10.0-3
+- Build against python 3.9
+
 * Wed Oct 27 2021 Evgeni Golov - 0.10.0-2
 - Rebuild against Python 3.8
 

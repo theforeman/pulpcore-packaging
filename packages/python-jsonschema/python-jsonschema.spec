@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.2.0
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.0-8
+- Build against python 3.9
+
 * Fri Nov 05 2021 Satoe Imaishi - 3.2.0-7
 - Don't obsolete python 3.6 package and exclude files in bin
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A tool for building Ansible Execution Environments
 
 License:        Apache-2.0
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.1-3
+- Build against python 3.9
+
 * Wed Sep 29 2021 Evgeni Golov - 1.0.1-2
 - Obsolete the old Python 3.6 package for smooth upgrade
 

@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Parsing and pattern matching made easy
 
 License:        MIT License
@@ -65,5 +65,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.3-2
+- Build against python 3.9
+
 * Wed Sep 08 2021 Evgeni Golov - 1.3-1
 - Initial package.

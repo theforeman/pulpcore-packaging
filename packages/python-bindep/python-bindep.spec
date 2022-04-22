@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.10.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Binary dependency utility
 
 License:        Apache License, Version 2.0
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.10.2-2
+- Build against python 3.9
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 2.10.2-1
 - Release python-bindep 2.10.2
 

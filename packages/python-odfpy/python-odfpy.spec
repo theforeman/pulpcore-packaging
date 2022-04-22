@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Python API and tools to manipulate OpenDocument files
 
 License:        GPLv2+ or Apache-2.0
@@ -85,6 +85,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.4.1-6
+- Build against python 3.9
+
 * Fri Nov 05 2021 Satoe Imaishi - 1.4.1-5
 - Don't obsolete python 3.6 package and exclude files in bin
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.0.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Serialize a partial subset of fields in the API
 
 License:        MIT
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.0-5
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 1.0.0-4
 - Build against Python 3.8
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.10.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Read metadata from Python packages
 
 License:        Apache Software License
@@ -17,8 +17,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-zipp >= 0.5
-
 
 %description
 %{summary}
@@ -67,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.10.1-2
+- Build against python 3.9
+
 * Wed Feb 23 2022 Odilon Sousa <osousa@redhat.com> - 4.10.1-1
 - Release python-importlib-metadata 4.10.1
 

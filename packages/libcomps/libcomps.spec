@@ -15,9 +15,9 @@
 # Our EL8 buildroots default to Python 3.8, but we also need a 3.6 build of libcomps
 # to make dnf happy
 %if 0%{?rhel} == 8
-%bcond_without python36
+%bcond_without python39
 %else
-%bcond_with python36
+%bcond_with python3
 %endif
 
 # Never build docs by default
@@ -25,7 +25,7 @@
 
 Name:           libcomps
 Version:        0.1.18
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -224,6 +224,9 @@ popd
 %endif
 
 %changelog
+* Mon Apr 25 2022 Yanis Guenane - 0.1.18-2
+- Build against Python 3.9
+
 * Mon Nov 22 2021 Evgeni Golov - 0.1.18-1
 - Release libcomps 0.1.18
 

@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.8.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -18,8 +18,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5
-
 
 %description
 %{summary}
@@ -67,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.8.2-2
+- Build against python 3.9
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 2.8.2-1
 - Release python-dateutil 2.8.2
 

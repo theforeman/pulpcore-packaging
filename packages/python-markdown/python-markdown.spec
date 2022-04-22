@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.3.6
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -16,7 +16,6 @@ Source0:        https://files.pythonhosted.org/packages/source/M/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata >= 4.4
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -67,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.3.6-3
+- Build against python 3.9
+
 * Wed Feb 23 2022 Odilon Sousa <osousa@redhat.com> - 3.3.6-2
 - Update dependencies
 

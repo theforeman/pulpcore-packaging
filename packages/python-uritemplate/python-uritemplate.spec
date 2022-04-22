@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Implementation of RFC 6570 URI Templates
 
 License:        BSD 3-Clause License or Apache License, Version 2.0
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.1.1-2
+- Build against python 3.9
+
 * Wed Nov 03 2021 Odilon Sousa 4.1.1-1
 - Update to 4.1.1
 

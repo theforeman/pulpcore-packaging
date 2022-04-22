@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An easy safelist-based HTML-sanitizing tool
 
 License:        Apache Software License
@@ -15,11 +15,7 @@ Source0:        https://files.pythonhosted.org/packages/source/b/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-packaging
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.9.0
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-webencodings
-
 
 %description
 %{summary}
@@ -68,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.3.1-2
+- Build against python 3.9
+
 * Wed Sep 08 2021 Evgeni Golov 3.3.1-1
 - Update to 3.3.1
 

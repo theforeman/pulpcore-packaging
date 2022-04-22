@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.9.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python parser for the CommonMark Markdown spec
 
 License:        BSD-3-Clause
@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-future >= 0.14.0
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -66,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.9.1-5
+- Build against python 3.9
+
 * Fri Nov 05 2021 Satoe Imaishi - 0.9.1-4
 - Don't obsolete python 3.6 package and exclude files in bin
 

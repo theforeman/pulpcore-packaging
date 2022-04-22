@@ -11,9 +11,9 @@
 
 # Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
 %if 0%{?rhel} == 8
-%bcond_without python36
+%bcond_without python39
 %else
-%bcond_with python36
+%bcond_with python3
 %endif
 
 %global libmodulemd_version 2.3.0
@@ -43,7 +43,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.7
-Release:        4.1%{?dist}
+Release:        5%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -256,6 +256,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Mon Apr 25 2022 Yanis Guenane - 0.17.7-5
+- Build against Python 3.9
+
 * Wed Mar 02 2022 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 0.17.7-4.1
 - Include patches from CentOS 8 Stream
 - Fix memory leak of `tmp_err` (RhBug:2005781)

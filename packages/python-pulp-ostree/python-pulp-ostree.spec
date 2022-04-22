@@ -7,7 +7,7 @@
 %global prerelease a4
 %global prereleaserpm %{?prerelease:.}%{?prerelease}
 
-%global release 3
+%global release 4
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.0
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.0.0-0.4.a4
+- Build against python 3.9
+
 * Thu Jan 27 2022 Evgeni Golov - 2.0.0-0.3.a4
 - Update pygobject dependency to include epoch
 

@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        5.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Advanced Python dictionaries with dot notation access
 
 License:        MIT
@@ -16,9 +16,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-toml
 
 
 %description
@@ -67,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 5.1.0-3
+- Build against python 3.9
+
 * Wed Sep 08 2021 Evgeni Golov - 5.1.0-2
 - Build against Python 3.8
 

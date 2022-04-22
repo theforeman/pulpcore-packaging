@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2020.6.20
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPL-2.0
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2020.6.20-3
+- Build against python 3.9
+
 * Wed Sep 08 2021 Evgeni Golov - 2020.6.20-2
 - Build against Python 3.8
 

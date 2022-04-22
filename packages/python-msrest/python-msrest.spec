@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.6.21
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        AutoRest swagger generator Python client runtime
 
 License:        MIT License
@@ -65,5 +65,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.6.21-2
+- Build against python 3.9
+
 * Tue Nov 02 2021 Evgeni Golov - 0.6.21-1
 - Initial package.

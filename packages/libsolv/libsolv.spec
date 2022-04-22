@@ -12,9 +12,9 @@
 # Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
 # to make dnf happy
 %if 0%{?rhel} == 8
-%bcond_without python36
+%bcond_without python39
 %else
-%bcond_with python36
+%bcond_with python3
 %endif
 
 %global libname solv
@@ -46,7 +46,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.20
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -385,6 +385,9 @@ set -ex
 %endif
 
 %changelog
+* Mon Apr 25 2022 Yanis Guenane - 0.7.20-5
+- Build against Python 3.9
+
 * Wed Oct 27 2021 Evgeni Golov - 0.7.20-4
 - Also build libsolv against Python 3.6 on EL8
 

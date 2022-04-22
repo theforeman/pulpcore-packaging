@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Internationalized Domain Names in Applications (IDNA)
 
 License:        BSD-3-Clause
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.3-2
+- Build against python 3.9
+
 * Wed Nov 03 2021 Odilon Sousa 3.3-1
 - Update to 3.3
 

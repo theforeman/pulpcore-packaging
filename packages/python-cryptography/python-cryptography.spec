@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.1.1-2
+- Build against python 3.9
+
 * Mon Sep 13 2021 Evgeni Golov - 3.1.1-1
 - Release python-cryptography 3.1.1
 

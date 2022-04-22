@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.6.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.6.0-4
+- Build against python 3.9
+
 * Wed Feb 23 2022 Odilon Sousa <osousa@redhat.com> - 3.6.0-3
 - Adding pypi-simple as dependency
 

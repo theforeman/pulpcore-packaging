@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        asyncio (PEP 3156) Redis support
 
 License:        MIT
@@ -16,9 +16,7 @@ Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-async-timeout
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
 
 
 %description
@@ -67,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.0.1-2
+- Build against python 3.9
+
 * Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 2.0.1-1
 - Release python-aioredis 2.0.1
 

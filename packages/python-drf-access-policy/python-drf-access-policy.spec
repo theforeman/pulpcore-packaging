@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.1.0-2
+- Build against python 3.9
+
 * Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 1.1.0-1
 - Release python-drf-access-policy 1.1.0
 

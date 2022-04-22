@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.11.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
 License:        BSD License
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.11.2-2
+- Build against python 3.9
+
 * Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 2.11.2-1
 - Release python-pygments 2.11.2
 

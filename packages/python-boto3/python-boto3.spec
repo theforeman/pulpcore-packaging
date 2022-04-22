@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.18.35
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.18.35-3
+- Build against python 3.9
+
 * Wed Oct 27 2021 Evgeni Golov - 1.18.35-2
 - Rebuild against Python 3.8
 

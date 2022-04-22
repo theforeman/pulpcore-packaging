@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.19.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A Python library to communicate with a Red Hat Unified Entitlement Platform
 
 License:        GPLv2
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.19.2-3
+- Build against python 3.9
+
 * Thu Nov 04 2021 Justin Sherrill <jsherril@redhat.com> 1.19.2-2
 - add el8 dateutils requirement
 

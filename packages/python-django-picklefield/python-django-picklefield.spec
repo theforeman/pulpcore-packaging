@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pickled object field for Django
 
 License:        MIT
@@ -64,5 +64,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.0.1-2
+- Build against python 3.9
+
 * Mon Sep 13 2021 Evgeni Golov - 3.0.1-1
 - Initial package.

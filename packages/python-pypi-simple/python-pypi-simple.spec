@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        PyPI Simple Repository API client library
 
 License:        MIT
@@ -16,10 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-packaging
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-requests
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-beautifulsoup4
-
 
 %description
 %{summary}
@@ -70,5 +66,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.9.0-2
+- Build against python 3.9
+
 * Tue Feb 22 2022 Evgeni Golov - 0.9.0-1
 - Initial package.

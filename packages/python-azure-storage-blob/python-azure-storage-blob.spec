@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        12.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Microsoft Azure Blob Storage Client Library for Python
 
 License:        MIT License
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 12.9.0-2
+- Build against python 3.9
+
 * Tue Nov 02 2021 Evgeni Golov - 12.9.0-1
 - Update to 12.9.0
 

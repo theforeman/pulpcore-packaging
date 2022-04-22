@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.7.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.7.1-8
+- Build against python 3.9
+
 * Fri Nov 05 2021 Satoe Imaishi - 1.7.1-7
 - Don't obsolete python 3.6 package and exclude files in bin
 

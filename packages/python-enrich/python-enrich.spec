@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.2.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        enrich
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.2.6-4
+- Build against python 3.9
+
 * Wed Oct 20 2021 Evgeni Golov - 1.2.6-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 

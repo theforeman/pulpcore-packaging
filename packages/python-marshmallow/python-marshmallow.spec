@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.13.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A lightweight library for converting complex datatypes to and from native Python datatypes
 
 License:        MIT
@@ -62,5 +62,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.13.0-2
+- Build against python 3.9
+
 * Mon Sep 13 2021 Evgeni Golov - 3.13.0-1
 - Initial package.

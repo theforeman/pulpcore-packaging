@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.10.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        File plugin for the Pulp Project
 
 License:        GPLv2+
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.10.1-3
+- Build against python 3.9
+
 * Mon Feb 14 2022 Patrick Creech <pcreech@redhat.com> - 1.10.1-2
 - Fixup dependency issues
 

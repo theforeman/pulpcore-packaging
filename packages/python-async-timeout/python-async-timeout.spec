@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Timeout context manager for asyncio programs
 
 License:        Apache 2
@@ -16,7 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.6.5
 
 
 %description
@@ -64,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.0.2-2
+- Build against python 3.9
+
 * Mon Feb 07 2022 Odilon Sousa 4.0.2-1
 - Update to 4.0.2
 
