@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        5.8.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python Build Reasonableness
 
 License:        None
@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.12.0
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-wheel >= 0.32.0
 
 BuildArch:      noarch
@@ -66,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Odilon Sousa <osousa@redhat.com> - 5.8.0-2
+- Rebuild against python 3.9
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 5.8.0-1
 - Release python-pbr 5.8.0
 
