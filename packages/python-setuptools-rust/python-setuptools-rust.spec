@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.11.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Setuptools Rust extension plugin
 
 License:        MIT
@@ -15,7 +15,6 @@ Source0:        %{pypi_source}
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.6
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 41
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm >= 3.4.3
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-toml >= 0.9
@@ -67,5 +66,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane - 0.11.5-2
+- Build against python 3.9.
+
 * Thu Sep 09 2021 Evgeni Golov - 0.11.5-1
 - Initial package.
