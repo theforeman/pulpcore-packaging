@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.16.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python 2 and 3 compatibility utilities
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Odilon Sousa <osousa@redhat.com> - 1.16.0-2
+- Rebuild against python 3.9
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 1.16.0-1
 - Release python-six 1.16.0
 
