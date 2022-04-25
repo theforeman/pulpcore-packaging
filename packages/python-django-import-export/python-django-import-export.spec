@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.7.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.7.1-4
+- Build against python 3.9
+
 * Thu Mar 03 2022 Odilon Sousa <osousa@redhat.com> - 2.7.1-3
 - Add obsolete again for smooth upgrade 
 

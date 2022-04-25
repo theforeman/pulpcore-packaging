@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.5.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Conveniently store reference to request user on thread/db level
 
 License:        BSD
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.5.3-4
+- Build against python 3.9
+
 * Tue Oct 19 2021 Evgeni Golov - 0.5.3-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 
