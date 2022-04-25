@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.12.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.12.3-2
+- Build against python 3.9
+
 * Tue Nov 02 2021 Evgeni Golov - 1.12.3-1
 - Release python-django-storages 1.12.3
 

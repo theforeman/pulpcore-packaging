@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.1.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.1.7-3
+- Build against python 3.9
+
 * Wed Sep 29 2021 Evgeni Golov - 3.1.7-2
 - Obsolete the old Python 3.6 package for smooth upgrade
 

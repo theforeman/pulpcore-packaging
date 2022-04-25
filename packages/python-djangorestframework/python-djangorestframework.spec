@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.12.4
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -68,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.12.4-5
+- Build against python 3.9
+
 * Tue Oct 19 2021 Evgeni Golov - 3.12.4-4
 - Obsolete the old Python 3.6 package for smooth upgrade
 

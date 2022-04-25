@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.4.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A wrapper for the Gnu Privacy Guard (GPG or GnuPG)
 
 License:        BSD-3-Clause
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.4.8-2
+- Build against python 3.9
+
 * Sat Feb 05 2022 Odilon Sousa <osousa@redhat.com> - 0.4.8-1
 - Release python-gnupg 0.4.8
 

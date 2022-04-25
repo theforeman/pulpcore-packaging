@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.17.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code
 
 License:        BSD License
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.17.1-3
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 1.17.1-2
 - Build against Python 3.8
 

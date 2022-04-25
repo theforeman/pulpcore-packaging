@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        20200713
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Repackaging of Google's Diff Match and Patch libraries
 
 License:        Apache
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 20200713-3
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 20200713-2
 - Build against Python 3.8
 

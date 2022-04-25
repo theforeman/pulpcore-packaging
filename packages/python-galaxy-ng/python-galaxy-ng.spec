@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.4.0
-Release:        0.2.b1%{?dist}
+Release:        0.3.b1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.4.0-0.3.b1
+- Build against python 3.9
+
 * Wed Oct 20 2021 Odilon Sousa <osousa@redhat.com> - 4.4.0-0.2.b1
 - Release python-galaxy-ng 4.4.0b1
 

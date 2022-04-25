@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A list-like structure which implements collections
 
 License:        Apache 2
@@ -61,5 +61,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.3.0-2
+- Build against python 3.9
+
 * Mon Feb 07 2022 Odilon Sousa - 1.3.0-1
 - Initial package.

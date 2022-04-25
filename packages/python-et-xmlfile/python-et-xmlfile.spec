@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An implementation of lxml.xmlfile for the standard library
 
 License:        MIT
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.1.0-2
+- Build against python 3.9
+
 * Wed Nov 03 2021 Odilon Sousa 1.1.0-1
 - Update to 1.1.0
 
