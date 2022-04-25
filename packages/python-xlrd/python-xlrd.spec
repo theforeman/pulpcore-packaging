@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Library for developers to extract data from Microsoft Excel (tm)
 
 License:        BSD
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.0.1-5
+- Build against python 3.9
+
 * Fri Nov 05 2021 Satoe Imaishi - 2.0.1-4
 - Don't obsolete python 3.6 package and exclude files in bin
 

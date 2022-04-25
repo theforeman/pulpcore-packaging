@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        URL normalization for Python
 
 License:        MIT
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.4.3-4
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 1.4.3-3
 - Build against Python 3.8
 

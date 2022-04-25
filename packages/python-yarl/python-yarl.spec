@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.7.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Yet another URL library
 
 License:        Apache 2
@@ -14,10 +14,7 @@ URL:            https://github.com/aio-libs/yarl/
 Source0:        https://files.pythonhosted.org/packages/source/y/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-idna >= 2.0
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-multidict >= 4.0
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4
 
 
 %description
@@ -67,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.7.2-2
+- Build against python 3.9
+
 * Wed Nov 03 2021 Odilon Sousa 1.7.2-1
 - Update to 1.7.2
 
