@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.8
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A backport of the dataclasses module for Python 3.6
 
 License:        Apache
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.8-3
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 0.8-2
 - Build against Python 3.8
 

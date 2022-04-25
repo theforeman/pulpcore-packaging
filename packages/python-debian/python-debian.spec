@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.1.43
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Debian package related modules
 
 License:        GPL-2+
@@ -16,7 +16,6 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-chardet
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -67,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.1.43-2
+- Build against python 3.9
+
 * Thu Feb 03 2022 Odilon Sousa 0.1.43-1
 - Update to 0.1.43
 

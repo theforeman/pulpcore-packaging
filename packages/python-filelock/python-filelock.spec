@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.0.12
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A platform independent file lock
 
 License:        Unlicense
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.0.12-3
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 3.0.12-2
 - Build against Python 3.8
 

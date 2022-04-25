@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.0.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Git Object Database
 
 License:        BSD License
@@ -64,5 +64,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.0.9-2
+- Build against python 3.9
+
 * Mon Feb 07 2022 Odilon Sousa - 4.0.9-1
 - Initial package.

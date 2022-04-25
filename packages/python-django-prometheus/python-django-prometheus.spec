@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Django middlewares to monitor your application with Prometheus
 
 License:        Apache
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.1.0-3
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 2.1.0-2
 - Build against Python 3.8
 

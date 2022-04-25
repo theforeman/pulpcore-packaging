@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.9.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.9.3-2
+- Build against python 3.9
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.9.3-1
 - Release python-django-lifecycle 0.9.3
 

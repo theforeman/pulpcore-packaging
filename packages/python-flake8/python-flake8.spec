@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.9.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
 License:        MIT
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.9.2-4
+- Build against python 3.9
+
 * Wed Sep 29 2021 Evgeni Golov - 3.9.2-3
 - Obsolete the old Python 3.6 package for smooth upgrade
 

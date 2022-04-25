@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        6.1.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django Database Based Automated Logging - finally solved and done in a proper way
 
 License:        None
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 6.1.3-2
+- Build against python 3.9
+
 * Wed Oct 20 2021 Odilon Sousa <osousa@redhat.com> - 6.1.3-1
 - Release python-django-automated-logging 6.1.3
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        21.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -67,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 21.1-2
+- Build against python 3.9
+
 * Mon Nov 15 2021 Odilon Sousa <osousa@redhat.com> - 21.1-1
 - Release python-django-filter 21.1
 

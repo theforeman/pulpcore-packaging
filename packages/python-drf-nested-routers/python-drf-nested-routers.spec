@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.93.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
 License:        Apache
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.93.4-2
+- Build against python 3.9
+
 * Mon Feb 07 2022 Odilon Sousa <osousa@redhat.com> - 0.93.4-1
 - Release python-drf-nested-routers 0.93.4
 
