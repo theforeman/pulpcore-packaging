@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.20.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        MongoEngine is a Python Object-Document Mapper for working with MongoDB
 
 License:        MIT
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.20.0-3
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 0.20.0-2
 - Build against Python 3.8
 

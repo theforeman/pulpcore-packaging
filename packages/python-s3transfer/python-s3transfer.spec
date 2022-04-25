@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.5.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An Amazon S3 Transfer Manager
 
 License:        Apache License 2.0
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.5.0-3
+- Build against python 3.9
+
 * Wed Oct 27 2021 Evgeni Golov - 0.5.0-2
 - Rebuild against Python 3.8
 

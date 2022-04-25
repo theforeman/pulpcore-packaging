@@ -8,14 +8,14 @@
 # Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
 # to make dnf happy
 %if 0%{?rhel} == 8
-%bcond_without python36
+%bcond_without python39
 %else
-%bcond_with python36
+%bcond_with python3
 %endif
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Safely add untrusted strings to HTML/XML markup
 
 License:        BSD-3-Clause
@@ -92,6 +92,9 @@ CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
 %endif
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.0.1-3
+- Build against python 3.9
+
 * Thu Jan 13 2022 Evgeni Golov - 2.0.1-2
 - build markupsafe for Python 3.6 too
 

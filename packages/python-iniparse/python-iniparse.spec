@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{modname}
 Version:        0.4
-Release:        34%{?dist}
+Release:        35%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
@@ -88,6 +88,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.4-35
+- Build against python 3.9
+
 * Thu Oct 14 2021 Evgeni Golov - 0.4-34
 - Build python-iniparse against Python 3.8
 - Rename source back to python-iniparse, as the clash is gone thanks to the SCL

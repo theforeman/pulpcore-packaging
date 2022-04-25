@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        10.12.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        MIT
@@ -73,6 +73,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 10.12.0-2
+- Build against python 3.9
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 10.12.0-1
 - Release python-rich 10.12.0
 

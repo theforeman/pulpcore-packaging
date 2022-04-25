@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.9.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        RQ is a simple, lightweight, library for creating background jobs, and processing them
 
 License:        BSD
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.9.0-3
+- Build against python 3.9
+
 * Wed Sep 29 2021 Evgeni Golov - 1.9.0-2
 - Obsolete the old Python 3.6 package for smooth upgrade
 

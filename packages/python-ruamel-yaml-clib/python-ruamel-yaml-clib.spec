@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.2.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C version of reader, parser and emitter for ruamel
 
 License:        MIT
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.2.6-2
+- Build against python 3.9
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 0.2.6-1
 - Release python-ruamel-yaml-clib 0.2.6
 
