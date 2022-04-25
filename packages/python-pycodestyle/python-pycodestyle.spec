@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.7.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python style guide checker
 
 License:        Expat license
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.7.0-5
+- Build against python 3.9
+
 * Fri Nov 05 2021 Satoe Imaishi - 2.7.0-4
 - Don't obsolete python 3.6 package and exclude files in bin
 

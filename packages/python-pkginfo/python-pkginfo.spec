@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.8.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.8.2-2
+- Build against python 3.9
+
 * Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 1.8.2-1
 - Release python-pkginfo 1.8.2
 

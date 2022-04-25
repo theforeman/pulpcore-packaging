@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Python implementation of JWT, JWE, JWS and JWK
 
 License:        Apache 2.0
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.4.2-6
+- Build against python 3.9
+
 * Fri Nov 05 2021 Satoe Imaishi - 1.4.2-5
 - Don't obsolete python 3.6 package and exclude files in bin
 

@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.40.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1:3.40.1-3
+- Build against python 3.9
+
 * Tue Jan 25 2022 Evgeni Golov - 1:3.40.1-2
 - Bump epoch, there was a 3.42 version in the repo and users might have installed that.
 

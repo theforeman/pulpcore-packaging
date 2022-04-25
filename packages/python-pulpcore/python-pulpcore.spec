@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.17.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -173,6 +173,9 @@ done
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.17.3-2
+- Build against python 3.9
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.17.3-1
 - Release python-pulpcore 3.17.3
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenID support for modern servers and consumers
 
 License:        None
@@ -63,5 +63,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.0-2
+- Build against python 3.9
+
 * Mon Sep 13 2021 Evgeni Golov - 3.2.0-1
 - Initial package.

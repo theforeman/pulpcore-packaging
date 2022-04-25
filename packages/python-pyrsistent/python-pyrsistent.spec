@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.18.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Persistent/Functional/Immutable data structures
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.18.1-2
+- Build against python 3.9
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 0.18.1-1
 - Release python-pyrsistent 0.18.1
 
