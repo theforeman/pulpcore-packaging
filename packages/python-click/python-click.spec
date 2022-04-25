@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        8.0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Composable command line interface toolkit
 
 License:        BSD-3-Clause
@@ -15,8 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-colorama
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -66,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 8.0.3-2
+- Build against python 3.9
+
 * Wed Nov 03 2021 Odilon Sousa 8.0.3-1
 - Update to 8.0.3
 

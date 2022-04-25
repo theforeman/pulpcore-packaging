@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.7.1-2
+- Build against python 3.9
+
 * Thu Feb 03 2022 Odilon Sousa 0.7.1-1
 - Update to 0.7.1
 

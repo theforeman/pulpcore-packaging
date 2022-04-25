@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.19.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Microsoft Azure Core Library for Python
 
 License:        MIT License
@@ -16,8 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.11
-
 
 %description
 %{summary}
@@ -64,5 +62,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.19.1-2
+- Build against python 3.9
+
 * Tue Nov 02 2021 Evgeni Golov - 1.19.1-1
 - Initial package.

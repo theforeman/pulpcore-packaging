@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Screen-scraping library
 
 License:        MIT
@@ -58,5 +58,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.10.0-2
+- Build against python 3.9
+
 * Mon Feb 21 2022 Odilon Sousa <osousa@redhat.com> - 4.10.0-1
 - Initial package.

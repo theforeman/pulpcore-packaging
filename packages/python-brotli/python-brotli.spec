@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.0.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python bindings for the Brotli compression library
 
 License:        MIT
@@ -64,5 +64,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.9-2
+- Build against python 3.9
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 1.0.9-1
 - Initial package.

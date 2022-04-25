@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.2.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Bash style brace expander
 
 License:        MIT License
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.2.1-2
+- Build against python 3.9
+
 * Thu Feb 03 2022 Odilon Sousa 2.2.1-1
 - Update to 2.2.1
 
