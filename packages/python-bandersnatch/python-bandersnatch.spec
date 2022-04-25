@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        5.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Mirroring tool that implements the client (mirror) side of PEP 381
 
 License:        Academic Free License, version 3
@@ -78,6 +78,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 5.1.1-2
+- Build against python 3.9
+
 * Mon Feb 07 2022 Odilon Sousa <osousa@redhat.com> - 5.1.1-1
 - Release python-bandersnatch 5.1.1
 

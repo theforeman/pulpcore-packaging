@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.0.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Core Schema
 
 License:        BSD
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.0.4-4
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 0.0.4-3
 - Build against Python 3.8
 

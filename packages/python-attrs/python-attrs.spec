@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        21.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Classes Without Boilerplate
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 21.4.0-2
+- Build against python 3.9
+
 * Mon Feb 07 2022 Odilon Sousa <osousa@redhat.com> - 21.4.0-1
 - Release python-attrs 21.4.0
 
