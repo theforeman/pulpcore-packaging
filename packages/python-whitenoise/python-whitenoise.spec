@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        5.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Radically simplified static file serving for WSGI applications
 
 License:        MIT
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 5.3.0-2
+- Build against python 3.9
+
 * Wed Sep 08 2021 Evgeni Golov 5.3.0-1
 - Update to 5.3.0
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        8.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Wildcard/glob file name matcher
 
 License:        MIT License
@@ -15,7 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/w/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-bracex >= 2.1.1
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -64,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 8.3-2
+- Build against python 3.9
+
 * Wed Nov 03 2021 Odilon Sousa 8.3-1
 - Update to 8.3
 

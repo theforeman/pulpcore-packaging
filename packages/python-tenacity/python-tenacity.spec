@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        7.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Retry code until it succeeds
 
 License:        Apache 2.0
@@ -17,8 +17,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.9.0
-
 
 %description
 %{summary}
@@ -65,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 7.0.0-3
+- Build against python 3.9
+
 * Wed Sep 08 2021 Evgeni Golov - 7.0.0-2
 - Build against Python 3.8
 

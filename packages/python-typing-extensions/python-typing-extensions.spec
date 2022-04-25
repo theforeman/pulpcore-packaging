@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.10.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Backported and Experimental Type Hints for Python 3
 
 License:        PSF
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.10.0.2-2
+- Build against python 3.9
+
 * Tue Nov 09 2021 Odilon Sousa <osousa@redhat.com> - 3.10.0.2-1
 - Release python-typing-extensions 3.10.0.2
 
