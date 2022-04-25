@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
 License:        Apache 2
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.0.3-2
+- Build against python 3.9
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 2.0.3-1
 - Release python-socks 2.0.3
 

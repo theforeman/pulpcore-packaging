@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.4.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A non-validating SQL parser
 
 License:        BSD-3-Clause
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.4.2-3
+- Build against python 3.9
+
 * Mon Nov 29 2021 Odilon Sousa <osousa@redhat.com> - 0.4.2-2
 - Release python-sqlparse 0.4.2
 

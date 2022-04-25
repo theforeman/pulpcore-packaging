@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A very fast and expressive template engine
 
 License:        BSD-3-Clause
@@ -17,8 +17,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-markupsafe >= 2.0
-
 
 %description
 %{summary}
@@ -66,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.0.3-2
+- Build against python 3.9
+
 * Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 3.0.3-1
 - Release python-jinja2 3.0.3
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An ISO 8601 date/time/duration parser and formatter
 
 License:        BSD
@@ -16,8 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six
-
 
 %description
 ISO 8601 date/time parser This module implements ISO 8601 date, time and
@@ -66,5 +64,8 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.6.0-2
+- Build against python 3.9
+
 * Tue Nov 02 2021 Evgeni Golov - 0.6.0-1
 - Initial package.

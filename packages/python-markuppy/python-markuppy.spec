@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.14
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An HTML/XML generator
 
 License:        MIT
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.14-3
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 1.14-2
 - Build against Python 3.8
 
