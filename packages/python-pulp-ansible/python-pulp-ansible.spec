@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.12.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1:0.12.0-2
+- Build against python 3.9
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 1:0.12.0-1
 - Release python-pulp-ansible 0.12.0
 

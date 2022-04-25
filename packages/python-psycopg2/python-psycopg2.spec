@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.9.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        psycopg2 - Python-PostgreSQL Database Adapter
 
 License:        LGPL with exceptions
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.9.3-2
+- Build against python 3.9
+
 * Thu Feb 03 2022 Odilon Sousa <osousa@redhat.com> - 2.9.3-1
 - Release python-psycopg2 2.9.3
 

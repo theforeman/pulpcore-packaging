@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.33
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Product, compose and installation media metadata library
 
 License:        LGPLv2.1
@@ -16,8 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six
-
 
 %description
 %{summary}
@@ -64,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.33-3
+- Build against python 3.9
+
 * Wed Sep 08 2021 Evgeni Golov - 1.33-2
 - Build against Python 3.8
 

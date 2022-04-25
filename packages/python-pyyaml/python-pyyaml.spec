@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        5.4.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 5.4.1-4
+- Build against python 3.9
+
 * Wed Sep 22 2021 Evgeni Golov - 5.4.1-3
 - Correct provides for Python 3.8
 

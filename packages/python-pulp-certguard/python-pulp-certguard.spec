@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.5.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.5.2-2
+- Build against python 3.9
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 1.5.2-1
 - Release python-pulp-certguard 1.5.2
 

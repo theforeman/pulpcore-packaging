@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.12.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -93,6 +93,9 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.12.0-3
+- Build against python 3.9
+
 * Mon Mar 28 2022 Evgeni Golov - 0.12.0-2
 - Add provides for pulp-cli
 - Add SCL wrapper so /usr/bin/pulp always works

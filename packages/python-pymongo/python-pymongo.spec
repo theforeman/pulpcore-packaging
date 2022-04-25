@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.11.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python driver for MongoDB
 
 License:        Apache License, Version 2.0
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.11.0-3
+- Build against python 3.9
+
 * Mon Sep 06 2021 Evgeni Golov - 3.11.0-2
 - Build against Python 3.8
 

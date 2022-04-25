@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.17.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -15,11 +15,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/pu
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-certifi
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-dateutil
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.10
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-urllib3 >= 1.15
 
 
 %description
@@ -69,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.17.3-2
+- Build against python 3.9
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.17.3-1
 - Release python-pulp-rpm-client 3.17.3
 
