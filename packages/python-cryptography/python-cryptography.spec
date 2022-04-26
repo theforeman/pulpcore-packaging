@@ -5,7 +5,7 @@
 %global pypi_name cryptography
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.1.1
+Version:        3.4.8
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
@@ -15,13 +15,13 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildConflicts: %{?scl_prefix}python%{python3_pkgversion}-cffi = 1.11.3
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.8
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.12
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.4.1
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-rust >= 0.11.4
 
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
-
 
 %description
 %{summary}
@@ -30,9 +30,7 @@ BuildRequires:  gcc
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Conflicts:      %{?scl_prefix}python3-cffi = 1.11.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.8
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.4.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.12
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -51,7 +49,7 @@ rm -rf %{pypi_name}.egg-info
 %build
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%py3_build
+CRYPTOGRAPHY_DONT_BUILD_RUST=1 %py3_build
 %{?scl:EOF}
 
 
@@ -70,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 26 2022 Odilon Sousa <osousa@redhat.com> - 3.4.8-1
+- Release python-cryptography 3.4.8
+
 * Mon Sep 13 2021 Evgeni Golov - 3.1.1-1
 - Release python-cryptography 3.1.1
 
