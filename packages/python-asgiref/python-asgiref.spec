@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        ASGI specs, helper code, and adapters
 
 License:        BSD
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 26 2022 Yanis Guenane - 3.5.0-2
+- Build against Python 3.9
+
 * Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 3.5.0-1
 - Release python-asgiref 3.5.0
 
