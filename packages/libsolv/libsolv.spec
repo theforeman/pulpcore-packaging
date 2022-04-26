@@ -45,8 +45,8 @@
 %bcond_with    zstd
 
 Name:           lib%{libname}
-Version:        0.7.20
-Release:        4%{?dist}
+Version:        0.7.22
+Release:        1%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -385,6 +385,9 @@ set -ex
 %endif
 
 %changelog
+* Tue Apr 19 2022 Odilon Sousa <osousa@redhat.com> - 0.7.22-1
+- Release libsolv 0.7.22
+
 * Wed Oct 27 2021 Evgeni Golov - 0.7.20-4
 - Also build libsolv against Python 3.6 on EL8
 
