@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.18.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 2.18.0-2
+- Rebuilding against python 3.9
+
 * Tue Apr 26 2022 Quirin Pamp <pamp@atix.de> - 2.18.0-1
 - Update to 2.18.0
 
