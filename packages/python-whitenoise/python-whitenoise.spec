@@ -5,8 +5,8 @@
 %global pypi_name whitenoise
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.3.0
-Release:        2%{?dist}
+Version:        6.0.0
+Release:        1%{?dist}
 Summary:        Radically simplified static file serving for WSGI applications
 
 License:        MIT
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 6.0.0-1
+- Release python-whitenoise 6.0.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 5.3.0-2
 - Build against python 3.9
 
