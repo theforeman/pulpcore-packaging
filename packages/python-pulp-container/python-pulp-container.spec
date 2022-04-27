@@ -5,8 +5,8 @@
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.10.0
-Release:        2%{?dist}
+Version:        2.11.0
+Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -28,14 +28,12 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.14
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.15
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.17.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.18.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 1.7.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 1.8
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.2
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.5
 
 Provides:       pulpcore-plugin(container) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -75,6 +73,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 2.11.0-1
+- Release python-pulp-container 2.11.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.10.0-2
 - Build against python 3.9
 
