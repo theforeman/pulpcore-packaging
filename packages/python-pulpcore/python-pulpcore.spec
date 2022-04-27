@@ -9,8 +9,8 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.3
-Release:        2%{?dist}
+Version:        3.18.4
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -36,7 +36,7 @@ Using Pulp you can:
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2.9
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2.13
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django >= 3.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1.1
@@ -45,7 +45,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiodns >= 3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiofiles = 0.8.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.8.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.9
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.0.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.1
@@ -59,21 +59,21 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 21.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 22
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.4.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.7.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.7.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.8
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.9.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.9.6
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-prometheus
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.12.4
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-nested-routers = 0.93.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular = 0.21.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular = 0.21.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.4.8
@@ -81,16 +81,17 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.4.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-redis >= 3.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 5.4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 6.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize > 1.4.3
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -173,6 +174,9 @@ done
 
 
 %changelog
+* Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 3.18.4-1
+- Release python-pulpcore 3.18.4
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.17.3-2
 - Build against python 3.9
 
