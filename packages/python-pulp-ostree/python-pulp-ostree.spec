@@ -4,10 +4,10 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-ostree
 
-%global prerelease a4
+%global prerelease a5
 %global prereleaserpm %{?prerelease:.}%{?prerelease}
 
-%global release 4
+%global release 5
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.0
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 2.0.0-0.5.a5
+- Release python-pulp-ostree 2.0.0a5
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.0.0-0.4.a4
 - Build against python 3.9
 
