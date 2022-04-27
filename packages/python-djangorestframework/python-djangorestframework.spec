@@ -5,8 +5,8 @@
 %global pypi_name djangorestframework
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.12.4
-Release:        5%{?dist}
+Version:        3.13.1
+Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -27,6 +27,7 @@ Summary:        %{summary}
 Provides:       %{?scl_prefix}python%{python3_pkgversion}-django-rest-framework = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytz
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
@@ -67,6 +68,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 3.13.1-1
+- Release python-djangorestframework 3.13.1
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.12.4-5
 - Build against python 3.9
 
