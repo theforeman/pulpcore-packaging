@@ -3,11 +3,11 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
-%global real_version 4.4.0b1
+%global real_version 4.5.0b1
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.4.0
-Release:        0.3.b1%{?dist}
+Version:        4.5.0
+Release:        0.1.b1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -31,13 +31,13 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-automated-loggi
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-prometheus >= 2.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer = 0.4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible < 1:0.11.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 1:0.10.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container < 2.9.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container >= 2.8.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.16.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer = 0.4.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible < 1:0.14.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 1:0.13.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container < 2.11.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container >= 2.10.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.19.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.18.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django < 4.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django >= 3.1.0
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 4.5.0-0.1.b1
+- Release python-galaxy-ng 4.5.0b1
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.4.0-0.3.b1
 - Build against python 3.9
 
