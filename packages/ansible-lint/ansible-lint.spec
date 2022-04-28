@@ -3,7 +3,7 @@
 
 Name:           %{pypi_name}
 Version:        5.0.8
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
 License:        MIT
@@ -54,6 +54,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ansible_lint-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 5.0.8-4
+- Rebuilding against python 3.9
+
 * Tue Feb 22 2022 Odilon Sousa <osousa@redhat.com> - 5.0.8-3
 - Require ansible OR ansible-core
 
