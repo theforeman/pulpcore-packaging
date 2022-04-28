@@ -43,7 +43,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.7
-Release:        4.1%{?dist}
+Release:        5.1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -151,6 +151,7 @@ sed -i "/PYTHON_UNSET()/d" src/python/CMakeLists.txt
 set -ex
 # Build createrepo_c with Pyhon 3
 pushd build-py3
+%if 0%{?rhel} == 7
   %cmake .. \
       -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
       -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
@@ -160,6 +161,16 @@ pushd build-py3
       %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
 popd
+%else
+  %cmake .. \
+      -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
+      -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
+      -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
+      -DWITH_LEGACY_HASHES=ON \
+      -DPYTHON_EXECUTABLE=/usr/bin/python3.9 -DPYTHON_LIBRARY=/usr/lib64/libpython3.9.so
+  make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
+popd
+%endif
 
 %if %{with python36}
 # Build createrepo_c with Python 3.6
@@ -193,8 +204,12 @@ popd
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
 pushd build-py3
+%if 0%{?rhel} == 7
   # Install createrepo_c with Python 3
   make install DESTDIR=%{buildroot}
+%else
+  %cmake_install
+%endif
 popd
 
 %if %{with python36}
@@ -256,6 +271,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 0.17.7-5.1
+- Rebuilding against python 3.9
+
 * Wed Mar 02 2022 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 0.17.7-4.1
 - Include patches from CentOS 8 Stream
 - Fix memory leak of `tmp_err` (RhBug:2005781)
