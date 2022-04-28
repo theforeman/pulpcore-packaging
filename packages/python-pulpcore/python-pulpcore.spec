@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.18.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -91,7 +91,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 6.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize > 1.4.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.3
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -174,6 +174,9 @@ done
 
 
 %changelog
+* Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 3.18.4-2
+- Fixing the requirement for url-normalize
+
 * Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 3.18.4-1
 - Release python-pulpcore 3.18.4
 
