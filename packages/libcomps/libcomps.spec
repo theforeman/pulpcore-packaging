@@ -25,7 +25,7 @@
 
 Name:           libcomps
 Version:        0.1.18
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -127,11 +127,19 @@ mkdir build-doc
 set -ex
 
 %if %{with python3}
+%if 0%{?rhel} == 7
 pushd build-py3
   # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
   %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3 -DPYTHON_EXECUTABLE=%{__python3} %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
   %make_build
 popd
+%else
+pushd build-py3
+  # Build for el9
+  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3 -DPYTHON_EXECUTABLE=%{__python3}
+  %cmake_build
+popd
+%endif
 %endif
 
 %if %{with python36}
@@ -160,7 +168,11 @@ set -ex
 
 %if %{with python3}
 pushd build-py3
+%if 0%{?rhel} == 7
   %make_install
+%else
+  %cmake_install
+%endif
 popd
 %endif
 
@@ -171,7 +183,7 @@ popd
 %endif
 %{?scl:EOF}
 
-
+%if 0%{?rhel} != 9
 %check
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
@@ -181,6 +193,7 @@ set -ex
 pushd build-py3
   make test
   make pytest
+%endif
 popd
 %endif
 
@@ -224,6 +237,9 @@ popd
 %endif
 
 %changelog
+* Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 0.1.18-2
+- Rebuilding Against python 3.9
+
 * Mon Nov 22 2021 Evgeni Golov - 0.1.18-1
 - Release libcomps 0.1.18
 
