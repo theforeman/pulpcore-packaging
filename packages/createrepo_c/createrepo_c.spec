@@ -43,7 +43,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.7
-Release:        5.1%{?dist}
+Release:        6.1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -271,6 +271,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Fri Apr 29 2022 Odilon Sousa <osousa@redhat.com> - 0.17.7-6.1
+- Bumping the release to rebuild against 3.9 on EL8
+
 * Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 0.17.7-5.1
 - Rebuilding against python 3.9
 
