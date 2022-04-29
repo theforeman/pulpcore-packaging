@@ -15,7 +15,7 @@ data:
   dependencies:
     - buildrequires:
         platform: ['el8']
-        python38: ['3.8']
+        python39: ['3.9']
       requires:
         platform: ['el8']
-        python38: ['3.8']
+        python39: ['3.9']
