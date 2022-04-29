@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.2.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -81,6 +81,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 29 2022 Odilon Sousa <osousa@redhat.com> - 3.2.13-2
+- Rebuilding against python39
+
 * Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 3.2.13-1
 - Release python-django 3.2.13
 
