@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.18.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -67,7 +67,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 0.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-prometheus
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.14
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.1.0
@@ -174,6 +174,9 @@ done
 
 
 %changelog
+* Fri Apr 29 2022 Odilon Sousa <osousa@redhat.com> - 3.18.4-3
+- Fixing pulpcore requirements for djangorestframework
+
 * Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 3.18.4-2
 - Fixing the requirement for url-normalize
 
