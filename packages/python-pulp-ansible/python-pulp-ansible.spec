@@ -5,8 +5,8 @@
 %global pypi_name pulp-ansible
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.12.0
-Release:        2%{?dist}
+Version:        0.13.0
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -34,7 +34,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitpython >= 3.1.24
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.16.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.18.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Mon May 02 2022 Yanis Guenane <yguenane@redhat.com> - 1:0.13.0-1
+- Release python-pulp-ansible 0.13.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1:0.12.0-2
 - Build against python 3.9
 
