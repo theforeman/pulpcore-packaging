@@ -14,16 +14,17 @@ packages:
 
 repoclosures:
   hosts:
-    pulpcore-repoclosure-el9:
+    pulpcore-repoclosure-el7:
       repoclosure_target_repos:
-        el9:
-          - "el9-pulpcore-{{ pulpcore_version }}"
-      repoclosure_target_dist: el9
+        el7:
+          - "el7-pulpcore-{{ pulpcore_version }}"
+      repoclosure_target_dist: el7
       repoclosure_lookaside_repos:
-        el9:
-          - el9-baseos
-          - el9-appstream
-          - el9-crb
+        el7:
+          - el7-base
+          - el7-updates
+          - el7-scl
+          - el7-epel
     pulpcore-repoclosure-el8:
       repoclosure_target_repos:
         el8:
@@ -34,31 +35,51 @@ repoclosures:
           - el8-baseos
           - el8-appstream
           - el8-powertools
+    pulpcore-repoclosure-el9:
+      repoclosure_target_repos:
+        el9:
+          - "el9-pulpcore-{{ pulpcore_version }}"
+      repoclosure_target_dist: el9
+      repoclosure_lookaside_repos:
+        el9:
+          - el9-baseos
+          - el9-appstream
+          - el9-crb
 
 pulpcore_packages:
   vars:
     scl: 'tfm-pulpcore'
     koji_tags:
-      - name: pulpcore-{{ pulpcore_version }}-el9
-        dist: '.el9'
+      - name: pulpcore-{{ pulpcore_version }}-el7
+        scl: 'tfm-pulpcore'
+        dist: '.el7'
       - name: pulpcore-{{ pulpcore_version }}-el8
         dist: '.el8'
+      - name: pulpcore-{{ pulpcore_version }}-el9
+        dist: '.el9'
     releasers:
       - koji-katello-pulpcore
     repoclosure_target_repos:
-      el9:
-        - "el9-pulpcore-{{ pulpcore_version }}"
+      el7:
+        - "el7-pulpcore-{{ pulpcore_version }}"
       el8:
         - "el8-pulpcore-{{ pulpcore_version }}"
-    repoclosure_lookaside_repos:
       el9:
-        - el9-baseos
-        - el9-appstream
-        - el9-crb
+        - "el9-pulpcore-{{ pulpcore_version }}"
+    repoclosure_lookaside_repos:
+      el7:
+        - el7-base
+        - el7-updates
+        - el7-scl
+        - el7-epel
       el8:
         - el8-baseos
         - el8-appstream
         - el8-powertools
+      el9:
+        - el9-baseos
+        - el9-appstream
+        - el9-crb
   hosts:
     ansible-lint: {}
     createrepo_c: {}
@@ -252,3 +273,8 @@ pulpcore_packages:
     python-xlwt: {}
     python-yarl: {}
     python-zipp: {}
+    subscription-manager:
+      koji_tags:
+        - name: pulpcore-{{ pulpcore_version }}-el7
+          dist: '.el7'
+    tfm-pulpcore: {}

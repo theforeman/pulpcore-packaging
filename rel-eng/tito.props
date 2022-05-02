@@ -10,6 +10,13 @@ builder = obal.tito_extensions.git_annex_spec_builder.GitAnnexSpecBuilder
 tagger = tito.tagger.ReleaseTagger
 lib_dir = rel-eng/custom/
 
+[pulpcore-3.18-el7]
+disttag = .el7
+blacklist =
+  ansible-lint
+  python-pulp-ostree
+scl = tfm-pulpcore
+
 [pulpcore-3.18-el8]
 disttag = .el8
 blacklist =
