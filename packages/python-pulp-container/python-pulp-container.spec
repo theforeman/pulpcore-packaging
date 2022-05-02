@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.10.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -73,6 +73,9 @@ set -ex
 
 
 %changelog
+* Mon May 02 2022 Yanis Guenane <yguenane@redhat.com> - 2.10.3-2
+- Build against python 3.9
+
 * Mon May 02 2022 Yanis Guenane <yguenane@redhat.com> - 2.10.3-1
 - Release python-pulp-container 2.10.3
 
