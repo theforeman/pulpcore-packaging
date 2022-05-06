@@ -1,12 +1,13 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name aiohttp-socks
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.7.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -66,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri May 06 2022 Odilon Sousa <osousa@redhat.com> - 0.7.1-3
+- Rebuilding with python_disable_dependency_generator macro
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.7.1-2
 - Build against python 3.9
 
