@@ -1,12 +1,13 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-import-export
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.7.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -67,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri May 06 2022 Odilon Sousa <osousa@redhat.com> - 2.7.1-5
+- Rebuilding with python_disable_dependency_generator macro
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.7.1-4
 - Build against python 3.9
 

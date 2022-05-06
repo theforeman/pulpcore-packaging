@@ -1,12 +1,13 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.10.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -73,6 +74,9 @@ set -ex
 
 
 %changelog
+* Fri May 06 2022 Odilon Sousa <osousa@redhat.com> - 2.10.3-3
+- Rebuilding with python_disable_dependency_generator macro
+
 * Mon May 02 2022 Yanis Guenane <yguenane@redhat.com> - 2.10.3-2
 - Build against python 3.9
 
