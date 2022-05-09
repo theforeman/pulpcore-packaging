@@ -166,7 +166,6 @@
       <packagereq type="default">python3-pycryptodomex</packagereq>
       <packagereq type="default">python3-pyflakes</packagereq>
       <packagereq type="default">python3-pygments</packagereq>
-      <packagereq type="default">python3-pygobject</packagereq>
       <packagereq type="default">python3-pygtrie</packagereq>
       <packagereq type="default">python3-pyjwkest</packagereq>
       <packagereq type="default">python3-pyjwt</packagereq>
