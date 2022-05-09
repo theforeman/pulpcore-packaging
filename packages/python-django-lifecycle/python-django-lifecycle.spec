@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.9.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
@@ -27,6 +27,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urlman >= 1.2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 21.0
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
@@ -67,6 +68,9 @@ set -ex
 
 
 %changelog
+* Mon May 09 2022 Odilon Sousa <osousa@redhat.com> - 0.9.6-2
+- Adding python-packaging as a dependency 
+
 * Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 0.9.6-1
 - Release python-django-lifecycle 0.9.6
 
