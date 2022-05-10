@@ -24,11 +24,12 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        0.17.6
+Version:        0.20.0
 Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch1:         0001-Preserve-changed-API-for-cr_compress_file_with_stat-RhBug1973588.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -169,6 +170,37 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue May 10 2022 Evgeni Golov - 0.20.0-1
+- Release createrepo_c 0.20.0
+
+* Tue Mar 29 2022 Evgeni Golov - 0.17.7-5.1
+- Update patches from CentOS 8 Stream
+- Revert addition of new API for parsing main metadata together (RhBug:2062299)
+
+* Wed Mar 02 2022 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 0.17.7-4.1
+- Include patches from CentOS 8 Stream
+- Fix memory leak of `tmp_err` (RhBug:2005781)
+- Switch default of --keep-all-metadata to TRUE and add --discard-additional-metadata (RhBug:1992209)
+
+* Tue Jan 04 2022 Evgeni Golov - 0.17.7-3.2
+- Rebuild createrepo_c once more
+
+* Mon Jan 03 2022 Evgeni Golov - 0.17.7-3.1
+- Bump createrepo_c to be greater than CentOS
+
+* Wed Dec 15 2021 Evgeni Golov - 0.17.7-1
+- Release createrepo_c 0.17.7
+
+* Wed Oct 27 2021 Evgeni Golov - 0.17.6-4
+- Also build createrepo_c against Python 3.6 on EL8
+
+* Tue Oct 26 2021 Evgeni Golov - 0.17.6-3
+- Obsolete non-SCL Python 3 packages on EL7
+
+* Tue Oct 05 2021 Evgeni Golov - 0.17.6-2
+- Build against Python 3.8
+
+>>>>>>> 450a48d (createrepo_c 0.20.0)
 * Tue Sep 28 2021 Evgeni Golov - 0.17.6-1
 - Release createrepo_c 0.17.6
 
