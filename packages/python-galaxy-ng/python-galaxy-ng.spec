@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -46,6 +46,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-core >= 3.
 
 Provides:       pulpcore-plugin(galaxy-ng) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -82,6 +85,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 4.5.0-2
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 4.5.0-1
 - Release python-galaxy-ng 4.5.0
 

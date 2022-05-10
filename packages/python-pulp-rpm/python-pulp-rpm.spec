@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.17.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -54,6 +54,9 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.8
 
 Provides:       pulpcore-plugin(rpm) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -93,6 +96,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.17.4-3
+- Obsolete the old Python 3.9 package for smooth upgrade
+
 * Mon May 09 2022 Odilon Sousa <osousa@redhat.com> - 3.17.4-2
 - Adding a conditional for Python Gobject we will use the package from EL9 repos
   on EL9 systems

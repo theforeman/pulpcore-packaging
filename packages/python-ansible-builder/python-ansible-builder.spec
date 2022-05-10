@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.0.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A tool for building Ansible Execution Environments
 
 License:        Apache-2.0
@@ -32,6 +32,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-requirements-parser
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -71,6 +74,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.1-4
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.1-3
 - Build against python 3.9
 

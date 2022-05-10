@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.10.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -38,6 +38,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(container) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -74,6 +77,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 2.10.3-4
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri May 06 2022 Odilon Sousa <osousa@redhat.com> - 2.10.3-3
 - Rebuilding with python_disable_dependency_generator macro
 

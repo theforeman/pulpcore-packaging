@@ -46,7 +46,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.22
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -157,6 +157,10 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %if 0%{?scl:1}
 Obsoletes:      python3-%{libname} < %{version}-%{release}
 %endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
+
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{libname}
 Python bindings for the %{name} library.
@@ -385,6 +389,9 @@ set -ex
 %endif
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.7.22-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 0.7.22-2
 - Rebuilding libsolv against python 3.9
 

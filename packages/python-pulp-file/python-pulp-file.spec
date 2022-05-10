@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.10.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        File plugin for the Pulp Project
 
 License:        GPLv2+
@@ -31,6 +31,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(file) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin to support hosting arbitrary files.
@@ -67,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.10.2-2
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 1.10.2-1
 - Release python-pulp-file 1.10.2
 

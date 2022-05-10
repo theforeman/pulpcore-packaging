@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.9.6
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
@@ -30,6 +30,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-urlman >= 1.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 21.0
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -68,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.9.6-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Mon May 09 2022 Odilon Sousa <osousa@redhat.com> - 0.9.6-2
 - Adding python-packaging as a dependency 
 

@@ -43,7 +43,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        0.17.7
-Release:        6.1%{?dist}
+Release:        7.1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -112,6 +112,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 Requires:       %{name}-libs = %{version}-%{release}
 %if 0%{?scl:1}
 Obsoletes:      python3-%{name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
@@ -271,6 +274,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.17.7-7.1
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 29 2022 Odilon Sousa <osousa@redhat.com> - 0.17.7-6.1
 - Bumping the release to rebuild against 3.9 on EL8
 

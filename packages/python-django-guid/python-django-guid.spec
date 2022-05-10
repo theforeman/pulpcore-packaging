@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.2.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
 License:        BSD
@@ -29,6 +29,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django < 4.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.1.1
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -65,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.1-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.1-2
 - Build against python 3.9
 

@@ -25,7 +25,7 @@
 
 Name:           libcomps
 Version:        0.1.18
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -80,6 +80,9 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Obsoletes:      %{?scl_prefix}platform-python-%{name} < %{version}-%{release}
 %if 0%{?scl:1}
 Obsoletes:      python3-%{name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
@@ -237,6 +240,9 @@ popd
 %endif
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.1.18-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 0.1.18-2
 - Rebuilding Against python 3.9
 
