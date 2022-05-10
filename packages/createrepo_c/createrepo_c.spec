@@ -42,13 +42,12 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        0.17.7
-Release:        8.1%{?dist}
+Version:        0.20.0
+Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch1:         0001-Preserve-changed-API-for-cr_compress_file_with_stat-RhBug1973588.patch
-Patch2:         0002-Default---keep-all-metadata-to-TRUE-and-add---discard-additional-metadata.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -274,6 +273,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Tue May 24 2022 Odilon Sousa - 0.20.0-1
+- Release createrepo_c 0.20.0
+
 * Thu May 12 2022 Yanis Guenane <yguenane@redhat.com> - 0.17.7-8.1
 - Fix obsolete named package
 
