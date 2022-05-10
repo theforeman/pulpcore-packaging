@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.3
+Version:        3.17.5
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -33,8 +33,8 @@ Requires:       libmodulemd >= 2.12
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.22
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.3.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.17.6
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.18
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.20
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.21
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.1.15
@@ -88,6 +88,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Zach Huntington-Meath <zhunting@redhat.com> - 3.17.5-1
+- Release python-pulp-rpm 3.17.5
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.17.3-1
 - Release python-pulp-rpm 3.17.3
 
