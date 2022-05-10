@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.3
+Version:        3.17.5
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -88,6 +88,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Zach Huntington-Meath <zhunting@redhat.com> - 3.17.5-1
+- Release python-pulp-rpm 3.17.5
+
 * Tue Feb 08 2022 Odilon Sousa <osousa@redhat.com> - 3.17.3-1
 - Release python-pulp-rpm 3.17.3
 
