@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.2.13
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -34,6 +34,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-sqlparse >= 0.2.2
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{srcname} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -81,6 +84,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.13-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 29 2022 Odilon Sousa <osousa@redhat.com> - 3.2.13-2
 - Rebuilding against python39
 

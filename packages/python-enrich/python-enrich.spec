@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.2.6
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        enrich
 
 License:        MIT
@@ -29,6 +29,9 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-rich >= 9.5.1
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -67,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.2.6-5
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.2.6-4
 - Build against python 3.9
 

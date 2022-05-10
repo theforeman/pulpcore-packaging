@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.18.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -94,6 +94,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.3
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 Provides:       %{pypi_name} = %{version}
 
@@ -174,6 +177,9 @@ done
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.18.4-4
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 29 2022 Odilon Sousa <osousa@redhat.com> - 3.18.4-3
 - Fixing pulpcore requirements for djangorestframework
 

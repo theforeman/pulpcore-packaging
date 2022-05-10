@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.5.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
@@ -36,6 +36,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-rhsm
 
 Provides:       pulpcore-plugin(certguard) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin that provides an X.509 capable ContentGuard for pulpcore.
@@ -74,6 +77,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.5.2-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.5.2-2
 - Build against python 3.9
 

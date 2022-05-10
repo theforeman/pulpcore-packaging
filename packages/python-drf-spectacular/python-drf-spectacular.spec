@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.21.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
@@ -32,6 +32,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 2.6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -76,6 +79,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.21.2-2
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 0.21.2-1
 - Release python-drf-spectacular 0.21.2
 

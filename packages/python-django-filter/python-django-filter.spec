@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        21.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
@@ -28,6 +28,9 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -66,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 21.1-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 21.1-2
 - Build against python 3.9
 

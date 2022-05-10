@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.18.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -33,6 +33,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(deb) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -69,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 2.18.0-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 2.18.0-2
 - Rebuilding against python 3.9
 

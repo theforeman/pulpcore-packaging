@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.8.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -28,6 +28,9 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -67,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.8.2-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.8.2-2
 - Build against python 3.9
 
