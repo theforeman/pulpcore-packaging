@@ -42,8 +42,8 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        0.17.7
-Release:        5.1%{?dist}
+Version:        0.20.0
+Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -257,6 +257,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Wed May 11 2022 Zach Huntington-Meath <zjhuntin@redhat.com> - 0.20.0-1
+- Release createrepo_c 0.20.0
+
 * Tue Mar 29 2022 Evgeni Golov - 0.17.7-5.1
 - Update patches from CentOS 8 Stream
 - Revert addition of new API for parsing main metadata together (RhBug:2062299)
