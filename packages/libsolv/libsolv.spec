@@ -46,7 +46,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.22
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -158,7 +158,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Obsoletes:      python3-%{libname} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python38-%{libname} < %{version}-%{release}
 %endif
 
 
@@ -389,6 +389,9 @@ set -ex
 %endif
 
 %changelog
+* Thu May 12 2022 Yanis Guenane <yguenane@redhat.com> - 0.7.22-4
+- Fix obsolete named package
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.7.22-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
