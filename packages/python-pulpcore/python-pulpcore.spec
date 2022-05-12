@@ -9,7 +9,7 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.16.7
+Version:        3.16.8
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -174,6 +174,9 @@ done
 
 
 %changelog
+* Thu May 12 2022 Patrick Creech <pcreech@redhat.com> - 3.16.8-1
+- Release python-pulpcore 3.16.8
+
 * Tue Apr 19 2022 Evgeni Golov - 3.16.7-1
 - Release python-pulpcore 3.16.7
 
