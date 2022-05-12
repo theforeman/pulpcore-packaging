@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.14.0
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Add .env support to your django/flask apps in development and deployments
 
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 5.0
 Obsoletes:      python3-%{srcname} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python38-%{srcname} < %{version}-%{release}
 %endif
 
 
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Thu May 12 2022 Yanis Guenane <yguenane@redhat.com> - 0.14.0-8
+- Fix obsolete named package
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.14.0-7
 - Obsolete the old Python 3.8 package for smooth upgrade
 
