@@ -4,7 +4,7 @@
 
 Name:           pulpcore-selinux
 Version:        1.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -14,7 +14,7 @@ Source0:        https://codeload.github.com/pulp/%{name}/tar.gz/%{version}#/%{na
 BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy-devel
 BuildRequires:  systemd
-Requires:       selinux-policy >= %{_selinux_policy_version}
+Requires:       selinux-policy
 Requires:       pulpcore
 Requires(post): policycoreutils, pulpcore
 Requires(postun): policycoreutils
@@ -83,6 +83,9 @@ fi
 
 
 %changelog
+* Thu May 12 2022 Yanis Guenane <yguenane@redhat.com> - 1.3.0-2
+- Drop hard requirement for %{_selinux_policy_version} to allow greater flexibility for install
+
 * Thu Apr 07 2022 Eric D. Helms <ericdhelms@gmail.com> - 1.3.0-1
 - Release pulpcore-selinux 1.3.0
 
