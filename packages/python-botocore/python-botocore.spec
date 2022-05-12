@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.21.35
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        Apache License 2.0
@@ -25,8 +25,13 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+%if 0%{?rhel} == 9
+Requires:       python%{python3_pkgversion}-dateutil < 1:3.0.0
+Requires:       python%{python3_pkgversion}-dateutil >= 1:2.1
+%else
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dateutil < 3.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dateutil >= 2.1
+%endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jmespath < 1.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jmespath >= 0.7.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 < 1.27
@@ -68,6 +73,9 @@ set -ex
 
 
 %changelog
+* Thu May 12 2022 Satoe Imaishi <simaishi@redhat.com> - 1.21.35-4
+- Add epoch for python-dateutil requires for el9
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.21.35-3
 - Build against python 3.9
 
