@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.13.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -41,7 +41,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Provides:       pulpcore-plugin(ansible) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{epoch}:%{version}-%{release}
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python38-%{pypi_name} < %{epoch}:%{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -79,6 +79,9 @@ set -ex
 
 
 %changelog
+* Fri May 13 2022 Yanis Guenane <yguenane@redhat.com> - 1:0.13.0-3
+- Obsolete the old Python 3.8 package with epoch
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1:0.13.0-2
 - Obsolete the old Python 3.8 package for smooth upgrade
 
