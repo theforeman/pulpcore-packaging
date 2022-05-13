@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        6.1.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Django Database Based Automated Logging - finally solved and done in a proper way
 
 License:        None
@@ -33,6 +33,10 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-picklefield < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-picklefield >= 3.0.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-marshmallow < 4.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-marshmallow >= 3.6.1
+
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -68,6 +72,9 @@ set -ex
 
 
 %changelog
+* Fri May 13 2022 Yanis Guenane <yguenane@redhat.com> - 6.1.3-3
+- Obsolete Python 3.8 package
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 6.1.3-2
 - Build against python 3.9
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
 License:        MIT
@@ -28,6 +28,9 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing
 
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -63,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri May 13 2022 Yanis Guenane <yguenane@redhat.com> - 1.1.0-3
+- Obsolete Python 3.8 package
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.1.0-2
 - Build against python 3.9
 

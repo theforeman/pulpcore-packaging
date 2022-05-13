@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pickled object field for Django
 
 License:        MIT
@@ -27,6 +27,10 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-django
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
+
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -64,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri May 13 2022 Yanis Guenane <yguenane@redhat.com> - 3.0.1-3
+- Obsolete Python 3.8 package
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.0.1-2
 - Build against python 3.9
 
