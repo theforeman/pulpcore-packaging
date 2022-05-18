@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.17.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -88,6 +88,9 @@ set -ex
 
 
 %changelog
+* Wed May 18 2022 Odilon Sousa <osousa@redhat.com> - 3.17.5-2
+- Fix pulpcore requires, change from >=3.17 to 3.16
+
 * Thu May 12 2022 Patrick Creech <pcreech@redhat.com> - 3.17.5-1
 - Release python-pulp-rpm 3.17.5
 
