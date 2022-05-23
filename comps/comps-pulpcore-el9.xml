@@ -133,6 +133,7 @@
       <packagereq type="default">python3-mongoengine</packagereq>
       <packagereq type="default">python3-msrest</packagereq>
       <packagereq type="default">python3-multidict</packagereq>
+      <packagereq type="default">python3-naya</packagereq>
       <packagereq type="default">python3-oauthlib</packagereq>
       <packagereq type="default">python3-odfpy</packagereq>
       <packagereq type="default">python3-openpyxl</packagereq>
