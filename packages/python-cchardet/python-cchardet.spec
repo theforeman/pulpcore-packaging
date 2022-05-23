@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.1.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        cChardet is high speed universal character encoding detector
 
 License:        Mozilla Public License
@@ -16,6 +16,10 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description
 %{summary}
@@ -61,6 +65,9 @@ set -ex
 
 
 %changelog
+* Mon May 23 2022 Odilon Sousa <osousa@redhat.com> - 2.1.7-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.1.7-2
 - Build against python 3.9
 

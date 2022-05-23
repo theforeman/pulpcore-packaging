@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        10.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Human friendly output for text interfaces using Python
 
 License:        MIT
@@ -17,6 +17,10 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description
 %{summary}
@@ -63,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon May 23 2022 Odilon Sousa <osousa@redhat.com> - 10.0-3
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 10.0-2
 - Build against python 3.9
 
