@@ -187,6 +187,7 @@ pulpcore_packages:
     python-mccabe: {}
     python-mongoengine: {}
     python-multidict: {}
+    python-naya: {}
     python-odfpy: {}
     python-openpyxl: {}
     python-packaging: {}
