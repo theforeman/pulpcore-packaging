@@ -133,6 +133,7 @@
       <packagereq type="default">python38-mongoengine</packagereq>
       <packagereq type="default">python38-msrest</packagereq>
       <packagereq type="default">python38-multidict</packagereq>
+      <packagereq type="default">python38-naya</packagereq>
       <packagereq type="default">python38-oauthlib</packagereq>
       <packagereq type="default">python38-odfpy</packagereq>
       <packagereq type="default">python38-openpyxl</packagereq>

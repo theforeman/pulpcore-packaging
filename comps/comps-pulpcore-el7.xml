@@ -134,6 +134,7 @@
       <packagereq type="default">tfm-pulpcore-python3-mongoengine</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-msrest</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-multidict</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-naya</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-oauthlib</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-odfpy</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-openpyxl</packagereq>
