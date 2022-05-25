@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.16.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -80,6 +80,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.4.7
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-naya >= 1.1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
@@ -174,6 +175,9 @@ done
 
 
 %changelog
+* Thu May 19 2022 Odilon Sousa <osousa@redhat.com> - 3.16.8-2
+- Adding Requires for nay
+
 * Thu May 12 2022 Patrick Creech <pcreech@redhat.com> - 3.16.8-1
 - Release python-pulpcore 3.16.8
 
