@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A fast streaming JSON parser written in pure python
 
 License:        MIT
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Wed May 25 2022 Odilon Sousa <osousa@redhat.com> - 1.1.1-3
+- Bump release to rebuild against python 3.9
+
 * Tue May 24 2022 Odilon Sousa <osousa@redhat.com> - 1.1.1-2
 - Bump package release for a rebuild on python 3.9
 
