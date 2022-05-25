@@ -9,8 +9,8 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.18.4
-Release:        4%{?dist}
+Version:        3.18.5
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -59,7 +59,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 21.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 22
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.4.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guardian >= 2.5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.2.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.7.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.8
@@ -80,17 +80,18 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.4.8
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2 >= 3.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-naya >= 1.1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.4.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-redis >= 3.4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 62.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 6.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.3
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -177,6 +178,9 @@ done
 
 
 %changelog
+* Wed May 25 2022 Odilon Sousa <osousa@redhat.com> - 3.18.5-1
+- Release python-pulpcore 3.18.5
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.18.4-4
 - Obsolete the old Python 3.8 package for smooth upgrade
 
