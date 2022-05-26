@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.18.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -130,6 +130,8 @@ sed -i '/cryptography/ s/~=.*//' requirements.txt
 set -ex
 %py3_build
 %{?scl:EOF}
+#Adding a sed to change redis on requirements, from ~= to >=
+sed -i '/redis~=3.4.0/c\redis>=3.4.0' requirements.txt
 
 for wrapper in %{wrappers}
 do
@@ -178,6 +180,9 @@ done
 
 
 %changelog
+* Thu May 26 2022 Odilon Sousa <osousa@redhat.com> - 3.18.5-2
+- Adding a sed to change redis on requirements.txt, from ~= to >=
+
 * Wed May 25 2022 Odilon Sousa <osousa@redhat.com> - 3.18.5-1
 - Release python-pulpcore 3.18.5
 
