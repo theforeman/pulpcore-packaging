@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.7.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple data validation library
 
 License:        MIT
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri May 27 2022 Odilon Sousa <osousa@redhat.com> - 0.7.5-2
+- Bump release to rebuild against python39
+
 * Thu May 26 2022 Odilon Sousa - 0.7.5-1
 - Release python-schema 0.7.5
 
