@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.17.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -96,6 +96,9 @@ set -ex
 
 
 %changelog
+* Mon May 30 2022 Odilon Sousa <osousa@redhat.com> - 3.17.5-3
+- Bumpining release to rebuild against python 3.9
+
 * Wed May 25 2022 Odilon Sousa <osousa@redhat.com> - 3.17.5-2
 - Bump release to rebuild against python 3.9
 
