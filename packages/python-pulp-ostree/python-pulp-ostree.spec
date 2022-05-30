@@ -7,7 +7,7 @@
 %global prerelease a5
 %global prereleaserpm %{?prerelease:.}%{?prerelease}
 
-%global release 5
+%global release 6
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.0
@@ -31,9 +31,13 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+%if 0%{?rhel} == 9
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-gobject >= 3.40.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-gobject < 3.41
+%else
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject >= 1:3.40.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygobject < 1:3.41
-
+%endif
 Requires:       ostree
 
 Provides:       pulpcore-plugin(ostree) = %{version}
@@ -74,6 +78,9 @@ set -ex
 
 
 %changelog
+* Mon May 30 2022 Odilon Sousa <osousa@redhat.com> - 2.0.0-0.6.a5
+- Removing EPOCH requirement on EL9
+
 * Wed Apr 27 2022 Odilon Sousa <osousa@redhat.com> - 2.0.0-0.5.a5
 - Release python-pulp-ostree 2.0.0a5
 
