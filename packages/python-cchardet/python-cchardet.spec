@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.1.7
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        cChardet is high speed universal character encoding detector
 
 License:        Mozilla Public License
@@ -15,11 +15,6 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description
 %{summary}
@@ -59,12 +54,15 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %doc README.rst src/ext/uchardet/README.md src/ext/uchardet/doc/README.maintainer
-%{_bindir}/cchardetect
+%exclude %{_bindir}/cchardetect
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Jun 13 2022 Odilon Sousa <osousa@redhat.com> - 2.1.7-4
+- Exclude files in bin for a better upgrade from python38 to python39 and removes Obsolete
+
 * Mon May 23 2022 Odilon Sousa <osousa@redhat.com> - 2.1.7-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
