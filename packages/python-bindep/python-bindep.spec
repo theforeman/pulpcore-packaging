@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.10.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Binary dependency utility
 
 License:        Apache License, Version 2.0
@@ -17,12 +17,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pbr >= 2.0.0
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
-%endif
-
 
 %description
 %{summary}
@@ -67,12 +61,16 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst doc/source/readme.rst
-%{_bindir}/bindep
+%exclude %{_bindir}/bindep
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Jun 13 2022 Odilon Sousa <osousa@redhat.com> - 2.10.2-4
+- Exclude files in bin for a better upgrade from python38 to python39 and
+  removes Obsolete
+
 * Mon May 23 2022 Odilon Sousa <osousa@redhat.com> - 2.10.2-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 

@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        5.8.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python Build Reasonableness
 
 License:        None
@@ -27,11 +27,6 @@ BuildArch:      noarch
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -63,12 +58,16 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE pbr/tests/testpackage/LICENSE.txt
 %doc README.rst pbr/tests/testpackage/README.txt
-%{_bindir}/pbr
+%exclude %{_bindir}/pbr
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Jun 13 2022 Odilon Sousa <osousa@redhat.com> - 5.8.0-4
+- Exclude files in bin for a better upgrade from python38 to python39 and
+  removes Obsolete
+
 * Mon May 23 2022 Odilon Sousa <osousa@redhat.com> - 5.8.0-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
