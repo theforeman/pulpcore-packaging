@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        10.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Human friendly output for text interfaces using Python
 
 License:        MIT
@@ -16,11 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description
 %{summary}
@@ -61,12 +56,16 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.txt
 %doc docs/readme.rst README.rst
-%{_bindir}/humanfriendly
+%exclude %{_bindir}/humanfriendly
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Jun 14 2022 Odilon Sousa <osousa@redhat.com> - 10.0-4
+- Exclude files in bin for a better upgrade from python38 to python39 and
+  removes Obsolete
+
 * Mon May 23 2022 Odilon Sousa <osousa@redhat.com> - 10.0-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
