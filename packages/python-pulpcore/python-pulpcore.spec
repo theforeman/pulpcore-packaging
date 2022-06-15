@@ -9,8 +9,8 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.16.8
-Release:        2%{?dist}
+Version:        3.16.9
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -175,6 +175,9 @@ done
 
 
 %changelog
+* Wed Jun 15 2022 Patrick Creech <pcreech@redhat.com> - 3.16.9-1
+- Release python-pulpcore 3.16.9
+
 * Thu May 19 2022 Odilon Sousa <osousa@redhat.com> - 3.16.8-2
 - Adding Requires for nay
 
