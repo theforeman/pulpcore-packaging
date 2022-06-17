@@ -7,7 +7,7 @@
 %global prerelease a5
 %global prereleaserpm %{?prerelease:.}%{?prerelease}
 
-%global release 6
+%global release 7
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.0
@@ -42,6 +42,9 @@ Requires:       ostree
 
 Provides:       pulpcore-plugin(ostree) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 A Pulp plugin to support hosting ostree repositories.
@@ -78,6 +81,9 @@ set -ex
 
 
 %changelog
+* Fri Jun 17 2022 Evgeni Golov - 2.0.0-0.7.a5
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Mon May 30 2022 Odilon Sousa <osousa@redhat.com> - 2.0.0-0.6.a5
 - Removing EPOCH requirement on EL9
 
