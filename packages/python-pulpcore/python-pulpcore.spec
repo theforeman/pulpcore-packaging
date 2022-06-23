@@ -9,7 +9,7 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.15.5
+Version:        3.15.8
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -36,7 +36,7 @@ Using Pulp you can:
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2.6
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2.13
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django >= 3.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 5.5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1.1
@@ -80,6 +80,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.4.7
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-naya
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
@@ -175,6 +176,9 @@ done
 
 
 %changelog
+* Thu Jun 23 2022 Odilon Sousa <osousa@redhat.com> - 3.15.8-1
+- Release python-pulpcore 3.15.8
+
 * Thu Mar 17 2022 Odilon Sousa <osousa@redhat.com> - 3.15.5-1
 - Release python-pulpcore 3.15.5
 
