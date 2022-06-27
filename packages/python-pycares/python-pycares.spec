@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Jun 27 2022 Odilon Sousa <osousa@redhat.com> - 4.1.2-3
+- Bump version to build the fno change against python 3.8, 4.1.2-2 was built against python 3.9
+
 * Mon Jun 27 2022 Patrick Creech <pcreech@redhat.com> - 4.1.2-2
 - Use '-fno-strict-aliasing' due to "warning: dereferencing type-punned pointer will break strict-aliasing rules"
 
