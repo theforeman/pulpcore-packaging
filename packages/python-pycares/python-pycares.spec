@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -43,6 +43,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %build
+# Use -fno-strict-aliasing, due to various "warning: dereferencing type-punned pointer will break strict-aliasing rules"
+%global optflags %{?optflags} -fno-strict-aliasing
+
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
@@ -64,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Jun 27 2022 Patrick Creech <pcreech@redhat.com> - 4.1.2-2
+- Use '-fno-strict-aliasing' due to "warning: dereferencing type-punned pointer will break strict-aliasing rules"
+
 * Wed Nov 03 2021 Odilon Sousa 4.1.2-1
 - Update to 4.1.2
 
