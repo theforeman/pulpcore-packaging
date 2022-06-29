@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.15.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -81,7 +81,8 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-naya
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2 >= 3.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jinja2 >= 4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.4.2
@@ -177,6 +178,9 @@ done
 
 
 %changelog
+* Wed Jun 29 2022 Odilon Sousa <osousa@redhat.com> - 3.15.9-2
+- Add Requires and Conflicts for Jinja2 to reflect the change done for 3.15.8+
+
 * Tue Jun 28 2022 Odilon Sousa <osousa@redhat.com> - 3.15.9-1
 - Release python-pulpcore 3.15.9
 
