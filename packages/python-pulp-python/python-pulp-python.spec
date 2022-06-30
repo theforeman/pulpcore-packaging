@@ -5,8 +5,8 @@
 %global pypi_name pulp-python
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.6.0
-Release:        5%{?dist}
+Version:        3.7.1
+Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -25,13 +25,17 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-bandersnatch >= 5.0.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pkginfo
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.17
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-bandersnatch >= 5.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-bandersnatch < 6.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 21.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging < 22
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pkginfo >= 1.8.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pkginfo < 1.9
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.17.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pypi-simple
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pypi-simple >= 0.9.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pypi-simple < 0.10.0
 
 Provides:       pulpcore-plugin(python) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -74,6 +78,9 @@ set -ex
 
 
 %changelog
+* Thu Jun 30 2022 Ian Ballou <ianballou67@gmail.com> - 3.7.1-1
+- Release pulp-python 3.7.1
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.6.0-5
 - Obsolete the old Python 3.8 package for smooth upgrade
 

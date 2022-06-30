@@ -5,8 +5,8 @@
 %global pypi_name packaging
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        21.2
-Release:        2%{?dist}
+Version:        21.3
+Release:        1%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Thu Jun 30 2022 Ian Ballou <ianballou67@gmail.com> - 21.3-1
+- Bump up to 21.3 for pulp-python
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 21.2-2
 - Build against python 3.9
 
