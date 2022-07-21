@@ -6,8 +6,8 @@
 %global srcname django
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.2.13
-Release:        4%{?dist}
+Version:        3.2.14
+Release:        1%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 19 2022 Odilon Sousa <osousa@redhat.com> - 3.2.14-1
+- Update django to 3.2.14, fixes CVE-2022-28346 and CVE-2022-28347 and CVE-2022-34265
+
 * Thu May 12 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.13-4
 - Fix obsolete named package
 
