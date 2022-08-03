@@ -9,8 +9,8 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.18.5
-Release:        2%{?dist}
+Version:        3.18.6
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -180,6 +180,9 @@ done
 
 
 %changelog
+* Wed Aug 03 2022 Zach Huntington-Meath <zhunting@redhat.com> - 3.18.6-1
+- Release python-pulpcore 3.18.6
+
 * Thu May 26 2022 Odilon Sousa <osousa@redhat.com> - 3.18.5-2
 - Adding a sed to change redis on requirements.txt, from ~= to >=
 
