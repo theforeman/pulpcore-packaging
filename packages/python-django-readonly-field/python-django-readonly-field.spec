@@ -5,8 +5,8 @@
 %global pypi_name django-readonly-field
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.0.5
-Release:        5%{?dist}
+Version:        1.1.1
+Release:        1%{?dist}
 Summary:        Make Django model fields readonly
 
 License:        MIT
@@ -16,6 +16,8 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-wheel
 
 
 %description
@@ -44,6 +46,8 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# Force setuptools_scm usage for older setuptools
+sed -i 's/setup()/setup(use_scm_version=True)/' setup.py
 %{?scl:EOF}
 
 
@@ -66,9 +70,12 @@ set -ex
 %doc README.rst
 %{python3_sitelib}/django_readonly_field
 %{python3_sitelib}/django_readonly_field-%{version}-py%{python3_version}.egg-info
-
+%exclude  %{python3_sitelib}/tests/
 
 %changelog
+* Tue Jul 26 2022 Odilon Sousa <osousa@redhat.com> - 1.1.1-1
+- Release python-django-readonly-field 1.1.1
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.5-5
 - Obsolete the old Python 3.8 package for smooth upgrade
 
