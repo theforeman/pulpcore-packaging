@@ -5,13 +5,16 @@
 %global pypi_name jsonschema
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.2.0
-Release:        7%{?dist}
+Version:        4.6.0
+Release:        2%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
 URL:            https://github.com/Julian/jsonschema
 Source0:        https://files.pythonhosted.org/packages/source/j/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+#jsonschema switching to strictly pyobject.toml, this is the setup.cfg from 4.5.1
+#it's to keep builds working unitl our infrastructure can handle pyboject.toml based building
+Source1:        001-SETUP-CFG
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
@@ -43,6 +46,9 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# create a minimal setup.py, the rest will be done by setuptools
+printf 'from setuptools import setup\nsetup(use_scm_version=True)' > setup.py
+cp %{_topdir}/SOURCES/001-SETUP-CFG setup.cfg
 %{?scl:EOF}
 
 
@@ -67,8 +73,16 @@ set -ex
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
-
 %changelog
+* Thu Aug 04 2022 Odilon Sousa <osousa@redhat.com> - 4.6.0-2
+- Bump release to rebuild on top of python 3.8
+
+* Tue Jul 26 2022 Odilon Sousa <osousa@redhat.com> - 4.6.0-1
+- Release python-jsonschema 4.6.0 and add a setup.cfg to build on top of EL7
+
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.0-8
+- Build against python 3.9
+
 * Fri Nov 05 2021 Satoe Imaishi - 3.2.0-7
 - Don't obsolete python 3.6 package and exclude files in bin
 
