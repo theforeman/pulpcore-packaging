@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.6.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-resources >= 1.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyrsistent >= 0.14.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.11.0
@@ -74,6 +74,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Aug 05 2022 Odilon Sousa <osousa@redhat.com> - 4.6.0-3
+- Add importlib_resources requirement to run on python 3.8
+
 * Thu Aug 04 2022 Odilon Sousa <osousa@redhat.com> - 4.6.0-2
 - Bump release to rebuild on top of python 3.8
 
