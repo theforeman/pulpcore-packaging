@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        5.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Read resources from Python packages
 
 License:        Apache2
@@ -40,6 +40,8 @@ set -ex
 %autosetup -n importlib_resources-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# Force setuptools_scm usage for older setuptools
+sed -i 's/setuptools.setup.*/setuptools.setup(use_scm_version=True)/' setup.py
 %{?scl:EOF}
 
 
@@ -65,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Aug 05 2022 Odilon Sousa <osousa@redhat.com> - 5.0.0-3
+- Force setuptools_scm usage for older setuptools on python-importlib-resources
+
 * Wed Sep 08 2021 Evgeni Golov - 5.0.0-2
 - Build against Python 3.8
 
