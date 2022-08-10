@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.14.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -39,8 +39,11 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.24
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-schema = 0.7.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml = 0.10.2
-%if 0%{?!scl:1}
+
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
 
 Provides:       %{pypi_name} = %{version}
@@ -93,6 +96,9 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
+* Wed Aug 10 2022 Odilon Sousa <osousa@redhat.com> - 0.14.0-2
+- Adding obsolete for python38 on EL8 and also for packages outside of the scl
+
 * Mon Apr 04 2022 Evgeni Golov - 0.14.0-1
 - Release python-pulp-cli 0.14.0
 
