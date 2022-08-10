@@ -28,6 +28,8 @@ blacklist =
 [pulpcore-3.18-el9]
 disttag = .el9
 blacklist =
+  libsolv0
+  python2-libcomps
   subscription-manager
   tfm-pulpcore
 
