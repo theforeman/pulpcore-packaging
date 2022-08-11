@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1.1
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Make Django model fields readonly
 
 License:        MIT
@@ -73,6 +73,9 @@ set -ex
 %exclude  %{python3_sitelib}/tests/
 
 %changelog
+* Thu Aug 11 2022 Odilon Sousa <osousa@redhat.com> - 1.1.1-3
+- Update release for better upgrade from 3.16 to 3.18
+
 * Tue Jul 26 2022 Odilon Sousa <osousa@redhat.com> - 1.1.1-1
 - Release python-django-readonly-field 1.1.1
 
