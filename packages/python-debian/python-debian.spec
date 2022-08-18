@@ -6,8 +6,8 @@
 %global srcname debian
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        0.1.42
-Release:        1%{?dist}
+Version:        0.1.44
+Release:        2%{?dist}
 Summary:        Debian package related modules
 
 License:        GPL-2+
@@ -28,6 +28,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-chardet
+Requires:       zstd
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -67,6 +68,11 @@ set -ex
 
 
 %changelog
+* Mon Aug 22 2022 Quirin Pamp <pamp@atix.de> - 0.1.44-2
+- Update to 0.1.44
+- Add zstd dependency to support zstd compression for Ubuntu.
+- Use revision 2 to ensure build against python 3.8.
+
 * Wed Nov 03 2021 Odilon Sousa 0.1.42-1
 - Update to 0.1.42
 
