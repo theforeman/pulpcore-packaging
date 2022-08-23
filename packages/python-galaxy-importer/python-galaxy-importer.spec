@@ -5,8 +5,8 @@
 %global pypi_name galaxy-importer
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.4.2
-Release:        4%{?dist}
+Version:        0.4.5
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Requires:       /usr/bin/ansible
 Requires:       /usr/bin/ansible-test
 %if 0%{?rhel} == 8
 # We only have ansible-lint built on EL8
-Requires:       ansible-lint < 6.0
+Requires:       ansible-lint < 7.0
 Requires:       ansible-lint >= 5.0.8
 %endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder < 2.0
@@ -98,6 +98,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Tue Aug 23 2022 Odilon Sousa <osousa@redhat.com> - 0.4.5-1
+- Release python-galaxy-importer 0.4.5
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.4.2-4
 - Obsolete the old Python 3.8 package for smooth upgrade
 
