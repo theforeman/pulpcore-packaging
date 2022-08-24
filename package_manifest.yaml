@@ -142,6 +142,7 @@ pulpcore_packages:
     python-distro: {}
     python-django: {}
     python-django-automated-logging: {}
+    python-django-auth-ldap: {}
     python-django-cleanup: {}
     python-django-currentuser: {}
     python-django-filter: {}

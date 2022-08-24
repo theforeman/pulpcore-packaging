@@ -77,6 +77,7 @@
       <packagereq type="default">python3-distro</packagereq>
       <packagereq type="default">python3-django</packagereq>
       <packagereq type="default">python3-django-automated-logging</packagereq>
+      <packagereq type="default">python3-django-auth-ldap</packagereq>
       <packagereq type="default">python3-django-cleanup</packagereq>
       <packagereq type="default">python3-django-currentuser</packagereq>
       <packagereq type="default">python3-django-filter</packagereq>
