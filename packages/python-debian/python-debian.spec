@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.1.44
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Debian package related modules
 
 License:        GPL-2+
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Aug 24 2022 Quirin Pamp <pamp@atix.de> - 0.1.44-3
+- Bump release to 3 to ensure a smooth upgrade from the 3.16 repo.
+
 * Thu Aug 18 2022 Quirin Pamp <pamp@atix.de> - 0.1.44-1
 - Update to 0.1.44
 - Add zstd dependency to support zstd compression for Ubuntu.
