@@ -5,8 +5,8 @@
 %global pypi_name semantic-version
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.8.5
-Release:        3%{?dist}
+Version:        2.10.0
+Release:        1%{?dist}
 Summary:        A library implementing the 'SemVer' scheme
 
 License:        BSD
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Wed Aug 24 2022 Odilon Sousa <osousa@redhat.com> - 2.10.0-1
+- Release python-semantic-version 2.10.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.8.5-3
 - Build against python 3.9
 
