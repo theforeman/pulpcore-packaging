@@ -194,6 +194,7 @@ pulpcore_packages:
     python-pulp-python: {}
     python-pulp-rpm-client: {}
     python-pulpcore-client: {}
+    python-pyasn1: {}
     python-pycairo: {}
     python-pygobject: {}
     python-python3-openid: {}
