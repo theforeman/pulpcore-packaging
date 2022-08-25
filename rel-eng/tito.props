@@ -16,6 +16,7 @@ blacklist =
   ansible-lint
   python-pulp-ostree
   python-pyasn1
+  python-pyasn1-modules
 scl = tfm-pulpcore
 
 [pulpcore-3.18-el8]
