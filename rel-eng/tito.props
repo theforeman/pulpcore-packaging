@@ -19,6 +19,7 @@ blacklist =
   python-pyasn1-modules
   python-galaxy-ng
   python-django-auth-ldap
+  python-ldap
 scl = tfm-pulpcore
 
 [pulpcore-3.18-el8]
