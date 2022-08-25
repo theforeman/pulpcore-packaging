@@ -158,6 +158,7 @@
       <packagereq type="default">python39-pulp-rpm-client</packagereq>
       <packagereq type="default">python39-pulpcore</packagereq>
       <packagereq type="default">python39-pulpcore-client</packagereq>
+      <packagereq type="default">python39-pyasn1</packagereq>
       <packagereq type="default">python39-pyOpenSSL</packagereq>
       <packagereq type="default">python39-pycairo</packagereq>
       <packagereq type="default">python39-pycairo-devel</packagereq>

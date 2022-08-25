@@ -15,6 +15,7 @@ disttag = .el7
 blacklist =
   ansible-lint
   python-pulp-ostree
+  python-pyasn1
 scl = tfm-pulpcore
 
 [pulpcore-3.18-el8]
