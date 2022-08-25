@@ -159,6 +159,7 @@
       <packagereq type="default">python3-pulpcore</packagereq>
       <packagereq type="default">python3-pulpcore-client</packagereq>
       <packagereq type="default">python3-pyasn1</packagereq>
+      <packagereq type="default">python3-pyasn1-modules</packagereq>
       <packagereq type="default">python3-pyOpenSSL</packagereq>
       <packagereq type="default">python3-pycairo</packagereq>
       <packagereq type="default">python3-pycairo-devel</packagereq>
