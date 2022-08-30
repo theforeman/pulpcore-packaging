@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.13.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -28,7 +28,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-lru >= 1.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiofiles >= 0.8.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiofiles >= 0.8.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiofiles >= 0.9.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-async-lru >= 1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer >= 0.4.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitpython >= 3.1.24
@@ -80,6 +81,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 30 2022 Odilon Sousa <osousa@redhat.com> - 1:0.13.2-2
+- Fixing requirements for pulp-ansible with aiofiles
+
 * Tue Aug 23 2022 Odilon Sousa <osousa@redhat.com> - 1:0.13.2-1
 - Release python-pulp-ansible 0.13.2
 
