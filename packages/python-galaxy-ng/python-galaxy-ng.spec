@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.5.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -44,7 +44,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-app-django >= 3.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-core < 4.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-social-auth-core >= 3.3.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-naya = 1.1.1
 
 Provides:       pulpcore-plugin(galaxy-ng) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -87,6 +86,10 @@ set -ex
 
 
 %changelog
+* Tue Aug 30 2022 Odilon Sousa <osousa@redhat.com> - 4.5.2-2
+- Removing python-naya requirement, it was added on galaxy-ng, but it's a
+  requirement for pulpcore
+
 * Wed Aug 24 2022 Odilon Sousa <osousa@redhat.com> - 4.5.2-1
 - Release python-galaxy-ng 4.5.2
 
