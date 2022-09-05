@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.17.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -88,14 +88,14 @@ set -ex
 
 
 %changelog
+* Mon Sep 05 2022 Odilon Sousa <osousa@redhat.com> - 3.17.10-2
+- Bump release to rebuild on top of python 3.8
+
 * Wed Aug 31 2022 Patrick Creech <pcreech@redhat.com> - 3.17.10-1
 - Release python-pulp-rpm 3.17.10
 
 * Thu Aug 04 2022 Odilon Sousa <osousa@redhat.com> - 3.17.7-2
 - Bump release to rebuild on top of python 3.8
-
-* Thu Aug 11 2022 Odilon Sousa <osousa@redhat.com> - 3.17.7-3
-- Update release for better upgrade from 3.16 to 3.18
 
 * Tue Jul 26 2022 Odilon Sousa <osousa@redhat.com> - 3.17.7-1
 - Release python-pulp-rpm 3.17.7
