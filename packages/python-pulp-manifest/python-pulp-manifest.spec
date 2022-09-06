@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tool to generate a PULP_MANIFEST file for a given directory, so the directory can be recognized by Pulp
 
 License:        GPLv2+
@@ -59,5 +59,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Sep 06 2022 Odilon Sousa <osousa@redhat.com> - 3.0.0-2
+- Bump release on python-pulp-manifest for a rebuild on python 3.8
+
 * Fri Oct 08 2021 Evgeni Golov - 3.0.0-1
 - Initial package.
