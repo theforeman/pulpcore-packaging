@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.14.0
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -96,6 +96,9 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
+* Thu Sep 08 2022 Odilon Sousa <osousa@redhat.com> - 0.14.0-4
+- Bump python-pulp-cli release to rebuild for python 3.9
+
 * Fri May 27 2022 Odilon Sousa <osousa@redhat.com> - 0.14.0-2
 - Bump release to rebuild against python39
 
