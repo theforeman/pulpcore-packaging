@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -29,6 +29,14 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-cli
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+
+%if 0%{?rhel} == 8
+Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+%endif
+
+Provides:       %{pypi_name} = %{version}
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -64,6 +72,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 12 2022 Markus Bucher <bucher@atix.de> - 0.0.2-2
+- Obsolete the old Python 3.8 package for smooth upgrade
+
 * Mon Dec 27 2021 Quirin Pamp <pamp@atix.de> - 0.0.2-1
 - Release version 0.0.2.
 
