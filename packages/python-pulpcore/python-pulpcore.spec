@@ -9,7 +9,7 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.16.12
+Version:        3.16.13
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -81,15 +81,16 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gunicorn >= 20.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-naya >= 1.1.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-jinja2 >= 3.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jinja2 >= 4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.9.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-psycopg2 >= 2.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.4.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pygtrie >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-redis >= 3.4.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-redis >= 4.2.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
+Conflicts:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 62.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise < 5.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl > 1.0.0
@@ -175,6 +176,9 @@ done
 
 
 %changelog
+* Mon Sep 05 2022 Odilon Sousa <osousa@redhat.com> - 3.16.13-1
+- Release python-pulpcore 3.16.13
+
 * Fri Aug 05 2022 Odilon Sousa <osousa@redhat.com> - 3.16.12-1
 - Release python-pulpcore 3.16.12
 
