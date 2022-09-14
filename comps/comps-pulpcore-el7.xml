@@ -108,7 +108,6 @@
       <packagereq type="default">tfm-pulpcore-python3-frozenlist</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-future</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-galaxy-importer</packagereq>
-      <packagereq type="default">tfm-pulpcore-python3-galaxy-ng</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-gitdb</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-gitpython</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-gnupg</packagereq>
