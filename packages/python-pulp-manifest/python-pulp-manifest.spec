@@ -33,7 +33,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%autosetup -n pulp-manifest-%{version}
+%autosetup -n %{pypi_name}-%{version}
 %{?scl:EOF}
 
 
