@@ -1,7 +1,7 @@
 ---
 all:
   vars:
-    pulpcore_version: "3.18"
+    pulpcore_version: "3.21"
   children:
     packages: {}
     repoclosures: {}
@@ -14,17 +14,6 @@ packages:
 
 repoclosures:
   hosts:
-    pulpcore-repoclosure-el7:
-      repoclosure_target_repos:
-        el7:
-          - "el7-pulpcore-{{ pulpcore_version }}"
-      repoclosure_target_dist: el7
-      repoclosure_lookaside_repos:
-        el7:
-          - el7-base
-          - el7-updates
-          - el7-scl
-          - el7-epel
     pulpcore-repoclosure-el8:
       repoclosure_target_repos:
         el8:
@@ -48,11 +37,7 @@ repoclosures:
 
 pulpcore_packages:
   vars:
-    scl: 'tfm-pulpcore'
     koji_tags:
-      - name: pulpcore-{{ pulpcore_version }}-el7
-        scl: 'tfm-pulpcore'
-        dist: '.el7'
       - name: pulpcore-{{ pulpcore_version }}-el8
         dist: '.el8'
       - name: pulpcore-{{ pulpcore_version }}-el9
@@ -60,18 +45,11 @@ pulpcore_packages:
     releasers:
       - koji-katello-pulpcore
     repoclosure_target_repos:
-      el7:
-        - "el7-pulpcore-{{ pulpcore_version }}"
       el8:
         - "el8-pulpcore-{{ pulpcore_version }}"
       el9:
         - "el9-pulpcore-{{ pulpcore_version }}"
     repoclosure_lookaside_repos:
-      el7:
-        - el7-base
-        - el7-updates
-        - el7-scl
-        - el7-epel
       el8:
         - el8-baseos
         - el8-appstream
@@ -85,10 +63,6 @@ pulpcore_packages:
     createrepo_c: {}
     libcomps: {}
     libsolv: {}
-    libsolv0:
-      koji_tags:
-        - name: pulpcore-{{ pulpcore_version }}-el7
-          dist: '.el7'
     postgresql-debversion: {}
     postgresql-evr: {}
     pulpcore-selinux: {}
@@ -282,12 +256,3 @@ pulpcore_packages:
     python-xlwt: {}
     python-yarl: {}
     python-zipp: {}
-    python2-libcomps:
-      koji_tags:
-        - name: pulpcore-{{ pulpcore_version }}-el7
-          dist: '.el7'
-    subscription-manager:
-      koji_tags:
-        - name: pulpcore-{{ pulpcore_version }}-el7
-          dist: '.el7'
-    tfm-pulpcore: {}
