@@ -5,8 +5,8 @@
 %global pypi_name asgiref
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.5.0
-Release:        2%{?dist}
+Version:        3.5.2
+Release:        1%{?dist}
 Summary:        ASGI specs, helper code, and adapters
 
 License:        BSD
@@ -17,7 +17,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
-
 %description
 %{summary}
 
@@ -25,8 +24,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -63,6 +60,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 3.5.2-1
+- Update to 3.5.2
+
 * Tue Apr 26 2022 Yanis Guenane - 3.5.0-2
 - Build against Python 3.9
 
