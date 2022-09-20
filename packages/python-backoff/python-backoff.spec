@@ -5,8 +5,8 @@
 %global pypi_name backoff
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.11.1
-Release:        2%{?dist}
+Version:        2.1.2
+Release:        1%{?dist}
 Summary:        Function decoration for backoff and retry
 
 License:        MIT
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 2.1.2-1
+- Update to 2.1.2
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.11.1-2
 - Build against python 3.9
 
