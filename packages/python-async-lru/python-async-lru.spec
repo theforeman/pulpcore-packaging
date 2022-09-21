@@ -5,13 +5,13 @@
 %global pypi_name async-lru
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.0.2
-Release:        3%{?dist}
+Version:        1.0.3
+Release:        1%{?dist}
 Summary:        Simple lru_cache for asyncio
 
-License:        None
-URL:            https://github.com/wikibusiness/async_lru
-Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/async_lru-%{version}.tar.gz
+License:        MIT
+URL:            https://github.com/aio-libs/async_lru
+Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
@@ -34,7 +34,7 @@ Summary:        %{summary}
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%autosetup -n async_lru-%{version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 %{?scl:EOF}
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 1.0.3-1
+- Update to 1.0.3
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.2-3
 - Build against python 3.9
 
