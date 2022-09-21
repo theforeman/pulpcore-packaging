@@ -5,8 +5,8 @@
 %global pypi_name bandersnatch
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.1.1
-Release:        3%{?dist}
+Version:        5.3.0
+Release:        1%{?dist}
 Summary:        Mirroring tool that implements the client (mirror) side of PEP 381
 
 License:        Academic Free License, version 3
@@ -30,7 +30,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-socks
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-filelock
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-humanfriendly
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-resources
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %if 0%{?!scl:1}
@@ -39,8 +38,6 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
-
-
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
@@ -51,7 +48,6 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
 sed -i '/setuptools/ s/>40.0.0//' setup.cfg
 %{?scl:EOF}
 
@@ -81,6 +77,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 5.3.0-1
+- Update to 5.3.0
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 5.1.1-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
