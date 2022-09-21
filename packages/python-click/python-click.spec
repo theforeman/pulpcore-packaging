@@ -5,8 +5,8 @@
 %global pypi_name click
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        8.0.3
-Release:        2%{?dist}
+Version:        8.1.3
+Release:        1%{?dist}
 Summary:        Composable command line interface toolkit
 
 License:        BSD-3-Clause
@@ -25,9 +25,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-colorama
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -64,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 8.1.3-1
+- Update to 8.1.3
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 8.0.3-2
 - Build against python 3.9
 
