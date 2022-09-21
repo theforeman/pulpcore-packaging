@@ -5,8 +5,8 @@
 %global pypi_name cffi
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.15.0
-Release:        2%{?dist}
+Version:        1.15.1
+Release:        1%{?dist}
 Summary:        Foreign Function Interface for Python calling C code
 
 License:        MIT
@@ -14,10 +14,10 @@ URL:            http://cffi.readthedocs.org
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pycparser
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  libffi-devel
 BuildRequires:  gcc
-
 
 %description
 %{summary}
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 1.15.1-1
+- Update to 1.15.1
+
 * Fri Apr 22 2022 Odilon Sousa <osousa@redhat.com> - 1.15.0-2
 - Rebuild Against python 3.9
 
