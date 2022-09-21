@@ -5,9 +5,9 @@
 %global pypi_name chardet
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.0.0
-Release:        2%{?dist}
-Summary:        Universal encoding detector for Python 2 and 3
+Version:        5.0.0
+Release:        1%{?dist}
+Summary:        Universal encoding detector for Python 3
 
 License:        LGPL
 URL:            https://github.com/chardet/chardet
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 5.0.0-1
+- Update to 5.0.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.0.0-2
 - Build against python 3.9
 
