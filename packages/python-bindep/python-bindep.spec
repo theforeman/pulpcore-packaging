@@ -5,8 +5,8 @@
 %global pypi_name bindep
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.10.2
-Release:        4%{?dist}
+Version:        2.11.0
+Release:        1%{?dist}
 Summary:        Binary dependency utility
 
 License:        Apache License, Version 2.0
@@ -26,7 +26,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-Parsley
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-distro
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-distro < 1.7.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-distro >= 1.7.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging < 21.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pbr >= 2.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -67,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 2.11.0-1
+- Update to 2.11.0
+
 * Mon Jun 13 2022 Odilon Sousa <osousa@redhat.com> - 2.10.2-4
 - Exclude files in bin for a better upgrade from python38 to python39 and
   removes Obsolete
