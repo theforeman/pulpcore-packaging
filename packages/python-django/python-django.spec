@@ -6,8 +6,8 @@
 %global srcname django
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.2.13
-Release:        4%{?dist}
+Version:        3.2.15
+Release:        1%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -19,7 +19,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
-
 %description
 %{summary}
 
@@ -30,7 +29,6 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-asgiref < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-asgiref >= 3.3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytz
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-sqlparse >= 0.2.2
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{srcname} < %{version}-%{release}
@@ -84,6 +82,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 3.2.15-1
+- Update to 3.2.15
+
 * Thu May 12 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.13-4
 - Fix obsolete named package
 
