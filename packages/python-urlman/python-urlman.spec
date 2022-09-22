@@ -5,8 +5,8 @@
 %global pypi_name urlman
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.4.0
-Release:        3%{?dist}
+Version:        2.0.1
+Release:        1%{?dist}
 Summary:        Django URL pattern helpers
 
 License:        Apache-2.0
@@ -55,13 +55,16 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%license LICENSE
 %doc README.rst
-%{python3_sitelib}/__pycache__/%{pypi_name}.*
-%{python3_sitelib}/%{pypi_name}.py
+%{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 2.0.1-1
+- Update to 2.0.1
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.4.0-3
 - Build against python 3.9
 
