@@ -217,6 +217,7 @@
       <packagereq type="default">python3-wcmatch</packagereq>
       <packagereq type="default">python3-webencodings</packagereq>
       <packagereq type="default">python3-whitenoise</packagereq>
+      <packagereq type="default">python3-wrapt</packagereq>
       <packagereq type="default">python3-xlrd</packagereq>
       <packagereq type="default">python3-xlwt</packagereq>
       <packagereq type="default">python3-yarl</packagereq>
