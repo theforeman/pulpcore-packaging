@@ -6,18 +6,17 @@
 %global srcname pyjwt
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        1.7.1
-Release:        8%{?dist}
+Version:        2.5.0
+Release:        1%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
-URL:            http://github.com/jpadilla/pyjwt
+URL:            https://github.com/jpadilla/pyjwt
 Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
 
 %description
 %{summary}
@@ -30,7 +29,6 @@ Provides:       %{?scl_prefix}python%{python3_pkgversion}-jwt = %{version}-%{rel
 Obsoletes:      %{?scl_prefix}python%{python3_pkgversion}-jwt < %{version}-%{release}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -68,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 2.5.0-1
+- Update to 2.5.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.7.1-8
 - Build against python 3.9
 
