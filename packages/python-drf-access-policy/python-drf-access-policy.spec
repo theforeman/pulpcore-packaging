@@ -5,8 +5,8 @@
 %global pypi_name drf-access-policy
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.1.0
-Release:        3%{?dist}
+Version:        1.1.2
+Release:        1%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
 License:        MIT
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 1.1.2-1
+- Update to 1.1.2
+
 * Fri May 13 2022 Yanis Guenane <yguenane@redhat.com> - 1.1.0-3
 - Obsolete Python 3.8 package
 
