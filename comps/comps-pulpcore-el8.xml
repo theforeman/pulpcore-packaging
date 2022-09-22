@@ -73,6 +73,7 @@
       <packagereq type="default">python39-dateutil</packagereq>
       <packagereq type="default">python39-debian</packagereq>
       <packagereq type="default">python39-defusedxml</packagereq>
+      <packagereq type="default">python39-deprecated</packagereq>
       <packagereq type="default">python39-diff-match-patch</packagereq>
       <packagereq type="default">python39-distro</packagereq>
       <packagereq type="default">python39-django</packagereq>
