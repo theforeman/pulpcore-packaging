@@ -165,6 +165,7 @@ pulpcore_packages:
     python-parsley: {}
     python-pbr: {}
     python-pkginfo: {}
+    python-protobuf: {}
     python-pulp-ostree: {}
     python-pulp-python: {}
     python-pulp-rpm-client: {}
