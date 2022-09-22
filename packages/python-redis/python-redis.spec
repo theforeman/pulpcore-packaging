@@ -26,6 +26,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 4.0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 20.4
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-deprecated
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
