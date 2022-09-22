@@ -5,8 +5,8 @@
 %global pypi_name pygtrie
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.4.2
-Release:        3%{?dist}
+Version:        2.5.0
+Release:        1%{?dist}
 Summary:        A pure Python trie data structure implementation
 
 License:        Apache-2.0
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 2.5.0-1
+- Update to 2.5.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.4.2-3
 - Build against python 3.9
 
