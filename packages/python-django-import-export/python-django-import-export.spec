@@ -6,8 +6,8 @@
 %global pypi_name django-import-export
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.7.1
-Release:        6%{?dist}
+Version:        2.8.0
+Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -26,7 +26,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-diff-match-patch
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 3.0.0
 %if 0%{?!scl:1}
@@ -35,6 +35,7 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
+
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -71,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 2.8.0-1
+- Update to 2.8.0
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 2.7.1-6
 - Obsolete the old Python 3.8 package for smooth upgrade
 
