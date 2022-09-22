@@ -218,6 +218,7 @@
       <packagereq type="default">python39-wcmatch</packagereq>
       <packagereq type="default">python39-webencodings</packagereq>
       <packagereq type="default">python39-whitenoise</packagereq>
+      <packagereq type="default">python39-wrapt</packagereq>
       <packagereq type="default">python39-xlrd</packagereq>
       <packagereq type="default">python39-xlwt</packagereq>
       <packagereq type="default">python39-yarl</packagereq>
