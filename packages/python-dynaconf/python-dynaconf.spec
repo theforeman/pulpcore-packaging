@@ -5,8 +5,8 @@
 %global pypi_name dynaconf
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.1.7
-Release:        4%{?dist}
+Version:        3.1.9
+Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -16,7 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 38.6.0
-
 
 %description
 %{summary}
@@ -32,7 +31,6 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -70,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 3.1.9-1
+- Update to 3.1.9
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.1.7-4
 - Obsolete the old Python 3.8 package for smooth upgrade
 
