@@ -5,8 +5,8 @@
 %global pypi_name pulp-ansible
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.13.2
-Release:        2%{?dist}
+Version:        0.14.2
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -26,18 +26,21 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitpython >= 3.1.24
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gitpython >= 3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-lru >= 1.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiofiles >= 0.8.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiofiles >= 0.9.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-async-lru >= 1.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer >= 0.4.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitpython >= 3.1.24
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer >= 0.4.5
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 21.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.18.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.10
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.10
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 21
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-packaging >= 22
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.20
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.9
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.11
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(ansible) = %{version}
@@ -81,6 +84,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 1:0.14.2-1
+- Update to 0.14.2
+
 * Tue Aug 30 2022 Odilon Sousa <osousa@redhat.com> - 1:0.13.2-2
 - Fixing requirements for pulp-ansible with aiofiles
 
