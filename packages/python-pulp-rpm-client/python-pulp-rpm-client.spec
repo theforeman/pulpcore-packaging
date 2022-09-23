@@ -65,7 +65,7 @@ set -ex
 
 
 %changelog
-* Tue Sep 20 2022 Odilon Sousa 
+* Tue Sep 20 2022 Odilon Sousa - 3.18.1-1
 - Update to 3.18.1
 
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.17.3-2
