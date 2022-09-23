@@ -5,8 +5,8 @@
 %global pypi_name pulp-rpm-client
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.3
-Release:        2%{?dist}
+Version:        3.18.1
+Release:        1%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 
+- Update to 3.18.1
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.17.3-2
 - Build against python 3.9
 
