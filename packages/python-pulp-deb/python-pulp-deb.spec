@@ -5,8 +5,8 @@
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.18.0
-Release:        3%{?dist}
+Version:        2.19.0
+Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -26,9 +26,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-debian < 0.2.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-debian >= 0.1.36
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.17
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-debian >= 0.1.44
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.20
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(deb) = %{version}
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 2.19.0-1
+- Update to 2.19.0
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 2.18.0-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
