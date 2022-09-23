@@ -28,12 +28,14 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.14
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.15
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.20
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.18.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 1.7.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 1.8
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.4
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.4
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(container) = %{version}
