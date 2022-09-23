@@ -5,8 +5,8 @@
 %global pypi_name pulp-certguard
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.5.2
-Release:        3%{?dist}
+Version:        1.5.5
+Release:        1%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
@@ -27,7 +27,8 @@ a certificate proving their entitlement to content before receiving the content.
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL < 23.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -77,6 +78,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 20 2022 Odilon Sousa 1.5.5-1
+- Update to 1.5.5
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.5.2-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
