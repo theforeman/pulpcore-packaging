@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        22.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
@@ -25,7 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-Django >= 3.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 26 2022 Odilon Sousa <osousa@redhat.com> - 22.1-2
+- Update python-django dependency with right name
+
 * Tue Sep 20 2022 Odilon Sousa 22.1-1
 - Update to 22.1
 
