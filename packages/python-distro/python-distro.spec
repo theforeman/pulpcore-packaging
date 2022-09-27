@@ -3,11 +3,11 @@
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name distro
-%global pypi_version 1.6.0
+%global pypi_version 1.7.0
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        %{pypi_version}
-Release:        3%{?dist}
+Release:        1%{?dist}
 Summary:        Distro - an OS platform information API
 
 License:        Apache License, Version 2.0
@@ -60,12 +60,16 @@ set -ex
 %license LICENSE
 %doc README.md
 %exclude %{_bindir}/distro
-%{python3_sitelib}/__pycache__/*
-%{python3_sitelib}/%{pypi_name}.py
+%{python3_sitelib}/distro/__pycache__/*
+%{python3_sitelib}/distro/*.py
+%{python3_sitelib}/distro/py.typed
 %{python3_sitelib}/%{pypi_name}-%{pypi_version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 1.7.0-1
+- Release python-distro 1.7.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.6.0-3
 - Build against python 3.9
 

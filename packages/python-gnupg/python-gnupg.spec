@@ -6,8 +6,8 @@
 %global srcname gnupg
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        0.4.8
-Release:        2%{?dist}
+Version:        0.5.0
+Release:        1%{?dist}
 Summary:        A wrapper for the Gnu Privacy Guard (GPG or GnuPG)
 
 License:        BSD-3-Clause
@@ -38,6 +38,8 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# create a minimal setup.py, the rest will be done by setuptools
+printf 'from setuptools import setup\nsetup()' > setup.py
 %{?scl:EOF}
 
 
@@ -64,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 0.5.0-1
+- Release python-gnupg 0.5.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.4.8-2
 - Build against python 3.9
 
