@@ -3,11 +3,12 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-ostree
+%{?python_disable_dependency_generator}
 
-%global prerelease a5
+%global prerelease a6
 %global prereleaserpm %{?prerelease:.}%{?prerelease}
-
-%global release 7
+ 
+%global release 8
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.0
@@ -29,7 +30,8 @@ A Pulp plugin to support hosting ostree repositories.
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.15.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.20.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %if 0%{?rhel} == 9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gobject >= 3.40.1
@@ -81,6 +83,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 2.0.0-0.8.a6
+- Release python-pulp-ostree 2.0.0a6
+
 * Fri Jun 17 2022 Evgeni Golov - 2.0.0-0.7.a5
 - Obsolete the old Python 3.8 package for smooth upgrade
 
