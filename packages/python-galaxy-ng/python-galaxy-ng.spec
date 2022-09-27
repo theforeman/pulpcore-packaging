@@ -3,11 +3,11 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
-%global real_version 4.5.2
+%global real_version 4.5.3
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.5.2
-Release:        3%{?dist}
+Version:        4.5.3
+Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
 License:        GPLv2+
@@ -86,6 +86,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 4.5.3-1
+- Release python-galaxy-ng 4.5.3
+
 * Wed Aug 31 2022 Odilon Sousa <osousa@redhat.com> - 4.5.2-3
 - Fixing requirement for pulp-ansible
 
