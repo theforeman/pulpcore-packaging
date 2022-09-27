@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.11.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Binary dependency utility
 
 License:        Apache License, Version 2.0
@@ -26,9 +26,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-Parsley
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-distro < 1.7.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-distro >= 1.7.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging < 21.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pbr >= 2.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -69,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 2.11.0-2
+- Changing dependencies to reflect the setup config for python >= 3.6
+
 * Tue Sep 20 2022 Odilon Sousa 2.11.0-1
 - Update to 2.11.0
 
