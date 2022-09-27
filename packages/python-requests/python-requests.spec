@@ -3,10 +3,11 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name requests
+%{?python_disable_dependency_generator}
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.27.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -71,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 2.27.1-3
+- Adding the macro python_disable_dependency_generator to avoid auto dependency
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.27.1-2
 - Build against python 3.9
 
