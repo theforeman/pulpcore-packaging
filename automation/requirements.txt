@@ -5,7 +5,7 @@ pulp-container==2.14.0
 pulp-deb==2.19.0
 pulp-rpm==3.18.1
 pulp-certguard==1.5.5
-pulp-ansible==0.14.2
+pulp-ansible==0.15.0
 pulp-python==3.7.2
 pulpcore-client==3.21.0
 pulp-rpm-client==3.18.1
