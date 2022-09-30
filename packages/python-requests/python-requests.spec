@@ -6,8 +6,8 @@
 %{?python_disable_dependency_generator}
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.27.1
-Release:        3%{?dist}
+Version:        2.28.1
+Release:        1%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -27,8 +27,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-certifi >= 2017.4.17
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer < 3.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer >= 2.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer < 3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer >= 2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.3.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna >= 2.5
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 2.28.1-1
+- Release python-requests 2.28.1
+
 * Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 2.27.1-3
 - Adding the macro python_disable_dependency_generator to avoid auto dependency
 
