@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.14.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -35,7 +35,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.4
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.5
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(container) = %{version}
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 2.14.0-2
+- Fixing Loosen requirements for jsonschema
+
 * Tue Sep 20 2022 Odilon Sousa 2.14.0-1
 - Update to 2.14.0
 
