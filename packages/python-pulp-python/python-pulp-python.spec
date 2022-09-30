@@ -1,12 +1,13 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-python
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.7.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -33,7 +34,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-packaging >= 22.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pkginfo >= 1.8.2
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pkginfo >= 1.9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.17
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore > 3.25
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pypi-simple >= 0.9
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pypi-simple >= 0.10
 
@@ -78,6 +79,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 3.7.2-2
+- Fixing operator logic on Conflicts for pulpcore
+
 * Tue Sep 20 2022 Odilon Sousa 3.7.2-1
 - Update to 3.7.2
 
