@@ -60,6 +60,8 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %doc README.md
+%exclude %{python3_sitelib}/pulpcore/__pycache__/*
+%exclude %{python3_sitelib}/pulpcore/__init__.py
 %{python3_sitelib}/pulpcore
 %{python3_sitelib}/pulp_rpm_client-%{version}-py%{python3_version}.egg-info
 
