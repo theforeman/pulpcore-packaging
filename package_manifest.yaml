@@ -247,6 +247,7 @@ pulpcore_packages:
     python-sqlparse: {}
     python-tablib: {}
     python-toml: {}
+    python-types-cryptography: {}
     python-typing-extensions: {}
     python-uritemplate: {}
     python-url-normalize: {}

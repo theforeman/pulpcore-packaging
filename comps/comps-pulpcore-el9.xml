@@ -209,6 +209,7 @@
       <packagereq type="default">python3-tablib</packagereq>
       <packagereq type="default">python3-tenacity</packagereq>
       <packagereq type="default">python3-toml</packagereq>
+      <packagereq type="default">python3-types-cryptography</packagereq>
       <packagereq type="default">python3-typing-extensions</packagereq>
       <packagereq type="default">python3-uritemplate</packagereq>
       <packagereq type="default">python3-url-normalize</packagereq>
