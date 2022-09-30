@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -27,7 +27,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Provides:       %{?scl_prefix}python%{python3_pkgversion}-jwt = %{version}-%{release}
 Obsoletes:      %{?scl_prefix}python%{python3_pkgversion}-jwt < %{version}-%{release}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.4
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 3.3.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-types-cryptography >= 3.3.21
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -66,6 +67,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 2.5.0-2
+- Adding new dependency for python-pyjwt
+
 * Tue Sep 20 2022 Odilon Sousa 2.5.0-1
 - Update to 2.5.0
 
