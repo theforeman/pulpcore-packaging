@@ -3,7 +3,7 @@ pulpcore==3.21.0
 pulp-file==1.11.1
 pulp-container==2.14.0
 pulp-deb==2.19.0
-pulp-rpm==3.18.1
+pulp-rpm==3.18.5
 pulp-certguard==1.5.5
 pulp-ansible==0.15.0
 pulp-python==3.7.2
