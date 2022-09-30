@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.18.1
+Version:        3.18.5
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -42,6 +42,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.20.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.21
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.6
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33
@@ -96,6 +97,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 3.18.5-1
+- Release python-pulp-rpm 3.18.5
+
 * Tue Sep 20 2022 Odilon Sousa 3.18.1-1
 - Update to 3.18.1
 
