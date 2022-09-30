@@ -33,7 +33,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.18.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.5
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.4
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
