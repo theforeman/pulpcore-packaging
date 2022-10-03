@@ -5,8 +5,8 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.10
-Release:        3%{?dist}
+Version:        3.18.3
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -96,6 +96,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 03 2022 Patrick Creech <pcreech@redhat.com> - 3.18.3-1
+- Release python-pulp-rpm 3.18.3
+
 * Mon Sep 05 2022 Odilon Sousa <osousa@redhat.com> - 3.17.10-3
 - Bump release for a better upgrade from pulpcore 3.16
 
