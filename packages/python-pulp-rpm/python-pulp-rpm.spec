@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.18.3
+Version:        3.18.7
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -96,6 +96,12 @@ set -ex
 
 
 %changelog
+* Wed Oct 12 2022 Patrick Creech <pcreech@redhat.com> - 3.18.7-1
+- Release python-pulp-rpm 3.18.7
+
+* Wed Oct 12 2022 Patrick Creech <pcreech@redhat.com> - 3.18.6-1
+- Release python-pulp-rpm 3.18.6
+
 * Mon Oct 03 2022 Patrick Creech <pcreech@redhat.com> - 3.18.3-1
 - Release python-pulp-rpm 3.18.3
 
