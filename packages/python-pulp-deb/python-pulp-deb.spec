@@ -5,7 +5,7 @@
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.19.0
+Version:        2.20.0
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -28,7 +28,7 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-debian < 0.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-debian >= 0.1.44
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.20
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.21
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(deb) = %{version}
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 23 2022 Odilon Sousa <osousa@redhat.com> - 2.20.0-1
+- Release python-pulp-deb 2.20.0
+
 * Tue Sep 20 2022 Odilon Sousa 2.19.0-1
 - Update to 2.19.0
 
