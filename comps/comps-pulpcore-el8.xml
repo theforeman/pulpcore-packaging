@@ -154,7 +154,7 @@
       <packagereq type="default">python39-pulp-container</packagereq>
       <packagereq type="default">python39-pulp-deb</packagereq>
       <packagereq type="default">python39-pulp-file</packagereq>
-      <packagereq type="default">python39-pulp-manifest</packagereq>
+      <packagereq type="default">python39-pulp_manifest</packagereq>
       <packagereq type="default">python39-pulp-ostree</packagereq>
       <packagereq type="default">python39-pulp-python</packagereq>
       <packagereq type="default">python39-pulp-rpm</packagereq>

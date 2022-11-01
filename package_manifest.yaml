@@ -238,7 +238,7 @@ pulpcore_packages:
     python-pulp-container: {}
     python-pulp-deb: {}
     python-pulp-file: {}
-    python-pulp-manifest: {}
+    python-pulp_manifest: {}
     python-pulpcore: {}
     python-pycares: {}
     python-pycodestyle: {}
