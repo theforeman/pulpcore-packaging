@@ -6,8 +6,8 @@
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.14.0
-Release:        2%{?dist}
+Version:        2.14.2
+Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 01 2022 Ian Ballou <ianballou67@gmail.com> - 2.14.2-1
+- Update to 2.14.2
+
 * Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 2.14.0-2
 - Fixing Loosen requirements for jsonschema
 
