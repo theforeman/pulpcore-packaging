@@ -151,7 +151,7 @@
       <packagereq type="default">tfm-pulpcore-python3-pulp-container</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pulp-deb</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pulp-file</packagereq>
-      <packagereq type="default">tfm-pulpcore-python3-pulp-manifest</packagereq>
+      <packagereq type="default">tfm-pulpcore-python3-pulp_manifest</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pulp-python</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pulp-rpm</packagereq>
       <packagereq type="default">tfm-pulpcore-python3-pulp-rpm-client</packagereq>
