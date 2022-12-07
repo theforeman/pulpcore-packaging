@@ -1,5 +1,5 @@
 cryptography<3.4
-pulpcore==3.18.4
+pulpcore==3.18.11
 pulp-file==1.10.2
 pulp-container==2.10.7
 pulp-deb==2.18.0
