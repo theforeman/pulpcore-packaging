@@ -5,8 +5,8 @@
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.18.0
-Release:        3%{?dist}
+Version:        2.18.3
+Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 04 2023 Quirin Pamp <pamp@atix.de> - 2.18.3-1
+- Update to 2.18.3
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 2.18.0-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
