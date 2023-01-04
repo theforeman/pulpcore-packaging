@@ -6,7 +6,7 @@
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.14.2
+Version:        2.14.3
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -27,15 +27,15 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.14
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.15
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.18
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.18.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.5
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 3.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 5.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.18
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(container) = %{version}
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 04 2023 Odilon Sousa <osousa@redhat.com> - 2.14.3-1
+- Release python-pulp-container 2.14.3
+
 * Tue Nov 01 2022 Ian Ballou <ianballou67@gmail.com> - 2.14.2-1
 - Update to 2.14.2
 
