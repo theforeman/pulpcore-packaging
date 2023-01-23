@@ -5,7 +5,7 @@
 %global pypi_name cryptography
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.4.8
+Version:        38.0.4
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 23 2023 Patrick Creech <pcreech@redhat.com> - 38.0.4-1
+- Release python-cryptography 38.0.4
+
 * Tue Apr 26 2022 Odilon Sousa <osousa@redhat.com> - 3.4.8-1
 - Release python-cryptography 3.4.8
 
