@@ -9,13 +9,14 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.21.0
+Version:        3.21.4
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:		cryptography.patch
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
@@ -118,7 +119,7 @@ Using Pulp you can:
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -176,6 +177,9 @@ done
 
 
 %changelog
+* Mon Jan 23 2023 Patrick Creech <pcreech@redhat.com> - 3.21.4-1
+- Release python-pulpcore 3.21.4
+
 * Tue Sep 20 2022 Odilon Sousa 3.21.0-1
 - Update to 3.21.0
 
