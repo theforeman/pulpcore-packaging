@@ -9,7 +9,7 @@
 
 Name:		%{?scl_prefix}postgresql-evr
 Version:	0.0.2
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	RPM evr extension for PostgreSQL
 
 Group:    	Applications/System
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan 24 2023 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> 0.0.2-2
+- rebuilt
+
 * Mon Apr 13 2020 ianballou <ianballou67@gmail.com> 0.0.2-1
 - remove superuser requirement
 
