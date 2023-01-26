@@ -5,13 +5,14 @@
 %global pypi_name cryptography
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.4.8
+Version:        38.0.4
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
 URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.gz
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildConflicts: %{?scl_prefix}python%{python3_pkgversion}-cffi = 1.11.3
@@ -20,6 +21,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.4.1
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-rust >= 0.11.4
 
+BuildRequires:  rust-toolset
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
 
@@ -43,6 +45,7 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%cargo_prep -V 1
 %{?scl:EOF}
 
 
@@ -68,6 +71,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 25 2023 Odilon Sousa <osousa@redhat.com> - 38.0.4-1
+- Release python-cryptography 38.0.4
+
 * Tue Apr 26 2022 Odilon Sousa <osousa@redhat.com> - 3.4.8-1
 - Release python-cryptography 3.4.8
 
