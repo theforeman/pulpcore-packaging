@@ -3,10 +3,10 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-ng
-%global real_version 4.5.3
+%global real_version 4.5.5
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.5.3
+Version:        4.5.5
 Release:        1%{?dist}
 Summary:        galaxy-ng plugin for the Pulp Project
 
@@ -34,7 +34,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-spectacular
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dynaconf >= 3.1.7
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer = 0.4.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible < 1:0.14.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 1:0.13.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-ansible >= 1:0.13.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container < 2.11.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-container >= 2.10.7
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.19.0
@@ -86,6 +86,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 02 2023 Odilon Sousa <osousa@redhat.com> - 4.5.5-1
+- Release python-galaxy-ng 4.5.5
+
 * Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 4.5.3-1
 - Release python-galaxy-ng 4.5.3
 
