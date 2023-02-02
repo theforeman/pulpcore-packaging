@@ -5,8 +5,8 @@
 %global pypi_name pulp-ansible
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.13.2
-Release:        2%{?dist}
+Version:        0.13.5
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -81,6 +81,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 02 2023 Odilon Sousa <osousa@redhat.com> - 1:0.13.5-1
+- Release python-pulp-ansible 0.13.5
+
 * Tue Aug 30 2022 Odilon Sousa <osousa@redhat.com> - 1:0.13.2-2
 - Fixing requirements for pulp-ansible with aiofiles
 
