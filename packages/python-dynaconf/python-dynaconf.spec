@@ -5,12 +5,12 @@
 %global pypi_name dynaconf
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.1.9
+Version:        3.1.11
 Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
-URL:            https://github.com/rochacbruno/dynaconf
+URL:            https://github.com/dynaconf/dynaconf
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.1.11-1
+- Update to 3.1.11
+
 * Tue Sep 20 2022 Odilon Sousa 3.1.9-1
 - Update to 3.1.9
 
