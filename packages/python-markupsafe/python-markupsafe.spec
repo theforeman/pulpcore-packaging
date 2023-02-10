@@ -14,8 +14,8 @@
 %endif
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        2.0.1
-Release:        3%{?dist}
+Version:        2.1.2
+Release:        1%{?dist}
 Summary:        Safely add untrusted strings to HTML/XML markup
 
 License:        BSD-3-Clause
@@ -68,6 +68,7 @@ CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
  /usr/bin/python3.6 setup.py  build --executable="/usr/bin/python3.6 -s"
 %endif
 
+
 %install
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
@@ -78,6 +79,7 @@ set -ex
 CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
  /usr/bin/python3.6 setup.py  install --skip-build --root %{buildroot}
 %endif
+
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %license LICENSE.rst docs/license.rst
@@ -92,6 +94,9 @@ CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
 %endif
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 2.1.2-1
+- Update to 2.1.2
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.0.1-3
 - Build against python 3.9
 
