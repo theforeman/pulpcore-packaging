@@ -5,7 +5,7 @@
 %global pypi_name drf-spectacular
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.23.1
+Version:        0.25.0
 Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
@@ -17,6 +17,7 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+
 %description
 %{summary}
 
@@ -26,7 +27,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.10
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.10.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-inflection >= 0.3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 2.6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
@@ -78,6 +79,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 0.25.0-1
+- Update to 0.25.0
+
 * Tue Sep 20 2022 Odilon Sousa 0.23.1-1
 - Update to 0.23.1
 
