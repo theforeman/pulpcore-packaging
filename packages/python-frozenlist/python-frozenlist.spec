@@ -5,8 +5,8 @@
 %global pypi_name frozenlist
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.3.0
-Release:        2%{?dist}
+Version:        1.3.3
+Release:        1%{?dist}
 Summary:        A list-like structure which implements collections
 
 License:        Apache 2
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 1.3.3-1
+- Update to 1.3.3
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.3.0-2
 - Build against python 3.9
 
