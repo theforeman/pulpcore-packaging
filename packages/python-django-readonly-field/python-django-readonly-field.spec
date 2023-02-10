@@ -5,8 +5,8 @@
 %global pypi_name django-readonly-field
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.1.1
-Release:        3%{?dist}
+Version:        1.1.2
+Release:        1%{?dist}
 Summary:        Make Django model fields readonly
 
 License:        MIT
@@ -27,7 +27,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-wheel
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 1.11
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
@@ -69,10 +69,15 @@ set -ex
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/django_readonly_field
+%{python3_sitelib}/tests
 %{python3_sitelib}/django_readonly_field-%{version}-py%{python3_version}.egg-info
 %exclude  %{python3_sitelib}/tests/
 
+
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 1.1.2-1
+- Update to 1.1.2
+
 * Thu Aug 11 2022 Odilon Sousa <osousa@redhat.com> - 1.1.1-3
 - Update release for better upgrade from 3.16 to 3.18
 
