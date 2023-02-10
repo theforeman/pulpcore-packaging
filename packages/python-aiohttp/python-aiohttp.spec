@@ -5,8 +5,8 @@
 %global pypi_name aiohttp
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.8.1
-Release:        3%{?dist}
+Version:        3.8.3
+Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -16,6 +16,7 @@ Patch0:         0001-allow-larger-headers.patch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
 
 %description
 %{summary}
@@ -29,6 +30,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiodns
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiosignal >= 1.1.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout < 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 4.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-asynctest = 0.13.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cchardet
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer < 3.0
@@ -79,6 +81,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.8.3-1
+- Update to 3.8.3
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.8.1-3
 - Build against python 3.9
 
