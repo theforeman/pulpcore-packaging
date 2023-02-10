@@ -5,7 +5,7 @@
 %global pypi_name beautifulsoup4
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.11.1
+Version:        4.11.2
 Release:        1%{?dist}
 Summary:        Screen-scraping library
 
@@ -56,7 +56,7 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE COPYING.txt
+%license LICENSE
 %doc README.md
 %{python3_sitelib}/bs4
 %{python3_sitelib}/bs4/builder
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 4.11.2-1
+- Update to 4.11.2
+
 * Tue Sep 20 2022 Odilon Sousa 4.11.1-1
 - Update to 4.11.1
 
