@@ -5,8 +5,8 @@
 %global pypi_name multidict
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        6.0.2
-Release:        2%{?dist}
+Version:        6.0.4
+Release:        1%{?dist}
 Summary:        multidict implementation
 
 License:        Apache 2
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 6.0.4-1
+- Update to 6.0.4
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 6.0.2-2
 - Build against python 3.9
 
