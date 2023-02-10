@@ -5,18 +5,17 @@
 %global pypi_name ecdsa
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.14.1
-Release:        2%{?dist}
+Version:        0.18.0
+Release:        1%{?dist}
 Summary:        ECDSA cryptographic signature library (pure python)
 
 License:        MIT
-URL:            http://github.com/warner/python-ecdsa
+URL:            http://github.com/tlsfuzzer/python-ecdsa
 Source0:        https://files.pythonhosted.org/packages/source/e/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
 
 %description
 %{summary}
@@ -26,7 +25,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
@@ -35,6 +33,8 @@ Summary:        %{summary}
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Remove bundled egg-info
+rm -rf %{pypi_name}.egg-info
 %{?scl:EOF}
 
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 0.18.0-1
+- Update to 0.18.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.14.1-2
 - Build against python 3.9
 
