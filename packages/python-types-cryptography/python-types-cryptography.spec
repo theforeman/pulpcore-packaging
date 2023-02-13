@@ -1,11 +1,11 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
-# Created by pyp2rpm-3.3.8
+# Created by pyp2rpm-3.3.3
 %global pypi_name types-cryptography
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.3.23
+Version:        3.3.23.2
 Release:        1%{?dist}
 Summary:        Typing stubs for cryptography
 
@@ -60,5 +60,8 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.3.23.2-1
+- Update to 3.3.23.2
+
 * Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 3.3.23-1
 - Initial package.
