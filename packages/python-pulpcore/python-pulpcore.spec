@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.22.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -178,6 +178,9 @@ done
 
 
 %changelog
+* Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 3.22.2-2
+- Bump pulpcore release to fix one dependency requirement
+
 * Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 3.22.2-1
 - Release python-pulpcore 3.22.2
 
