@@ -5,7 +5,7 @@
 %global pypi_name pulp-file
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.11.1
+Version:        1.11.3
 Release:        1%{?dist}
 Summary:        File plugin for the Pulp Project
 
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 1.11.3-1
+- Release python-pulp-file 1.11.3
+
 * Tue Sep 20 2022 Odilon Sousa 1.11.1-1
 - Update to 1.11.1
 
