@@ -1,23 +1,22 @@
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
+%global debug_package %{nil}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name Pygments
 %global srcname pygments
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        2.11.2
-Release:        2%{?dist}
+Version:        2.14.0
+Release:        1%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
-License:        BSD License
+License:        BSD
 URL:            https://pygments.org/
 Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
-BuildArch:      noarch
 
 
 %description
@@ -27,8 +26,6 @@ BuildArch:      noarch
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -66,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 2.14.0-1
+- Update to 2.14.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.11.2-2
 - Build against python 3.9
 
