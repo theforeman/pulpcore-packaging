@@ -96,7 +96,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.5
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 6.3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.8.3
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.8
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.9
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
