@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.17.21
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
 
 License:        MIT license
@@ -28,8 +28,6 @@ BuildRequires:  libyaml-devel
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml-clib >= 0.2.6
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml-jinja2 >= 0.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-ryd
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -68,6 +66,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 0.17.21-2
+- rebuilt
+
 * Fri Feb 03 2023 Odilon Sousa 0.17.21-1
 - Update to 0.17.21
 
