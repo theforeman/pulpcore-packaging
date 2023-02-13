@@ -1,5 +1,5 @@
 cryptography<3.4
-pulpcore==3.21.0
+pulpcore==3.22.2
 pulp-file==1.11.3
 pulp-container==2.14.3
 pulp-deb==2.20.1
@@ -7,6 +7,6 @@ pulp-rpm==3.18.10
 pulp-certguard==1.5.6
 pulp-ansible==0.16.0
 pulp-python==3.8.0
-pulpcore-client==3.21.0
+pulpcore-client==3.22.2
 pulp-rpm-client==3.18.1
 #galaxy-ng==4.3.1
