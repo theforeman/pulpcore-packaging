@@ -5,12 +5,12 @@
 %global pypi_name rich
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        10.12.0
-Release:        3%{?dist}
+Version:        13.3.1
+Release:        1%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
-License:        MIT
-URL:            https://github.com/willmcgugan/rich
+License:        None
+URL:            https://github.com/Textualize/rich
 Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
@@ -41,7 +41,6 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -76,6 +75,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 13.3.1-1
+- Update to 13.3.1
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 10.12.0-3
 - Obsolete the old Python 3.9 package for smooth upgrade
 
