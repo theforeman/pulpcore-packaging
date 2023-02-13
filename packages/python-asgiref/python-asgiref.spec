@@ -5,7 +5,7 @@
 %global pypi_name asgiref
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.5.2
+Version:        3.6.0
 Release:        1%{?dist}
 Summary:        ASGI specs, helper code, and adapters
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.6.0-1
+- Update to 3.6.0
+
 * Tue Sep 20 2022 Odilon Sousa 3.5.2-1
 - Update to 3.5.2
 

@@ -5,7 +5,7 @@
 %global pypi_name backoff
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.1.2
+Version:        2.2.1
 Release:        1%{?dist}
 Summary:        Function decoration for backoff and retry
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 2.2.1-1
+- Update to 2.2.1
+
 * Tue Sep 20 2022 Odilon Sousa 2.1.2-1
 - Update to 2.1.2
 

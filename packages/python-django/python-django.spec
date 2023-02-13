@@ -6,7 +6,7 @@
 %global srcname django
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.2.16
+Version:        3.2.17
 Release:        1%{?dist}
 Summary:        A high-level Python Web framework that encourages rapid development and clean, pragmatic design
 
@@ -36,7 +36,6 @@ Obsoletes:      python3-%{srcname} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{srcname} < %{version}-%{release}
 %endif
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -82,6 +81,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.2.17-1
+- Update to 3.2.17
+
 * Tue Jan 24 2023 Odilon Sousa <osousa@redhat.com> - 3.2.16-1
 - Release python-django 3.2.16
 

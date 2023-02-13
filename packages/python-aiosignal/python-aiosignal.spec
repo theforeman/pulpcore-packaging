@@ -5,16 +5,17 @@
 %global pypi_name aiosignal
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.2.0
-Release:        2%{?dist}
+Version:        1.3.1
+Release:        1%{?dist}
 Summary:        aiosignal: a list of registered asynchronous callbacks
 
-License:        Apache 2
+License:        Apache 2.0
 URL:            https://github.com/aio-libs/aiosignal
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-frozenlist >= 1.1.0
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -63,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 1.3.1-1
+- Update to 1.3.1
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.2.0-2
 - Build against python 3.9
 

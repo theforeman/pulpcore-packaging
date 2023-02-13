@@ -5,8 +5,8 @@
 %global pypi_name djangorestframework
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.13.1
-Release:        2%{?dist}
+Version:        3.14.0
+Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -26,7 +26,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 Provides:       %{?scl_prefix}python%{python3_pkgversion}-django-rest-framework = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pytz
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -34,6 +34,8 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
+
+
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -71,6 +73,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.14.0-1
+- Update to 3.14.0
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.13.1-2
 - Obsolete the old Python 3.8 package for smooth upgrade
 

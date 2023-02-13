@@ -5,7 +5,7 @@
 %global pypi_name drf-access-policy
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.1.2
+Version:        1.3.0
 Release:        1%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
@@ -60,12 +60,16 @@ set -ex
 
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%license LICENSE.md
 %doc README.md
 %{python3_sitelib}/rest_access_policy
 %{python3_sitelib}/drf_access_policy-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 1.3.0-1
+- Update to 1.3.0
+
 * Tue Sep 20 2022 Odilon Sousa 1.1.2-1
 - Update to 1.1.2
 

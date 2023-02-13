@@ -6,7 +6,7 @@
 %global pypi_name django-import-export
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.8.0
+Version:        3.0.2
 Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
@@ -28,7 +28,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-diff-match-patch
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 3.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 3.2.1
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.0.2-1
+- Update to 3.0.2
+
 * Tue Sep 20 2022 Odilon Sousa 2.8.0-1
 - Update to 2.8.0
 
