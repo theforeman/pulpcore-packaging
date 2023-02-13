@@ -6,8 +6,8 @@
 %global srcname ruamel-yaml
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        0.17.20
-Release:        2%{?dist}
+Version:        0.17.21
+Release:        1%{?dist}
 Summary:        ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
 
 License:        MIT license
@@ -17,7 +17,8 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
+BuildRequires:  gcc
+BuildRequires:  libyaml-devel
 
 %description
 %{summary}
@@ -26,7 +27,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml-clib
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml-clib >= 0.2.6
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml-jinja2 >= 0.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ryd
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -60,11 +63,14 @@ set -ex
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/ruamel
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}-*.pth
+%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}-nspkg.pth
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 0.17.21-1
+- Update to 0.17.21
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.17.20-2
 - Build against python 3.9
 
