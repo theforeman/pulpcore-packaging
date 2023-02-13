@@ -5,7 +5,7 @@
 %global pypi_name pulp-certguard
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.5.5
+Version:        1.5.6
 Release:        1%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
@@ -78,6 +78,9 @@ set -ex
 
 
 %changelog
+* Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 1.5.6-1
+- Release python-pulp-certguard 1.5.6
+
 * Tue Sep 20 2022 Odilon Sousa 1.5.5-1
 - Update to 1.5.5
 
