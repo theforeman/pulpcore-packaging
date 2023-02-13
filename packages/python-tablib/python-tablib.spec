@@ -5,8 +5,8 @@
 %global pypi_name tablib
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.2.0
-Release:        3%{?dist}
+Version:        3.3.0
+Release:        1%{?dist}
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 
 License:        MIT
@@ -17,7 +17,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
-
 
 %description
 %{summary}
@@ -38,7 +37,6 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -75,6 +73,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.3.0-1
+- Update to 3.3.0
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.2.0-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
