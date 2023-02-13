@@ -6,8 +6,8 @@
 %global srcname markdown
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        3.3.6
-Release:        3%{?dist}
+Version:        3.4.1
+Release:        1%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 3.4.1-1
+- Update to 3.4.1
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.3.6-3
 - Build against python 3.9
 

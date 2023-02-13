@@ -5,8 +5,8 @@
 %global pypi_name future
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.18.2
-Release:        5%{?dist}
+Version:        0.18.3
+Release:        1%{?dist}
 Summary:        Clean single-source support for Python 3 and 2
 
 License:        MIT
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 0.18.3-1
+- Update to 0.18.3
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.18.2-5
 - Build against python 3.9
 

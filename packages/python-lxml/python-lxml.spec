@@ -5,11 +5,11 @@
 %global pypi_name lxml
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.7.1
-Release:        2%{?dist}
+Version:        4.9.2
+Release:        1%{?dist}
 Summary:        Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
@@ -26,7 +26,6 @@ BuildRequires:  libxslt-devel
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -65,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 4.9.2-1
+- Update to 4.9.2
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.7.1-2
 - Build against python 3.9
 

@@ -5,8 +5,8 @@
 %global pypi_name gitdb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.0.9
-Release:        2%{?dist}
+Version:        4.0.10
+Release:        1%{?dist}
 Summary:        Git Object Database
 
 License:        BSD License
@@ -16,7 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
 
 %description
 %{summary}
@@ -64,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 4.0.10-1
+- Update to 4.0.10
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.0.9-2
 - Build against python 3.9
 
