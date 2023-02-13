@@ -6,8 +6,8 @@
 %global srcname ruamel-yaml-clib
 
 Name:           %{?scl_prefix}python-%{srcname}
-Version:        0.2.6
-Release:        2%{?dist}
+Version:        0.2.7
+Release:        1%{?dist}
 Summary:        C version of reader, parser and emitter for ruamel
 
 License:        MIT
@@ -16,7 +16,6 @@ Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
 BuildRequires:  gcc
 BuildRequires:  libyaml-devel
 
@@ -66,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 03 2023 Odilon Sousa 0.2.7-1
+- Update to 0.2.7
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.2.6-2
 - Build against python 3.9
 
