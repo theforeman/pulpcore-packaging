@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.22.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -60,12 +60,12 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 22.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 22.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.8.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.9
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.9
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 1.0.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-lifecycle >= 1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.13.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.14
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.14.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-djangorestframework-queryfields >= 1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-drf-access-policy >= 1.1.2
@@ -178,6 +178,9 @@ done
 
 
 %changelog
+* Tue Feb 14 2023 Odilon Sousa <osousa@redhat.com> - 3.22.2-4
+- Fix django-import-export requirement for Pulpcore 3.22
+
 * Tue Feb 14 2023 Odilon Sousa <osousa@redhat.com> - 3.22.2-3
 - Update python-backoff requirement for Pulpcore package
 
