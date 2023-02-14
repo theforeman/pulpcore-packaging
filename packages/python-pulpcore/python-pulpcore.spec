@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.22.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -50,7 +50,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-backoff >= 2.1.2
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-backoff >= 2.2
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 8.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click <= 8.1.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 38.0.1
@@ -178,6 +178,9 @@ done
 
 
 %changelog
+* Tue Feb 14 2023 Odilon Sousa <osousa@redhat.com> - 3.22.2-3
+- Update python-backoff requirement for Pulpcore package
+
 * Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 3.22.2-2
 - Bump pulpcore release to fix one dependency requirement
 
