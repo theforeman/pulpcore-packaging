@@ -6,8 +6,8 @@
 %global srcname pyopenssl
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        19.1.0
-Release:        3%{?dist}
+Version:        22.1.0
+Release:        1%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
@@ -25,7 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 2.8
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 38.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5.2
 
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Feb 14 2023 Odilon Sousa <osousa@redhat.com> - 22.1.0-1
+- Release python-pyOpenSSL 22.1.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 19.1.0-3
 - Build against python 3.9
 
