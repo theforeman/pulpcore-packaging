@@ -1,12 +1,13 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name rich
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        13.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        None
@@ -75,6 +76,9 @@ set -ex
 
 
 %changelog
+* Tue Feb 14 2023 Odilon Sousa <osousa@redhat.com> - 13.3.1-2
+- Disable auto dependency generator
+
 * Fri Feb 03 2023 Odilon Sousa 13.3.1-1
 - Update to 13.3.1
 
