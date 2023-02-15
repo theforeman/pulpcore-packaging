@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.18.10
+Version:        3.19.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -35,16 +35,16 @@ Requires:       python%{python3_pkgversion}-gobject >= 3.22
 Conflicts:      python%{python3_pkgversion}-gobject >= 4.0
 %else
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.22
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 4.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject < 4.0
 %endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.20.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.21
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.6
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 5.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema < 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.1.15
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.2
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps < 0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.34
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
@@ -97,6 +97,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 15 2023 Ian Ballou <ianballou67@gmail.com> - 3.19.0-1
+- Release python-pulp-rpm 3.19.0
+
 * Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 3.18.10-1
 - Release python-pulp-rpm 3.18.10
 
