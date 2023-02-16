@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.19.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -42,13 +42,13 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.20.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.21
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.6
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema < 5.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.1.15
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps < 0.2
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.34
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.17.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.21
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.8
@@ -97,6 +97,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 16 2023 Odilon Sousa <osousa@redhat.com> - 3.19.0-2
+- Update requiriments for jsonschema
+
 * Wed Feb 15 2023 Ian Ballou <ianballou67@gmail.com> - 3.19.0-1
 - Release python-pulp-rpm 3.19.0
 
