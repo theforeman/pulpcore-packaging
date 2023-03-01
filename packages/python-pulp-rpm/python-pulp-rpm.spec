@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.19.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -29,13 +29,6 @@ Summary:        %{summary}
 Requires:       libmodulemd2 >= 2.12
 %else
 Requires:       libmodulemd >= 2.12
-%endif
-%if 0%{?rhel} == 9
-Requires:       python%{python3_pkgversion}-gobject >= 3.22
-Conflicts:      python%{python3_pkgversion}-gobject >= 4.0
-%else
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyGObject >= 3.22
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-PyGObject < 4.0
 %endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.20.1
@@ -97,6 +90,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 01 2023 Odilon Sousa <osousa@redhat.com> - 3.19.0-3
+- Remove PyGObject requirement, it was dropped with 3.19.0 release
+
 * Thu Feb 16 2023 Odilon Sousa <osousa@redhat.com> - 3.19.0-2
 - Update requiriments for jsonschema
 
