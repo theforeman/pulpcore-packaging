@@ -5,7 +5,7 @@
 %global pypi_name importlib-resources
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.0.0
+Version:        5.4.0
 Release:        3%{?dist}
 Summary:        Read resources from Python packages
 
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Aug 08 2022 Odilon Sousa <osousa@redhat.com> - 5.4.0-3
+- Force setuptools_scm usage for older setuptools for python-importlib-resources
+
 * Fri Aug 05 2022 Odilon Sousa <osousa@redhat.com> - 5.0.0-3
 - Force setuptools_scm usage for older setuptools on python-importlib-resources
 
