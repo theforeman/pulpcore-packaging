@@ -5,8 +5,8 @@
 %global pypi_name pulpcore-client
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.17.3
-Release:        2%{?dist}
+Version:        3.18.15
+Release:        1%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Fri Mar 10 2023 Odilon Sousa <osousa@redhat.com> - 3.18.15-1
+- Release python-pulpcore-client 3.18.15
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.17.3-2
 - Build against python 3.9
 
