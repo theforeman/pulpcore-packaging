@@ -5,8 +5,8 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.19.0
-Release:        3%{?dist}
+Version:        3.19.2
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -90,6 +90,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 20 2023 Odilon Sousa <osousa@redhat.com> - 3.19.2-1
+- Release python-pulp-rpm 3.19.2
+
 * Wed Mar 01 2023 Odilon Sousa <osousa@redhat.com> - 3.19.0-3
 - Remove PyGObject requirement, it was dropped with 3.19.0 release
 
