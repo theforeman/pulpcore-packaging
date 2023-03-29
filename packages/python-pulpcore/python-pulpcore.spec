@@ -9,7 +9,7 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.18.15
+Version:        3.18.16
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -180,6 +180,9 @@ done
 
 
 %changelog
+* Wed Mar 29 2023 Odilon Sousa <osousa@redhat.com> - 3.18.16-1
+- Release python-pulpcore 3.18.16
+
 * Fri Mar 10 2023 Odilon Sousa <osousa@redhat.com> - 3.18.15-1
 - Release python-pulpcore 3.18.15
 
