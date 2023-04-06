@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm-client
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.18.5
+Version:        3.18.13
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -67,6 +67,12 @@ set -ex
 
 
 %changelog
+* Thu Apr 06 2023 Odilon Sousa <osousa@redhat.com> - 3.18.13-1
+- Release python-pulp-rpm-client 3.18.13
+
+* Wed Dec 07 2022 Odilon Sousa <osousa@redhat.com> - 3.18.9-1
+- Release python-pulp-rpm-client 3.18.9
+
 * Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 3.18.5-1
 - Release python-pulp-rpm-client 3.18.5
 
