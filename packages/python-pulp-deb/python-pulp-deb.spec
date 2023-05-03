@@ -5,7 +5,7 @@
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.20.1
+Version:        2.20.2
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Wed May 03 2023 Quirin Pamp <pamp@atix.de> - 2.20.2-1
+- Update to 2.20.2
+
 * Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 2.20.1-1
 - Release python-pulp-deb 2.20.1
 
