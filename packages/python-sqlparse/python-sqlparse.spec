@@ -5,17 +5,19 @@
 %global pypi_name sqlparse
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.4.2
-Release:        3%{?dist}
+Version:        0.4.4
+Release:        1%{?dist}
 Summary:        A non-validating SQL parser
 
 License:        BSD-3-Clause
 URL:            https://github.com/andialbrecht/sqlparse
 Source0:        https://files.pythonhosted.org/packages/source/s/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source1:        001-SETUP-CFG
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
 
 
 %description
@@ -38,6 +40,9 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# create a minimal setup.py, the rest will be done by setuptools
+printf 'from setuptools import setup\nsetup()' > setup.py
+cp %{_topdir}/SOURCES/001-SETUP-CFG setup.cfg
 %{?scl:EOF}
 
 
@@ -64,6 +69,10 @@ set -ex
 
 
 %changelog
+* Mon Jun 12 2023 Odilon Sousa <osousa@redhat.com> - 0.4.4-1
+- Release python-sqlparse 0.4.4
+- Add setup.cfg and setup.py to build package on EL8
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.4.2-3
 - Build against python 3.9
 
