@@ -10,13 +10,13 @@ FOREMAN_PACKAGING_GIT="https://github.com/theforeman/foreman-packaging"
 FOREMAN_PACKAGING_BRANCH="rpm/develop"
 PULPCORE_PACKAGING="${PACKAGING_WORKDIR}/pulpcore"
 PULPCORE_PACKAGING_GIT="https://github.com/theforeman/pulpcore-packaging"
-PULPCORE_PACKAGING_BRANCH="rpm/3.17"
+PULPCORE_PACKAGING_BRANCH="rpm/3.22"
 PULPCORE_TAG="katello-pulpcore-nightly-el7"
 
 pip3 install --upgrade pip
 pip3 install scikit-build
 pip3 install -r $PULPCORE_REQUIREMENTS
-pip3 freeze |sed '/gobject/d; /scikit/d; /libcomps/d; /solv/d; /createrepo/d; /distro/d; /^ansible/d; /^jsonschema/d' > $PULPCORE_FULL_REQUIREMENTS
+pip3 freeze |sed '/gobject/d; /scikit/d; /libcomps/d; /solv/d; /createrepo/d; /distro/d; /^ansible/d; /^beautifulsoup/d; /^black/d; /^jsonschema/d; /^certifi/d' > $PULPCORE_FULL_REQUIREMENTS
 
 pip3 install git+https://github.com/evgeni/pyp2rpm.git@foreman#egg=pyp2rpm
 pip3 install spec2scl
@@ -36,7 +36,7 @@ if [ -d $PACKAGING_WORKDIR ]; then
   while read line; do
     pkg=${line%==*}
     version=${line#*==}
-    REWRITE_ON_SAME_VERSION=false $FOREMAN_PACKAGING/add_pypi_package.sh ${pkg} ${version} $PULPCORE_TAG '/' $PULPCORE_PACKAGING/pyp2rpm/pulpcore.spec
+    REWRITE_ON_SAME_VERSION=false $FOREMAN_PACKAGING/add_pypi_package.sh ${pkg} ${version} $PULPCORE_TAG '/' $PULPCORE_PACKAGING/pyp2rpm/pulpcore.spec || :
     # don't hit pypi.org too hard, it sometimes decides to ratelimit us
     sleep 5
   done < $PULPCORE_FULL_REQUIREMENTS
