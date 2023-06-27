@@ -10,7 +10,7 @@ builder = obal.tito_extensions.git_annex_spec_builder.GitAnnexSpecBuilder
 tagger = tito.tagger.ReleaseTagger
 lib_dir = rel-eng/custom/
 
-[pulpcore-3.22-el8]
+[pulpcore-3.28-el8]
 disttag = .el8
 blacklist =
   libsolv0
@@ -18,7 +18,7 @@ blacklist =
   subscription-manager
   tfm-pulpcore
 
-[pulpcore-3.22-el9]
+[pulpcore-3.28-el9]
 disttag = .el9
 blacklist =
   libsolv0
