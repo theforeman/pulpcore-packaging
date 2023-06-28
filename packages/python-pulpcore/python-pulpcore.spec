@@ -9,8 +9,8 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.22.2
-Release:        4%{?dist}
+Version:        3.22.7
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -178,6 +178,9 @@ done
 
 
 %changelog
+* Wed Jun 28 2023 Odilon Sousa <osousa@redhat.com> - 3.22.7-1
+- Release python-pulpcore 3.22.7
+
 * Tue Feb 14 2023 Odilon Sousa <osousa@redhat.com> - 3.22.2-4
 - Fix django-import-export requirement for Pulpcore 3.22
 
