@@ -5,7 +5,7 @@
 %global pypi_name drf-spectacular
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.25.0
+Version:        0.26.2
 Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
@@ -16,7 +16,6 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
 
 %description
 %{summary}
@@ -31,12 +30,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >=
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-inflection >= 0.3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 2.6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
-%if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
-%endif
+
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -48,8 +42,6 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
-sed -i 's/long_description = readme.read.*/long_description = description/' setup.py
 %{?scl:EOF}
 
 
@@ -71,14 +63,13 @@ set -ex
 %license LICENSE docs/license.rst
 %doc README.rst docs/readme.rst
 %{python3_sitelib}/drf_spectacular
-%{python3_sitelib}/drf_spectacular/contrib
-%{python3_sitelib}/drf_spectacular/management
-%{python3_sitelib}/drf_spectacular/management/commands
-%{python3_sitelib}/drf_spectacular/validation
 %{python3_sitelib}/drf_spectacular-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Jun 27 2023 Odilon Sousa 0.26.2-1
+- Update to 0.26.2
+
 * Fri Feb 03 2023 Odilon Sousa 0.25.0-1
 - Update to 0.25.0
 
