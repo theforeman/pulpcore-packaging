@@ -6,7 +6,7 @@
 %{?python_disable_dependency_generator}
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.28.1
+Version:        2.31.0
 Release:        1%{?dist}
 Summary:        Python HTTP for Humans
 
@@ -33,7 +33,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.3.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna >= 2.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL >= 0.14
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 < 1.27
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 >= 1.21.1
 
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 03 2023 Patrick Creech <pcreech@redhat.com> - 2.31.0-1
+- Release python-requests 2.31.0
+
 * Fri Sep 30 2022 Odilon Sousa <osousa@redhat.com> - 2.28.1-1
 - Release python-requests 2.28.1
 
