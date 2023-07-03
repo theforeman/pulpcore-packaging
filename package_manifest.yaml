@@ -165,6 +165,7 @@ pulpcore_packages:
     python-oauthlib: {}
     python-parsley: {}
     python-pbr: {}
+    python-pillow: {}
     python-pkginfo: {}
     python-protobuf: {}
     python-pulp-ostree: {}
