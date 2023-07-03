@@ -5,7 +5,7 @@
 %global pypi_name bandersnatch
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        5.3.0
+Version:        6.1.0
 Release:        1%{?dist}
 Summary:        Mirroring tool that implements the client (mirror) side of PEP 381
 
@@ -38,6 +38,7 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
 %endif
+
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
@@ -48,7 +49,6 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-sed -i '/setuptools/ s/>40.0.0//' setup.cfg
 %{?scl:EOF}
 
 
@@ -77,6 +77,9 @@ set -ex
 
 
 %changelog
+* Tue Jun 27 2023 Odilon Sousa 6.1.0-1
+- Update to 6.1.0
+
 * Tue Sep 20 2022 Odilon Sousa 5.3.0-1
 - Update to 5.3.0
 
