@@ -168,6 +168,7 @@ pulpcore_packages:
     python-pillow: {}
     python-pkginfo: {}
     python-protobuf: {}
+    python-psycopg: {}
     python-pulp-ostree: {}
     python-pulp-python: {}
     python-pulp-rpm-client: {}

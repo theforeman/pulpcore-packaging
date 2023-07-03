@@ -146,6 +146,7 @@
       <packagereq type="default">python3-pillow</packagereq>
       <packagereq type="default">python3-pkginfo</packagereq>
       <packagereq type="default">python3-protobuf</packagereq>
+      <packagereq type="default">python3-psycopg</packagereq>
       <packagereq type="default">python3-productmd</packagereq>
       <packagereq type="default">python3-prometheus-client</packagereq>
       <packagereq type="default">python3-psycopg2</packagereq>

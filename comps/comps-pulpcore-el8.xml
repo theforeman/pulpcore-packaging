@@ -146,6 +146,7 @@
       <packagereq type="default">python39-pillow</packagereq>
       <packagereq type="default">python39-pkginfo</packagereq>
       <packagereq type="default">python39-protobuf</packagereq>
+      <packagereq type="default">python39-psycopg</packagereq>
       <packagereq type="default">python39-productmd</packagereq>
       <packagereq type="default">python39-prometheus-client</packagereq>
       <packagereq type="default">python39-psycopg2</packagereq>
