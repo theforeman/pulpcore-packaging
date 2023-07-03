@@ -5,7 +5,7 @@
 %global pypi_name dynaconf
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.1.11
+Version:        3.1.12
 Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
@@ -16,6 +16,7 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 38.6.0
+
 
 %description
 %{summary}
@@ -68,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Jun 27 2023 Odilon Sousa 3.1.12-1
+- Update to 3.1.12
+
 * Fri Feb 03 2023 Odilon Sousa 3.1.11-1
 - Update to 3.1.11
 
