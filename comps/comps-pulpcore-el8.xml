@@ -218,6 +218,7 @@
       <packagereq type="default">python39-url-normalize</packagereq>
       <packagereq type="default">python39-urllib3</packagereq>
       <packagereq type="default">python39-urlman</packagereq>
+      <packagereq type="default">python39-uuid6</packagereq>
       <packagereq type="default">python39-wcmatch</packagereq>
       <packagereq type="default">python39-webencodings</packagereq>
       <packagereq type="default">python39-whitenoise</packagereq>

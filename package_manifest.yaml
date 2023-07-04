@@ -255,6 +255,7 @@ pulpcore_packages:
     python-url-normalize: {}
     python-urllib3: {}
     python-urlman: {}
+    python-uuid6: {}
     python-webencodings: {}
     python-whitenoise: {}
     python-wrapt: {}
