@@ -152,6 +152,7 @@ pulpcore_packages:
     python-galaxy-importer: {}
     python-galaxy-ng: {}
     python-gnupg: {}
+    python-googleapis-common-protos: {}
     python-grpcio: {}
     python-gunicorn: {}
     python-idna: {}
