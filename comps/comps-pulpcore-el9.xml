@@ -111,6 +111,7 @@
       <packagereq type="default">python3-gitdb</packagereq>
       <packagereq type="default">python3-gitpython</packagereq>
       <packagereq type="default">python3-gnupg</packagereq>
+      <packagereq type="default">python3-grpcio</packagereq>
       <packagereq type="default">python3-gunicorn</packagereq>
       <packagereq type="default">python3-humanfriendly</packagereq>
       <packagereq type="default">python3-idna</packagereq>

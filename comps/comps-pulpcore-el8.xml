@@ -111,6 +111,7 @@
       <packagereq type="default">python39-gitdb</packagereq>
       <packagereq type="default">python39-gitpython</packagereq>
       <packagereq type="default">python39-gnupg</packagereq>
+      <packagereq type="default">python39-grpcio</packagereq>
       <packagereq type="default">python39-gunicorn</packagereq>
       <packagereq type="default">python39-humanfriendly</packagereq>
       <packagereq type="default">python39-idna</packagereq>
