@@ -72,6 +72,9 @@ set -ex
 * Fri Aug 11 2023 Odilon Sousa <osousa@redhat.com> - 3.21.15-1
 - Release python-pulpcore-client 3.21.15
 
+* Mon Jul 10 2023 Odilon Sousa <osousa@redhat.com> - 3.21.9-1
+- Release python-pulpcore-client 3.21.9
+
 * Wed Mar 29 2023 Odilon Sousa <osousa@redhat.com> - 3.21.6-1
 - Release python-pulpcore-client 3.21.6
 
