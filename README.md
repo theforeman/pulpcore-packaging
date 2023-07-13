@@ -12,8 +12,7 @@ If you're just submitting a fix, you don't need anything special.
 
 To build locally or release RPMs from this repo, you also require:
 
-* [obal](https://github.com/theforeman/obal) 0.0.2 or higher
-* [tito](https://github.com/dgoodwin/tito) 0.6.1 or higher
+* [obal](https://github.com/theforeman/obal) 0.10.0 or higher
 * [mock](http://fedoraproject.org/wiki/Projects/Mock) or koji client and an account (certificate) on koji.katello.org
 
 ## Built repos and usage within Katello
