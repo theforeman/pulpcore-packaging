@@ -9,6 +9,7 @@ all:
 packages:
   vars:
     rpmlint_rc_file: "{{ inventory_dir }}/.rpmlintrc"
+    build_package_use_koji_build: true
   children:
     pulpcore_packages: {}
 
@@ -45,8 +46,6 @@ pulpcore_packages:
         dist: '.el7'
       - name: pulpcore-{{ pulpcore_version }}-el8
         dist: '.el8'
-    releasers:
-      - koji-katello-pulpcore
     repoclosure_target_repos:
       el7:
         - "el7-pulpcore-{{ pulpcore_version }}"
