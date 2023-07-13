@@ -250,6 +250,7 @@ pulpcore_packages:
     python-smmap: {}
     python-sqlparse: {}
     python-tablib: {}
+    python-tomli: {}
     python-toml: {}
     python-types-cryptography: {}
     python-typing-extensions: {}
