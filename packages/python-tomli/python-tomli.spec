@@ -34,6 +34,7 @@ Summary:        %{summary}
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
+
 %prep
 set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
@@ -51,7 +52,7 @@ set -ex
 %py3_install
 
 
-%files -n python%{python3_pkgversion}-%{pypi_name}
+%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %doc README.md
 %license LICENSE
 %{python3_sitelib}/%{pypi_name}
