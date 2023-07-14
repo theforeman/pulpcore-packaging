@@ -148,6 +148,7 @@ pulpcore_packages:
     python-jmespath: {}
     python-filelock: {}
     python-flake8: {}
+    python-flit-core: {}
     python-future: {}
     python-galaxy-importer: {}
     python-galaxy-ng: {}
