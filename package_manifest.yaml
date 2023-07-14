@@ -64,6 +64,7 @@ pulpcore_packages:
     libsolv: {}
     postgresql-debversion: {}
     postgresql-evr: {}
+    pyproject-rpm-macros: {}
     pulpcore-selinux: {}
     python-aiodns: {}
     python-aiofiles: {}
