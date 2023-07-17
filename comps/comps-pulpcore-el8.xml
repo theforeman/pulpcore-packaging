@@ -106,6 +106,7 @@
       <packagereq type="default">python39-et-xmlfile</packagereq>
       <packagereq type="default">python39-filelock</packagereq>
       <packagereq type="default">python39-flake8</packagereq>
+      <packagereq type="default">python39-flit</packagereq>
       <packagereq type="default">python39-flit-core</packagereq>
       <packagereq type="default">python39-frozenlist</packagereq>
       <packagereq type="default">python39-future</packagereq>
