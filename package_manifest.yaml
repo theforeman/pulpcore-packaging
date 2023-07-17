@@ -141,6 +141,7 @@ pulpcore_packages:
     python-drf-yasg: {}
     python-dynaconf: {}
     python-ecdsa: {}
+    python-editables: {}
     python-enrich: {}
     python-et-xmlfile: {}
     python-frozenlist: {}
