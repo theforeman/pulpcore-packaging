@@ -94,6 +94,7 @@
       <packagereq type="default">python39-django-storages</packagereq>
       <packagereq type="default">python39-djangorestframework</packagereq>
       <packagereq type="default">python39-djangorestframework-queryfields</packagereq>
+      <packagereq type="default">python39-docutils</packagereq>
       <packagereq type="default">python39-dotenv</packagereq>
       <packagereq type="default">python39-drf-access-policy</packagereq>
       <packagereq type="default">python39-drf-nested-routers</packagereq>
