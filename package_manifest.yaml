@@ -253,7 +253,7 @@ pulpcore_packages:
     python-sqlparse: {}
     python-tablib: {}
     python-tomli: {}
-    python-tomli-w: {}
+    python-tomli_w: {}
     python-toml: {}
     python-types-cryptography: {}
     python-typing-extensions: {}
