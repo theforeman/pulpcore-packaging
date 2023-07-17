@@ -103,6 +103,7 @@
       <packagereq type="default">python3-drf-yasg</packagereq>
       <packagereq type="default">python3-dynaconf</packagereq>
       <packagereq type="default">python3-ecdsa</packagereq>
+      <packagereq type="default">python3-editables</packagereq>
       <packagereq type="default">python3-enrich</packagereq>
       <packagereq type="default">python3-et-xmlfile</packagereq>
       <packagereq type="default">python3-filelock</packagereq>
