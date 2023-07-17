@@ -218,7 +218,7 @@
       <packagereq type="default">python39-tenacity</packagereq>
       <packagereq type="default">python39-toml</packagereq>
       <packagereq type="default">python39-tomli</packagereq>
-      <packagereq type="default">python39-tomli-w</packagereq>
+      <packagereq type="default">python39-tomli_w</packagereq>
       <packagereq type="default">python39-types-cryptography</packagereq>
       <packagereq type="default">python39-typing-extensions</packagereq>
       <packagereq type="default">python39-uritemplate</packagereq>
