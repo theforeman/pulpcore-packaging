@@ -149,6 +149,7 @@
       <packagereq type="default">python3-openpyxl</packagereq>
       <packagereq type="default">python3-packaging</packagereq>
       <packagereq type="default">python3-parsley</packagereq>
+      <packagereq type="default">python3-pathspec</packagereq>
       <packagereq type="default">python3-pbr</packagereq>
       <packagereq type="default">python3-pillow</packagereq>
       <packagereq type="default">python3-pkginfo</packagereq>

@@ -149,6 +149,7 @@
       <packagereq type="default">python39-openpyxl</packagereq>
       <packagereq type="default">python39-packaging</packagereq>
       <packagereq type="default">python39-parsley</packagereq>
+      <packagereq type="default">python39-pathspec</packagereq>
       <packagereq type="default">python39-pbr</packagereq>
       <packagereq type="default">python39-pillow</packagereq>
       <packagereq type="default">python39-pkginfo</packagereq>
