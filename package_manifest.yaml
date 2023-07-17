@@ -95,6 +95,7 @@ pulpcore_packages:
     python-box: {}
     python-bracex: {}
     python-brotli: {}
+    python-calver: {}
     python-cchardet: {}
     python-certifi: {}
     python-cffi: {}
