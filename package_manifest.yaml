@@ -170,6 +170,7 @@ pulpcore_packages:
     python-msrest: {}
     python-oauthlib: {}
     python-parsley: {}
+    python-pathspec: {}
     python-pbr: {}
     python-pillow: {}
     python-pkginfo: {}
