@@ -259,6 +259,7 @@ pulpcore_packages:
     python-tablib: {}
     python-tomli: {}
     python-tomli_w: {}
+    python-trove-classifiers: {}
     python-toml: {}
     python-types-cryptography: {}
     python-typing-extensions: {}
