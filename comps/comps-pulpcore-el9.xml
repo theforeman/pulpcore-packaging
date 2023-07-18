@@ -110,6 +110,7 @@
       <packagereq type="default">python3-flake8</packagereq>
       <packagereq type="default">python3-flit</packagereq>
       <packagereq type="default">python3-flit-core</packagereq>
+      <packagereq type="default">python3-flit_scm</packagereq>
       <packagereq type="default">python3-frozenlist</packagereq>
       <packagereq type="default">python3-future</packagereq>
       <packagereq type="default">python3-galaxy-importer</packagereq>
