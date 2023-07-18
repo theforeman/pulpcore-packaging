@@ -256,6 +256,7 @@ pulpcore_packages:
     python-setuptools_scm_git_archive: {}
     python-six: {}
     python-smmap: {}
+    python-sniffio: {}
     python-sqlparse: {}
     python-tablib: {}
     python-tomli: {}

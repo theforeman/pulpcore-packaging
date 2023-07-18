@@ -213,6 +213,7 @@
       <packagereq type="default">python3-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">python3-six</packagereq>
       <packagereq type="default">python3-smmap</packagereq>
+      <packagereq type="default">python3-sniffio</packagereq>
       <packagereq type="default">python3-social-auth-app-django</packagereq>
       <packagereq type="default">python3-social-auth-core</packagereq>
       <packagereq type="default">python3-socks</packagereq>
