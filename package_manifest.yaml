@@ -160,6 +160,7 @@ pulpcore_packages:
     python-googleapis-common-protos: {}
     python-grpcio: {}
     python-gunicorn: {}
+    python-hatchling: {}
     python-idna: {}
     python-idna-ssl: {}
     python-importlib-metadata: {}
