@@ -214,6 +214,7 @@
       <packagereq type="default">python39-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">python39-six</packagereq>
       <packagereq type="default">python39-smmap</packagereq>
+      <packagereq type="default">python39-sniffio</packagereq>
       <packagereq type="default">python39-social-auth-app-django</packagereq>
       <packagereq type="default">python39-social-auth-core</packagereq>
       <packagereq type="default">python39-socks</packagereq>
