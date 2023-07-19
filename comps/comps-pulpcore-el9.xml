@@ -148,6 +148,7 @@
       <packagereq type="default">python3-mccabe</packagereq>
       <packagereq type="default">python3-mongoengine</packagereq>
       <packagereq type="default">python3-msrest</packagereq>
+      <packagereq type="default">python3-more-itertools</packagereq>
       <packagereq type="default">python3-multidict</packagereq>
       <packagereq type="default">python3-naya</packagereq>
       <packagereq type="default">python3-oauthlib</packagereq>
