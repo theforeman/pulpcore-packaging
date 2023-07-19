@@ -124,6 +124,7 @@
       <packagereq type="default">python3-h11</packagereq>
       <packagereq type="default">python3-hatchling</packagereq>
       <packagereq type="default">python3-humanfriendly</packagereq>
+      <packagereq type="default">python3-hyperlink</packagereq>
       <packagereq type="default">python3-idna</packagereq>
       <packagereq type="default">python3-idna-ssl</packagereq>
       <packagereq type="default">python3-importlib-metadata</packagereq>
