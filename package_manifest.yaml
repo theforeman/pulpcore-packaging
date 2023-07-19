@@ -199,6 +199,7 @@ pulpcore_packages:
     python-rhsm: {}
     python-s3transfer: {}
     python-schema: {}
+    python-secretstorage: {}
     python-social-auth-app-django: {}
     python-social-auth-core: {}
     python-socks: {}
