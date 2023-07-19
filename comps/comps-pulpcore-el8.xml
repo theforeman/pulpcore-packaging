@@ -134,6 +134,7 @@
       <packagereq type="default">python39-isodate</packagereq>
       <packagereq type="default">python39-itypes</packagereq>
       <packagereq type="default">python39-jdcal</packagereq>
+      <packagereq type="default">python39-jeepney</packagereq>
       <packagereq type="default">python39-jinja2</packagereq>
       <packagereq type="default">python39-jmespath</packagereq>
       <packagereq type="default">python39-jsonschema</packagereq>
