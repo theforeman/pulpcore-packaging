@@ -134,6 +134,7 @@
       <packagereq type="default">python3-isodate</packagereq>
       <packagereq type="default">python3-itypes</packagereq>
       <packagereq type="default">python3-jdcal</packagereq>
+      <packagereq type="default">python3-jeepney</packagereq>
       <packagereq type="default">python3-jinja2</packagereq>
       <packagereq type="default">python3-jmespath</packagereq>
       <packagereq type="default">python3-jsonschema</packagereq>
