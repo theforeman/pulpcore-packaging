@@ -214,6 +214,7 @@
       <packagereq type="default">python3-ruamel-yaml-clib</packagereq>
       <packagereq type="default">python3-s3transfer</packagereq>
       <packagereq type="default">python3-schema</packagereq>
+      <packagereq type="default">python3-secretstorage</packagereq>
       <packagereq type="default">python3-semantic-version</packagereq>
       <packagereq type="default">python3-setuptools-rust</packagereq>
       <packagereq type="default">python3-setuptools-scm</packagereq>
