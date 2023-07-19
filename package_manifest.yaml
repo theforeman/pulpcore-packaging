@@ -170,6 +170,7 @@ pulpcore_packages:
     python-importlib-resources: {}
     python-inflection: {}
     python-isodate: {}
+    python-jaraco-classes: {}
     python-jeepney: {}
     python-lxml: {}
     python-marshmallow: {}
