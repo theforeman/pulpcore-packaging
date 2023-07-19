@@ -162,6 +162,7 @@
       <packagereq type="default">python39-pkginfo</packagereq>
       <packagereq type="default">python39-pluggy</packagereq>
       <packagereq type="default">python39-protobuf</packagereq>
+      <packagereq type="default">python39-ptyprocess</packagereq>
       <packagereq type="default">python39-psycopg</packagereq>
       <packagereq type="default">python39-productmd</packagereq>
       <packagereq type="default">python39-prometheus-client</packagereq>

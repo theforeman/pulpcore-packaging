@@ -183,6 +183,7 @@ pulpcore_packages:
     python-pkginfo: {}
     python-pluggy: {}
     python-protobuf: {}
+    python-ptyprocess: {}
     python-psycopg: {}
     python-pulp-ostree: {}
     python-pulp-python: {}
