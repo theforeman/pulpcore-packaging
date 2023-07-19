@@ -173,6 +173,7 @@ pulpcore_packages:
     python-jeepney: {}
     python-lxml: {}
     python-marshmallow: {}
+    python-more-itertools: {}
     python-msrest: {}
     python-oauthlib: {}
     python-parsley: {}
