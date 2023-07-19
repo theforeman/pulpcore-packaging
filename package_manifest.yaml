@@ -179,6 +179,7 @@ pulpcore_packages:
     python-parsley: {}
     python-pathspec: {}
     python-pbr: {}
+    python-pexpect: {}
     python-pillow: {}
     python-pkginfo: {}
     python-pluggy: {}
