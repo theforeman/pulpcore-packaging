@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.18.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -23,21 +23,18 @@ BuildRequires:  python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-trove-classifiers
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-pathspec
-Requires:       python%{python3_pkgversion}-editables
-Requires:       python%{python3_pkgversion}-pluggy
-Requires:       python%{python3_pkgversion}-tomli
-Requires:       python%{python3_pkgversion}-packaging
-Requires:       python%{python3_pkgversion}-trove-classifiers
-
-
 %description
 %{summary}
 
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
+Requires:       python%{python3_pkgversion}-pathspec
+Requires:       python%{python3_pkgversion}-editables
+Requires:       python%{python3_pkgversion}-pluggy
+Requires:       python%{python3_pkgversion}-packaging
+Requires:       python%{python3_pkgversion}-trove-classifiers
+Requires:       pyproject-rpm-macros
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -63,5 +60,8 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Thu Jul 20 2023 Odilon Sousa <osousa@redhat.com> - 1.18.0-2
+- Add package requirements
+
 * Mon Jul 17 2023 Odilon Sousa - 1.18.0-1
 - Initial package.
