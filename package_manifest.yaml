@@ -74,6 +74,7 @@ pulpcore_packages:
     python-aioredis: {}
     python-aiosignal: {}
     python-ansible-builder: {}
+    python-anyio: {}
     python-asgiref: {}
     python-async-lru: {}
     python-async-timeout: {}
