@@ -140,6 +140,7 @@
       <packagereq type="default">python39-jinja2</packagereq>
       <packagereq type="default">python39-jmespath</packagereq>
       <packagereq type="default">python39-jsonschema</packagereq>
+      <packagereq type="default">python39-keyring</packagereq>
       <packagereq type="default">python39-ldap</packagereq>      
       <packagereq type="default">python39-libcomps</packagereq>
       <packagereq type="default">python39-lxml</packagereq>

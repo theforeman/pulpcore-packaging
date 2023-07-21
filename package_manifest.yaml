@@ -213,6 +213,7 @@ pulpcore_packages:
     python-jdcal: {}
     python-jinja2: {}
     python-jsonschema: {}
+    python-keyring: {}
     python-ldap: {}
     python-markdown: {}
     python-markuppy: {}
