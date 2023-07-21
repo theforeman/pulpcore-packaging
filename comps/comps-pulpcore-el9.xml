@@ -140,6 +140,7 @@
       <packagereq type="default">python3-jinja2</packagereq>
       <packagereq type="default">python3-jmespath</packagereq>
       <packagereq type="default">python3-jsonschema</packagereq>
+      <packagereq type="default">python3-keyring</packagereq>
       <packagereq type="default">python3-ldap</packagereq>
       <packagereq type="default">python3-libcomps</packagereq>
       <packagereq type="default">python3-lxml</packagereq>
