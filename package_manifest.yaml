@@ -144,6 +144,7 @@ pulpcore_packages:
     python-editables: {}
     python-enrich: {}
     python-et-xmlfile: {}
+    python-exceptiongroup: {}
     python-frozenlist: {}
     python-gitdb: {}
     python-gitpython: {}
