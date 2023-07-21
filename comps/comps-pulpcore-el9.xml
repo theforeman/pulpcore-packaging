@@ -35,6 +35,7 @@
       <packagereq type="default">python3-aioredis</packagereq>
       <packagereq type="default">python3-aiosignal</packagereq>
       <packagereq type="default">python3-ansible-builder</packagereq>
+      <packagereq type="default">python3-anyio</packagereq>
       <packagereq type="default">python3-asgiref</packagereq>
       <packagereq type="default">python3-async-lru</packagereq>
       <packagereq type="default">python3-async-timeout</packagereq>

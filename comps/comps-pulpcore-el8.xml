@@ -35,6 +35,7 @@
       <packagereq type="default">python39-aioredis</packagereq>
       <packagereq type="default">python39-aiosignal</packagereq>
       <packagereq type="default">python39-ansible-builder</packagereq>
+      <packagereq type="default">python39-anyio</packagereq>
       <packagereq type="default">python39-asgiref</packagereq>
       <packagereq type="default">python39-async-lru</packagereq>
       <packagereq type="default">python39-async-timeout</packagereq>
