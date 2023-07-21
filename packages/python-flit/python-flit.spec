@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -22,18 +22,16 @@ BuildRequires:  pyproject-rpm-macros
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-flit_core
 
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli-w
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-docutils
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-flit_core
-
 %description
 %{summary}
 
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli-w
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-docutils
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flit_core
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -62,5 +60,8 @@ set -ex
 %{_bindir}/flit
 
 %changelog
+* Thu Jul 20 2023 Odilon Sousa <osousa@redhat.com> - 3.9.0-2
+- Add package requirements
+
 * Fri Jul 14 2023 Odilon Sousa - 3.9.0-1
 - Initial package.
