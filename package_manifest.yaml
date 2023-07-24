@@ -189,6 +189,7 @@ pulpcore_packages:
     python-pexpect: {}
     python-pillow: {}
     python-pkginfo: {}
+    python-platformdirs: {}
     python-pluggy: {}
     python-poetry_core: {}
     python-poetry: {}

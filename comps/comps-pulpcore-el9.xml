@@ -169,6 +169,7 @@
       <packagereq type="default">python3-pbr</packagereq>
       <packagereq type="default">python3-pillow</packagereq>
       <packagereq type="default">python3-pkginfo</packagereq>
+      <packagereq type="default">python3-platformdirs</packagereq>
       <packagereq type="default">python3-pluggy</packagereq>
       <packagereq type="default">python3-poetry_core</packagereq>
       <packagereq type="default">python3-protobuf</packagereq>
