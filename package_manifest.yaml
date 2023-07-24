@@ -166,6 +166,7 @@ pulpcore_packages:
     python-gunicorn: {}
     python-h11: {}
     python-hatchling: {}
+    python-httpcore: {}
     python-idna: {}
     python-idna-ssl: {}
     python-importlib-metadata: {}
