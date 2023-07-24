@@ -249,6 +249,7 @@
       <packagereq type="default">python3-url-normalize</packagereq>
       <packagereq type="default">python3-urllib3</packagereq>
       <packagereq type="default">python3-urlman</packagereq>
+      <packagereq type="default">python3-userpath</packagereq>
       <packagereq type="default">python3-uuid6</packagereq>
       <packagereq type="default">python3-wcmatch</packagereq>
       <packagereq type="default">python3-webencodings</packagereq>
