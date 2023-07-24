@@ -169,6 +169,7 @@
       <packagereq type="default">python39-pbr</packagereq>
       <packagereq type="default">python39-pillow</packagereq>
       <packagereq type="default">python39-pkginfo</packagereq>
+      <packagereq type="default">python39-platformdirs</packagereq>
       <packagereq type="default">python39-pluggy</packagereq>
       <packagereq type="default">python39-poetry_core</packagereq>
       <packagereq type="default">python39-protobuf</packagereq>
