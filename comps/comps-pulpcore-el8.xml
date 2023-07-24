@@ -226,6 +226,7 @@
       <packagereq type="default">python39-semantic-version</packagereq>
       <packagereq type="default">python39-setuptools-rust</packagereq>
       <packagereq type="default">python39-setuptools-scm</packagereq>
+      <packagereq type="default">python39-shellingham</packagereq>
       <packagereq type="default">python39-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">python39-six</packagereq>
       <packagereq type="default">python39-smmap</packagereq>
