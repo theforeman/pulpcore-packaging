@@ -253,6 +253,7 @@ pulpcore_packages:
     python-pymongo: {}
     python-pyOpenSSL: {}
     python-pyparsing: {}
+    python-pyperclip: {}
     python-pypi-simple: {}
     python-pyrsistent: {}
     python-pytz: {}

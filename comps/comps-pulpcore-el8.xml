@@ -205,6 +205,7 @@
       <packagereq type="default">python39-pyjwt</packagereq>
       <packagereq type="default">python39-pymongo</packagereq>
       <packagereq type="default">python39-pyparsing</packagereq>
+      <packagereq type="default">python39-pyperclip</packagereq>
       <packagereq type="default">python39-pypi-simple</packagereq>
       <packagereq type="default">python39-pyrsistent</packagereq>
       <packagereq type="default">python39-python3-openid</packagereq>
