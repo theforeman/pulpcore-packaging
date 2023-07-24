@@ -188,6 +188,7 @@ pulpcore_packages:
     python-pillow: {}
     python-pkginfo: {}
     python-pluggy: {}
+    python-poetry_core: {}
     python-protobuf: {}
     python-ptyprocess: {}
     python-psycopg: {}
