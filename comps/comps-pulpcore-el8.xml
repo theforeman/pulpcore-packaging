@@ -125,6 +125,7 @@
       <packagereq type="default">python39-gunicorn</packagereq>
       <packagereq type="default">python39-h11</packagereq>
       <packagereq type="default">python39-hatchling</packagereq>
+      <packagereq type="default">python39-httpcore</packagereq>
       <packagereq type="default">python39-humanfriendly</packagereq>
       <packagereq type="default">python39-hyperlink</packagereq>
       <packagereq type="default">python39-idna</packagereq>
