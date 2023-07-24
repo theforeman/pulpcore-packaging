@@ -122,8 +122,9 @@
       <packagereq type="default">python3-gnupg</packagereq>
       <packagereq type="default">python3-googleapis-common-protos</packagereq>
       <packagereq type="default">python3-grpcio</packagereq>
-      <packagereq type="default">python3-gunicorn</packagereq>
+      <packagereq type="default">python3-gunicorn</packagereq>      
       <packagereq type="default">python3-h11</packagereq>
+      <packagereq type="default">python39-hatch_vcs</packagereq>
       <packagereq type="default">python3-hatchling</packagereq>
       <packagereq type="default">python3-httpcore</packagereq>
       <packagereq type="default">python3-humanfriendly</packagereq>

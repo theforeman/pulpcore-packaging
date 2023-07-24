@@ -165,6 +165,7 @@ pulpcore_packages:
     python-grpcio: {}
     python-gunicorn: {}
     python-h11: {}
+    python-hatch_vcs: {}
     python-hatchling: {}
     python-httpcore: {}
     python-idna: {}
