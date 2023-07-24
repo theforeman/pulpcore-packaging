@@ -268,6 +268,7 @@ pulpcore_packages:
     python-semantic-version: {}
     python-setuptools-rust: {}
     python-setuptools-scm: {}
+    python-shellingham: {}
     python-setuptools_scm_git_archive: {}
     python-six: {}
     python-smmap: {}
