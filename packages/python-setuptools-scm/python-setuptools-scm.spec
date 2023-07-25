@@ -5,8 +5,8 @@
 %global pypi_name setuptools-scm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.5.0
-Release:        3%{?dist}
+Version:        6.4.0
+Release:        1%{?dist}
 Summary:        the blessed package to manage your versions by scm tags
 
 License:        MIT
@@ -31,7 +31,9 @@ use_scm_version...
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli >= 1.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 45
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 20.0
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -74,6 +76,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 24 2023 Odilon Sousa <osousa@redhat.com> - 6.4.0-1
+- Release python-setuptools-scm 6.4.0
+
 * Thu Apr 21 2022 Yanis Guenane - 3.5.0-3
 - Build against Python 3.9
 
