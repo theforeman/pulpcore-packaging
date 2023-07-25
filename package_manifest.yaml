@@ -288,6 +288,7 @@ pulpcore_packages:
     python-urlman: {}
     python-userpath: {}
     python-uuid6: {}
+    python-virtualenv: {}
     python-webencodings: {}
     python-whitenoise: {}
     python-wrapt: {}
