@@ -125,6 +125,7 @@
       <packagereq type="default">python3-grpcio</packagereq>
       <packagereq type="default">python3-gunicorn</packagereq>      
       <packagereq type="default">python3-h11</packagereq>
+      <packagereq type="default">python3-hatch</packagereq>
       <packagereq type="default">python3-hatch_vcs</packagereq>
       <packagereq type="default">python3-hatch_fancy_pypi_readme</packagereq>
       <packagereq type="default">python3-hatchling</packagereq>
