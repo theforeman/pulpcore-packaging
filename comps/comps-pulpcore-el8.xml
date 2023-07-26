@@ -79,6 +79,7 @@
       <packagereq type="default">python39-deprecated</packagereq>
       <packagereq type="default">python39-diff-match-patch</packagereq>
       <packagereq type="default">python39-distro</packagereq>
+      <packagereq type="default">python39=distlib</packagereq>
       <packagereq type="default">python39-django</packagereq>
       <packagereq type="default">python39-django-automated-logging</packagereq>
       <packagereq type="default">python39-django-auth-ldap</packagereq>      
