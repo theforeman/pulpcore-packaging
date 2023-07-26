@@ -166,6 +166,7 @@ pulpcore_packages:
     python-grpcio: {}
     python-gunicorn: {}
     python-h11: {}
+    python-hatch: {}
     python-hatch_vcs: {}
     python-hatch_fancy_pypi_readme: {}
     python-hatchling: {}
