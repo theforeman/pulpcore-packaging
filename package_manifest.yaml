@@ -170,6 +170,7 @@ pulpcore_packages:
     python-hatch_fancy_pypi_readme: {}
     python-hatchling: {}
     python-httpcore: {}
+    python-httpx: {}
     python-idna: {}
     python-idna-ssl: {}
     python-importlib-metadata: {}

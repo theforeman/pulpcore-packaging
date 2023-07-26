@@ -129,6 +129,7 @@
       <packagereq type="default">python3-hatch_fancy_pypi_readme</packagereq>
       <packagereq type="default">python3-hatchling</packagereq>
       <packagereq type="default">python3-httpcore</packagereq>
+      <packagereq type="default">python39-httpx</packagereq>
       <packagereq type="default">python3-humanfriendly</packagereq>
       <packagereq type="default">python3-hyperlink</packagereq>
       <packagereq type="default">python3-idna</packagereq>
