@@ -47,5 +47,5 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
-* Tue Jul 25 2023 Odilon Sousa - 0.11.4
+* Tue Jul 25 2023 Odilon Sousa - 0.11.4-1
 - Initial package.
