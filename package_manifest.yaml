@@ -190,6 +190,7 @@ pulpcore_packages:
     python-pkginfo: {}
     python-pluggy: {}
     python-poetry_core: {}
+    python-poetry: {}
     python-protobuf: {}
     python-ptyprocess: {}
     python-psycopg: {}
@@ -279,6 +280,7 @@ pulpcore_packages:
     python-tablib: {}
     python-tomli: {}
     python-tomli_w: {}
+    python-tomlkit: {}
     python-trove-classifiers: {}
     python-toml: {}
     python-types-cryptography: {}

@@ -244,6 +244,7 @@
       <packagereq type="default">python39-toml</packagereq>
       <packagereq type="default">python39-tomli</packagereq>
       <packagereq type="default">python39-tomli_w</packagereq>
+      <packagereq type="default">python39python-tomlkit</packagereq>
       <packagereq type="default">python39-trove-classifiers</packagereq>
       <packagereq type="default">python39-types-cryptography</packagereq>
       <packagereq type="default">python39-typing-extensions</packagereq>
