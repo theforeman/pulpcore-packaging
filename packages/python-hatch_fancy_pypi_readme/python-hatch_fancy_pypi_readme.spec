@@ -50,5 +50,5 @@ set -ex
 %{_bindir}/hatch-fancy-pypi-readme
 
 %changelog
-* Wed Jul 26 2023 Odilon Sousa - 23.1.0
+* Wed Jul 26 2023 Odilon Sousa - 23.1.0-1
 - Initial package.
