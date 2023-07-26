@@ -243,6 +243,7 @@
       <packagereq type="default">python3-toml</packagereq>
       <packagereq type="default">python3-tomli</packagereq>
       <packagereq type="default">python3-tomli_w</packagereq>
+      <packagereq type="default">python3python-tomlkit</packagereq>
       <packagereq type="default">python3-trove-classifiers</packagereq>
       <packagereq type="default">python3-types-cryptography</packagereq>
       <packagereq type="default">python3-typing-extensions</packagereq>
