@@ -5,7 +5,7 @@
 %global pypi_name pulpcore-client
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.22.2
+Version:        3.28.5
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 27 2023 Odilon Sousa <osousa@redhat.com> - 3.28.5-1
+- Release python-pulpcore-client 3.28.5
+
 * Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 3.22.2-1
 - Release python-pulpcore-client 3.22.2
 
