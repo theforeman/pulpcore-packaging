@@ -234,6 +234,19 @@ pulpcore_packages:
     python-naya: {}
     python-odfpy: {}
     python-openpyxl: {}
+    python-opentelemetry_api: {}
+    python-opentelemetry_distro: {}
+    python-opentelemetry_exporter_otlp: {}
+    python-opentelemetry_exporter_otlp_proto_common: {}
+    python-opentelemetry_exporter_otlp_proto_grpc: {}
+    python-opentelemetry_exporter_otlp_proto_http: {}
+    python-opentelemetry_instrumentation: {}
+    python-opentelemetry_instrumentation_django: {}
+    python-opentelemetry_instrumentation_wsgi: {}
+    python-opentelemetry_sdk: {}
+    python-opentelemetry_semantic_conventions: {}
+    python-opentelemetry_util_http: {}
+    python-opentelemetry_proto: {}
     python-packaging: {}
     python-productmd: {}
     python-prometheus-client: {}
