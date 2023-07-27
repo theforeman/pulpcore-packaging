@@ -5,7 +5,7 @@
 %global pypi_name pulp-certguard
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.5.6
+Version:        1.6.5
 Release:        1%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
@@ -28,8 +28,8 @@ a certificate proving their entitlement to content before receiving the content.
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL < 23.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.10
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.40
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.14.9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 # this is a soft-dependency in certguard, but for Katello we always want it
@@ -78,6 +78,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 27 2023 Odilon Sousa <osousa@redhat.com> - 1.6.5-1
+- Release python-pulp-certguard 1.6.5
+
 * Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 1.5.6-1
 - Release python-pulp-certguard 1.5.6
 
