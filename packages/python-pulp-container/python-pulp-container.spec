@@ -6,7 +6,7 @@
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.14.5
+Version:        2.15.2
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -28,8 +28,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.14
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-ecdsa >= 0.18.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.21.6
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.40
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.4
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 27 2023 Odilon Sousa <osousa@redhat.com> - 2.15.2-1
+- Release python-pulp-container 2.15.2
+
 * Thu Apr 27 2023 Evgeni Golov - 2.14.5-1
 - Release python-pulp-container 2.14.5
 
