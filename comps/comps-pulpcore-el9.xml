@@ -200,6 +200,7 @@
       <packagereq type="default">python3-pulp-container</packagereq>
       <packagereq type="default">python3-pulp-deb</packagereq>
       <packagereq type="default">python3-pulp-file</packagereq>
+      <packagereq type="default">python39-pulp-glue</packagereq>
       <packagereq type="default">python3-pulp-ostree</packagereq>
       <packagereq type="default">python3-pulp-python</packagereq>
       <packagereq type="default">python3-pulp-rpm</packagereq>
