@@ -5,7 +5,7 @@
 %global pypi_name pulp-file
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.12.0
+Version:        1.14.3
 Release:        1%{?dist}
 Summary:        File plugin for the Pulp Project
 
@@ -25,8 +25,8 @@ A Pulp plugin to support hosting arbitrary files.
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.25
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.20.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.40
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.23.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(file) = %{version}
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 27 2023 Odilon Sousa <osousa@redhat.com> - 1.14.3-1
+- Release python-pulp-file 1.14.3
+
 * Wed Feb 15 2023 Ian Ballou <ianballou67@gmail.com> - 1.12.0-1
 - Release python-pulp-file 1.12.0
 
