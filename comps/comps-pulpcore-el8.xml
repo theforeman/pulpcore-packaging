@@ -79,7 +79,7 @@
       <packagereq type="default">python39-deprecated</packagereq>
       <packagereq type="default">python39-diff-match-patch</packagereq>
       <packagereq type="default">python39-distro</packagereq>
-      <packagereq type="default">python39=distlib</packagereq>
+      <packagereq type="default">python39-distlib</packagereq>
       <packagereq type="default">python39-django</packagereq>
       <packagereq type="default">python39-django-automated-logging</packagereq>
       <packagereq type="default">python39-django-auth-ldap</packagereq>      
@@ -112,7 +112,7 @@
       <packagereq type="default">python39-filelock</packagereq>
       <packagereq type="default">python39-flake8</packagereq>
       <packagereq type="default">python39-flit</packagereq>
-      <packagereq type="default">python39-flit-core</packagereq>
+      <packagereq type="default">python39-flit_core</packagereq>
       <packagereq type="default">python39-flit_scm</packagereq>
       <packagereq type="default">python39-frozenlist</packagereq>
       <packagereq type="default">python39-future</packagereq>
@@ -141,7 +141,7 @@
       <packagereq type="default">python39-iniparse</packagereq>
       <packagereq type="default">python39-isodate</packagereq>
       <packagereq type="default">python39-itypes</packagereq>
-      <packagereq type="default">python39-jaraco-classes</packagereq>
+      <packagereq type="default">python39-jaraco.classes</packagereq>
       <packagereq type="default">python39-jdcal</packagereq>
       <packagereq type="default">python39-jeepney</packagereq>
       <packagereq type="default">python39-jinja2</packagereq>
@@ -229,7 +229,7 @@
       <packagereq type="default">python39-ruamel-yaml-clib</packagereq>
       <packagereq type="default">python39-s3transfer</packagereq>
       <packagereq type="default">python39-schema</packagereq>
-      <packagereq type="default">python39-secretstorage</packagereq>
+      <packagereq type="default">python39-SecretStorage</packagereq>
       <packagereq type="default">python39-semantic-version</packagereq>
       <packagereq type="default">python39-setuptools-rust</packagereq>
       <packagereq type="default">python39-setuptools-scm</packagereq>
