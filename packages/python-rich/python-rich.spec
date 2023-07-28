@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        13.3.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        None
@@ -34,8 +34,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-dataclasses < 0.9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dataclasses >= 0.7
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments < 3.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments >= 2.6.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions < 4.0.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
@@ -76,6 +74,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 28 2023 Odilon Sousa <osousa@redhat.com> - 13.3.1-3
+- Remove typing-extension requirement
+
 * Tue Feb 14 2023 Odilon Sousa <osousa@redhat.com> - 13.3.1-2
 - Disable auto dependency generator
 
