@@ -112,7 +112,7 @@
       <packagereq type="default">python3-filelock</packagereq>
       <packagereq type="default">python3-flake8</packagereq>
       <packagereq type="default">python3-flit</packagereq>
-      <packagereq type="default">python3-flit-core</packagereq>
+      <packagereq type="default">python3-flit_core</packagereq>
       <packagereq type="default">python3-flit_scm</packagereq>
       <packagereq type="default">python3-frozenlist</packagereq>
       <packagereq type="default">python3-future</packagereq>
@@ -141,7 +141,7 @@
       <packagereq type="default">python3-iniparse</packagereq>
       <packagereq type="default">python3-isodate</packagereq>
       <packagereq type="default">python3-itypes</packagereq>
-      <packagereq type="default">python3-jaraco-classes</packagereq>
+      <packagereq type="default">python3-jaraco.classes</packagereq>
       <packagereq type="default">python3-jdcal</packagereq>
       <packagereq type="default">python3-jeepney</packagereq>
       <packagereq type="default">python3-jinja2</packagereq>
@@ -240,7 +240,7 @@
       <packagereq type="default">python3-ruamel-yaml-clib</packagereq>
       <packagereq type="default">python3-s3transfer</packagereq>
       <packagereq type="default">python3-schema</packagereq>
-      <packagereq type="default">python3-secretstorage</packagereq>
+      <packagereq type="default">python3-SecretStorage</packagereq>
       <packagereq type="default">python3-semantic-version</packagereq>
       <packagereq type="default">python3-setuptools-rust</packagereq>
       <packagereq type="default">python3-setuptools-scm</packagereq>
