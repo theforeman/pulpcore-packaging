@@ -130,7 +130,7 @@
       <packagereq type="default">python3-hatch_fancy_pypi_readme</packagereq>
       <packagereq type="default">python3-hatchling</packagereq>
       <packagereq type="default">python3-httpcore</packagereq>
-      <packagereq type="default">python39-httpx</packagereq>
+      <packagereq type="default">python3-httpx</packagereq>
       <packagereq type="default">python3-humanfriendly</packagereq>
       <packagereq type="default">python3-hyperlink</packagereq>
       <packagereq type="default">python3-idna</packagereq>
@@ -200,7 +200,7 @@
       <packagereq type="default">python3-pulp-container</packagereq>
       <packagereq type="default">python3-pulp-deb</packagereq>
       <packagereq type="default">python3-pulp-file</packagereq>
-      <packagereq type="default">python39-pulp-glue</packagereq>
+      <packagereq type="default">python3-pulp-glue</packagereq>
       <packagereq type="default">python3-pulp-ostree</packagereq>
       <packagereq type="default">python3-pulp-python</packagereq>
       <packagereq type="default">python3-pulp-rpm</packagereq>
