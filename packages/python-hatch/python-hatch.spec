@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.7.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Modern, extensible Python project management
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -37,7 +37,7 @@ Requires:  python%{python3_pkgversion}-pexpect < 5
 Requires:  python%{python3_pkgversion}-platformdirs >= 2.5.0
 Requires:  python%{python3_pkgversion}-rich >= 11.2.0
 Requires:  python%{python3_pkgversion}-shellingham >= 1.4.0
-Requires:  python%{python3_pkgversion}-tomli-w >= 1.0
+Requires:  python%{python3_pkgversion}-tomli_w >= 1.0
 Requires:  python%{python3_pkgversion}-tomlkit >= 0.11.1
 Requires:  python%{python3_pkgversion}-userpath >= 1.7
 Requires:  python%{python3_pkgversion}-userpath < 2.0
@@ -70,5 +70,8 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Fri Jul 28 2023 Odilon Sousa <osousa@redhat.com> - 1.7.0-2
+- Fix tomli_w requirement
+
 * Wed Jul 26 2023 Odilon Sousa - 1.7.0-1
 - Initial package.
