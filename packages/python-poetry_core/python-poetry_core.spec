@@ -2,7 +2,7 @@
 %global pypi_name poetry_core
 
 Name:           python-%{pypi_name}
-Version:        1.4.0
+Version:        1.6.1
 Release:        1%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
@@ -47,5 +47,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Aug 03 2023 Odilon Sousa <osousa@redhat.com> - 1.6.1-1
+- Release python-poetry_core 1.6.1
+
 * Mon Jul 24 2023 Odilon Sousa - 1.4.0-1
 - Initial package.
