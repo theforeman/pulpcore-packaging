@@ -182,6 +182,7 @@ pulpcore_packages:
     python-jaraco-classes: {}
     python-jeepney: {}
     python-lxml: {}
+    python-lockfile: {}
     python-marshmallow: {}
     python-more-itertools: {}
     python-msrest: {}

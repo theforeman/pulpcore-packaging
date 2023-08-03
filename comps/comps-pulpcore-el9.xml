@@ -152,6 +152,7 @@
       <packagereq type="default">python3-ldap</packagereq>
       <packagereq type="default">python3-libcomps</packagereq>
       <packagereq type="default">python3-lxml</packagereq>
+      <packagereq type="default">python3-lockfile</packagereq>
       <packagereq type="default">python3-markdown</packagereq>
       <packagereq type="default">python3-markuppy</packagereq>
       <packagereq type="default">python3-markupsafe</packagereq>
