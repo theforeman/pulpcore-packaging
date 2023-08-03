@@ -185,6 +185,7 @@ pulpcore_packages:
     python-lockfile: {}
     python-marshmallow: {}
     python-more-itertools: {}
+    python-msgpack: {}
     python-msrest: {}
     python-oauthlib: {}
     python-parsley: {}

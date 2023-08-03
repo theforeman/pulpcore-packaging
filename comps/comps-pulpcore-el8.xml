@@ -161,6 +161,7 @@
       <packagereq type="default">python39-mongoengine</packagereq>
       <packagereq type="default">python39-msrest</packagereq>
       <packagereq type="default">python39-more-itertools</packagereq>
+      <packagereq type="default">python39-msgpack</packagereq>
       <packagereq type="default">python39-multidict</packagereq>
       <packagereq type="default">python39-naya</packagereq>
       <packagereq type="default">python39-oauthlib</packagereq>
