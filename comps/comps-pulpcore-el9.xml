@@ -57,6 +57,7 @@
       <packagereq type="default">python3-box</packagereq>
       <packagereq type="default">python3-bracex</packagereq>
       <packagereq type="default">python3-brotli</packagereq>
+      <packagereq type="default">python3-build</packagereq>
       <packagereq type="default">python3-calver</packagereq>
       <packagereq type="default">python3-cchardet</packagereq>
       <packagereq type="default">python3-certifi</packagereq>
