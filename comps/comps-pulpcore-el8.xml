@@ -152,6 +152,7 @@
       <packagereq type="default">python39-ldap</packagereq>      
       <packagereq type="default">python39-libcomps</packagereq>
       <packagereq type="default">python39-lxml</packagereq>
+      <packagereq type="default">python39-lockfile</packagereq>
       <packagereq type="default">python39-markdown</packagereq>
       <packagereq type="default">python39-markuppy</packagereq>
       <packagereq type="default">python39-markupsafe</packagereq>
