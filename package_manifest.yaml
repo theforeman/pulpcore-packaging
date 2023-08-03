@@ -199,6 +199,7 @@ pulpcore_packages:
     python-platformdirs: {}
     python-pluggy: {}
     python-poetry_core: {}
+    python-poetry_plugin_export: {}
     python-poetry: {}
     python-protobuf: {}
     python-ptyprocess: {}
