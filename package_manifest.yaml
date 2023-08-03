@@ -276,6 +276,7 @@ pulpcore_packages:
     python-pyparsing: {}
     python-pyperclip: {}
     python-pypi-simple: {}
+    python-pyproject_hooks: {}
     python-pyrsistent: {}
     python-pytz: {}
     python-pyyaml: {}
