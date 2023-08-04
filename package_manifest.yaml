@@ -97,6 +97,7 @@ pulpcore_packages:
     python-bracex: {}
     python-brotli: {}
     python-build: {}
+    python-cachecontrol: {}
     python-calver: {}
     python-cchardet: {}
     python-certifi: {}

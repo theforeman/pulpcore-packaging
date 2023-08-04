@@ -58,6 +58,7 @@
       <packagereq type="default">python39-bracex</packagereq>
       <packagereq type="default">python39-brotli</packagereq>
       <packagereq type="default">python39-build</packagereq>
+      <packagereq type="default">python39-cachecontrol</packagereq>
       <packagereq type="default">python39-calver</packagereq>
       <packagereq type="default">python39-cchardet</packagereq>
       <packagereq type="default">python39-certifi</packagereq>
