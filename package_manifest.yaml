@@ -285,6 +285,7 @@ pulpcore_packages:
     python-pyrsistent: {}
     python-pytz: {}
     python-pyyaml: {}
+    python-rapidfuzz: {}
     python-redis: {}
     python-requests: {}
     python-requirements-parser: {}
