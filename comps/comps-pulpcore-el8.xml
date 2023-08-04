@@ -110,6 +110,7 @@
       <packagereq type="default">python39-enrich</packagereq>
       <packagereq type="default">python39-et-xmlfile</packagereq>
       <packagereq type="default">python39-exceptiongroup</packagereq>
+      <packagereq type="default">python39-filecache</packagereq>
       <packagereq type="default">python39-filelock</packagereq>
       <packagereq type="default">python39-flake8</packagereq>
       <packagereq type="default">python39-flit</packagereq>
