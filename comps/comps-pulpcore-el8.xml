@@ -224,6 +224,7 @@
       <packagereq type="default">python39-python3-openid</packagereq>
       <packagereq type="default">python39-pytz</packagereq>
       <packagereq type="default">python39-pyyaml</packagereq>
+      <packagereq type="default">python39-rapidfuzz</packagereq>
       <packagereq type="default">python39-redis</packagereq>
       <packagereq type="default">python39-requests</packagereq>
       <packagereq type="default">python39-requests-oauthlib</packagereq>
