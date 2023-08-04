@@ -148,6 +148,7 @@ pulpcore_packages:
     python-enrich: {}
     python-et-xmlfile: {}
     python-exceptiongroup: {}
+    python-filecache: {}
     python-frozenlist: {}
     python-gitdb: {}
     python-gitpython: {}

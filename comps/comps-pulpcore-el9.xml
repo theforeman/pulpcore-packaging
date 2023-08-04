@@ -110,6 +110,7 @@
       <packagereq type="default">python3-enrich</packagereq>
       <packagereq type="default">python3-et-xmlfile</packagereq>
       <packagereq type="default">python3-exceptiongroup</packagereq>
+      <packagereq type="default">python3-filecache</packagereq>
       <packagereq type="default">python3-filelock</packagereq>
       <packagereq type="default">python3-flake8</packagereq>
       <packagereq type="default">python3-flit</packagereq>
