@@ -183,6 +183,7 @@
       <packagereq type="default">python39-pkginfo</packagereq>
       <packagereq type="default">python39-platformdirs</packagereq>
       <packagereq type="default">python39-pluggy</packagereq>
+      <packagereq type="default">python39-poetry</packagereq>
       <packagereq type="default">python39-poetry_core</packagereq>
       <packagereq type="default">python39-poetry_plugin_export</packagereq>
       <packagereq type="default">python39-protobuf</packagereq>
