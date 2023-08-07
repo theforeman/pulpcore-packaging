@@ -202,6 +202,7 @@ pulpcore_packages:
     python-pkginfo: {}
     python-platformdirs: {}
     python-pluggy: {}
+    python-poetry: {}
     python-poetry_core: {}
     python-poetry_plugin_export: {}
     python-poetry: {}

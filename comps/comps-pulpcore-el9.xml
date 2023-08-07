@@ -195,6 +195,7 @@
       <packagereq type="default">python3-pkginfo</packagereq>
       <packagereq type="default">python3-platformdirs</packagereq>
       <packagereq type="default">python3-pluggy</packagereq>
+      <packagereq type="default">python3-poetry</packagereq>
       <packagereq type="default">python3-poetry_core</packagereq>
       <packagereq type="default">python3-poetry_plugin_export</packagereq>
       <packagereq type="default">python3-protobuf</packagereq>
