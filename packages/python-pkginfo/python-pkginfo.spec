@@ -5,8 +5,8 @@
 %global pypi_name pkginfo
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.8.2
-Release:        3%{?dist}
+Version:        1.9.6
+Release:        1%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Mon Aug 07 2023 Odilon Sousa <osousa@redhat.com> - 1.9.6-1
+- Release python-pkginfo 1.9.6
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.8.2-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 
