@@ -229,6 +229,7 @@ pulpcore_packages:
     python-tenacity: {}
     python-wcmatch: {}
     python-iniparse: {}
+    python-installer: {}
     python-itypes: {}
     python-jdcal: {}
     python-jinja2: {}
