@@ -72,6 +72,7 @@
       <packagereq type="default">python3-contextlib2</packagereq>
       <packagereq type="default">python3-coreapi</packagereq>
       <packagereq type="default">python3-coreschema</packagereq>
+      <packagereq type="default">python3-crashtest</packagereq>
       <packagereq type="default">python3-createrepo_c</packagereq>
       <packagereq type="default">python3-cryptography</packagereq>
       <packagereq type="default">python3-dataclasses</packagereq>

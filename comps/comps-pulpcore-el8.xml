@@ -72,6 +72,7 @@
       <packagereq type="default">python39-contextlib2</packagereq>
       <packagereq type="default">python39-coreapi</packagereq>
       <packagereq type="default">python39-coreschema</packagereq>
+      <packagereq type="default">python39-crashtest</packagereq>
       <packagereq type="default">python39-createrepo_c</packagereq>
       <packagereq type="default">python39-cryptography</packagereq>
       <packagereq type="default">python39-dataclasses</packagereq>
