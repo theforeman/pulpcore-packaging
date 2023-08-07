@@ -234,6 +234,7 @@
       <packagereq type="default">python39-redis</packagereq>
       <packagereq type="default">python39-requests</packagereq>
       <packagereq type="default">python39-requests-oauthlib</packagereq>
+      <packagereq type="default">python39-requests-toolbelt</packagereq>
       <packagereq type="default">python39-requirements-parser</packagereq>
       <packagereq type="default">python39-rhsm</packagereq>
       <packagereq type="default">python39-rich</packagereq>

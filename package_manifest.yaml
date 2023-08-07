@@ -218,6 +218,7 @@ pulpcore_packages:
     python-pygobject: {}
     python-python3-openid: {}
     python-requests-oauthlib: {}
+    python-requests-toolbelt: {}
     python-rhsm: {}
     python-s3transfer: {}
     python-schema: {}

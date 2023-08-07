@@ -245,6 +245,7 @@
       <packagereq type="default">python3-redis</packagereq>
       <packagereq type="default">python3-requests</packagereq>
       <packagereq type="default">python3-requests-oauthlib</packagereq>
+      <packagereq type="default">python3-requests-toolbelt</packagereq>
       <packagereq type="default">python3-requirements-parser</packagereq>
       <packagereq type="default">python3-rhsm</packagereq>
       <packagereq type="default">python3-rich</packagereq>
