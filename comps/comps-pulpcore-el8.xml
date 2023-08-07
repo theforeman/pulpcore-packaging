@@ -146,6 +146,7 @@
       <packagereq type="default">python39-importlib-resources</packagereq>
       <packagereq type="default">python39-inflection</packagereq>
       <packagereq type="default">python39-iniparse</packagereq>
+      <packagereq type="default">python39-installer</packagereq>
       <packagereq type="default">python39-isodate</packagereq>
       <packagereq type="default">python39-itypes</packagereq>
       <packagereq type="default">python39-jaraco.classes</packagereq>
