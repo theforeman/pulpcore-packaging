@@ -107,6 +107,7 @@
       <packagereq type="default">python3-drf-nested-routers</packagereq>
       <packagereq type="default">python3-drf-spectacular</packagereq>
       <packagereq type="default">python3-drf-yasg</packagereq>
+      <packagereq type="default">python3-dulwich</packagereq>
       <packagereq type="default">python3-dynaconf</packagereq>
       <packagereq type="default">python3-ecdsa</packagereq>
       <packagereq type="default">python3-editables</packagereq>

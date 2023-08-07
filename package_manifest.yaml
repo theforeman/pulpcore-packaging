@@ -145,6 +145,7 @@ pulpcore_packages:
     python-drf-nested-routers: {}
     python-drf-spectacular: {}
     python-drf-yasg: {}
+    python-dulwich: {}
     python-dynaconf: {}
     python-ecdsa: {}
     python-editables: {}
