@@ -111,6 +111,7 @@ pulpcore_packages:
     python-contextlib2: {}
     python-coreapi: {}
     python-coreschema: {}
+    python-crashtest: {}
     python-cryptography: {}
     python-dataclasses: {}
     python-dateutil: {}
