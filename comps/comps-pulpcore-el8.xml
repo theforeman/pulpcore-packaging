@@ -135,6 +135,7 @@
       <packagereq type="default">python39-hatch_vcs</packagereq>
       <packagereq type="default">python39-hatch_fancy_pypi_readme</packagereq>
       <packagereq type="default">python39-hatchling</packagereq>
+      <packagereq type="default">python39-html5lib</packagereq>
       <packagereq type="default">python39-httpcore</packagereq>
       <packagereq type="default">python39-httpx</packagereq>
       <packagereq type="default">python39-humanfriendly</packagereq>
