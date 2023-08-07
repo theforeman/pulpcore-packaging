@@ -135,6 +135,7 @@
       <packagereq type="default">python3-hatch_vcs</packagereq>
       <packagereq type="default">python3-hatch_fancy_pypi_readme</packagereq>
       <packagereq type="default">python3-hatchling</packagereq>
+      <packagereq type="default">python3-html5lib</packagereq>
       <packagereq type="default">python3-httpcore</packagereq>
       <packagereq type="default">python3-httpx</packagereq>
       <packagereq type="default">python3-humanfriendly</packagereq>
