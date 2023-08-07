@@ -65,6 +65,7 @@
       <packagereq type="default">python3-cffi</packagereq>
       <packagereq type="default">python3-chardet</packagereq>
       <packagereq type="default">python3-charset-normalizer</packagereq>
+      <packagereq type="default">python3-cleo</packagereq>
       <packagereq type="default">python3-click</packagereq>
       <packagereq type="default">python3-click-shell</packagereq>
       <packagereq type="default">python3-colorama</packagereq>
