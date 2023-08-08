@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
 License:        BSD
@@ -25,7 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django < 4.0.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-django < 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.1.1
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.3.0-2
+- Update django requirement
+
 * Tue Sep 20 2022 Odilon Sousa 3.3.0-1
 - Update to 3.3.0
 
