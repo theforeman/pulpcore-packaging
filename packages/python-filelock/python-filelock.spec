@@ -5,8 +5,8 @@
 %global pypi_name filelock
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.0.12
-Release:        3%{?dist}
+Version:        3.8.0
+Release:        1%{?dist}
 Summary:        A platform independent file lock
 
 License:        Unlicense
@@ -16,6 +16,7 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
 
 
 %description
@@ -57,12 +58,14 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
-%{python3_sitelib}/__pycache__/%{pypi_name}.*
-%{python3_sitelib}/%{pypi_name}.py
+%{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.8.0-1
+- Release python-filelock 3.8.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.0.12-3
 - Build against python 3.9
 
