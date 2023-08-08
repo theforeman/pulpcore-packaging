@@ -184,6 +184,7 @@
       <packagereq type="default">python3-opentelemetry_sdk</packagereq>
       <packagereq type="default">python3-opentelemetry_semantic_conventions</packagereq>
       <packagereq type="default">python3-opentelemetry_util_http</packagereq>
+      <packagereq type="default">python3-opentelemetry_proto</packagereq>
       <packagereq type="default">python3-packaging</packagereq>
       <packagereq type="default">python3-parsley</packagereq>
       <packagereq type="default">python3-pathspec</packagereq>
