@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.5.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -53,7 +53,7 @@ Requires:       python%{python3_pkgversion}-pyproject_hooks >= 1.0.0
 Requires:       python%{python3_pkgversion}-requests-toolbelt >= 1.0.0
 Requires:       python%{python3_pkgversion}-requests >= 2.18
 Requires:       python%{python3_pkgversion}-requests < 3.0
-Requires:       python%{python3_pkgversion}-shellingham >= 1.5.1
+Requires:       python%{python3_pkgversion}-shellingham >= 1.5.0
 Requires:       python%{python3_pkgversion}-tomlkit >= 0.11.4
 Requires:       python%{python3_pkgversion}-trove-classifiers >= 2022.5.19
 Requires:       python%{python3_pkgversion}-urllib3 >= 1.26.0
@@ -83,5 +83,8 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 1.5.1-2
+- Update python-shellingham requirement
+
 * Mon Aug 07 2023 Odilon Sousa - 1.5.1-1
 - Initial package.
