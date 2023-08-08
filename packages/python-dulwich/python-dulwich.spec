@@ -1,6 +1,3 @@
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
-
 # Created by pyp2rpm-3.3.8
 %global pypi_name dulwich
 
@@ -34,29 +31,22 @@ Requires:       python%{python3_pkgversion}-urllib3 >= 1.24.1
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
-
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %doc README.rst
 %{python3_sitearch}/%{pypi_name}
 %exclude %{_bindir}/dul-receive-pack
