@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.19.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -28,7 +28,7 @@ Requires:       python%{python3_pkgversion}-deprecated >= 1.2.6
 Requires:       python%{python3_pkgversion}-backoff >= 1.10.0
 Requires:       python%{python3_pkgversion}-backoff <  3.0.0
 Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 1.52
-Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 2
+Requires:       python%{python3_pkgversion}-googleapis-common-protos < 2
 Requires:       python%{python3_pkgversion}-grpcio >= 1.0.0
 Requires:       python%{python3_pkgversion}-grpcio < 2.0.0
 Requires:       python%{python3_pkgversion}-opentelemetry-api >= 1.15.0
@@ -65,5 +65,8 @@ set -ex
 
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-2
+- Update googleapis-common-protos requirement
+
 * Wed Jul 26 2023 Odilon Sousa - 1.19.0-1
 - Initial package.
