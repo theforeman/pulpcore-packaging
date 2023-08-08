@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.19.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Python Proto.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -24,8 +24,8 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-opentelemetry-protobuf >= 3.19
-Requires:       python%{python3_pkgversion}-opentelemetry-protobuf < 5.0
+Requires:       python%{python3_pkgversion}-protobuf >= 3.19
+Requires:       python%{python3_pkgversion}-protobuf < 5.0
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -50,5 +50,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-2
+- Update opentelemetry dependency names
+
 * Wed Jul 26 2023 Odilon Sousa - 1.19.0-1
 - Initial package.

@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.40b0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Instrumentation for Django
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -28,7 +28,7 @@ Requires:  python%{python3_pkgversion}-opentelemetry_api >= 1.12
 Requires:  python%{python3_pkgversion}-opentelemetry_api < 2
 Requires:  python%{python3_pkgversion}-opentelemetry_instrumentation = 0.40b0
 Requires:  python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi = 0.40b0
-Requires:  python%{python3_pkgversion}-opentelemetry_semantic-conventions = 0.40b0
+Requires:  python%{python3_pkgversion}-opentelemetry_semantic_conventions = 0.40b0
 Requires:  python%{python3_pkgversion}-opentelemetry_util_http = 0.40b0
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -55,5 +55,8 @@ set -ex
 
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-2
+- Update opentelemetry dependency names
+
 * Wed Jul 26 2023 Odilon Sousa - 0.40b0-1
 - Initial package.
