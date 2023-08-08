@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.19.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -31,12 +31,12 @@ Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 1.52
 Requires:       python%{python3_pkgversion}-googleapis-common-protos < 2
 Requires:       python%{python3_pkgversion}-grpcio >= 1.0.0
 Requires:       python%{python3_pkgversion}-grpcio < 2.0.0
-Requires:       python%{python3_pkgversion}-opentelemetry-api >= 1.15.0
-Requires:       python%{python3_pkgversion}-opentelemetry-api < 2.0.0
-Requires:       python%{python3_pkgversion}-opentelemetry-proto = 1.19.0
-Requires:       python%{python3_pkgversion}-opentelemetry-sdk  >= 1.19.0
-Requires:       python%{python3_pkgversion}-opentelemetry-sdk  < 2.0.0
-Requires:       python%{python3_pkgversion}-opentelemetry-exporter-otlp-proto-common = 1.19.0
+Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.15.0
+Requires:       python%{python3_pkgversion}-opentelemetry_api < 2.0.0
+Requires:       python%{python3_pkgversion}-opentelemetry_proto = 1.19.0
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk  >= 1.19.0
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk  < 2.0.0
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_common = 1.19.0
 Requires:       python%{python3_pkgversion}-requests >= 2.7
 Requires:       python%{python3_pkgversion}-requests < 3.0
 
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-3
+- Update opentelemetry dependency names
+
 * Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-2
 - Update googleapis-common-protos requirement
 
