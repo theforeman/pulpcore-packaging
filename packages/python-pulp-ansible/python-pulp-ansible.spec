@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.18.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -40,8 +40,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.40
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.9
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.11
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 7.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 9.6
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pillow >= 7.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pillow >= 9.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(ansible) = %{version}
@@ -85,6 +85,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 1:0.18.0-2
+- Add python-pillow as dependency
+
 * Thu Jul 27 2023 Odilon Sousa <osousa@redhat.com> - 1:0.18.0-1
 - Release python-pulp-ansible 0.18.0
 
