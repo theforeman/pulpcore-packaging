@@ -5,7 +5,7 @@
 %global pypi_name platformdirs
 
 Name:           python-%{pypi_name}
-Version:        2.6.2
+Version:        3.10.0
 Release:        1%{?dist}
 Summary:        A small Python module for determining appropriate platform-specific dirs, e
 
@@ -52,5 +52,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.10.0-1
+- Release python-platformdirs 3.10.0
+
 * Mon Jul 24 2023 Odilon Sousa <osousa@redhat.com> - 2.6.2-1
 - Initial package.
