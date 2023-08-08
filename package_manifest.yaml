@@ -126,7 +126,6 @@ pulpcore_packages:
     python-django-automated-logging: {}
     python-django-auth-ldap: {}
     python-django-cleanup: {}
-    python-django-currentuser: {}
     python-django-filter: {}
     python-django-guardian: {}
     python-django-guid: {}
