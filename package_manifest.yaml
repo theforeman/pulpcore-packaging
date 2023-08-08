@@ -166,7 +166,6 @@ pulpcore_packages:
     python-flit_scm: {}
     python-future: {}
     python-galaxy-importer: {}
-    python-galaxy-ng: {}
     python-gnupg: {}
     python-googleapis-common-protos: {}
     python-grpcio: {}

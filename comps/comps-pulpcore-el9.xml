@@ -123,7 +123,6 @@
       <packagereq type="default">python3-frozenlist</packagereq>
       <packagereq type="default">python3-future</packagereq>
       <packagereq type="default">python3-galaxy-importer</packagereq>
-      <packagereq type="default">python3-galaxy-ng</packagereq>
       <packagereq type="default">python3-gitdb</packagereq>
       <packagereq type="default">python3-gitpython</packagereq>
       <packagereq type="default">python3-gnupg</packagereq>
