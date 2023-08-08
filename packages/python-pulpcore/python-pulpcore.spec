@@ -2,6 +2,7 @@
 %{!?scl:%global pkg_name %{name}}
 %{!?_root_bindir:%global _root_bindir %{_bindir}}
 %{!?_root_libexecdir:%global _root_libexecdir %{_libexecdir}}
+%{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
@@ -10,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.28.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -54,8 +55,6 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 8.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click <= 8.1.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.5.3
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-currentuser >= 0.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 23.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 23.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
@@ -192,6 +191,9 @@ done
 
 
 %changelog
+* Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-2
+- Remove python-django-currentuser dependency
+
 * Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-1
 - Release python-pulpcore 3.28.10
 
