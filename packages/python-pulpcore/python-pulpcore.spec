@@ -11,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.28.10
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -105,7 +105,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 67.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.4.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-url-normalize >= 1.5
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-uuid6 >= 2023.5.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-uuid6 >= 2023.5.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uuid6 <= 2024.1.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 6.5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-whitenoise >= 5.0.0
@@ -191,6 +191,9 @@ done
 
 
 %changelog
+* Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-4
+- Adjust python-uuid6 requirements
+
 * Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-3
 - Change django-filter requirement
 
