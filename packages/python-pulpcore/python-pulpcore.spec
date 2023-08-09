@@ -11,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.28.10
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -140,6 +140,10 @@ rm -rf %{pypi_name}.egg-info
 # relax cryptography requirement
 # see https://pulp.plan.io/issues/9367
 sed -i '/cryptography/ s/~=.*//' requirements.txt
+
+# relax otel requirement
+sed -i "/opentelemetry/ s/39b0/40b0/" requirements.txt
+sed -i "/opentelemetry-exporter-otlp-proto-http/ s/1.18.0/1.19.0/" requirements.txt
 %{?scl:EOF}
 
 
@@ -191,6 +195,9 @@ done
 
 
 %changelog
+* Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-5
+- Relax opentelemetry requirements
+
 * Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-4
 - Adjust python-uuid6 requirements
 
