@@ -11,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.28.10
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -56,7 +56,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 8.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click <= 8.1.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 38.0.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 23.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 23.2
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 23.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-import-export >= 2.9
@@ -191,6 +191,9 @@ done
 
 
 %changelog
+* Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-3
+- Change django-filter requirement
+
 * Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-2
 - Remove python-django-currentuser dependency
 
