@@ -123,7 +123,6 @@ pulpcore_packages:
     python-distlib: {}
     python-distro: {}
     python-django: {}
-    python-django-automated-logging: {}
     python-django-auth-ldap: {}
     python-django-cleanup: {}
     python-django-filter: {}
