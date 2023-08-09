@@ -11,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.28.10
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -144,6 +144,10 @@ sed -i '/cryptography/ s/~=.*//' requirements.txt
 # relax otel requirement
 sed -i "/opentelemetry/ s/39b0/40b0/" requirements.txt
 sed -i "/opentelemetry-exporter-otlp-proto-http/ s/1.18.0/1.19.0/" requirements.txt
+
+# psycopg 'binary' extra isn't needed in production
+sed -i 's/psycopg\[binary\]/psycopg/' requirements.txt
+
 %{?scl:EOF}
 
 
@@ -195,6 +199,9 @@ done
 
 
 %changelog
+* Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-6
+- Remove psycopg binary extra, isn't needed in pulpcore
+
 * Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-5
 - Relax opentelemetry requirements
 
