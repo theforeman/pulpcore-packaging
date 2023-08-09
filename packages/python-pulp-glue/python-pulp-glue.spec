@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.19.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -27,7 +27,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.24
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.25
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.32
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 
@@ -65,5 +65,8 @@ set -ex
 
 
 %changelog
+* Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 0.19.2-2
+- Update python-requests requirement
+
 * Wed Jul 05 2023 Odilon Sousa - 0.19.2-1
 - Initial package.
