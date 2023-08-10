@@ -173,6 +173,7 @@
       <packagereq type="default">python39-openpyxl</packagereq>
       <packagereq type="default">python39-opentelemetry_api</packagereq>
       <packagereq type="default">python39-opentelemetry_distro</packagereq>
+      <packagereq type="default">python39-opentelemetry_distro_otlp</packagereq>
       <packagereq type="default">python39-opentelemetry_exporter_otlp</packagereq>
       <packagereq type="default">python39-opentelemetry_exporter_otlp_proto_common</packagereq>
       <packagereq type="default">python39-opentelemetry_exporter_otlp_proto_grpc</packagereq>
