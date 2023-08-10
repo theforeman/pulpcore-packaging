@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.40b0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        OpenTelemetry Python Distro
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -33,6 +33,20 @@ Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 2
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
+%package -n     python%{python3_pkgversion}-%{pypi_name}_otlp
+Summary:        Metapackage for OpenTelemetry otlp extras
+Version:        %{version}
+
+Requires:       python%{python3_pkgversion}-%{pypi_name} = 0.40b0
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp = 1.19.0
+
+%description -n python%{python3_pkgversion}-%{pypi_name}_otlp
+This is a metapackage bringing in “otlp” extras requires for
+python3-opentelemetry-distro. It makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-%{pypi_name}_otlp
+%ghost %{python3_sitelib}/%{pypi_name}-%{version}.dist-info
+
 
 %prep
 set -ex
@@ -53,6 +67,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Aug 10 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-5
+- Add otlp metapackage
+
 * Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-4
 - Change opentelemetry_instrumentation requirement from 0.40b0.dev to 0.40b0
 
