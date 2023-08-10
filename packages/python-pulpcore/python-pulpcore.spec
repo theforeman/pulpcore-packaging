@@ -11,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.28.10
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -85,8 +85,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata >= 
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-glue >= 0.18.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-glue < 0.20
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-opentelemetry_distro >= 0.38b0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-opentelemetry_distro <= 0.40b0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.38b0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.40b0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.17.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http <= 1.19.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-opentelemetry_instrumentation_django >= 0.38b0
@@ -199,6 +199,9 @@ done
 
 
 %changelog
+* Thu Aug 10 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-7
+- Add opentelemetry_distro_otlp meta package requirement
+
 * Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 3.28.10-6
 - Remove psycopg binary extra, isn't needed in pulpcore
 
