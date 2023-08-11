@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        4.2.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -35,6 +35,14 @@ Obsoletes:      python3-%{srcname} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{srcname} < %{version}-%{release}
+%endif
+
+%if 0%{?!scl:1}
+## Obsoletes django-currentuser, the old package does not support Django 4
+Obsoletes:      python3-django-currentuser
+%endif
+%if 0%{?rhel} == 8
+Obsoletes:      python39-django-currentuser
 %endif
 
 
@@ -81,6 +89,9 @@ set -ex
 
 
 %changelog
+* Fri Aug 11 2023 Odilon Sousa <osousa@redhat.com> - 4.2.2-2
+- Obsolete django-currentuser
+
 * Tue Jun 27 2023 Odilon Sousa 4.2.2-1
 - Update to 4.2.2
 
