@@ -9,4 +9,5 @@ pulp-ansible==0.16.0
 pulp-python==3.8.0
 pulpcore-client==3.22.2
 pulp-rpm-client==3.19.2
+pulp-ostree==2.1.1
 #galaxy-ng==4.3.1

@@ -5,13 +5,11 @@
 %global pypi_name pulp-ostree
 %{?python_disable_dependency_generator}
 
-%global prerelease a6
-%global prereleaserpm %{?prerelease:.}%{?prerelease}
  
-%global release 8
+%global release 1
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.0.0
+Version:        2.1.1
 Release:        %{?prereleaserpm:0.}%{release}%{?prereleaserpm}%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
@@ -30,8 +28,8 @@ A Pulp plugin to support hosting ostree repositories.
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.20.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25.0
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.40.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %if 0%{?rhel} == 9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gobject >= 3.40.1
@@ -79,10 +77,13 @@ set -ex
 %license LICENSE
 %doc README.md
 %{python3_sitelib}/pulp_ostree
-%{python3_sitelib}/pulp_ostree-%{version}%{prerelease}-py%{python3_version}.egg-info
+%{python3_sitelib}/pulp_ostree-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Aug 11 2023 Odilon Sousa <osousa@redhat.com> - 2.1.1-1
+- Release python-pulp-ostree 2.1.1
+
 * Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 2.0.0-0.8.a6
 - Release python-pulp-ostree 2.0.0a6
 
