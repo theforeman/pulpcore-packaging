@@ -22,6 +22,7 @@
       <packagereq type="default">libsolv-tools</packagereq>
       <packagereq type="default">postgresql-debversion</packagereq>
       <packagereq type="default">postgresql-evr</packagereq>
+      <packagereq type="default">pulpcore-obsolete-packages</packagereq>
       <packagereq type="default">pulpcore-selinux</packagereq>
       <packagereq type="default">pyproject-rpm-macros</packagereq>
       <packagereq type="default">python3-createrepo_c</packagereq>
