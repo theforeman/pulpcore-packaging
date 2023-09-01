@@ -2,16 +2,70 @@
 all:
   vars:
     pulpcore_version: "3.28"
+    copr_project_user: "@theforeman"
   children:
     packages: {}
     repoclosures: {}
+    copr_projects: {}
 
 packages:
   vars:
     rpmlint_rc_file: "{{ inventory_dir }}/.rpmlintrc"
     build_package_use_koji_build: true
+    copr_projects:
+      - "{{ hostvars['pulpcore-copr'] }}"
+    koji_tags:
+      - name: pulpcore-{{ pulpcore_version }}-el8
+        dist: '.el8'
+      - name: pulpcore-{{ pulpcore_version }}-el9
+        dist: '.el9'
+    repoclosure_target_repos:
+      el8:
+        - "el8-pulpcore-{{ pulpcore_version }}"
+      el9:
+        - "el9-pulpcore-{{ pulpcore_version }}"
+    repoclosure_lookaside_repos:
+      el8:
+        - el8-baseos
+        - el8-appstream
+        - el8-powertools
+      el9:
+        - el9-baseos
+        - el9-appstream
+        - el9-crb
   children:
+    buildroot_packages: {}
+    tier1_packages: {}
+    tier2_packages: {}
+    tier3_packages: {}
+    tier4_packages: {}
     pulpcore_packages: {}
+
+copr_projects:
+  vars:
+    core_modules:
+      - 'python39:3.9'
+      - 'ruby:2.7'
+    rhel_9: '9'
+    rhel_8: '8'
+    root_repo_url: https://download.copr.fedorainfracloud.org/results/@theforeman
+    pulpcore_staging: "{{ root_repo_url }}/pulpcore-{{ pulpcore_version }}-staging"
+  hosts:
+    pulpcore-copr:
+      copr_project_name: "pulpcore-{{ pulpcore_version }}-staging"
+      copr_project_chroots:
+        - name: "rhel-{{ rhel_9 }}-x86_64"
+          comps_file: "{{ inventory_dir }}/comps/comps-pulpcore-el{{ rhel_9 }}.xml"
+          buildroot_packages:
+            - gcc-c++
+            - pyproject-rpm-macros
+        - name: "rhel-{{ rhel_8 }}-x86_64"
+          modules: "{{ core_modules }}"
+          comps_file: "{{ inventory_dir }}/comps/comps-pulpcore-el{{ rhel_8 }}.xml"
+          buildroot_packages:
+            - gcc-c++
+            - python39-rpm-macros
+            - pyproject-rpm-macros
 
 repoclosures:
   hosts:
@@ -35,28 +89,62 @@ repoclosures:
           - el9-baseos
           - el9-appstream
           - el9-crb
+    pulpcore-staging-repoclosure-el8:
+      repoclosure_target_repos:
+        el8:
+          - "el8-pulpcore-{{ pulpcore_version }}-staging"
+      repoclosure_target_dist: el8
+      repoclosure_lookaside_repos:
+        el8:
+          - el8-baseos
+          - el8-appstream
+          - el8-powertools
+    pulpcore-staging-repoclosure-el9:
+      repoclosure_target_repos:
+        el9:
+          - "el9-pulpcore-{{ pulpcore_version }}-staging"
+      repoclosure_target_dist: el9
+      repoclosure_lookaside_repos:
+        el9:
+          - el9-baseos
+          - el9-appstream
+          - el9-crb
 
-pulpcore_packages:
-  vars:
-    koji_tags:
-      - name: pulpcore-{{ pulpcore_version }}-el8
-        dist: '.el8'
-      - name: pulpcore-{{ pulpcore_version }}-el9
-        dist: '.el9'
-    repoclosure_target_repos:
-      el8:
-        - "el8-pulpcore-{{ pulpcore_version }}"
-      el9:
-        - "el9-pulpcore-{{ pulpcore_version }}"
-    repoclosure_lookaside_repos:
-      el8:
-        - el8-baseos
-        - el8-appstream
-        - el8-powertools
-      el9:
-        - el9-baseos
-        - el9-appstream
-        - el9-crb
+buildroot_packages:
+  hosts:
+    pyproject-rpm-macros: {}
+
+tier1_packages:
+  hosts:
+    python-packaging: {}
+    python-pyparsing: {}
+    python-setuptools-scm: {}
+    python-tomli: {}
+
+tier2_packages:
+  hosts:
+    python-flit-core: {}
+    python-poetry_core: {}
+    python-semantic-version: {}
+    python-setuptools-rust: {}
+    python-setuptools_scm_git_archive: {}
+
+tier3_packages:
+  hosts:
+    python-flit: {}
+    python-flit_scm: {}
+    python-frozenlist: {}
+    python-pathspec: {}
+    python-pbr: {}
+    python-poetry_plugin_export: {}
+    python-poetry: {}
+    python-pycairo: {}
+    python-pytz: {}
+    python-sqlparse: {}
+    python-tomli_w: {}
+    python-trove-classifiers: {}
+
+tier4_packages:
   hosts:
     ansible-lint: {}
     createrepo_c: {}
@@ -64,9 +152,6 @@ pulpcore_packages:
     libsolv: {}
     postgresql-debversion: {}
     postgresql-evr: {}
-    pyproject-rpm-macros: {}
-    pulpcore-obsolete-packages: {}
-    pulpcore-selinux: {}
     python-aiodns: {}
     python-aiofiles: {}
     python-aiohttp: {}
@@ -152,7 +237,6 @@ pulpcore_packages:
     python-et-xmlfile: {}
     python-exceptiongroup: {}
     python-filecache: {}
-    python-frozenlist: {}
     python-gitdb: {}
     python-gitpython: {}
     python-humanfriendly: {}
@@ -160,9 +244,6 @@ pulpcore_packages:
     python-jmespath: {}
     python-filelock: {}
     python-flake8: {}
-    python-flit: {}
-    python-flit-core: {}
-    python-flit_scm: {}
     python-future: {}
     python-galaxy-importer: {}
     python-gnupg: {}
@@ -193,27 +274,16 @@ pulpcore_packages:
     python-msrest: {}
     python-oauthlib: {}
     python-parsley: {}
-    python-pathspec: {}
-    python-pbr: {}
     python-pexpect: {}
     python-pillow: {}
     python-pkginfo: {}
     python-platformdirs: {}
     python-pluggy: {}
-    python-poetry: {}
-    python-poetry_core: {}
-    python-poetry_plugin_export: {}
-    python-poetry: {}
     python-protobuf: {}
     python-ptyprocess: {}
     python-psycopg: {}
-    python-pulp-ostree: {}
-    python-pulp-python: {}
-    python-pulp-rpm-client: {}
-    python-pulpcore-client: {}
     python-pyasn1: {}
     python-pyasn1-modules: {}
-    python-pycairo: {}
     python-pygobject: {}
     python-python3-openid: {}
     python-requests-oauthlib: {}
@@ -258,21 +328,9 @@ pulpcore_packages:
     python-opentelemetry_semantic_conventions: {}
     python-opentelemetry_util_http: {}
     python-opentelemetry_proto: {}
-    python-packaging: {}
     python-productmd: {}
     python-prometheus-client: {}
     python-psycopg2: {}
-    python-pulp-ansible: {}
-    python-pulp-certguard: {}
-    python-pulp-cli: {}
-    python-pulp-cli-deb: {}
-    python-pulp-rpm: {}
-    python-pulp_2to3_migration: {}
-    python-pulp-container: {}
-    python-pulp-deb: {}
-    python-pulp-file: {}
-    python-pulp-glue: {}
-    python-pulpcore: {}
     python-pycares: {}
     python-pycodestyle: {}
     python-pycparser: {}
@@ -284,7 +342,6 @@ pulpcore_packages:
     python-pyjwt: {}
     python-pymongo: {}
     python-pyOpenSSL: {}
-    python-pyparsing: {}
     python-pyperclip: {}
     python-pypi-simple: {}
     python-pyproject_hooks: {}
@@ -299,20 +356,12 @@ pulpcore_packages:
     python-rq: {}
     python-ruamel-yaml: {}
     python-ruamel-yaml-clib: {}
-    python-semantic-version: {}
-    python-setuptools-rust: {}
-    python-setuptools-scm: {}
     python-shellingham: {}
-    python-setuptools_scm_git_archive: {}
     python-six: {}
     python-smmap: {}
     python-sniffio: {}
-    python-sqlparse: {}
     python-tablib: {}
-    python-tomli: {}
-    python-tomli_w: {}
     python-tomlkit: {}
-    python-trove-classifiers: {}
     python-toml: {}
     python-types-cryptography: {}
     python-typing-extensions: {}
@@ -330,3 +379,23 @@ pulpcore_packages:
     python-xlwt: {}
     python-yarl: {}
     python-zipp: {}
+
+pulpcore_packages:
+  hosts:
+    pulpcore-obsolete-packages: {}
+    pulpcore-selinux: {}
+    python-pulp-ansible: {}
+    python-pulp-certguard: {}
+    python-pulp-cli: {}
+    python-pulp-cli-deb: {}
+    python-pulp-rpm: {}
+    python-pulp_2to3_migration: {}
+    python-pulp-container: {}
+    python-pulp-deb: {}
+    python-pulp-file: {}
+    python-pulp-glue: {}
+    python-pulpcore: {}
+    python-pulp-ostree: {}
+    python-pulp-python: {}
+    python-pulp-rpm-client: {}
+    python-pulpcore-client: {}
