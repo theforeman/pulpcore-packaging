@@ -5,7 +5,7 @@
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.21.2
+Version:        3.0.0
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -28,7 +28,7 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-debian < 0.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-debian >= 0.1.44
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.40
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.28
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg < 0.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema < 5.0
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 06 2023 Quirin Pamp <pamp@atix.de> - 3.0.0-1
+- Update to 3.0.0
+
 * Tue Sep 05 2023 Quirin Pamp <pamp@atix.de> - 2.21.2-1
 - Update to 2.21.2
 
