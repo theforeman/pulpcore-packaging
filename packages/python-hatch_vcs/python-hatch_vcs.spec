@@ -1,8 +1,9 @@
 %global pypi_name hatch_vcs 
+%{?python_disable_dependency_generator}
 
 Name:           python-%{pypi_name}
 Version:        0.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Hatch plugin for versioning with your preferred VCS
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -53,5 +54,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Sep 13 2023 Odilon Sousa <osousa@redhat.com> - 0.3.0-2
+- Disable dependency generator for hatch_vcs
+
 * Wed Jul 19 2023 Odilon Sousa - 0.3.0-1
 - Initial package.
