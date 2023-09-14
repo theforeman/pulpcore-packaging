@@ -5,8 +5,8 @@
 %global pypi_name pulp-cli-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.0.2
-Release:        4%{?dist}
+Version:        0.0.5
+Release:        1%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -26,7 +26,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-cli
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-cli >= 0.18.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 14 2023 Quirin Pamp <pamp@atix.de> - 0.0.5-1
+- Update python-pulp-cli-deb to 0.0.5.
+
 * Fri Sep 16 2022 Markus Bucher <bucher@atix.de> - 0.0.2-4
 - Bumping release for better upgrade from 3.16 to 3.18
 
