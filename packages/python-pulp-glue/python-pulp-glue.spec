@@ -5,8 +5,8 @@
 %global pypi_name pulp-glue
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.19.2
-Release:        2%{?dist}
+Version:        0.21.2
+Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -25,8 +25,10 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.24
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging < 24
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 20.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests < 2.32
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.24.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.32
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
@@ -65,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 14 2023 Quirin Pamp <pamp@atix.de> - 0.21.2-1
+- Update python-pulp-glue to 0.21.2.
+
 * Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 0.19.2-2
 - Update python-requests requirement
 
