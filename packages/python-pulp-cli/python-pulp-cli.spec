@@ -5,8 +5,8 @@
 %global pypi_name pulp-cli
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.14.0
-Release:        4%{?dist}
+Version:        0.21.2
+Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -28,17 +28,19 @@ Summary:        %{summary}
 
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-click < 9
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 7.1.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-click < 8.1.7
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 8.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click-shell < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click-shell >= 2.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests < 3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.24
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-schema = 0.7.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-schema < 0.8
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-schema >= 0.7.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml = 0.10.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml < 0.11
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml >= 0.10.2
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
@@ -96,6 +98,9 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
+* Thu Sep 14 2023 Quirin Pamp <pamp@atix.de> - 0.21.2-1
+- Update python-pulp-cli to 0.21.2.
+
 * Thu Sep 08 2022 Odilon Sousa <osousa@redhat.com> - 0.14.0-4
 - Bump python-pulp-cli release to rebuild for python 3.9
 
