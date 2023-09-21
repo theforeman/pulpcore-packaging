@@ -5,8 +5,8 @@
 %global pypi_name pulp-ansible
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.18.0
-Release:        2%{?dist}
+Version:        0.18.1
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -85,6 +85,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 21 2023 Ian Ballou <ianballou67@gmail.com> - 1:0.18.1-1
+- Update to 0.18.1
+
 * Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 1:0.18.0-2
 - Add python-pillow as dependency
 
