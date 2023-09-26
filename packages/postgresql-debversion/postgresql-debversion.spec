@@ -1,13 +1,6 @@
-%if 0%{?rhel} <= 7
-%global scl rh-postgresql12
-%endif
-
-%{?scl:%scl_package postgresql-debversion}
-%{!?scl:%global pkg_name %{name}}
-
-Name:     %{?scl_prefix}postgresql-debversion
+Name:     postgresql-debversion
 Version:  1.1.1
-Release:  2%{?dist}
+Release:  3%{?dist}
 Summary:  Debian version number type for PostgreSQL
 
 Group:    Applications/System
@@ -17,16 +10,12 @@ Source0:  https://salsa.debian.org/postgresql/postgresql-debversion/-/archive/v%
 Patch0:   0001-Copy-relevant-code-from-apt-pkg-to-ease-packaging.patch
 Patch1:   0002-set_superuser.patch
 
-Requires: %{?scl_prefix}postgresql-server
-%{?scl:Requires: %{?scl_prefix}runtime}
+Requires: postgresql-server
 
-%{?scl:BuildRequires: %{?scl_prefix}runtime}
-BuildRequires: %{?scl_prefix}postgresql-devel
-BuildRequires: gcc-c++
-
-%if 0%{?rhel} > 7
-BuildRequires: redhat-rpm-config
 BuildRequires: postgresql-server-devel
+BuildRequires: gcc-c++
+%if 0%{?rhel} == 8
+BuildRequires: libpq-devel
 %endif
 
 ExclusiveArch: x86_64
@@ -58,15 +47,12 @@ postgresql-debversion implements the following features:
 %autosetup -p1 -n postgresql-debversion-v%{version}
 
 %build
-%{?scl:scl enable %{scl} - <<EOF}
 make %{?_smp_mflags}
-%{?scl:EOF}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{?scl:scl enable %{scl} - <<EOF}
+
 %make_install
-%{?scl:EOF}
 
 %files
 %{_libdir}/pgsql/debversion.so
@@ -81,6 +67,9 @@ rm -rf $RPM_BUILD_ROOT
 %license COPYING
 
 %changelog
+* Tue Sep 26 2023 Odilon Sousa <osousa@redhat.com> - 1.1.1-3
+- Remove SCL Macros
+
 * Tue Jun 09 2020 Justin Sherrill <jsherril@redhat.com> 1.1.1-2
 - add patch to allow nonsuperuser access
 
