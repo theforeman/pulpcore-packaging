@@ -1,6 +1,7 @@
+%global debug_package %{nil}
 Name:     postgresql-debversion
 Version:  1.1.1
-Release:  3%{?dist}
+Release:  4%{?dist}
 Summary:  Debian version number type for PostgreSQL
 
 Group:    Applications/System
@@ -67,6 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 %license COPYING
 
 %changelog
+* Fri Sep 29 2023 Odilon Sousa <osousa@redhat.com> - 1.1.1-4
+- Disable debug_package
+
 * Tue Sep 26 2023 Odilon Sousa <osousa@redhat.com> - 1.1.1-3
 - Remove SCL Macros
 
