@@ -1,12 +1,12 @@
 Name:		postgresql-evr
 Version:	0.0.2
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	RPM evr extension for PostgreSQL
 
 License:	GPLv3
 
 BuildArch: noarch
-%if 0%{rhel} == 8
+%if 0%{?rhel} == 8
 BuildRequires: libpq-devel
 %endif
 BuildRequires: postgresql-server-devel
@@ -35,6 +35,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Sep 29 2023 Odilon Sousa <osousa@redhat.com> - 0.0.2-3
+- Fix typo on rhel version check
+
 * Tue Sep 26 2023 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 0.0.2-2
 - Remove SCL macros
 - Declare as noarch
