@@ -1,7 +1,7 @@
 ---
 all:
   vars:
-    pulpcore_version: "3.28"
+    pulpcore_version: "nigthly"
     copr_project_user: "@theforeman"
   children:
     packages: {}
@@ -65,7 +65,6 @@ copr_projects:
           buildroot_packages:
             - gcc-c++
             - python39-rpm-macros
-            - pyproject-rpm-macros
 
 repoclosures:
   hosts:
@@ -112,14 +111,15 @@ repoclosures:
 
 buildroot_packages:
   hosts:
+    python-tomli: {}
+    python-pyyaml: {}
+    python-packaging: {}
+    python-pyparsing: {}
     pyproject-rpm-macros: {}
 
 tier1_packages:
   hosts:
-    python-packaging: {}
-    python-pyparsing: {}
     python-setuptools-scm: {}
-    python-tomli: {}
 
 tier2_packages:
   hosts:
@@ -142,7 +142,15 @@ tier3_packages:
     python-pytz: {}
     python-sqlparse: {}
     python-tomli_w: {}
+    python-calver: {}
     python-trove-classifiers: {}
+    python-pluggy: {}
+    python-editables: {}
+    python-hatchling: {}
+    python-hatch_vcs: {}
+    python-hatch_fancy_pypi_readme: {}
+    python-hatch: {}
+    python-protobuf: {}
 
 tier4_packages:
   hosts:
@@ -184,7 +192,6 @@ tier4_packages:
     python-brotli: {}
     python-build: {}
     python-cachecontrol: {}
-    python-calver: {}
     python-cchardet: {}
     python-certifi: {}
     python-cffi: {}
@@ -232,7 +239,6 @@ tier4_packages:
     python-dulwich: {}
     python-dynaconf: {}
     python-ecdsa: {}
-    python-editables: {}
     python-enrich: {}
     python-et-xmlfile: {}
     python-exceptiongroup: {}
@@ -251,10 +257,6 @@ tier4_packages:
     python-grpcio: {}
     python-gunicorn: {}
     python-h11: {}
-    python-hatch: {}
-    python-hatch_vcs: {}
-    python-hatch_fancy_pypi_readme: {}
-    python-hatchling: {}
     python-html5lib: {}
     python-httpcore: {}
     python-httpx: {}
@@ -278,8 +280,6 @@ tier4_packages:
     python-pillow: {}
     python-pkginfo: {}
     python-platformdirs: {}
-    python-pluggy: {}
-    python-protobuf: {}
     python-ptyprocess: {}
     python-psycopg: {}
     python-pyasn1: {}
@@ -347,7 +347,6 @@ tier4_packages:
     python-pyproject_hooks: {}
     python-pyrsistent: {}
     python-pytz: {}
-    python-pyyaml: {}
     python-rapidfuzz: {}
     python-redis: {}
     python-requests: {}
@@ -389,7 +388,6 @@ pulpcore_packages:
     python-pulp-cli: {}
     python-pulp-cli-deb: {}
     python-pulp-rpm: {}
-    python-pulp_2to3_migration: {}
     python-pulp-container: {}
     python-pulp-deb: {}
     python-pulp-file: {}
