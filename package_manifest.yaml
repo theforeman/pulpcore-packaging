@@ -59,12 +59,16 @@ copr_projects:
           buildroot_packages:
             - gcc-c++
             - pyproject-rpm-macros
+          external_repos:
+            - "{{ pulpcore_staging }}/rhel-{{ rhel_9 }}-x86_64"
         - name: "rhel-{{ rhel_8 }}-x86_64"
           modules: "{{ core_modules }}"
           comps_file: "{{ inventory_dir }}/comps/comps-pulpcore-el{{ rhel_8 }}.xml"
           buildroot_packages:
             - gcc-c++
             - python39-rpm-macros
+          external_repos:
+            - "{{ pulpcore_staging }}/rhel-{{ rhel_8 }}-x86_64"
 
 repoclosures:
   hosts:
