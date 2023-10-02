@@ -6,7 +6,7 @@
 %global pypi_name django-import-export
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.0.2
+Version:        3.3.1
 Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 02 2023 Odilon Sousa <osousa@redhat.com> - 3.3.1-1
+- Release python-django-import-export 3.3.1
+
 * Fri Feb 03 2023 Odilon Sousa 3.0.2-1
 - Update to 3.0.2
 
