@@ -58,7 +58,6 @@ copr_projects:
           comps_file: "{{ inventory_dir }}/comps/comps-pulpcore-el{{ rhel_9 }}.xml"
           buildroot_packages:
             - gcc-c++
-            - pyproject-rpm-macros
           external_repos:
             - "{{ pulpcore_staging }}/rhel-{{ rhel_9 }}-x86_64"
         - name: "rhel-{{ rhel_8 }}-x86_64"
