@@ -5,7 +5,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.9.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -29,6 +29,8 @@ Provides:       %{pypi_name} = %{version}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli
+Requires:       pyproject-rpm-macros
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pip
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -56,6 +58,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Oct 13 2023 Odilon Sousa <osousa@redhat.com> - 3.9.0-3
+- Add pyproject-rpm-macros to requirements
+
 * Thu Jul 20 2023 Odilon Sousa <osousa@redhat.com> - 3.9.0-2
 - Add package requirements
 
