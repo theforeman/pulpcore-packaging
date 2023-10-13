@@ -9,7 +9,7 @@ License:        MIT
 #   Increment Z when this is a bugfix or a cosmetic change
 # Dropping support for EOL Fedoras is *not* considered a breaking change
 Version:        1.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 # Macro files
 Source001:      macros.pyproject
@@ -46,6 +46,9 @@ BuildRequires:  python%{python3_pkgversion}-rpm-macros
 Requires:       python-rpm-macros
 Requires:       python-srpm-macros
 Requires:       python%{python3_pkgversion}-rpm-macros
+Requires:       python%{python3_pkgversion}-pip
+Requires:       python%{python3_pkgversion}-wheel
+Requires:       python%{python3_pkgversion}-tomli
 
 # We use the following tools outside of coreutils
 Requires:       /usr/bin/find
@@ -125,6 +128,9 @@ test "$signature1" != ""
 
 
 %changelog
+* Fri Oct 13 2023 Odilon Sousa <osousa@redhat.com> - 1.9.0-2
+- Add pip as requirements
+
 * Wed May 31 2023 Maxwell G <maxwell@gtmx.me> - 1.9.0-1
 - Allow passing config_settings to the build backend.
 - Resolves: rhbz#2192581
