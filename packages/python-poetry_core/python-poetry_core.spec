@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.6.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -15,6 +15,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-tomli
+BuildRequires:  pyproject-rpm-macros
 
 %description
 %{summary}
@@ -22,7 +24,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli
+Requires:       pyproject-rpm-macros
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pip
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -47,6 +51,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Oct 13 2023 Odilon Sousa <osousa@redhat.com> - 1.6.1-2
+- Add pyproject-rpm-macros to requirements
+
 * Thu Aug 03 2023 Odilon Sousa <osousa@redhat.com> - 1.6.1-1
 - Release python-poetry_core 1.6.1
 
