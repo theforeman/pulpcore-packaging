@@ -1,12 +1,13 @@
-# explicitly define, as we build on top of an scl, not inside with scl_package
-%if 0%{?scl:1}
-%global scl_prefix %{scl}-
-%global python3_sitearch /opt/theforeman/tfm-pulpcore/root/usr/lib64/python3.8/site-packages/
-%global python3_version 3.8
-%global __os_install_post %python38_os_install_post
-%global __python_requires %python38_python_requires
-%global __python_provides %python38_python_provides
-%global __python3 /opt/rh/rh-python38/root/usr/bin/python3
+%global libmodulemd_version 2.3.0
+
+%define __cmake_in_source_build 1
+
+%global bash_completion %{_datadir}/bash-completion/completions/*
+
+%if ( 0%{?rhel} && ( 0%{?rhel} <= 7 || 0%{?rhel} >= 9 ) ) || ( 0%{?fedora} && 0%{?fedora} >= 39 )
+%bcond_with drpm
+%else
+%bcond_without drpm
 %endif
 
 # Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
@@ -16,38 +17,36 @@
 %bcond_with python36
 %endif
 
-%global libmodulemd_version 2.3.0
-
-%define __cmake_in_source_build 1
-
-%global bash_completion %{_datadir}/bash-completion/completions/*
-
-%if 0%{?rhel} && ( 0%{?rhel} <= 7 || 0%{?rhel} >= 9 )
-%bcond_with drpm
-%else
-%bcond_without drpm
-%endif
-
-%if 0%{?rhel} || 0%{?fedora} < 29
+%if 0%{?rhel}
 %bcond_with zchunk
 %else
 %bcond_without zchunk
 %endif
 
-%if 0%{?rhel} || 0%{?fedora} < 29
+%if 0%{?rhel} && 0%{?rhel} < 7
 %bcond_with libmodulemd
+# dnf supports zstd since 8.4: https://bugzilla.redhat.com/show_bug.cgi?id=1914876
+%bcond_with zstd 
 %else
 %bcond_without libmodulemd
+%bcond_without zstd
 %endif
+
+%if 0%{?rhel} && 0%{?rhel} <= 8
+%bcond_without legacy_hashes
+%else
+%bcond_with legacy_hashes
+%endif
+
+%bcond_with sanitizers
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        0.20.1
+Version:        1.0.2
 Release:        1%{?dist}
-License:        GPLv2+
+License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch1:         0001-Preserve-changed-API-for-cr_compress_file_with_stat-RhBug1973588.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -60,22 +59,37 @@ BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  rpm-devel >= 4.8.0-28
 BuildRequires:  sqlite-devel
+BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  zstd
 %if %{with zchunk}
 BuildRequires:  pkgconfig(zck) >= 0.9.11
 BuildRequires:  zchunk
 %endif
 %if %{with libmodulemd}
 BuildRequires:  pkgconfig(modulemd-2.0) >= %{libmodulemd_version}
+%if 0%{?rhel} && 0%{?rhel} <= 7
+BuildRequires:  libmodulemd2
+Requires:       libmodulemd2%{?_isa} >= %{libmodulemd_version}
+%else
 BuildRequires:  libmodulemd
 Requires:       libmodulemd%{?_isa} >= %{libmodulemd_version}
+%endif
 %endif
 Requires:       %{name}-libs =  %{version}-%{release}
 BuildRequires:  bash-completion
 Requires: rpm >= 4.9.0
 %if %{with drpm}
 BuildRequires:  drpm-devel >= 0.4.0
+%endif
+# dnf supports zstd since 8.4: https://bugzilla.redhat.com/show_bug.cgi?id=1914876
+BuildRequires:  pkgconfig(libzstd)
+
+%if %{with sanitizers}
+BuildRequires:  libasan
+BuildRequires:  liblsan
+BuildRequires:  libubsan
 %endif
 
 %if 0%{?fedora} || 0%{?rhel} > 7
@@ -104,10 +118,10 @@ Requires:   %{name}-libs%{?_isa} = %{version}-%{release}
 This package contains the createrepo_c C library and header files.
 These development files are for easy manipulation with a repodata.
 
-%package -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
+%package -n python%{python3_pkgversion}-%{name}
 Summary:        Python 3 bindings for the createrepo_c library
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-devel
 Requires:       %{name}-libs = %{version}-%{release}
 %if 0%{?scl:1}
 Obsoletes:      python3-%{name} < %{version}-%{release}
@@ -116,24 +130,22 @@ Obsoletes:      python3-%{name} < %{version}-%{release}
 Obsoletes:      python38-%{name} < %{version}-%{release}
 %endif
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
+%description -n python%{python3_pkgversion}-%{name}
 Python 3 bindings for the createrepo_c library.
 
 %if %{with python36}
-%package -n python3-%{name}
+%package -n python36-%{name}
 Summary:        Python 3 bindings for the createrepo_c library
 BuildRequires:  python36-devel
 Provides:       python36-%{name} = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 
-%description -n python3-%{name}
+%description -n python36-%{name}
 Python 3 bindings for the createrepo_c library.
 
 %endif
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
-set -ex
 %autosetup -p1
 
 mkdir build-py3
@@ -141,38 +153,24 @@ mkdir build-py3
 mkdir build-py36
 %endif
 
-# it can't detect our special PYTHONPATH and uses the compiled-in from the SCL Python
-%if 0%{?scl:1}
-sed -i "/OUTPUT_VARIABLE PYTHON_INSTALL_DIR/ s#))#).replace('rh/rh-python38', 'theforeman/tfm-pulpcore'))#" src/python/CMakeLists.txt
-%endif
+# it can't detect our special PYTHONPATH 
 sed -i "/PYTHON_UNSET()/d" src/python/CMakeLists.txt
-%{?scl:EOF}
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 # Build createrepo_c with Pyhon 3
 pushd build-py3
-%if 0%{?rhel} == 7
   %cmake .. \
       -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
       -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
+      -DWITH_LEGACY_HASHES=%{?with_legacy_hashes:ON}%{!?with_legacy_hashes:OFF} \
+      -DWITH_ZSTD=%{?with_zstd:ON}%{!?with_zstd:OFF} \
       -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
-      -DWITH_LEGACY_HASHES=ON \
-      %{?!scl:-DPYTHON_EXECUTABLE=/usr/bin/python3.8 -DPYTHON_LIBRARY=/usr/lib64/libpython3.8.so} \
-      %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
-  make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
-popd
-%else
-  %cmake .. \
-      -DWITH_ZCHUNK=%{?with_zchunk:ON}%{!?with_zchunk:OFF} \
-      -DWITH_LIBMODULEMD=%{?with_libmodulemd:ON}%{!?with_libmodulemd:OFF} \
-      -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
-      -DWITH_LEGACY_HASHES=ON \
       -DPYTHON_EXECUTABLE=/usr/bin/python3.9 -DPYTHON_LIBRARY=/usr/lib64/libpython3.9.so
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
+  # Build C documentation
+  make doc-c
 popd
-%endif
 
 %if %{with python36}
 # Build createrepo_c with Python 3.6
@@ -188,30 +186,22 @@ pushd build-py36
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
 popd
 %endif
-%{?scl:EOF}
 
 %check
-%{?scl:scl enable %{scl} - << \EOF}
-set -ex
 # Run Python 3 tests
 pushd build-py3
   # Compile C tests
   make tests
+
   # Run Python 3 tests
   make ARGS="-V" test
 popd
-%{?scl:EOF}
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 pushd build-py3
-%if 0%{?rhel} == 7
   # Install createrepo_c with Python 3
   make install DESTDIR=%{buildroot}
-%else
-  %cmake_install
-%endif
 popd
 
 %if %{with python36}
@@ -226,7 +216,6 @@ ln -sr %{buildroot}%{_bindir}/createrepo_c %{buildroot}%{_bindir}/createrepo
 ln -sr %{buildroot}%{_bindir}/mergerepo_c %{buildroot}%{_bindir}/mergerepo
 ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
-%{?scl:EOF}
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %post libs -p /sbin/ldconfig
@@ -258,21 +247,28 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{_libdir}/lib%{name}.so.*
 
 %files devel
+%doc build-py3/doc/html
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
+%files -n python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %if %{with python36}
-%files -n python3-%{name}
+%files -n python36-%{name}
 /usr/lib64/python3.6/site-packages/%{name}/
 /usr/lib64/python3.6/site-packages/%{name}-%{version}-py*.egg-info
 %endif
 
 %changelog
+* Fri Nov 03 2023 Odilon Sousa <osousa@redhat.com> - 1.0.2-1
+- Release createrepo_c 1.0.2
+
+* Mon Oct 23 2023 Odilon Sousa <osousa@redhat.com> - 1.0.1-1
+- Release createrepo_c 1.0.1
+
 * Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 0.20.1-1
 - Release createrepo_c 0.20.1
 
