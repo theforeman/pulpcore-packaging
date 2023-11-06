@@ -10,8 +10,8 @@
 %bcond_without drpm
 %endif
 
-# Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
-%if 0%{?rhel} == 8
+# Our EL8 buildroots default to Python 3.9, but let's also build 3.6, just to be safe
+%if 0%{?rhel} == 8 && 0%{python3_pkgversion} != 03
 %bcond_without python36
 %else
 %bcond_with python36
@@ -43,7 +43,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        1.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -134,13 +134,13 @@ Obsoletes:      python38-%{name} < %{version}-%{release}
 Python 3 bindings for the createrepo_c library.
 
 %if %{with python36}
-%package -n python36-%{name}
+%package -n python3-%{name}
 Summary:        Python 3 bindings for the createrepo_c library
 BuildRequires:  python36-devel
 Provides:       python36-%{name} = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 
-%description -n python36-%{name}
+%description -n python3-%{name}
 Python 3 bindings for the createrepo_c library.
 
 %endif
@@ -257,12 +257,15 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %if %{with python36}
-%files -n python36-%{name}
+%files -n python3-%{name}
 /usr/lib64/python3.6/site-packages/%{name}/
 /usr/lib64/python3.6/site-packages/%{name}-%{version}-py*.egg-info
 %endif
 
 %changelog
+* Mon Nov 06 2023 Odilon Sousa <osousa@redhat.com> - 1.0.2-2
+- Build python3.6 using python3 naming for EL8
+
 * Fri Nov 03 2023 Odilon Sousa <osousa@redhat.com> - 1.0.2-1
 - Release createrepo_c 1.0.2
 
