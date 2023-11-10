@@ -1,22 +1,24 @@
-%{?scl:%scl_package python-%{srcname}}
-%{!?scl:%global pkg_name %{name}}
+%global pkg_name %{name}
+
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
 
 %global debug_package %{nil}
 # Created by pyp2rpm-3.3.3
 %global pypi_name PyYAML
 %global srcname pyyaml
 
-Name:           %{?scl_prefix}python-%{srcname}
+Name:           python-%{srcname}
 Version:        5.4.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
 URL:            https://pyyaml.org/
 Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 BuildRequires:  gcc
 BuildRequires:  libyaml-devel
@@ -26,43 +28,39 @@ BuildRequires:  libyaml-devel
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Provides:       %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name} = %{version}-%{release}
+Provides:       python%{python3_pkgversion}-%{pypi_name} = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-yaml}
-Provides:       %{?scl_prefix}python%{python3_pkgversion}-yaml = %{version}-%{release}
+Provides:       python%{python3_pkgversion}-yaml = %{version}-%{release}
+Obsoletes:      python3-%{srcname} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
-
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
-
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %{python3_sitearch}/_yaml
 %{python3_sitearch}/yaml
@@ -70,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 10 2023 Odilon Sousa <osousa@redhat.com> - 5.4.1-5
+- Rebuild against python 3.11
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 5.4.1-4
 - Build against python 3.9
 
