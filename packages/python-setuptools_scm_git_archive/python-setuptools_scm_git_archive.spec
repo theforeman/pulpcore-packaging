@@ -7,8 +7,8 @@
 %global pypi_name setuptools_scm_git_archive
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.1
-Release:        4%{?dist}
+Version:        1.4.1
+Release:        1%{?dist}
 Summary:        setuptools_scm plugin for git archives
 
 License:        MIT
@@ -19,7 +19,8 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
-
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
 
 %description
 %{summary}
@@ -62,10 +63,13 @@ set -ex
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.4.1-1
+- Release python-setuptools_scm_git_archive 1.4.1
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.1-4
 - Build against python 3.11
 
