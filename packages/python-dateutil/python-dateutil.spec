@@ -21,6 +21,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
 
 
 %description
