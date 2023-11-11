@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %global pypi_name distlib
 %{?python_disable_dependency_generator}
 
 Name:           python-%{pypi_name}
 Version:        0.3.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distlib is a library which implements low-level functions that relate to packaging and distribution of Python software.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -52,5 +54,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.3.6-2
+- Build against python 3.11
+
 * Tue Jul 25 2023 Odilon Sousa - 0.3.6-1
 - Initial package.

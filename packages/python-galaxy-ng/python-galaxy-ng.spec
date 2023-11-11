@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 

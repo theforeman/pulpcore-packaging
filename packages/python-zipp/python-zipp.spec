@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.4.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
 License:        MIT
@@ -67,6 +69,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.4.0-5
+- Build against python 3.11
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 3.4.0-4
 - Build against python 3.9
 

@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.20.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Docutils -- Python Documentation Utilities
 
 License:        Public Domain and BSD and Python and GPLv3+
@@ -80,5 +82,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.20.1-2
+- Build against python 3.11
+
 * Mon Jul 17 2023 Odilon Sousa <osousa@redhat.com> - 0.20.1-1
 - Initial package.

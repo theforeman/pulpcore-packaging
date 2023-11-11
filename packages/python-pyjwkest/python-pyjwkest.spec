@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.2
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Python implementation of JWT, JWE, JWS and JWK
 
 License:        Apache 2.0
@@ -72,6 +74,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.4.2-7
+- Build against python 3.11
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.4.2-6
 - Build against python 3.9
 

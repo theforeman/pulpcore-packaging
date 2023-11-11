@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?python_disable_dependency_generator}
 %global pypi_name poetry_core
 
 Name:           python-%{pypi_name}
 Version:        1.6.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -51,6 +53,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.6.1-3
+- Build against python 3.11
+
 * Fri Oct 13 2023 Odilon Sousa <osousa@redhat.com> - 1.6.1-2
 - Add pyproject-rpm-macros to requirements
 

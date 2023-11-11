@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.93.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
 License:        Apache
@@ -71,6 +73,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.93.4-4
+- Build against python 3.11
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 0.93.4-3
 - Obsolete the old Python 3.8 package for smooth upgrade
 

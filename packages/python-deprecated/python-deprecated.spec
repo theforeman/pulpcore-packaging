@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.2.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python @deprecated decorator to deprecate old python classes, functions or methods
 
 License:        MIT
@@ -64,5 +66,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.2.13-2
+- Build against python 3.11
+
 * Tue Sep 20 2022 Odilon Sousa - 1.2.13-1
 - Initial package.

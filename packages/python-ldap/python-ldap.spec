@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python modules for implementing LDAP clients
 
 License:        Python style
@@ -74,5 +76,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.4.2-2
+- Build against python 3.11
+
 * Wed Aug 24 2022 Odilon Sousa <osousa@redhat.com> - 3.4.2-1
 - Initial package.

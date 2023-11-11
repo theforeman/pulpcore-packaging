@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
@@ -9,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.56.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        HTTP/2-based RPC framework
 
 License:        Apache License 2.0
@@ -60,5 +62,8 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.56.0-2
+- Build against python 3.11
+
 * Wed Jul 05 2023 Odilon Sousa <osousa@redhat.com> - 1.56.0-1
 - Initial package.

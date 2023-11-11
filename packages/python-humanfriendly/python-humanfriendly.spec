@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        10.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Human friendly output for text interfaces using Python
 
 License:        MIT
@@ -62,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 10.0-5
+- Build against python 3.11
+
 * Tue Jun 14 2022 Odilon Sousa <osousa@redhat.com> - 10.0-4
 - Exclude files in bin for a better upgrade from python38 to python39 and
   removes Obsolete

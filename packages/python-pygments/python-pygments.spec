@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 %global debug_package %{nil}
@@ -8,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.14.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
 License:        BSD
@@ -63,6 +65,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2.14.0-2
+- Build against python 3.11
+
 * Fri Feb 03 2023 Odilon Sousa 2.14.0-1
 - Update to 2.14.0
 

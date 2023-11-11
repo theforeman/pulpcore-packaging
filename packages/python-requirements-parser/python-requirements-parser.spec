@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.2.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Parses Pip requirement files
 
 License:        BSD
@@ -62,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.2.0-4
+- Build against python 3.11
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.2.0-3
 - Build against python 3.9
 

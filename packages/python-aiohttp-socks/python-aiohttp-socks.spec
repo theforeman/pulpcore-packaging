@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.7.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -67,6 +69,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.7.1-4
+- Build against python 3.11
+
 * Fri May 06 2022 Odilon Sousa <osousa@redhat.com> - 0.7.1-3
 - Rebuilding with python_disable_dependency_generator macro
 

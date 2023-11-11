@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2023.7.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Canonical source for classifiers on PyPI (pypi.org)
 
 License:        None
@@ -63,5 +65,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2023.7.6-2
+- Build against python 3.11
+
 * Tue Jul 18 2023 Odilon Sousa <osousa@redhat.com> - 2023.7.6-1
 - Initial package.

@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.18.35
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -70,6 +72,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.18.35-4
+- Build against python 3.11
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.18.35-3
 - Build against python 3.9
 

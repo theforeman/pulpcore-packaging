@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.1.44
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Debian package related modules
 
 License:        GPL-2+
@@ -67,6 +69,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.1.44-4
+- Build against python 3.11
+
 * Wed Aug 24 2022 Quirin Pamp <pamp@atix.de> - 0.1.44-3
 - Bump release to 3 to ensure a smooth upgrade from the 3.16 repo.
 

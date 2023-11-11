@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.1.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        PostgreSQL database adapter for Python
 
 License:        GNU Lesser General Public License v3 (LGPLv3)
@@ -64,5 +66,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.1.9-2
+- Build against python 3.11
+
 * Tue Jun 27 2023 Odilon Sousa - 3.1.9-1
 - Initial package.

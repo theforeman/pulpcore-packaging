@@ -1,3 +1,6 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
+
 Name:           pyproject-rpm-macros
 Summary:        RPM macros for PEP 517 Python packages
 License:        MIT
@@ -9,7 +12,7 @@ License:        MIT
 #   Increment Z when this is a bugfix or a cosmetic change
 # Dropping support for EOL Fedoras is *not* considered a breaking change
 Version:        1.9.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 # Macro files
 Source001:      macros.pyproject
@@ -128,6 +131,9 @@ test "$signature1" != ""
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.9.0-3
+- Build against python 3.11
+
 * Fri Oct 13 2023 Odilon Sousa <osousa@redhat.com> - 1.9.0-2
 - Add pip as requirements
 

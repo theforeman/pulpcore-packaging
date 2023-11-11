@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -72,6 +74,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.1.0-2
+- Build against python 3.11
+
 * Mon Oct 02 2023 Odilon Sousa <osousa@redhat.com> - 3.1.0-1
 - Release python-django-import-export 3.1.0
 

@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.14.0
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Add .env support to your django/flask apps in development and deployments
 
 License:        BSD-3-Clause
@@ -71,6 +73,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.14.0-9
+- Build against python 3.11
+
 * Thu May 12 2022 Yanis Guenane <yguenane@redhat.com> - 0.14.0-8
 - Fix obsolete named package
 

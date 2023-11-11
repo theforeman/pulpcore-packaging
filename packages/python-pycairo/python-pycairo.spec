@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.20.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python interface for cairo
 
 License:        LGPL-2.1-only OR MPL-1.1
@@ -76,6 +78,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.20.1-4
+- Build against python 3.11
+
 * Fri Apr 22 2022 Odilon Sousa <osousa@redhat.com> - 1.20.1-3
 - Rebuild against python 3.9
 

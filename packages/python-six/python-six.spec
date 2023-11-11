@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.16.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python 2 and 3 compatibility utilities
 
 License:        MIT
@@ -63,6 +65,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.16.0-3
+- Build against python 3.11
+
 * Fri Apr 22 2022 Odilon Sousa <osousa@redhat.com> - 1.16.0-2
 - Rebuild against python 3.9
 

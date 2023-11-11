@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.21.35
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        Apache License 2.0
@@ -73,6 +75,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.21.35-5
+- Build against python 3.11
+
 * Thu May 12 2022 Satoe Imaishi <simaishi@redhat.com> - 1.21.35-4
 - Add epoch for python-dateutil requires for el9
 

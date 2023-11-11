@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.4.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A non-validating SQL parser
 
 License:        BSD-3-Clause
@@ -69,6 +71,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.4.4-2
+- Build against python 3.11
+
 * Mon Jun 12 2023 Odilon Sousa <osousa@redhat.com> - 0.4.4-1
 - Release python-sqlparse 0.4.4
 - Add setup.cfg and setup.py to build package on EL8

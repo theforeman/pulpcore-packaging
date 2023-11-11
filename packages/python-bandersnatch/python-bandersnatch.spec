@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        6.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Mirroring tool that implements the client (mirror) side of PEP 381
 
 License:        Academic Free License, version 3
@@ -77,6 +79,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 6.1.0-2
+- Build against python 3.11
+
 * Tue Jun 27 2023 Odilon Sousa 6.1.0-1
 - Update to 6.1.0
 

@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.4.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Implementation of per object permissions for Django
 
 License:        BSD
@@ -69,6 +71,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2.4.0-6
+- Build against python 3.11
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 2.4.0-5
 - Obsolete the old Python 3.8 package for smooth upgrade
 

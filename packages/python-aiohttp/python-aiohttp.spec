@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.8.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -80,6 +82,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.8.3-3
+- Build against python 3.11
+
 * Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 3.8.3-2
 - Remove asynctest requirement, only required for python <3.8
 

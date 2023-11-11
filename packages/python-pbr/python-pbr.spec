@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        5.8.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python Build Reasonableness
 
 License:        None
@@ -64,6 +66,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.8.0-5
+- Build against python 3.11
+
 * Mon Jun 13 2022 Odilon Sousa <osousa@redhat.com> - 5.8.0-4
 - Exclude files in bin for a better upgrade from python38 to python39 and
   removes Obsolete

@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.3.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
 License:        BSD
@@ -67,6 +69,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.3.0-3
+- Build against python 3.11
+
 * Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.3.0-2
 - Update django requirement
 

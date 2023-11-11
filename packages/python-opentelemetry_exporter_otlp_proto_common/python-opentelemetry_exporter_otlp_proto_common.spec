@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?python_disable_dependency_generator}
 %global pypi_name opentelemetry_exporter_otlp_proto_common
 
 Name:           python-%{pypi_name}
 Version:        1.19.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Protobuf encoding
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -49,5 +51,8 @@ set -ex
 %{python3_sitelib}/opentelemetry/exporter/otlp
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-2
+- Build against python 3.11
+
 * Wed Jul 26 2023 Odilon Sousa - 1.19.0-1
 - Initial package.

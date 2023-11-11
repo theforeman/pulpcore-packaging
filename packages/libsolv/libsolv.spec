@@ -1,3 +1,6 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
+
 # explicitly define, as we build on top of an scl, not inside with scl_package
 %if 0%{?scl:1}
 %global scl_prefix %{scl}-
@@ -46,7 +49,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.22
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -389,6 +392,9 @@ set -ex
 %endif
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.7.22-5
+- Build against python 3.11
+
 * Thu May 12 2022 Yanis Guenane <yguenane@redhat.com> - 0.7.22-4
 - Fix obsolete named package
 

@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.0.9
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python bindings for the Brotli compression library
 
 License:        MIT
@@ -64,6 +66,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.0.9-3
+- Build against python 3.11
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.9-2
 - Build against python 3.9
 

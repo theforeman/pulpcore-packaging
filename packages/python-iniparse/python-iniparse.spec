@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{modname}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -8,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{modname}
 Version:        0.4
-Release:        35%{?dist}
+Release:        36%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
@@ -88,6 +90,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.4-36
+- Build against python 3.11
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.4-35
 - Build against python 3.9
 

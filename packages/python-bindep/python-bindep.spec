@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.11.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Binary dependency utility
 
 License:        Apache License, Version 2.0
@@ -68,6 +70,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2.11.0-3
+- Build against python 3.11
+
 * Tue Sep 27 2022 Odilon Sousa <osousa@redhat.com> - 2.11.0-2
 - Changing dependencies to reflect the setup config for python >= 3.6
 
