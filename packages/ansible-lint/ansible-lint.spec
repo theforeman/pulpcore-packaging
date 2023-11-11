@@ -1,11 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
+%{?python_disable_dependency_generator}
 # Created by pyp2rpm-3.3.3
 %global pypi_name ansible-lint
 
 Name:           %{pypi_name}
-Version:        5.0.8
-Release:        5%{?dist}
+Version:        5.4.0
+Release:        1%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
 License:        MIT
@@ -15,8 +16,9 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 3.5.0
+BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 7.0.5
 BuildRequires:  python%{python3_pkgversion}-setuptools_scm_git_archive
+BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 # This should be
@@ -38,24 +40,28 @@ Requires:       python%{python3_pkgversion}-wcmatch >= 7.0
 %{summary}
 
 %prep
+set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+
 
 %build
-%py3_build
+set -ex
+%pyproject_wheel
+
 
 %install
-%py3_install
+set -ex
+%pyproject_install
 
 %files
-%license LICENSE
-%doc README.rst docs/README.md examples/playbooks/README.md test/local-content/README.md
 %{_bindir}/ansible-lint
 %{python3_sitelib}/ansiblelint
-%{python3_sitelib}/ansible_lint-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/ansible_lint-%{version}.dist-info/
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.4.0-1
+- Release ansible-lint 5.4.0
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.0.8-5
 - Build against python 3.11
 
