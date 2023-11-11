@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A small Python module for determining appropriate platform-specific dirs, e
 
 License:        MIT
@@ -52,6 +54,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.10.0-2
+- Build against python 3.11
+
 * Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.10.0-1
 - Release python-platformdirs 3.10.0
 

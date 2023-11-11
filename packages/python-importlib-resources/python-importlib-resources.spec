@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        5.4.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Read resources from Python packages
 
 License:        Apache2
@@ -66,6 +68,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.4.0-5
+- Build against python 3.11
+
 * Mon Aug 08 2022 Odilon Sousa <osousa@redhat.com> - 5.4.0-4
 - Force setuptools_scm usage for older setuptools
 

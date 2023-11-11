@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 # Created by pyp2rpm-3.3.3
 %global pypi_name ansible-lint
 
 Name:           %{pypi_name}
 Version:        5.0.8
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
 License:        MIT
@@ -54,6 +56,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ansible_lint-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.0.8-5
+- Build against python 3.11
+
 * Thu Apr 28 2022 Odilon Sousa <osousa@redhat.com> - 5.0.8-4
 - Rebuilding against python 3.9
 

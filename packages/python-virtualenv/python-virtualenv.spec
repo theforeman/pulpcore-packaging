@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %global pypi_name virtualenv
 %{?python_disable_dependency_generator}
 
 Name:           python-%{pypi_name}
 Version:        20.24.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -53,5 +55,8 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 20.24.2-2
+- Build against python 3.11
+
 * Tue Jul 25 2023 Odilon Sousa - 20.24.2-1
 - Initial package.

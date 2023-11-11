@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?python_disable_dependency_generator}
 %global pypi_name poetry
 
 Name:           python-%{pypi_name}
 Version:        1.5.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -83,6 +85,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.5.1-3
+- Build against python 3.11
+
 * Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 1.5.1-2
 - Update python-shellingham requirement
 

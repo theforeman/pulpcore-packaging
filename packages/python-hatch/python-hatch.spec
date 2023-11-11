@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %global pypi_name hatch
 %{?python_disable_dependency_generator}
 
 Name:           python-%{pypi_name}
 Version:        1.7.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Modern, extensible Python project management
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -70,6 +72,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.7.0-3
+- Build against python 3.11
+
 * Fri Jul 28 2023 Odilon Sousa <osousa@redhat.com> - 1.7.0-2
 - Fix tomli_w requirement
 

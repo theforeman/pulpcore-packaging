@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?python_disable_dependency_generator}
 %global pypi_name httpx 
 
 Name:           python-%{pypi_name}
 Version:        0.24.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The next generation HTTP client.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -55,5 +57,8 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.24.1-2
+- Build against python 3.11
+
 * Wed Jul 26 2023 Odilon Sousa - 0.24.1-1
 - Initial package.

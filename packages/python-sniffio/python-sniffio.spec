@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Sniff out which async library your code is running under
 
 License:        MIT OR Apache-2.0
@@ -62,5 +64,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.3.0-2
+- Build against python 3.11
+
 * Tue Jul 18 2023 Odilon Sousa <osousa@redhat.com> - 1.3.0-1
 - Initial package.

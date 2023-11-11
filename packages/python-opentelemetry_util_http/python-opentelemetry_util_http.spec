@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?python_disable_dependency_generator}
 %global pypi_name opentelemetry_util_http
 
 Name:           python-%{pypi_name}
 Version:        0.40b0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Web util for OpenTelemetry
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -49,5 +51,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-2
+- Build against python 3.11
+
 * Wed Jul 26 2023 Odilon Sousa - 0.40b0-1
 - Initial package.

@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        aiosignal: a list of registered asynchronous callbacks
 
 License:        Apache 2.0
@@ -64,6 +66,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.3.1-2
+- Build against python 3.11
+
 * Fri Feb 03 2023 Odilon Sousa 1.3.1-1
 - Update to 1.3.1
 

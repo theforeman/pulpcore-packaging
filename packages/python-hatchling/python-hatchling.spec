@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?python_disable_dependency_generator}
 %global pypi_name hatchling 
 
 Name:           python-%{pypi_name}
 Version:        1.18.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -60,6 +62,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.18.0-3
+- Build against python 3.11
+
 * Thu Jul 20 2023 Odilon Sousa <osousa@redhat.com> - 1.18.0-2
 - Add package requirements
 

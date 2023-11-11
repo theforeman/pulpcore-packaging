@@ -1,3 +1,6 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
+
 %global libmodulemd_version 2.3.0
 
 %define __cmake_in_source_build 1
@@ -11,7 +14,7 @@
 %endif
 
 # Our EL8 buildroots default to Python 3.9, but let's also build 3.6, just to be safe
-%if 0%{?rhel} == 8 && 0%{python3_pkgversion} != 03
+%if 0%{?rhel} == 8
 %bcond_without python36
 %else
 %bcond_with python36
@@ -43,7 +46,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        1.0.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -166,7 +169,7 @@ pushd build-py3
       -DWITH_LEGACY_HASHES=%{?with_legacy_hashes:ON}%{!?with_legacy_hashes:OFF} \
       -DWITH_ZSTD=%{?with_zstd:ON}%{!?with_zstd:OFF} \
       -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
-      -DPYTHON_EXECUTABLE=/usr/bin/python3.9 -DPYTHON_LIBRARY=/usr/lib64/libpython3.9.so
+      -DPYTHON_EXECUTABLE=/usr/bin/python3.11 -DPYTHON_LIBRARY=/usr/lib64/libpython3.11.so
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
   # Build C documentation
   make doc-c
@@ -254,7 +257,6 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 
 %files -n python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
-%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %if %{with python36}
 %files -n python3-%{name}
@@ -263,6 +265,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com>
+- Build against python 3.11
+
 * Mon Nov 06 2023 Odilon Sousa <osousa@redhat.com> - 1.0.2-2
 - Build python3.6 using python3 naming for EL8
 

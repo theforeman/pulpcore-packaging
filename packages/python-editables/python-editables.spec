@@ -1,8 +1,10 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %global pypi_name editables 
 
 Name:           python-%{pypi_name}
 Version:        0.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Editable installations
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -51,5 +53,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.4-2
+- Build against python 3.11
+
 * Mon Jul 17 2023 Odilon Sousa - 0.4-1
 - Initial package.

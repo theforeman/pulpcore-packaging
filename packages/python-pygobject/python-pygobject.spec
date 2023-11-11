@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.40.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
@@ -76,6 +78,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1:3.40.1-5
+- Build against python 3.11
+
 * Tue Oct 04 2022 Odilon Sousa <osousa@redhat.com> - 1:3.40.1-4
 - Obsolete the old Python 3.8 package for smooth upgrade
 

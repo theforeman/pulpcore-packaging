@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{srcname}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        9.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python Imaging Library (Fork)
 
 License:        HPND
@@ -65,5 +67,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 9.5.0-2
+- Build against python 3.11
+
 * Tue Jun 27 2023 Odilon Sousa - 9.5.0-1
 - Initial package.

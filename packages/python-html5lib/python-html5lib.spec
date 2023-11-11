@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
@@ -7,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        HTML parser based on the WHATWG HTML specification
 
 License:        MIT License
@@ -65,5 +67,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.1-2
+- Build against python 3.11
+
 * Mon Aug 07 2023 Odilon Sousa <osousa@redhat.com> - 1.1-1
 - Initial package.

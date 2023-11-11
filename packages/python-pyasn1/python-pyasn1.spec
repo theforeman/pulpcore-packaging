@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.4.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        ASN.1 types and codecs
 
 License:        BSD
@@ -62,5 +64,8 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.4.8-2
+- Build against python 3.11
+
 * Thu Aug 25 2022 Odilon Sousa <osousa@redhat.com> - 0.4.8-1
 - Initial package.

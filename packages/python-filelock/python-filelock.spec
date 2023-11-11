@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.8.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A platform independent file lock
 
 License:        Unlicense
@@ -63,6 +65,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.8.0-2
+- Build against python 3.11
+
 * Tue Aug 08 2023 Odilon Sousa <osousa@redhat.com> - 3.8.0-1
 - Release python-filelock 3.8.0
 

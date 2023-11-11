@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -5,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.9.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -58,6 +60,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.9.0-4
+- Build against python 3.11
+
 * Fri Oct 13 2023 Odilon Sousa <osousa@redhat.com> - 3.9.0-3
 - Add pyproject-rpm-macros to requirements
 

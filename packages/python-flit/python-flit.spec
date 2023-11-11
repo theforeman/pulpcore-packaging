@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.9.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -60,6 +62,9 @@ set -ex
 %{_bindir}/flit
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.9.0-4
+- Build against python 3.11
+
 * Fri Jul 28 2023 Odilon Sousa <osousa@redhat.com> - 3.9.0-3
 - Fix tomli_w requirement
 

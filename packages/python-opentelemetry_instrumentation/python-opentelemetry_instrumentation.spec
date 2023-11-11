@@ -1,9 +1,11 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?python_disable_dependency_generator}
 %global pypi_name opentelemetry_instrumentation
 
 Name:           python-%{pypi_name}
 Version:        0.40b0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -55,6 +57,9 @@ set -ex
 %{_bindir}/opentelemetry-instrument
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-4
+- Build against python 3.11
+
 * Wed Aug 09 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-3
 - Update opentelemetry_api requirement
 

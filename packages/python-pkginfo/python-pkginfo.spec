@@ -1,3 +1,5 @@
+%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -6,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.9.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -70,6 +72,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.9.6-2
+- Build against python 3.11
+
 * Mon Aug 07 2023 Odilon Sousa <osousa@redhat.com> - 1.9.6-1
 - Release python-pkginfo 1.9.6
 
