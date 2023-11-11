@@ -235,10 +235,16 @@ set -ex
   -DPYTHON_EXECUTABLE=%{__python2}               \
 %if %{with python3_bindings}
   -DENABLE_PYTHON3=ON                            \
-  -DPYTHON3_EXECUTABLE=%{__python3}              \
+  -DPYTHON_EXECUTABLE=/usr/bin/python3.11        \
+  -DPYTHON_LIBRARY=/usr/lib64/libpython3.11.so.1.0 \
+  -DPYTHON_INCLUDE_DIR=/usr/include/python3.11   \
+  -DPython_ADDITIONAL_VERSIONS=3.11 \               
 %endif
 %else
   -DPYTHON_EXECUTABLE=%{__python3}               \
+  -DPYTHON_LIBRARY=/usr/lib64/libpython3.11.so.1.0 \
+  -DPYTHON_INCLUDE_DIR=/usr/include/python3.11   \
+  -DPython_ADDITIONAL_VERSIONS=3.11 \
 %endif
 %endif
   %{nil}
@@ -379,7 +385,7 @@ set -ex
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{libname}
 %{python3_sitearch}/_%{libname}.so
 %{python3_sitearch}/%{libname}.py
-%if 0%{?!scl:1}
+%if 0%{?rhel} == 9
 %{python3_sitearch}/__pycache__/%{libname}.*
 %endif
 %endif
