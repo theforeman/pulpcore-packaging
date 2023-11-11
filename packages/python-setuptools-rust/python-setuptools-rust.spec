@@ -7,8 +7,8 @@
 %global pypi_name setuptools-rust
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.11.5
-Release:        3%{?dist}
+Version:        1.6.0
+Release:        1%{?dist}
 Summary:        Setuptools Rust extension plugin
 
 License:        MIT
@@ -19,7 +19,6 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 41
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm >= 3.4.3
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-toml >= 0.9
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-wheel
 
 
@@ -32,7 +31,7 @@ Summary:        %{summary}
 
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml >= 0.9
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -62,12 +61,15 @@ set -ex
 
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
-%doc README.md examples/html-py-ever/README.md examples/tomlgen/README.rst
+%doc README.md
 %{python3_sitelib}/setuptools_rust
 %{python3_sitelib}/setuptools_rust-*-py%{python3_version}.egg-info
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.6.0-1
+- Release python-setuptools-rust 1.6.0
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.11.5-3
 - Build against python 3.11
 
