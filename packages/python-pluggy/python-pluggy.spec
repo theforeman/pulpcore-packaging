@@ -7,8 +7,8 @@
 %global pypi_name pluggy
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.2.0
-Release:        2%{?dist}
+Version:        1.3.0
+Release:        1%{?dist}
 Summary:        plugin and hook calling mechanisms for python
 
 License:        MIT
@@ -19,6 +19,8 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
 
 
 
@@ -66,6 +68,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.3.0-1
+- Release python-pluggy 1.3.0
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.2.0-2
 - Build against python 3.11
 
