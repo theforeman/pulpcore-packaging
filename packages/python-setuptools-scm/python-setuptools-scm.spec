@@ -1,5 +1,6 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
+%{?python_disable_dependency_generator}
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
@@ -7,8 +8,8 @@
 %global pypi_name setuptools-scm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        6.4.0
-Release:        2%{?dist}
+Version:        7.1.0
+Release:        1%{?dist}
 Summary:        the blessed package to manage your versions by scm tags
 
 License:        MIT
@@ -18,6 +19,7 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-packaging >= 20.0
 
 
 %description
@@ -33,7 +35,6 @@ use_scm_version...
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli >= 1.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 45
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 20.0
 
@@ -78,6 +79,9 @@ set -ex
 
 
 %changelog
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 7.1.0-1
+- Release python-setuptools-scm 7.1.0
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 6.4.0-2
 - Build against python 3.11
 
