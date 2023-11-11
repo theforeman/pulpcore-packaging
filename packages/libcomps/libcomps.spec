@@ -233,7 +233,6 @@ popd
 %if %{with python3}
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
-%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 %endif
 
 %if %{with python36}
