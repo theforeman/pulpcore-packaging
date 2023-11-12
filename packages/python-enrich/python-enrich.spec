@@ -19,6 +19,7 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm >= 3.5.0
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
 
 
 %description
