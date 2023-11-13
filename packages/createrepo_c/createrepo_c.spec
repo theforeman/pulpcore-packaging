@@ -169,7 +169,7 @@ pushd build-py3
       -DWITH_LEGACY_HASHES=%{?with_legacy_hashes:ON}%{!?with_legacy_hashes:OFF} \
       -DWITH_ZSTD=%{?with_zstd:ON}%{!?with_zstd:OFF} \
       -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
-      -DPYTHON_EXECUTABLE=/usr/bin/python3.11 -DPYTHON_LIBRARY=/usr/lib64/libpython3.11.so
+      -DPYTHON_EXECUTABLE=%{__python3} -DPYTHON_LIBRARY=/usr/lib64/libpython3.11.so
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
   # Build C documentation
   make doc-c
