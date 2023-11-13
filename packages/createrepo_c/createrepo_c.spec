@@ -265,7 +265,7 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
-* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com>
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.0.3-2
 - Build against python 3.11
 
 * Mon Nov 06 2023 Odilon Sousa <osousa@redhat.com> - 1.0.2-2
