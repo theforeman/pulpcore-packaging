@@ -201,7 +201,6 @@ tier4_packages:
     python-brotli: {}
     python-build: {}
     python-cachecontrol: {}
-    python-cchardet: {}
     python-certifi: {}
     python-cffi: {}
     python-chardet: {}
