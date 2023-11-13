@@ -14,6 +14,7 @@ Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0
 URL:            https://github.com/certifi/python-certifi
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         certifi-2022.12.7-use-system-cert.patch
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
@@ -37,7 +38,7 @@ Requires:       ca-certificates
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 # Remove bundled Root Certificates collection
