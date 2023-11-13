@@ -59,7 +59,8 @@ copr_projects:
             - gcc-c++
             - python3.11-rpm-macros
             - python3.11
-            - python3.11-devel            
+            - python3.11-devel
+            - python3.11-pip
           external_repos:
             - "{{ pulpcore_staging }}/rhel-{{ rhel_9 }}-x86_64"
         - name: "rhel-{{ rhel_8 }}-x86_64"
@@ -69,6 +70,7 @@ copr_projects:
             - gcc-c++
             - python3.11-rpm-macros
             - python3.11
+            - python3.11-pip
           external_repos:
             - "{{ pulpcore_staging }}/rhel-{{ rhel_8 }}-x86_64"
 
@@ -132,6 +134,7 @@ tier2_packages:
     python-flit-core: {}
     python-poetry_core: {}
     python-semantic-version: {}
+    python-typing-extensions: {}
     python-setuptools-rust: {}
     python-setuptools_scm_git_archive: {}
 
@@ -369,7 +372,6 @@ tier4_packages:
     python-tomlkit: {}
     python-toml: {}
     python-types-cryptography: {}
-    python-typing-extensions: {}
     python-uritemplate: {}
     python-url-normalize: {}
     python-urllib3: {}
