@@ -2,13 +2,14 @@
 %global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name drf-spectacular
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.26.2
-Release:        2%{?dist}
+Version:        0.26.5
+Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
@@ -69,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 0.26.5-1
+- Release python-drf-spectacular 0.26.5
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.26.2-2
 - Build against python 3.11
 
