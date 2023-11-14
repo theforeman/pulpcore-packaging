@@ -1,11 +1,13 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-file
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.14.3
+Version:        1.15.1
 Release:        1%{?dist}
 Summary:        File plugin for the Pulp Project
 
@@ -70,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 1.15.1-1
+- Release python-pulp-file 1.15.1
+
 * Thu Jul 27 2023 Odilon Sousa <osousa@redhat.com> - 1.14.3-1
 - Release python-pulp-file 1.14.3
 
