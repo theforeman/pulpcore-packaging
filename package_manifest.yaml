@@ -386,6 +386,7 @@ tier4_packages:
     python-yarl: {}
     python-zipp: {}
     python-jq: {}
+    python-json-stream-rs-tokenizer: {}
 
 pulpcore_packages:
   hosts:
