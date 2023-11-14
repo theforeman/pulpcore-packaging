@@ -1,12 +1,14 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.15.2
+Version:        2.16.2
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -33,9 +35,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwkest >= 1.4.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.6
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyjwt >= 2.9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.4
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.18
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.19
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(container) = %{version}
@@ -80,6 +82,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 2.16.2-1
+- Release python-pulp-container 2.16.2
+
 * Thu Jul 27 2023 Odilon Sousa <osousa@redhat.com> - 2.15.2-1
 - Release python-pulp-container 2.15.2
 
