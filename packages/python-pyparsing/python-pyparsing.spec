@@ -2,69 +2,61 @@
 %global __python3 /usr/bin/python3.11
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%{?python_disable_dependency_generator}
+
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pyparsing
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.4.7
-Release:        4%{?dist}
+Version:        3.1.1
+Release:        1%{?dist}
 Summary:        Python parsing module
 
 License:        MIT License
 URL:            https://github.com/pyparsing/pyparsing/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+
 BuildArch:      noarch
-
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-flit_core
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  pyproject-rpm-macros
 
 %description
 %{summary}
 
-
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%py3_build
-%{?scl:EOF}
+%pyproject_wheel
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
-%py3_install
-%{?scl:EOF}
+%pyproject_install
 
-
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst examples/0README.html
-%{python3_sitelib}/__pycache__/%{pypi_name}.*
-%{python3_sitelib}/%{pypi_name}.py
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
-
+%files -n python%{python3_pkgversion}-%{pypi_name}
+%{python3_sitelib}/%{pypi_name}
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 3.1.1-1
+- Release python-pyparsing 3.1.1
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2.4.7-4
 - Build against python 3.11
 
