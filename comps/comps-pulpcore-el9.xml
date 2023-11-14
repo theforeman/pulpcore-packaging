@@ -153,6 +153,7 @@
       <packagereq type="default">python3.11-jinja2</packagereq>
       <packagereq type="default">python3.11-jmespath</packagereq>
       <packagereq type="default">python3.11-jsonschema</packagereq>
+      <packagereq type="default">python3.11-jq</packagereq>
       <packagereq type="default">python3.11-keyring</packagereq>
       <packagereq type="default">python3.11-ldap</packagereq>
       <packagereq type="default">python3.11-libcomps</packagereq>

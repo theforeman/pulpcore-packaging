@@ -385,6 +385,7 @@ tier4_packages:
     python-xlwt: {}
     python-yarl: {}
     python-zipp: {}
+    python-jq: {}
 
 pulpcore_packages:
   hosts:
