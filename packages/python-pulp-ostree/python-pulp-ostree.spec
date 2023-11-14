@@ -1,5 +1,8 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
+
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-ostree
@@ -9,7 +12,7 @@
 %global release 1
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.1.1
+Version:        2.1.3
 Release:        %{?prereleaserpm:0.}%{release}%{?prereleaserpm}%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
@@ -81,6 +84,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 2.1.3-1
+- Release python-pulp-ostree 2.1.3
+
 * Fri Aug 11 2023 Odilon Sousa <osousa@redhat.com> - 2.1.1-1
 - Release python-pulp-ostree 2.1.1
 
