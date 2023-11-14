@@ -1,11 +1,13 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.22.6
+Version:        3.23.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -41,7 +43,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-productmd >= 1.34
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.40
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.28
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.8
@@ -90,6 +92,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 3.23.0-1
+- Release python-pulp-rpm 3.23.0
+
 * Wed Oct 18 2023 Odilon Sousa <osousa@redhat.com> - 3.22.6-1
 - Release python-pulp-rpm 3.22.6
 
