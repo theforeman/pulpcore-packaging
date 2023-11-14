@@ -1,11 +1,13 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore-client
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.28.19
+Version:        3.39.2
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -69,6 +71,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 08 2023 Odilon Sousa <osousa@redhat.com> - 3.39.2-1
+- Release python-pulpcore-client 3.39.2
+
 * Mon Nov 06 2023 Odilon Sousa <osousa@redhat.com> - 3.28.19-1
 - Release python-pulpcore-client 3.28.19
 
