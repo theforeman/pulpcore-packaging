@@ -1,12 +1,14 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-glue
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.21.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -67,6 +69,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 15 2023 Patrick Creech <pcreech@redhat.com> - 0.21.2-2
+- Rebuild for python 3.11
+
 * Thu Sep 14 2023 Quirin Pamp <pamp@atix.de> - 0.21.2-1
 - Update python-pulp-glue to 0.21.2.
 
