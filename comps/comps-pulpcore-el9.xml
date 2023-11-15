@@ -234,6 +234,7 @@
       <packagereq type="default">python3.11-pyflakes</packagereq>
       <packagereq type="default">python3.11-pygments</packagereq>
       <packagereq type="default">python3.11-pygtrie</packagereq>
+      <packagereq type="default">python3.11-pygobject</packagereq>
       <packagereq type="default">python3.11-pyjwkest</packagereq>
       <packagereq type="default">python3.11-pyjwt</packagereq>
       <packagereq type="default">python3.11-pymongo</packagereq>
@@ -242,7 +243,7 @@
       <packagereq type="default">python3.11-pypi-simple</packagereq>
       <packagereq type="default">python3.11-pyproject_hooks</packagereq>
       <packagereq type="default">python3.11-pyrsistent</packagereq>
-      <packagereq type="default">python3.11-python3.11-openid</packagereq>
+      <packagereq type="default">python3.11-python3-openid</packagereq>
       <packagereq type="default">python3.11-pytz</packagereq>
       <packagereq type="default">python3.11-pyyaml</packagereq>
       <packagereq type="default">python3.11-rapidfuzz</packagereq>
