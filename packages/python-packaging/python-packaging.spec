@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        21.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -27,7 +27,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing < 3
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyparsing = 3.0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing >= 2.0.2
 
 
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 15 2023 Patrick Creech <pcreech@redhat.com> - 21.3-3
+- Conflict with pyparsing 3.0.5 instead 
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 21.3-2
 - Build against python 3.11
 
