@@ -28,7 +28,7 @@
 
 Name:           libcomps
 Version:        0.1.18
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -233,6 +233,7 @@ popd
 %if %{with python3}
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
+%{python3_sitearch}/%{name}-%{version}-py*.egg-info
 %endif
 
 %if %{with python36}
@@ -242,6 +243,9 @@ popd
 %endif
 
 %changelog
+* Thu Nov 16 2023 Patrick Creech <pcreech@redhat.com> - 0.1.18-6
+- rebuilt
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.1.18-5
 - Build against python 3.11
 
