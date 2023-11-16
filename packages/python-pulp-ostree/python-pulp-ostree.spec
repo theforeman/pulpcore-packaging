@@ -9,7 +9,7 @@
 %{?python_disable_dependency_generator}
 
  
-%global release 1
+%global release 2
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.1.3
@@ -34,7 +34,7 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.40.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-%if 0%{?rhel} == 9
+%if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.11"
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gobject >= 3.40.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gobject < 3.41
 %else
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Thu Nov 16 2023 Patrick Creech <pcreech@redhat.com> - 2.1.3-2
+- Use pygobject dependency if we aren't using system python
+
 * Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 2.1.3-1
 - Release python-pulp-ostree 2.1.3
 
