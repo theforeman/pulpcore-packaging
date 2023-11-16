@@ -3,12 +3,14 @@
 %global __python3 /usr/bin/python3.11
 %global python3_pkgversion 3.11
 
+%{?python_disable_dependency_generator}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.23.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -92,6 +94,9 @@ set -ex
 
 
 %changelog
+* Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 3.23.0-2
+- Disable dependency generator
+
 * Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 3.23.0-1
 - Release python-pulp-rpm 3.23.0
 
