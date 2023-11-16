@@ -25,6 +25,9 @@
       <packagereq type="default">pulpcore-obsolete-packages</packagereq>
       <packagereq type="default">pulpcore-selinux</packagereq>
       <packagereq type="default">pyproject-rpm-macros</packagereq>
+      <packagereq type="default">python3-createrepo_c</packagereq>
+      <packagereq type="default">python3-libcomps</packagereq>
+      <packagereq type="default">python3-solv</packagereq>
       <packagereq type="default">python3.11-createrepo_c</packagereq>
       <packagereq type="default">python3.11-libcomps</packagereq>
       <packagereq type="default">python3.11-solv</packagereq>
