@@ -23,12 +23,20 @@
 %bcond_with python36
 %endif
 
+# Our EL9 buildroots default to Python 3.9, we also need a 3.9 build of libcomps
+# to make dnf happy
+%if 0%{?rhel} == 9
+%bcond_without python39
+%else
+%bcond_with python39
+%endif
+
 # Never build docs by default
 %bcond_with doc
 
 Name:           libcomps
 Version:        0.1.18
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -106,6 +114,18 @@ Obsoletes:      platform-python-%{name} < %{version}-%{release}
 Python3 bindings for libcomps library.
 %endif
 
+%if %{with python39}
+%package -n python3-%{name}
+Summary:        Python 3 bindings for libcomps library
+BuildRequires:  python3-devel
+Provides:       python3-%{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+Obsoletes:      platform-python-%{name} < %{version}-%{release}
+
+%description -n python3-%{name}
+Python3 bindings for libcomps library.
+%endif
+
 %prep
 %{?scl:scl enable %{scl} - << \EOF}
 set -ex
@@ -123,6 +143,9 @@ mkdir build-py3
 %endif
 %if %{with python36}
 mkdir build-py36
+%endif
+%if %{with python39}
+mkdir build-py39
 %endif
 %if %{with doc}
 mkdir build-doc
@@ -158,6 +181,14 @@ pushd build-py36
 popd
 %endif
 
+%if %{with python39}
+pushd build-py39
+  # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
+  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3.9 -DPYTHON_EXECUTABLE=/usr/bin/python3.9
+  %cmake_build
+popd
+%endif
+
 %if %{with doc}
 pushd build-doc
 %if %{with python3}
@@ -187,6 +218,12 @@ popd
 %if %{with python36}
 pushd build-py36
   %make_install
+popd
+%endif
+
+%if %{with python39}
+pushd build-py39
+  %cmake_install
 popd
 %endif
 %{?scl:EOF}
@@ -244,7 +281,16 @@ popd
 /usr/lib64/python3.6/site-packages/%{name}-%{version}-py*.egg-info
 %endif
 
+%if %{with python39}
+%files -n python3-%{name}
+/usr/lib64/python3.9/site-packages/%{name}/
+/usr/lib64/python3.9/site-packages/%{name}-%{version}-py*.egg-info
+%endif
+
 %changelog
+* Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 0.1.18-7
+- Build python3.9 bits on EL9
+
 * Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 0.1.18-6
 - Add egg again for python-3.11 builds
 
