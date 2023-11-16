@@ -28,7 +28,7 @@
 
 Name:           libcomps
 Version:        0.1.18
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -78,6 +78,8 @@ Documentation files for python bindings libcomps library.
 %package -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 Summary:        Python 3 bindings for libcomps library
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Obsoletes:      %{?scl_prefix}platform-python-%{name} < %{version}-%{release}
@@ -233,6 +235,7 @@ popd
 %if %{with python3}
 %files -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
+%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 %endif
 
 %if %{with python36}
@@ -242,6 +245,9 @@ popd
 %endif
 
 %changelog
+* Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 0.1.18-6
+- Add egg again for python-3.11 builds
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.1.18-5
 - Build against python 3.11
 
