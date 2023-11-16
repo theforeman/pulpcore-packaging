@@ -2,12 +2,15 @@
 %{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
 
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-python
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -79,6 +82,9 @@ set -ex
 
 
 %changelog
+* Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 3.10.0-2
+- Rebuild against python 3.11
+
 * Thu Jul 27 2023 Odilon Sousa <osousa@redhat.com> - 3.10.0-1
 - Release python-pulp-python 3.10.0
 
