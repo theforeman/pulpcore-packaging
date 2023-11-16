@@ -1,7 +1,7 @@
 ---
 all:
   vars:
-    pulpcore_version: "nightly"
+    pulpcore_version: "3.39"
     copr_project_user: "@theforeman"
   children:
     packages: {}
