@@ -1,12 +1,15 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
 
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
+
 # Created by pyp2rpm-3.3.6
 %global pypi_name pulp-cli
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.21.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -98,6 +101,9 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
+* Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 0.21.2-2
+- Rebuild against python 3.11
+
 * Thu Sep 14 2023 Quirin Pamp <pamp@atix.de> - 0.21.2-1
 - Update python-pulp-cli to 0.21.2.
 
