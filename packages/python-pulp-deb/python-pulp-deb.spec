@@ -1,12 +1,14 @@
 %{?scl:%scl_package python-%{pypi_name}}
 %{!?scl:%global pkg_name %{name}}
+%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.11
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -76,6 +78,9 @@ set -ex
 
 
 %changelog
+* Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 3.0.0-2
+- Rebuild against python 3.11
+
 * Wed Sep 06 2023 Quirin Pamp <pamp@atix.de> - 3.0.0-1
 - Update to 3.0.0
 
