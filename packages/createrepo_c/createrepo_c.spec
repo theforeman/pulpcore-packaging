@@ -46,7 +46,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        1.0.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -125,6 +125,8 @@ These development files are for easy manipulation with a repodata.
 Summary:        Python 3 bindings for the createrepo_c library
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
 Requires:       %{name}-libs = %{version}-%{release}
 %if 0%{?scl:1}
 Obsoletes:      python3-%{name} < %{version}-%{release}
@@ -257,6 +259,7 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 
 %files -n python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
+%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %if %{with python36}
 %files -n python3-%{name}
@@ -265,6 +268,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Thu Nov 16 2023 Patrick Creech <pcreech@redhat.com> - 1.0.2-4
+- Add in egg info for python 3.11
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.0.3-2
 - Build against python 3.11
 
