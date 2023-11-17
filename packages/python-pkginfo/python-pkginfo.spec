@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.9.6
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -32,7 +32,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.9.6-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.9.6-2
 - Build against python 3.11
 

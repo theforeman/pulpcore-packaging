@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.23.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -32,6 +32,10 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-dateutil
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 >= 1.15
 
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -69,6 +73,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.23.0-2
+- Obsolete python39 packages for a smooth upgrade
+
 * Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 3.23.0-1
 - Release python-pulp-rpm-client 3.23.0
 

@@ -9,7 +9,7 @@
 %{?python_disable_dependency_generator}
 
  
-%global release 2
+%global release 3
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.1.3
@@ -46,7 +46,7 @@ Requires:       ostree
 Provides:       pulpcore-plugin(ostree) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 2.1.3-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Thu Nov 16 2023 Patrick Creech <pcreech@redhat.com> - 2.1.3-2
 - Use pygobject dependency if we aren't using system python
 

@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.40b0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        OpenTelemetry Instrumentation for Django
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -33,6 +33,12 @@ Requires:  python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi = 0.40
 Requires:  python%{python3_pkgversion}-opentelemetry_semantic_conventions = 0.40b0
 Requires:  python%{python3_pkgversion}-opentelemetry_util_http = 0.40b0
 
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
+
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
@@ -57,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-4
+- Obsolete python39 packages for a smooth upgrade
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-3
 - Build against python 3.11
 
