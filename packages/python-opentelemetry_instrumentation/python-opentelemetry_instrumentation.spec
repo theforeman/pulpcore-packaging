@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.40b0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -32,6 +32,12 @@ Requires:       python%{python3_pkgversion}-setuptools >= 16.0
 Requires:       python%{python3_pkgversion}-wrapt >= 1.0.0
 Requires:       python%{python3_pkgversion}-wrapt < 2.0.0
 
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
+
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
@@ -57,6 +63,9 @@ set -ex
 %{_bindir}/opentelemetry-instrument
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-5
+- Obsolete python39 packages for a smooth upgrade
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-4
 - Build against python 3.11
 

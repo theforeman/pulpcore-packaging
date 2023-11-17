@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        20.1.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        WSGI HTTP Server for UNIX
 
 License:        MIT
@@ -28,11 +28,11 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 3.0
-%if 0%{?!scl:1}
+
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
+
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 20.1.0-7
+- Obsolete python39 packages for a smooth upgrade
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 20.1.0-6
 - Build against python 3.11
 

@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.0.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -36,7 +36,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 Provides:       %{pypi_name} = %{version}
@@ -75,6 +75,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.0.5-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 0.0.5-2
 - Rebuild against python 3.11
 

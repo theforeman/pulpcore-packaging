@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.10.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -44,7 +44,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pypi-simple >= 1.0.0
 Provides:       pulpcore-plugin(python) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.10.0-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 3.10.0-2
 - Rebuild against python 3.11
 

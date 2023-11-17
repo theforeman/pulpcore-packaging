@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -31,11 +31,11 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-diff-match-patch
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-tablib >= 3.2.1
-%if 0%{?!scl:1}
+
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
+
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.1.0-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.1.0-2
 - Build against python 3.11
 
