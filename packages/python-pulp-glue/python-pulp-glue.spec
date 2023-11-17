@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.21.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -34,6 +34,10 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.24.0
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.32
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -69,6 +73,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.21.2-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Wed Nov 15 2023 Patrick Creech <pcreech@redhat.com> - 0.21.2-2
 - Rebuild for python 3.11
 

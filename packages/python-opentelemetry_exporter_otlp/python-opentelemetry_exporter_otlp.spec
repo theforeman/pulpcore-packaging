@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.19.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        OpenTelemetry Collector Exporters
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -28,6 +28,12 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_grpc >= 1.19.0
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.19.0
+
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -52,6 +58,9 @@ set -ex
 %{python3_sitelib}/opentelemetry/exporter/otlp
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-4
+- Obsolete python39 packages for a smooth upgrade
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-3
 - Build against python 3.11
 

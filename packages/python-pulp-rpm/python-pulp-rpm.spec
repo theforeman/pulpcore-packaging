@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.23.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -51,7 +51,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-solv >= 0.8
 Provides:       pulpcore-plugin(rpm) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -92,6 +92,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.23.0-2
+- Obsolete python39 packages for a smooth upgrade
+
 * Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 3.23.0-1
 - Release python-pulp-rpm 3.23.0
 
