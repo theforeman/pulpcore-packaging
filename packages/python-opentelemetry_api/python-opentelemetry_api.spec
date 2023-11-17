@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.19.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenTelemetry Python API.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -30,6 +30,13 @@ Requires:       python%{python3_pkgversion}-deprecated >= 1.2.6
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0
 Requires:       python%{python3_pkgversion}-importlib-metadata < 7.0
 
+Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
+
+
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
@@ -53,6 +60,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-2
 - Build against python 3.11
 

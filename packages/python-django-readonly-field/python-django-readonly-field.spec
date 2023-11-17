@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Make Django model fields readonly
 
 License:        MIT
@@ -30,11 +30,11 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-wheel
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django
-%if 0%{?!scl:1}
+
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
+
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 
@@ -77,6 +77,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.1.2-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.1.2-2
 - Build against python 3.11
 

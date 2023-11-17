@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.21.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -44,11 +44,11 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-schema >= 0.7.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml < 0.11
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-toml >= 0.10.2
-%if 0%{?!scl:1}
+
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%endif
+
 %if 0%{?rhel} == 8
-Obsoletes:      python38-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 Provides:       %{pypi_name} = %{version}
@@ -101,6 +101,9 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
+* Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.21.2-3
+- Obsolete python39 packages for a smooth upgrade
+
 * Thu Nov 16 2023 Odilon Sousa <osousa@redhat.com> - 0.21.2-2
 - Rebuild against python 3.11
 
