@@ -7,8 +7,8 @@
 %global pypi_name pycodestyle
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.7.0
-Release:        6%{?dist}
+Version:        2.9.1
+Release:        1%{?dist}
 Summary:        Python style guide checker
 
 License:        Expat license
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 2.9.1-1
+- Release python-pycodestyle 2.9.1
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2.7.0-6
 - Build against python 3.11
 
