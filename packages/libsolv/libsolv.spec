@@ -49,7 +49,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.22
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Package dependency solver
 
 License:        BSD
@@ -162,6 +162,7 @@ Obsoletes:      python3-%{libname} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{libname} < %{version}-%{release}
+Obsoletes:      python39-%{libname} < %{version}-%{release}
 %endif
 
 
@@ -398,6 +399,9 @@ set -ex
 %endif
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 0.7.22-6
+- Obsolete python39-libsolv as well
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.7.22-5
 - Build against python 3.11
 
