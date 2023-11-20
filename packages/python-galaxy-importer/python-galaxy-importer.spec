@@ -7,8 +7,8 @@
 %global pypi_name galaxy-importer
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.4.6
-Release:        3%{?dist}
+Version:        0.4.7
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -31,27 +31,27 @@ Requires:       /usr/bin/ansible
 Requires:       /usr/bin/ansible-test
 %if 0%{?rhel} == 8
 # We only have ansible-lint built on EL8
-Requires:       ansible-lint < 7.0
+Requires:       ansible-lint < 6.14.4
 Requires:       ansible-lint >= 5.0.8
 %endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder < 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder >= 1.0.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs < 22
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 21.2.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs < 23
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 21.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach >= 3.3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach-allowlist < 2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach-allowlist >= 1.0.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8 < 4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8 >= 3.9.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8 < 7
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8 >= 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-markdown < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-markdown >= 3.3.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyyaml < 6
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyyaml < 7
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyyaml >= 5.4.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests < 3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.25.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.28.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version < 3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.8.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.9.0
 Requires:       tar
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -99,6 +99,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 0.4.7-1
+- Release python-galaxy-importer 0.4.7
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.4.6-3
 - Obsolete python39 packages for a smooth upgrade
 
