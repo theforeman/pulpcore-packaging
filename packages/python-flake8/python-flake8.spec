@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        5.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
 License:        MIT
@@ -28,12 +28,12 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-mccabe < 0.7.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-mccabe >= 0.6.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle < 2.8.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle >= 2.7.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes < 2.4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes >= 2.3.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-mccabe < 0.8.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-mccabe >= 0.7.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle < 2.10.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle >= 2.9.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes < 2.6.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes >= 2.5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -79,6 +79,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 5.0.0-2
+- Fix requires for flake8 5.0.0
+
 * Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 5.0.0-1
 - Release python-flake8 5.0.0
 
