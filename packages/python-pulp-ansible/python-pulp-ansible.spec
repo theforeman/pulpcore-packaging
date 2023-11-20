@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.20.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -50,7 +50,7 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Provides:       pulpcore-plugin(ansible) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{epoch}:%{version}-%{release}
 %if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+Obsoletes:      python39-%{pypi_name} < %{epoch}:%{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -88,6 +88,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 1:0.20.2-3
+- Add epoch to overrides
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1:0.20.2-2
 - Obsolete python39 packages for a smooth upgrade
 
