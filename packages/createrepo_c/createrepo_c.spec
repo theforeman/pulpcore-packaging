@@ -46,7 +46,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        1.0.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -133,6 +133,7 @@ Obsoletes:      python3-%{name} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{name} < %{version}-%{release}
+Obsoletes:      python39-%{name} < %{version}-%{release}
 %endif
 
 %description -n python%{python3_pkgversion}-%{name}
@@ -268,6 +269,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 1.0.2-5
+- Obsolete python39-createrepo_c as well
+
 * Thu Nov 16 2023 Patrick Creech <pcreech@redhat.com> - 1.0.2-4
 - Add in egg info for python 3.11
 
