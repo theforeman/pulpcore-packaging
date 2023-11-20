@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.26.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
@@ -33,6 +33,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >=
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-inflection >= 0.3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 2.6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -70,6 +73,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 0.26.5-2
+- Obsolete python39 version
+
 * Tue Nov 14 2023 Odilon Sousa <osousa@redhat.com> - 0.26.5-1
 - Release python-drf-spectacular 0.26.5
 
