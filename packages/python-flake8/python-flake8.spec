@@ -7,8 +7,8 @@
 %global pypi_name flake8
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.9.2
-Release:        7%{?dist}
+Version:        5.0.0
+Release:        1%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
 License:        MIT
@@ -79,6 +79,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 5.0.0-1
+- Release python-flake8 5.0.0
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.9.2-7
 - Obsolete python39 packages for a smooth upgrade
 
