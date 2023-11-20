@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.21.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -29,7 +29,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 6.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click < 8.1.7
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 8.0.0
@@ -101,6 +101,9 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
+* Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 0.21.2-4
+- Fix PyYAML deps for pulp-cli version
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.21.2-3
 - Obsolete python39 packages for a smooth upgrade
 
