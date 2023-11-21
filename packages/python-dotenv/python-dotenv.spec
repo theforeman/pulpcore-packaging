@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.14.0
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Add .env support to your django/flask apps in development and deployments
 
 License:        BSD-3-Clause
@@ -34,6 +34,7 @@ Obsoletes:      python3-%{srcname} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{srcname} < %{version}-%{release}
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
 %endif
 
 
@@ -73,6 +74,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.14.0-10
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.14.0-9
 - Build against python 3.11
 

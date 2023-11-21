@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Cleo allows you to create beautiful and testable command-line interfaces.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -28,6 +28,9 @@ Summary:        %{summary}
 
 Requires:  %{?scl_prefix}python%{python3_pkgversion}-crashtest >= 0.4.1 
 Requires:  %{?scl_prefix}python%{python3_pkgversion}-rapidfuzz >= 2.2.0
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -52,6 +55,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.0.1-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2.0.1-2
 - Build against python 3.11
 
