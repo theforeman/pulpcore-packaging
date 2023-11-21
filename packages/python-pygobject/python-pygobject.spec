@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.40.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
@@ -38,6 +38,7 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{srcname} < %{epoch}:%{version}-%{release}
+Obsoletes:      python39-%{srcname} < %{epoch}:%{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -78,6 +79,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1:3.40.1-6
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1:3.40.1-5
 - Build against python 3.11
 

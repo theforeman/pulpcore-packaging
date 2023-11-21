@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        5.4.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
@@ -36,6 +36,9 @@ Provides:       %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name} = %{versi
 %{?python_provide:%python_provide python%{python3_pkgversion}-yaml}
 Provides:       %{?scl_prefix}python%{python3_pkgversion}-yaml = %{version}-%{release}
 
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -72,6 +75,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 5.4.1-6
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.4.1-5
 - Build against python 3.11
 
