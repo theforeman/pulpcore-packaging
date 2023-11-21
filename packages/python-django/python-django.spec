@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        4.2.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -37,6 +37,7 @@ Obsoletes:      python3-%{srcname} < %{version}-%{release}
 %endif
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{srcname} < %{version}-%{release}
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
 %endif
 
 
@@ -83,6 +84,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 4.2.2-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 4.2.2-2
 - Build against python 3.11
 
