@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.7.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        McCabe checker, plugin for flake8
 
 License:        Expat license
@@ -28,6 +28,10 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -68,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.7.0-2
+- Add python39 obsoletes to package
+
 * Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 0.7.0-1
 - Release python-mccabe 0.7.0
 

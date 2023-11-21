@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.8.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python client for the Prometheus monitoring system
 
 License:        Apache Software License 2.0
@@ -28,6 +28,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -63,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.8.0-5
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.8.0-4
 - Build against python 3.11
 
