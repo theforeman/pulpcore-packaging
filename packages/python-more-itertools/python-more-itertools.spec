@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        9.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -25,6 +25,9 @@ BuildRequires:  pyproject-rpm-macros
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -50,6 +53,9 @@ set -ex
 %{python3_sitelib}/more_itertools-%{version}.dist-info/
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 9.1.0-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 9.1.0-2
 - Build against python 3.11
 

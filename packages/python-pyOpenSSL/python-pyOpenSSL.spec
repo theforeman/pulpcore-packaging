@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        22.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
@@ -30,6 +30,9 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 38.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5.2
 
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -66,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 22.1.0-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 22.1.0-2
 - Build against python 3.11
 

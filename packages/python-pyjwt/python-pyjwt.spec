@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.5.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -32,6 +32,9 @@ Obsoletes:      %{?scl_prefix}python%{python3_pkgversion}-jwt < %{version}-%{rel
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 3.3.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-types-cryptography >= 3.3.21
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -69,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.5.0-4
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2.5.0-3
 - Build against python 3.11
 
