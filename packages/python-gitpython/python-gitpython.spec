@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.1.32
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        GitPython is a python library used to interact with Git repositories
 
 License:        BSD
@@ -32,6 +32,10 @@ Requires:       git-core
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitdb < 5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitdb >= 4.0.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4.3
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -69,6 +73,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.1.32-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.1.32-2
 - Build against python 3.11
 

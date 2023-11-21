@@ -11,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.56.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        HTTP/2-based RPC framework
 
 License:        Apache License 2.0
@@ -28,6 +28,9 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -62,6 +65,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.56.0-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.56.0-2
 - Build against python 3.11
 
