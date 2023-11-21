@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.6.21
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        AutoRest swagger generator Python client runtime
 
 License:        MIT License
@@ -32,6 +32,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-isodate >= 0.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.16
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests-oauthlib >= 0.5
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -67,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.6.21-4
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.6.21-3
 - Build against python 3.11
 

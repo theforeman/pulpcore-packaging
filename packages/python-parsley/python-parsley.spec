@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Parsing and pattern matching made easy
 
 License:        MIT License
@@ -30,6 +30,9 @@ Summary:        %{summary}
 Provides:       %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name} = %{version}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -67,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.3-4
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.3-3
 - Build against python 3.11
 

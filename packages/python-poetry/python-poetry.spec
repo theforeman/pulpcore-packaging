@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.5.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -60,6 +60,10 @@ Requires:       python%{python3_pkgversion}-tomlkit >= 0.11.4
 Requires:       python%{python3_pkgversion}-trove-classifiers >= 2022.5.19
 Requires:       python%{python3_pkgversion}-urllib3 >= 1.26.0
 Requires:       python%{python3_pkgversion}-virtualenv >= 20.22.0
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
+
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -85,6 +89,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.5.1-4
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.5.1-3
 - Build against python 3.11
 

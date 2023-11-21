@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        4.8.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Pexpect allows easy control of interactive console applications
 
 License:        ISC license
@@ -28,6 +28,9 @@ BuildArch:      noarch
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-ptyprocess
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 4.8.0-4
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 4.8.0-3
 - Build against python 3.11
 

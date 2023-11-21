@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        passive checker of Python programs
 
 License:        MIT
@@ -29,6 +29,9 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -66,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.5.0-2
+- Add python39 obsoletes to package
+
 * Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 2.5.0-1
 - Release python-pyflakes 2.5.0
 
