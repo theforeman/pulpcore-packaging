@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.59.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        Apache-2.0
@@ -47,6 +47,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-grpcio < 2.0.0.dev0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-grpcio >= 1.44.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-protobuf < 5.0.0.dev0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-protobuf >= 3.19.5
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -85,6 +88,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.59.1-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.59.1-2
 - Build against python 3.11
 

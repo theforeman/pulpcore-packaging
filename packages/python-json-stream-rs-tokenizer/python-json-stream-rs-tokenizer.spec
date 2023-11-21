@@ -11,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.4.25
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Faster tokenizer for the json-stream Python library
 
 License:        MIT
@@ -29,6 +29,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-rust
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pkg_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pkg_name}}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pkg_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pkg_name}
@@ -60,5 +63,8 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.4.25-2
+- Add python39 obsoletes to package
+
 * Mon Nov 13 2023 Odilon Sousa <osousa@redhat.com> - 0.4.25-1
 - Initial package.
