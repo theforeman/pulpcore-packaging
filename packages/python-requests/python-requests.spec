@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.31.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -38,6 +38,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL >= 0.14
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 < 3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 >= 1.21.1
 
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -74,6 +77,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.31.0-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 2.31.0-2
 - Build against python 3.11
 
