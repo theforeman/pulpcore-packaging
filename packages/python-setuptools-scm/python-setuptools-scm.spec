@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        7.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        the blessed package to manage your versions by scm tags
 
 License:        MIT
@@ -38,6 +38,9 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools >= 45
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 20.0
 
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 setuptools_scm setuptools_scm handles managing your Python package versions in
@@ -79,6 +82,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 7.1.0-2
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 7.1.0-1
 - Release python-setuptools-scm 7.1.0
 
