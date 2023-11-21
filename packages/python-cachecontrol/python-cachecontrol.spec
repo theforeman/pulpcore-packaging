@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        0.12.14
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        httplib2 caching for requests
 
 License:        None
@@ -32,6 +32,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-lockfile >= 0.9
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-msgpack >= 0.5.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-filelock >= 3.8.0
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -70,6 +73,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.12.14-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.12.14-2
 - Build against python 3.11
 
