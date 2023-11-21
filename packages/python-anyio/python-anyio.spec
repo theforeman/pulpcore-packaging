@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.6.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        High level compatibility layer for multiple asynchronous event loop implementations
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -30,6 +30,9 @@ Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-exceptiongroup
 Requires:       python%{python3_pkgversion}-idna
 Requires:       python%{python3_pkgversion}-sniffio
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -57,6 +60,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.6.2-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.6.2-2
 - Build against python 3.11
 

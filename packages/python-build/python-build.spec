@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.10.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A simple, correct Python build frontend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -27,6 +27,9 @@ Requires:       python%{python3_pkgversion}-packaging >= 19.0
 Requires:       python%{python3_pkgversion}-pyproject_hooks
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 4.6
 Requires:       python%{python3_pkgversion}-tomli >= 1.1.0
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -53,6 +56,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.10.0-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.10.0-2
 - Build against python 3.11
 

@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.2.13
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python @deprecated decorator to deprecate old python classes, functions or methods
 
 License:        MIT
@@ -30,6 +30,10 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-wrapt >= 1.10
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-wrapt >= 2
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
+
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -66,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.2.13-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.2.13-2
 - Build against python 3.11
 

@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.18.35
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -35,6 +35,10 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-jmespath < 1.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jmespath >= 0.7.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-s3transfer < 0.6.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-s3transfer >= 0.5.0
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -72,6 +76,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.18.35-5
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.18.35-4
 - Build against python 3.11
 

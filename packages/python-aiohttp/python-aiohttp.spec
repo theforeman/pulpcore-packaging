@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.8.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -45,6 +45,10 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.0
 
 # aiohttp depends on stdlib's mimetypes which reads /etc/mime.types
 Requires:       /etc/mime.types
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
+
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -81,6 +85,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.8.3-5
+- Add python39 obsoletes to package
+
 * Mon Nov 13 2023 Odilon Sousa <osousa@redhat.com> - 3.8.3-4
 - Remove cchardet since it's only request for Python < 3.10
 

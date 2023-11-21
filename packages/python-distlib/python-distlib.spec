@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.3.6
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Distlib is a library which implements low-level functions that relate to packaging and distribution of Python software.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -25,6 +25,9 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -54,6 +57,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.3.6-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.3.6-2
 - Build against python 3.11
 
