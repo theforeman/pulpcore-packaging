@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.18.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -37,6 +37,9 @@ Requires:       python%{python3_pkgversion}-pluggy
 Requires:       python%{python3_pkgversion}-packaging
 Requires:       python%{python3_pkgversion}-trove-classifiers
 Requires:       pyproject-rpm-macros
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -62,6 +65,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.18.0-4
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.18.0-3
 - Build against python 3.11
 

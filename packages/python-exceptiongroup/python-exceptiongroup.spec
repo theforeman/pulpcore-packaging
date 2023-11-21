@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Backport of PEP 654 (exception groups)
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -26,6 +26,9 @@ BuildRequires:  python%{python3_pkgversion}-flit_scm
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -52,6 +55,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.1.2-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.1.2-2
 - Build against python 3.11
 

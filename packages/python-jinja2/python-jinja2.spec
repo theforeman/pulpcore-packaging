@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        3.1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A very fast and expressive template engine
 
 License:        BSD-3-Clause
@@ -30,6 +30,10 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-markupsafe >= 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{srcname} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -67,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.1.2-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 3.1.2-2
 - Build against python 3.11
 

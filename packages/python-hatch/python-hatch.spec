@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.7.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Modern, extensible Python project management
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -44,6 +44,9 @@ Requires:  python%{python3_pkgversion}-tomlkit >= 0.11.1
 Requires:  python%{python3_pkgversion}-userpath >= 1.7
 Requires:  python%{python3_pkgversion}-userpath < 2.0
 Requires:  python%{python3_pkgversion}-virtualenv >= 20.16.2
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 
@@ -72,6 +75,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.7.0-4
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.7.0-3
 - Build against python 3.11
 

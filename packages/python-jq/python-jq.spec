@@ -11,7 +11,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        jq is a lightweight and flexible JSON processor
 
 License:        BSD 2-Clause
@@ -29,6 +29,9 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -66,5 +69,8 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.6.0-2
+- Add python39 obsoletes to package
+
 * Mon Nov 13 2023 Odilon Sousa <osousa@redhat.com> - 1.6.0-1
 - Initial package.

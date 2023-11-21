@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.10.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
@@ -36,6 +36,10 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.4.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyrsistent >= 0.14.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.11.0
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -76,6 +80,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 4.10.3-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 4.10.3-2
 - Build against python 3.11
 
