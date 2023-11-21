@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.24.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The next generation HTTP client.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -32,6 +32,9 @@ Requires:       python%{python3_pkgversion}-httpcore >= 0.15.0
 Requires:       python%{python3_pkgversion}-httpcore < 0.18.0
 Requires:       python%{python3_pkgversion}-idna
 Requires:       python%{python3_pkgversion}-sniffio
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -57,6 +60,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.24.1-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.24.1-2
 - Build against python 3.11
 

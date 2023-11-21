@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.1.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        An implementation of lxml.xmlfile for the standard library
 
 License:        MIT
@@ -27,6 +27,10 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -63,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.1.0-4
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 1.1.0-3
 - Build against python 3.11
 

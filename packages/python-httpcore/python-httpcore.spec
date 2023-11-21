@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.17.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A minimal low-level HTTP client
 
 License:        BSD
@@ -30,6 +30,9 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-anyio
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-certifi
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-h11
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-sniffio
+%if 0%{?rhel} == 8
+Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
+%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -66,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.17.3-3
+- Add python39 obsoletes to package
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 0.17.3-2
 - Build against python 3.11
 
