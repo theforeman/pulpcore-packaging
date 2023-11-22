@@ -1,13 +1,12 @@
 Name: pulpcore-obsolete-packages
 Version: 1.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
 URL: https://github.com/theforeman/pulpcore-packaging
 BuildArch: noarch
 
 Obsoletes:      python3-django-currentuser < 0.5.3-6
-Obsoletes:      python3-pyyaml < 6.4.1-5
 %if 0%{?rhel} == 8
 Obsoletes:      python39-django-currentuser < 0.5.3-6
 Obsoletes:      python39-pyyaml < 5.4.1-5
@@ -26,6 +25,9 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Wed Nov 22 2023 Patrick Creech <pcreech@redhat.com> - 1.0-4
+- Don't obsolete python3-pyyaml
+
 * Wed Nov 22 2023 Patrick Creech <pcreech@redhat.com> - 1.0-3
 - Obsolete the python39 pyyaml, as ansible brings in a pyyaml newer than the one we provide
 
