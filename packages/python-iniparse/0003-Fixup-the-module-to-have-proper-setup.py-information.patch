@@ -1,7 +1,17 @@
+From 6cf953e9dadac5c45483e0040de8a9f6f4a72d67 Mon Sep 17 00:00:00 2001
+From: Odilon Sousa <osousa@redhat.com>
+Date: Thu, 23 Nov 2023 13:45:39 +0000
+Subject: [PATCH 3/3] Fixup the module to have proper setup.py information
+
+---
+ PKG-INFO |  7 +++++--
+ setup.py | 10 +++++++---
+ 2 files changed, 12 insertions(+), 5 deletions(-)
+
 diff --git a/PKG-INFO b/PKG-INFO
 index 31c4ad2..bebcb80 100644
---- PKG-INFO
-+++ PKG-INFO
+--- a/PKG-INFO
++++ b/PKG-INFO
 @@ -18,7 +18,10 @@ Classifier: License :: OSI Approved :: MIT License
  Classifier: License :: OSI Approved :: Python Software Foundation License
  Classifier: Operating System :: OS Independent
@@ -17,8 +27,8 @@ index 31c4ad2..bebcb80 100644
  Classifier: Topic :: Software Development :: Libraries :: Python Modules
 diff --git a/setup.py b/setup.py
 index 736cfa1..e2f8de0 100644
---- setup.py
-+++ setup.py
+--- a/setup.py
++++ b/setup.py
 @@ -1,6 +1,6 @@
  #!/usr/bin/env python
  
@@ -46,3 +56,5 @@ index 736cfa1..e2f8de0 100644
        data_files = [
          ('share/doc/iniparse-%s' % VERSION, ['README', 'LICENSE-PSF',
                                               'LICENSE', 'Changelog',
+-- 
+2.41.0

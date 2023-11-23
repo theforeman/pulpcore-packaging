@@ -1,7 +1,29 @@
-Index: iniparse/__init__.py
-===================================================================
---- iniparse/__init__.py	(revision 146)
-+++ iniparse/__init__.py	(working copy)
+From 9ea31e4d1267dd620814eceffabb5b7457ea9fae Mon Sep 17 00:00:00 2001
+From: Jiri Hnidek <jhnidek@redhat.com>
+Date: Fri, 18 May 2018 13:44:39 +0200
+Subject: [PATCH] Third patch from Fedora Project (Python3).
+
+---
+ iniparse/__init__.py     | 20 ++++++++++----------
+ iniparse/compat.py       | 30 ++++++++++++++++--------------
+ iniparse/config.py       | 16 ++++++++--------
+ iniparse/configparser.py |  7 +++++++
+ iniparse/ini.py          | 20 ++++++++++++--------
+ iniparse/utils.py        |  4 ++--
+ tests/__init__.py        | 14 +++++++-------
+ tests/test_compat.py     | 23 +++++++++++++++--------
+ tests/test_fuzz.py       | 18 +++++++++---------
+ tests/test_ini.py        |  8 ++++----
+ tests/test_misc.py       |  4 ++--
+ tests/test_tidy.py       |  2 +-
+ tests/test_unicode.py    | 10 +++++-----
+ 13 files changed, 98 insertions(+), 78 deletions(-)
+ create mode 100644 iniparse/configparser.py
+
+diff --git a/iniparse/__init__.py b/iniparse/__init__.py
+index 8de756f..7193f92 100644
+--- a/iniparse/__init__.py
++++ b/iniparse/__init__.py
 @@ -3,17 +3,17 @@
  # Copyright (c) 2007 Tim Lauridsen <tla@rasmil.dk>
  # All Rights Reserved.  See LICENSE-PSF & LICENSE for details.
@@ -30,11 +52,11 @@ Index: iniparse/__init__.py
  
  __all__ = [
      'BasicConfig', 'ConfigNamespace',
-Index: iniparse/compat.py
-===================================================================
---- iniparse/compat.py	(revision 146)
-+++ iniparse/compat.py	(working copy)
-@@ -12,20 +12,22 @@
+diff --git a/iniparse/compat.py b/iniparse/compat.py
+index db89ed8..f95c25c 100644
+--- a/iniparse/compat.py
++++ b/iniparse/compat.py
+@@ -12,19 +12,21 @@
  """
  
  import re
@@ -60,13 +82,12 @@ Index: iniparse/compat.py
  
 -import ini
 +import six
- 
-+from . import ini
 +
++from . import ini
+ 
  class RawConfigParser(object):
      def __init__(self, defaults=None, dict_type=dict):
-         if dict_type != dict:
-@@ -56,7 +58,7 @@
+@@ -56,7 +58,7 @@ def add_section(self, section):
          # The default section is the only one that gets the case-insensitive
          # treatment - so it is special-cased here.
          if section.lower() == "default":
@@ -75,7 +96,7 @@ Index: iniparse/compat.py
  
          if self.has_section(section):
              raise DuplicateSectionError(section)
-@@ -88,7 +90,7 @@
+@@ -88,7 +90,7 @@ def read(self, filenames):
          filename may also be given.
          """
          files_read = []
@@ -84,7 +105,7 @@ Index: iniparse/compat.py
              filenames = [filenames]
          for filename in filenames:
              try:
-@@ -143,7 +145,7 @@
+@@ -143,7 +145,7 @@ def getfloat(self, section, option):
      def getboolean(self, section, option):
          v = self.get(section, option)
          if v.lower() not in self._boolean_states:
@@ -93,7 +114,7 @@ Index: iniparse/compat.py
          return self._boolean_states[v.lower()]
  
      def has_option(self, section, option):
-@@ -234,7 +236,7 @@
+@@ -234,7 +236,7 @@ def _interpolate(self, section, option, rawval, vars):
              if "%(" in value:
                  try:
                      value = value % vars
@@ -102,7 +123,7 @@ Index: iniparse/compat.py
                      raise InterpolationMissingOptionError(
                          option, section, rawval, e.args[0])
              else:
-@@ -283,7 +285,7 @@
+@@ -283,7 +285,7 @@ class SafeConfigParser(ConfigParser):
      _badpercent_re = re.compile(r"%[^%]|%$")
  
      def set(self, section, option, value):
@@ -111,11 +132,11 @@ Index: iniparse/compat.py
              raise TypeError("option values must be strings")
          # check for bad percent signs:
          # first, replace all "good" interpolations
-Index: iniparse/config.py
-===================================================================
---- iniparse/config.py	(revision 146)
-+++ iniparse/config.py	(working copy)
-@@ -143,7 +143,7 @@
+diff --git a/iniparse/config.py b/iniparse/config.py
+index 5cfa2ea..3b28549 100644
+--- a/iniparse/config.py
++++ b/iniparse/config.py
+@@ -143,7 +143,7 @@ class BasicConfig(ConfigNamespace):
  
      >>> n.aaa = 42
      >>> del n.x
@@ -124,7 +145,7 @@ Index: iniparse/config.py
      aaa = 42
      name.first = paramjit
      name.last = oberoi
-@@ -152,7 +152,7 @@
+@@ -152,7 +152,7 @@ class BasicConfig(ConfigNamespace):
  
      >>> isinstance(n.name, ConfigNamespace)
      True
@@ -133,7 +154,7 @@ Index: iniparse/config.py
      first = paramjit
      last = oberoi
      >>> sorted(list(n.name))
-@@ -160,7 +160,7 @@
+@@ -160,7 +160,7 @@ class BasicConfig(ConfigNamespace):
  
      Finally, values can be read from a file as follows:
  
@@ -142,7 +163,7 @@ Index: iniparse/config.py
      >>> sio = StringIO('''
      ... # comment
      ... ui.height = 100
-@@ -171,7 +171,7 @@
+@@ -171,7 +171,7 @@ class BasicConfig(ConfigNamespace):
      ... ''')
      >>> n = BasicConfig()
      >>> n._readfp(sio)
@@ -151,7 +172,7 @@ Index: iniparse/config.py
      complexity = medium
      data.secret.password = goodness=gracious me
      have_python
-@@ -199,7 +199,7 @@
+@@ -199,7 +199,7 @@ def __iter__(self):
  
      def __str__(self, prefix=''):
          lines = []
@@ -160,7 +181,7 @@ Index: iniparse/config.py
          keys.sort()
          for name in keys:
              value = self._data[name]
-@@ -258,7 +258,7 @@
+@@ -258,7 +258,7 @@ def update_config(target, source):
      >>> n.ui.display_clock = True
      >>> n.ui.display_qlength = True
      >>> n.ui.width = 150
@@ -169,7 +190,7 @@ Index: iniparse/config.py
      playlist.expand_playlist = True
      ui.display_clock = True
      ui.display_qlength = True
-@@ -267,7 +267,7 @@
+@@ -267,7 +267,7 @@ def update_config(target, source):
      >>> from iniparse import ini
      >>> i = ini.INIConfig()
      >>> update_config(i, n)
@@ -178,7 +199,7 @@ Index: iniparse/config.py
      [playlist]
      expand_playlist = True
      <BLANKLINE>
-@@ -277,7 +277,7 @@
+@@ -277,7 +277,7 @@ def update_config(target, source):
      width = 150
  
      """
@@ -187,10 +208,11 @@ Index: iniparse/config.py
          value = source[name]
          if isinstance(value, ConfigNamespace):
              if name in target:
-Index: iniparse/configparser.py
-===================================================================
---- iniparse/configparser.py	(revision 0)
-+++ iniparse/configparser.py	(working copy)
+diff --git a/iniparse/configparser.py b/iniparse/configparser.py
+new file mode 100644
+index 0000000..c543d50
+--- /dev/null
++++ b/iniparse/configparser.py
 @@ -0,0 +1,7 @@
 +try:
 +    from ConfigParser import *
@@ -199,10 +221,10 @@ Index: iniparse/configparser.py
 +except ImportError:
 +    from configparser import *
 +    from configparser import Error, InterpolationMissingOptionError
-Index: iniparse/ini.py
-===================================================================
---- iniparse/ini.py	(revision 146)
-+++ iniparse/ini.py	(working copy)
+diff --git a/iniparse/ini.py b/iniparse/ini.py
+index 408354d..052d9e9 100644
+--- a/iniparse/ini.py
++++ b/iniparse/ini.py
 @@ -7,7 +7,7 @@
  
  Example:
@@ -230,7 +252,7 @@ Index: iniparse/ini.py
      # configure foo-application
      [foo]
      bar1 = qualia
-@@ -42,10 +42,12 @@
+@@ -42,9 +42,11 @@
  # Backward-compatiable with ConfigParser
  
  import re
@@ -239,13 +261,12 @@ Index: iniparse/ini.py
  
 -import config
 +import six
- 
-+from . import config
 +
++from . import config
+ 
  class LineType(object):
      line = None
- 
-@@ -278,6 +280,8 @@
+@@ -278,6 +280,8 @@ def set_value(self, data):
      value = property(get_value, set_value)
  
      def __str__(self):
@@ -254,7 +275,7 @@ Index: iniparse/ini.py
          s = [x.__str__() for x in self.contents]
          return '\n'.join(s)
  
-@@ -465,7 +469,7 @@
+@@ -465,7 +469,7 @@ def __init__(self, fp=None, defaults=None, parse_exc=True,
          self._sections = {}
          if defaults is None: defaults = {}
          self._defaults = INISection(LineContainer(), optionxformsource=self)
@@ -263,7 +284,7 @@ Index: iniparse/ini.py
              self._defaults[name] = value
          if fp is not None:
              self._readfp(fp)
-@@ -551,7 +555,7 @@
+@@ -551,7 +555,7 @@ def _readfp(self, fp):
  
          for line in readline_iterator(fp):
              # Check for BOM on first line
@@ -272,10 +293,10 @@ Index: iniparse/ini.py
                  if line[0] == u'\ufeff':
                      line = line[1:]
                      self._bom = True
-Index: iniparse/utils.py
-===================================================================
---- iniparse/utils.py	(revision 146)
-+++ iniparse/utils.py	(working copy)
+diff --git a/iniparse/utils.py b/iniparse/utils.py
+index 829fc28..f8b773a 100644
+--- a/iniparse/utils.py
++++ b/iniparse/utils.py
 @@ -1,5 +1,5 @@
 -import compat
 -from ini import LineContainer, EmptyLine
@@ -284,10 +305,10 @@ Index: iniparse/utils.py
  
  def tidy(cfg):
      """Clean up blank lines.
-Index: tests/__init__.py
-===================================================================
---- tests/__init__.py	(revision 146)
-+++ tests/__init__.py	(working copy)
+diff --git a/tests/__init__.py b/tests/__init__.py
+index f1fa321..88689fb 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
 @@ -1,12 +1,12 @@
  import unittest, doctest
  
@@ -308,10 +329,10 @@ Index: tests/__init__.py
  from iniparse import config
  from iniparse import ini
  
-Index: tests/test_compat.py
-===================================================================
---- tests/test_compat.py	(revision 146)
-+++ tests/test_compat.py	(working copy)
+diff --git a/tests/test_compat.py b/tests/test_compat.py
+index b8da3d5..b6dfb5c 100644
+--- a/tests/test_compat.py
++++ b/tests/test_compat.py
 @@ -1,9 +1,16 @@
  from iniparse import compat as ConfigParser
 -import StringIO
@@ -332,7 +353,7 @@ Index: tests/test_compat.py
  
  class SortedDict(UserDict.UserDict):
      def items(self):
-@@ -35,7 +42,7 @@
+@@ -35,7 +42,7 @@ def newconfig(self, defaults=None):
  
      def fromstring(self, string, defaults=None):
          cf = self.newconfig(defaults)
@@ -341,7 +362,7 @@ Index: tests/test_compat.py
          cf.readfp(sio)
          return cf
  
-@@ -161,7 +168,7 @@
+@@ -161,7 +168,7 @@ def test_parse_errors(self):
                           "No Section!\n")
  
      def parse_error(self, exc, src):
@@ -350,7 +371,7 @@ Index: tests/test_compat.py
          self.assertRaises(exc, self.cf.readfp, sio)
  
      def test_query_errors(self):
-@@ -181,7 +188,7 @@
+@@ -181,7 +188,7 @@ def test_query_errors(self):
      def get_error(self, exc, section, option):
          try:
              self.cf.get(section, option)
@@ -359,7 +380,7 @@ Index: tests/test_compat.py
              return e
          else:
              self.fail("expected exception type %s.%s"
-@@ -227,7 +234,7 @@
+@@ -227,7 +234,7 @@ def test_write(self):
              "foo: another very\n"
              " long line"
              )
@@ -368,7 +389,7 @@ Index: tests/test_compat.py
          cf.write(output)
          self.assertEqual(
              output.getvalue(),
-@@ -465,7 +472,7 @@
+@@ -465,7 +472,7 @@ def test_sorted(self):
                          "o1=4\n"
                          "[a]\n"
                          "k=v\n")
@@ -377,10 +398,10 @@ Index: tests/test_compat.py
          self.cf.write(output)
          self.assertEquals(output.getvalue(),
                            "[a]\n"
-Index: tests/test_fuzz.py
-===================================================================
---- tests/test_fuzz.py	(revision 146)
-+++ tests/test_fuzz.py	(working copy)
+diff --git a/tests/test_fuzz.py b/tests/test_fuzz.py
+index 5420dcc..b219500 100644
+--- a/tests/test_fuzz.py
++++ b/tests/test_fuzz.py
 @@ -1,9 +1,10 @@
  import re
  import os
@@ -394,7 +415,7 @@ Index: tests/test_fuzz.py
  from iniparse import compat, ini, tidy
  
  # TODO:
-@@ -96,24 +97,25 @@
+@@ -96,24 +97,25 @@ def test_fuzz(self):
                  s = '\n'.join(good_lines)
                  cc = compat.RawConfigParser()
                  cc.readfp(StringIO(s))
@@ -424,7 +445,7 @@ Index: tests/test_fuzz.py
      def assertEqualConfig(self, c1, c2):
          self.assertEqualSorted(c1.sections(), c2.sections())
          self.assertEqualSorted(c1.defaults().items(), c2.defaults().items())
-@@ -123,9 +125,7 @@
+@@ -123,9 +125,7 @@ def assertEqualConfig(self, c1, c2):
                  self.assertEqual(c1.get(sec, opt), c2.get(sec, opt))
  
      def assertEqualSorted(self, l1, l2):
@@ -435,10 +456,10 @@ Index: tests/test_fuzz.py
  
  class suite(unittest.TestSuite):
      def __init__(self):
-Index: tests/test_ini.py
-===================================================================
---- tests/test_ini.py	(revision 146)
-+++ tests/test_ini.py	(working copy)
+diff --git a/tests/test_ini.py b/tests/test_ini.py
+index 78b2b3c..6d974f0 100644
+--- a/tests/test_ini.py
++++ b/tests/test_ini.py
 @@ -1,5 +1,5 @@
  import unittest
 -from StringIO import StringIO
@@ -446,7 +467,7 @@ Index: tests/test_ini.py
  
  from iniparse import ini
  from iniparse import compat
-@@ -196,13 +196,13 @@
+@@ -195,13 +195,13 @@ def test_basic(self):
          self.assertEqual(p._data.find('section2').find('just').value, 'kidding')
  
          itr = p._data.finditer('section1')
@@ -463,10 +484,10 @@ Index: tests/test_ini.py
  
          self.assertRaises(KeyError, p._data.find, 'section')
          self.assertRaises(KeyError, p._data.find('section2').find, 'ahem')
-Index: tests/test_misc.py
-===================================================================
---- tests/test_misc.py	(revision 146)
-+++ tests/test_misc.py	(working copy)
+diff --git a/tests/test_misc.py b/tests/test_misc.py
+index 31cf4da..96ef035 100644
+--- a/tests/test_misc.py
++++ b/tests/test_misc.py
 @@ -1,9 +1,9 @@
  import re
  import unittest
@@ -479,10 +500,10 @@ Index: tests/test_misc.py
  from iniparse import compat, ini
  
  class CaseSensitiveConfigParser(compat.ConfigParser):
-Index: tests/test_tidy.py
-===================================================================
---- tests/test_tidy.py	(revision 146)
-+++ tests/test_tidy.py	(working copy)
+diff --git a/tests/test_tidy.py b/tests/test_tidy.py
+index 7304747..26b6cde 100644
+--- a/tests/test_tidy.py
++++ b/tests/test_tidy.py
 @@ -1,6 +1,6 @@
  import unittest
  from textwrap import dedent
@@ -491,10 +512,10 @@ Index: tests/test_tidy.py
  
  from iniparse import tidy,INIConfig
  from iniparse.ini import  EmptyLine
-Index: tests/test_unicode.py
-===================================================================
---- tests/test_unicode.py	(revision 146)
-+++ tests/test_unicode.py	(working copy)
+diff --git a/tests/test_unicode.py b/tests/test_unicode.py
+index a56fcab..14d4fbd 100644
+--- a/tests/test_unicode.py
++++ b/tests/test_unicode.py
 @@ -1,5 +1,5 @@
  import unittest
 -from StringIO import StringIO
@@ -502,7 +523,7 @@ Index: tests/test_unicode.py
  from iniparse import compat, ini
  
  class test_unicode(unittest.TestCase):
-@@ -17,14 +17,14 @@
+@@ -17,14 +17,14 @@ class test_unicode(unittest.TestCase):
      """
  
      def basic_tests(self, s, strable):
