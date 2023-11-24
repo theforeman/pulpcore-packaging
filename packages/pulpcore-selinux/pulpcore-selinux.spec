@@ -3,7 +3,7 @@
 %define debug_package %{nil}
 
 Name:           pulpcore-selinux
-Version:        1.3.3
+Version:        2.0.0
 Release:        1%{?dist}
 Summary:        SELinux policy for Pulp 3
 
@@ -83,6 +83,9 @@ fi
 
 
 %changelog
+* Fri Nov 24 2023 Odilon Sousa <osousa@redhat.com> - 2.0.0-1
+- Release pulpcore-selinux 2.0.0
+
 * Wed Jul 12 2023 Patrick Creech <pcreech@redhat.com> - 1.3.3-1
 - Release pulpcore-selinux 1.3.3
 
