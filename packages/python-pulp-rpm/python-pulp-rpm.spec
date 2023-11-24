@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.19.9
+Version:        3.19.11
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -31,8 +31,8 @@ Requires:       libmodulemd2 >= 2.12
 Requires:       libmodulemd >= 2.12
 %endif
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.20.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 0.21
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 1.0.1
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-createrepo_c >= 1.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.6
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 5.0
@@ -90,6 +90,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 24 2023 Odilon Sousa <osousa@redhat.com> - 3.19.11-1
+- Release python-pulp-rpm 3.19.11
+
 * Mon Jul 24 2023 Patrick Creech <pcreech@redhat.com> - 3.19.9-1
 - Release python-pulp-rpm 3.19.9
 
