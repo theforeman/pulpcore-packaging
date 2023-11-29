@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.19.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -65,6 +65,8 @@ rm -rf %{pypi_name}.egg-info
 
 # remove "solv" dependency from setup.py as python3-solv does not provide an egg
 sed -i "/solv/d" requirements.txt
+# remove PyGObject from requirements, since it's not necessary anymore
+sed -i '/PyGObject/d' requirements.txt
 %{?scl:EOF}
 
 
@@ -90,6 +92,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 29 2023 Odilon Sousa <osousa@redhat.com> - 3.19.11-2
+- Remove PyGObject from requirements, it's not necessary anymore
+
 * Fri Nov 24 2023 Odilon Sousa <osousa@redhat.com> - 3.19.11-1
 - Release python-pulp-rpm 3.19.11
 
