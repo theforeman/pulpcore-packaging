@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.3.2
-Release:        2
+Release:        3%{?dist}
 Summary:        Streaming JSON encoder and decoder
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -57,6 +57,9 @@ set -ex
 %{python3_sitelib}/%{pkg_name}/
 
 %changelog
+* Wed Nov 29 2023 Odilon Sousa <osousa@redhat.com> - 2.3.2-3
+- Add {?dist} to python-json-stream
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.3.2-2
 - Add python39 obsoletes to package
 
