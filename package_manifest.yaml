@@ -298,7 +298,6 @@ tier4_packages:
     python-markuppy: {}
     python-markupsafe: {}
     python-mccabe: {}
-    python-mongoengine: {}
     python-multidict: {}
     python-naya: {}
     python-odfpy: {}
@@ -328,7 +327,6 @@ tier4_packages:
     python-pygtrie: {}
     python-pyjwkest: {}
     python-pyjwt: {}
-    python-pymongo: {}
     python-pyOpenSSL: {}
     python-pyperclip: {}
     python-pypi-simple: {}
