@@ -166,7 +166,6 @@
       <packagereq type="default">python3.11-markupsafe</packagereq>
       <packagereq type="default">python3.11-marshmallow</packagereq>
       <packagereq type="default">python3.11-mccabe</packagereq>
-      <packagereq type="default">python3.11-mongoengine</packagereq>
       <packagereq type="default">python3.11-msrest</packagereq>
       <packagereq type="default">python3.11-more-itertools</packagereq>
       <packagereq type="default">python3.11-msgpack</packagereq>
@@ -207,7 +206,6 @@
       <packagereq type="default">python3.11-productmd</packagereq>
       <packagereq type="default">python3.11-prometheus-client</packagereq>
       <packagereq type="default">python3.11-psycopg2</packagereq>
-      <packagereq type="default">python3.11-pulp-2to3-migration</packagereq>
       <packagereq type="default">python3.11-pulp-ansible</packagereq>
       <packagereq type="default">python3.11-pulp-cli</packagereq>
       <packagereq type="default">python3.11-pulp-cli-deb</packagereq>
@@ -237,7 +235,6 @@
       <packagereq type="default">python3.11-pygtrie</packagereq>
       <packagereq type="default">python3.11-pyjwkest</packagereq>
       <packagereq type="default">python3.11-pyjwt</packagereq>
-      <packagereq type="default">python3.11-pymongo</packagereq>
       <packagereq type="default">python3.11-pyparsing</packagereq>
       <packagereq type="default">python3.11-pyperclip</packagereq>
       <packagereq type="default">python3.11-pypi-simple</packagereq>
