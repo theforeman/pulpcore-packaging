@@ -12,8 +12,8 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.39.2
-Release:        2%{?dist}
+Version:        3.39.3
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -198,6 +198,9 @@ done
 
 
 %changelog
+* Mon Dec 11 2023 Ian Ballou <ianballou67@gmail.com> - 3.39.3-1
+- Update to 3.39.3
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.39.2-2
 - Obsolete python39 packages for a smooth upgrade
 
