@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        7.0.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Retry code until it succeeds
 
 License:        Apache 2.0
@@ -29,9 +29,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-typing-extensions
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.9.0
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -69,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 7.0.0-6
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 7.0.0-5
 - Add python39 obsoletes to package
 

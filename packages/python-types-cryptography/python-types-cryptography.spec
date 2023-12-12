@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.3.23.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Typing stubs for cryptography
 
 License:        Apache-2.0 license
@@ -27,9 +27,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +62,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.3.23.2-4
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.3.23.2-3
 - Add python39 obsoletes to package
 

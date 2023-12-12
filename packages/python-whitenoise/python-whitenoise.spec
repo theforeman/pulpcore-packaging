@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        6.0.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Radically simplified static file serving for WSGI applications
 
 License:        MIT
@@ -27,9 +27,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -67,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 6.0.0-4
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 6.0.0-3
 - Add python39 obsoletes to package
 
