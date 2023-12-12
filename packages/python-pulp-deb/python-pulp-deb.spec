@@ -7,8 +7,8 @@
 %global pypi_name pulp-deb
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.0.0
-Release:        3%{?dist}
+Version:        3.0.1
+Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -78,6 +78,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Quirin Pamp <pamp@atix.de> - 3.0.1-1
+- Update to 3.0.1
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.0.0-3
 - Obsolete python39 packages for a smooth upgrade
 
