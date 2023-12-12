@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.6.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -29,9 +29,6 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli
 Requires:       pyproject-rpm-macros
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pip
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -57,6 +54,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.6.1-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.6.1-4
 - Add python39 obsoletes to package
 
