@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.7.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -32,10 +32,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 2.3.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 19.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-socks < 3.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-socks >= 2.0.0
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -73,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.7.1-6
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.7.1-5
 - Add python39 obsoletes to package
 

@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.19.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Microsoft Azure Core Library for Python
 
 License:        MIT License
@@ -29,9 +29,6 @@ Summary:        %{summary}
 
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.18.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.11
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -68,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.19.1-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.19.1-4
 - Add python39 obsoletes to package
 
