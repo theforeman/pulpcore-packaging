@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.5.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        An Amazon S3 Transfer Manager
 
 License:        Apache License 2.0
@@ -32,9 +32,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-botocore < 2.0a.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-botocore >= 1.12.36
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-botocore >= 1.20.29
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -71,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.5.0-6
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.5.0-5
 - Add python39 obsoletes to package
 

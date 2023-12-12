@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.26.18
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 
 License:        MIT
@@ -27,9 +27,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -67,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.26.18-2
+- Rollback overzealous obsoletes
+
 * Mon Nov 27 2023 Odilon Sousa <osousa@redhat.com> - 1.26.18-1
 - Release python-urllib3 1.26.18
 
