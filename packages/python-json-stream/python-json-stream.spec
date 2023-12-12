@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.3.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Streaming JSON encoder and decoder
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -30,9 +30,7 @@ BuildRequires:  pyproject-rpm-macros
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pkg_name}}
 Requires:       python%{python3_pkgversion}-json_stream_rs_tokenizer >= 0.4.17
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+
 
 %description -n python%{python3_pkgversion}-%{pkg_name}
 %{summary}
@@ -57,6 +55,9 @@ set -ex
 %{python3_sitelib}/%{pkg_name}/
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2.3.2-4
+- Rollback overzealous obsoletes
+
 * Wed Nov 29 2023 Odilon Sousa <osousa@redhat.com> - 2.3.2-3
 - Add {?dist} to python-json-stream
 
