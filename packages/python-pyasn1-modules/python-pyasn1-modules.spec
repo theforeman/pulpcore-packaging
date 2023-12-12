@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.2.8
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A collection of ASN.1-based protocols modules
 
 License:        BSD-2-Clause
@@ -30,9 +30,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyasn1 >= 0.4.6
 Conflicts:       %{?scl_prefix}python%{python3_pkgversion}-pyasn1 > 0.6
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -69,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.2.8-4
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.2.8-3
 - Add python39 obsoletes to package
 

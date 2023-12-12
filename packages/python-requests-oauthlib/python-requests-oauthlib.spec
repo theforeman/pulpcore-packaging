@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.3.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        OAuthlib authentication support for Requests
 
 License:        ISC
@@ -30,9 +30,6 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-oauthlib >= 3.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests >= 2.0.0
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -69,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.3.0-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.3.0-4
 - Add python39 obsoletes to package
 

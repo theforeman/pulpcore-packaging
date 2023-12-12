@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        21.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -30,9 +30,6 @@ Summary:        %{summary}
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pyparsing = 3.0.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyparsing >= 2.0.2
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -69,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 21.3-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 21.3-4
 - Add python39 obsoletes to package
 
