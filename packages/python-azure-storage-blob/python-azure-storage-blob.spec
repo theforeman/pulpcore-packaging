@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        12.9.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Microsoft Azure Blob Storage Client Library for Python
 
 License:        MIT License
@@ -32,9 +32,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-azure-core < 2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-azure-core >= 1.10
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 2.1.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-msrest >= 0.6.21
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -72,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 12.9.0-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 12.9.0-4
 - Add python39 obsoletes to package
 
