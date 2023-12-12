@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.4.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Poetry plugin to export the dependencies to various formats
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -29,9 +29,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-poetry >= 1.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-poetry < 2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-poetry_core >= 1.6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-poetry_core < 2.0
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -57,6 +54,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.4.0-4
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.4.0-3
 - Add python39 obsoletes to package
 
