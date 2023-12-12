@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.19.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        A Python library to communicate with a Red Hat Unified Entitlement Platform
 
 License:        GPLv2
@@ -30,9 +30,6 @@ Summary:        %{summary}
 
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-iniparse
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dateutil
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -68,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.19.2-6
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.19.2-5
 - Add python39 obsoletes to package
 

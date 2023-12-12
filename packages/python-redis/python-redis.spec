@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.3.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python client for Redis database and key-value store
 
 License:        MIT
@@ -30,9 +30,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 4.0.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging >= 20.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-deprecated
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -69,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 4.3.4-4
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 4.3.4-3
 - Add python39 obsoletes to package
 
