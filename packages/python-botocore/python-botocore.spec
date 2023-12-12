@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.21.35
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        Apache License 2.0
@@ -38,9 +38,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-jmespath < 1.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-jmespath >= 0.7.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 < 1.27
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 >= 1.25.4
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -78,6 +75,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.21.35-8
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.21.35-7
 - Add python39 obsoletes to package
 

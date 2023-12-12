@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.3.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        An easy safelist-based HTML-sanitizing tool
 
 License:        Apache Software License
@@ -29,10 +29,6 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.9.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-webencodings
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -70,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.3.1-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.3.1-4
 - Add python39 obsoletes to package
 

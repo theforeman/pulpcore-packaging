@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.8.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -45,9 +45,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.0
 
 # aiohttp depends on stdlib's mimetypes which reads /etc/mime.types
 Requires:       /etc/mime.types
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -85,6 +82,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.8.3-6
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.8.3-5
 - Add python39 obsoletes to package
 
