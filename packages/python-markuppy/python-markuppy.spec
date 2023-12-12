@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        1.14
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        An HTML/XML generator
 
 License:        MIT
@@ -28,10 +28,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{srcname} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -67,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.14-6
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.14-5
 - Add python39 obsoletes to package
 
