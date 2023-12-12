@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.0.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
 License:        Apache 2
@@ -29,9 +29,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 3.0.1
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{srcname} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -69,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2.0.3-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.0.3-4
 - Add python39 obsoletes to package
 

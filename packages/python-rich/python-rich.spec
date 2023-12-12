@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        13.3.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        None
@@ -39,9 +39,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-pygments >= 2.6.0
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -76,6 +73,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 13.3.1-6
+- Rollback overzealous obsoletes
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 13.3.1-5
 - Obsolete python39 packages for a smooth upgrade
 
