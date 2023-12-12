@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.3.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Python client library for Core API
 
 License:        BSD
@@ -32,10 +32,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-itypes
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -73,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2.3.3-7
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.3.3-6
 - Add python39 obsoletes to package
 

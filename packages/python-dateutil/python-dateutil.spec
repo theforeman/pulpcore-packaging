@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}python-%{srcname}
 Version:        2.8.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -33,10 +33,6 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.5
 Obsoletes:      %{?scl_prefix}python36-dateutil
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{srcname} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
@@ -74,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2.8.2-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.8.2-4
 - Add python39 obsoletes to package
 
