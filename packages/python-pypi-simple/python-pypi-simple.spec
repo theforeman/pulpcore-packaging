@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.9.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        PyPI Simple Repository API client library
 
 License:        MIT
@@ -30,9 +30,6 @@ Requires:  %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:  %{?scl_prefix}python%{python3_pkgversion}-requests
 Requires:  %{?scl_prefix}python%{python3_pkgversion}-beautifulsoup4
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -71,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.9.0-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.9.0-4
 - Add python39 obsoletes to package
 

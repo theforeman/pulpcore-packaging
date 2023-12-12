@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.1.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -30,9 +30,6 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna >= 2.1
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -69,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 4.1.2-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 4.1.2-4
 - Add python39 obsoletes to package
 
