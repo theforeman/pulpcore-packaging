@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.17.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code
 
 License:        BSD License
@@ -37,10 +37,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-packaging
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-ruamel-yaml >= 0.15.34
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.10.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 3.0.0
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -78,6 +74,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.17.1-6
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.17.1-5
 - Add python39 obsoletes to package
 
