@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.3.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 
 License:        MIT
@@ -37,9 +37,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-xlwt
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -76,6 +73,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.3.0-4
+- Rollback overzealous obsoletes
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.3.0-3
 - Obsolete python39 packages for a smooth upgrade
 
