@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.7.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A library for installing Python wheels.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -25,9 +25,7 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-flit_core
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -52,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.7.0-4
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.7.0-3
 - Add python39 obsoletes to package
 

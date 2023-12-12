@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.2.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Utility functions for Python class constructs
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -29,9 +29,7 @@ BuildRequires:  pyproject-rpm-macros
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-more-itertools
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -59,6 +57,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.2.3-4
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.2.3-3
 - Add python39 obsoletes to package
 
