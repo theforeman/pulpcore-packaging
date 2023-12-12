@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.1.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Microsoft Azure Storage Common Client Library for Python
 
 License:        MIT License
@@ -31,10 +31,6 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-azure-common >= 1.1.5
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-dateutil
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -72,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2.1.0-6
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.1.0-5
 - Add python39 obsoletes to package
 
