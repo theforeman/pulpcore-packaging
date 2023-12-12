@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.1.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python parsing module
 
 License:        MIT License
@@ -30,9 +30,6 @@ BuildRequires:  pyproject-rpm-macros
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -57,6 +54,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.1.1-3
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 3.1.1-2
 - Add python39 obsoletes to package
 
