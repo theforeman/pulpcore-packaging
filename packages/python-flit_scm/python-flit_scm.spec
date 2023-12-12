@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.7.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        A PEP 518 build backend that uses setuptools_scm to generate a version file from your version control system, then flit_core to build the package.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -34,9 +34,7 @@ Summary:        %{summary}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-flit_core
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -64,6 +62,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.7.0-5
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.7.0-4
 - Add python39 obsoletes to package
 
