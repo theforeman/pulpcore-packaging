@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        4.0.10
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Git Object Database
 
 License:        BSD License
@@ -28,10 +28,6 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-smmap < 6
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-smmap >= 3.0.1
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -69,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 4.0.10-4
+- Rollback overzealous obsoletes
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 4.0.10-3
 - Add python39 obsoletes to package
 
