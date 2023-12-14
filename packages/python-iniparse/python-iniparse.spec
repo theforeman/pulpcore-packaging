@@ -10,7 +10,7 @@
 
 Name:           %{?scl_prefix}python-%{modname}
 Version:        0.4
-Release:        38%{?dist}
+Release:        39%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
@@ -44,9 +44,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-test
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-six
 Obsoletes:      %{?scl_prefix}platform-python-%{modname} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{modname} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{modname} %{_description}
@@ -91,6 +88,9 @@ set -ex
 
 
 %changelog
+* Thu Dec 14 2023 Odilon Sousa <osousa@redhat.com> - 0.4-39
+- Dont obsolete python-iniparse
+
 * Thu Nov 23 2023 Odilon Sousa <osousa@redhat.com> - 0.4-38
 - Update Patches and change to %autosetup instead of %setup with manual patches
 
