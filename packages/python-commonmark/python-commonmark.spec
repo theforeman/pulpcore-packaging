@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.9.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Python parser for the CommonMark Markdown spec
 
 License:        BSD-3-Clause
@@ -29,10 +29,6 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-future >= 0.14.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -71,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Dec 14 2023 Odilon Sousa <osousa@redhat.com> - 0.9.1-8
+- Dont obsolete python-commonmark
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.9.1-7
 - Add python39 obsoletes to package
 
