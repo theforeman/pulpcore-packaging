@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.4.1
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Python API and tools to manipulate OpenDocument files
 
 License:        GPLv2+ or Apache-2.0
@@ -28,10 +28,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-defusedxml
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -90,6 +86,9 @@ set -ex
 
 
 %changelog
+* Thu Dec 14 2023 Odilon Sousa <osousa@redhat.com> - 1.4.1-9
+- Dont obsolete python39-odfpy
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.4.1-8
 - Add python39 obsoletes to package
 
