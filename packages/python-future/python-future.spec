@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.18.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Clean single-source support for Python 3 and 2
 
 License:        MIT
@@ -28,10 +28,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
 
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
@@ -74,6 +70,9 @@ set -ex
 
 
 %changelog
+* Thu Dec 14 2023 Odilon Sousa <osousa@redhat.com> - 0.18.3-4
+- Dont obsolete python39-future
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.18.3-3
 - Add python39 obsoletes to package
 

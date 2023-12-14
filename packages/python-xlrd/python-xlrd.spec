@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        2.0.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Library for developers to extract data from Microsoft Excel (tm)
 
 License:        BSD
@@ -27,10 +27,6 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -68,6 +64,9 @@ set -ex
 
 
 %changelog
+* Thu Dec 14 2023 Odilon Sousa <osousa@redhat.com> - 2.0.1-8
+- Dont obsolete python39-xlrd
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.0.1-7
 - Add python39 obsoletes to package
 
