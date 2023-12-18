@@ -1,13 +1,16 @@
 Name: pulpcore-obsolete-packages
 Version: 1.0
-Release: 6%{?dist}
+Release: 7%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
 URL: https://github.com/theforeman/pulpcore-packaging
 BuildArch: noarch
 
 Obsoletes:      python3-django-currentuser < 0.5.3-6
+Obsoletes:      python3.11-pymongo
+Obsoletes:      python3.11-mongoengine
 %if 0%{?rhel} == 8
+Obsoletes:      python3-pulp-2to3-migration < 0.12.0-3
 Obsoletes:      python39-django-currentuser < 0.5.3-6
 Obsoletes:      python39-importlib-resources < 5.4.0-6
 Obsoletes:      python39-django-guardian < 2.4.0-7
@@ -26,6 +29,9 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Mon Dec 18 2023 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 1.0-7
+- Obsolete python3-pulp-2to3-migration & mongo deps
+
 * Thu Dec 14 2023 Odilon Sousa <osousa@redhat.com> - 1.0-6
 - Dont obsolete pyyaml
 
