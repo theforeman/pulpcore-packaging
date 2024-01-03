@@ -7,8 +7,8 @@
 %global pypi_name pulpcore-client
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.39.2
-Release:        2%{?dist}
+Version:        3.39.4
+Release:        1%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -75,6 +75,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 03 2024 Odilon Sousa <osousa@redhat.com> - 3.39.4-1
+- Release python-pulpcore-client 3.39.4
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 3.39.2-2
 - Obsolete python39 packages for a smooth upgrade
 
