@@ -8,8 +8,8 @@
 %global pypi_name pulp-container
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.16.2
-Release:        2%{?dist}
+Version:        2.16.3
+Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -82,6 +82,9 @@ set -ex
 
 
 %changelog
+* Thu Jan 04 2024 Odilon Sousa <osousa@redhat.com> - 2.16.3-1
+- Release python-pulp-container 2.16.3
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 2.16.2-2
 - Obsolete python39 packages for a smooth upgrade
 
