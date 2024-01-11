@@ -1,6 +1,6 @@
 Name: pulpcore-obsolete-packages
 Version: 1.0
-Release: 7%{?dist}
+Release: 8%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
 URL: https://github.com/theforeman/pulpcore-packaging
@@ -17,6 +17,8 @@ Obsoletes:      python39-aiohttp-xmlrpc < 1.5.0-3
 Obsoletes:      python39-pexpect < 4.8.0-3
 Obsoletes:      python39-requests < 2.31.0-2
 Obsoletes:      python39-wcmatch < 8.3-3
+Obsoletes:      python39-aiohttp-socks < 0.7.1-4
+Obsoletes:      python39-pypi-simple < 0.9.0-3
 %endif
 
 %description
@@ -32,6 +34,9 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Thu Jan 11 2024 Patrick Creech <pcreech@redhat.com> - 1.0-8
+- Obsolete aiohttp-socks and pypi-simple as well
+
 * Wed Jan 10 2024 Patrick Creech <pcreech@redhat.com> - 1.0-7
 - Obsolete packages to ensure consistent upgrads in older systems
 
