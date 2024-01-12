@@ -1,6 +1,7 @@
 %define selinux_variants mls strict targeted
 %define selinux_modules pulpcore_port pulpcore pulpcore_rhsmcertd
 %define debug_package %{nil}
+%define pulpcore_python 3.11
 
 Name:           pulpcore-selinux
 Version:        2.0.1
@@ -60,7 +61,7 @@ do
   done
 done
 systemctl daemon-reexec &>/dev/null || :
-/sbin/fixfiles -R python3-pulpcore restore || :
+/sbin/fixfiles -R python%{pulpcore_python}-pulpcore restore || :
 
 %postun
 if [ $1 -eq 0 ] ; then
@@ -72,7 +73,7 @@ if [ $1 -eq 0 ] ; then
     done
   done
   systemctl daemon-reexec &>/dev/null || :
-  /sbin/fixfiles -R python3-pulpcore restore || :
+  /sbin/fixfiles -R python%{pulpcore_python}-pulpcore restore || :
 fi
 
 %files
