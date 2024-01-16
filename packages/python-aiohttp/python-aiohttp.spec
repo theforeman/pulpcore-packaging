@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name aiohttp
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        3.8.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -16,65 +14,59 @@ URL:            https://github.com/aio-libs/aiohttp
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Patch0:         0001-allow-larger-headers.patch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-brotli
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiodns
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiosignal >= 1.1.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout < 5.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-timeout >= 4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.3.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer < 3.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer >= 2.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-frozenlist >= 1.1.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna-ssl >= 1.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-multidict < 7.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-multidict >= 4.5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-typing-extensions >= 3.7.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl < 2.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-yarl >= 1.0
+Requires:       python%{python3_pkgversion}-brotli
+Requires:       python%{python3_pkgversion}-aiodns
+Requires:       python%{python3_pkgversion}-aiosignal >= 1.1.2
+Requires:       python%{python3_pkgversion}-async-timeout < 5.0
+Requires:       python%{python3_pkgversion}-async-timeout >= 4.0
+Requires:       python%{python3_pkgversion}-attrs >= 17.3.0
+Requires:       python%{python3_pkgversion}-charset-normalizer < 3.0
+Requires:       python%{python3_pkgversion}-charset-normalizer >= 2.0
+Requires:       python%{python3_pkgversion}-frozenlist >= 1.1.1
+Requires:       python%{python3_pkgversion}-idna-ssl >= 1.0
+Requires:       python%{python3_pkgversion}-multidict < 7.0
+Requires:       python%{python3_pkgversion}-multidict >= 4.5
+Requires:       python%{python3_pkgversion}-typing-extensions >= 3.7.4
+Requires:       python%{python3_pkgversion}-yarl < 2.0
+Requires:       python%{python3_pkgversion}-yarl >= 1.0
 
 # aiohttp depends on stdlib's mimetypes which reads /etc/mime.types
 Requires:       /etc/mime.types
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.txt vendor/llhttp/LICENSE-MIT
 %doc README.rst vendor/llhttp/README.md
 %{python3_sitearch}/%{pypi_name}
@@ -82,6 +74,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.8.3-7
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.8.3-6
 - Rollback overzealous obsoletes
 
