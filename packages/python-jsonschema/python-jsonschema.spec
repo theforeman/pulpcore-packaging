@@ -1,15 +1,13 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
 %{?python_disable_dependency_generator}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name jsonschema
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        4.10.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
@@ -20,34 +18,33 @@ Source0:        https://files.pythonhosted.org/packages/source/j/%{pypi_name}/%{
 Source1:        001-SETUP-CFG
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-scm
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 17.4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyrsistent >= 0.14.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-six >= 1.11.0
+Requires:       python%{python3_pkgversion}-attrs >= 17.4.0
+Requires:       python%{python3_pkgversion}-pyrsistent >= 0.14.0
+Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-six >= 1.11.0
 
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
@@ -55,24 +52,19 @@ rm -rf %{pypi_name}.egg-info
 # create a minimal setup.py, the rest will be done by setuptools
 printf 'from setuptools import setup\nsetup(use_scm_version=True)' > setup.py
 cp %{_topdir}/SOURCES/001-SETUP-CFG setup.cfg
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license json/LICENSE
 %doc json/README.md README.rst
 %exclude %{_bindir}/jsonschema
@@ -80,6 +72,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.10.3-4
+- Remove SCL bits
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 4.10.3-3
 - Add python39 obsoletes to package
 
