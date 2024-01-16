@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.6.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -15,9 +15,9 @@ URL:            https://github.com/python-poetry/poetry-core
 Source:         https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-tomli
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  pyproject-rpm-macros
 
 %description
@@ -26,9 +26,9 @@ BuildRequires:  pyproject-rpm-macros
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-tomli
+Requires:       python%{python3_pkgversion}-tomli
 Requires:       pyproject-rpm-macros
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pip
+Requires:       python%{python3_pkgversion}-pip
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -54,6 +54,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.6.1-6
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.6.1-5
 - Rollback overzealous obsoletes
 
