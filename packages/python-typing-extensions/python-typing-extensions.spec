@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name typing-extensions
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        4.7.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Backported and Experimental Type Hints for Python 3
 
 License:        PSF
@@ -16,22 +14,22 @@ URL:            https://github.com/python/typing/blob/master/typing_extensions/R
 Source0:        https://files.pythonhosted.org/packages/source/t/%{pypi_name}/typing_extensions-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-flit_core
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-tomli
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-flit_core
+BuildRequires:  python%{python3_pkgversion}-tomli
+BuildRequires:  python%{python3_pkgversion}-pip
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
@@ -50,13 +48,16 @@ set -ex
 %pyproject_install
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %{python3_sitelib}/__pycache__/typing_extensions.*
 %{python3_sitelib}/typing_extensions.py
 %{python3_sitelib}/typing_extensions-%{version}.dist-info/
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.7.1-5
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 4.7.1-4
 - Rollback overzealous obsoletes
 
