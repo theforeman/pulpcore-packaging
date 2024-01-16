@@ -1,16 +1,14 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{modname}}
-%{!?scl:%global pkg_name %{name}}
 
 %global modname iniparse
 
 # Use the same directory of the main package for subpackage licence and docs
 %global _docdir_fmt %{pkg_name}
 
-Name:           %{?scl_prefix}python-%{modname}
+Name:           python-%{modname}
 Version:        0.4
-Release:        39%{?dist}
+Release:        40%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
@@ -35,52 +33,44 @@ use.
 
 %description %{_description}
 
-%package -n %{?scl_prefix}python%{python3_pkgversion}-%{modname}
+%package -n python%{python3_pkgversion}-%{modname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{modname}}
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-test
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-six
-Obsoletes:      %{?scl_prefix}platform-python-%{modname} < %{version}-%{release}
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-six
+BuildRequires:  python%{python3_pkgversion}-test
+Requires:       python%{python3_pkgversion}-six
+Obsoletes:      platform-python-%{modname} < %{version}-%{release}
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{modname} %{_description}
+%description -n python%{python3_pkgversion}-%{modname} %{_description}
 
 Python 3 version.
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -p 1 -n %{modname}-%{version}
 chmod -c -x html/index.html
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
 rm -vfr %{buildroot}%{_docdir}/*
-%{?scl:EOF}
 
 
 %check
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %{__python3} runtests.py
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{modname}
+%files -n python%{python3_pkgversion}-%{modname}
 %license LICENSE LICENSE-PSF
 %doc README Changelog html/
 %{python3_sitelib}/%{modname}/
@@ -88,6 +78,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.4-40
+- Remove SCL bits
+
 * Thu Dec 14 2023 Odilon Sousa <osousa@redhat.com> - 0.4-39
 - Dont obsolete python-iniparse
 
