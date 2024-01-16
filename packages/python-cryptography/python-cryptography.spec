@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name cryptography
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        38.0.4
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
@@ -16,12 +14,12 @@ URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.gz
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildConflicts: %{?scl_prefix}python%{python3_pkgversion}-cffi = 1.11.3
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.12
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-six >= 1.4.1
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools-rust >= 0.11.4
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildConflicts: python%{python3_pkgversion}-cffi = 1.11.3
+BuildRequires:  python%{python3_pkgversion}-cffi >= 1.12
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-six >= 1.4.1
+BuildRequires:  python%{python3_pkgversion}-setuptools-rust >= 0.11.4
 
 BuildRequires:  rust-toolset
 BuildRequires:  openssl-devel
@@ -31,41 +29,35 @@ BuildRequires:  gcc
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cffi >= 1.12
+Requires:       python%{python3_pkgversion}-cffi >= 1.12
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 %cargo_prep -V 1
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 CRYPTOGRAPHY_DONT_BUILD_RUST=1 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE LICENSE.APACHE LICENSE.BSD LICENSE.PSF
 %doc README.rst
 %{python3_sitearch}/%{pypi_name}
@@ -73,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 38.0.4-5
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 38.0.4-4
 - Rollback overzealous obsoletes
 
