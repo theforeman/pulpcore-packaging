@@ -1,15 +1,13 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{srcname}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name Parsley
 %global srcname parsley
 
-Name:           %{?scl_prefix}python-%{srcname}
+Name:           python-%{srcname}
 Version:        1.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Parsing and pattern matching made easy
 
 License:        MIT License
@@ -17,46 +15,40 @@ URL:            http://launchpad.net/parsley
 Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
-Provides:       %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name} = %{version}
+Provides:       python%{python3_pkgversion}-%{pypi_name} = %{version}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc terml/README.txt
 %{python3_sitelib}/__pycache__/parsley.*
@@ -67,6 +59,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.3-6
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.3-5
 - Rollback overzealous obsoletes
 
