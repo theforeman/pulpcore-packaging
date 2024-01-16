@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pyjwkest
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        1.4.2
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Python implementation of JWT, JWE, JWS and JWK
 
 License:        Apache 2.0
@@ -16,54 +14,48 @@ URL:            None
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-future
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycryptodomex
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-requests
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-six
+Requires:       python%{python3_pkgversion}-future
+Requires:       python%{python3_pkgversion}-pycryptodomex
+Requires:       python%{python3_pkgversion}-requests
+Requires:       python%{python3_pkgversion}-six
 
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %doc README.rst
 %exclude %{_bindir}/gen_symkey.py
 %exclude %{_bindir}/jwdecrypt.py
@@ -77,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.4.2-9
+- Remove SCL bits
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.4.2-8
 - Add python39 obsoletes to package
 
