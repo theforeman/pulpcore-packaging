@@ -1,15 +1,13 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{srcname}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name PyJWT
 %global srcname pyjwt
 
-Name:           %{?scl_prefix}python-%{srcname}
+Name:           python-%{srcname}
 Version:        2.5.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -17,53 +15,47 @@ URL:            https://github.com/jpadilla/pyjwt
 Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-Provides:       %{?scl_prefix}python%{python3_pkgversion}-jwt = %{version}-%{release}
-Obsoletes:      %{?scl_prefix}python%{python3_pkgversion}-jwt < %{version}-%{release}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 3.3.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-types-cryptography >= 3.3.21
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+Provides:       python%{python3_pkgversion}-jwt = %{version}-%{release}
+Obsoletes:      python%{python3_pkgversion}-jwt < %{version}-%{release}
+Requires:       python%{python3_pkgversion}-cryptography >= 3.3.1
+Requires:       python%{python3_pkgversion}-types-cryptography >= 3.3.21
+Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{srcname} < %{version}-%{release}
 %endif
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc README.rst
 %exclude %{_bindir}/pyjwt
@@ -72,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.5.0-5
+- Remove SCL bits
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 2.5.0-4
 - Add python39 obsoletes to package
 
