@@ -1,5 +1,3 @@
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 %global __python3 /usr/bin/python3.11
 %global python3_pkgversion 3.11
 
@@ -7,9 +5,9 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-ansible
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        0.20.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -18,34 +16,34 @@ URL:            https://github.com/pulp/pulp_ansible
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-gitpython >= 3.1.24
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-gitpython >= 3.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.4.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML < 7.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-async-lru >= 1.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-async-lru >= 2.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer >= 0.4.5
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-galaxy-importer >= 0.5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.9
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 4.18
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.25
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.40
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.9
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-semantic-version >= 2.11
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pillow >= 7.0
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-pillow >= 9.6
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
+Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
+Requires:       python%{python3_pkgversion}-PyYAML >= 5.4.1
+Requires:       python%{python3_pkgversion}-PyYAML < 7.0
+Requires:       python%{python3_pkgversion}-async-lru >= 1.0
+Conflicts:      python%{python3_pkgversion}-async-lru >= 2.1
+Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.4.5
+Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.5
+Requires:       python%{python3_pkgversion}-jsonschema >= 4.9
+Conflicts:      python%{python3_pkgversion}-jsonschema >= 4.18
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.25
+Conflicts:      python%{python3_pkgversion}-pulpcore >= 3.40
+Requires:       python%{python3_pkgversion}-semantic-version >= 2.9
+Conflicts:      python%{python3_pkgversion}-semantic-version >= 2.11
+Requires:       python%{python3_pkgversion}-pillow >= 7.0
+Conflicts:      python%{python3_pkgversion}-pillow >= 9.6
+Requires:       python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(ansible) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{epoch}:%{version}-%{release}
@@ -53,34 +51,28 @@ Obsoletes:      python3-%{pypi_name} < %{epoch}:%{version}-%{release}
 Obsoletes:      python39-%{pypi_name} < %{epoch}:%{version}-%{release}
 %endif
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_ansible
@@ -88,6 +80,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1:0.20.2-4
+- Remove SCL bits
+
 * Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 1:0.20.2-3
 - Add epoch to overrides
 
