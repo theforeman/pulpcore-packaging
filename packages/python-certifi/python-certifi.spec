@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name certifi
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        2022.12.7
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPL-2.0
@@ -17,50 +15,44 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 Patch0:         certifi-2022.12.7-use-system-cert.patch
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  ca-certificates
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 Requires:       ca-certificates
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 # Remove bundled Root Certificates collection
 rm -rf certifi/*.pem
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}
@@ -68,6 +60,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2022.12.7-5
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2022.12.7-4
 - Rollback overzealous obsoletes
 
