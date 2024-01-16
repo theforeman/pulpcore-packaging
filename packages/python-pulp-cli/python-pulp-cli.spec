@@ -67,20 +67,15 @@ rm -rf %{pypi_name}.egg-info
 set -ex
 %py3_build
 
-%endif
 
 %install
 set -ex
 %py3_install
 
-install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
-%endif
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
-%{_root_bindir}/pulp
-%endif
 %{_bindir}/pulp
 %{python3_sitelib}/pulp_cli
 %{python3_sitelib}/pulpcore
@@ -89,7 +84,7 @@ install -D -m 755 pulp-cli-wrapper %{buildroot}%{_root_bindir}/pulp
 
 
 %changelog
-* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com>
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.21.2-5
 - Remove SCL bits
 
 * Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 0.21.2-4
