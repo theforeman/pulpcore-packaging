@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name azure-storage-blob
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        12.9.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Microsoft Azure Blob Storage Client Library for Python
 
 License:        MIT License
@@ -16,52 +14,46 @@ URL:            https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/stor
 Source0:        %{pypi_source %{pypi_name} %{version} zip}
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-azure-core < 2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-azure-core >= 1.10
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 2.1.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-msrest >= 0.6.21
+Requires:       python%{python3_pkgversion}-azure-core < 2
+Requires:       python%{python3_pkgversion}-azure-core >= 1.10
+Requires:       python%{python3_pkgversion}-cryptography >= 2.1.4
+Requires:       python%{python3_pkgversion}-msrest >= 0.6.21
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.txt
 %doc README.md samples/README.md
 %{python3_sitelib}/azure
@@ -69,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 12.9.0-6
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 12.9.0-5
 - Rollback overzealous obsoletes
 
