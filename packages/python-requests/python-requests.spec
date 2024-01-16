@@ -1,15 +1,13 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name requests
 %{?python_disable_dependency_generator}
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        2.31.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -17,56 +15,50 @@ URL:            https://requests.readthedocs.io
 Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-certifi >= 2017.4.17
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer < 3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-charset-normalizer >= 2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 1.3.4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna < 4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-idna >= 2.5
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL >= 0.14
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 < 3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-urllib3 >= 1.21.1
+Requires:       python%{python3_pkgversion}-certifi >= 2017.4.17
+Requires:       python%{python3_pkgversion}-charset-normalizer < 3
+Requires:       python%{python3_pkgversion}-charset-normalizer >= 2
+Requires:       python%{python3_pkgversion}-cryptography >= 1.3.4
+Requires:       python%{python3_pkgversion}-idna < 4
+Requires:       python%{python3_pkgversion}-idna >= 2.5
+Requires:       python%{python3_pkgversion}-pyOpenSSL >= 0.14
+Requires:       python%{python3_pkgversion}-urllib3 < 3
+Requires:       python%{python3_pkgversion}-urllib3 >= 1.21.1
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
 %{python3_sitelib}/%{pypi_name}
@@ -74,6 +66,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.31.0-5
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2.31.0-4
 - Rollback overzealous obsoletes
 
