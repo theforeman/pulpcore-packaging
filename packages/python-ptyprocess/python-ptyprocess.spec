@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name ptyprocess
 
 Name:           python-%{pypi_name}
 Version:        0.7.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Run a subprocess in a pseudo terminal
 
 License:        None
@@ -34,24 +32,18 @@ Summary:        %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
@@ -62,6 +54,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.7.0-5
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.7.0-4
 - Rollback overzealous obsoletes
 
