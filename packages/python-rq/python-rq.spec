@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name rq
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        1.9.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        RQ is a simple, lightweight, library for creating background jobs, and processing them
 
 License:        BSD
@@ -17,20 +15,20 @@ Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{
 Patch0:         0001-Have-hearbeats-occur-more-frequently.patch
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 5.0.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-redis >= 3.5.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-click >= 5.0.0
+Requires:       python%{python3_pkgversion}-redis >= 3.5.0
+Requires:       python%{python3_pkgversion}-setuptools
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -39,34 +37,28 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
 %{_bindir}/rq
@@ -77,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.9.0-7
+- Remove SCL bits
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.9.0-6
 - Obsolete python39 packages for a smooth upgrade
 
