@@ -152,27 +152,13 @@ sed -i 's/psycopg\[binary\]/psycopg/' requirements.txt
 %build
 set -ex
 %py3_build
-for wrapper in %{wrappers}
-do
-done
-for wrapper in %{scl_wrappers}
-do
-done
-%endif
 
 
 %install
 set -ex
 %py3_install
-for wrapper in %{wrappers}
-do
-  install -D -m 755 ${wrapper} %{buildroot}%{_root_libexecdir}/%{pypi_name}/${wrapper}
-done
-for wrapper in %{scl_wrappers}
-do
-  install -D -m 755 ${wrapper} %{buildroot}%{_root_bindir}/${wrapper}
-done
-%endif
+
+
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
@@ -180,13 +166,12 @@ done
 %{_bindir}/pulpcore-api
 %{_bindir}/pulpcore-manager
 %{_bindir}/pulpcore-worker
-%{_root_libexecdir}/%{pypi_name}/*
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
-* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com>
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> 3.39.4-2
 - Remove SCL bits
 
 * Wed Jan 03 2024 Odilon Sousa <osousa@redhat.com> - 3.39.4-1
