@@ -1,7 +1,5 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{srcname}}
-%{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
 
 
@@ -9,9 +7,9 @@
 %global pypi_name grpcio
 %global srcname grpcio
 
-Name:           %{?scl_prefix}python-%{srcname}
+Name:           python-%{srcname}
 Version:        1.56.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        HTTP/2-based RPC framework
 
 License:        Apache License 2.0
@@ -25,44 +23,41 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc README.md
 %{python3_sitearch}/grpc
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.56.0-5
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 1.56.0-4
 - Rollback overzealous obsoletes
 
