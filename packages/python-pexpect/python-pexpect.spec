@@ -1,14 +1,12 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name pexpect
 
 Name:           python-%{pypi_name}
 Version:        4.8.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Pexpect allows easy control of interactive console applications
 
 License:        ISC license
@@ -35,26 +33,20 @@ Requires:       python%{python3_pkgversion}-ptyprocess
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
@@ -65,6 +57,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.8.0-6
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 4.8.0-5
 - Rollback overzealous obsoletes
 
