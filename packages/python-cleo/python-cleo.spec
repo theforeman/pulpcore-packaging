@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.0.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Cleo allows you to create beautiful and testable command-line interfaces.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -15,9 +15,9 @@ URL:            https://github.com/python-poetry/cleo/
 Source:         https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-poetry_core
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-poetry_core
 
 %description
 %{summary}
@@ -26,8 +26,8 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-poetry_core
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:  %{?scl_prefix}python%{python3_pkgversion}-crashtest >= 0.4.1 
-Requires:  %{?scl_prefix}python%{python3_pkgversion}-rapidfuzz >= 2.2.0
+Requires:  python%{python3_pkgversion}-crashtest >= 0.4.1 
+Requires:  python%{python3_pkgversion}-rapidfuzz >= 2.2.0
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -53,6 +53,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.0.1-5
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2.0.1-4
 - Rollback overzealous obsoletes
 
