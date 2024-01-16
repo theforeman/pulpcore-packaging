@@ -1,15 +1,13 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name drf-spectacular
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        0.26.5
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
@@ -17,55 +15,49 @@ URL:            https://github.com/tfranzel/drf-spectacular
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-django >= 2.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-PyYAML >= 5.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-djangorestframework >= 3.10.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-inflection >= 0.3.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-jsonschema >= 2.6.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-uritemplate >= 2.0.0
+Requires:       python%{python3_pkgversion}-django >= 2.2
+Requires:       python%{python3_pkgversion}-PyYAML >= 5.1
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.10.3
+Requires:       python%{python3_pkgversion}-inflection >= 0.3.1
+Requires:       python%{python3_pkgversion}-jsonschema >= 2.6.0
+Requires:       python%{python3_pkgversion}-uritemplate >= 2.0.0
 
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE docs/license.rst
 %doc README.rst docs/readme.rst
 %{python3_sitelib}/drf_spectacular
@@ -73,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.26.5-5
+- Remove SCL bits
+
 * Fri Dec 15 2023 Odilon Sousa <osousa@redhat.com> - 0.26.5-4
 - Obsoletes is necessary on drf-spectacular to make django upgrade smoother
 
