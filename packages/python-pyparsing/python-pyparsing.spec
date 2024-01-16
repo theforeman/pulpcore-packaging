@@ -1,16 +1,14 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 %{?python_disable_dependency_generator}
 
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pyparsing
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        3.1.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python parsing module
 
 License:        MIT License
@@ -54,6 +52,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.1.1-4
+- Remove SCL bits
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.1.1-3
 - Rollback overzealous obsoletes
 
