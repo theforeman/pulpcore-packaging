@@ -1,15 +1,13 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?scl:%scl_package python-%{srcname}}
-%{!?scl:%global pkg_name %{name}}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name PyGObject
 %global srcname pygobject
 
-Name:           %{?scl_prefix}python-%{srcname}
+Name:           python-%{srcname}
 Version:        3.40.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
@@ -17,9 +15,9 @@ License:        GNU LGPL
 URL:            https://pygobject.readthedocs.io
 Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pycairo >= 1.16.0
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pycairo >= 1.16.0
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 BuildRequires:  cairo-gobject-devel
 BuildRequires:  gobject-introspection-devel
@@ -28,11 +26,11 @@ BuildRequires:  gobject-introspection-devel
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-Provides:       %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name} = %{version}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycairo >= 1.16.0
+Provides:       python%{python3_pkgversion}-%{pypi_name} = %{version}
+Requires:       python%{python3_pkgversion}-pycairo >= 1.16.0
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %endif
@@ -41,34 +39,28 @@ Obsoletes:      python38-%{srcname} < %{epoch}:%{version}-%{release}
 Obsoletes:      python39-%{srcname} < %{epoch}:%{version}-%{release}
 %endif
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %license docs/images/LICENSE
 %doc .gitlab-ci/README.rst README.rst
 %{python3_sitearch}/gi
@@ -79,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1:3.40.1-7
+- Remove SCL bits
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1:3.40.1-6
 - Add python39 obsoletes to package
 
