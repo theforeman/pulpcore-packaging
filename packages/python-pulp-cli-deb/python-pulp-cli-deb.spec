@@ -1,5 +1,3 @@
-%{?scl:%scl_package python-%{pypi_name}}
-%{!?scl:%global pkg_name %{name}}
 
 %global __python3 /usr/bin/python3.11
 %global python3_pkgversion 3.11
@@ -7,9 +5,9 @@
 # Created by pyp2rpm-3.3.7
 %global pypi_name pulp-cli-deb
 
-Name:           %{?scl_prefix}python-%{pypi_name}
+Name:           python-%{pypi_name}
 Version:        0.0.5
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -17,21 +15,21 @@ URL:            https://github.com/pulp/pulp-cli-deb
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 %description
 %{summary}
 
 
-%package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulp-cli >= 0.18.2
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-click
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-pulp-cli >= 0.18.2
+Requires:       python%{python3_pkgversion}-click
+Requires:       python%{python3_pkgversion}-setuptools
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -41,40 +39,37 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 Provides:       %{pypi_name} = %{version}
 
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%{?scl:EOF}
 
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_build
-%{?scl:EOF}
 
 
 %install
-%{?scl:scl enable %{scl} - << \EOF}
 set -ex
 %py3_install
-%{?scl:EOF}
 
 
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %{python3_sitelib}/pulpcore
 %{python3_sitelib}/pulp_cli_deb-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.0.5-4
+- Remove SCL bits
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.0.5-3
 - Obsolete python39 packages for a smooth upgrade
 
