@@ -12,7 +12,7 @@
 %global scl_wrappers pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.39.4
+Version:        3.39.7
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -48,7 +48,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiodns >= 3.1.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiofiles < 23.3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.8.1
-Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.9
+Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aiohttp >= 3.9.3
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.0.1
 Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-asyncio-throttle >= 1.0
@@ -58,7 +58,7 @@ Conflicts:      %{?scl_prefix}python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click >= 8.1.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-click < 8.1.8
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography < 41.0.5
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-cryptography < 41.0.8
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-filter < 23.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-django-guid >= 3.3
@@ -198,6 +198,9 @@ done
 
 
 %changelog
+* Wed Jan 24 2024 Odilon Sousa <osousa@redhat.com> - 3.39.7-1
+- Release python-pulpcore 3.39.7
+
 * Wed Jan 03 2024 Odilon Sousa <osousa@redhat.com> - 3.39.4-1
 - Release python-pulpcore 3.39.4
 
