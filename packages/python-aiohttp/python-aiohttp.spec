@@ -5,8 +5,8 @@
 %global pypi_name aiohttp
 
 Name:           python-%{pypi_name}
-Version:        3.8.3
-Release:        7%{?dist}
+Version:        3.8.6
+Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -34,10 +34,8 @@ Requires:       python%{python3_pkgversion}-attrs >= 17.3.0
 Requires:       python%{python3_pkgversion}-charset-normalizer < 3.0
 Requires:       python%{python3_pkgversion}-charset-normalizer >= 2.0
 Requires:       python%{python3_pkgversion}-frozenlist >= 1.1.1
-Requires:       python%{python3_pkgversion}-idna-ssl >= 1.0
 Requires:       python%{python3_pkgversion}-multidict < 7.0
 Requires:       python%{python3_pkgversion}-multidict >= 4.5
-Requires:       python%{python3_pkgversion}-typing-extensions >= 3.7.4
 Requires:       python%{python3_pkgversion}-yarl < 2.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.0
 
@@ -74,6 +72,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 3.8.6-1
+- Release python-aiohttp 3.8.6
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.8.3-7
 - Remove SCL bits
 
