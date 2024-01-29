@@ -5,8 +5,8 @@
 %global pypi_name pulpcore-client
 
 Name:           python-%{pypi_name}
-Version:        3.39.4
-Release:        2%{?dist}
+Version:        3.39.8
+Release:        1%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 3.39.8-1
+- Release python-pulpcore-client 3.39.8
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.39.4-2
 - Remove SCL bits
 
