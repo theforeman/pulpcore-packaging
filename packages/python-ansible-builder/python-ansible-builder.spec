@@ -5,8 +5,8 @@
 %global pypi_name ansible-builder
 
 Name:           python-%{pypi_name}
-Version:        1.0.1
-Release:        7%{?dist}
+Version:        3.0.0
+Release:        1%{?dist}
 Summary:        A tool for building Ansible Execution Environments
 
 License:        Apache-2.0
@@ -16,7 +16,12 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pbr
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-setuptools-scm
+BuildRequires:  python%{python3_pkgversion}-toml
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -45,29 +50,26 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE.md
-%doc README.md
 %{_bindir}/ansible-builder
 %{python3_sitelib}/ansible_builder
-%{python3_sitelib}/ansible_builder-%{version}-py%{python3_version}.egg-info
-
+%{python3_sitelib}/ansible_builder-%{version}.dist-info/
 
 %changelog
+* Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 3.0.0-1
+- Release python-ansible-builder 3.0.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.0.1-7
 - Remove SCL bits
 
