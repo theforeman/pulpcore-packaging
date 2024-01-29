@@ -6,8 +6,8 @@
 %global srcname jinja2
 
 Name:           python-%{srcname}
-Version:        3.1.2
-Release:        5%{?dist}
+Version:        3.1.3
+Release:        1%{?dist}
 Summary:        A very fast and expressive template engine
 
 License:        BSD-3-Clause
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 3.1.3-1
+- Release python-jinja2 3.1.3
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.1.2-5
 - Remove SCL bits
 
