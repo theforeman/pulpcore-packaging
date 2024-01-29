@@ -6,8 +6,7 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
-%global wrappers gunicorn pulpcore-worker
-%global scl_wrappers pulp-content pulpcore-manager
+%global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.39.7
@@ -152,12 +151,19 @@ sed -i 's/psycopg\[binary\]/psycopg/' requirements.txt
 %build
 set -ex
 %py3_build
+for wrapper in %{wrappers}
+do
+  printf '#!/bin/bash\nexec %s "$@"\n' ${wrapper} > ${wrapper}
+done
 
 
 %install
 set -ex
 %py3_install
-
+for wrapper in %{wrappers}
+do
+  install -D -m 755 ${wrapper} %{buildroot}%{_root_libexecdir}/%{pypi_name}/${wrapper}
+done
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
@@ -166,6 +172,7 @@ set -ex
 %{_bindir}/pulpcore-api
 %{_bindir}/pulpcore-manager
 %{_bindir}/pulpcore-worker
+%{_root_libexecdir}/%{pypi_name}/*
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
