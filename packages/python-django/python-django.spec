@@ -6,8 +6,8 @@
 %global srcname django
 
 Name:           python-%{srcname}
-Version:        4.2.2
-Release:        4%{?dist}
+Version:        4.2.9
+Release:        1%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 4.2.9-1
+- Release python-django 4.2.9
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.2.2-4
 - Remove SCL bits
 
