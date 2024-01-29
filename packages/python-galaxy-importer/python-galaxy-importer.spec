@@ -1,12 +1,14 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
 
+%{?python_disable_dependency_generator}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-importer
 
 Name:           python-%{pypi_name}
-Version:        0.4.7
-Release:        2%{?dist}
+Version:        0.4.19
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -91,6 +93,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 0.4.19-1
+- Release python-galaxy-importer 0.4.19
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.4.7-2
 - Remove SCL bits
 
