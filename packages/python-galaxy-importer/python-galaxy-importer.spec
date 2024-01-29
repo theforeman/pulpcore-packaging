@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.4.19
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Requires:       /usr/bin/ansible-test
 Requires:       ansible-lint < 6.14.4
 Requires:       ansible-lint >= 5.0.8
 %endif
-Requires:       python%{python3_pkgversion}-ansible-builder < 2.0
+Requires:       python%{python3_pkgversion}-ansible-builder < 4.0
 Requires:       python%{python3_pkgversion}-ansible-builder >= 1.0.1
 Requires:       python%{python3_pkgversion}-attrs < 23
 Requires:       python%{python3_pkgversion}-attrs >= 21.4.0
@@ -93,6 +93,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 0.4.19-2
+- Update ansible-builder requirements
+
 * Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 0.4.19-1
 - Release python-galaxy-importer 0.4.19
 
