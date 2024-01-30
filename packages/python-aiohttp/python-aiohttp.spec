@@ -5,14 +5,13 @@
 %global pypi_name aiohttp
 
 Name:           python-%{pypi_name}
-Version:        3.8.6
+Version:        3.9.1
 Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
 URL:            https://github.com/aio-libs/aiohttp
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         0001-allow-larger-headers.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -28,8 +27,6 @@ Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-brotli
 Requires:       python%{python3_pkgversion}-aiodns
 Requires:       python%{python3_pkgversion}-aiosignal >= 1.1.2
-Requires:       python%{python3_pkgversion}-async-timeout < 5.0
-Requires:       python%{python3_pkgversion}-async-timeout >= 4.0
 Requires:       python%{python3_pkgversion}-attrs >= 17.3.0
 Requires:       python%{python3_pkgversion}-charset-normalizer < 3.0
 Requires:       python%{python3_pkgversion}-charset-normalizer >= 2.0
@@ -72,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Jan 30 2024 Odilon Sousa <osousa@redhat.com> - 3.9.1-1
+- Release python-aiohttp 3.9.1
+
 * Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 3.8.6-1
 - Release python-aiohttp 3.8.6
 
