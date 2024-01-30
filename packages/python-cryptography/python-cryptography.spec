@@ -5,8 +5,8 @@
 %global pypi_name cryptography
 
 Name:           python-%{pypi_name}
-Version:        38.0.4
-Release:        5%{?dist}
+Version:        41.0.6
+Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
@@ -58,13 +58,16 @@ set -ex
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE LICENSE.APACHE LICENSE.BSD LICENSE.PSF
+%license LICENSE LICENSE.APACHE LICENSE.BSD
 %doc README.rst
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Jan 30 2024 Odilon Sousa <osousa@redhat.com> - 41.0.6-1
+- Release python-cryptography 41.0.6
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 38.0.4-5
 - Remove SCL bits
 
