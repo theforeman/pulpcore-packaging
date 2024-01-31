@@ -6,8 +6,8 @@
 %global srcname pyopenssl
 
 Name:           python-%{pypi_name}
-Version:        22.1.0
-Release:        5%{?dist}
+Version:        23.3.0
+Release:        1%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
@@ -25,8 +25,8 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-cryptography >= 38.0.0
-Requires:       python%{python3_pkgversion}-six >= 1.5.2
+Requires:       python%{python3_pkgversion}-cryptography >= 41.0.5
+Requires:       python%{python3_pkgversion}-cryptography < 42
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 31 2024 Odilon Sousa <osousa@redhat.com> - 23.3.0-1
+- Release python-pyOpenSSL 23.3.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 22.1.0-5
 - Remove SCL bits
 
