@@ -5,8 +5,8 @@
 %global pypi_name async-timeout
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        4.0.2
-Release:        2%{?dist}
+Version:        4.0.3
+Release:        1%{?dist}
 Summary:        Timeout context manager for asyncio programs
 
 License:        Apache 2
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 31 2024 Odilon Sousa <osousa@redhat.com> - 4.0.3-1
+- Release python-async-timeout 4.0.3
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 4.0.2-2
 - Build against python 3.9
 
