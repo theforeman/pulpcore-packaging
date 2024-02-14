@@ -5,8 +5,8 @@
 %global pypi_name pycryptodomex
 
 Name:           python-%{pypi_name}
-Version:        3.14.1
-Release:        6%{?dist}
+Version:        3.20.0
+Release:        1%{?dist}
 Summary:        Cryptographic library for Python
 
 License:        BSD, Public Domain
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 14 2024 Odilon Sousa <osousa@redhat.com> - 3.20.0-1
+- Release python-pycryptodomex 3.20.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.14.1-6
 - Remove SCL bits
 
