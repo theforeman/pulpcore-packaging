@@ -37,7 +37,7 @@
 
 Name:           lib%{libname}
 Version:        0.7.20
-Release:        6%{?dist}
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Package dependency solver
 
@@ -282,7 +282,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %endif
 
 %changelog
-* Mon Jan 22 2024 Patrick Creech <pcreech@redhat.com> - 1:0.7.20-6
+* Mon Jan 22 2024 Patrick Creech <pcreech@redhat.com> - 1:0.7.20-1
 - Rebase libsolv and add epoc
 
 * Wed Jun 21 2023 Jaroslav Rohel <jrohel@redhat.com> - 0.7.20-6

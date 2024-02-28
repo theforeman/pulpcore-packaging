@@ -46,6 +46,7 @@ BuildRequires:  zlib-devel
 
 BuildRequires:  swig
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
 
 # -DWITH_LIBXML2=ON
 BuildRequires:  libxml2-devel
