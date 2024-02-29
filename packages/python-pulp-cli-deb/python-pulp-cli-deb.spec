@@ -6,8 +6,8 @@
 %global pypi_name pulp-cli-deb
 
 Name:           python-%{pypi_name}
-Version:        0.0.5
-Release:        4%{?dist}
+Version:        0.0.7
+Release:        1%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -28,8 +28,10 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 Requires:       python%{python3_pkgversion}-pulp-cli >= 0.18.2
+Requires:       python%{python3_pkgversion}-pulp-cli < 0.24.0
 Requires:       python%{python3_pkgversion}-click
 Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-pulp-glue-deb == 0.0.7
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -67,6 +69,9 @@ set -ex
 
 
 %changelog
+* Thu Feb 29 2024 Quirin Pamp <pamp@atix.de> - 0.0.7-1
+- Update python-pulp-cli-deb to 0.0.7.
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.0.5-4
 - Remove SCL bits
 
