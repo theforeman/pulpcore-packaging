@@ -5,7 +5,7 @@
 %global pypi_name aiohttp
 
 Name:           python-%{pypi_name}
-Version:        3.9.1
+Version:        3.9.2
 Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Fri Mar 01 2024 Odilon Sousa <osousa@redhat.com> - 3.9.2-1
+- Release python-aiohttp 3.9.2
+
 * Tue Jan 30 2024 Odilon Sousa <osousa@redhat.com> - 3.9.1-1
 - Release python-aiohttp 3.9.1
 
