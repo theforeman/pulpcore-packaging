@@ -7,16 +7,18 @@
 %global srcname pygments
 
 Name:           python-%{srcname}
-Version:        2.14.0
-Release:        4%{?dist}
+Version:        2.17.0
+Release:        1%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
 License:        BSD
 URL:            https://pygments.org/
-Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-hatchling
+BuildRequires:  python%{python3_pkgversion}-tomli
 
 
 %description
@@ -36,30 +38,28 @@ Obsoletes:      python39-%{srcname} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+%autosetup -n %{srcname}-%{version}
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license LICENSE
-%doc README.rst
 %exclude %{_bindir}/pygmentize
 %{python3_sitelib}/pygments
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 
 %changelog
+* Fri Mar 01 2024 Odilon Sousa <osousa@redhat.com> - 2.17.0-1
+- Release python-pygments 2.17.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.14.0-4
 - Remove SCL bits
 
