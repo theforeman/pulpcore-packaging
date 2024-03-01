@@ -5,14 +5,13 @@
 %global pypi_name aiohttp
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.8.3
-Release:        2%{?dist}
+Version:        3.9.2
+Release:        0.1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
 URL:            https://github.com/aio-libs/aiohttp
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         0001-allow-larger-headers.patch
 
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
 BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
@@ -80,6 +79,9 @@ set -ex
 
 
 %changelog
+* Fri Mar 01 2024 Odilon Sousa <osousa@redhat.com> - 3.9.2-0.1
+- Release python-aiohttp 3.9.2
+
 * Mon Feb 13 2023 Odilon Sousa <osousa@redhat.com> - 3.8.3-2
 - Remove asynctest requirement, only required for python <3.8
 
