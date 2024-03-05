@@ -9,7 +9,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.39.8
+Version:        3.39.11
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -45,7 +45,7 @@ Conflicts:      python%{python3_pkgversion}-aiodns >= 3.1.2
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 23.3.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.1
-Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.9.2
+Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.9.5
 Requires:       python%{python3_pkgversion}-aioredis >= 2.0.1
 Conflicts:      python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
@@ -63,14 +63,15 @@ Requires:       python%{python3_pkgversion}-django-guid <= 3.4.0
 Requires:       python%{python3_pkgversion}-django-import-export >= 2.9
 Requires:       python%{python3_pkgversion}-django-import-export < 3.4.0
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
-Requires:       python%{python3_pkgversion}-django-lifecycle < 1.2
+Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.1.2
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
 Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.14.1
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields <= 1.1.0
 Requires:       python%{python3_pkgversion}-drf-access-policy >= 1.1.2
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
-Requires:       python%{python3_pkgversion}-drf-nested-routers = 0.93.4
+Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
+Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.93.5
 Requires:       python%{python3_pkgversion}-drf-spectacular = 0.26.5
 Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.12
 Requires:       python%{python3_pkgversion}-dynaconf <= 3.2.5
@@ -79,7 +80,7 @@ Requires:       python%{python3_pkgversion}-gnupg <= 0.5.1
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
 Requires:       python%{python3_pkgversion}-gunicorn <= 21.2.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
-Conflicts:      python%{python3_pkgversion}-jinja2 >= 3.2
+Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.3
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
 Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
@@ -178,6 +179,9 @@ done
 
 
 %changelog
+* Tue Mar 05 2024 Odilon Sousa <osousa@redhat.com> - 3.39.11-1
+- Release python-pulpcore 3.39.11
+
 * Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 3.39.8-1
 - Release python-pulpcore 3.39.8
 
