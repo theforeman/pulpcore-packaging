@@ -5,8 +5,8 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.23.0
-Release:        3%{?dist}
+Version:        3.23.3
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 06 2024 Odilon Sousa <osousa@redhat.com> - 3.23.3-1
+- Release python-pulp-rpm 3.23.3
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.23.0-3
 - Remove SCL bits
 
