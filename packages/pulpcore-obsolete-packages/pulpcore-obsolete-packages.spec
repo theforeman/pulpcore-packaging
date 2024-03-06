@@ -1,6 +1,6 @@
 Name: pulpcore-obsolete-packages
 Version: 1.0
-Release: 8%{?dist}
+Release: 9%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
 URL: https://github.com/theforeman/pulpcore-packaging
@@ -12,7 +12,7 @@ Obsoletes:      python39-django-currentuser < 0.5.3-6
 Obsoletes:      python39-importlib-resources < 5.4.0-6
 Obsoletes:      python39-django-guardian < 2.4.0-7
 Obsoletes:      python39-aiodns < 3.0.0-4
-Obsoletes:      python39-aiohttp < 3.8.3-3
+Obsoletes:      python39-aiohttp < 4.0.0-1
 Obsoletes:      python39-aiohttp-xmlrpc < 1.5.0-3
 Obsoletes:      python39-pexpect < 4.8.0-3
 Obsoletes:      python39-requests < 2.31.0-2
@@ -34,6 +34,9 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Wed Mar 06 2024 Patrick Creech <pcreech@redhat.com> - 1.0-9
+- Increase python39-aiohttp obsolete version to fix upgrades
+
 * Thu Jan 11 2024 Patrick Creech <pcreech@redhat.com> - 1.0-8
 - Obsolete aiohttp-socks and pypi-simple as well
 
