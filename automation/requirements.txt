@@ -6,6 +6,6 @@ pulp-rpm==3.23.3
 pulp-certguard==1.7.1
 pulp-ansible==0.20.2
 pulp-python==3.10.0
-pulpcore-client==3.39.11
+pulpcore-client==3.49.1
 pulp-rpm-client==3.23.3
 pulp-ostree==2.1.3
