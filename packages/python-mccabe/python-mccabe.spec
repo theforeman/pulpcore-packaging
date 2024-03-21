@@ -5,8 +5,8 @@
 %global pypi_name mccabe
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        0.6.1
-Release:        3%{?dist}
+Version:        0.7.0
+Release:        0.1%{?dist}
 Summary:        McCabe checker, plugin for flake8
 
 License:        Expat license
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 21 2024 Odilon Sousa <osousa@redhat.com> - 0.7.0-0.1
+- Release python-mccabe 0.7.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 0.6.1-3
 - Build against python 3.9
 
