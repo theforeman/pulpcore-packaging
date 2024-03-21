@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.4.18
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -41,8 +41,8 @@ Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach >= 3.3.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach-allowlist < 2
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach-allowlist >= 1.0.3
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8 < 4
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8 >= 3.9.2
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8 < 7
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-flake8 >= 5.0.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-markdown < 4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-markdown >= 3.3.4
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyyaml < 6
@@ -98,6 +98,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Thu Mar 21 2024 Odilon Sousa <osousa@redhat.com> - 0.4.18-2
+- Update flake8 requirements
+
 * Fri Mar 01 2024 Odilon Sousa <osousa@redhat.com> - 0.4.18-1
 - Release python-galaxy-importer 0.4.18
 
