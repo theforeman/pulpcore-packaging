@@ -5,8 +5,8 @@
 %global pypi_name ansible-builder
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.0.1
-Release:        4%{?dist}
+Version:        1.2.0
+Release:        1%{?dist}
 Summary:        A tool for building Ansible Execution Environments
 
 License:        Apache-2.0
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 21 2024 Odilon Sousa <osousa@redhat.com> - 1.2.0-1
+- Release python-ansible-builder 1.2.0
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 1.0.1-4
 - Obsolete the old Python 3.8 package for smooth upgrade
 
