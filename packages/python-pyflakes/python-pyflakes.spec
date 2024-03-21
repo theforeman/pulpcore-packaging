@@ -5,8 +5,8 @@
 %global pypi_name pyflakes
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        2.3.1
-Release:        5%{?dist}
+Version:        2.5.0
+Release:        0.1%{?dist}
 Summary:        passive checker of Python programs
 
 License:        MIT
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 21 2024 Odilon Sousa <osousa@redhat.com> - 2.5.0-0.1
+- Release python-pyflakes 2.5.0
+
 * Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 2.3.1-5
 - Build against python 3.9
 
