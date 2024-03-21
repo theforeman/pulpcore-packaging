@@ -5,8 +5,8 @@
 %global pypi_name flake8
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        3.9.2
-Release:        5%{?dist}
+Version:        5.0.0
+Release:        0.1%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
 License:        MIT
@@ -26,12 +26,12 @@ BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-importlib-metadata
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-mccabe < 0.7.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-mccabe >= 0.6.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle < 2.8.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle >= 2.7.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes < 2.4.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes >= 2.3.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-mccabe < 0.8.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-mccabe >= 0.7.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle < 2.10.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pycodestyle >= 2.9.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes < 2.6.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyflakes >= 2.5.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
 %if 0%{?!scl:1}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -77,6 +77,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 21 2024 Odilon Sousa <osousa@redhat.com> - 5.0.0-0.1
+- Release python-flake8 5.0.0
+
 * Tue May 10 2022 Yanis Guenane <yguenane@redhat.com> - 3.9.2-5
 - Obsolete the old Python 3.8 package for smooth upgrade
 
