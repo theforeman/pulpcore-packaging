@@ -1,4 +1,5 @@
 %global libname solv
+%global pypi_name solv
 
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
@@ -138,15 +139,15 @@ export PYTHONPATH=%{buildroot}%{python3_sitearch}
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %python3 -c 'import solv'
 
-%package -n     python%{python3_pkgversion}-%{libname}
+%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{libname}}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{libname}
+%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
-%files -n python%{python3_pkgversion}-%{libname}
+%files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE*
 %doc README
 %{python3_sitearch}/_%{libname}.so
