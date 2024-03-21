@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        0.4.18
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -33,8 +33,8 @@ Requires:       /usr/bin/ansible-test
 Requires:       ansible-lint < 7.0
 Requires:       ansible-lint >= 5.0.8
 %endif
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder < 2.0
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder >= 1.0.1
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder < 4
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-ansible-builder >= 1.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs < 22
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-attrs >= 21.2.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-bleach < 4
@@ -98,6 +98,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Thu Mar 21 2024 Odilon Sousa <osousa@redhat.com> - 0.4.18-3
+- Update requirements for ansible-builder
+
 * Thu Mar 21 2024 Odilon Sousa <osousa@redhat.com> - 0.4.18-2
 - Update flake8 requirements
 
