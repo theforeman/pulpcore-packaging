@@ -1,0 +1,68 @@
+From 07a1a0fd83f108a0e9b1f801b52ff2bd26722097 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mat=C4=9Bj?= <amatej@redhat.com>
+Date: Thu, 27 Jan 2022 08:38:27 +0100
+Subject: [PATCH] Allow accessing toolversion at runtime and increase it
+
+---
+ src/libsolv.ver      | 1 +
+ src/solvversion.c    | 1 +
+ src/solvversion.h.in | 3 ++-
+ tools/common_write.c | 1 +
+ 4 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/libsolv.ver b/src/libsolv.ver
+index 4c6fbf4f..89517f50 100644
+--- a/src/libsolv.ver
++++ b/src/libsolv.ver
+@@ -306,6 +306,7 @@ SOLV_1.0 {
+ 		solv_version_major;
+ 		solv_version_minor;
+ 		solv_version_patch;
++		solv_toolversion;
+ 		solvable_add_deparray;
+ 		solvable_add_idarray;
+ 		solvable_add_poolstr_array;
+diff --git a/src/solvversion.c b/src/solvversion.c
+index d66e1958..51d57a63 100644
+--- a/src/solvversion.c
++++ b/src/solvversion.c
+@@ -11,3 +11,4 @@ const char solv_version[] = LIBSOLV_VERSION_STRING;
+ int solv_version_major = LIBSOLV_VERSION_MAJOR;
+ int solv_version_minor = LIBSOLV_VERSION_MINOR;
+ int solv_version_patch = LIBSOLV_VERSION_PATCH;
++const char solv_toolversion[] = LIBSOLV_TOOLVERSION;
+diff --git a/src/solvversion.h.in b/src/solvversion.h.in
+index 43b566a1..da0ad743 100644
+--- a/src/solvversion.h.in
++++ b/src/solvversion.h.in
+@@ -23,6 +23,7 @@ extern const char solv_version[];
+ extern int solv_version_major;
+ extern int solv_version_minor;
+ extern int solv_version_patch;
++extern const char solv_toolversion[];
+ 
+ #cmakedefine LIBSOLV_FEATURE_LINKED_PKGS
+ #cmakedefine LIBSOLV_FEATURE_COMPLEX_DEPS
+@@ -48,6 +49,6 @@ extern int solv_version_patch;
+ #cmakedefine LIBSOLVEXT_FEATURE_ZCHUNK_COMPRESSION
+ 
+ /* see tools/common_write.c for toolversion history */
+-#define LIBSOLV_TOOLVERSION "1.1"
++#define LIBSOLV_TOOLVERSION "1.2"
+ 
+ #endif
+diff --git a/tools/common_write.c b/tools/common_write.c
+index 36f8dd89..8fda3e33 100644
+--- a/tools/common_write.c
++++ b/tools/common_write.c
+@@ -19,6 +19,7 @@
+ /* toolversion history
+  * 1.0: initial tool version
+  * 1.1: changed PRODUCT_ENDOFLIFE parsing
++ * 1.2: added UPDATE_COLLECTIONLIST to updateinfo
+ */
+ 
+ static int
+-- 
+2.31.1
+

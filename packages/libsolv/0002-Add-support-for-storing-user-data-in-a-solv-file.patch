@@ -1,0 +1,311 @@
+From 9b89a186e3769631b6cee859be9d69063cfdfb94 Mon Sep 17 00:00:00 2001
+From: Michael Schroeder <mls@suse.de>
+Date: Fri, 25 Feb 2022 16:47:21 +0100
+Subject: [PATCH 2/3] Add support for storing user data in a solv file
+
+Userdata can be arbritrary (binary)data with a maximum size of
+65535 bytes. It can be read without reading the complete
+solv file, but do not forget to rewind the fp after reading
+the user data.
+
+New functions:
+void
+    void repowriter_set_userdata(Repowriter *writer, const void *data, int len)
+    int solv_read_userdata(FILE *fp, unsigned char **datap, int *lenp)
+---
+ src/libsolv.ver  |  2 ++
+ src/pooltypes.h  |  6 ++++--
+ src/repo_solv.c  | 54 ++++++++++++++++++++++++++++++++++++++++++++++++
+ src/repo_solv.h  |  1 +
+ src/repo_write.c | 24 ++++++++++++++++++++-
+ src/repo_write.h |  3 +++
+ tools/dumpsolv.c | 50 ++++++++++++++++++++++++++++++++++++++++----
+ 7 files changed, 133 insertions(+), 7 deletions(-)
+
+diff --git a/src/libsolv.ver b/src/libsolv.ver
+index ee40d0ad..4c6fbf4f 100644
+--- a/src/libsolv.ver
++++ b/src/libsolv.ver
+@@ -255,6 +255,7 @@ SOLV_1.0 {
+ 		repowriter_set_keyqueue;
+ 		repowriter_set_repodatarange;
+ 		repowriter_set_solvablerange;
++		repowriter_set_userdata;
+ 		repowriter_write;
+ 		selection_add;
+ 		selection_filter;
+@@ -288,6 +289,7 @@ SOLV_1.0 {
+ 		solv_malloc;
+ 		solv_malloc2;
+ 		solv_oom;
++		solv_read_userdata;
+ 		solv_realloc;
+ 		solv_realloc2;
+ 		solv_replacebadutf8;
+diff --git a/src/pooltypes.h b/src/pooltypes.h
+index e1f77b0e..3bde155a 100644
+--- a/src/pooltypes.h
++++ b/src/pooltypes.h
+@@ -23,9 +23,11 @@
+ #define SOLV_VERSION_6 6
+ #define SOLV_VERSION_7 7
+ #define SOLV_VERSION_8 8
++#define SOLV_VERSION_9 9
+ 
+-#define SOLV_FLAG_PREFIX_POOL 4
+-#define SOLV_FLAG_SIZE_BYTES  8
++#define SOLV_FLAG_PREFIX_POOL	4
++#define SOLV_FLAG_SIZE_BYTES	8
++#define SOLV_FLAG_USERDATA	16
+ 
+ struct s_Stringpool;
+ typedef struct s_Stringpool Stringpool;
+diff --git a/src/repo_solv.c b/src/repo_solv.c
+index 761d06e6..2ba602b2 100644
+--- a/src/repo_solv.c
++++ b/src/repo_solv.c
+@@ -514,6 +514,7 @@ repo_add_solv(Repo *repo, FILE *fp, int flags)
+   switch (solvversion)
+     {
+       case SOLV_VERSION_8:
++      case SOLV_VERSION_9:
+ 	break;
+       default:
+         return pool_error(pool, SOLV_ERROR_UNSUPPORTED, "unsupported SOLV version");
+@@ -552,6 +553,18 @@ repo_add_solv(Repo *repo, FILE *fp, int flags)
+ 	  return pool_error(pool, SOLV_ERROR_CORRUPT, "main repository contains holes, cannot extend");
+     }
+ 
++  /*******  Part 0: skip optional userdata ******************************/
++
++  if (solvflags & SOLV_FLAG_USERDATA)
++    {
++      unsigned int userdatalen = read_u32(&data);
++      if (userdatalen >= 65536)
++        return pool_error(pool, SOLV_ERROR_CORRUPT, "illegal userdata length");
++      while (userdatalen--)
++	if (getc(data.fp) == EOF)
++	  return pool_error(pool, SOLV_ERROR_EOF, "unexpected EOF");
++    }
++
+   /*******  Part 1: string IDs  *****************************************/
+ 
+   sizeid = read_u32(&data);	       /* size of string space */
+@@ -1353,3 +1366,44 @@ printf("=> %s %s %p\n", pool_id2str(pool, keys[key].name), pool_id2str(pool, key
+   return 0;
+ }
+ 
++int
++solv_read_userdata(FILE *fp, unsigned char **datap, int *lenp)
++{
++  unsigned char d[4 * 10], *ud = 0;
++  unsigned int n;
++  if (fread(d, sizeof(d), 1, fp) != 1)
++    return SOLV_ERROR_EOF;
++  n = d[0] << 24 | d[1] << 16 | d[2] << 8 | d[3];
++  if (n != ('S' << 24 | 'O' << 16 | 'L' << 8 | 'V'))
++    return SOLV_ERROR_NOT_SOLV;
++  n = d[4] << 24 | d[5] << 16 | d[6] << 8 | d[7];
++  switch(n)
++    {
++    case SOLV_VERSION_8:
++    case SOLV_VERSION_9:
++      break;
++    default:
++      return SOLV_ERROR_UNSUPPORTED;
++    }
++  n = d[32] << 24 | d[33] << 16 | d[34] << 8 | d[35];
++  if (!(n & SOLV_FLAG_USERDATA))
++    n = 0;
++  else
++    n = d[36] << 24 | d[37] << 16 | d[38] << 8 | d[39];
++  if (n >= 65536)
++    return SOLV_ERROR_CORRUPT;
++  if (n)
++    {
++      ud = solv_malloc(n + 1);
++      if (fread(ud, n, 1, fp) != 1)
++	{
++	  solv_free(ud);
++	  return SOLV_ERROR_EOF;
++	}
++      ud[n] = 0;
++    }
++  *datap = ud;
++  if (lenp)
++    *lenp = (int)n;
++  return 0;
++}
+diff --git a/src/repo_solv.h b/src/repo_solv.h
+index 0c663949..57bf1772 100644
+--- a/src/repo_solv.h
++++ b/src/repo_solv.h
+@@ -23,6 +23,7 @@ extern "C" {
+ #endif
+ 
+ extern int repo_add_solv(Repo *repo, FILE *fp, int flags);
++extern int solv_read_userdata(FILE *fp, unsigned char **datap, int *lenp);
+ 
+ #define SOLV_ADD_NO_STUBS	(1 << 8)
+ 
+diff --git a/src/repo_write.c b/src/repo_write.c
+index af4e7599..a11de002 100644
+--- a/src/repo_write.c
++++ b/src/repo_write.c
+@@ -1071,6 +1071,7 @@ repowriter_create(Repo *repo)
+ Repowriter *
+ repowriter_free(Repowriter *writer)
+ {
++  solv_free(writer->userdata);
+   return solv_free(writer);
+ }
+ 
+@@ -1107,6 +1108,17 @@ repowriter_set_solvablerange(Repowriter *writer, int solvablestart, int solvable
+   writer->solvableend = solvableend;
+ }
+ 
++void
++repowriter_set_userdata(Repowriter *writer, const void *data, int len)
++{
++  writer->userdata = solv_free(writer->userdata);
++  writer->userdatalen = 0;
++  if (len < 0 || len >= 65536)
++    return;
++  writer->userdata = len ? solv_memdup(data, len) : 0;
++  writer->userdatalen = len;
++}
++
+ /*
+  * the code works the following way:
+  *
+@@ -1898,7 +1910,10 @@ for (i = 1; i < target.nkeys; i++)
+ 
+   /* write file header */
+   write_u32(&target, 'S' << 24 | 'O' << 16 | 'L' << 8 | 'V');
+-  write_u32(&target, SOLV_VERSION_8);
++  if (writer->userdatalen)
++    write_u32(&target, SOLV_VERSION_9);
++  else
++    write_u32(&target, SOLV_VERSION_8);
+ 
+ 
+   /* write counts */
+@@ -1911,7 +1926,14 @@ for (i = 1; i < target.nkeys; i++)
+   solv_flags = 0;
+   solv_flags |= SOLV_FLAG_PREFIX_POOL;
+   solv_flags |= SOLV_FLAG_SIZE_BYTES;
++  if (writer->userdatalen)
++    solv_flags |= SOLV_FLAG_USERDATA;
+   write_u32(&target, solv_flags);
++  if (writer->userdatalen)
++    {
++      write_u32(&target, writer->userdatalen);
++      write_blob(&target, writer->userdata, writer->userdatalen);
++    }
+ 
+   if (nstrings)
+     {
+diff --git a/src/repo_write.h b/src/repo_write.h
+index 34716705..7734b013 100644
+--- a/src/repo_write.h
++++ b/src/repo_write.h
+@@ -32,6 +32,8 @@ typedef struct s_Repowriter {
+   int (*keyfilter)(Repo *repo, Repokey *key, void *kfdata);
+   void *kfdata;
+   Queue *keyq;
++  void *userdata;
++  int userdatalen;
+ } Repowriter;
+ 
+ /* repowriter flags */
+@@ -46,6 +48,7 @@ void repowriter_set_keyfilter(Repowriter *writer, int (*keyfilter)(Repo *repo, R
+ void repowriter_set_keyqueue(Repowriter *writer, Queue *keyq);
+ void repowriter_set_repodatarange(Repowriter *writer, int repodatastart, int repodataend);
+ void repowriter_set_solvablerange(Repowriter *writer, int solvablestart, int solvableend);
++void repowriter_set_userdata(Repowriter *writer, const void *data, int len);
+ int repowriter_write(Repowriter *writer, FILE *fp);
+ 
+ /* convenience functions */
+diff --git a/tools/dumpsolv.c b/tools/dumpsolv.c
+index 13076574..49651fbe 100644
+--- a/tools/dumpsolv.c
++++ b/tools/dumpsolv.c
+@@ -13,6 +13,7 @@
+ 
+ static int with_attr;
+ static int dump_json;
++static int dump_userdata;
+ 
+ #include "pool.h"
+ #include "chksum.h"
+@@ -394,10 +395,7 @@ int main(int argc, char **argv)
+   int c, i, j, n;
+   Solvable *s;
+   
+-  pool = pool_create();
+-  pool_setloadcallback(pool, loadcallback, 0);
+-
+-  while ((c = getopt(argc, argv, "haj")) >= 0)
++  while ((c = getopt(argc, argv, "uhaj")) >= 0)
+     {
+       switch(c)
+ 	{
+@@ -410,11 +408,55 @@ int main(int argc, char **argv)
+ 	case 'j':
+ 	  dump_json = 1;
+ 	  break;
++	case 'u':
++	  dump_userdata++;
++	  break;
+ 	default:
+           usage(1);
+           break;
+ 	}
+     }
++  if (dump_userdata)
++    {
++      if (optind == argc)
++	argc++;
++      for (; optind < argc; optind++)
++	{
++	  unsigned char *userdata = 0;
++	  int r, userdatalen = 0;
++	  if (argv[optind] && freopen(argv[optind], "r", stdin) == 0)
++	    {
++	      perror(argv[optind]);
++	      exit(1);
++	    }
++	  r = solv_read_userdata(stdin, &userdata, &userdatalen);
++	  if (r)
++	    {
++	      fprintf(stderr, "could not read userdata: error %d\n", r);
++	      exit(1);
++	    }
++	  if (dump_userdata > 1)
++	    {
++	      /* dump raw */
++	      if (userdatalen && fwrite(userdata, userdatalen, 1, stdout) != 1)
++		{
++		  perror("fwrite");
++		  exit(1);
++		}
++	    }
++	  else
++	    {
++	      for (r = 0; r < userdatalen; r++)
++		printf("%02x", userdata[r]);
++	      printf("\n");
++	    }
++	  solv_free(userdata);
++	}
++      exit(0);
++    }
++
++  pool = pool_create();
++  pool_setloadcallback(pool, loadcallback, 0);
+   if (!dump_json)
+     pool_setdebuglevel(pool, 1);
+   if (dump_json)
+-- 
+2.31.1
+

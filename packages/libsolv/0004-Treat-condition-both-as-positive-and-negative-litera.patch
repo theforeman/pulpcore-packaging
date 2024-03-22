@@ -1,0 +1,60 @@
+From 91125fe786cb6de2f050430fa51e11c501f17aed Mon Sep 17 00:00:00 2001
+From: Michael Schroeder <mls@suse.de>
+Date: Tue, 18 Apr 2023 11:57:50 +0200
+Subject: [PATCH] Treat condition both as positive and negative literal in
+ pool_add_pos_literals_complex_dep
+
+That's because (A IF B ELSE C) gets rewritten to (A OR ~B) AND (C OR B) and
+(A UNLESS B ELSE C) gets rewritten to (A AND ~B) OR (C AND B). In both
+cases we have A, B, ~B, C.
+
+This resolves issue #527
+---
+ src/cplxdeps.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/cplxdeps.c b/src/cplxdeps.c
+index 6c40752e..26e754d9 100644
+--- a/src/cplxdeps.c
++++ b/src/cplxdeps.c
+@@ -405,6 +405,7 @@ pool_add_pos_literals_complex_dep(Pool *pool, Id dep, Queue *q, Map *m, int neg)
+ 	      Reldep *rd2 = GETRELDEP(pool, rd->evr);
+ 	      if (rd2->flags == REL_ELSE)
+ 		{
++	          pool_add_pos_literals_complex_dep(pool, rd2->name, q, m, !neg);
+ 	          pool_add_pos_literals_complex_dep(pool, rd2->evr, q, m, !neg);
+ 		  dep = rd2->name;
+ 		}
+-- 
+2.40.1
+
+
+From 11fac9a31e892125e19246101b5604322836467d Mon Sep 17 00:00:00 2001
+From: Michael Schroeder <mls@suse.de>
+Date: Tue, 18 Apr 2023 12:36:40 +0200
+Subject: [PATCH] Add testcase for last commit
+
+---
+ test/testcases/cplxdeps/ifelse_rec.t | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+ create mode 100644 test/testcases/cplxdeps/ifelse_rec.t
+
+diff --git a/test/testcases/cplxdeps/ifelse_rec.t b/test/testcases/cplxdeps/ifelse_rec.t
+new file mode 100644
+index 00000000..ea467027
+--- /dev/null
++++ b/test/testcases/cplxdeps/ifelse_rec.t
+@@ -0,0 +1,10 @@
++repo appstream 0 testtags <inline>
++#>=Pkg: xorg-x11-server-Xorg 1.20.11 18.el9 noarch
++#>=Req: missing-req
++#>=Pkg: pass 1.7.4 6.el9 noarch
++#>=Rec: xclip <IF> (xorg-x11-server-Xorg <ELSE> wl-clipboard)
++repo @System 0 empty
++system unset * @System
++job install pkg pass-1.7.4-6.el9.noarch@appstream
++result transaction,problems <inline>
++#>install pass-1.7.4-6.el9.noarch@appstream
+-- 
+2.40.1
+

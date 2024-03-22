@@ -1,0 +1,125 @@
+From 78b2d8148bea1dc12b854d9c11691d5f1bc33fd8 Mon Sep 17 00:00:00 2001
+From: Michael Schroeder <mls@suse.de>
+Date: Wed, 19 Apr 2023 13:09:10 +0200
+Subject: [PATCH] Allow to break arch lock-step on erase operations
+
+We allow it if SOLVER_SETARCH is (auto-)set in the erase job.
+---
+ src/rules.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/src/rules.c b/src/rules.c
+index 212df322..bbabc55f 100644
+--- a/src/rules.c
++++ b/src/rules.c
+@@ -1668,6 +1668,16 @@ solver_addinfarchrules(Solver *solv, Map *addedmap)
+       if (first)
+ 	continue;		/* not the first in the group */
+ 
++      if (!bestscore && allowedarchs.count > 1 && pool->implicitobsoleteusescolors)
++	{
++	  for (j = 0; j < allowedarchs.count; j++)
++	    {
++	      a = pool_arch2score(pool, allowedarchs.elements[j]);
++	      if (a && a != 1 && (!bestscore || a < bestscore))
++		bestscore = a;
++	    }
++	}
++
+       if (!bestscore)
+ 	continue;		/* did not find a score for this group */
+ 
+@@ -2456,6 +2466,20 @@ jobtodisablelist(Solver *solv, Id how, Id what, Queue *q)
+     case SOLVER_ERASE:
+       if (!installed)
+ 	break;
++      set = how & SOLVER_SETMASK;
++      if (!(set & (SOLVER_NOAUTOSET | SOLVER_SETARCH)) && pool->implicitobsoleteusescolors && solv->infarchrules != solv->infarchrules_end)
++	{
++	  if (select == SOLVER_SOLVABLE)
++	    set |= SOLVER_SETARCH;
++	  else if ((select == SOLVER_SOLVABLE_NAME || select == SOLVER_SOLVABLE_PROVIDES) && ISRELDEP(what))
++	    {
++	      Reldep *rd = GETRELDEP(pool, what);
++	      if (rd->flags <= 7 && ISRELDEP(rd->name))
++		rd = GETRELDEP(pool, rd->name);
++	      if (rd->flags == REL_ARCH)
++		set |= SOLVER_SETARCH;
++	    }
++	}
+       if (select == SOLVER_SOLVABLE_ALL || (select == SOLVER_SOLVABLE_REPO && what == installed->repoid))
+ 	{
+ 	  FOR_REPO_SOLVABLES(installed, p, s)
+@@ -2465,6 +2489,8 @@ jobtodisablelist(Solver *solv, Id how, Id what, Queue *q)
+ 	if (pool->solvables[p].repo == installed)
+ 	  {
+ 	    queue_push2(q, DISABLE_UPDATE, p);
++	    if ((set & SOLVER_SETARCH) != 0 && pool->implicitobsoleteusescolors && solv->infarchrules != solv->infarchrules_end)
++	      queue_push2(q, DISABLE_INFARCH, pool->solvables[p].name);		/* allow to break the lock-step */
+ #ifdef ENABLE_LINKED_PKGS
+ 	    if (solv->instbuddy && solv->instbuddy[p - installed->start] > 1)
+ 	      queue_push2(q, DISABLE_UPDATE, solv->instbuddy[p - installed->start]);
+-- 
+2.40.1
+
+
+From dc4c91a71eda2950df11724945ebd5151883a041 Mon Sep 17 00:00:00 2001
+From: Michael Schroeder <mls@suse.de>
+Date: Fri, 21 Apr 2023 16:15:10 +0200
+Subject: [PATCH] Only disable infarch rules on erase if the package was in
+ lock-step
+
+Fiexes issue #528
+---
+ src/rules.c | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/src/rules.c b/src/rules.c
+index bbabc55f..c909ae0b 100644
+--- a/src/rules.c
++++ b/src/rules.c
+@@ -2279,6 +2279,31 @@ solver_addblackrules(Solver *solv)
+ #define DISABLE_DUP	3
+ #define DISABLE_BLACK	4
+ 
++/* check if installed package p is in lock-step with another installed package */
++static int
++installed_is_in_lockstep(Solver *solv, Id p)
++{
++  Pool *pool = solv->pool;
++  Repo *installed = solv->installed;
++  int rid;
++  Id pp, l;
++  Rule *r;
++
++  if (!installed)
++    return 0;
++  for (rid = solv->infarchrules, r = solv->rules + rid; rid < solv->infarchrules_end; rid++, r++)
++    {
++      if (r->p >= 0)
++	continue;
++      if (pool->solvables[-r->p].repo != installed)
++	continue;
++      FOR_RULELITERALS(l, pp, r)
++	if (l == p)
++	  return 1;
++    }
++  return 0;
++}
++
+ static void
+ jobtodisablelist(Solver *solv, Id how, Id what, Queue *q)
+ {
+@@ -2490,7 +2515,8 @@ jobtodisablelist(Solver *solv, Id how, Id what, Queue *q)
+ 	  {
+ 	    queue_push2(q, DISABLE_UPDATE, p);
+ 	    if ((set & SOLVER_SETARCH) != 0 && pool->implicitobsoleteusescolors && solv->infarchrules != solv->infarchrules_end)
+-	      queue_push2(q, DISABLE_INFARCH, pool->solvables[p].name);		/* allow to break the lock-step */
++	      if (installed_is_in_lockstep(solv, p))
++	        queue_push2(q, DISABLE_INFARCH, pool->solvables[p].name);		/* allow to break the lock-step */
+ #ifdef ENABLE_LINKED_PKGS
+ 	    if (solv->instbuddy && solv->instbuddy[p - installed->start] > 1)
+ 	      queue_push2(q, DISABLE_UPDATE, solv->instbuddy[p - installed->start]);
+-- 
+2.40.1
+
