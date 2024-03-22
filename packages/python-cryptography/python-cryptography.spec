@@ -5,7 +5,7 @@
 %global pypi_name cryptography
 
 Name:           python-%{pypi_name}
-Version:        41.0.6
+Version:        42.0.5
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
@@ -15,11 +15,13 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildConflicts: python%{python3_pkgversion}-cffi = 1.11.3
 BuildRequires:  python%{python3_pkgversion}-cffi >= 1.12
 BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-six >= 1.4.1
-BuildRequires:  python%{python3_pkgversion}-setuptools-rust >= 0.11.4
+BuildRequires:  python%{python3_pkgversion}-setuptools-rust >= 1.7.0
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 BuildRequires:  rust-toolset
 BuildRequires:  openssl-devel
@@ -42,29 +44,27 @@ Requires:       python%{python3_pkgversion}-cffi >= 1.12
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 %cargo_prep -V 1
 
 
 %build
 set -ex
-CRYPTOGRAPHY_DONT_BUILD_RUST=1 %py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE LICENSE.APACHE LICENSE.BSD
-%doc README.rst
 %{python3_sitearch}/%{pypi_name}
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Fri Mar 22 2024 Odilon Sousa <osousa@redhat.com> - 42.0.5-1
+- Release python-cryptography 42.0.5
+
 * Tue Jan 30 2024 Odilon Sousa <osousa@redhat.com> - 41.0.6-1
 - Release python-cryptography 41.0.6
 
