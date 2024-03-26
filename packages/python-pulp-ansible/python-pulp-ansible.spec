@@ -6,8 +6,8 @@
 %global pypi_name pulp-ansible
 
 Name:           python-%{pypi_name}
-Version:        0.20.2
-Release:        4%{?dist}
+Version:        0.21.3
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -37,12 +37,12 @@ Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.4.5
 Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.9
 Conflicts:      python%{python3_pkgversion}-jsonschema >= 4.18
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.25
-Conflicts:      python%{python3_pkgversion}-pulpcore >= 3.40
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.40.0
+Requires:       python%{python3_pkgversion}-pulpcore < 3.55
 Requires:       python%{python3_pkgversion}-semantic-version >= 2.9
 Conflicts:      python%{python3_pkgversion}-semantic-version >= 2.11
 Requires:       python%{python3_pkgversion}-pillow >= 7.0
-Conflicts:      python%{python3_pkgversion}-pillow >= 9.6
+Requires:       python%{python3_pkgversion}-pillow < 10.2
 Requires:       python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(ansible) = %{version}
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 1:0.21.3-1
+- Release python-pulp-ansible 0.21.3
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1:0.20.2-4
 - Remove SCL bits
 
