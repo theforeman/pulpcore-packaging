@@ -217,6 +217,7 @@
       <packagereq type="default">python3.11-pulp-file</packagereq>
       <packagereq type="default">python3.11-pulp_manifest</packagereq>
       <packagereq type="default">python3.11-pulp-glue</packagereq>
+      <packagereq type="default">python3.11-pulp-glue-deb</packagereq>
       <packagereq type="default">python3.11-pulp-ostree</packagereq>
       <packagereq type="default">python3.11-pulp-python</packagereq>
       <packagereq type="default">python3.11-pulp-rpm</packagereq>
