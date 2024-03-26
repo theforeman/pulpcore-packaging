@@ -5,8 +5,8 @@
 %global pypi_name pulp-glue
 
 Name:           python-%{pypi_name}
-Version:        0.21.2
-Release:        4%{?dist}
+Version:        0.23.2
+Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -15,7 +15,10 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -44,27 +47,26 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%doc README.md
 %{python3_sitelib}/pulp_glue
-%{python3_sitelib}/pulp_glue-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/pulp_glue-%{version}.dist-info/
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 0.23.2-1
+- Release python-pulp-glue 0.23.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.21.2-4
 - Remove SCL bits
 
