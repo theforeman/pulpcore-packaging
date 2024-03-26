@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.23.3
+Version:        3.25.1
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -40,8 +40,8 @@ Requires:       python%{python3_pkgversion}-libcomps >= 0.1.15
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
-Requires:       python%{python3_pkgversion}-pulpcore < 3.40
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.28
+Requires:       python%{python3_pkgversion}-pulpcore < 3.55
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.44.1
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 3.25.1-1
+- Release python-pulp-rpm 3.25.1
+
 * Wed Mar 06 2024 Odilon Sousa <osousa@redhat.com> - 3.23.3-1
 - Release python-pulp-rpm 3.23.3
 
