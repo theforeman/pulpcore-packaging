@@ -1,6 +1,6 @@
 Name: pulpcore-obsolete-packages
-Version: 1.0
-Release: 9%{?dist}
+Version: 1.1.0
+Release: 1%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
 URL: https://github.com/theforeman/pulpcore-packaging
@@ -34,6 +34,10 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 1.1.0-1
+- Release pulpcore-obsolete-packages 1.1.0
+- Bump version for Pulpcore 3.49 Release
+
 * Wed Mar 06 2024 Patrick Creech <pcreech@redhat.com> - 1.0-9
 - Increase python39-aiohttp obsolete version to fix upgrades
 
