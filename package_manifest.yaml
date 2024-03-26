@@ -21,9 +21,9 @@ packages:
         dist: '.el9'
     repoclosure_target_repos:
       el8:
-        - "el8-pulpcore-{{ pulpcore_version }}"
+        - "el8-pulpcore-{{ pulpcore_version }}-staging"
       el9:
-        - "el9-pulpcore-{{ pulpcore_version }}"
+        - "el9-pulpcore-{{ pulpcore_version }}-staging"
     repoclosure_lookaside_repos:
       el8:
         - el8-baseos
