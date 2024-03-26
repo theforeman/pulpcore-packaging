@@ -212,7 +212,6 @@
       <packagereq type="default">python3.11-psycopg2</packagereq>
       <packagereq type="default">python3.11-pulp-2to3-migration</packagereq>
       <packagereq type="default">python3.11-pulp-ansible</packagereq>
-      <packagereq type="default">python3.11-pulp-certguard</packagereq>
       <packagereq type="default">python3.11-pulp-cli</packagereq>
       <packagereq type="default">python3.11-pulp-cli-deb</packagereq>
       <packagereq type="default">python3.11-pulp-container</packagereq>
