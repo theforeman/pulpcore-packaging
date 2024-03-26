@@ -216,7 +216,6 @@
       <packagereq type="default">python3.11-pulp-cli-deb</packagereq>
       <packagereq type="default">python3.11-pulp-container</packagereq>
       <packagereq type="default">python3.11-pulp-deb</packagereq>
-      <packagereq type="default">python3.11-pulp-file</packagereq>
       <packagereq type="default">python3.11-pulp_manifest</packagereq>
       <packagereq type="default">python3.11-pulp-glue</packagereq>
       <packagereq type="default">python3.11-pulp-glue-deb</packagereq>
