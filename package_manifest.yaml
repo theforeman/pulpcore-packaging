@@ -403,6 +403,7 @@ pulpcore_packages:
     python-pulp-file: {}
     python-pulp_manifest: {}
     python-pulp-glue: {}
+    python-pulp-glue-deb: {}
     python-pulpcore: {}
     python-pulp-ostree: {}
     python-pulp-python: {}
