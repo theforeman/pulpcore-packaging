@@ -5,8 +5,8 @@
 %global pypi_name pulp-deb
 
 Name:           python-%{pypi_name}
-Version:        3.0.1
-Release:        2%{?dist}
+Version:        3.2.0
+Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -27,8 +27,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-debian < 0.2.0
 Requires:       python%{python3_pkgversion}-debian >= 0.1.44
-Requires:       python%{python3_pkgversion}-pulpcore < 3.40
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.28
+Requires:       python%{python3_pkgversion}-pulpcore < 3.55
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.45.1
 Requires:       python%{python3_pkgversion}-gnupg < 0.6
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema < 5.0
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 3.2.0-1
+- Release python-pulp-deb 3.2.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.0.1-2
 - Remove SCL bits
 
