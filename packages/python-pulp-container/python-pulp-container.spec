@@ -6,8 +6,8 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.16.3
-Release:        2%{?dist}
+Version:        2.19.2
+Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -28,14 +28,14 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-ecdsa >= 0.14
 Conflicts:      python%{python3_pkgversion}-ecdsa >= 0.18.1
-Requires:       python%{python3_pkgversion}-pulpcore < 3.40
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.25
+Requires:       python%{python3_pkgversion}-pulpcore < 3.55
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.43.0
 Requires:       python%{python3_pkgversion}-pyjwkest >= 1.4
 Conflicts:      python%{python3_pkgversion}-pyjwkest >= 1.4.3
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.4
 Conflicts:      python%{python3_pkgversion}-pyjwt >= 2.9
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
-Conflicts:      python%{python3_pkgversion}-jsonschema >= 4.19
+Conflicts:      python%{python3_pkgversion}-jsonschema >= 4.22
 Requires:       python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(container) = %{version}
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 2.19.2-1
+- Release python-pulp-container 2.19.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.16.3-2
 - Remove SCL bits
 
