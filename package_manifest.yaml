@@ -374,7 +374,6 @@ pulpcore_packages:
     pulpcore-obsolete-packages: {}
     pulpcore-selinux: {}
     python-pulp-ansible: {}
-    python-pulp-certguard: {}
     python-pulp-cli: {}
     python-pulp-cli-deb: {}
     python-pulp-rpm: {}
