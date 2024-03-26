@@ -4,6 +4,7 @@
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name pulp-cli-deb
+%global pkg_name pulp_cli_deb
 
 Name:           python-%{pypi_name}
 Version:        0.0.7
@@ -16,7 +17,10 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -49,23 +53,21 @@ Provides:       %{pypi_name} = %{version}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %{python3_sitelib}/pulpcore
-%{python3_sitelib}/pulp_cli_deb-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pkg_name}-%{version}.dist-info/
 
 
 %changelog
