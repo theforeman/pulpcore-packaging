@@ -9,7 +9,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.39.11
+Version:        3.49.1
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -55,7 +55,7 @@ Conflicts:      python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.1.8
 Requires:       python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       python%{python3_pkgversion}-cryptography < 42.0.1
+Requires:       python%{python3_pkgversion}-cryptography < 42.0.6
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       python%{python3_pkgversion}-django-filter <= 23.5
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
@@ -76,7 +76,7 @@ Requires:       python%{python3_pkgversion}-drf-spectacular = 0.26.5
 Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.12
 Requires:       python%{python3_pkgversion}-dynaconf <= 3.2.5
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
-Requires:       python%{python3_pkgversion}-gnupg <= 0.5.1
+Requires:       python%{python3_pkgversion}-gnupg <= 0.5.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
 Requires:       python%{python3_pkgversion}-gunicorn <= 21.2.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
@@ -89,18 +89,19 @@ Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.7.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.24
+Requires:       python%{python3_pkgversion}-pyOpenSSL < 25
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.38b0
-Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.43b0
+Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.44b0
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.17.0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http <= 1.22.0
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http <= 1.23.0
 Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django >= 0.38b0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django <= 0.43b0
+Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django <= 0.44b0
 Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi >= 0.38b0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi <= 0.43b0
+Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi <= 0.44b0
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
-Requires:       python%{python3_pkgversion}-protobuf < 4.25.3
+Requires:       python%{python3_pkgversion}-protobuf < 4.25.4
 Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg <= 3.1.17
+Requires:       python%{python3_pkgversion}-psycopg <= 3.1.18
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0 
@@ -108,9 +109,9 @@ Requires:       python%{python3_pkgversion}-pyparsing <= 3.1.1
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
 Requires:       python%{python3_pkgversion}-pyyaml <= 6.0.1
 Requires:       python%{python3_pkgversion}-redis >= 4.3
-Requires:       python%{python3_pkgversion}-redis < 5.0.2
+Requires:       python%{python3_pkgversion}-redis < 5.0.3
 Requires:       python%{python3_pkgversion}-setuptools >= 39.2.0
-Requires:       python%{python3_pkgversion}-setuptools < 69.1.0
+Requires:       python%{python3_pkgversion}-setuptools < 69.2.0
 Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
 Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
@@ -175,10 +176,15 @@ done
 %{_bindir}/pulpcore-worker
 %{_root_libexecdir}/%{pypi_name}/*
 %{python3_sitelib}/%{pypi_name}
+%{python3_sitelib}/pulp_certguard
+%{python3_sitelib}/pulp_file
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 3.49.1-1
+- Release python-pulpcore 3.49.1
+
 * Tue Mar 05 2024 Odilon Sousa <osousa@redhat.com> - 3.39.11-1
 - Release python-pulpcore 3.39.11
 
