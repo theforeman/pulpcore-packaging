@@ -7,10 +7,10 @@
 %{?python_disable_dependency_generator}
 
  
-%global release 4
+%global release 1
 
 Name:           python-%{pypi_name}
-Version:        2.1.3
+Version:        2.3.0
 Release:        %{?prereleaserpm:0.}%{release}%{?prereleaserpm}%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
@@ -29,8 +29,8 @@ A Pulp plugin to support hosting ostree repositories.
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.25.0
-Conflicts:      python%{python3_pkgversion}-pulpcore >= 3.40.0
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.45.1
+Requires:       python%{python3_pkgversion}-pulpcore < 3.55
 Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.11"
 Requires:       python%{python3_pkgversion}-gobject >= 3.40.1
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 2.3.0-1
+- Release python-pulp-ostree 2.3.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.1.3-4
 - Remove SCL bits
 
