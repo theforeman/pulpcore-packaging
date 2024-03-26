@@ -6,8 +6,8 @@
 %global pypi_name pulp-cli
 
 Name:           python-%{pypi_name}
-Version:        0.21.2
-Release:        5%{?dist}
+Version:        0.23.2
+Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -16,7 +16,10 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -29,7 +32,7 @@ Summary:        %{summary}
 
 Requires:       python%{python3_pkgversion}-PyYAML < 6.1
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.3
-Requires:       python%{python3_pkgversion}-click < 8.1.7
+Requires:       python%{python3_pkgversion}-click < 9.0.0
 Requires:       python%{python3_pkgversion}-click >= 8.0.0
 Requires:       python%{python3_pkgversion}-click-shell < 3
 Requires:       python%{python3_pkgversion}-click-shell >= 2.1
@@ -42,6 +45,7 @@ Requires:       python%{python3_pkgversion}-schema >= 0.7.5
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-toml < 0.11
 Requires:       python%{python3_pkgversion}-toml >= 0.10.2
+Requires:       python%{python3_pkgversion}-pulp-glue == 0.23.2
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -59,31 +63,29 @@ Provides:       %{pypi_name} = %{version}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.md
 %{_bindir}/pulp
 %{python3_sitelib}/pulp_cli
 %{python3_sitelib}/pulpcore
 %{python3_sitelib}/pytest_pulp_cli
-%{python3_sitelib}/pulp_cli-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/pulp_cli-%{version}.dist-info/
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 0.23.2-1
+- Release python-pulp-cli 0.23.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.21.2-5
 - Remove SCL bits
 
