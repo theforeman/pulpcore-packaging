@@ -6,7 +6,7 @@
 %global srcname pyopenssl
 
 Name:           python-%{pypi_name}
-Version:        23.3.0
+Version:        24.1.0
 Release:        1%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
@@ -26,7 +26,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-cryptography >= 41.0.5
-Requires:       python%{python3_pkgversion}-cryptography < 42
+Requires:       python%{python3_pkgversion}-cryptography < 43
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 24.1.0-1
+- Release python-pyOpenSSL 24.1.0
+
 * Wed Jan 31 2024 Odilon Sousa <osousa@redhat.com> - 23.3.0-1
 - Release python-pyOpenSSL 23.3.0
 
