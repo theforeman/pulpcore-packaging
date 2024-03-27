@@ -9,8 +9,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.1
-Release:        2%{?dist}
+Version:        3.49.3
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -112,6 +112,7 @@ Requires:       python%{python3_pkgversion}-redis >= 4.3
 Requires:       python%{python3_pkgversion}-redis < 5.0.3
 Requires:       python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       python%{python3_pkgversion}-setuptools < 69.2.0
+Requires:       python%{python3_pkgversion}-tablib < 3.6.0
 Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
 Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
@@ -185,6 +186,9 @@ done
 
 
 %changelog
+* Wed Mar 27 2024 Odilon Sousa <osousa@redhat.com> - 3.49.3-1
+- Release python-pulpcore 3.49.3
+
 * Wed Mar 27 2024 Odilon Sousa <osousa@redhat.com> - 3.49.1-2
 - Obsolete pulp-file and pulp-certguard
 
