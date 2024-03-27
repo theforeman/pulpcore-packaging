@@ -7,8 +7,8 @@
 %global pypi_name pulp-python
 
 Name:           python-%{pypi_name}
-Version:        3.10.0
-Release:        4%{?dist}
+Version:        3.11.0
+Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -35,7 +35,7 @@ Conflicts:      python%{python3_pkgversion}-packaging >= 22.0
 Requires:       python%{python3_pkgversion}-pkginfo >= 1.8.2
 Conflicts:      python%{python3_pkgversion}-pkginfo >= 1.9.7
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.25
-Conflicts:      python%{python3_pkgversion}-pulpcore > 3.40
+Requires:       python%{python3_pkgversion}-pulpcore < 3.55
 Requires:       python%{python3_pkgversion}-pypi-simple >= 0.9
 Conflicts:      python%{python3_pkgversion}-pypi-simple >= 1.0.0
 
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 3.11.0-1
+- Release python-pulp-python 3.11.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.10.0-4
 - Remove SCL bits
 
