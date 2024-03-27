@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.49.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -125,6 +125,9 @@ Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
+# Pulp-file and Pulp-certguard are now part of pulpcore
+Obsoletes:      python3.11-pulp-file < 1.16.0-1
+Obsoletes:      python3.11-pulp-certguard < 1.8.0-1
 
 Provides:       %{pypi_name} = %{version}
 
@@ -182,6 +185,9 @@ done
 
 
 %changelog
+* Wed Mar 27 2024 Odilon Sousa <osousa@redhat.com> - 3.49.1-2
+- Obsolete pulp-file and pulp-certguard
+
 * Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 3.49.1-1
 - Release python-pulpcore 3.49.1
 
