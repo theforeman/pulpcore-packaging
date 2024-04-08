@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.23.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -80,10 +80,14 @@ set -ex
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_rpm
+%exclude %{python3_sitelib}/pulp_rpm/tests
 %{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Apr 08 2024 Eric D. Helms <ericdhelms@gmail.com> - 3.23.3-2
+- Exclude tests directory
+
 * Wed Mar 06 2024 Odilon Sousa <osousa@redhat.com> - 3.23.3-1
 - Release python-pulp-rpm 3.23.3
 

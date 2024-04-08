@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        3.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -74,10 +74,14 @@ set -ex
 %license LICENSE
 %doc README.md
 %{python3_sitelib}/pulp_deb
+%exclude %{python3_sitelib}/pulp_deb/tests
 %{python3_sitelib}/pulp_deb-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Apr 08 2024 Eric D. Helms <ericdhelms@gmail.com> - 3.0.1-2
+- Exclude tests directory
+
 * Tue Dec 12 2023 Quirin Pamp <pamp@atix.de> - 3.0.1-1
 - Update to 3.0.1
 
