@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -66,10 +66,14 @@ set -ex
 %license LICENSE
 %doc README.md
 %{python3_sitelib}/pulp_deb
+%exclude %{python3_sitelib}/pulp_deb/tests
 %{python3_sitelib}/pulp_deb-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Apr 08 2024 Eric D. Helms <ericdhelms@gmail.com> - 3.2.0-2
+- Exclude tests directory
+
 * Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 3.2.0-1
 - Release python-pulp-deb 3.2.0
 
