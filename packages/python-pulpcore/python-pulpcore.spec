@@ -9,8 +9,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.3
-Release:        2%{?dist}
+Version:        3.49.4
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -192,6 +192,9 @@ done
 
 
 %changelog
+* Tue Apr 16 2024 Evgeni Golov - 3.49.4-1
+- Release python-pulpcore 3.49.4
+
 * Mon Apr 15 2024 Patrick Creech <pcreech@redhat.com> - 3.49.3-2
 - 'Provide' functionality for file and certguard plugins
 
