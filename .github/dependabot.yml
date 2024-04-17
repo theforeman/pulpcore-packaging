@@ -1,8 +1,9 @@
 version: 2
 updates:
-
   # Maintain dependencies for Pulpcore
   - package-ecosystem: "pip"
     directory: "/automation"
     schedule:
       interval: "daily"
+    commit-message:
+      prefix: "[dependabot]"
