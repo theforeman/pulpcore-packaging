@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.49.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -136,6 +136,9 @@ Obsoletes:      python3.11-pulp-certguard < 1.8.0-1
 Provides:       python%{python3_pkgversion}-pulp-certguard = %{version}
 Provides:       pulpcore-plugin(certguard) = %{version}
 
+# this is a soft-dependency in certguard, but for Katello we always want it
+Requires:       python%{python3_pkgversion}-rhsm
+
 Provides:       %{pypi_name} = %{version}
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -192,6 +195,9 @@ done
 
 
 %changelog
+* Thu Apr 18 2024 Evgeni Golov - 3.49.4-2
+- Add rhsm dependency for certguard
+
 * Tue Apr 16 2024 Evgeni Golov - 3.49.4-1
 - Release python-pulpcore 3.49.4
 
