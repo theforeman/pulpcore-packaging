@@ -7,3 +7,6 @@ updates:
       interval: "daily"
     commit-message:
       prefix: "[dependabot]"
+    # Add labels for dependabot bumps
+    labels:
+      - "dependabot"
