@@ -36,6 +36,7 @@ jobs:
       run: git diff --unified=0 origin/rpm/develop..origin/${GITHUB_HEAD_REF} automation/requirements.txt | grep -Po '(?<=^\+)(?!\+\+).*' > $PACKAGE_TO_UPDATE
     - name: Check if package can be updated
       run: |
+        set +e
         while read line; do
           pkg=${line%==*}
           pr_version=${line#*==}
@@ -45,6 +46,7 @@ jobs:
           if [ 12 -eq $exit_code ];
             then
               echo "RPM for Package $pkg needs to be updated from $rpm_version to $pr_version"
+              exit 0
           fi
 
           if [ 0 -eq $exit_code ];
