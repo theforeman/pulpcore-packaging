@@ -38,13 +38,13 @@ jobs:
       run: |
         while read line; do
           pkg=${line%==*}
-          version=${line#*==}
+          pr-version=${line#*==}
           rpm_version=$(rpmspec -q --queryformat='%{version}' packages/python-$pkg/python-$pkg.spec --srpm)
-          rpmdev-vercmp $version $rpm_version
+          rpmdev-vercmp $rpm_version $pr-version
           exit_code=$?
           if [ 12 -eq $exit_code ];
             then
-              echo "RPM for Package $pkg needs to be updated"
+              echo "RPM for Package $pkg needs to be updated from $rpm_version to pr-version"
           fi
 
           if [ 0 -eq $exit_code ];
