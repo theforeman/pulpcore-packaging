@@ -1,0 +1,62 @@
+name: Check Requirements Update
+
+on:
+  pull_request:
+    paths:
+      - 'automation/requirements.txt'
+  label:
+    types:
+      - dependabot
+
+env:
+  GIT_AUTHOR_NAME: Foreman Packaging Automation
+  GIT_AUTHOR_EMAIL: packaging@theforeman.org
+  PACKAGE_TO_UPDATE: requirements.txt
+
+
+jobs:
+  rpm_list:
+    name: 'Check Package to Update'
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'theforeman'
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        ref: rpm/develop
+        fetch-depth: 2
+    - name: Install dependencies
+      run: |
+        sudo apt-get install -y --no-install-recommends rpm git-annex python3-semver
+        sudo curl --create-dirs -o /usr/local/bin/spectool https://pagure.io/rpmdevtools/raw/26a8abc746fba9c0b32eb899b96c92841a37855a/f/spectool.in
+        sudo curl --create-dirs -o /usr/local/bin/rpmdev-bumpspec https://pagure.io/rpmdevtools/raw/6f387c1deaa5cbed770310e288abde04b17421dc/f/rpmdev-bumpspec
+        printf '#!/bin/bash\necho "$GIT_AUTHOR_NAME <$GIT_AUTHOR_EMAIL>"' | sudo tee /usr/local/bin/rpmdev-packager
+        sudo chmod +x /usr/local/bin/*
+    - name: Sort Updated Libs
+      run: git diff --unified=0 origin/rpm/develop origin/${GITHUB_HEAD_REF} automation/requirements.txt | grep -Po '(?<=^\+)(?!\+\+).*' > $PACKAGE_TO_UPDATE
+    - name: Check if package can be updated
+      run: |
+        while read line; do
+          pkg=${line%==*}
+          version=${line#*==}
+          rpm_version=$(rpmspec -q --queryformat='%{version}' packages/python-$pkg/python-$pkg.spec --srpm)
+          rpmdev-vercmp $version $rpm_version
+          exit_code=$?
+          if [ 12 -eq $exit_code ];
+            then
+              echo "RPM for Package $pkg needs to be updated"
+          fi
+
+          if [ 0 -eq $exit_code ];
+            then
+              echo "Package $pkg version is the same as the packaged RPM"
+              exit 1
+          fi
+
+          if [ 11 -eq $exit_code ];
+            then
+              echo "Packaged $pkg RPM is newer than version in requirements"
+              exit 1
+          fi
+        done < $PACKAGE_TO_UPDATE
+
