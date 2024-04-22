@@ -26,7 +26,7 @@ jobs:
         fetch-depth: 0
     - name: Install dependencies
       run: |
-        sudo apt-get install -y --no-install-recommends rpm git-annex python3-semver
+        sudo apt-get install -y --no-install-recommends python-rpm rpm git-annex python3-semver
         sudo curl --create-dirs -o /usr/local/bin/spectool https://pagure.io/rpmdevtools/raw/26a8abc746fba9c0b32eb899b96c92841a37855a/f/spectool.in
         sudo curl --create-dirs -o /usr/local/bin/rpmdev-bumpspec https://pagure.io/rpmdevtools/raw/6f387c1deaa5cbed770310e288abde04b17421dc/f/rpmdev-bumpspec
         sudo curl --create-dirs -o /usr/local/bin/rpmdev-vercmp https://pagure.io/rpmdevtools/raw/79740e6f1881e399b0b4340a8090dd5adc91a4ea/f/rpmdev-vercmp
