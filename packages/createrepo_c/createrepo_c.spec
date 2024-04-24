@@ -35,7 +35,7 @@
 %bcond_without zstd
 %endif
 
-%if 0%{?rhel} && 0%{?rhel} <= 8
+%if 0%{?rhel} && 0%{?rhel} <= 9
 %bcond_without legacy_hashes
 %else
 %bcond_with legacy_hashes
@@ -46,7 +46,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        1.0.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -269,6 +269,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Wed Apr 24 2024 Odilon Sousa <osousa@redhat.com> - 1.0.2-6
+- Enable Legacy Hashes for EL9 builds
+
 * Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 1.0.2-5
 - Obsolete python39-createrepo_c as well
 
