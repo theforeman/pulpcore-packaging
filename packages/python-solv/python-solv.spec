@@ -110,8 +110,8 @@ Python 3 version.
   -DENABLE_PYTHON=%{__cmake_switch -b python_bindings}    \
   -DENABLE_STATIC=ON                                      \
   -DDISABLE_SHARED=ON                                     \
-  -DPYTHON_LIBRARY=/usr/lib64/libpython3.11.so.1.0        \
-  -DPYTHON_INCLUDE_DIR=/usr/include/python3.11            \
+  -DPYTHON_LIBRARY=/usr/lib64/libpython%{python3_pkgversion}.so.1.0        \
+  -DPYTHON_INCLUDE_DIR=/usr/include/python%{python3_pkgversion}            \
   -DPYTHON_EXECUTABLE=%{python3}                          \
   %{nil}
 %cmake_build
@@ -120,14 +120,15 @@ Python 3 version.
 %cmake_install
 
 
-rm -rf %{buildroot}/usr/bin/
-rm -rf %{buildroot}/usr/include/
-rm -rf %{buildroot}%{_libdir}/debug/
-rm -rf %{buildroot}/usr/bin/
-rm -rf %{buildroot}%{_datadir}
+rm -rf %{buildroot}%{_includedir}/solv/
 
-rm %{buildroot}/usr/lib64/libsolv*.a
-rm %{buildroot}/usr/lib64/pkgconfig/libsolv*.pc
+rm %{buildroot}%{_bindir}/*solv
+rm %{buildroot}%{_bindir}/installcheck
+rm %{buildroot}%{_mandir}/man*/*solv*
+rm %{buildroot}%{_mandir}/man1/installcheck.1*
+rm %{buildroot}%{_datadir}/cmake/Modules/FindLibSolv.cmake
+rm %{buildroot}%{_libdir}/libsolv*.a
+rm %{buildroot}%{_libdir}/pkgconfig/libsolv*.pc
 
 
 %check
