@@ -110,8 +110,8 @@ Python 3 version.
   -DENABLE_PYTHON=%{__cmake_switch -b python_bindings}    \
   -DENABLE_STATIC=ON                                      \
   -DDISABLE_SHARED=ON                                     \
-  -DPYTHON_LIBRARY=/usr/lib64/libpython%{python3_pkgversion}.so.1.0        \
-  -DPYTHON_INCLUDE_DIR=/usr/include/python%{python3_pkgversion}            \
+  -DPYTHON_LIBRARY=%{_libdir}/libpython%{python3_pkgversion}.so.1.0        \
+  -DPYTHON_INCLUDE_DIR=%{_includedir}/python%{python3_pkgversion}            \
   -DPYTHON_EXECUTABLE=%{python3}                          \
   %{nil}
 %cmake_build
