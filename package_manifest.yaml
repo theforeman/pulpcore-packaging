@@ -344,6 +344,7 @@ tier4_packages:
     python-shellingham: {}
     python-six: {}
     python-smmap: {}
+    python-solv: {}
     python-sniffio: {}
     python-tablib: {}
     python-tomlkit: {}

@@ -16,10 +16,6 @@
       <packagereq type="default">createrepo_c-libs</packagereq>
       <packagereq type="default">libcomps</packagereq>
       <packagereq type="default">libcomps-devel</packagereq>
-      <packagereq type="default">libsolv</packagereq>
-      <packagereq type="default">libsolv-demo</packagereq>
-      <packagereq type="default">libsolv-devel</packagereq>
-      <packagereq type="default">libsolv-tools</packagereq>
       <packagereq type="default">postgresql-debversion</packagereq>
       <packagereq type="default">postgresql-evr</packagereq>
       <packagereq type="default">pulpcore-obsolete-packages</packagereq>
@@ -27,7 +23,6 @@
       <packagereq type="default">pyproject-rpm-macros</packagereq>
       <packagereq type="default">python3-createrepo_c</packagereq>
       <packagereq type="default">python3-libcomps</packagereq>
-      <packagereq type="default">python3-solv</packagereq>
       <packagereq type="default">python3.11-createrepo_c</packagereq>
       <packagereq type="default">python3.11-libcomps</packagereq>
       <packagereq type="default">python3.11-solv</packagereq>
@@ -298,7 +293,6 @@
       <packagereq type="default">python3.11-xlwt</packagereq>
       <packagereq type="default">python3.11-yarl</packagereq>
       <packagereq type="default">python3.11-zipp</packagereq>
-      <packagereq type="default">ruby-solv</packagereq>
     </packagelist>
   </group>
 </comps>
