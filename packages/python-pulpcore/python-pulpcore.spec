@@ -9,8 +9,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.4
-Release:        2%{?dist}
+Version:        3.49.5
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -78,7 +78,7 @@ Requires:       python%{python3_pkgversion}-dynaconf <= 3.2.5
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
 Requires:       python%{python3_pkgversion}-gnupg <= 0.5.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
-Requires:       python%{python3_pkgversion}-gunicorn <= 21.2.0
+Requires:       python%{python3_pkgversion}-gunicorn < 22.1.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
 Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.3
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
@@ -195,6 +195,9 @@ done
 
 
 %changelog
+* Fri Apr 26 2024 Odilon Sousa <osousa@redhat.com> - 3.49.5-1
+- Release python-pulpcore 3.49.5
+
 * Thu Apr 18 2024 Evgeni Golov - 3.49.4-2
 - Add rhsm dependency for certguard
 
