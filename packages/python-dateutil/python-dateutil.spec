@@ -7,7 +7,7 @@
 
 Name:           python-%{srcname}
 Version:        2.8.2
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -18,9 +18,9 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm
-BuildRequires:  python%{python3_pkgversion}-six >= 1.5
-BuildRequires:  python%{python3_pkgversion}-typing-extensions
-
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %description
 %{summary}
@@ -30,7 +30,7 @@ BuildRequires:  python%{python3_pkgversion}-typing-extensions
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       python%{python3_pkgversion}-six >= 1.5
-Obsoletes:      python36-dateutil
+Requires:       tzdata
 
 
 %description -n python%{python3_pkgversion}-%{srcname}
@@ -40,28 +40,26 @@ Obsoletes:      python36-dateutil
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license LICENSE
-%doc README.rst
-%{python3_sitelib}/dateutil
-%{python3_sitelib}/python_dateutil-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/python_dateutil-%{version}.dist-info/
+%{python3_sitelib}/%{srcname}/
 
 
 %changelog
+* Tue Apr 30 2024 Odilon Sousa <osousa@redhat.com> - 2.8.2-7
+- Rebuild with new package metadata
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.8.2-6
 - Remove SCL bits
 
