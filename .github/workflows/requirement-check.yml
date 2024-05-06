@@ -1,9 +1,6 @@
 name: Check Requirements Update
 
 on:
-  pull_request:
-    paths:
-      - 'automation/requirements.txt'
   label:
     types:
       - dependabot
