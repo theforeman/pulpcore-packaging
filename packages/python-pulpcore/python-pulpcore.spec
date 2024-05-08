@@ -9,7 +9,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.5
+Version:        3.49.6
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -195,6 +195,9 @@ done
 
 
 %changelog
+* Wed May 08 2024 Odilon Sousa <osousa@redhat.com> - 3.49.6-1
+- Update to 3.49.6
+
 * Fri Apr 26 2024 Odilon Sousa <osousa@redhat.com> - 3.49.5-1
 - Release python-pulpcore 3.49.5
 
