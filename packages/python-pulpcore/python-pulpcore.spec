@@ -9,7 +9,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.6
+Version:        3.49.7
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -44,8 +44,8 @@ Requires:       python%{python3_pkgversion}-aiodns >= 3.0.0
 Conflicts:      python%{python3_pkgversion}-aiodns >= 3.1.2
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 23.3.0
-Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.1
-Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.9.5
+Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.4
+Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.9.6
 Requires:       python%{python3_pkgversion}-aioredis >= 2.0.1
 Conflicts:      python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
@@ -65,7 +65,7 @@ Requires:       python%{python3_pkgversion}-django-import-export < 3.4.0
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
 Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.1.2
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
-Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.14.1
+Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.15.2
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields <= 1.1.0
 Requires:       python%{python3_pkgversion}-drf-access-policy >= 1.1.2
@@ -195,6 +195,9 @@ done
 
 
 %changelog
+* Tue May 14 2024 Odilon Sousa <osousa@redhat.com> - 3.49.7-1
+- Release python-pulpcore 3.49.7
+
 * Wed May 08 2024 Odilon Sousa <osousa@redhat.com> - 3.49.6-1
 - Update to 3.49.6
 
