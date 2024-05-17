@@ -9,4 +9,4 @@ pulp-rpm-client==3.25.3
 pulp-ostree==2.3.0
 pulp-glue==0.25.1
 pulp-cli==0.25.1
-pulp-cli-deb==0.0.7
+pulp-cli-deb==0.1.0
