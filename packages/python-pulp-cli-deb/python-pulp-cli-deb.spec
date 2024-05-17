@@ -7,7 +7,7 @@
 %global pkg_name pulp_cli_deb
 
 Name:           python-%{pypi_name}
-Version:        0.0.7
+Version:        0.1.0
 Release:        1%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
@@ -31,11 +31,11 @@ BuildRequires:  pyproject-rpm-macros
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       python%{python3_pkgversion}-pulp-cli >= 0.18.2
-Requires:       python%{python3_pkgversion}-pulp-cli < 0.24.0
+Requires:       python%{python3_pkgversion}-pulp-cli >= 0.23.2
+Requires:       python%{python3_pkgversion}-pulp-cli < 0.26.0
 Requires:       python%{python3_pkgversion}-click
 Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-pulp-glue-deb == 0.0.7
+Requires:       python%{python3_pkgversion}-pulp-glue-deb == 0.1.0
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Fri May 17 2024 Odilon Sousa <osousa@redhat.com> - 0.1.0-1
+- Release python-pulp-cli-deb 0.1.0
+
 * Thu Feb 29 2024 Quirin Pamp <pamp@atix.de> - 0.0.7-1
 - Update python-pulp-cli-deb to 0.0.7.
 
