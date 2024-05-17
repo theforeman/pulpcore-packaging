@@ -6,7 +6,7 @@
 %global srcname pulp_glue_deb
 
 Name:           python-%{pypi_name}
-Version:        0.0.7
+Version:        0.1.0
 Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API. (deb plugin)
 
@@ -30,8 +30,8 @@ BuildRequires:  pyproject-rpm-macros
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.2
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.24.0.dev
+Requires:       python%{python3_pkgversion}-pulp-glue >= 0.23.2
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.26
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -57,5 +57,8 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Fri May 17 2024 Odilon Sousa <osousa@redhat.com> - 0.1.0-1
+- Release python-pulp-glue-deb 0.1.0
+
 * Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 0.0.7-1
 - Initial package.
