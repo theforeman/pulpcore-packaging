@@ -9,7 +9,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.7
+Version:        3.49.8
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -55,7 +55,7 @@ Conflicts:      python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.1.8
 Requires:       python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       python%{python3_pkgversion}-cryptography < 42.0.6
+Requires:       python%{python3_pkgversion}-cryptography < 42.0.8
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       python%{python3_pkgversion}-django-filter <= 23.5
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
@@ -80,7 +80,7 @@ Requires:       python%{python3_pkgversion}-gnupg <= 0.5.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
 Requires:       python%{python3_pkgversion}-gunicorn < 22.1.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
-Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.3
+Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.4
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
 Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
@@ -195,6 +195,9 @@ done
 
 
 %changelog
+* Fri May 17 2024 Odilon Sousa <osousa@redhat.com> - 3.49.8-1
+- Release python-pulpcore 3.49.8
+
 * Tue May 14 2024 Odilon Sousa <osousa@redhat.com> - 3.49.7-1
 - Release python-pulpcore 3.49.7
 
