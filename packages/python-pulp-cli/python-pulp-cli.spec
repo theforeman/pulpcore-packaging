@@ -6,7 +6,7 @@
 %global pypi_name pulp-cli
 
 Name:           python-%{pypi_name}
-Version:        0.23.2
+Version:        0.25.1
 Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
@@ -45,7 +45,7 @@ Requires:       python%{python3_pkgversion}-schema >= 0.7.5
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-toml < 0.11
 Requires:       python%{python3_pkgversion}-toml >= 0.10.2
-Requires:       python%{python3_pkgversion}-pulp-glue == 0.23.2
+Requires:       python%{python3_pkgversion}-pulp-glue == 0.25.1
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -83,6 +83,9 @@ set -ex
 
 
 %changelog
+* Fri May 17 2024 Odilon Sousa <osousa@redhat.com> - 0.25.1-1
+- Release python-pulp-cli 0.25.1
+
 * Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 0.23.2-1
 - Release python-pulp-cli 0.23.2
 
