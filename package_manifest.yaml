@@ -52,6 +52,7 @@ copr_projects:
   hosts:
     pulpcore-copr:
       copr_project_name: "pulpcore-{{ pulpcore_version }}-staging"
+      copr_project_fork_from: "{{ 'pulpcore-nightly-staging' if pulpcore_version != 'nightly' else False }}"
       copr_project_chroots:
         - name: "rhel-{{ rhel_9 }}-x86_64"
           comps_file: "{{ inventory_dir }}/comps/comps-pulpcore-el{{ rhel_9 }}.xml"
