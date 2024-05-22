@@ -9,8 +9,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.8
-Release:        2%{?dist}
+Version:        3.49.9
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -160,8 +160,6 @@ rm -rf %{pypi_name}.egg-info
 
 # psycopg 'binary' extra isn't needed in production
 sed -i 's/psycopg\[binary\]/psycopg/' requirements.txt
-sed -i '/pulp-glue/ s/>=0.18.0,<0.24/>=0.18.0,<0.26/' requirements.txt
-
 
 %build
 set -ex
@@ -195,6 +193,9 @@ done
 
 
 %changelog
+* Wed May 22 2024 Odilon Sousa <osousa@redhat.com> - 3.49.9-1
+- Release python-pulpcore 3.49.9
+
 * Wed May 22 2024 Odilon Sousa <osousa@redhat.com> - 3.49.8-2
 - Relax pulp-glue requirements
 
