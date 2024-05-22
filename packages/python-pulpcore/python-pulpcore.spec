@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.49.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -88,7 +88,7 @@ Requires:       python%{python3_pkgversion}-json_stream < 2.4
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.7.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.24
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.26
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 25
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.38b0
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.44b0
@@ -160,7 +160,7 @@ rm -rf %{pypi_name}.egg-info
 
 # psycopg 'binary' extra isn't needed in production
 sed -i 's/psycopg\[binary\]/psycopg/' requirements.txt
-
+sed -i '/pulp-glue/ s/>=0.18.0,<0.24/>=0.18.0,<0.26/' requirements.txt
 
 
 %build
@@ -195,6 +195,9 @@ done
 
 
 %changelog
+* Wed May 22 2024 Odilon Sousa <osousa@redhat.com> - 3.49.8-2
+- Relax pulp-glue requirements
+
 * Fri May 17 2024 Odilon Sousa <osousa@redhat.com> - 3.49.8-1
 - Release python-pulpcore 3.49.8
 
