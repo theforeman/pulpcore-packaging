@@ -1,7 +1,7 @@
 ---
 all:
   vars:
-    pulpcore_version: "nightly"
+    pulpcore_version: "3.49"
     copr_project_user: "@theforeman"
   children:
     packages: {}
@@ -21,9 +21,9 @@ packages:
         dist: '.el9'
     repoclosure_target_repos:
       el8:
-        - "el8-pulpcore-{{ pulpcore_version }}-staging"
+        - "el8-pulpcore-{{ pulpcore_version }}"
       el9:
-        - "el9-pulpcore-{{ pulpcore_version }}-staging"
+        - "el9-pulpcore-{{ pulpcore_version }}"
     repoclosure_lookaside_repos:
       el8:
         - el8-baseos
@@ -76,6 +76,26 @@ copr_projects:
 
 repoclosures:
   hosts:
+    pulpcore-repoclosure-el8:
+      repoclosure_target_repos:
+        el8:
+          - "el8-pulpcore-{{ pulpcore_version }}"
+      repoclosure_target_dist: el8
+      repoclosure_lookaside_repos:
+        el8:
+          - el8-baseos
+          - el8-appstream
+          - el8-powertools
+    pulpcore-repoclosure-el9:
+      repoclosure_target_repos:
+        el9:
+          - "el9-pulpcore-{{ pulpcore_version }}"
+      repoclosure_target_dist: el9
+      repoclosure_lookaside_repos:
+        el9:
+          - el9-baseos
+          - el9-appstream
+          - el9-crb
     pulpcore-staging-repoclosure-el8:
       repoclosure_target_repos:
         el8:
