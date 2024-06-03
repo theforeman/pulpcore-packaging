@@ -5,7 +5,7 @@
 %global pypi_name pulp-glue
 
 Name:           python-%{pypi_name}
-Version:        0.25.1
+Version:        0.25.3
 Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Mon Jun 03 2024 Evgeni Golov - 0.25.3-1
+- Release python-pulp-glue 0.25.3
+
 * Fri May 17 2024 Odilon Sousa <osousa@redhat.com> - 0.25.1-1
 - Release python-pulp-glue 0.25.1
 
