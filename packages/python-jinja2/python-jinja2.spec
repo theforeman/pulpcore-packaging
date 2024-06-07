@@ -6,18 +6,19 @@
 %global srcname jinja2
 
 Name:           python-%{srcname}
-Version:        3.1.3
+Version:        3.1.4
 Release:        1%{?dist}
 Summary:        A very fast and expressive template engine
 
 License:        BSD-3-Clause
 URL:            https://palletsprojects.com/p/jinja/
-Source0:        https://files.pythonhosted.org/packages/source/J/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/J/%{pypi_name}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
-
+BuildRequires:  python%{python3_pkgversion}-tomli
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-flit_core
 
 %description
 %{summary}
@@ -27,8 +28,6 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       python%{python3_pkgversion}-markupsafe >= 2.0
-Requires:       python%{python3_pkgversion}-setuptools
-
 
 %description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
@@ -36,29 +35,28 @@ Requires:       python%{python3_pkgversion}-setuptools
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+%autosetup -n %{srcname}-%{version}
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license LICENSE.rst
-%doc README.rst
-%{python3_sitelib}/jinja2
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{srcname}
+%{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 
 %changelog
+* Fri Jun 07 2024 Odilon Sousa <osousa@redhat.com> - 3.1.4-1
+- Release python-jinja2 3.1.4
+
 * Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 3.1.3-1
 - Release python-jinja2 3.1.3
 
