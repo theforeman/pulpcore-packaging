@@ -6,7 +6,7 @@
 %global pypi_name pulp-ansible
 
 Name:           python-%{pypi_name}
-Version:        0.21.5
+Version:        0.21.6
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Mon Jun 10 2024 Odilon Sousa <osousa@redhat.com> - 1:0.21.6-1
+- Release python-pulp-ansible 0.21.6
+
 * Fri May 17 2024 Odilon Sousa <osousa@redhat.com> - 1:0.21.5-1
 - Release python-pulp-ansible 0.21.5
 
