@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.25.3
+Version:        3.25.4
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Mon Jun 10 2024 Odilon Sousa <osousa@redhat.com> - 3.25.4-1
+- Release python-pulp-rpm 3.25.4
+
 * Thu Apr 18 2024 Samir Jha <samirjha1525@gmail.com> - 3.25.3-1
 - Release python-pulp-rpm 3.25.3
 
