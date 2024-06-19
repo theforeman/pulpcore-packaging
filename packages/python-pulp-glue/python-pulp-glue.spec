@@ -5,7 +5,7 @@
 %global pypi_name pulp-glue
 
 Name:           python-%{pypi_name}
-Version:        0.25.4
+Version:        0.25.6
 Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
@@ -32,7 +32,6 @@ Requires:       python%{python3_pkgversion}-packaging < 25
 Requires:       python%{python3_pkgversion}-packaging >= 20.0
 Requires:       python%{python3_pkgversion}-requests < 2.32
 Requires:       python%{python3_pkgversion}-requests >= 2.24.0
-Conflicts:      python%{python3_pkgversion}-requests >= 2.33
 Requires:       python%{python3_pkgversion}-setuptools
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -64,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Jun 18 2024 Odilon Sousa <osousa@redhat.com> - 0.25.6-1
+- Release python-pulp-glue 0.25.6
+
 * Mon Jun 10 2024 Odilon Sousa <osousa@redhat.com> - 0.25.4-1
 - Release python-pulp-glue 0.25.4
 
