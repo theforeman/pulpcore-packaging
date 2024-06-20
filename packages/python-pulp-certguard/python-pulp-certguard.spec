@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}python-%{pypi_name}
 Version:        1.7.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
@@ -76,10 +76,14 @@ set -ex
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/pulp_certguard
+%exclude %{python3_sitelib}/pulp_certguard/tests
 %{python3_sitelib}/pulp_certguard-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Apr 08 2024 Eric D. Helms <ericdhelms@gmail.com> - 1.7.1-3
+- Exclude tests directory
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.7.1-2
 - Obsolete python39 packages for a smooth upgrade
 
