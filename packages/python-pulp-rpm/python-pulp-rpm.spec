@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.25.4
+Version:        3.26.1
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -31,12 +31,12 @@ Requires:       libmodulemd2 >= 2.12
 Requires:       libmodulemd >= 2.12
 %endif
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
-Requires:       python%{python3_pkgversion}-createrepo_c >= 1.0.1
-Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.1.0
+Requires:       python%{python3_pkgversion}-createrepo_c >= 1.1.0
+Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.2.0
 Requires:       python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
 Conflicts:      python%{python3_pkgversion}-jsonschema >= 5.0
-Requires:       python%{python3_pkgversion}-libcomps >= 0.1.15
+Requires:       python%{python3_pkgversion}-libcomps >= 0.1.21
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 02 2024 Ian Ballou <ianballou67@gmail.com> - 3.26.1-1
+- Release python-pulp-rpm 3.26.1
+
 * Mon Jun 10 2024 Odilon Sousa <osousa@redhat.com> - 3.25.4-1
 - Release python-pulp-rpm 3.25.4
 
