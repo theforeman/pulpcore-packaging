@@ -35,8 +35,8 @@
 %bcond_with doc
 
 Name:           libcomps
-Version:        0.1.18
-Release:        8%{?dist}
+Version:        0.1.21
+Release:        1%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -289,6 +289,9 @@ popd
 %endif
 
 %changelog
+* Wed Jul 03 2024 Odilon Sousa <osousa@redhat.com> - 0.1.21-1
+- Release libcomps 0.1.21
+
 * Mon Nov 20 2023 Patrick Creech <pcreech@redhat.com> - 0.1.18-8
 - Obsolete python39-libcomps
 
