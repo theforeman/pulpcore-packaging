@@ -45,8 +45,8 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        1.0.2
-Release:        6%{?dist}
+Version:        1.1.3
+Release:        1%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -61,7 +61,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  rpm-devel >= 4.8.0-28
-BuildRequires:  sqlite-devel
+BuildRequires:  sqlite-devel >= 3.6.18
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
@@ -153,7 +153,7 @@ Python 3 bindings for the createrepo_c library.
 
 %prep
 %autosetup -p1
-
+%py3_shebang_fix examples/python
 mkdir build-py3
 %if %{with python36}
 mkdir build-py36
@@ -259,6 +259,7 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %{_includedir}/%{name}/
 
 %files -n python%{python3_pkgversion}-%{name}
+%doc examples/python/*
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
@@ -269,6 +270,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Wed Jul 03 2024 Odilon Sousa <osousa@redhat.com> - 1.1.3-1
+- Release createrepo_c 1.1.3
+
 * Wed Apr 24 2024 Odilon Sousa <osousa@redhat.com> - 1.0.2-6
 - Enable Legacy Hashes for EL9 builds
 
