@@ -15,3 +15,5 @@ updates:
         update-types: ["version-update:semver-minor"]
       - dependency-name: "pulp-rpm*"
         update-types: ["version-update:semver-minor"]
+      - dependency-name: "pulp-ostree"
+        update-types: ["version-update:semver-minor"]
