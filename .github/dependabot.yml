@@ -17,3 +17,7 @@ updates:
         update-types: ["version-update:semver-minor"]
       - dependency-name: "pulp-ostree"
         update-types: ["version-update:semver-minor"]
+      - dependency-name: "pulp-python"
+        update-types: ["version-update:semver-minor"]
+      - dependency-name: "pulp-deb"
+        update-types: ["version-update:semver-minor"]
