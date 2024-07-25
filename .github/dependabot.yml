@@ -2,6 +2,7 @@ version: 2
 updates:
   # Maintain dependencies for Pulpcore
   - package-ecosystem: "pip"
+    open-pull-requests-limit: 10
     directory: "/automation"
     schedule:
       interval: "daily"
