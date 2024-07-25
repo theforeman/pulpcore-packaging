@@ -6,7 +6,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.20.0
+Version:        2.20.1
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -29,7 +29,7 @@ Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-ecdsa >= 0.14
 Conflicts:      python%{python3_pkgversion}-ecdsa >= 0.18.1
 Requires:       python%{python3_pkgversion}-pulpcore < 3.55
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.43.0
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
 Requires:       python%{python3_pkgversion}-pyjwkest >= 1.4
 Conflicts:      python%{python3_pkgversion}-pyjwkest >= 1.4.3
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.4
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 25 2024 Odilon Sousa <osousa@redhat.com> - 2.20.1-1
+- Release python-pulp-container 2.20.1
+
 * Mon May 06 2024 Odilon Sousa <osousa@redhat.com> - 2.20.0-1
 - Release python-pulp-container 2.20.0
 
