@@ -6,7 +6,7 @@
 %global pypi_name pulp-ansible
 
 Name:           python-%{pypi_name}
-Version:        0.21.6
+Version:        0.21.7
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -37,11 +37,11 @@ Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.4.5
 Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.9
 Conflicts:      python%{python3_pkgversion}-jsonschema >= 4.23
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.40.0
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
 Requires:       python%{python3_pkgversion}-pulpcore < 3.55
 Requires:       python%{python3_pkgversion}-semantic-version >= 2.9
 Conflicts:      python%{python3_pkgversion}-semantic-version >= 2.11
-Requires:       python%{python3_pkgversion}-pillow >= 7.0
+Requires:       python%{python3_pkgversion}-pillow >= 8.3.2
 Requires:       python%{python3_pkgversion}-pillow < 10.4
 Requires:       python%{python3_pkgversion}-setuptools
 
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 31 2024 Odilon Sousa <osousa@redhat.com> - 1:0.21.7-1
+- Release python-pulp-ansible 0.21.7
+
 * Mon Jun 10 2024 Odilon Sousa <osousa@redhat.com> - 1:0.21.6-1
 - Release python-pulp-ansible 0.21.6
 
