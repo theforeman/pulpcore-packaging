@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 import json
 
 def parse_package_list(file_path, output_path):
