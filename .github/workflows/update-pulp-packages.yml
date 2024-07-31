@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - automation/requirements.txt
+    branches:
+      - 'rpm/develop'
 
 env:
   GIT_AUTHOR_NAME: Foreman Packaging Automation
@@ -15,12 +17,10 @@ jobs:
   generate_package_list:
     name: "Generate Package List"
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.head_ref == 'rpm/develop'
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - name: Sort Updated Libs
-      if: github.event_name == 'push' && github.head_ref == 'rpm/develop'
       run: git diff --unified=0 ${{github.event.before}} ${{github.sha}} automation/requirements.txt | grep -Po '(?<=^\+)(?!\+\+).*' > $PACKAGE_TO_UPDATE
     - name: Parse Package List
       run: ./build_matrix.py
@@ -31,7 +31,7 @@ jobs:
   bump-rpms:
     name: 'Bump ${{ matrix.package_name }} RPM ${{ matrix.new_version }}'
     needs: generate_package_list
-    if: ${{ needs.generate_package_list.outputs.matrix != '[]' }} && github.event_name == 'push' && github.head_ref == 'rpm/develop'
+    if: ${{ needs.generate_package_list.outputs.matrix != '[]' }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
