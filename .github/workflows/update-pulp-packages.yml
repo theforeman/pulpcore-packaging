@@ -16,6 +16,8 @@ jobs:
     name: "Generate Package List"
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.head_ref == 'rpm/develop'
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - name: Sort Updated Libs
       if: github.event_name == 'push' && github.head_ref == 'rpm/develop'
@@ -23,8 +25,8 @@ jobs:
     - name: Parse Package List
       run: ./build_matrix.py
     - name: Load Packages Matrix
-      run: |
-        echo "matrix=$(cat packages.json)" >> $GITHUB_ENV
+      id: set-matrix
+      run: echo "matrix=$(jq -c . < ./packages.json)" >> $GITHUB_OUTPUT
 
   bump-rpms:
     name: 'Bump ${{ matrix.package_name }} RPM ${{ matrix.new_version }}'
@@ -33,8 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        include: ${{ fromJson(env.matrix) }}
+      matrix: ${{ fromJson(needs.generate_package_list.outputs.matrix) }}
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
