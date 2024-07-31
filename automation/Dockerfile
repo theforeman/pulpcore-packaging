@@ -1,16 +1,14 @@
-FROM docker.io/centos/python-38-centos7:latest
+FROM quay.io/centos/centos:stream9
 
-USER 0
+RUN dnf install 'dnf-command(config-manager)' -y && \
+    dnf config-manager --set-enabled crb && \
+    dnf install -y gobject-introspection-devel cairo-devel gcc make cmake python3.11-devel python3.11-wheel python3.11-pip && \
+    dnf clean all
 
-RUN yum install -y epel-release &&  \
-    yum install -y which postgresql-devel gcc python3 python3-devel python3-pip git git-annex rpm-build rpmdevtools crudini && \
-    yum install -y gcc make cmake bzip2-devel expat-devel file-devel glib2-devel libcurl-devel cairo-devel.x86_64 cairo-gobject-devel.x86_64 libmodulemd2-devel ninja-build libxml2-devel pygobject3-devel.x86_64 rh-python38-python-devel python36-gobject rpm-devel openssl-devel sqlite-devel xz-devel zchunk-devel zlib-devel swig libxslt-devel libxml2-devel && \
-    yum clean all
-
-COPY _generate_deps.sh /app/_generate_deps.sh
+COPY generate_package_list.sh /app/generate_package_list.sh
 COPY requirements.txt /app/requirements.txt
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-CMD ["/bin/bash", "/app/_generate_deps.sh"]
+CMD ["/bin/bash", "/app/generate_package_list.sh"]
