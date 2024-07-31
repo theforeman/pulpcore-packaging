@@ -31,7 +31,7 @@ jobs:
   bump-rpms:
     name: 'Bump ${{ matrix.package_name }} RPM ${{ matrix.new_version }}'
     needs: generate_package_list
-    if: ${{ matrix.package_name != '[]' }} && github.event_name == 'push' && github.head_ref == 'rpm/develop'
+    if: ${{ steps.set-matrix.outputs.matrix != '[]' }} && github.event_name == 'push' && github.head_ref == 'rpm/develop'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -51,7 +51,6 @@ jobs:
         sudo chmod +x /usr/local/bin/*
     - name: Update Packages
       run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}"
-      output:
     - name: Open a PR
       uses: peter-evans/create-pull-request@v6
       with:
