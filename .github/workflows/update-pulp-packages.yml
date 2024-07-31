@@ -27,10 +27,8 @@ jobs:
     - name: Sort Updated Libs
       run: git diff --unified=0 ${{github.event.before}} ${{github.sha}} automation/requirements.txt | grep -Po '(?<=^\+)(?!\+\+).*' > $PACKAGE_TO_UPDATE
     - name: Parse Package List
-      run: ./build_matrix.py
-    - name: Load Packages Matrix
       id: set-matrix
-      run: echo "matrix=$(jq -c . < ./packages.json)" >> $GITHUB_OUTPUT
+      run: ./build_matrix.py < $PACKAGE_TO_UPDATE
 
   bump-rpms:
     name: 'Bump ${{ matrix.package_name }} RPM ${{ matrix.new_version }}'
