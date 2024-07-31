@@ -1,20 +1,27 @@
 #!/usr/bin/env python3
 
-
 import json
+import os
+import sys
 
-def parse_package_list(file_path, output_path):
-    packages = []
-    with open(file_path, 'r') as file:
-        for line in file:
-            line = line.strip()
-            if line:
-                name, version = line.split('==')
-                packages.append({'package_name': name, 'new_version': version})
-    with open(output_path, 'w') as json_file:
-        json.dump(packages, json_file, indent=4)
 
-# Specify the path for package list file and output JSON file
-file_path = 'package_list.txt'
-output_path = 'packages.json'
-parse_package_list(file_path, output_path)
+def parse_package_list(lines):
+    for line in lines:
+        line = line.strip()
+        if line:
+            name, version = line.split('==')
+            yield {'package_name': name, 'new_version': version}
+
+
+def main():
+    packages = list(parse_package_list(sys.stdin.readlines()))
+
+    if 'GITHUB_OUTPUT' in os.environ:
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as github_output:
+            print(f'matrix={json.dumps(packages)}', file=github_output)
+
+    for package in packages:
+        print(package['package_name'], package['new_version'])
+
+if __name__ == '__main__':
+    main()
