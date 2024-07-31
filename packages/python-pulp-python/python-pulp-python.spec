@@ -7,7 +7,7 @@
 %global pypi_name pulp-python
 
 Name:           python-%{pypi_name}
-Version:        3.11.1
+Version:        3.11.2
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 31 2024 Odilon Sousa <osousa@redhat.com> - 3.11.2-1
+- Release python-pulp-python 3.11.2
+
 * Fri Apr 19 2024 Odilon Sousa <osousa@redhat.com> - 3.11.1-1
 - Release python-pulp-python 3.11.1
 
