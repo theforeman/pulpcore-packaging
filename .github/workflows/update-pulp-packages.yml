@@ -39,7 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.generate_package_list.outputs.matrix) }}
+      matrix: 
+       include: ${{ fromJson(needs.generate_package_list.outputs.matrix) }}
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
