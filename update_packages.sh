@@ -1,6 +1,7 @@
 #!/bin/bash
 set +e
 
+
 ensure_program() {
 	package=${2:-$1}
 	if ! (program_exists "$1"); then
