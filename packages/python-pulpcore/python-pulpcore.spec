@@ -9,7 +9,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.39.11
+Version:        3.39.19
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -45,7 +45,7 @@ Conflicts:      python%{python3_pkgversion}-aiodns >= 3.1.2
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 23.3.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.1
-Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.9.5
+Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.9.6
 Requires:       python%{python3_pkgversion}-aioredis >= 2.0.1
 Conflicts:      python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
@@ -55,7 +55,7 @@ Conflicts:      python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.1.8
 Requires:       python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       python%{python3_pkgversion}-cryptography < 42.0.1
+Requires:       python%{python3_pkgversion}-cryptography < 42.0.9
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       python%{python3_pkgversion}-django-filter <= 23.5
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
@@ -80,7 +80,7 @@ Requires:       python%{python3_pkgversion}-gnupg <= 0.5.1
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
 Requires:       python%{python3_pkgversion}-gunicorn <= 21.2.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
-Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.3
+Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.4
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
 Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
@@ -89,6 +89,7 @@ Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.7.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.24
+Requires:       python%{python3_pkgversion}-pyOpenSSL < 25
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.38b0
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.43b0
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.17.0
@@ -111,6 +112,7 @@ Requires:       python%{python3_pkgversion}-redis >= 4.3
 Requires:       python%{python3_pkgversion}-redis < 5.0.2
 Requires:       python%{python3_pkgversion}-setuptools >= 39.2.0
 Requires:       python%{python3_pkgversion}-setuptools < 69.1.0
+Requires:       python%{python3_pkgversion}-tablib < 3.6.0
 Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
 Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
@@ -179,6 +181,9 @@ done
 
 
 %changelog
+* Thu Aug 01 2024 Odilon Sousa <osousa@redhat.com> - 3.39.19-1
+- Release python-pulpcore 3.39.19
+
 * Tue Mar 05 2024 Odilon Sousa <osousa@redhat.com> - 3.39.11-1
 - Release python-pulpcore 3.39.11
 
