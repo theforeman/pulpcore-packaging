@@ -6,18 +6,21 @@
 %global srcname pillow
 
 Name:           python-%{srcname}
-Version:        9.5.0
-Release:        5%{?dist}
+Version:        10.3.0
+Release:        1%{?dist}
 Summary:        Python Imaging Library (Fork)
 
 License:        HPND
 URL:            https://python-pillow.org
-Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{srcname}-%{version}.tar.gz
 
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  zlib-devel
 BuildRequires:  libjpeg-turbo-devel
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -35,29 +38,29 @@ Summary:        %{summary}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license LICENSE
-%doc README.md
 %{python3_sitearch}/PIL
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
-
+%{python3_sitearch}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Thu Aug 01 2024 Odilon Sousa <osousa@redhat.com> - 10.3.0-1
+- Release python-pillow 10.3.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 9.5.0-5
 - Remove SCL bits
 
