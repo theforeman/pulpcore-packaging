@@ -29,10 +29,10 @@ jobs:
         run: dnf install -y gobject-introspection-devel cairo-devel gcc make cmake python3.11-devel python3.11-wheel python3.11-pip
 
       - name: Install Pulp using requirements.txt
-        run: pip3.11 install -r '$PULPCORE_REQUIREMENTS'
+        run: pip3.11 install -r $PULPCORE_REQUIREMENTS
 
       - name: Collect List of packages
-        run: pip3.11 freeze | sed '/gobject/d; /scikit/d; /libcomps/d; /solv/d; /createrepo/d; /distro/d; /^ansible/d; /^jsonschema/d; /^pulp/d;' > '$PULPCORE_FULL_REQUIREMENTS'
+        run: pip3.11 freeze | sed '/gobject/d; /scikit/d; /libcomps/d; /solv/d; /createrepo/d; /distro/d; /^ansible/d; /^jsonschema/d; /^pulp/d;' > $PULPCORE_FULL_REQUIREMENTS
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
