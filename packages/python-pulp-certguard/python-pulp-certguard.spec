@@ -7,8 +7,8 @@
 %global pypi_name pulp-certguard
 
 Name:           %{?scl_prefix}python-%{pypi_name}
-Version:        1.7.1
-Release:        2%{?dist}
+Version:        1.7.2
+Release:        1%{?dist}
 Summary:        Certguard plugin for the Pulp Project
 
 License:        GPLv2+
@@ -29,7 +29,7 @@ a certificate proving their entitlement to content before receiving the content.
 %package -n     %{?scl_prefix}python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL < 24.0
+Requires:       %{?scl_prefix}python%{python3_pkgversion}-pyOpenSSL < 25.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore < 3.45
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-pulpcore >= 3.28.0
 Requires:       %{?scl_prefix}python%{python3_pkgversion}-setuptools
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Thu Aug 01 2024 Odilon Sousa <osousa@redhat.com> - 1.7.2-1
+- Release python-pulp-certguard 1.7.2
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.7.1-2
 - Obsolete python39 packages for a smooth upgrade
 
