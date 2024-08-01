@@ -6,7 +6,7 @@
 %global srcname django
 
 Name:           python-%{srcname}
-Version:        4.2.11
+Version:        4.2.14
 Release:        1%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Thu Aug 01 2024 Odilon Sousa <osousa@redhat.com> - 4.2.14-1
+- Release python-django 4.2.14
+
 * Thu Mar 14 2024 Odilon Sousa <osousa@redhat.com> - 4.2.11-1
 - Release python-django 4.2.11
 
