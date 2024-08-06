@@ -53,7 +53,7 @@ jobs:
         printf '#!/bin/bash\necho "$GIT_AUTHOR_NAME <$GIT_AUTHOR_EMAIL>"' | sudo tee /usr/local/bin/rpmdev-packager
         sudo chmod +x /usr/local/bin/*
     - name: Update Packages
-      run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}"
+      run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}
     - name: Open a PR
       uses: peter-evans/create-pull-request@v6
       with:
