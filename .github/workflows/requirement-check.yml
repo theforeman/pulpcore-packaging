@@ -74,7 +74,7 @@ jobs:
       run: dnf install 'dnf-command(config-manager)' -y && dnf config-manager --set-enabled crb
 
     - name: Install Required Packages
-      run: dnf install -y gobject-introspection-devel cairo-devel gcc make cmake python3.11-devel python3.11-wheel python3.11-pip
+      run: dnf install -y gobject-introspection-devel cairo-gobject-devel cairo-devel gcc make cmake python3.11-devel python3.11-wheel python3.11-pip
 
     - name: Install Pulp using requirements.txt
       run: pip3.11 install -r $PULPCORE_REQUIREMENTS
