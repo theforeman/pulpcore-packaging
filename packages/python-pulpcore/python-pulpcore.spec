@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.49.16
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -55,7 +55,7 @@ Conflicts:      python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.1.8
 Requires:       python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       python%{python3_pkgversion}-cryptography < 42.0.8
+Requires:       python%{python3_pkgversion}-cryptography < 42.0.9
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       python%{python3_pkgversion}-django-filter <= 23.5
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
@@ -193,6 +193,9 @@ done
 
 
 %changelog
+* Wed Aug 07 2024 Odilon Sousa <osousa@redhat.com> - 3.49.16-2
+- Update requirement for python-cryptography
+
 * Tue Aug 06 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.49.16-1
 - Update to 3.49.16
 
