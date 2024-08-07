@@ -5,7 +5,7 @@
 %global pypi_name cryptography
 
 Name:           python-%{pypi_name}
-Version:        42.0.5
+Version:        42.0.8
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Aug 07 2024 Odilon Sousa <osousa@redhat.com> - 42.0.8-1
+- Release python-cryptography 42.0.8
+
 * Fri Mar 22 2024 Odilon Sousa <osousa@redhat.com> - 42.0.5-1
 - Release python-cryptography 42.0.5
 
