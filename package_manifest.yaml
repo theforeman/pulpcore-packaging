@@ -3,6 +3,7 @@ all:
   vars:
     pulpcore_version: "nightly"
     copr_project_user: "@theforeman"
+    build_package_build_system: copr
   children:
     packages: {}
     repoclosures: {}
