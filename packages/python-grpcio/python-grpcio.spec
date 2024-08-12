@@ -1,15 +1,13 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
-
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name grpcio
 %global srcname grpcio
 
 Name:           python-%{srcname}
-Version:        1.56.0
-Release:        5%{?dist}
+Version:        1.65.4
+Release:        1%{?dist}
 Summary:        HTTP/2-based RPC framework
 
 License:        Apache License 2.0
@@ -55,6 +53,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Mon Aug 12 2024 Odilon Sousa <osousa@redhat.com> - 1.65.4-1
+- Release python-grpcio 1.65.4
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.56.0-5
 - Remove SCL bits
 
