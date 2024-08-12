@@ -1,4 +1,4 @@
-name: Generate full list of packages
+name: Update Lib Packages
 
 on:
   workflow_dispatch:
@@ -12,31 +12,61 @@ env:
   PULPCORE_FULL_REQUIREMENTS: pulpcore-requirements.txt
 
 jobs:
-  build:
+  generate_package_list:
+    name: 'Gather Packages'
     runs-on: ubuntu-latest
     container:
       image: quay.io/centos/centos:stream9
-
     steps:
       - uses: actions/checkout@v4
         with:
           ref: rpm/develop
-
       - name: Install dnf-plugins-core
         run: dnf install 'dnf-command(config-manager)' -y && dnf config-manager --set-enabled crb
-
       - name: Install Required Packages
         run: dnf install -y gobject-introspection-devel cairo-gobject-devel cairo-devel gcc make cmake python3.11-devel python3.11-wheel python3.11-pip
-
       - name: Install Pulp using requirements.txt
         run: pip3.11 install -r $PULPCORE_REQUIREMENTS
-
       - name: Collect List of packages
         run: pip3.11 freeze | sed '/gobject/d; /scikit/d; /libcomps/d; /solv/d; /createrepo/d; /distro/d; /^ansible/d; /^jsonschema/d; /^pulp/d;' > $PULPCORE_FULL_REQUIREMENTS
-
+      - name: Parse Package List
+        id: set-matrix
+        run: ./build_matrix.py < $PULPCORE_FULL_REQUIREMENTS
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
           name: full-package-list.txt
           path: pulpcore-requirements.txt
-          retention-days: 7
+          retention-days: 14
+
+  bump-rpms:
+    name: 'Bump ${{ matrix.package_name }} RPM ${{ matrix.new_version }}'
+    needs: generate_package_list
+    if: ${{ needs.generate_package_list.outputs.matrix != '[]' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: 
+       include: ${{ fromJson(needs.generate_package_list.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: rpm/develop
+    - name: Install dependencies
+      run: |
+        sudo apt-get install -y --no-install-recommends python3-rpm rpm git-annex python3-semver
+        sudo curl --create-dirs -o /usr/local/bin/spectool https://pagure.io/rpmdevtools/raw/26a8abc746fba9c0b32eb899b96c92841a37855a/f/spectool.in
+        sudo curl --create-dirs -o /usr/local/bin/rpmdev-bumpspec https://pagure.io/rpmdevtools/raw/6f387c1deaa5cbed770310e288abde04b17421dc/f/rpmdev-bumpspec
+        sudo curl --create-dirs -o /usr/local/bin/rpmdev-vercmp https://pagure.io/rpmdevtools/raw/79740e6f1881e399b0b4340a8090dd5adc91a4ea/f/rpmdev-vercmp
+        printf '#!/bin/bash\necho "$GIT_AUTHOR_NAME <$GIT_AUTHOR_EMAIL>"' | sudo tee /usr/local/bin/rpmdev-packager
+        sudo chmod +x /usr/local/bin/*
+    - name: Update Packages
+      run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}
+    - name: Open a PR
+      uses: peter-evans/create-pull-request@v6
+      with:
+        commit-message: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
+        branch: "bump_rpm/${{ matrix.package_name }}"
+        title: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
+        body: ''
+        delete-branch: true
