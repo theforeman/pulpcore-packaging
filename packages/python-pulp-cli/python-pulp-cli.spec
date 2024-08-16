@@ -6,8 +6,8 @@
 %global pypi_name pulp-cli
 
 Name:           python-%{pypi_name}
-Version:        0.27.1
-Release:        2%{?dist}
+Version:        0.27.2
+Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -83,6 +83,9 @@ set -ex
 
 
 %changelog
+* Fri Aug 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.27.2-1
+- Update to 0.27.2
+
 * Fri Aug 16 2024 Odilon Sousa <osousa@redhat.com> - 0.27.1-2
 - Add version macro to pulp-cli to ensure pulp-glue sync
 
