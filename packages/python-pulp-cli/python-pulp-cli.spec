@@ -7,7 +7,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.27.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -45,7 +45,7 @@ Requires:       python%{python3_pkgversion}-schema >= 0.7.5
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-toml < 0.11
 Requires:       python%{python3_pkgversion}-toml >= 0.10.2
-Requires:       python%{python3_pkgversion}-pulp-glue == 0.27.1
+Requires:       python%{python3_pkgversion}-pulp-glue == %{version}
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -83,6 +83,9 @@ set -ex
 
 
 %changelog
+* Fri Aug 16 2024 Odilon Sousa <osousa@redhat.com> - 0.27.1-2
+- Add version macro to pulp-cli to ensure pulp-glue sync
+
 * Wed Jul 31 2024 Odilon Sousa <osousa@redhat.com> - 0.27.1-1
 - Release python-pulp-cli 0.27.1
 
