@@ -9,6 +9,16 @@ updates:
     commit-message:
       prefix: "[dependabot]"
     # Add labels for dependabot bumps
+    groups:
+       # Specify a name for the group, which will be used in pull request titles
+       # and branch names
+       pulp-cli-deps:
+          # Define patterns to include dependencies in the group (based on
+          # dependency name)
+          applies-to: version-updates # Applies the group rule to version updates
+          patterns:
+            - "pulp-cli"
+            - "pulp-glue"
     labels:
       - "dependabot"
     ignore:
