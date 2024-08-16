@@ -8,6 +8,6 @@ pulpcore-client==3.49.17
 pulp-rpm-client==3.26.1
 pulp-ostree==2.3.2
 pulp-glue==0.27.1
-pulp-cli==0.27.1
+pulp-cli==0.27.2
 pulp-cli-deb==0.2.0
 pulp-glue-deb==0.2.0
