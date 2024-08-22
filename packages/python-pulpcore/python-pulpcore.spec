@@ -10,12 +10,13 @@
 
 Name:           python-%{pypi_name}
 Version:        3.49.17
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0001:      0001-Add-task-indices-migration.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -193,6 +194,9 @@ done
 
 
 %changelog
+* Thu Aug 22 2024 Samir Jha <samirjha1525@gmail.com> - 3.49.17-2
+- Apply patch to add indices to task table
+
 * Mon Aug 12 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.49.17-1
 - Update to 3.49.17
 
