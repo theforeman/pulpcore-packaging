@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -35,7 +35,7 @@ Requires:       python%{python3_pkgversion}-pulp-cli >= 0.23.2
 Requires:       python%{python3_pkgversion}-pulp-cli < 0.28
 Requires:       python%{python3_pkgversion}-click
 Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-pulp-glue-deb == 0.2.0
+Requires:       python%{python3_pkgversion}-pulp-glue-deb == %{version}
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 27 2024 Quirin Pamp <pamp@atix.de> - 0.2.0-2
+- Use version macro for python-pulp-glue-deb dependency
+
 * Tue Aug 06 2024 Odilon Sousa <osousa@redhat.com> - 0.2.0-1
 - Release python-pulp-cli-deb 0.2.0
 
