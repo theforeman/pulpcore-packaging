@@ -1,6 +1,6 @@
 Name:		postgresql-evr
 Version:	0.0.2
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	RPM evr extension for PostgreSQL
 
 License:	GPLv3
@@ -10,6 +10,7 @@ BuildArch: noarch
 BuildRequires: libpq-devel
 %endif
 BuildRequires: postgresql-server-devel
+BuildRequires: make
 Requires: postgresql-server
 
 URL: https://github.com/Katello/postgresql-evr
@@ -35,6 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 02 2024 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 0.0.2-4
+- Add make to BuildRequires
+
 * Fri Sep 29 2023 Odilon Sousa <osousa@redhat.com> - 0.0.2-3
 - Fix typo on rhel version check
 
