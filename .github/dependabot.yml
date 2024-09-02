@@ -19,6 +19,11 @@ updates:
           patterns:
             - "pulp-cli"
             - "pulp-glue"
+       pulp-cli-deb-deps:
+          applies-to: version-updates
+          patterns:
+            - "pulp-cli-deb"
+            - "pulp-glue-deb"
     labels:
       - "dependabot"
     ignore:
