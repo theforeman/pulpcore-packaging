@@ -3,7 +3,7 @@ pulp-container==2.20.3
 pulp-deb==3.2.1
 pulp-rpm==3.26.1
 pulp-ansible==0.21.8
-pulp-python==3.11.2
+pulp-python==3.11.3
 pulpcore-client==3.49.19
 pulp-rpm-client==3.26.1
 pulp-ostree==2.3.2
