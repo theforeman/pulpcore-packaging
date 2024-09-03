@@ -9,8 +9,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.17
-Release:        2%{?dist}
+Version:        3.49.19
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -194,6 +194,9 @@ done
 
 
 %changelog
+* Tue Sep 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.49.19-1
+- Update to 3.49.19
+
 * Thu Aug 22 2024 Samir Jha <samirjha1525@gmail.com> - 3.49.17-2
 - Apply patch to add indices to task table
 
