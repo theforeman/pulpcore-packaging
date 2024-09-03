@@ -89,7 +89,7 @@ Requires:       python%{python3_pkgversion}-json_stream < 2.4
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.7.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.28
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.29
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 25
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.38b0
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.44b0
