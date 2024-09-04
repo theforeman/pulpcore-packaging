@@ -41,3 +41,12 @@ updates:
         update-types: ["version-update:semver-minor"]
       - dependency-name: "pulp-ansible"
         update-types: ["version-update:semver-minor"]
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "[dependabot]"
+
