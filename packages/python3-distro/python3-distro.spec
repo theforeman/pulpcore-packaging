@@ -5,7 +5,7 @@
 %global pypi_name distro
 %global pypi_version 1.7.0
 
-Name:           python-%{pypi_name}
+Name:           python3-%{pypi_name}
 Version:        %{pypi_version}
 Release:        4%{?dist}
 Summary:        Distro - an OS platform information API
