@@ -204,7 +204,7 @@ tier4_packages:
     python-deprecated: {}
     python-diff-match-patch: {}
     python-distlib: {}
-    python-distro: {}
+    python3-distro: {}
     python-django: {}
     python-django-auth-ldap: {}
     python-django-cleanup: {}
