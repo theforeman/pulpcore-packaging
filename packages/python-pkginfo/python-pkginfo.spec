@@ -5,8 +5,8 @@
 %global pypi_name pkginfo
 
 Name:           python-%{pypi_name}
-Version:        1.9.6
-Release:        4%{?dist}
+Version:        1.11.0
+Release:        1%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 09 2024 Odilon Sousa <osousa@redhat.com> - 1.11.0-1
+- Release python-pkginfo 1.11.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.9.6-4
 - Remove SCL bits
 
