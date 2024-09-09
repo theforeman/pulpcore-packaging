@@ -7,7 +7,7 @@
 
 Name:           python3-%{pypi_name}
 Version:        %{pypi_version}
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Distro - an OS platform information API
 
 License:        Apache License, Version 2.0
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 09 2024 Odilon Sousa <osousa@redhat.com> - 1.7.0-5
+- Bump version to rebuild with python3 build name
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.7.0-4
 - Remove SCL bits
 
