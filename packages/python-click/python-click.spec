@@ -5,8 +5,8 @@
 %global pypi_name click
 
 Name:           python-%{pypi_name}
-Version:        8.1.3
-Release:        5%{?dist}
+Version:        8.1.7
+Release:        1%{?dist}
 Summary:        Composable command line interface toolkit
 
 License:        BSD-3-Clause
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 8.1.7-1
+- Update to 8.1.7
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 8.1.3-5
 - Remove SCL bits
 
