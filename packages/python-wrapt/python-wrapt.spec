@@ -5,8 +5,8 @@
 %global pypi_name wrapt
 
 Name:           python-%{pypi_name}
-Version:        1.14.1
-Release:        5%{?dist}
+Version:        1.16.0
+Release:        1%{?dist}
 Summary:        Module for decorators, wrappers and monkey patching
 
 License:        BSD
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.16.0-1
+- Update to 1.16.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.14.1-5
 - Remove SCL bits
 
