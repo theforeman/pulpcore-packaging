@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.49.19
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -47,8 +47,6 @@ Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 23.3.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.4
 Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.9.6
-Requires:       python%{python3_pkgversion}-aioredis >= 2.0.1
-Conflicts:      python%{python3_pkgversion}-aioredis >= 2.1
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Conflicts:      python%{python3_pkgversion}-asyncio-throttle >= 1.1
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
@@ -75,7 +73,7 @@ Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
 Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.93.5
 Requires:       python%{python3_pkgversion}-drf-spectacular = 0.26.5
 Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.12
-Requires:       python%{python3_pkgversion}-dynaconf <= 3.2.5
+Requires:       python%{python3_pkgversion}-dynaconf <= 3.3.0
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
 Requires:       python%{python3_pkgversion}-gnupg <= 0.5.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
@@ -118,7 +116,7 @@ Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
 Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
 Requires:       python%{python3_pkgversion}-uuid6 <= 2024.1.12
-Conflicts:      python%{python3_pkgversion}-whitenoise >= 6.5.0
+Conflicts:      python%{python3_pkgversion}-whitenoise >= 6.7.0
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.8
 Requires:       python%{python3_pkgversion}-yarl < 1.9.5
@@ -194,6 +192,9 @@ done
 
 
 %changelog
+* Tue Sep 10 2024 Odilon Sousa <osousa@redhat.com> - 3.49.19-2
+- Sync requirements with Pulp upstream requirements
+
 * Tue Sep 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.49.19-1
 - Update to 3.49.19
 
