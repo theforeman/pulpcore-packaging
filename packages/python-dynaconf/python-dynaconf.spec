@@ -5,8 +5,8 @@
 %global pypi_name dynaconf
 
 Name:           python-%{pypi_name}
-Version:        3.1.12
-Release:        4%{?dist}
+Version:        3.2.6
+Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.6-1
+- Update to 3.2.6
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.1.12-4
 - Remove SCL bits
 
