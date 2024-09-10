@@ -12,6 +12,7 @@ env:
   PULPCORE_FULL_REQUIREMENTS: pulpcore-requirements.txt
 
 jobs:
+
   generate_package_list:
     name: 'Gather Packages'
     runs-on: ubuntu-latest
@@ -52,21 +53,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: rpm/develop
-    - name: Install dependencies
-      run: |
-        sudo apt-get install -y --no-install-recommends python3-rpm rpm git-annex python3-semver
-        sudo curl --create-dirs -o /usr/local/bin/spectool https://pagure.io/rpmdevtools/raw/26a8abc746fba9c0b32eb899b96c92841a37855a/f/spectool.in
-        sudo curl --create-dirs -o /usr/local/bin/rpmdev-bumpspec https://pagure.io/rpmdevtools/raw/6f387c1deaa5cbed770310e288abde04b17421dc/f/rpmdev-bumpspec
-        sudo curl --create-dirs -o /usr/local/bin/rpmdev-vercmp https://pagure.io/rpmdevtools/raw/79740e6f1881e399b0b4340a8090dd5adc91a4ea/f/rpmdev-vercmp
-        printf '#!/bin/bash\necho "$GIT_AUTHOR_NAME <$GIT_AUTHOR_EMAIL>"' | sudo tee /usr/local/bin/rpmdev-packager
-        sudo chmod +x /usr/local/bin/*
-    - name: Update Packages
-      run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}
-    - name: Open a PR
-      uses: peter-evans/create-pull-request@v6
-      with:
-        commit-message: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
-        branch: "bump_rpm/${{ matrix.package_name }}"
-        title: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
-        body: ''
-        delete-branch: true
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y --no-install-recommends python3-rpm rpm git-annex python3-semver
+          sudo curl --create-dirs -o /usr/local/bin/spectool https://pagure.io/rpmdevtools/raw/26a8abc746fba9c0b32eb899b96c92841a37855a/f/spectool.in
+          sudo curl --create-dirs -o /usr/local/bin/rpmdev-bumpspec https://pagure.io/rpmdevtools/raw/6f387c1deaa5cbed770310e288abde04b17421dc/f/rpmdev-bumpspec
+          sudo curl --create-dirs -o /usr/local/bin/rpmdev-vercmp https://pagure.io/rpmdevtools/raw/79740e6f1881e399b0b4340a8090dd5adc91a4ea/f/rpmdev-vercmp
+          printf '#!/bin/bash\necho "$GIT_AUTHOR_NAME <$GIT_AUTHOR_EMAIL>"' | sudo tee /usr/local/bin/rpmdev-packager
+          sudo chmod +x /usr/local/bin/*
+      - name: Update Packages
+        run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}
+      - name: Open a PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
+          branch: "bump_rpm/${{ matrix.package_name }}"
+          title: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
+          body: ''
+          delete-branch: true
