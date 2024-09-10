@@ -5,8 +5,8 @@
 %global pypi_name drf-nested-routers
 
 Name:           python-%{pypi_name}
-Version:        0.93.4
-Release:        6%{?dist}
+Version:        0.93.5
+Release:        1%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
 License:        Apache
@@ -25,8 +25,8 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-django >= 1.11
-Requires:       python%{python3_pkgversion}-djangorestframework >= 3.6.0
+Requires:       python%{python3_pkgversion}-django >= 3.2
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.93.5-1
+- Update to 0.93.5
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.93.4-6
 - Remove SCL bits
 
