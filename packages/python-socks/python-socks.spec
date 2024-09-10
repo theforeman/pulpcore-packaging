@@ -2,12 +2,12 @@
 %global __python3 /usr/bin/python3.11
 
 # Created by pyp2rpm-3.3.3
-%global pypi_name python-socks
+%global pypi_name python_socks
 %global srcname socks
 
 Name:           python-%{srcname}
-Version:        2.0.3
-Release:        6%{?dist}
+Version:        2.5.1
+Release:        1%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
 License:        Apache 2
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 10 2024 Odilon Sousa <osousa@redhat.com> - 2.5.1-1
+- Release python-socks 2.5.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.0.3-6
 - Remove SCL bits
 
