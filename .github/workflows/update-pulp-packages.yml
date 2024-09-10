@@ -52,6 +52,8 @@ jobs:
         sudo curl --create-dirs -o /usr/local/bin/rpmdev-vercmp https://pagure.io/rpmdevtools/raw/79740e6f1881e399b0b4340a8090dd5adc91a4ea/f/rpmdev-vercmp
         printf '#!/bin/bash\necho "$GIT_AUTHOR_NAME <$GIT_AUTHOR_EMAIL>"' | sudo tee /usr/local/bin/rpmdev-packager
         sudo chmod +x /usr/local/bin/*
+    - name: Initialize git annex
+      run: git annex init
     - name: Update Packages
       run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}
     - name: Open a PR
