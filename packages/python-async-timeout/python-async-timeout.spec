@@ -5,8 +5,8 @@
 %global pypi_name async-timeout
 
 Name:           python-%{pypi_name}
-Version:        4.0.2
-Release:        6%{?dist}
+Version:        4.0.3
+Release:        1%{?dist}
 Summary:        Timeout context manager for asyncio programs
 
 License:        Apache 2
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.0.3-1
+- Update to 4.0.3
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.0.2-6
 - Remove SCL bits
 
