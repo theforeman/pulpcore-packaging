@@ -6,8 +6,8 @@
 %global pypi_name aiohttp-socks
 
 Name:           python-%{pypi_name}
-Version:        0.7.1
-Release:        7%{?dist}
+Version:        0.8.4
+Release:        1%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -27,9 +27,8 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-aiohttp >= 2.3.2
-Requires:       python%{python3_pkgversion}-attrs >= 19.2.0
 Requires:       python%{python3_pkgversion}-socks < 3.0.0
-Requires:       python%{python3_pkgversion}-socks >= 2.0.0
+Requires:       python%{python3_pkgversion}-socks >= 2.4.3
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -61,6 +60,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.8.4-1
+- Update to 0.8.4
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.7.1-7
 - Remove SCL bits
 
