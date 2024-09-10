@@ -5,8 +5,8 @@
 %global pypi_name pbr
 
 Name:           python-%{pypi_name}
-Version:        5.8.0
-Release:        7%{?dist}
+Version:        6.1.0
+Release:        1%{?dist}
 Summary:        Python Build Reasonableness
 
 License:        None
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.1.0-1
+- Update to 6.1.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 5.8.0-7
 - Remove SCL bits
 
