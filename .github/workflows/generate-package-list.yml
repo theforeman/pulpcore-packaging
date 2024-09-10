@@ -16,6 +16,8 @@ jobs:
   generate_package_list:
     name: 'Gather Packages'
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     container:
       image: quay.io/centos/centos:stream9
     steps:
