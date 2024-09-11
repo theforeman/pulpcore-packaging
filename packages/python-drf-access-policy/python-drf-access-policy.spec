@@ -5,8 +5,8 @@
 %global pypi_name drf-access-policy
 
 Name:           python-%{pypi_name}
-Version:        1.3.0
-Release:        4%{?dist}
+Version:        1.5.0
+Release:        1%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.5.0-1
+- Update to 1.5.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.3.0-4
 - Remove SCL bits
 
