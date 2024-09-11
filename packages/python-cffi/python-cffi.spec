@@ -5,8 +5,8 @@
 %global pypi_name cffi
 
 Name:           python-%{pypi_name}
-Version:        1.15.1
-Release:        5%{?dist}
+Version:        1.17.1
+Release:        1%{?dist}
 Summary:        Foreign Function Interface for Python calling C code
 
 License:        MIT
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.17.1-1
+- Update to 1.17.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.15.1-5
 - Remove SCL bits
 
