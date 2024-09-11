@@ -5,8 +5,8 @@
 %global pypi_name asgiref
 
 Name:           python-%{pypi_name}
-Version:        3.6.0
-Release:        5%{?dist}
+Version:        3.8.1
+Release:        1%{?dist}
 Summary:        ASGI specs, helper code, and adapters
 
 License:        BSD
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.8.1-1
+- Update to 3.8.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.6.0-5
 - Remove SCL bits
 
