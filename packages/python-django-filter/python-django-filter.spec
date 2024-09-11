@@ -3,10 +3,11 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-filter
+%global srcname django_filters
 
 Name:           python-%{pypi_name}
-Version:        23.2
-Release:        4%{?dist}
+Version:        23.5
+Release:        1%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
@@ -15,7 +16,10 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-tomli
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-flit_core
+
 
 
 %description
@@ -41,28 +45,27 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst
-%{python3_sitelib}/django_filters
-%{python3_sitelib}/django_filter-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{srcname}
+%{python3_sitelib}/django_filter-%{version}.dist-info/
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 23.5-1
+- Update to 23.5
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 23.2-4
 - Remove SCL bits
 
