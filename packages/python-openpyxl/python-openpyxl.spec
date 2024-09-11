@@ -5,8 +5,8 @@
 %global pypi_name openpyxl
 
 Name:           python-%{pypi_name}
-Version:        3.1.0
-Release:        5%{?dist}
+Version:        3.1.5
+Release:        1%{?dist}
 Summary:        A Python library to read/write Excel 2010 xlsx/xlsm files
 
 License:        MIT
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.5-1
+- Update to 3.1.5
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.1.0-5
 - Remove SCL bits
 
