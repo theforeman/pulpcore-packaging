@@ -5,8 +5,8 @@
 %global pypi_name smmap
 
 Name:           python-%{pypi_name}
-Version:        5.0.0
-Release:        6%{?dist}
+Version:        5.0.1
+Release:        1%{?dist}
 Summary:        A pure Python implementation of a sliding window memory map manager
 
 License:        BSD
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.1-1
+- Update to 5.0.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 5.0.0-6
 - Remove SCL bits
 
