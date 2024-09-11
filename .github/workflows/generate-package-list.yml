@@ -68,7 +68,7 @@ jobs:
       - name: Update Packages
         run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}
       - name: Open a PR
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
           branch: "bump_rpm/${{ matrix.package_name }}"
