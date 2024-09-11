@@ -5,8 +5,8 @@
 %global pypi_name djangorestframework
 
 Name:           python-%{pypi_name}
-Version:        3.14.0
-Release:        4%{?dist}
+Version:        3.15.1
+Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.15.1-1
+- Update to 3.15.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.14.0-4
 - Remove SCL bits
 
