@@ -3,15 +3,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name googleapis-common-protos
+%global srcname googleapis_common_protos
 
 Name:           python-%{pypi_name}
-Version:        1.59.1
-Release:        5%{?dist}
+Version:        1.65.0
+Release:        1%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-api-common-protos
-Source0:        https://files.pythonhosted.org/packages/source/g/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -53,7 +54,7 @@ Requires:       python%{python3_pkgversion}-protobuf >= 3.19.5
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -73,10 +74,12 @@ set -ex
 %doc README.rst
 %{python3_sitelib}/google
 %{python3_sitelib}/googleapis_common_protos-%{version}-py%{python3_version}.egg-info
-%{python3_sitelib}/googleapis_common_protos-%{version}-py%{python3_version}-nspkg.pth
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.65.0-1
+- Update to 1.65.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.59.1-5
 - Remove SCL bits
 
