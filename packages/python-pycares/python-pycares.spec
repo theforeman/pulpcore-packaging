@@ -5,8 +5,8 @@
 %global pypi_name pycares
 
 Name:           python-%{pypi_name}
-Version:        4.1.2
-Release:        6%{?dist}
+Version:        4.4.0
+Release:        1%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.4.0-1
+- Update to 4.4.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.1.2-6
 - Remove SCL bits
 
