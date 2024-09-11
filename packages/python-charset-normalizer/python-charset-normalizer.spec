@@ -5,8 +5,8 @@
 %global pypi_name charset-normalizer
 
 Name:           python-%{pypi_name}
-Version:        2.1.1
-Release:        5%{?dist}
+Version:        3.3.2
+Release:        1%{?dist}
 Summary:        The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet
 
 License:        MIT
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.2-1
+- Update to 3.3.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.1.1-5
 - Remove SCL bits
 
