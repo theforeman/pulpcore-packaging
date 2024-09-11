@@ -5,8 +5,8 @@
 %global pypi_name lxml
 
 Name:           python-%{pypi_name}
-Version:        4.9.2
-Release:        5%{?dist}
+Version:        5.3.0
+Release:        1%{?dist}
 Summary:        Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
 
 License:        BSD-3-Clause
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 5.3.0-1
+- Update to 5.3.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.9.2-5
 - Remove SCL bits
 
