@@ -9,8 +9,8 @@
 %global pkg_name json_stream_rs_tokenizer
 
 Name:           python-%{pypi_name}
-Version:        0.4.25
-Release:        4%{?dist}
+Version:        0.4.26
+Release:        1%{?dist}
 Summary:        Faster tokenizer for the json-stream Python library
 
 License:        MIT
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.26-1
+- Update to 0.4.26
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.4.25-4
 - Remove SCL bits
 
