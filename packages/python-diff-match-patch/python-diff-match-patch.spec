@@ -5,8 +5,8 @@
 %global pypi_name diff-match-patch
 
 Name:           python-%{pypi_name}
-Version:        20200713
-Release:        7%{?dist}
+Version:        20230430
+Release:        1%{?dist}
 Summary:        Repackaging of Google's Diff Match and Patch libraries
 
 License:        Apache
@@ -15,8 +15,9 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-setuptools >= 38.6.0
+BuildRequires:  python%{python3_pkgversion}-tomli
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-flit_core
 
 
 %description
@@ -31,32 +32,30 @@ Summary:        %{summary}
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
-
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.md
 %{python3_sitelib}/diff_match_patch
-%{python3_sitelib}/diff_match_patch-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/diff_match_patch-%{version}.dist-info/
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 20230430-1
+- Update to 20230430
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 20200713-7
 - Remove SCL bits
 
