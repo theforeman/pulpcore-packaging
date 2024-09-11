@@ -5,8 +5,8 @@
 %global pypi_name uuid6
 
 Name:           python-%{pypi_name}
-Version:        2023.5.2
-Release:        5%{?dist}
+Version:        2024.1.12
+Release:        1%{?dist}
 Summary:        New time-based UUID formats which are suited for use as a database key
 
 License:        None
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2024.1.12-1
+- Update to 2024.1.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2023.5.2-5
 - Remove SCL bits
 
