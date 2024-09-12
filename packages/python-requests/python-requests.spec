@@ -7,7 +7,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.31.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -27,7 +27,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-certifi >= 2017.4.17
-Requires:       python%{python3_pkgversion}-charset-normalizer < 3
+Requires:       python%{python3_pkgversion}-charset-normalizer < 4
 Requires:       python%{python3_pkgversion}-charset-normalizer >= 2
 Requires:       python%{python3_pkgversion}-cryptography >= 1.3.4
 Requires:       python%{python3_pkgversion}-idna < 4
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 12 2024 Odilon Sousa <osousa@redhat.com> - 2.31.0-6
+- Update charset-normalizer requirements for requests3
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.31.0-5
 - Remove SCL bits
 
