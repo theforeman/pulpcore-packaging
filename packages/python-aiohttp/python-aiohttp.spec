@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.9.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -28,8 +28,6 @@ Requires:       python%{python3_pkgversion}-brotli
 Requires:       python%{python3_pkgversion}-aiodns
 Requires:       python%{python3_pkgversion}-aiosignal >= 1.1.2
 Requires:       python%{python3_pkgversion}-attrs >= 17.3.0
-Requires:       python%{python3_pkgversion}-charset-normalizer < 3.0
-Requires:       python%{python3_pkgversion}-charset-normalizer >= 2.0
 Requires:       python%{python3_pkgversion}-frozenlist >= 1.1.1
 Requires:       python%{python3_pkgversion}-multidict < 7.0
 Requires:       python%{python3_pkgversion}-multidict >= 4.5
@@ -69,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 12 2024 Odilon Sousa <osousa@redhat.com> - 3.9.5-2
+- Drop charset-normalizer requirement
+
 * Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.9.5-1
 - Update to 3.9.5
 
