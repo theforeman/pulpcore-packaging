@@ -7,7 +7,7 @@
 %global srcname pygments
 
 Name:           python-%{srcname}
-Version:        2.17.0
+Version:        2.18.0
 Release:        1%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.18.0-1
+- Update to 2.18.0
+
 * Fri Mar 01 2024 Odilon Sousa <osousa@redhat.com> - 2.17.0-1
 - Release python-pygments 2.17.0
 
