@@ -5,8 +5,8 @@
 %global pypi_name redis
 
 Name:           python-%{pypi_name}
-Version:        4.3.4
-Release:        5%{?dist}
+Version:        5.0.2
+Release:        1%{?dist}
 Summary:        Python client for Redis database and key-value store
 
 License:        MIT
@@ -24,10 +24,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-async-timeout >= 4.0.2
-Requires:       python%{python3_pkgversion}-packaging >= 20.4
-Requires:       python%{python3_pkgversion}-deprecated
-
+Requires:       python%{python3_pkgversion}-async-timeout >= 4.0.3
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -58,6 +55,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.2-1
+- Update to 5.0.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.3.4-5
 - Remove SCL bits
 
