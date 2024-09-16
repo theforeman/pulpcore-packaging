@@ -6,8 +6,8 @@
 %global srcname deprecated
 
 Name:           python-%{srcname}
-Version:        1.2.13
-Release:        5%{?dist}
+Version:        1.2.14
+Release:        1%{?dist}
 Summary:        Python @deprecated decorator to deprecate old python classes, functions or methods
 
 License:        MIT
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.14-1
+- Update to 1.2.14
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.2.13-5
 - Remove SCL bits
 
