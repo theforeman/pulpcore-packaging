@@ -4,8 +4,8 @@
 %global pypi_name opentelemetry_util_http
 
 Name:           python-%{pypi_name}
-Version:        0.40b0
-Release:        3%{?dist}
+Version:        0.44b0
+Release:        1%{?dist}
 Summary:        Web util for OpenTelemetry
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.44b0-1
+- Update to 0.44b0
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-3
 - Obsolete python39 packages for a smooth upgrade
 
