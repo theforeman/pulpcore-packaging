@@ -6,8 +6,8 @@
 %global srcname ruamel-yaml-clib
 
 Name:           python-%{srcname}
-Version:        0.2.7
-Release:        5%{?dist}
+Version:        0.2.8
+Release:        1%{?dist}
 Summary:        C version of reader, parser and emitter for ruamel
 
 License:        MIT
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.2.8-1
+- Update to 0.2.8
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.2.7-5
 - Remove SCL bits
 
