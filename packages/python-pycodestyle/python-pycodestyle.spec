@@ -5,8 +5,8 @@
 %global pypi_name pycodestyle
 
 Name:           python-%{pypi_name}
-Version:        2.9.1
-Release:        3%{?dist}
+Version:        2.11.1
+Release:        1%{?dist}
 Summary:        Python style guide checker
 
 License:        Expat license
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.11.1-1
+- Update to 2.11.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.9.1-3
 - Remove SCL bits
 
