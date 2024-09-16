@@ -5,8 +5,8 @@
 %global pypi_name pycparser
 
 Name:           python-%{pypi_name}
-Version:        2.21
-Release:        6%{?dist}
+Version:        2.22
+Release:        1%{?dist}
 Summary:        C parser in Python
 
 License:        BSD
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.22-1
+- Update to 2.22
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.21-6
 - Remove SCL bits
 
