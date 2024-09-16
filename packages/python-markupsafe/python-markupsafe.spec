@@ -14,8 +14,8 @@
 %endif
 
 Name:           python-%{srcname}
-Version:        2.1.2
-Release:        5%{?dist}
+Version:        2.1.5
+Release:        1%{?dist}
 Summary:        Safely add untrusted strings to HTML/XML markup
 
 License:        BSD-3-Clause
@@ -88,6 +88,9 @@ CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
 %endif
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.1.5-1
+- Update to 2.1.5
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.1.2-5
 - Remove SCL bits
 
