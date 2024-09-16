@@ -6,8 +6,8 @@
 %global srcname debian
 
 Name:           python-%{srcname}
-Version:        0.1.44
-Release:        7%{?dist}
+Version:        0.1.49
+Release:        1%{?dist}
 Summary:        Debian package related modules
 
 License:        GPL-2+
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.1.49-1
+- Update to 0.1.49
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.1.44-7
 - Remove SCL bits
 
