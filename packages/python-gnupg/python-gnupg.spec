@@ -6,8 +6,8 @@
 %global srcname gnupg
 
 Name:           python-%{srcname}
-Version:        0.5.0
-Release:        5%{?dist}
+Version:        0.5.2
+Release:        1%{?dist}
 Summary:        A wrapper for the Gnu Privacy Guard (GPG or GnuPG)
 
 License:        BSD-3-Clause
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.2-1
+- Update to 0.5.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.5.0-5
 - Remove SCL bits
 
