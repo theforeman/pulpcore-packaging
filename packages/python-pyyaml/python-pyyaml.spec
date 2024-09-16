@@ -7,8 +7,8 @@
 %global srcname pyyaml
 
 Name:           python-%{srcname}
-Version:        5.4.1
-Release:        8%{?dist}
+Version:        6.0.1
+Release:        1%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.1-1
+- Update to 6.0.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 5.4.1-8
 - Remove SCL bits
 
