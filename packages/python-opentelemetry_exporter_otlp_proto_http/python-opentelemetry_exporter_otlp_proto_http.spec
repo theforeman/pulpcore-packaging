@@ -4,8 +4,8 @@
 %global pypi_name opentelemetry_exporter_otlp_proto_http
 
 Name:           python-%{pypi_name}
-Version:        1.19.0
-Release:        5%{?dist}
+Version:        1.23.0
+Release:        1%{?dist}
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -73,6 +73,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.23.0-1
+- Update to 1.23.0
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-5
 - Obsolete python39 packages for a smooth upgrade
 
