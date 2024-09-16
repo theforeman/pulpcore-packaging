@@ -5,8 +5,8 @@
 %global pypi_name flake8
 
 Name:           python-%{pypi_name}
-Version:        5.0.0
-Release:        3%{?dist}
+Version:        6.1.0
+Release:        1%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
 License:        MIT
@@ -28,10 +28,10 @@ Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-importlib-metadata
 Requires:       python%{python3_pkgversion}-mccabe < 0.8.0
 Requires:       python%{python3_pkgversion}-mccabe >= 0.7.0
-Requires:       python%{python3_pkgversion}-pycodestyle < 2.10.0
-Requires:       python%{python3_pkgversion}-pycodestyle >= 2.9.0
-Requires:       python%{python3_pkgversion}-pyflakes < 2.6.0
-Requires:       python%{python3_pkgversion}-pyflakes >= 2.5.0
+Requires:       python%{python3_pkgversion}-pycodestyle < 2.12.0
+Requires:       python%{python3_pkgversion}-pycodestyle >= 2.11.0
+Requires:       python%{python3_pkgversion}-pyflakes < 3.2.0
+Requires:       python%{python3_pkgversion}-pyflakes >= 3.1.0
 Requires:       python%{python3_pkgversion}-setuptools
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.1.0-1
+- Update to 6.1.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 5.0.0-3
 - Remove SCL bits
 
