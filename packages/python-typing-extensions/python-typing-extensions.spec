@@ -5,8 +5,8 @@
 %global pypi_name typing-extensions
 
 Name:           python-%{pypi_name}
-Version:        4.7.1
-Release:        5%{?dist}
+Version:        4.12.2
+Release:        1%{?dist}
 Summary:        Backported and Experimental Type Hints for Python 3
 
 License:        PSF
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.12.2-1
+- Update to 4.12.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.7.1-5
 - Remove SCL bits
 
