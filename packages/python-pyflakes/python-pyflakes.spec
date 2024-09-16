@@ -5,8 +5,8 @@
 %global pypi_name pyflakes
 
 Name:           python-%{pypi_name}
-Version:        2.5.0
-Release:        3%{?dist}
+Version:        3.1.0
+Release:        1%{?dist}
 Summary:        passive checker of Python programs
 
 License:        MIT
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.0-1
+- Update to 3.1.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.5.0-3
 - Remove SCL bits
 
