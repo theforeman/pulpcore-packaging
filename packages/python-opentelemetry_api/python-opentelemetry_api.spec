@@ -4,8 +4,8 @@
 %global pypi_name opentelemetry_api
 
 Name:           python-%{pypi_name}
-Version:        1.19.0
-Release:        3%{?dist}
+Version:        1.23.0
+Release:        1%{?dist}
 Summary:        OpenTelemetry Python API.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -60,6 +60,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.23.0-1
+- Update to 1.23.0
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 1.19.0-3
 - Obsolete python39 packages for a smooth upgrade
 
