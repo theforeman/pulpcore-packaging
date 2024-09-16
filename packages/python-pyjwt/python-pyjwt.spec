@@ -6,8 +6,8 @@
 %global srcname pyjwt
 
 Name:           python-%{srcname}
-Version:        2.5.0
-Release:        5%{?dist}
+Version:        2.8.0
+Release:        1%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -27,9 +27,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Provides:       python%{python3_pkgversion}-jwt = %{version}-%{release}
 Obsoletes:      python%{python3_pkgversion}-jwt < %{version}-%{release}
-Requires:       python%{python3_pkgversion}-cryptography >= 3.3.1
-Requires:       python%{python3_pkgversion}-types-cryptography >= 3.3.21
-Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-cryptography >= 3.4.0
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{srcname} < %{version}-%{release}
 %endif
@@ -64,6 +62,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.8.0-1
+- Update to 2.8.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.5.0-5
 - Remove SCL bits
 
