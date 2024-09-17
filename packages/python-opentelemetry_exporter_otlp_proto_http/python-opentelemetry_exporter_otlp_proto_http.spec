@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.23.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -35,10 +35,10 @@ Requires:       python%{python3_pkgversion}-grpcio >= 1.0.0
 Requires:       python%{python3_pkgversion}-grpcio < 2.0.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.15.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api < 2.0.0
-Requires:       python%{python3_pkgversion}-opentelemetry_proto = 1.19.0
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk  >= 1.19.0
+Requires:       python%{python3_pkgversion}-opentelemetry_proto = %{version}
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk  >= %{version}
 Requires:       python%{python3_pkgversion}-opentelemetry_sdk  < 2.0.0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_common = 1.19.0
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_common = %{version}
 Requires:       python%{python3_pkgversion}-requests >= 2.7
 Requires:       python%{python3_pkgversion}-requests < 3.0
 
@@ -73,6 +73,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 17 2024 Odilon Sousa <osousa@redhat.com> - 1.23.0-2
+- Update requirements with macro %version to match all opentelemetry packages
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.23.0-1
 - Update to 1.23.0
 

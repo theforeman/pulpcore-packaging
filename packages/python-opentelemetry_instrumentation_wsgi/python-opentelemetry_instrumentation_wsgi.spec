@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.44b0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        WSGI Middleware for OpenTelemetry
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -28,9 +28,9 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:  python%{python3_pkgversion}-opentelemetry_api >= 1.12
 Requires:  python%{python3_pkgversion}-opentelemetry_api < 2
-Requires:  python%{python3_pkgversion}-opentelemetry_instrumentation = 0.40b0
-Requires:  python%{python3_pkgversion}-opentelemetry_semantic_conventions = 0.40b0
-Requires:  python%{python3_pkgversion}-opentelemetry_util_http = 0.40b0
+Requires:  python%{python3_pkgversion}-opentelemetry_instrumentation = %{version}
+Requires:  python%{python3_pkgversion}-opentelemetry_semantic_conventions = %{version}
+Requires:  python%{python3_pkgversion}-opentelemetry_util_http = %{version}
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 17 2024 Odilon Sousa <osousa@redhat.com> - 0.44b0-2
+- Update requirements with macro %version to match all opentelemetry packages
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.44b0-1
 - Update to 0.44b0
 
