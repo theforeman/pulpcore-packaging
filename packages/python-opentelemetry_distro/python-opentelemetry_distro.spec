@@ -4,8 +4,8 @@
 %global pypi_name opentelemetry_distro
 
 Name:           python-%{pypi_name}
-Version:        0.40b0
-Release:        7%{?dist}
+Version:        0.44b0
+Release:        1%{?dist}
 Summary:        OpenTelemetry Python Distro
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -81,6 +81,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Sep 17 2024 Odilon Sousa <osousa@redhat.com> - 0.44b0-1
+- Release python-opentelemetry_distro 0.44b0
+
 * Fri Nov 17 2023 Odilon Sousa <osousa@redhat.com> - 0.40b0-7
 - Obsolete python39 packages for a smooth upgrade
 
