@@ -5,7 +5,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.23.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Collector Exporters
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -26,8 +26,8 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_grpc >= 1.19.0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.19.0
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_grpc >= %{version}
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= %{version}
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
@@ -58,6 +58,9 @@ set -ex
 %{python3_sitelib}/opentelemetry/exporter/otlp
 
 %changelog
+* Tue Sep 17 2024 Odilon Sousa <osousa@redhat.com> - 1.23.0-2
+- Update requirements with macro %version to match all opentelemetry packages
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.23.0-1
 - Update to 1.23.0
 
