@@ -3,15 +3,15 @@
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name trove-classifiers
+%global src_name trove_classifiers
 
 Name:           python-%{pypi_name}
-Version:        2023.7.6
-Release:        5%{?dist}
+Version:        2024.9.12
+Release:        1%{?dist}
 Summary:        Canonical source for classifiers on PyPI (pypi.org)
-
 License:        None
 URL:            https://github.com/pypa/trove-classifiers
-Source0:        https://files.pythonhosted.org/packages/source/t/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/t/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -34,7 +34,7 @@ Summary:        %{summary}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 17 2024 Odilon Sousa <osousa@redhat.com> - 2024.9.12-1
+- Release python-trove-classifiers 2024.9.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2023.7.6-5
 - Remove SCL bits
 
