@@ -5,14 +5,13 @@
 %global pypi_name protobuf
 
 Name:           python-%{pypi_name}
-Version:        4.21.6
-Release:        5%{?dist}
+Version:        4.25.3
+Release:        1%{?dist}
 Summary:        Protocol Buffers
 
 License:        BSD-3-Clause
 URL:            https://developers.google.com/protocol-buffers/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -49,14 +48,16 @@ set -ex
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
 %doc README.md
-%{python3_sitelib}/google
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}-nspkg.pth
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/google
+%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}-nspkg.pth
+%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.25.3-1
+- Update to 4.25.3
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.21.6-5
 - Remove SCL bits
 
