@@ -6,8 +6,8 @@
 %global srcname ruamel-yaml
 
 Name:           python-%{srcname}
-Version:        0.17.21
-Release:        6%{?dist}
+Version:        0.18.6
+Release:        1%{?dist}
 Summary:        ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
 
 License:        MIT license
@@ -53,13 +53,15 @@ set -ex
 
 %files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python3_sitelib}/ruamel
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}-nspkg.pth
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.18.6-1
+- Update to 0.18.6
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.17.21-6
 - Remove SCL bits
 
