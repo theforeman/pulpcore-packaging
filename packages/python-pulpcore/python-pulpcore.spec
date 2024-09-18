@@ -9,8 +9,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.19
-Release:        2%{?dist}
+Version:        3.49.20
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -77,7 +77,7 @@ Requires:       python%{python3_pkgversion}-dynaconf <= 3.3.0
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
 Requires:       python%{python3_pkgversion}-gnupg <= 0.5.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
-Requires:       python%{python3_pkgversion}-gunicorn < 22.1.0
+Requires:       python%{python3_pkgversion}-gunicorn < 23.1.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
 Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.4
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
@@ -192,6 +192,9 @@ done
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.49.20-1
+- Update to 3.49.20
+
 * Tue Sep 10 2024 Odilon Sousa <osousa@redhat.com> - 3.49.19-2
 - Sync requirements with Pulp upstream requirements
 
