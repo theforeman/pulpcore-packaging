@@ -5,8 +5,8 @@
 %global pypi_name platformdirs
 
 Name:           python-%{pypi_name}
-Version:        3.10.0
-Release:        5%{?dist}
+Version:        4.3.6
+Release:        1%{?dist}
 Summary:        A small Python module for determining appropriate platform-specific dirs, e
 
 License:        MIT
@@ -53,6 +53,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.3.6-1
+- Update to 4.3.6
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.10.0-5
 - Remove SCL bits
 
