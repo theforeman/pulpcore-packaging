@@ -3,20 +3,21 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-guid
+%global src_name django_guid
 
 Name:           python-%{pypi_name}
-Version:        3.3.0
-Release:        5%{?dist}
+Version:        3.4.0
+Release:        1%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
 License:        BSD
 URL:            https://github.com/snok/django-guid
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
-
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-poetry
 
 %description
 %{summary}
@@ -40,27 +41,28 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc docs/README_PYPI.rst
-%{python3_sitelib}/django_guid
-%{python3_sitelib}/django_guid-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{src_name}
+%exclude %{python3_sitelib}/CHANGELOG.rst
+%{python3_sitelib}/%{src_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.4.0-1
+- Update to 3.4.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.3.0-5
 - Remove SCL bits
 
