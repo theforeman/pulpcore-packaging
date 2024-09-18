@@ -5,13 +5,14 @@
 %global pypi_name schema
 
 Name:           python-%{pypi_name}
-Version:        0.7.5
-Release:        6%{?dist}
+Version:        0.7.7
+Release:        1%{?dist}
 Summary:        Simple data validation library
 
 License:        MIT
 URL:            https://github.com/keleshev/schema
-Source0:        %{pypi_source}
+Source0:        https://files.pythonhosted.org/packages/source/s/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -25,8 +26,6 @@ ${summary}
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
-Requires:       python%{python3_pkgversion}-contextlib2 >= 0.5.5
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -59,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.7.7-1
+- Update to 0.7.7
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.7.5-6
 - Remove SCL bits
 
