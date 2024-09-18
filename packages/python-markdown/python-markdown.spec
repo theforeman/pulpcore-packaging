@@ -6,17 +6,20 @@
 %global srcname markdown
 
 Name:           python-%{srcname}
-Version:        3.4.1
-Release:        4%{?dist}
+Version:        3.7
+Release:        1%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
 URL:            https://Python-Markdown.github.io/
-Source0:        https://files.pythonhosted.org/packages/source/M/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -26,8 +29,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-Requires:       python%{python3_pkgversion}-importlib-metadata >= 4.4
-Requires:       python%{python3_pkgversion}-setuptools
+
 
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{srcname} < %{version}-%{release}
@@ -40,30 +42,28 @@ Obsoletes:      python39-%{srcname} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+%autosetup -n %{srcname}-%{version}
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license LICENSE.md
-%doc README.md
+%{python3_sitelib}/%{srcname}
 %exclude %{_bindir}/markdown_py
-%{python3_sitelib}/markdown
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.7-1
+- Update to 3.7
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.4.1-4
 - Remove SCL bits
 
