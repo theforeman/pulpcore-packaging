@@ -5,8 +5,8 @@
 %global pypi_name django-lifecycle
 
 Name:           python-%{pypi_name}
-Version:        1.0.0
-Release:        4%{?dist}
+Version:        1.1.2
+Release:        1%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
@@ -61,10 +61,14 @@ set -ex
 %license LICENSE.md
 %doc README.md
 %{python3_sitelib}/django_lifecycle
+%{python3_sitelib}/django_lifecycle_checks
 %{python3_sitelib}/django_lifecycle-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.2-1
+- Update to 1.1.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.0.0-4
 - Remove SCL bits
 
