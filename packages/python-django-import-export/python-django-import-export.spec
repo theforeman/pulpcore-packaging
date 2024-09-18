@@ -4,15 +4,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-import-export
+%global src_name django_import_export
 
 Name:           python-%{pypi_name}
-Version:        3.1.0
-Release:        4%{?dist}
+Version:        3.3.9
+Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
 URL:            https://github.com/django-import-export/django-import-export
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -43,9 +44,9 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
@@ -66,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.9-1
+- Update to 3.3.9
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.1.0-4
 - Remove SCL bits
 
