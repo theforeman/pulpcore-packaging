@@ -6,13 +6,13 @@
 %global srcname pyopenssl
 
 Name:           python-%{pypi_name}
-Version:        24.1.0
+Version:        24.2.1
 Release:        1%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
 URL:            https://pyopenssl.org/
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -35,7 +35,7 @@ Requires:       python%{python3_pkgversion}-cryptography < 43
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 24.2.1-1
+- Update to 24.2.1
+
 * Tue Mar 26 2024 Odilon Sousa <osousa@redhat.com> - 24.1.0-1
 - Release python-pyOpenSSL 24.1.0
 
