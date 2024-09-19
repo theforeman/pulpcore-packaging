@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.11.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -30,8 +30,6 @@ Summary:        %{summary}
 
 Requires:       python%{python3_pkgversion}-bandersnatch >= 6.1
 Conflicts:      python%{python3_pkgversion}-bandersnatch >= 6.2
-Requires:       python%{python3_pkgversion}-packaging >= 21.3
-Conflicts:      python%{python3_pkgversion}-packaging >= 22.0
 Requires:       python%{python3_pkgversion}-pkginfo >= 1.10.0
 Requires:       python%{python3_pkgversion}-pkginfo < 1.12.0
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.28
@@ -74,6 +72,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 19 2024 Odilon Sousa <osousa@redhat.com> - 3.11.3-2
+- Remove packaging requirement
+
 * Mon Sep 09 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.3-1
 - Update to 3.11.3
 
