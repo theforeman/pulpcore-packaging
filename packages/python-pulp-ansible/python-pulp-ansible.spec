@@ -6,7 +6,7 @@
 %global pypi_name pulp-ansible
 
 Name:           python-%{pypi_name}
-Version:        0.21.8
+Version:        0.22.1
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -36,12 +36,12 @@ Conflicts:      python%{python3_pkgversion}-async-lru >= 2.1
 Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.4.5
 Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.9
-Conflicts:      python%{python3_pkgversion}-jsonschema >= 4.23
+Requires:       python%{python3_pkgversion}-jsonschema < 4.23
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
-Requires:       python%{python3_pkgversion}-pulpcore < 3.55
+Requires:       python%{python3_pkgversion}-pulpcore < 3.70
 Requires:       python%{python3_pkgversion}-semantic-version >= 2.9
 Conflicts:      python%{python3_pkgversion}-semantic-version >= 2.11
-Requires:       python%{python3_pkgversion}-pillow >= 8.3.2
+Requires:       python%{python3_pkgversion}-pillow >= 10.3
 Requires:       python%{python3_pkgversion}-pillow < 10.4
 Requires:       python%{python3_pkgversion}-setuptools
 
@@ -80,6 +80,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.22.1-1
+- Update to 0.22.1
+
 * Mon Sep 02 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.21.8-1
 - Update to 0.21.8
 
