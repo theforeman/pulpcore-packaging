@@ -6,7 +6,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.20.3
+Version:        2.21.0
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -26,17 +26,12 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-ecdsa >= 0.14
-Conflicts:      python%{python3_pkgversion}-ecdsa >= 0.18.1
-Requires:       python%{python3_pkgversion}-pulpcore < 3.55
+Requires:       python%{python3_pkgversion}-pulpcore < 3.70
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
-Requires:       python%{python3_pkgversion}-pyjwkest >= 1.4
-Conflicts:      python%{python3_pkgversion}-pyjwkest >= 1.4.3
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.4
 Conflicts:      python%{python3_pkgversion}-pyjwt >= 2.9
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
-Conflicts:      python%{python3_pkgversion}-jsonschema >= 4.22
-Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-jsonschema < 4.24
 
 Provides:       pulpcore-plugin(container) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -74,6 +69,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.21.0-1
+- Update to 2.21.0
+
 * Tue Sep 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.20.3-1
 - Update to 2.20.3
 
