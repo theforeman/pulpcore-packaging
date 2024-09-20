@@ -5,7 +5,7 @@
 %global pypi_name pulp-deb
 
 Name:           python-%{pypi_name}
-Version:        3.2.1
+Version:        3.3.1
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -27,8 +27,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-debian < 0.2.0
 Requires:       python%{python3_pkgversion}-debian >= 0.1.44
-Requires:       python%{python3_pkgversion}-pulpcore < 3.55
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.45.1
+Requires:       python%{python3_pkgversion}-pulpcore < 3.70
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.49
 Requires:       python%{python3_pkgversion}-gnupg < 0.6
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema < 5.0
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.1-1
+- Update to 3.3.1
+
 * Wed Aug 07 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.1-1
 - Update to 3.2.1
 
