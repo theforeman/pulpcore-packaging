@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.26.1
+Version:        3.27.1
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -40,11 +40,12 @@ Requires:       python%{python3_pkgversion}-libcomps >= 0.1.21
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
-Requires:       python%{python3_pkgversion}-pulpcore < 3.55
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.44.1
-Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-pulpcore < 3.70
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
+Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
+Conflicts:      python%{python3_pkgversion}-importlib-resources < 6.5
 
 Provides:       pulpcore-plugin(rpm) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -84,6 +85,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.1-1
+- Update to 3.27.1
+
 * Tue Jul 02 2024 Ian Ballou <ianballou67@gmail.com> - 3.26.1-1
 - Release python-pulp-rpm 3.26.1
 
