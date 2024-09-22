@@ -5,7 +5,7 @@
 %global pypi_name cryptography
 
 Name:           python-%{pypi_name}
-Version:        42.0.8
+Version:        43.0.1
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
@@ -21,6 +21,8 @@ BuildRequires:  python%{python3_pkgversion}-cffi >= 1.12
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-rust >= 1.7.0
 BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  python%{python3_pkgversion}-maturin >= 1
+BuildRequires:  python%{python3_pkgversion}-maturin < 2
 BuildRequires:  pyproject-rpm-macros
 
 BuildRequires:  rust-toolset
@@ -62,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sun Sep 22 2024 Foreman Packaging Automation <packaging@theforeman.org> - 43.0.1-1
+- Update to 43.0.1
+
 * Wed Aug 07 2024 Odilon Sousa <osousa@redhat.com> - 42.0.8-1
 - Release python-cryptography 42.0.8
 
