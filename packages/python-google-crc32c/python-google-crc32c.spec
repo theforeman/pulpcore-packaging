@@ -1,3 +1,5 @@
+%global debug_package %{nil}
+
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
 
