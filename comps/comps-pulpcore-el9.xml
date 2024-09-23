@@ -122,6 +122,7 @@
       <packagereq type="default">python3.11-gitdb</packagereq>
       <packagereq type="default">python3.11-gitpython</packagereq>
       <packagereq type="default">python3.11-gnupg</packagereq>
+      <packagereq type="default">python3.11-google-api-core</packagereq>
       <packagereq type="default">python3.11-google-cloud-storage</packagereq>
       <packagereq type="default">python3.11-googleapis-common-protos</packagereq>
       <packagereq type="default">python3.11-grpcio</packagereq>
