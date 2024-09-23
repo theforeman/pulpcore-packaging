@@ -248,6 +248,7 @@
       <packagereq type="default">python3.11-pytz</packagereq>
       <packagereq type="default">python3.11-pyyaml</packagereq>
       <packagereq type="default">python3.11-rapidfuzz</packagereq>
+      <packagereq type="default">python3.11-rsa</packagereq>
       <packagereq type="default">python3.11-redis</packagereq>
       <packagereq type="default">python3.11-requests</packagereq>
       <packagereq type="default">python3.11-requests-oauthlib</packagereq>
