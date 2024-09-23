@@ -126,6 +126,7 @@
       <packagereq type="default">python3.11-google-auth</packagereq>
       <packagereq type="default">python3.11-google-cloud-core</packagereq>
       <packagereq type="default">python3.11-google-cloud-storage</packagereq>
+      <packagereq type="default">python3.11-google-crc32c</packagereq>
       <packagereq type="default">python3.11-googleapis-common-protos</packagereq>
       <packagereq type="default">python3.11-grpcio</packagereq>
       <packagereq type="default">python3.11-gunicorn</packagereq>
