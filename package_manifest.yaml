@@ -143,6 +143,7 @@ tier3_packages:
     python-hatch_fancy_pypi_readme: {}
     python-hatch: {}
     python-protobuf: {}
+    python-proto-plus: {}
 
 tier4_packages:
   hosts:
