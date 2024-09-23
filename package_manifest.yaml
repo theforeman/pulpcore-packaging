@@ -369,6 +369,12 @@ tier4_packages:
     python-jq: {}
     python-json-stream-rs-tokenizer: {}
     python-json-stream: {}
+    python-google-api-core: {}
+    python-google-auth: {}
+    python-google-cloud-core: {}
+    python-google-cloud-storage: {}
+    python-google-crc32c: {}
+    python-google-resumable-media: {}
 
 pulpcore_packages:
   hosts:
