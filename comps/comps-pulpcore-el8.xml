@@ -165,6 +165,7 @@
       <packagereq type="default">python3.11-markuppy</packagereq>
       <packagereq type="default">python3.11-markupsafe</packagereq>
       <packagereq type="default">python3.11-marshmallow</packagereq>
+      <packagereq type="default">python3.11-maturin</packagereq>
       <packagereq type="default">python3.11-mccabe</packagereq>
       <packagereq type="default">python3.11-msrest</packagereq>
       <packagereq type="default">python3.11-more-itertools</packagereq>
