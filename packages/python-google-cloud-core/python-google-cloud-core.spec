@@ -91,5 +91,5 @@ set -ex
 
 
 %changelog
-*  - 2.4.1-1
+* Mon Sep 23 2024 Dieter Maes <dmaes@inuits.eu> - 2.4.1-1
 - Initial package.

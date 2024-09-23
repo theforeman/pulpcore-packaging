@@ -68,5 +68,5 @@ set -ex
 
 
 %changelog
-*  - 1.6.0-1
+* Mon Sep 23 2024 Dieter Maes <dmaes@inuits.eu> - 1.6.0-1
 - Initial package.
