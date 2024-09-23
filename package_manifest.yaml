@@ -376,6 +376,7 @@ tier4_packages:
     python-google-crc32c: {}
     python-google-resumable-media: {}
     python-rsa: {}
+    python-cachetools: {}
 
 pulpcore_packages:
   hosts:
