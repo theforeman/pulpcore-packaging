@@ -69,6 +69,7 @@
       <packagereq type="default">python3.11-cleo</packagereq>
       <packagereq type="default">python3.11-click</packagereq>
       <packagereq type="default">python3.11-click-shell</packagereq>
+      <packagereq type="default">python3.11-python-cloudevents</packagereq>
       <packagereq type="default">python3.11-colorama</packagereq>
       <packagereq type="default">python3.11-commonmark</packagereq>
       <packagereq type="default">python3.11-contextlib2</packagereq>

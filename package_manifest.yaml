@@ -192,6 +192,7 @@ tier4_packages:
     python-cleo: {}
     python-click: {}
     python-click-shell: {}
+    python-cloudevents: {}
     python-colorama: {}
     python-commonmark: {}
     python-contextlib2: {}
