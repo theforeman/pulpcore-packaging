@@ -82,6 +82,7 @@
       <packagereq type="default">python3.11-debian</packagereq>
       <packagereq type="default">python3.11-defusedxml</packagereq>
       <packagereq type="default">python3.11-deprecated</packagereq>
+      <packagereq type="default">python3.11-deprecation</packagereq>
       <packagereq type="default">python3.11-diff-match-patch</packagereq>
       <packagereq type="default">python3.11-distro</packagereq>
       <packagereq type="default">python3.11-distlib</packagereq>

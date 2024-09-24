@@ -204,6 +204,7 @@ tier4_packages:
     python-debian: {}
     python-defusedxml: {}
     python-deprecated: {}
+    python-deprecation: {}
     python-diff-match-patch: {}
     python-distlib: {}
     python3-distro: {}
