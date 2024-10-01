@@ -6,8 +6,8 @@
 %global pypi_name drf-spectacular
 
 Name:           python-%{pypi_name}
-Version:        0.26.5
-Release:        5%{?dist}
+Version:        0.27.2
+Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 01 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.27.2-1
+- Update to 0.27.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.26.5-5
 - Remove SCL bits
 
