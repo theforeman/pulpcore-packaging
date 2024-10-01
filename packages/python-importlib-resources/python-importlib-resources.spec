@@ -3,20 +3,24 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name importlib-resources
+%global src_name importlib_resources
 
 Name:           python-%{pypi_name}
-Version:        5.4.0
-Release:        8%{?dist}
+Version:        6.4.5
+Release:        1%{?dist}
 Summary:        Read resources from Python packages
 
 License:        Apache2
 URL:            https://github.com/python/importlib_resources
-Source0:        https://files.pythonhosted.org/packages/source/i/%{pypi_name}/importlib_resources-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 3.4.1
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -26,7 +30,6 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 3.4.1
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-zipp >= 3.1.0
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -35,31 +38,27 @@ Requires:       python%{python3_pkgversion}-zipp >= 3.1.0
 
 %prep
 set -ex
-%autosetup -n importlib_resources-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-# Force setuptools_scm usage for older setuptools
-sed -i 's/setuptools.setup.*/setuptools.setup(use_scm_version=True)/' setup.py
+%autosetup -n %{src_name}-%{version}
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst
-%{python3_sitelib}/importlib_resources
-%{python3_sitelib}/importlib_resources-*-py%{python3_version}.egg-info
+%{python3_sitelib}/%{src_name}
+%{python3_sitelib}/%{src_name}-%{version}.dist-info/
 
 
 %changelog
+* Tue Oct 01 2024 Odilon Sousa <osousa@redhat.com> - 6.4.5-1
+- Release python-importlib-resources 6.4.5
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 5.4.0-8
 - Remove SCL bits
 
