@@ -9,14 +9,13 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.20
+Version:        3.63.0
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0001:      0001-Add-task-indices-migration.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -39,14 +38,14 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-django >= 4.2.0
 Conflicts:      python%{python3_pkgversion}-django >= 4.3.0
-Requires:       python%{python3_pkgversion}-PyYAML < 6.1.0
+Requires:       python%{python3_pkgversion}-PyYAML < 6.0.3
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       python%{python3_pkgversion}-aiodns >= 3.0.0
-Conflicts:      python%{python3_pkgversion}-aiodns >= 3.1.2
+Requires:       python%{python3_pkgversion}-aiodns <= 3.2.0
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
-Requires:       python%{python3_pkgversion}-aiofiles < 23.3.0
+Requires:       python%{python3_pkgversion}-aiofiles < 24.2.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.4
-Conflicts:      python%{python3_pkgversion}-aiohttp >= 3.9.6
+Requires:       python%{python3_pkgversion}-aiohttp < 3.10.9
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Conflicts:      python%{python3_pkgversion}-asyncio-throttle >= 1.1
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
@@ -54,28 +53,28 @@ Conflicts:      python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.1.8
 Requires:       python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       python%{python3_pkgversion}-cryptography < 42.0.9
+Requires:       python%{python3_pkgversion}-cryptography < 43.0.2
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
-Requires:       python%{python3_pkgversion}-django-filter <= 23.5
+Requires:       python%{python3_pkgversion}-django-filter <= 24.3
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
-Requires:       python%{python3_pkgversion}-django-guid <= 3.4.0
+Requires:       python%{python3_pkgversion}-django-guid <= 3.5.0
 Requires:       python%{python3_pkgversion}-django-import-export >= 2.9
 Requires:       python%{python3_pkgversion}-django-import-export < 3.4.0
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
-Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.1.2
+Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.2.4
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
-Conflicts:      python%{python3_pkgversion}-djangorestframework >= 3.15.2
+Requires:       python%{python3_pkgversion}-djangorestframework <= 3.15.2
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields <= 1.1.0
 Requires:       python%{python3_pkgversion}-drf-access-policy >= 1.1.2
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
 Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
-Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.93.5
-Requires:       python%{python3_pkgversion}-drf-spectacular = 0.26.5
+Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.94.1
+Requires:       python%{python3_pkgversion}-drf-spectacular = 0.27.2
 Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.12
 Requires:       python%{python3_pkgversion}-dynaconf <= 3.3.0
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
-Requires:       python%{python3_pkgversion}-gnupg <= 0.5.2
+Requires:       python%{python3_pkgversion}-gnupg <= 0.5.3
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
 Requires:       python%{python3_pkgversion}-gunicorn < 23.1.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
@@ -85,41 +84,39 @@ Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
 Requires:       python%{python3_pkgversion}-json_stream < 2.4
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
-Requires:       python%{python3_pkgversion}-jq < 1.7.0
+Requires:       python%{python3_pkgversion}-jq < 1.9.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.29
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 25
-Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.38b0
-Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.44b0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.17.0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http <= 1.23.0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django >= 0.38b0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django <= 0.44b0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi >= 0.38b0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi <= 0.44b0
+Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.45b0
+Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.48b0
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.24.0
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http <= 1.27.0
+Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django >= 0.45b0
+Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django <= 0.48b0
+Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi >= 0.45b0
+Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi <= 0.48b0
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
-Requires:       python%{python3_pkgversion}-protobuf < 4.25.4
+Requires:       python%{python3_pkgversion}-protobuf < 5.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg <= 3.1.18
+Requires:       python%{python3_pkgversion}-psycopg <= 3.2.3
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0 
-Requires:       python%{python3_pkgversion}-pyparsing <= 3.1.1
+Requires:       python%{python3_pkgversion}-pyparsing <= 3.1.4
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
-Requires:       python%{python3_pkgversion}-pyyaml <= 6.0.1
+Requires:       python%{python3_pkgversion}-pyyaml <= 6.0.2
 Requires:       python%{python3_pkgversion}-redis >= 4.3
-Requires:       python%{python3_pkgversion}-redis < 5.0.3
-Requires:       python%{python3_pkgversion}-setuptools >= 39.2.0
-Requires:       python%{python3_pkgversion}-setuptools < 69.2.0
+Requires:       python%{python3_pkgversion}-redis < 5.0.9
 Requires:       python%{python3_pkgversion}-tablib < 3.6.0
 Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
 Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
-Requires:       python%{python3_pkgversion}-uuid6 <= 2024.1.12
-Conflicts:      python%{python3_pkgversion}-whitenoise >= 6.7.0
+Requires:       python%{python3_pkgversion}-uuid6 <= 2024.7.10
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
+Requires:       python%{python3_pkgversion}-whitenoise < 6.8.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.8
-Requires:       python%{python3_pkgversion}-yarl < 1.9.5
+Requires:       python%{python3_pkgversion}-yarl < 1.13.2
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
@@ -192,6 +189,9 @@ done
 
 
 %changelog
+* Tue Oct 01 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.0-1
+- Update to 3.63.0
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.49.20-1
 - Update to 3.49.20
 
