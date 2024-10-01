@@ -1,10 +1,10 @@
-pulpcore==3.61.0
+pulpcore==3.63.0
 pulp-container==2.21.0
 pulp-deb==3.3.1
 pulp-rpm==3.27.1
 pulp-ansible==0.22.1
 pulp-python==3.12.2
-pulpcore-client==3.61.0
+pulpcore-client==3.63.0
 pulp-rpm-client==3.27.1
 pulp-ostree==2.4.3
 pulp-glue==0.28.4
