@@ -4,7 +4,7 @@
 %global pypi_name opentelemetry_instrumentation
 
 Name:           python-%{pypi_name}
-Version:        0.44b0
+Version:        0.48b0
 Release:        1%{?dist}
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 
@@ -63,6 +63,9 @@ set -ex
 %{_bindir}/opentelemetry-instrument
 
 %changelog
+* Tue Oct 01 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.48b0-1
+- Update to 0.48b0
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.44b0-1
 - Update to 0.44b0
 
