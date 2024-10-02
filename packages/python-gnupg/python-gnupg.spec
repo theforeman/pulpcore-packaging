@@ -6,7 +6,7 @@
 %global srcname gnupg
 
 Name:           python-%{srcname}
-Version:        0.5.2
+Version:        0.5.3
 Release:        1%{?dist}
 Summary:        A wrapper for the Gnu Privacy Guard (GPG or GnuPG)
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 02 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.3-1
+- Update to 0.5.3
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.2-1
 - Update to 0.5.2
 
