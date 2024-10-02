@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.27.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -45,7 +45,7 @@ Requires:       python%{python3_pkgversion}-pulpcore < 3.70
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
 Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
-Conflicts:      python%{python3_pkgversion}-importlib-resources < 6.5
+Requires:       python%{python3_pkgversion}-importlib-resources < 6.5
 
 Provides:       pulpcore-plugin(rpm) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -85,6 +85,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 02 2024 Odilon Sousa <osousa@redhat.com> - 3.27.1-2
+- Fix importlib-resources requirement
+
 * Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.1-1
 - Update to 3.27.1
 
