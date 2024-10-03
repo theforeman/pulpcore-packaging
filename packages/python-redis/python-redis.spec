@@ -5,7 +5,7 @@
 %global pypi_name redis
 
 Name:           python-%{pypi_name}
-Version:        5.0.2
+Version:        5.0.8
 Release:        1%{?dist}
 Summary:        Python client for Redis database and key-value store
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.8-1
+- Update to 5.0.8
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.2-1
 - Update to 5.0.2
 
