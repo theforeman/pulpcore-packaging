@@ -7,8 +7,8 @@
 %global pypi_name pyparsing
 
 Name:           python-%{pypi_name}
-Version:        3.1.1
-Release:        4%{?dist}
+Version:        3.1.4
+Release:        1%{?dist}
 Summary:        Python parsing module
 
 License:        MIT License
@@ -52,6 +52,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.4-1
+- Update to 3.1.4
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.1.1-4
 - Remove SCL bits
 
