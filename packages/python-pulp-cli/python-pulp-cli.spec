@@ -6,7 +6,7 @@
 %global pypi_name pulp-cli
 
 Name:           python-%{pypi_name}
-Version:        0.28.4
+Version:        0.29.2
 Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
@@ -83,6 +83,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.29.2-1
+- Update to 0.29.2
+
 * Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.28.4-1
 - Update to 0.28.4
 
