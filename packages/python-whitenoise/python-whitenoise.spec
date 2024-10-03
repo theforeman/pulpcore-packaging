@@ -5,7 +5,7 @@
 %global pypi_name whitenoise
 
 Name:           python-%{pypi_name}
-Version:        6.6.0
+Version:        6.7.0
 Release:        1%{?dist}
 Summary:        Radically simplified static file serving for WSGI applications
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.7.0-1
+- Update to 6.7.0
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.6.0-1
 - Update to 6.6.0
 
