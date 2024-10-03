@@ -5,7 +5,7 @@
 %global pypi_name wcmatch
 
 Name:           python-%{pypi_name}
-Version:        9.0
+Version:        10.0
 Release:        1%{?dist}
 Summary:        Wildcard/glob file name matcher
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 10.0-1
+- Update to 10.0
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 9.0-1
 - Update to 9.0
 
