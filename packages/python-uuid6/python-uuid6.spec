@@ -5,7 +5,7 @@
 %global pypi_name uuid6
 
 Name:           python-%{pypi_name}
-Version:        2024.1.12
+Version:        2024.7.10
 Release:        1%{?dist}
 Summary:        New time-based UUID formats which are suited for use as a database key
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2024.7.10-1
+- Update to 2024.7.10
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2024.1.12-1
 - Update to 2024.1.12
 
