@@ -6,8 +6,8 @@
 %{?python_disable_dependency_generator}
 
 Name:           python-%{pypi_name}
-Version:        2.31.0
-Release:        6%{?dist}
+Version:        2.32.3
+Release:        1%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -29,7 +29,6 @@ Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-certifi >= 2017.4.17
 Requires:       python%{python3_pkgversion}-charset-normalizer < 4
 Requires:       python%{python3_pkgversion}-charset-normalizer >= 2
-Requires:       python%{python3_pkgversion}-cryptography >= 1.3.4
 Requires:       python%{python3_pkgversion}-idna < 4
 Requires:       python%{python3_pkgversion}-idna >= 2.5
 Requires:       python%{python3_pkgversion}-pyOpenSSL >= 0.14
@@ -66,6 +65,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.32.3-1
+- Update to 2.32.3
+
 * Thu Sep 12 2024 Odilon Sousa <osousa@redhat.com> - 2.31.0-6
 - Update charset-normalizer requirements for requests3
 
