@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.63.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -86,7 +86,7 @@ Requires:       python%{python3_pkgversion}-json_stream < 2.4
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.9.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.29
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.30
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 25
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.45b0
 Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.48b0
@@ -189,6 +189,9 @@ done
 
 
 %changelog
+* Fri Oct 04 2024 Odilon Sousa <osousa@redhat.com> - 3.63.0-2
+- Bump pulp-glue requirement
+
 * Tue Oct 01 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.0-1
 - Update to 3.63.0
 
