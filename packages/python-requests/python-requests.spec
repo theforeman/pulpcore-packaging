@@ -3,11 +3,10 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name requests
-%{?python_disable_dependency_generator}
 
 Name:           python-%{pypi_name}
 Version:        2.32.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -16,7 +15,10 @@ Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -43,28 +45,26 @@ Requires:       python%{python3_pkgversion}-urllib3 >= 1.21.1
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.md
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Mon Oct 07 2024 Odilon Sousa <osousa@redhat.com> - 2.32.3-2
+- Rebuild package using PEP-517 macros
+
 * Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.32.3-1
 - Update to 2.32.3
 
