@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.29.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -30,9 +30,8 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-packaging < 25
 Requires:       python%{python3_pkgversion}-packaging >= 20.0
-Requires:       python%{python3_pkgversion}-requests < 2.32
+Requires:       python%{python3_pkgversion}-requests < 2.33
 Requires:       python%{python3_pkgversion}-requests >= 2.24.0
-Requires:       python%{python3_pkgversion}-setuptools
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
@@ -63,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 09 2024 Odilon Sousa <osousa@redhat.com> - 0.29.2-2
+- Update requirement for requests
+
 * Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.29.2-1
 - Update to 0.29.2
 
