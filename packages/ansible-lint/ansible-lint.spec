@@ -3,21 +3,24 @@
 %{?python_disable_dependency_generator}
 # Created by pyp2rpm-3.3.3
 %global pypi_name ansible-lint
+%global src_name ansible_lint
 
 Name:           %{pypi_name}
-Version:        5.4.0
+Version:        24.7.0
 Release:        1%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
 License:        MIT
 URL:            https://github.com/ansible-community/ansible-lint
-Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 7.0.5
 BuildRequires:  python%{python3_pkgversion}-setuptools_scm_git_archive
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -26,22 +29,28 @@ BuildRequires:  pyproject-rpm-macros
 # But our tooling currently fails with rich deps
 Requires:       /usr/bin/ansible
 Requires:       python%{python3_pkgversion}-enrich >= 1.2.6
-Requires:       python%{python3_pkgversion}-packaging
-Requires:       python%{python3_pkgversion}-pyyaml
-Requires:       python%{python3_pkgversion}-rich >= 9.5.1
+Requires:       python%{python3_pkgversion}-black >= 24.3.0
+Requires:       python%{python3_pkgversion}-packaging >= 21.3
+Requires:       python%{python3_pkgversion}-pyyaml >= 5.4.1 
+Requires:       python%{python3_pkgversion}-importlib-metadata
+Requires:       python%{python3_pkgversion}-jsonschema >= 4.10.0
+Requires:       python%{python3_pkgversion}-filelock >= 3.3.0
+Requires:       python%{python3_pkgversion}-rich >= 12.0.0 
 Requires:       python%{python3_pkgversion}-ruamel-yaml < 1
-Requires:       python%{python3_pkgversion}-ruamel-yaml >= 0.15.37
+Requires:       python%{python3_pkgversion}-ruamel-yaml >= 0.18.5
+Requires:       python%{python3_pkgversion}-pathspec >= 0.10.3
+Requires:       python%{python3_pkgversion}-subprocess-tee >= 0.4.1
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-tenacity
-Requires:       python%{python3_pkgversion}-typing-extensions
-Requires:       python%{python3_pkgversion}-wcmatch >= 7.0
+Requires:       python%{python3_pkgversion}-yamllint >= 1.30.0
+Requires:       python%{python3_pkgversion}-wcmatch >= 8.1.2
 
 %description
 %{summary}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 
 
 %build
@@ -59,6 +68,9 @@ set -ex
 %{python3_sitelib}/ansible_lint-%{version}.dist-info/
 
 %changelog
+* Mon Sep 16 2024 Odilon Sousa <osousa@redhat.com> - 24.7.0-1
+- Release ansible-lint 24.7.0
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.4.0-1
 - Release ansible-lint 5.4.0
 
