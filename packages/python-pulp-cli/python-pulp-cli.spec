@@ -7,7 +7,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.29.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -38,7 +38,7 @@ Requires:       python%{python3_pkgversion}-click-shell < 3
 Requires:       python%{python3_pkgversion}-click-shell >= 2.1
 Requires:       python%{python3_pkgversion}-packaging
 Requires:       python%{python3_pkgversion}-pygments
-Requires:       python%{python3_pkgversion}-requests < 2.32
+Requires:       python%{python3_pkgversion}-requests < 2.33
 Requires:       python%{python3_pkgversion}-requests >= 2.24.0
 Requires:       python%{python3_pkgversion}-schema < 0.8
 Requires:       python%{python3_pkgversion}-schema >= 0.7.5
@@ -83,6 +83,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 09 2024 Odilon Sousa <osousa@redhat.com> - 0.29.2-2
+- Update requirement for requests
+
 * Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.29.2-1
 - Update to 0.29.2
 
