@@ -9,7 +9,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.49.20
+Version:        3.49.21
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -100,7 +100,9 @@ Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi <
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 4.25.4
 Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg <= 3.1.18
+Requires:       python%{python3_pkgversion}-psycopg <= 3.2.3
+Requires:       python%{python3_pkgversion}-psycopg_c >= 3.1.8
+Requires:       python%{python3_pkgversion}-psycopg_c <= 3.2.3
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0 
@@ -192,6 +194,9 @@ done
 
 
 %changelog
+* Wed Oct 09 2024 Odilon Sousa <osousa@redhat.com> - 3.49.21-1
+- Release python-pulpcore 3.49.21
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.49.20-1
 - Update to 3.49.20
 
