@@ -211,6 +211,7 @@
       <packagereq type="default">python3.11-protobuf</packagereq>
       <packagereq type="default">python3.11-proto-plus</packagereq>
       <packagereq type="default">python3.11-psycopg</packagereq>
+      <packagereq type="default">python3.11-psycopg_c</packagereq>
       <packagereq type="default">python3.11-psycopg2</packagereq>
       <packagereq type="default">python3.11-ptyprocess</packagereq>
       <packagereq type="default">python3.11-pulp-ansible</packagereq>
