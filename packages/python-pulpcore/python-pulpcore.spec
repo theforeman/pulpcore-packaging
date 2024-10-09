@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.63.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -100,6 +100,8 @@ Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 5.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
 Requires:       python%{python3_pkgversion}-psycopg <= 3.2.3
+Requires:       python%{python3_pkgversion}-psycopg_c >= 3.1.8
+Requires:       python%{python3_pkgversion}-psycopg_c <= 3.2.3
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0 
@@ -189,6 +191,9 @@ done
 
 
 %changelog
+* Wed Oct 09 2024 Odilon Sousa <osousa@redhat.com> - 3.63.0-3
+- Add psycopg_c requirement
+
 * Fri Oct 04 2024 Odilon Sousa <osousa@redhat.com> - 3.63.0-2
 - Bump pulp-glue requirement
 
