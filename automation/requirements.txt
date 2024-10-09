@@ -1,4 +1,4 @@
-pulpcore==3.49.20
+pulpcore==3.49.21
 pulp-container==2.20.3
 pulp-deb==3.2.1
 pulp-rpm==3.26.1
