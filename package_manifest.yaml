@@ -274,6 +274,7 @@ tier4_packages:
     python-platformdirs: {}
     python-ptyprocess: {}
     python-psycopg: {}
+    python-psycopg_c: {}
     python-pyasn1: {}
     python-pyasn1-modules: {}
     python-pygobject: {}
