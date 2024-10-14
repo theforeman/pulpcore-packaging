@@ -14,13 +14,13 @@
 %endif
 
 Name:           python-%{srcname}
-Version:        2.1.5
+Version:        3.0.1
 Release:        1%{?dist}
 Summary:        Safely add untrusted strings to HTML/XML markup
 
 License:        BSD-3-Clause
 URL:            https://palletsprojects.com/p/markupsafe/
-Source0:        https://files.pythonhosted.org/packages/source/M/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -50,9 +50,9 @@ Provides:       python36-%{srcname} = %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{srcname}.egg-info
 
 
 %build
@@ -76,8 +76,8 @@ CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
 
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license LICENSE.rst docs/license.rst
-%doc README.rst
+%license LICENSE.txt
+%doc README.md
 %{python3_sitearch}/markupsafe
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
@@ -88,6 +88,9 @@ CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
 %endif
 
 %changelog
+* Mon Oct 14 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.0.1-1
+- Update to 3.0.1
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.1.5-1
 - Update to 2.1.5
 
