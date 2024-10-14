@@ -3,15 +3,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name charset-normalizer
+%global src_name charset_normalizer
 
 Name:           python-%{pypi_name}
-Version:        3.3.2
+Version:        3.4.0
 Release:        1%{?dist}
 Summary:        The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet
 
 License:        MIT
 URL:            https://github.com/ousret/charset_normalizer
-Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/c/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -32,9 +33,9 @@ Summary:        %{summary}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
@@ -56,6 +57,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 14 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.4.0-1
+- Update to 3.4.0
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.2-1
 - Update to 3.3.2
 
