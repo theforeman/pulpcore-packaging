@@ -6,7 +6,7 @@
 %global srcname socks
 
 Name:           python-%{srcname}
-Version:        2.5.2
+Version:        2.5.3
 Release:        1%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 14 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.3-1
+- Update to 2.5.3
+
 * Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.2-1
 - Update to 2.5.2
 
