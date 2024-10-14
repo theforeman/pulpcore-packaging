@@ -3,15 +3,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-lifecycle
+%global src_name django_lifecycle
 
 Name:           python-%{pypi_name}
-Version:        1.1.2
+Version:        1.2.4
 Release:        1%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
 URL:            https://github.com/rsinger86/django-lifecycle
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -42,9 +43,9 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
@@ -66,6 +67,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 14 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.4-1
+- Update to 1.2.4
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.2-1
 - Update to 1.1.2
 
