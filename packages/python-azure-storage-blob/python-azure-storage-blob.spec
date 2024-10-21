@@ -3,15 +3,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name azure-storage-blob
+%global src_name azure_storage_blob
 
 Name:           python-%{pypi_name}
-Version:        12.9.0
-Release:        6%{?dist}
+Version:        12.23.1
+Release:        1%{?dist}
 Summary:        Microsoft Azure Blob Storage Client Library for Python
 
 License:        MIT License
 URL:            https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob
-Source0:        %{pypi_source %{pypi_name} %{version} zip}
+Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -27,9 +28,10 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 Requires:       python%{python3_pkgversion}-azure-core < 2
-Requires:       python%{python3_pkgversion}-azure-core >= 1.10
+Requires:       python%{python3_pkgversion}-azure-core >= 1.30.0
 Requires:       python%{python3_pkgversion}-cryptography >= 2.1.4
-Requires:       python%{python3_pkgversion}-msrest >= 0.6.21
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.6.0
+Requires:       python%{python3_pkgversion}-isodate >= 0.6.1
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -38,9 +40,9 @@ Requires:       python%{python3_pkgversion}-msrest >= 0.6.21
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
@@ -54,13 +56,16 @@ set -ex
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE.txt
+%license LICENSE
 %doc README.md samples/README.md
 %{python3_sitelib}/azure
 %{python3_sitelib}/azure_storage_blob-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 12.23.1-1
+- Update to 12.23.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 12.9.0-6
 - Remove SCL bits
 
