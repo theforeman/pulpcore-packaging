@@ -5,8 +5,8 @@
 %global pypi_name s3transfer
 
 Name:           python-%{pypi_name}
-Version:        0.5.0
-Release:        7%{?dist}
+Version:        0.10.3
+Release:        1%{?dist}
 Summary:        An Amazon S3 Transfer Manager
 
 License:        Apache License 2.0
@@ -26,10 +26,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-botocore < 2.0a.0
-Requires:       python%{python3_pkgversion}-botocore < 2.0a.0
-Requires:       python%{python3_pkgversion}-botocore >= 1.12.36
-Requires:       python%{python3_pkgversion}-botocore >= 1.20.29
-
+Requires:       python%{python3_pkgversion}-botocore >= 1.33.2
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -60,6 +57,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.10.3-1
+- Update to 0.10.3
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.5.0-7
 - Remove SCL bits
 
