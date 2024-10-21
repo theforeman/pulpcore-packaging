@@ -5,8 +5,8 @@
 %global pypi_name boto3
 
 Name:           python-%{pypi_name}
-Version:        1.18.35
-Release:        7%{?dist}
+Version:        1.35.44
+Release:        1%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -25,14 +25,12 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-botocore < 1.22.0
-Requires:       python%{python3_pkgversion}-botocore < 2.0a0
-Requires:       python%{python3_pkgversion}-botocore >= 1.21.0
-Requires:       python%{python3_pkgversion}-botocore >= 1.21.35
-Requires:       python%{python3_pkgversion}-jmespath < 1.0.0
+Requires:       python%{python3_pkgversion}-botocore >= 1.35.44
+Requires:       python%{python3_pkgversion}-botocore < 1.36.0
+Requires:       python%{python3_pkgversion}-jmespath < 2.0.0
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
-Requires:       python%{python3_pkgversion}-s3transfer < 0.6.0
-Requires:       python%{python3_pkgversion}-s3transfer >= 0.5.0
+Requires:       python%{python3_pkgversion}-s3transfer < 0.11.0
+Requires:       python%{python3_pkgversion}-s3transfer >= 0.10.0
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -64,6 +62,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.35.44-1
+- Update to 1.35.44
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.18.35-7
 - Remove SCL bits
 
