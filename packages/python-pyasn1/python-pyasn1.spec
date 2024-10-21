@@ -5,8 +5,8 @@
 %global pypi_name pyasn1
 
 Name:           python-%{pypi_name}
-Version:        0.4.8
-Release:        5%{?dist}
+Version:        0.6.1
+Release:        1%{?dist}
 Summary:        ASN.1 types and codecs
 
 License:        BSD
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.6.1-1
+- Update to 0.6.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.4.8-5
 - Remove SCL bits
 
