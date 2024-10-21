@@ -5,8 +5,8 @@
 %global pypi_name jmespath
 
 Name:           python-%{pypi_name}
-Version:        0.10.0
-Release:        6%{?dist}
+Version:        1.0.1
+Release:        1%{?dist}
 Summary:        JSON Matching Expressions
 
 License:        MIT
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.1-1
+- Update to 1.0.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.10.0-6
 - Remove SCL bits
 
