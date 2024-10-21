@@ -5,8 +5,8 @@
 %global pypi_name django-storages
 
 Name:           python-%{pypi_name}
-Version:        1.12.3
-Release:        5%{?dist}
+Version:        1.14.4
+Release:        1%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.14.4-1
+- Update to 1.14.4
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.12.3-5
 - Remove SCL bits
 
