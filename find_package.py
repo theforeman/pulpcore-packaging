@@ -23,6 +23,8 @@ def parse_package_list(lines):
                 name = name.replace('.', '-')
             elif name.startswith('galaxy_importer'):
                 name = name.replace('_', '-')
+            elif name.startswith('psycopg-c'):
+                name = name.replace('-', '_')
             #Lower Case all libs that needs to be lowercased(is this a verb?)
             elif name.startswith('PyYAML'):
                 name = name.lower()
