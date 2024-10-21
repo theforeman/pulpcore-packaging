@@ -6,7 +6,7 @@
 %global srcname ruamel-yaml-clib
 
 Name:           python-%{srcname}
-Version:        0.2.8
+Version:        0.2.12
 Release:        1%{?dist}
 Summary:        C version of reader, parser and emitter for ruamel
 
@@ -52,13 +52,16 @@ set -ex
 
 %files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python3_sitearch}/ruamel
 %{python3_sitearch}/_ruamel_yaml.cpython-3*-x86_64-linux-gnu.so
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.2.12-1
+- Update to 0.2.12
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.2.8-1
 - Update to 0.2.8
 
