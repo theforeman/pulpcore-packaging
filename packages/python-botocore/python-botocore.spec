@@ -5,8 +5,8 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.21.35
-Release:        9%{?dist}
+Version:        1.35.44
+Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        Apache License 2.0
@@ -32,9 +32,10 @@ Requires:       python%{python3_pkgversion}-dateutil >= 1:2.1
 Requires:       python%{python3_pkgversion}-dateutil < 3.0.0
 Requires:       python%{python3_pkgversion}-dateutil >= 2.1
 %endif
-Requires:       python%{python3_pkgversion}-jmespath < 1.0.0
+Requires:       python%{python3_pkgversion}-jmespath < 2.0.0
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
-Requires:       python%{python3_pkgversion}-urllib3 < 1.27
+Requires:       python%{python3_pkgversion}-urllib3 < 3
+Conflicts:       python%{python3_pkgversion}-urllib3 = 2.2.0
 Requires:       python%{python3_pkgversion}-urllib3 >= 1.25.4
 
 
@@ -67,6 +68,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.35.44-1
+- Update to 1.35.44
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.21.35-9
 - Remove SCL bits
 
