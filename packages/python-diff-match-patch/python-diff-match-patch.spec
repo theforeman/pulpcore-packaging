@@ -3,15 +3,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name diff-match-patch
+%global srcname diff_match_patch
 
 Name:           python-%{pypi_name}
-Version:        20230430
+Version:        20241021
 Release:        1%{?dist}
 Summary:        Repackaging of Google's Diff Match and Patch libraries
 
 License:        Apache
 URL:            https://github.com/diff-match-patch-python/diff-match-patch
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -34,7 +35,7 @@ Summary:        %{summary}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 
 %build
@@ -53,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 20241021-1
+- Update to 20241021
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 20230430-1
 - Update to 20230430
 
