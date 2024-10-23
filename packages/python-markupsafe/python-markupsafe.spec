@@ -14,7 +14,7 @@
 %endif
 
 Name:           python-%{srcname}
-Version:        3.0.1
+Version:        3.0.2
 Release:        1%{?dist}
 Summary:        Safely add untrusted strings to HTML/XML markup
 
@@ -88,6 +88,9 @@ CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
 %endif
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.0.2-1
+- Update to 3.0.2
+
 * Mon Oct 14 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.0.1-1
 - Update to 3.0.1
 
