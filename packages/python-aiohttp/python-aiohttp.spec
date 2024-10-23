@@ -5,8 +5,8 @@
 %global pypi_name aiohttp
 
 Name:           python-%{pypi_name}
-Version:        3.9.5
-Release:        2%{?dist}
+Version:        3.10.8
+Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.8-1
+- Update to 3.10.8
+
 * Thu Sep 12 2024 Odilon Sousa <osousa@redhat.com> - 3.9.5-2
 - Drop charset-normalizer requirement
 
