@@ -5,8 +5,8 @@
 %global pypi_name yarl
 
 Name:           python-%{pypi_name}
-Version:        1.8.2
-Release:        5%{?dist}
+Version:        1.13.1
+Release:        1%{?dist}
 Summary:        Yet another URL library
 
 License:        Apache 2
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.13.1-1
+- Update to 1.13.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.8.2-5
 - Remove SCL bits
 
