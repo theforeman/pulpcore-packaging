@@ -6,8 +6,8 @@
 %global pypi_name rich
 
 Name:           python-%{pypi_name}
-Version:        13.3.1
-Release:        8%{?dist}
+Version:        13.9.3
+Release:        1%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        None
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 13.9.3-1
+- Update to 13.9.3
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 13.3.1-8
 - Remove SCL bits
 
