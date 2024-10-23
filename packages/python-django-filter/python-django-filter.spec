@@ -6,7 +6,7 @@
 %global srcname django_filters
 
 Name:           python-%{pypi_name}
-Version:        23.5
+Version:        24.3
 Release:        1%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 24.3-1
+- Update to 24.3
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 23.5-1
 - Update to 23.5
 
