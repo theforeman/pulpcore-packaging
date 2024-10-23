@@ -5,8 +5,8 @@
 %global pypi_name certifi
 
 Name:           python-%{pypi_name}
-Version:        2022.12.7
-Release:        5%{?dist}
+Version:        2024.8.30
+Release:        1%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPL-2.0
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2024.8.30-1
+- Update to 2024.8.30
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2022.12.7-5
 - Remove SCL bits
 
