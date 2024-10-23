@@ -6,7 +6,7 @@
 %global src_name django_guid
 
 Name:           python-%{pypi_name}
-Version:        3.4.0
+Version:        3.5.0
 Release:        1%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.0-1
+- Update to 3.5.0
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.4.0-1
 - Update to 3.4.0
 
