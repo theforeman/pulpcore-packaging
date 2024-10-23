@@ -5,7 +5,7 @@
 %global pypi_name bracex
 
 Name:           python-%{pypi_name}
-Version:        2.5
+Version:        2.5.post1
 Release:        1%{?dist}
 Summary:        Bash style brace expander
 
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.post1-1
+- Update to 2.5.post1
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.5-1
 - Update to 2.5
 
