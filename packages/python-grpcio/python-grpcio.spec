@@ -6,7 +6,7 @@
 %global srcname grpcio
 
 Name:           python-%{srcname}
-Version:        1.66.2
+Version:        1.67.0
 Release:        1%{?dist}
 Summary:        HTTP/2-based RPC framework
 
@@ -53,6 +53,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.67.0-1
+- Update to 1.67.0
+
 * Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.66.2-1
 - Update to 1.66.2
 
