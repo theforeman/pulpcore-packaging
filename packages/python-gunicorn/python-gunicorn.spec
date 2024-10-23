@@ -5,7 +5,7 @@
 %global pypi_name gunicorn
 
 Name:           python-%{pypi_name}
-Version:        22.0.0
+Version:        23.0.0
 Release:        1%{?dist}
 Summary:        WSGI HTTP Server for UNIX
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 23.0.0-1
+- Update to 23.0.0
+
 * Mon Jun 10 2024 Odilon Sousa <osousa@redhat.com> - 22.0.0-1
 - Release python-gunicorn 22.0.0
 
