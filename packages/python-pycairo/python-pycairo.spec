@@ -5,8 +5,8 @@
 %global pypi_name pycairo
 
 Name:           python-%{pypi_name}
-Version:        1.20.1
-Release:        7%{?dist}
+Version:        1.27.0
+Release:        1%{?dist}
 Summary:        Python interface for cairo
 
 License:        LGPL-2.1-only OR MPL-1.1
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.27.0-1
+- Update to 1.27.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.20.1-7
 - Remove SCL bits
 
