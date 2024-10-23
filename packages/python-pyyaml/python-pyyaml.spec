@@ -7,7 +7,7 @@
 %global srcname pyyaml
 
 Name:           python-%{srcname}
-Version:        6.0.1
+Version:        6.0.2
 Release:        1%{?dist}
 Summary:        YAML parser and emitter for Python
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.2-1
+- Update to 6.0.2
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.1-1
 - Update to 6.0.1
 
