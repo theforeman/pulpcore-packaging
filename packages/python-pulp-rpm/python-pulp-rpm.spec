@@ -5,8 +5,8 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.27.1
-Release:        2%{?dist}
+Version:        3.27.2
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -85,6 +85,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 24 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.2-1
+- Update to 3.27.2
+
 * Wed Oct 02 2024 Odilon Sousa <osousa@redhat.com> - 3.27.1-2
 - Fix importlib-resources requirement
 
