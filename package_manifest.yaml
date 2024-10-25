@@ -346,6 +346,7 @@ tier4_packages:
     python-google-resumable-media: {}
     python-rsa: {}
     python-cachetools: {}
+    python-expandvars: {}
 
 pulpcore_packages:
   hosts:

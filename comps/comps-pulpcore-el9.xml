@@ -111,6 +111,7 @@
       <packagereq type="default">python3.11-enrich</packagereq>
       <packagereq type="default">python3.11-et-xmlfile</packagereq>
       <packagereq type="default">python3.11-exceptiongroup</packagereq>
+      <packagereq type="default">python3.11-expandvars</packagereq>
       <packagereq type="default">python3.11-filecache</packagereq>
       <packagereq type="default">python3.11-filelock</packagereq>
       <packagereq type="default">python3.11-flake8</packagereq>
