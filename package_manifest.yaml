@@ -347,6 +347,7 @@ tier4_packages:
     python-rsa: {}
     python-cachetools: {}
     python-expandvars: {}
+    python-mailbits: {}
 
 pulpcore_packages:
   hosts:

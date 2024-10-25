@@ -167,6 +167,7 @@
       <packagereq type="default">python3.11-libcomps</packagereq>
       <packagereq type="default">python3.11-lockfile</packagereq>
       <packagereq type="default">python3.11-lxml</packagereq>
+      <packagereq type="default">python3.11-mailbits</packagereq>
       <packagereq type="default">python3.11-markdown</packagereq>
       <packagereq type="default">python3.11-markuppy</packagereq>
       <packagereq type="default">python3.11-markupsafe</packagereq>
