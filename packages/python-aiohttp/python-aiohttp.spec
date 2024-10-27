@@ -5,8 +5,8 @@
 %global pypi_name aiohttp
 
 Name:           python-%{pypi_name}
-Version:        3.9.5
-Release:        2%{?dist}
+Version:        3.10.8
+Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -25,7 +25,8 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-brotli
-Requires:       python%{python3_pkgversion}-aiodns
+Requires:       python%{python3_pkgversion}-aiodns >= 2.3.0
+Requires:       python%{python3_pkgversion}-aiohappyeyeballs
 Requires:       python%{python3_pkgversion}-aiosignal >= 1.1.2
 Requires:       python%{python3_pkgversion}-attrs >= 17.3.0
 Requires:       python%{python3_pkgversion}-frozenlist >= 1.1.1
@@ -67,6 +68,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 27 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.8-1
+- Update to 3.10.8
+
 * Thu Sep 12 2024 Odilon Sousa <osousa@redhat.com> - 3.9.5-2
 - Drop charset-normalizer requirement
 
