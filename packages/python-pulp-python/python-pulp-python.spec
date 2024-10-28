@@ -7,7 +7,7 @@
 %global pypi_name pulp-python
 
 Name:           python-%{pypi_name}
-Version:        3.12.3
+Version:        3.12.5
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 28 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.12.5-1
+- Update to 3.12.5
+
 * Tue Oct 01 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.12.3-1
 - Update to 3.12.3
 
