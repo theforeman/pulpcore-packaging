@@ -6,7 +6,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.21.0
+Version:        2.21.1
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 28 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.21.1-1
+- Update to 2.21.1
+
 * Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.21.0-1
 - Update to 2.21.0
 
