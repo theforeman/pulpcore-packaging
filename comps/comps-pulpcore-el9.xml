@@ -26,6 +26,7 @@
       <packagereq type="default">python3.11-SecretStorage</packagereq>
       <packagereq type="default">python3.11-aiodns</packagereq>
       <packagereq type="default">python3.11-aiofiles</packagereq>
+      <packagereq type="default">python3.11-aiohappyeyeballs</packagereq>
       <packagereq type="default">python3.11-aiohttp</packagereq>
       <packagereq type="default">python3.11-aiohttp-socks</packagereq>
       <packagereq type="default">python3.11-aiohttp-xmlrpc</packagereq>
