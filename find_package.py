@@ -46,6 +46,9 @@ def parse_package_list(lines):
                 name = name.lower()
             elif name.startswith('PyJWT'):
                 name = name.lower()
+            #Removes post from package version
+            if ".post" in version:
+                version = version[:version.index(".post")]
             yield {'package_name': name, 'new_version': version}
 
 def find_packages(pkg, new_version):
