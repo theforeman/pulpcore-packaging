@@ -10,7 +10,7 @@
 %global release 1
 
 Name:           python-%{pypi_name}
-Version:        2.4.3
+Version:        2.4.4
 Release:        1%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 30 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.4-1
+- Update to 2.4.4
+
 * Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.3-1
 - Update to 2.4.3
 
