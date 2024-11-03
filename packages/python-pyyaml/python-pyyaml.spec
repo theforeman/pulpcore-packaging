@@ -7,13 +7,13 @@
 %global srcname pyyaml
 
 Name:           python-%{srcname}
-Version:        6.0.1
+Version:        6.0.2
 Release:        1%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
 URL:            https://pyyaml.org/
-Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -41,9 +41,9 @@ Provides:       python%{python3_pkgversion}-yaml = %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{srcname}.egg-info
 
 
 %build
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sun Nov 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.2-1
+- Update to 6.0.2
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.1-1
 - Update to 6.0.1
 
