@@ -3,16 +3,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-filter
-%global srcname django_filters
+%global srcname django_filter
 
 Name:           python-%{pypi_name}
-Version:        23.5
+Version:        24.3
 Release:        1%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
 URL:            https://github.com/carltongibson/django-filter/tree/main
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -44,7 +44,7 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 
 %build
@@ -58,11 +58,14 @@ set -ex
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%{python3_sitelib}/%{srcname}
-%{python3_sitelib}/django_filter-%{version}.dist-info/
+%{python3_sitelib}/django_filters
+%{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 
 %changelog
+* Sun Nov 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 24.3-1
+- Update to 24.3
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 23.5-1
 - Update to 23.5
 
