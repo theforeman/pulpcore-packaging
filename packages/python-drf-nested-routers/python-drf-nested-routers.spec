@@ -5,7 +5,7 @@
 %global pypi_name drf-nested-routers
 
 Name:           python-%{pypi_name}
-Version:        0.93.5
+Version:        0.94.1
 Release:        1%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
@@ -58,13 +58,16 @@ set -ex
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
-%doc README.md README.rst
+%doc README.md
 %{python3_sitelib}/rest_framework_nested
 %{python3_sitelib}/rest_framework_nested/runtests
 %{python3_sitelib}/drf_nested_routers-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Sun Nov 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.94.1-1
+- Update to 0.94.1
+
 * Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.93.5-1
 - Update to 0.93.5
 
