@@ -3,15 +3,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name proto-plus
+%global src_name proto_plus
 
 Name:           python-%{pypi_name}
-Version:        1.24.0
+Version:        1.25.0
 Release:        1%{?dist}
 Summary:        Beautiful, Pythonic protocol buffers.
 
 License:        Apache 2.0
 URL:            https://github.com/googleapis/proto-plus-python
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -35,9 +36,9 @@ Requires:       python%{python3_pkgversion}-protobuf < 6
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
@@ -56,5 +57,8 @@ set -ex
 
 
 %changelog
+* Sun Nov 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.25.0-1
+- Update to 1.25.0
+
 * Mon Sep 23 2024 Odilon Sousa - 1.24.0-1
 - Initial package.
