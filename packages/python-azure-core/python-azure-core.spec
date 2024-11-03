@@ -6,7 +6,7 @@
 %global src_name azure_core
 
 Name:           python-%{pypi_name}
-Version:        1.31.0
+Version:        1.32.0
 Release:        1%{?dist}
 Summary:        Microsoft Azure Core Library for Python
 
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Sun Nov 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.32.0-1
+- Update to 1.32.0
+
 * Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.31.0-1
 - Update to 1.31.0
 
