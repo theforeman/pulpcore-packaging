@@ -6,7 +6,7 @@
 %global pypi_name pulp-container
 
 Name:           python-%{pypi_name}
-Version:        2.21.1
+Version:        2.22.0
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -29,7 +29,7 @@ Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-pulpcore < 3.70
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.4
-Conflicts:      python%{python3_pkgversion}-pyjwt >= 2.9
+Conflicts:      python%{python3_pkgversion}-pyjwt >= 2.10
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
 Requires:       python%{python3_pkgversion}-jsonschema < 4.24
 
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 04 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.22.0-1
+- Update to 2.22.0
+
 * Mon Oct 28 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.21.1-1
 - Update to 2.21.1
 
