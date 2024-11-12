@@ -7,19 +7,17 @@
 %global _docdir_fmt %{pkg_name}
 
 Name:           python-%{modname}
-Version:        0.4
-Release:        40%{?dist}
+Version:        0.5
+Release:        1%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
-Source0:        https://files.pythonhosted.org/packages/0f/d1/3090ef9be165da5ddb1b0cf2b332d3282588bdd2dd0967e94b547f10055f/%{modname}-%{version}.tar.gz
-Patch0:         0001-Fix-handling-of-REM-xxxxxxxx-as-a-comment-but-REMXXX.patch
-# The patch upstream (http://code.google.com/p/iniparse/issues/detail?id=22)
-# is Python3-only. The patch below uses python-six to create a version that works
-# with both Python major versions and is more error-prone.
-Patch1:         0002-python3-compat.patch
-# Fixup the module to have proper setup.py information
-Patch2:         0003-Fixup-the-module-to-have-proper-setup.py-information.patch
+Source:         https://files.pythonhosted.org/packages/source/i/%{modname}/%{modname}-%{version}.tar.gz
+# https://github.com/candlepin/python-iniparse/pull/24
+Patch6:         0006-Fix-compatibility-issues-with-Python-3.11.patch
+# https://github.com/candlepin/python-iniparse/pull/29
+Patch7:         0001-Fix-tests-with-python-3.12.1.patch
+
 
 BuildArch: noarch
 
@@ -50,7 +48,7 @@ Python 3 version.
 
 %prep
 set -ex
-%autosetup -p 1 -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 chmod -c -x html/index.html
 
 
@@ -72,12 +70,15 @@ set -ex
 
 %files -n python%{python3_pkgversion}-%{modname}
 %license LICENSE LICENSE-PSF
-%doc README Changelog html/
+%doc README.md Changelog html/
 %{python3_sitelib}/%{modname}/
 %{python3_sitelib}/%{modname}-%{version}-*.egg-info
 
 
 %changelog
+* Tue Nov 12 2024 Odilon Sousa <osousa@redhat.com> - 0.5-1
+- Release python-iniparse 0.5
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.4-40
 - Remove SCL bits
 
