@@ -5,7 +5,7 @@
 %global pypi_name packaging
 
 Name:           python-%{pypi_name}
-Version:        24.1
+Version:        24.2
 Release:        1%{?dist}
 Summary:        Core utilities for Python packages
 
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 13 2024 Foreman Packaging Automation <packaging@theforeman.org> - 24.2-1
+- Update to 24.2
+
 * Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 24.1-1
 - Update to 24.1
 
