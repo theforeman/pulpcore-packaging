@@ -5,7 +5,7 @@
 %global pypi_name zipp
 
 Name:           python-%{pypi_name}
-Version:        3.20.2
+Version:        3.21.0
 Release:        1%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 13 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.21.0-1
+- Update to 3.21.0
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.20.2-1
 - Update to 3.20.2
 
