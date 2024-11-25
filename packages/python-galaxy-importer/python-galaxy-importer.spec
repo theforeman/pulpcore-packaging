@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.4.19
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -29,11 +29,8 @@ Summary:        %{summary}
 # We don't care if Ansible is Python 2 or 3 as we just call the CLI
 Requires:       /usr/bin/ansible
 Requires:       /usr/bin/ansible-test
-%if 0%{?rhel} == 8
-# We only have ansible-lint built on EL8
 Requires:       ansible-lint < 6.14.4
 Requires:       ansible-lint >= 5.0.8
-%endif
 Requires:       python%{python3_pkgversion}-ansible-builder < 4.0
 Requires:       python%{python3_pkgversion}-ansible-builder >= 1.0.1
 Requires:       python%{python3_pkgversion}-attrs < 23
@@ -93,6 +90,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Mon Nov 25 2024 Evgeni Golov - 0.4.19-3
+- make galaxy-importer require ansible-lint on EL9
+
 * Mon Jan 29 2024 Odilon Sousa <osousa@redhat.com> - 0.4.19-2
 - Update ansible-builder requirements
 
