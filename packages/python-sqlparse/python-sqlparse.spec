@@ -5,7 +5,7 @@
 %global pypi_name sqlparse
 
 Name:           python-%{pypi_name}
-Version:        0.5.2
+Version:        0.5.3
 Release:        1%{?dist}
 Summary:        A non-validating SQL parser
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.3-1
+- Update to 0.5.3
+
 * Sun Nov 17 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.2-1
 - Update to 0.5.2
 
