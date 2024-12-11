@@ -5,8 +5,8 @@
 %global pypi_name six
 
 Name:           python-%{pypi_name}
-Version:        1.16.0
-Release:        6%{?dist}
+Version:        1.17.0
+Release:        1%{?dist}
 Summary:        Python 2 and 3 compatibility utilities
 
 License:        MIT
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.17.0-1
+- Update to 1.17.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.16.0-6
 - Remove SCL bits
 
