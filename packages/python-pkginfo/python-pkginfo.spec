@@ -5,7 +5,7 @@
 %global pypi_name pkginfo
 
 Name:           python-%{pypi_name}
-Version:        1.11.2
+Version:        1.11.3
 Release:        1%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.11.3-1
+- Update to 1.11.3
+
 * Mon Oct 14 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.11.2-1
 - Update to 1.11.2
 
