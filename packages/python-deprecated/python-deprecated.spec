@@ -6,13 +6,13 @@
 %global srcname deprecated
 
 Name:           python-%{srcname}
-Version:        1.2.14
+Version:        1.2.15
 Release:        1%{?dist}
 Summary:        Python @deprecated decorator to deprecate old python classes, functions or methods
 
 License:        MIT
 URL:            https://github.com/tantale/deprecated
-Source0:        https://files.pythonhosted.org/packages/source/D/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -36,9 +36,9 @@ Conflicts:      python%{python3_pkgversion}-wrapt >= 2
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{srcname}.egg-info
 
 
 %build
@@ -54,11 +54,14 @@ set -ex
 %files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE.rst docs/source/license.rst
 %doc README.md
-%{python3_sitelib}/deprecated
+%{python3_sitelib}/%{srcname}
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.15-1
+- Update to 1.2.15
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.14-1
 - Update to 1.2.14
 
