@@ -6,8 +6,8 @@
 %global srcname pyopenssl
 
 Name:           python-%{pypi_name}
-Version:        24.2.1
-Release:        2%{?dist}
+Version:        24.3.0
+Release:        1%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 24.3.0-1
+- Update to 24.3.0
+
 * Thu Nov 14 2024 Odilon Sousa <osousa@redhat.com> - 24.2.1-2
 - Update requirement for cryptography
 
