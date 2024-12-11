@@ -5,7 +5,7 @@
 %global pypi_name google-cloud-storage
 
 Name:           python-%{pypi_name}
-Version:        2.18.2
+Version:        2.19.0
 Release:        1%{?dist}
 Summary:        Google Cloud Storage API client library
 
@@ -71,5 +71,8 @@ set -ex
 
 
 %changelog
+* Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.19.0-1
+- Update to 2.19.0
+
 * Mon Sep 23 2024 Dieter Maes <dmaes@inuits.eu>  - 2.18.2-1
 - Initial package.
