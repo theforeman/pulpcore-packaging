@@ -5,7 +5,7 @@
 %global pypi_name aiohttp
 
 Name:           python-%{pypi_name}
-Version:        3.10.8
+Version:        3.10.11
 Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Mon Dec 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.11-1
+- Update to 3.10.11
+
 * Sun Oct 27 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.8-1
 - Update to 3.10.8
 
