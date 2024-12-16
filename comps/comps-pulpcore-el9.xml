@@ -211,7 +211,7 @@
       <packagereq type="default">python3.11-poetry_plugin_export</packagereq>
       <packagereq type="default">python3.11-productmd</packagereq>
       <packagereq type="default">python3.11-prometheus-client</packagereq>
-      <packagereq type="default">python3.11--propcache</packagereq>
+      <packagereq type="default">python3.11-propcache</packagereq>
       <packagereq type="default">python3.11-protobuf</packagereq>
       <packagereq type="default">python3.11-proto-plus</packagereq>
       <packagereq type="default">python3.11-psycopg</packagereq>
