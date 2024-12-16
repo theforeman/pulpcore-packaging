@@ -9,7 +9,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.63.4
+Version:        3.63.6
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -45,7 +45,7 @@ Requires:       python%{python3_pkgversion}-aiodns <= 3.2.0
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 24.2.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.4
-Requires:       python%{python3_pkgversion}-aiohttp < 3.10.9
+Requires:       python%{python3_pkgversion}-aiohttp < 3.10.12
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Conflicts:      python%{python3_pkgversion}-asyncio-throttle >= 1.1
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
@@ -118,7 +118,7 @@ Requires:       python%{python3_pkgversion}-uuid6 <= 2024.7.10
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       python%{python3_pkgversion}-whitenoise < 6.8.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.8
-Requires:       python%{python3_pkgversion}-yarl < 1.13.2
+Requires:       python%{python3_pkgversion}-yarl < 1.15.3
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 %if 0%{?rhel} == 8
@@ -191,6 +191,9 @@ done
 
 
 %changelog
+* Mon Dec 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.6-1
+- Update to 3.63.6
+
 * Thu Nov 28 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.4-1
 - Update to 3.63.4
 
