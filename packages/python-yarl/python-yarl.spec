@@ -5,7 +5,7 @@
 %global pypi_name yarl
 
 Name:           python-%{pypi_name}
-Version:        1.13.1
+Version:        1.15.2
 Release:        1%{?dist}
 Summary:        Yet another URL library
 
@@ -32,6 +32,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-idna >= 2.0
 Requires:       python%{python3_pkgversion}-multidict >= 4.0
+Requires:       python%{python3_pkgversion}-propcache >= 0.2.0
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -58,6 +59,9 @@ set -ex
 
 
 %changelog
+* Mon Dec 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.15.2-1
+- Update to 1.15.2
+
 * Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.13.1-1
 - Update to 1.13.1
 
