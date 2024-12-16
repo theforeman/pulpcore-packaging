@@ -349,6 +349,7 @@ tier4_packages:
     python-expandvars: {}
     python-mailbits: {}
     python-aiohappyeyeballs: {}
+    python-propcache: {}
 
 pulpcore_packages:
   hosts:
