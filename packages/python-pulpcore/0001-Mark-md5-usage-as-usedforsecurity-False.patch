@@ -1,0 +1,36 @@
+From f3a7b4c04eecde680f0a12601f41f7ef58f6a246 Mon Sep 17 00:00:00 2001
+From: Brian Bouterse <bmbouter@redhat.com>
+Date: Wed, 31 Mar 2021 10:11:36 -0400
+Subject: [PATCH] Mark md5 usage as usedforsecurity=False
+
+---
+ pulpcore/app/pulp_hashlib.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/pulpcore/app/pulp_hashlib.py b/pulpcore/app/pulp_hashlib.py
+index 604709b4d..87d684df6 100644
+--- a/pulpcore/app/pulp_hashlib.py
++++ b/pulpcore/app/pulp_hashlib.py
+@@ -14,6 +14,9 @@ def new(name, *args, **kwargs):
+     This function raises an exception if a hasher is requested which is not allowed, and otherwise,
+     returns the standard hasher from `hashlib.new()`.
+ 
++    Additionally patches md5 to specify `usedforsecurity=False` allowing it to be used even in
++    restricted environments.
++
+     Args:
+         name: The name of the hasher to be instantiated.
+         *args: args to be passed along to the real `hashlib.new()`.
+@@ -33,4 +36,9 @@ def new(name, *args, **kwargs):
+                 "setting"
+             ).format(name)
+         )
++    if name == "md5":
++        try:
++            return the_real_hashlib.new(name, *args, usedforsecurity=False, **kwargs)
++        except TypeError:
++            pass
+     return the_real_hashlib.new(name, *args, **kwargs)
+-- 
+2.26.3
+

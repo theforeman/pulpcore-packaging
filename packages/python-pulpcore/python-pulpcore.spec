@@ -10,12 +10,13 @@
 
 Name:           python-%{pypi_name}
 Version:        3.63.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         0001-Mark-md5-usage-as-usedforsecurity-False.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -191,6 +192,9 @@ done
 
 
 %changelog
+* Mon Dec 16 2024 Odilon Sousa <osousa@redhat.com> - 3.63.6-2
+- Add a patch for FIPS compliency.
+
 * Mon Dec 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.6-1
 - Update to 3.63.6
 
