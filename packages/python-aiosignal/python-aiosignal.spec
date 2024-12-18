@@ -5,8 +5,8 @@
 %global pypi_name aiosignal
 
 Name:           python-%{pypi_name}
-Version:        1.3.1
-Release:        5%{?dist}
+Version:        1.3.2
+Release:        1%{?dist}
 Summary:        aiosignal: a list of registered asynchronous callbacks
 
 License:        Apache 2.0
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Dec 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.3.2-1
+- Update to 1.3.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.3.1-5
 - Remove SCL bits
 
