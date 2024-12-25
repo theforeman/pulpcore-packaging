@@ -5,18 +5,20 @@
 %global pypi_name certifi
 
 Name:           python-%{pypi_name}
-Version:        2022.12.7
-Release:        5%{?dist}
+Version:        2024.12.14
+Release:        1%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPL-2.0
 URL:            https://github.com/certifi/python-certifi
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         certifi-2022.12.7-use-system-cert.patch
+Patch0:         certifi-2024.08.30-use-system-cert.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  ca-certificates
 
 %description
@@ -36,30 +38,27 @@ Requires:       ca-certificates
 %prep
 set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 # Remove bundled Root Certificates collection
 rm -rf certifi/*.pem
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
-
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Dec 25 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2024.12.14-1
+- Update to 2024.12.14
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2022.12.7-5
 - Remove SCL bits
 
