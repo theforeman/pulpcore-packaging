@@ -6,13 +6,13 @@
 %global srcname pyjwt
 
 Name:           python-%{srcname}
-Version:        2.8.0
+Version:        2.9.0
 Release:        1%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
 URL:            https://github.com/jpadilla/pyjwt
-Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -38,7 +38,7 @@ Obsoletes:      python39-%{srcname} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Dec 25 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.0-1
+- Update to 2.9.0
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.8.0-1
 - Update to 2.8.0
 
