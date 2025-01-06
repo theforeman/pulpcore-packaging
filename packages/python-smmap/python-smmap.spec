@@ -5,11 +5,11 @@
 %global pypi_name smmap
 
 Name:           python-%{pypi_name}
-Version:        5.0.1
+Version:        5.0.2
 Release:        1%{?dist}
 Summary:        A pure Python implementation of a sliding window memory map manager
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://github.com/gitpython-developers/smmap
 Source0:        https://files.pythonhosted.org/packages/source/s/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 06 2025 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.2-1
+- Update to 5.0.2
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.1-1
 - Update to 5.0.1
 
