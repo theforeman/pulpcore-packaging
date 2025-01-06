@@ -6,13 +6,13 @@
 %global srcname gitpython
 
 Name:           python-%{srcname}
-Version:        3.1.43
+Version:        3.1.44
 Release:        1%{?dist}
 Summary:        GitPython is a python library used to interact with Git repositories
 
 License:        BSD
 URL:            https://github.com/gitpython-developers/GitPython
-Source0:        https://files.pythonhosted.org/packages/source/G/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -38,9 +38,9 @@ Requires:       python%{python3_pkgversion}-typing-extensions >= 3.7.4.3
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{srcname}.egg-info
 
 
 %build
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 06 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.44-1
+- Update to 3.1.44
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.43-1
 - Update to 3.1.43
 
