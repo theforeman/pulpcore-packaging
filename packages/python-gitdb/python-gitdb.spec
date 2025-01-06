@@ -5,7 +5,7 @@
 %global pypi_name gitdb
 
 Name:           python-%{pypi_name}
-Version:        4.0.11
+Version:        4.0.12
 Release:        1%{?dist}
 Summary:        Git Object Database
 
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 06 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.0.12-1
+- Update to 4.0.12
+
 * Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.0.11-1
 - Update to 4.0.11
 
