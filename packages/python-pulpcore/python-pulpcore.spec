@@ -9,8 +9,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python-%{pypi_name}
-Version:        3.63.6
-Release:        2%{?dist}
+Version:        3.63.7
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -79,7 +79,7 @@ Requires:       python%{python3_pkgversion}-gnupg <= 0.5.3
 Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
 Requires:       python%{python3_pkgversion}-gunicorn < 23.1.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
-Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.4
+Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.5
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
 Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
@@ -192,6 +192,9 @@ done
 
 
 %changelog
+* Thu Jan 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.7-1
+- Update to 3.63.7
+
 * Mon Dec 16 2024 Odilon Sousa <osousa@redhat.com> - 3.63.6-2
 - Add a patch for FIPS compliency.
 
