@@ -5,7 +5,7 @@
 %global pypi_name boto3
 
 Name:           python-%{pypi_name}
-Version:        1.35.94
+Version:        1.35.96
 Release:        1%{?dist}
 Summary:        The AWS SDK for Python
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Jan 10 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.35.96-1
+- Update to 1.35.96
+
 * Wed Jan 08 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.35.94-1
 - Update to 1.35.94
 
