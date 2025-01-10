@@ -6,7 +6,7 @@
 %global srcname socks
 
 Name:           python-%{srcname}
-Version:        2.5.3
+Version:        2.6.1
 Release:        1%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
@@ -16,7 +16,10 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -42,22 +45,23 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license LICENSE.txt
-%doc README.md
-%{python3_sitelib}/python_socks
-%{python3_sitelib}/python_socks-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Fri Jan 10 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.6.1-1
+- Update to 2.6.1
+
 * Mon Oct 14 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.3-1
 - Update to 2.5.3
 
