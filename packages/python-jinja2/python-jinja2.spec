@@ -6,7 +6,7 @@
 %global srcname jinja2
 
 Name:           python-%{srcname}
-Version:        3.1.4
+Version:        3.1.5
 Release:        1%{?dist}
 Summary:        A very fast and expressive template engine
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Fri Jan 10 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.5-1
+- Update to 3.1.5
+
 * Fri Jun 07 2024 Odilon Sousa <osousa@redhat.com> - 3.1.4-1
 - Release python-jinja2 3.1.4
 
