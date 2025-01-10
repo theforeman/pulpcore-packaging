@@ -9,13 +9,13 @@
 %global pkg_name json_stream_rs_tokenizer
 
 Name:           python-%{pypi_name}
-Version:        0.4.26
+Version:        0.4.27
 Release:        1%{?dist}
 Summary:        Faster tokenizer for the json-stream Python library
 
 License:        MIT
 URL:            https://github.com/smheidrich/py-json-stream-rs-tokenizer
-Source0:        https://files.pythonhosted.org/packages/source/j/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/%{pkg_name}/%{pkg_name}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -36,9 +36,9 @@ Summary:        %{summary}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{pkg_name}.egg-info
 
 
 %build
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Fri Jan 10 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.27-1
+- Update to 0.4.27
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.26-1
 - Update to 0.4.26
 
