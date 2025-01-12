@@ -7,19 +7,20 @@
 %global pkg_name json_stream
 
 Name:           python-%{pypi_name}
-Version:        2.3.2
-Release:        4%{?dist}
+Version:        2.3.3
+Release:        1%{?dist}
 Summary:        Streaming JSON encoder and decoder
 
 # Check if the automatically generated License and its spelling is correct for Fedora
 # https://docs.fedoraproject.org/en-US/packaging-guidelines/LicensingGuidelines/
 License:        MIT
 URL:            https://github.com/daggaz/json-stream
-Source:         https://files.pythonhosted.org/packages/source/j/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/%{pkg_name}/%{pkg_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  pyproject-rpm-macros
 
@@ -38,7 +39,7 @@ Requires:       python%{python3_pkgversion}-json_stream_rs_tokenizer >= 0.4.17
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 
 %build
@@ -55,6 +56,9 @@ set -ex
 %{python3_sitelib}/%{pkg_name}/
 
 %changelog
+* Sun Jan 12 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.3-1
+- Update to 2.3.3
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 2.3.2-4
 - Rollback overzealous obsoletes
 
