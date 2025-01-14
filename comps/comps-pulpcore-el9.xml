@@ -251,6 +251,7 @@
       <packagereq type="default">python3.11-pyperclip</packagereq>
       <packagereq type="default">python3.11-pypi-simple</packagereq>
       <packagereq type="default">python3.11-pyproject_hooks</packagereq>
+      <packagereq type="default">python3.11-pyproject-metadata</packagereq>
       <packagereq type="default">python3.11-pyrsistent</packagereq>
       <packagereq type="default">python3.11-python3-openid</packagereq>
       <packagereq type="default">python3.11-pytz</packagereq>
