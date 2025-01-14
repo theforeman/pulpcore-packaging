@@ -16,6 +16,7 @@
       <packagereq type="default">createrepo_c-libs</packagereq>
       <packagereq type="default">libcomps</packagereq>
       <packagereq type="default">libcomps-devel</packagereq>
+      <packagereq type="default">meson</packagereq>
       <packagereq type="default">postgresql-debversion</packagereq>
       <packagereq type="default">postgresql-evr</packagereq>
       <packagereq type="default">pulpcore-obsolete-packages</packagereq>
