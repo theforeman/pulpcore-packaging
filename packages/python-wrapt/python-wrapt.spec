@@ -5,7 +5,7 @@
 %global pypi_name wrapt
 
 Name:           python-%{pypi_name}
-Version:        1.17.1
+Version:        1.17.2
 Release:        1%{?dist}
 Summary:        Module for decorators, wrappers and monkey patching
 
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.17.2-1
+- Update to 1.17.2
+
 * Sun Jan 12 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.17.1-1
 - Update to 1.17.1
 
