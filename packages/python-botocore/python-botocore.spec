@@ -5,7 +5,7 @@
 %global pypi_name botocore
 
 Name:           python-%{pypi_name}
-Version:        1.35.99
+Version:        1.36.2
 Release:        1%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Sun Jan 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.36.2-1
+- Update to 1.36.2
+
 * Wed Jan 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.35.99-1
 - Update to 1.35.99
 
