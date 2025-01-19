@@ -5,7 +5,7 @@
 %global pypi_name s3transfer
 
 Name:           python-%{pypi_name}
-Version:        0.10.4
+Version:        0.11.1
 Release:        1%{?dist}
 Summary:        An Amazon S3 Transfer Manager
 
@@ -26,7 +26,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-botocore < 2.0a.0
-Requires:       python%{python3_pkgversion}-botocore >= 1.33.2
+Requires:       python%{python3_pkgversion}-botocore >= 1.36.0
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Sun Jan 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.11.1-1
+- Update to 0.11.1
+
 * Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.10.4-1
 - Update to 0.10.4
 
