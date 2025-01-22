@@ -7,7 +7,7 @@
 %global pkg_name pulp_cli_deb
 
 Name:           python-%{pypi_name}
-Version:        0.3.0
+Version:        0.3.1
 Release:        1%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
@@ -32,7 +32,7 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 Requires:       python%{python3_pkgversion}-pulp-cli >= 0.23.2
-Requires:       python%{python3_pkgversion}-pulp-cli < 0.30
+Requires:       python%{python3_pkgversion}-pulp-cli < 0.31
 Requires:       python%{python3_pkgversion}-click
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-pulp-glue-deb == %{version}
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.1-1
+- Update to 0.3.1
+
 * Wed Oct 02 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.0-1
 - Update to 0.3.0
 
