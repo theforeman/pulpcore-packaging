@@ -5,8 +5,8 @@
 %global pypi_name pulp-glue
 
 Name:           python-%{pypi_name}
-Version:        0.29.2
-Release:        2%{?dist}
+Version:        0.30.2
+Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.30.2-1
+- Update to 0.30.2
+
 * Wed Oct 09 2024 Odilon Sousa <osousa@redhat.com> - 0.29.2-2
 - Update requirement for requests
 
