@@ -6,8 +6,8 @@
 %global pypi_name pulp-cli
 
 Name:           python-%{pypi_name}
-Version:        0.29.2
-Release:        2%{?dist}
+Version:        0.30.2
+Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -36,8 +36,10 @@ Requires:       python%{python3_pkgversion}-click < 9.0.0
 Requires:       python%{python3_pkgversion}-click >= 8.0.0
 Requires:       python%{python3_pkgversion}-click-shell < 3
 Requires:       python%{python3_pkgversion}-click-shell >= 2.1
-Requires:       python%{python3_pkgversion}-packaging
-Requires:       python%{python3_pkgversion}-pygments
+Requires:       python%{python3_pkgversion}-packaging >= 20.0
+Requires:       python%{python3_pkgversion}-packaging < 25
+Requires:       python%{python3_pkgversion}-pygments >= 2.17.2
+Requires:       python%{python3_pkgversion}-pygments < 2.20
 Requires:       python%{python3_pkgversion}-requests < 2.33
 Requires:       python%{python3_pkgversion}-requests >= 2.24.0
 Requires:       python%{python3_pkgversion}-schema < 0.8
@@ -83,6 +85,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.30.2-1
+- Update to 0.30.2
+
 * Wed Oct 09 2024 Odilon Sousa <osousa@redhat.com> - 0.29.2-2
 - Update requirement for requests
 
