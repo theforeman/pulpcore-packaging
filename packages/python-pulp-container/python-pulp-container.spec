@@ -4,15 +4,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-container
+%global src_name pulp_container
 
 Name:           python-%{pypi_name}
-Version:        2.22.0
+Version:        2.22.1
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://pulpproject.org/
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -46,7 +47,7 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -69,6 +70,9 @@ set -ex
 
 
 %changelog
+* Thu Jan 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.22.1-1
+- Update to 2.22.1
+
 * Mon Nov 04 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.22.0-1
 - Update to 2.22.0
 
