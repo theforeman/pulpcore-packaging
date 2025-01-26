@@ -5,8 +5,8 @@
 %global pypi_name bindep
 
 Name:           python-%{pypi_name}
-Version:        2.11.0
-Release:        5%{?dist}
+Version:        2.12.0
+Release:        1%{?dist}
 Summary:        Binary dependency utility
 
 License:        Apache License, Version 2.0
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Sun Jan 26 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.12.0-1
+- Update to 2.12.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.11.0-5
 - Remove SCL bits
 
