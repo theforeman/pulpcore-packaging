@@ -5,8 +5,8 @@
 %global pypi_name tomli_w
 
 Name:           python-%{pypi_name}
-Version:        1.0.0
-Release:        5%{?dist}
+Version:        1.2.0
+Release:        1%{?dist}
 Summary:        A little TOML parser for Python
 
 License:        MIT
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Sun Jan 26 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.0-1
+- Update to 1.2.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.0.0-5
 - Remove SCL bits
 
