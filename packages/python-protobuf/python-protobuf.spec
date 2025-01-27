@@ -5,7 +5,7 @@
 %global pypi_name protobuf
 
 Name:           python-%{pypi_name}
-Version:        4.25.5
+Version:        4.25.6
 Release:        1%{?dist}
 Summary:        Protocol Buffers
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.25.6-1
+- Update to 4.25.6
+
 * Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.25.5-1
 - Update to 4.25.5
 
