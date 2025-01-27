@@ -5,7 +5,7 @@
 %global pypi_name pulp-deb
 
 Name:           python-%{pypi_name}
-Version:        3.3.1
+Version:        3.5.0
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 27 2025 Quirin Pamp <pamp@atix.de> - 3.5.0-1
+- Update to 3.5.0
+
 * Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.1-1
 - Update to 3.3.1
 
