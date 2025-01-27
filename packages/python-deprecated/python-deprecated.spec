@@ -6,7 +6,7 @@
 %global srcname deprecated
 
 Name:           python-%{srcname}
-Version:        1.2.15
+Version:        1.2.18
 Release:        1%{?dist}
 Summary:        Python @deprecated decorator to deprecate old python classes, functions or methods
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.18-1
+- Update to 1.2.18
+
 * Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.15-1
 - Update to 1.2.15
 
