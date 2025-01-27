@@ -6,7 +6,7 @@
 %global src_name azure_storage_blob
 
 Name:           python-%{pypi_name}
-Version:        12.24.0
+Version:        12.24.1
 Release:        1%{?dist}
 Summary:        Microsoft Azure Blob Storage Client Library for Python
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Mon Jan 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 12.24.1-1
+- Update to 12.24.1
+
 * Wed Nov 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 12.24.0-1
 - Update to 12.24.0
 
