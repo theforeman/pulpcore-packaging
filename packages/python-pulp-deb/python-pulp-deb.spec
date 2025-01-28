@@ -3,19 +3,23 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-deb
+%global src_name pulp_deb
 
 Name:           python-%{pypi_name}
-Version:        3.3.1
+Version:        3.5.0
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://pulpproject.org
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -33,7 +37,6 @@ Requires:       python%{python3_pkgversion}-gnupg < 0.6
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema < 5.0
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
-Requires:       python%{python3_pkgversion}-setuptools
 
 Provides:       pulpcore-plugin(deb) = %{version}
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
@@ -47,29 +50,28 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
+rm -rf %{src_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.md
 %{python3_sitelib}/pulp_deb
-%{python3_sitelib}/pulp_deb-%{version}-py%{python3_version}.egg-info
-
+%{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
+* Tue Jan 28 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.0-1
+- Update to 3.5.0
+
 * Fri Sep 20 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.1-1
 - Update to 3.3.1
 
