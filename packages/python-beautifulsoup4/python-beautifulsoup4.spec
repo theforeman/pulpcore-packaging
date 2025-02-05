@@ -5,7 +5,7 @@
 %global pypi_name beautifulsoup4
 
 Name:           python-%{pypi_name}
-Version:        4.12.3
+Version:        4.13.3
 Release:        1%{?dist}
 Summary:        Screen-scraping library
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.13.3-1
+- Update to 4.13.3
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.12.3-1
 - Update to 4.12.3
 
