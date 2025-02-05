@@ -5,7 +5,7 @@
 %global pypi_name certifi
 
 Name:           python-%{pypi_name}
-Version:        2024.12.14
+Version:        2025.1.31
 Release:        1%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
@@ -56,6 +56,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Feb 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.1.31-1
+- Update to 2025.1.31
+
 * Wed Dec 25 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2024.12.14-1
 - Update to 2024.12.14
 
