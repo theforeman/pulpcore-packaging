@@ -5,7 +5,7 @@
 %global pypi_name pbr
 
 Name:           python-%{pypi_name}
-Version:        6.1.0
+Version:        6.1.1
 Release:        1%{?dist}
 Summary:        Python Build Reasonableness
 
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.1.1-1
+- Update to 6.1.1
+
 * Tue Sep 10 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.1.0-1
 - Update to 6.1.0
 
