@@ -4,8 +4,8 @@
 %global pypi_name cleo
 
 Name:           python-%{pypi_name}
-Version:        2.0.1
-Release:        5%{?dist}
+Version:        2.1.0
+Release:        1%{?dist}
 Summary:        Cleo allows you to create beautiful and testable command-line interfaces.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -53,6 +53,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Feb 12 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.1.0-1
+- Update to 2.1.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.0.1-5
 - Remove SCL bits
 
