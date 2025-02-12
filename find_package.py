@@ -25,6 +25,10 @@ def parse_package_list(lines):
                 name = name.replace('_', '-')
             elif name.startswith('psycopg-c'):
                 name = name.replace('-', '_')
+            elif name.startswith('flit'):
+                name = name.replace('_', '-')
+            elif name.startswith('poetry'):
+                name = name.replace('-', '_')
             #Lower Case all libs that needs to be lowercased(is this a verb?)
             elif name.startswith('PyYAML'):
                 name = name.lower()
