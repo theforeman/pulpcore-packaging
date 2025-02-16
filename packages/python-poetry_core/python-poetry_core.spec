@@ -4,8 +4,8 @@
 %global pypi_name poetry_core
 
 Name:           python-%{pypi_name}
-Version:        1.6.1
-Release:        6%{?dist}
+Version:        1.9.1
+Release:        1%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -54,6 +54,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.9.1-1
+- Update to 1.9.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.6.1-6
 - Remove SCL bits
 
