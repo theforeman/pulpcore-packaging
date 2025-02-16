@@ -1,12 +1,11 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
 
 %global pypi_name flit
 
 Name:           python-%{pypi_name}
-Version:        3.9.0
-Release:        6%{?dist}
+Version:        3.10.1
+Release:        1%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -20,7 +19,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}-pip
-BuildRequires:  python%{python3_pkgversion}-flit_core
+BuildRequires:  python%{python3_pkgversion}-flit_core >= %{version}
+BuildRequires:  python%{python3_pkgversion}-flit_core < 4
 
 %description
 %{summary}
@@ -31,7 +31,7 @@ Summary:        %{summary}
 Requires:       python%{python3_pkgversion}-tomli_w
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-docutils
-Requires:       python%{python3_pkgversion}-flit_core
+Requires:       python%{python3_pkgversion}-flit_core >= %{version}
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
@@ -63,6 +63,9 @@ set -ex
 %{_bindir}/flit
 
 %changelog
+* Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.1-1
+- Update to 3.10.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.9.0-6
 - Remove SCL bits
 
