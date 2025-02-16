@@ -1,11 +1,10 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
 %global pypi_name hatchling 
 
 Name:           python-%{pypi_name}
-Version:        1.18.0
-Release:        4%{?dist}
+Version:        1.27.0
+Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -16,12 +15,11 @@ Source:         https://files.pythonhosted.org/packages/source/h/%{pypi_name}/%{
 
 BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-pathspec
 BuildRequires:  python%{python3_pkgversion}-pip
-BuildRequires:  python%{python3_pkgversion}-editables
-BuildRequires:  python%{python3_pkgversion}-pluggy
-BuildRequires:  python%{python3_pkgversion}-tomli
-BuildRequires:  python%{python3_pkgversion}-packaging
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  python%{python3_pkgversion}-pathspec >= 0.10.1
+BuildRequires:  python%{python3_pkgversion}-pluggy >= 1.0.0
+BuildRequires:  python%{python3_pkgversion}-packaging >= 24.2
 BuildRequires:  python%{python3_pkgversion}-trove-classifiers
 BuildRequires:  pyproject-rpm-macros
 
@@ -31,10 +29,9 @@ BuildRequires:  pyproject-rpm-macros
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-pathspec
-Requires:       python%{python3_pkgversion}-editables
-Requires:       python%{python3_pkgversion}-pluggy
-Requires:       python%{python3_pkgversion}-packaging
+Requires:       python%{python3_pkgversion}-pathspec >= 0.10.1
+Requires:       python%{python3_pkgversion}-pluggy >= 1.0.0
+Requires:       python%{python3_pkgversion}-packaging >= 24.2
 Requires:       python%{python3_pkgversion}-trove-classifiers
 Requires:       pyproject-rpm-macros
 %if 0%{?rhel} == 8
@@ -65,6 +62,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.27.0-1
+- Update to 1.27.0
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.18.0-4
 - Add python39 obsoletes to package
 
