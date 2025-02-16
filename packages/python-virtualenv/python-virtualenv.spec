@@ -1,11 +1,11 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
 %global pypi_name virtualenv
-%{?python_disable_dependency_generator}
+
 
 Name:           python-%{pypi_name}
-Version:        20.24.2
-Release:        3%{?dist}
+Version:        20.29.2
+Release:        1%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -27,9 +27,12 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:  python%{python3_pkgversion}-distlib
-Requires:  python%{python3_pkgversion}-filelock
-Requires:  python%{python3_pkgversion}-platformdirs
+Requires:  python%{python3_pkgversion}-distlib >= 0.3.7
+Requires:  python%{python3_pkgversion}-distlib < 1
+Requires:  python%{python3_pkgversion}-filelock >= 3.12.2
+Requires:  python%{python3_pkgversion}-filelock < 4
+Requires:  python%{python3_pkgversion}-platformdirs >= 3.9.1
+Requires:  python%{python3_pkgversion}-platformdirs < 5
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
@@ -59,6 +62,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 20.29.2-1
+- Update to 20.29.2
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 20.24.2-3
 - Add python39 obsoletes to package
 
