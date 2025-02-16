@@ -3,8 +3,8 @@
 %global pypi_name build
 
 Name:           python-%{pypi_name}
-Version:        0.10.0
-Release:        3%{?dist}
+Version:        1.2.2
+Release:        1%{?dist}
 Summary:        A simple, correct Python build frontend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.2-1
+- Update to 1.2.2.post1
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.10.0-3
 - Add python39 obsoletes to package
 
