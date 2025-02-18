@@ -36,6 +36,8 @@ def parse_package_list(lines):
                 name = name.lower()
             elif name.startswith('Deprecated'):
                 name = name.lower()
+            elif name.startswith('CacheControl'):
+                name = name.lower()
             elif name.startswith('Django'):
                 name = name.lower()
             elif name.startswith('Jinja2'):
