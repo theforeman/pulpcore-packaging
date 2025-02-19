@@ -57,6 +57,7 @@
       <packagereq type="default">python3.11-brotli</packagereq>
       <packagereq type="default">python3.11-build</packagereq>
       <packagereq type="default">python3.11-cachecontrol</packagereq>
+      <packagereq type="default">python3.11-cachecontrol+filecache</packagereq>
       <packagereq type="default">python3.11-cachetools</packagereq>
       <packagereq type="default">python3.11-calver</packagereq>
       <packagereq type="default">python3.11-cchardet</packagereq>
