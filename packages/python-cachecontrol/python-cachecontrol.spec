@@ -7,7 +7,7 @@
 
 Name:           python-%{srcname}
 Version:        0.14.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        httplib2 caching for requests
 
 License:        None
@@ -33,6 +33,7 @@ Requires:       python%{python3_pkgversion}-msgpack >= 0.5.2
 Requires:       python%{python3_pkgversion}-msgpack < 2.0.0
 Requires:       python%{python3_pkgversion}-requests  >= 2.16.0
 Requires:       python%{python3_pkgversion}-filelock >= 3.8.0
+
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{srcname} < %{version}-%{release}
 %endif
@@ -41,6 +42,17 @@ Obsoletes:      python39-%{srcname} < %{version}-%{release}
 %description -n python%{python3_pkgversion}-%{srcname}
 %{summary}
 
+
+%package -n python%{python3_pkgversion}-%{srcname}+filecache
+Summary: Metapackage for python3-cachecontrol: filecache extra
+Requires: python%{python3_pkgversion}-filelock >= 3.8.0
+
+%description -n python%{python3_pkgversion}-%{srcname}+filecache
+This is a metapackage bringing in filecache extra requires for python%{python3_pkgversion}-%{srcname}
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-%{srcname}+filecache
+%ghost %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %prep
 set -ex
@@ -56,7 +68,6 @@ set -ex
 set -ex
 %pyproject_install
 
-
 %files -n python%{python3_pkgversion}-%{srcname}
 %{python3_sitelib}/%{srcname}
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
@@ -64,6 +75,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 19 2025 Odilon Sousa <osousa@redhat.com> - 0.14.2-2
+- Add filecache metapackage to cachecontrol
+
 * Tue Feb 18 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.14.2-1
 - Update to 0.14.2
 
