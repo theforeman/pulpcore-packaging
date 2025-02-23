@@ -4,7 +4,7 @@
 %global pypi_name flit
 
 Name:           python-%{pypi_name}
-Version:        3.10.1
+Version:        3.11.0
 Release:        1%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
@@ -63,6 +63,9 @@ set -ex
 %{_bindir}/flit
 
 %changelog
+* Sun Feb 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.0-1
+- Update to 3.11.0
+
 * Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.1-1
 - Update to 3.10.1
 
