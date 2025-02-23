@@ -6,7 +6,7 @@
 %global src_name trove_classifiers
 
 Name:           python-%{pypi_name}
-Version:        2024.9.12
+Version:        2025.2.18.16
 Release:        1%{?dist}
 Summary:        Canonical source for classifiers on PyPI (pypi.org)
 License:        None
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Sun Feb 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.2.18.16-1
+- Update to 2025.2.18.16
+
 * Tue Sep 17 2024 Odilon Sousa <osousa@redhat.com> - 2024.9.12-1
 - Release python-trove-classifiers 2024.9.12
 
