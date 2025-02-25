@@ -4,23 +4,26 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-ostree
-%{?python_disable_dependency_generator}
+%global src_name pulp_ostree
 
  
 %global release 1
 
 Name:           python-%{pypi_name}
-Version:        2.4.4
+Version:        2.4.6
 Release:        1%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://pulpproject.org/
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}%{?prerelease}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}%{?prerelease}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %description
 A Pulp plugin to support hosting ostree repositories.
@@ -30,7 +33,7 @@ A Pulp plugin to support hosting ostree repositories.
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
-Requires:       python%{python3_pkgversion}-pulpcore < 3.70
+Requires:       python%{python3_pkgversion}-pulpcore < 3.85
 Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.11"
 Requires:       python%{python3_pkgversion}-gobject >= 3.40.1
@@ -53,29 +56,29 @@ A Pulp plugin to support hosting ostree repositories.
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}%{?prerelease}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
+rm -rf %{src_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.md
 %{python3_sitelib}/pulp_ostree
-%{python3_sitelib}/pulp_ostree-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/pulp_ostree-%{version}.dist-info/
 
 
 %changelog
+* Tue Feb 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.6-1
+- Update to 2.4.6
+
 * Wed Oct 30 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.4-1
 - Update to 2.4.4
 
