@@ -1,23 +1,25 @@
-%{?python_disable_dependency_generator}
-
 %global __python3 /usr/bin/python3.11
 %global python3_pkgversion 3.11
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-python
+%global src_name pulp_python
 
 Name:           python-%{pypi_name}
-Version:        3.12.5
+Version:        3.12.6
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://www.pulpproject.org
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -30,8 +32,8 @@ Summary:        %{summary}
 
 Requires:       python%{python3_pkgversion}-bandersnatch >= 6.1
 Conflicts:      python%{python3_pkgversion}-bandersnatch >= 6.2
-Requires:       python%{python3_pkgversion}-pkginfo >= 1.10.0
-Requires:       python%{python3_pkgversion}-pkginfo < 1.12.0
+Requires:       python%{python3_pkgversion}-pkginfo >= 1.12.0
+Requires:       python%{python3_pkgversion}-pkginfo < 1.13.0
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49
 Requires:       python%{python3_pkgversion}-pulpcore < 3.70
 Requires:       python%{python3_pkgversion}-pypi-simple >= 0.9
@@ -49,29 +51,29 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
+rm -rf %{src_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.md
 %{python3_sitelib}/pulp_python
-%{python3_sitelib}/pulp_python-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/pulp_python-%{version}.dist-info/
 
 
 %changelog
+* Wed Feb 26 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.12.6-1
+- Update to 3.12.6
+
 * Mon Oct 28 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.12.5-1
 - Update to 3.12.5
 
