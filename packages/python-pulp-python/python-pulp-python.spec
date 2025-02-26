@@ -5,15 +5,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-python
+%global src_name pulp_python
 
 Name:           python-%{pypi_name}
-Version:        3.11.3
+Version:        3.11.4
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            https://www.pulpproject.org
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -32,8 +33,8 @@ Requires:       python%{python3_pkgversion}-bandersnatch >= 6.1
 Conflicts:      python%{python3_pkgversion}-bandersnatch >= 6.2
 Requires:       python%{python3_pkgversion}-packaging >= 21.3
 Conflicts:      python%{python3_pkgversion}-packaging >= 22.0
-Requires:       python%{python3_pkgversion}-pkginfo >= 1.10.0
-Requires:       python%{python3_pkgversion}-pkginfo < 1.12.0
+Requires:       python%{python3_pkgversion}-pkginfo >= 1.12.0
+Requires:       python%{python3_pkgversion}-pkginfo < 1.13.0
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.28
 Requires:       python%{python3_pkgversion}-pulpcore < 3.55
 Requires:       python%{python3_pkgversion}-pypi-simple >= 0.9
@@ -51,9 +52,9 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
@@ -74,6 +75,9 @@ set -ex
 
 
 %changelog
+* Wed Feb 26 2025 Odilon Sousa <osousa@redhat.com> - 3.11.4-1
+- Release python-pulp-python 3.11.4
+
 * Mon Sep 09 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.3-1
 - Update to 3.11.3
 
