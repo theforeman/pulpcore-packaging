@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.37.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -26,7 +26,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-botocore >= %{version}
-Requires:       python%{python3_pkgversion}-botocore < 1.37.0
+Requires:       python%{python3_pkgversion}-botocore < 1.38.0
 Requires:       python%{python3_pkgversion}-jmespath < 2.0.0
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
 Requires:       python%{python3_pkgversion}-s3transfer < 0.12.0
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Feb 28 2025 Odilon Sousa <osousa@redhat.com> - 1.37.2-2
+- Update botocore requirements
+
 * Wed Feb 26 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.37.2-1
 - Update to 1.37.2
 
