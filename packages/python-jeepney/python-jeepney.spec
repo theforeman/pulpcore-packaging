@@ -3,8 +3,8 @@
 %global pypi_name jeepney 
 
 Name:           python-%{pypi_name}
-Version:        0.8.0
-Release:        4%{?dist}
+Version:        0.9.0
+Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.9.0-1
+- Update to 0.9.0
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.8.0-4
 - Rollback overzealous obsoletes
 
