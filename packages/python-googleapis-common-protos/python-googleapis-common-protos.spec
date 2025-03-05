@@ -6,7 +6,7 @@
 %global srcname googleapis_common_protos
 
 Name:           python-%{pypi_name}
-Version:        1.66.0
+Version:        1.69.0
 Release:        1%{?dist}
 Summary:        Common protobufs used in Google APIs
 
@@ -26,7 +26,9 @@ BuildConflicts: python%{python3_pkgversion}-protobuf = 4.21.5
 BuildRequires:  python%{python3_pkgversion}-protobuf < 5.0.0.dev0
 BuildRequires:  python%{python3_pkgversion}-protobuf >= 3.19.5
 BuildRequires:  python%{python3_pkgversion}-setuptools
-
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %description
 %{summary}
@@ -61,22 +63,24 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst
+%exclude %{python3_sitelib}/docs
 %{python3_sitelib}/google
-%{python3_sitelib}/googleapis_common_protos-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/googleapis_common_protos-%{version}.dist-info/
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.69.0-1
+- Update to 1.69.0
+
 * Wed Nov 13 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.66.0-1
 - Update to 1.66.0
 
