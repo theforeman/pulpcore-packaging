@@ -3,8 +3,8 @@
 %global pypi_name anyio
 
 Name:           python-%{pypi_name}
-Version:        3.6.2
-Release:        4%{?dist}
+Version:        4.8.0
+Release:        1%{?dist}
 Summary:        High level compatibility layer for multiple asynchronous event loop implementations
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -27,9 +27,9 @@ BuildRequires:  pyproject-rpm-macros
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-exceptiongroup
-Requires:       python%{python3_pkgversion}-idna
-Requires:       python%{python3_pkgversion}-sniffio
+Requires:       python%{python3_pkgversion}-idna >= 2.8
+Requires:       python%{python3_pkgversion}-sniffio >= 1.1
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.5
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.8.0-1
+- Update to 4.8.0
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.6.2-4
 - Rollback overzealous obsoletes
 
