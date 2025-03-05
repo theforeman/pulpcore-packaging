@@ -5,8 +5,8 @@
 %global pypi_name pluggy
 
 Name:           python-%{pypi_name}
-Version:        1.3.0
-Release:        4%{?dist}
+Version:        1.5.0
+Release:        1%{?dist}
 Summary:        plugin and hook calling mechanisms for python
 
 License:        MIT
@@ -18,8 +18,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-pip
-BuildRequires:  python%{python3_pkgversion}-typing-extensions
-
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -41,25 +41,24 @@ set -ex
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
-
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
-
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.5.0-1
+- Update to 1.5.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.3.0-4
 - Remove SCL bits
 
