@@ -1,12 +1,12 @@
 %global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global __python3 %{_bindir}/python3.11
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name docutils
 
 Name:           python-%{pypi_name}
-Version:        0.20.1
-Release:        4%{?dist}
+Version:        0.21.2
+Release:        1%{?dist}
 Summary:        Docutils -- Python Documentation Utilities
 
 License:        Public Domain and BSD and Python and GPLv3+
@@ -15,7 +15,9 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-flit_core
+BuildRequires:  python%{python3_pkgversion}-flit_scm
 
 
 %description
@@ -36,47 +38,44 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-	
 # Remove shebang from library files
+
 sed -i -e '/#! *\/usr\/bin\/.*/{1D}' $(grep -Erl '^#!.+python' docutils)
 	
 # We want the licenses but don't need this build file
 rm -f licenses/docutils.conf
 
 
+
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license COPYING.txt
-%doc README.txt
 %{_bindir}/docutils
-%{_bindir}/rst2html.py
-%{_bindir}/rst2html4.py
-%{_bindir}/rst2html5.py
-%{_bindir}/rst2latex.py
-%{_bindir}/rst2man.py
-%{_bindir}/rst2odt.py
-%{_bindir}/rst2odt_prepstyles.py
-%{_bindir}/rst2pseudoxml.py
-%{_bindir}/rst2s5.py
-%{_bindir}/rst2xetex.py
-%{_bindir}/rst2xml.py
-%{_bindir}/rstpep2html.py
+%{_bindir}/rst2html
+%{_bindir}/rst2html4
+%{_bindir}/rst2html5
+%{_bindir}/rst2latex
+%{_bindir}/rst2man
+%{_bindir}/rst2odt
+%{_bindir}/rst2pseudoxml
+%{_bindir}/rst2s5
+%{_bindir}/rst2xetex
+%{_bindir}/rst2xml
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.21.2-1
+- Update to 0.21.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 0.20.1-4
 - Remove SCL bits
 
