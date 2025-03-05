@@ -5,8 +5,8 @@
 %global pypi_name msgpack
 
 Name:           python-%{pypi_name}
-Version:        1.0.5
-Release:        5%{?dist}
+Version:        1.1.0
+Release:        1%{?dist}
 Summary:        MessagePack serializer
 
 License:        Apache 2.0
@@ -15,6 +15,9 @@ Source0:        https://files.pythonhosted.org/packages/source/m/%{pypi_name}/%{
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
@@ -39,21 +42,23 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%doc README.md
 %{python3_sitearch}/%{pypi_name}
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.0-1
+- Update to 1.1.0
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.0.5-5
 - Remove SCL bits
 
