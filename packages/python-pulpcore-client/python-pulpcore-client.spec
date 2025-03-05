@@ -5,7 +5,7 @@
 %global pypi_name pulpcore-client
 
 Name:           python-%{pypi_name}
-Version:        3.63.10
+Version:        3.63.11
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.11-1
+- Update to 3.63.11
+
 * Fri Feb 28 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.10-1
 - Update to 3.63.10
 
