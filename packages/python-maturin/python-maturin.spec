@@ -7,7 +7,7 @@
 %global pypi_name maturin
 
 Name:           python-%{pypi_name}
-Version:        1.7.1
+Version:        1.8.2
 Release:        1%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
@@ -18,7 +18,7 @@ Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-
 
 #To create the vendor tarball:#
 # tar xf %%{name}-%%{version}.tar.gz ; pushd %%{name}-%%{version} ; \ 
-# cargo  vendor-filterer --platform=x86_64-unknown-linux-gnu --version && \
+# cargo vendor --versioned-dirs --platform=x86_64-unknown-linux-gnu --version && \
 # tar Jcvf ../%%{name}-%%{version}-vendor.tar.xz vendor/ ; popd
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -68,5 +68,8 @@ set -ex
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.2-1
+- Update to 1.8.2
+
 * Mon Sep 23 2024 Odilon Sousa - 1.7.1-1
 - Initial package.
