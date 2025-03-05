@@ -3,20 +3,23 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-storages
+%global src_name django_storages
 
 Name:           python-%{pypi_name}
-Version:        1.14.4
+Version:        1.14.5
 Release:        1%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
 URL:            https://github.com/jschneier/django-storages
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
-
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %description
 %{summary}
@@ -40,29 +43,32 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/storages
-%{python3_sitelib}/django_storages-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/django_storages-%{version}.dist-info/
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.14.5-1
+- Update to 1.14.5
+
 * Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.14.4-1
 - Update to 1.14.4
 
