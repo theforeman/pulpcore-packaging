@@ -5,7 +5,7 @@
 %global pypi_name google-cloud-storage
 
 Name:           python-%{pypi_name}
-Version:        3.0.0
+Version:        3.1.0
 Release:        1%{?dist}
 Summary:        Google Cloud Storage API client library
 
@@ -16,7 +16,9 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
-
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %description
 %{summary}
@@ -30,7 +32,7 @@ Requires:       python%{python3_pkgversion}-google-api-core >= 2.15
 Requires:       python%{python3_pkgversion}-google-auth < 3
 Requires:       python%{python3_pkgversion}-google-auth >= 2.26.1
 Requires:       python%{python3_pkgversion}-google-cloud-core < 3
-Requires:       python%{python3_pkgversion}-google-cloud-core >= 2.3
+Requires:       python%{python3_pkgversion}-google-cloud-core >= 2.4.2
 Requires:       python%{python3_pkgversion}-google-crc32c < 2
 Requires:       python%{python3_pkgversion}-google-crc32c >= 1
 Requires:       python%{python3_pkgversion}-google-resumable-media >= 2.7.2
@@ -53,24 +55,25 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst tests/conformance/README.md tests/perf/README.md
 %{python3_sitelib}/google
-%{python3_sitelib}/google_cloud_storage-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/google_cloud_storage-%{version}.dist-info/
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.0-1
+- Update to 3.1.0
+
 * Wed Feb 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.0.0-1
 - Update to 3.0.0
 
