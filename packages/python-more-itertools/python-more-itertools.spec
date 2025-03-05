@@ -3,8 +3,8 @@
 %global pypi_name more-itertools
 
 Name:           python-%{pypi_name}
-Version:        9.1.0
-Release:        4%{?dist}
+Version:        10.6.0
+Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitelib}/more_itertools-%{version}.dist-info/
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 10.6.0-1
+- Update to 10.6.0
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 9.1.0-4
 - Rollback overzealous obsoletes
 
