@@ -1,11 +1,10 @@
 %global python3_pkgversion 3.11
 %global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
 %global pypi_name httpx 
 
 Name:           python-%{pypi_name}
-Version:        0.24.1
-Release:        3%{?dist}
+Version:        0.28.1
+Release:        1%{?dist}
 Summary:        The next generation HTTP client.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -28,8 +27,8 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-certifi
-Requires:       python%{python3_pkgversion}-httpcore >= 0.15.0
-Requires:       python%{python3_pkgversion}-httpcore < 0.18.0
+Requires:       python%{python3_pkgversion}-httpcore >= 1
+Requires:       python%{python3_pkgversion}-httpcore < 2
 Requires:       python%{python3_pkgversion}-idna
 Requires:       python%{python3_pkgversion}-sniffio
 %if 0%{?rhel} == 8
@@ -60,6 +59,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.28.1-1
+- Update to 0.28.1
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.24.1-3
 - Add python39 obsoletes to package
 
