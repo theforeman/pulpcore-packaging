@@ -5,8 +5,8 @@
 %global pypi_name userpath
 
 Name:           python-%{pypi_name}
-Version:        1.7.0
-Release:        4%{?dist}
+Version:        1.9.2
+Release:        1%{?dist}
 Summary:        Cross-platform tool for adding locations to the user PATH, no elevated privileges required!
 
 License:        MIT OR Apache-2.0
@@ -15,8 +15,9 @@ Source0:        https://files.pythonhosted.org/packages/source/u/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-click
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-hatchling
+BuildRequires:  python%{python3_pkgversion}-tomli
 
 
 %description
@@ -39,29 +40,27 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE-APACHE LICENSE-MIT
-%doc README.rst
 %{_bindir}/userpath
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.9.2-1
+- Update to 1.9.2
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.7.0-4
 - Remove SCL bits
 
