@@ -5,7 +5,7 @@
 %global pypi_name djangorestframework
 
 Name:           python-%{pypi_name}
-Version:        3.15.1
+Version:        3.15.2
 Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
@@ -63,10 +63,14 @@ set -ex
 %license LICENSE.md
 %doc README.md
 %{python3_sitelib}/rest_framework
+%exclude %{python3_sitelib}/tutorial
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.15.2-1
+- Update to 3.15.2
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.15.1-1
 - Update to 3.15.1
 
