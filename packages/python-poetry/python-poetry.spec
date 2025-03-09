@@ -3,7 +3,7 @@
 %global pypi_name poetry
 
 Name:           python-%{pypi_name}
-Version:        1.8.4
+Version:        2.1.1
 Release:        1%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
@@ -24,13 +24,13 @@ BuildRequires:  python%{python3_pkgversion}-poetry_core
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-build >= 1.0.3
+Requires:       python%{python3_pkgversion}-build >= 1.2.1
 Requires:       python%{python3_pkgversion}-cachecontrol >= 0.14.0
 Requires:       python%{python3_pkgversion}-cleo >= 2.1.0
 Requires:       python%{python3_pkgversion}-crashtest >= 0.4.1
 Requires:       python%{python3_pkgversion}-crashtest < 0.5.0
-Requires:       python%{python3_pkgversion}-dulwich >= 0.21.2
-Requires:       python%{python3_pkgversion}-dulwich < 0.22.0
+Requires:       python%{python3_pkgversion}-dulwich >= 0.22.6
+Requires:       python%{python3_pkgversion}-dulwich < 0.23.0
 Requires:       python%{python3_pkgversion}-fastjsonschema >= 2.18.0
 Requires:       python%{python3_pkgversion}-filelock >= 3.8.0
 Requires:       python%{python3_pkgversion}-filelock < 4.0.0
@@ -42,13 +42,12 @@ Requires:       python%{python3_pkgversion}-jsonschema >= 4.10.0
 Requires:       python%{python3_pkgversion}-jsonschema < 5.0.0
 Requires:       python%{python3_pkgversion}-keyring >= 24.0.0
 Requires:       python%{python3_pkgversion}-lockfile >= 0.12.2
-Requires:       python%{python3_pkgversion}-packaging >= 23.1
+Requires:       python%{python3_pkgversion}-packaging >= 24.0
 Requires:       python%{python3_pkgversion}-pexpect >= 4.7.0
-Requires:       python%{python3_pkgversion}-pkginfo >= 1.10
+Requires:       python%{python3_pkgversion}-pkginfo >= 1.12
 Requires:       python%{python3_pkgversion}-platformdirs >= 3.0.0
 Requires:       python%{python3_pkgversion}-platformdirs < 5
-Requires:       python%{python3_pkgversion}-poetry_core >= 1.9.1
-Requires:       python%{python3_pkgversion}-poetry_plugin_export >= 1.6.0
+Requires:       python%{python3_pkgversion}-poetry_core == %{version}
 Requires:       python%{python3_pkgversion}-pyproject_hooks >= 1.0.0
 Requires:       python%{python3_pkgversion}-requests-toolbelt >= 1.0.0
 Requires:       python%{python3_pkgversion}-requests >= 2.26
@@ -57,6 +56,10 @@ Requires:       python%{python3_pkgversion}-shellingham >= 1.5.0
 Requires:       python%{python3_pkgversion}-tomlkit >= 0.11.4
 Requires:       python%{python3_pkgversion}-trove-classifiers >= 2022.5.19
 Requires:       python%{python3_pkgversion}-virtualenv >= 20.26.6
+Requires:       python%{python3_pkgversion}-pbs-installer >= 2025.1.6 
+Requires:       python%{python3_pkgversion}-pbs-installer < 2026.0.0
+Requires:       python%{python3_pkgversion}-findpython >= 0.6.2
+Requires:       python%{python3_pkgversion}-findpython < 0.7.0
 %if 0%{?rhel} == 8
 Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 %endif
@@ -86,6 +89,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sun Mar 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.1.1-1
+- Update to 2.1.1
+
 * Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.4-1
 - Update to 1.8.4
 
