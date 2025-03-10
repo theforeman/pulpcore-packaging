@@ -205,7 +205,7 @@
       <packagereq type="default">python3.11-pathspec</packagereq>
       <packagereq type="default">python3.11-pbr</packagereq>
       <packagereq type="default">python3.11-pexpect</packagereq>
-      <packagereq type="default">python3.11--pdm-backend</packagereq>
+      <packagereq type="default">python3.11-pdm-backend</packagereq>
       <packagereq type="default">python3.11-pillow</packagereq>
       <packagereq type="default">python3.11-pkginfo</packagereq>
       <packagereq type="default">python3.11-platformdirs</packagereq>
