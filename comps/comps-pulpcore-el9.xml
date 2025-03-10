@@ -312,6 +312,7 @@
       <packagereq type="default">python3.11-xlwt</packagereq>
       <packagereq type="default">python3.11-yarl</packagereq>
       <packagereq type="default">python3.11-zipp</packagereq>
+      <packagereq type="default">python3.11-zstandard</packagereq>
     </packagelist>
   </group>
 </comps>
