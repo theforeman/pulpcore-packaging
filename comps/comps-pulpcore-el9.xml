@@ -156,6 +156,7 @@
       <packagereq type="default">python3.11-isodate</packagereq>
       <packagereq type="default">python3.11-itypes</packagereq>
       <packagereq type="default">python3.11-jaraco.classes</packagereq>
+      <packagereq type="default">python3.11-jaraco_context</packagereq>
       <packagereq type="default">python3.11-jdcal</packagereq>
       <packagereq type="default">python3.11-jeepney</packagereq>
       <packagereq type="default">python3.11-jinja2</packagereq>
