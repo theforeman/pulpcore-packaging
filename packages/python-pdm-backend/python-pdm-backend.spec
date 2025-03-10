@@ -75,7 +75,7 @@ git config --global user.email "john@doe.com"
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%{python3_sitelib}/%{src_name}
+%{python3_sitelib}/pdm
 %{python3_sitelib}/%{src_name}-%{version}.dist-info/
 
 
