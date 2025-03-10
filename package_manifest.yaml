@@ -101,6 +101,8 @@ tier3_packages:
     python-fastjsonschema: {}
     python-poetry_plugin_export: {}
     python-zstandard: {}
+    python-jaraco-classes: {}
+    python-keyring: {}
     python-pdm-backend: {}
     python-pbs-installer: {}
     python-poetry: {}
@@ -230,7 +232,6 @@ tier4_packages:
     python-importlib-resources: {}
     python-inflection: {}
     python-isodate: {}
-    python-jaraco-classes: {}
     python-jeepney: {}
     python-lxml: {}
     python-lockfile: {}
@@ -269,7 +270,6 @@ tier4_packages:
     python-jdcal: {}
     python-jinja2: {}
     python-jsonschema: {}
-    python-keyring: {}
     python-ldap: {}
     python-markdown: {}
     python-markuppy: {}
