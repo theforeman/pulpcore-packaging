@@ -104,6 +104,7 @@ tier3_packages:
     python-jaraco-classes: {}
     python-jaraco-context: {}
     python-jaraco-functools: {}
+    python-backports-tarfile: {}
     python-keyring: {}
     python-pdm-backend: {}
     python-pbs-installer: {}

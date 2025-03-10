@@ -44,6 +44,7 @@
       <packagereq type="default">python3.11-azure-storage-blob</packagereq>
       <packagereq type="default">python3.11-azure-storage-common</packagereq>
       <packagereq type="default">python3.11-backoff</packagereq>
+      <packagereq type="default">python3.11-backports_tarfile</packagereq>
       <packagereq type="default">python3.11-bandersnatch</packagereq>
       <packagereq type="default">python3.11-beautifulsoup4</packagereq>
       <packagereq type="default">python3.11-bindep</packagereq>
