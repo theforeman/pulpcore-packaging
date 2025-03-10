@@ -93,6 +93,8 @@ tier3_packages:
   hosts:
     python-flit: {}
     python-flit_scm: {}
+    python-editables: {}
+    python-tomli_w: {}
     python-frozenlist: {}
     python-pathspec: {}
     python-pbr: {}
@@ -104,11 +106,9 @@ tier3_packages:
     python-pycairo: {}
     python-pytz: {}
     python-sqlparse: {}
-    python-tomli_w: {}
     python-calver: {}
     python-trove-classifiers: {}
     python-pluggy: {}
-    python-editables: {}
     python-hatchling: {}
     python-hatch_vcs: {}
     python-hatch_fancy_pypi_readme: {}
