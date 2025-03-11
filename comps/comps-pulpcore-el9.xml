@@ -208,9 +208,9 @@
       <packagereq type="default">python3.11-parsley</packagereq>
       <packagereq type="default">python3.11-pathspec</packagereq>
       <packagereq type="default">python3.11-pbr</packagereq>
-      <packagereq type="default">python3.11-pbs-installer</packagereq>
-      <packagereq type="default">python3.11-pbs-installer+download</packagereq>
-      <packagereq type="default">python3.11-pbs-installer+install</packagereq>
+      <packagereq type="default">python3.11-pbs_installer</packagereq>
+      <packagereq type="default">python3.11-pbs_installer+download</packagereq>
+      <packagereq type="default">python3.11-pbs_installer+install</packagereq>
       <packagereq type="default">python3.11-pexpect</packagereq>
       <packagereq type="default">python3.11-pdm-backend</packagereq>
       <packagereq type="default">python3.11-pillow</packagereq>
