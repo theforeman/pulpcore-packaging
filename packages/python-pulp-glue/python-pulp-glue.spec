@@ -5,7 +5,7 @@
 %global pypi_name pulp-glue
 
 Name:           python-%{pypi_name}
-Version:        0.31.0
+Version:        0.31.1
 Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.31.1-1
+- Update to 0.31.1
+
 * Fri Feb 28 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.31.0-1
 - Update to 0.31.0
 
