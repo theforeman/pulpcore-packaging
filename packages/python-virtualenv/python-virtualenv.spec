@@ -4,7 +4,7 @@
 
 
 Name:           python-%{pypi_name}
-Version:        20.29.3
+Version:        20.25.3
 Release:        1%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
@@ -62,11 +62,8 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
-* Sun Mar 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 20.29.3-1
-- Update to 20.29.3
-
-* Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 20.29.2-1
-- Update to 20.29.2
+* Tue Mar 11 2025 Odilon Sousa <osousa@redhat.com> - 20.25.3-1
+- Release python-virtualenv 20.25.3
 
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 20.24.2-3
 - Add python39 obsoletes to package
