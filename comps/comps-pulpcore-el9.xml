@@ -118,6 +118,7 @@
       <packagereq type="default">python3.11-fastjsonschema</packagereq>
       <packagereq type="default">python3.11-filecache</packagereq>
       <packagereq type="default">python3.11-filelock</packagereq>
+      <packagereq type="default">python3.11-findpython</packagereq>
       <packagereq type="default">python3.11-flake8</packagereq>
       <packagereq type="default">python3.11-flit</packagereq>
       <packagereq type="default">python3.11-flit_core</packagereq>
