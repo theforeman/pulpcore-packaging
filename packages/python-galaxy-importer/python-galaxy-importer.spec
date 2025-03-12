@@ -7,8 +7,8 @@
 %global pypi_name galaxy-importer
 
 Name:           python-%{pypi_name}
-Version:        0.4.19
-Release:        3%{?dist}
+Version:        0.4.29
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -90,6 +90,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Wed Mar 12 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.29-1
+- Update to 0.4.29
+
 * Mon Nov 25 2024 Evgeni Golov - 0.4.19-3
 - make galaxy-importer require ansible-lint on EL9
 
