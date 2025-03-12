@@ -3,7 +3,7 @@
 %global pypi_name build
 
 Name:           python-%{pypi_name}
-Version:        1.2.2
+Version:        1.2.2.post1
 Release:        1%{?dist}
 Summary:        A simple, correct Python build frontend
 
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 12 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.2.post1-1
+- Update to 1.2.2.post1
+
 * Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.2-1
 - Update to 1.2.2.post1
 
