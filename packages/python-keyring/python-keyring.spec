@@ -3,7 +3,7 @@
 %global pypi_name keyring
 
 Name:           python-%{pypi_name}
-Version:        25.6.0
+Version:        24.3.1
 Release:        1%{?dist}
 Summary:        Store and access your passwords safely.
 
@@ -30,8 +30,6 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-importlib-metadata
 Requires:       python%{python3_pkgversion}-jaraco.classes
-Requires:       python%{python3_pkgversion}-jaraco_context
-Requires:       python%{python3_pkgversion}-jaraco_functools
 Requires:       python%{python3_pkgversion}-SecretStorage
 Requires:       python%{python3_pkgversion}-jeepney
 %if 0%{?rhel} == 8
@@ -65,8 +63,8 @@ set -ex
 
 
 %changelog
-* Sun Mar 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 25.6.0-1
-- Update to 25.6.0
+* Thu Mar 13 2025 Odilon Sousa <osousa@redhat.com> - 24.3.1-1
+- Release python-keyring 24.3.1
 
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 24.2.0-3
 - Add python39 obsoletes to package
