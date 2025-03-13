@@ -3,8 +3,8 @@
 %global pypi_name poetry
 
 Name:           python-%{pypi_name}
-Version:        2.1.1
-Release:        2%{?dist}
+Version:        1.8.3
+Release:        1%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -24,12 +24,12 @@ BuildRequires:  python%{python3_pkgversion}-poetry_core
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-build >= 1.2.1
+Requires:       python%{python3_pkgversion}-build >= 1.0.3
 Requires:       python%{python3_pkgversion}-cachecontrol >= 0.14.0
 Requires:       python%{python3_pkgversion}-cleo >= 2.1.0
 Requires:       python%{python3_pkgversion}-crashtest >= 0.4.1
 Requires:       python%{python3_pkgversion}-crashtest < 0.5.0
-Requires:       python%{python3_pkgversion}-dulwich >= 0.22.6
+Requires:       python%{python3_pkgversion}-dulwich >= 0.21.2
 Requires:       python%{python3_pkgversion}-dulwich < 0.23.0
 Requires:       python%{python3_pkgversion}-fastjsonschema >= 2.18.0
 Requires:       python%{python3_pkgversion}-filelock >= 3.8.0
@@ -40,14 +40,14 @@ Requires:       python%{python3_pkgversion}-installer >= 0.7.0
 Requires:       python%{python3_pkgversion}-installer < 0.8.0
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.10.0
 Requires:       python%{python3_pkgversion}-jsonschema < 5.0.0
-Requires:       python%{python3_pkgversion}-keyring >= 24.0.0
+Requires:       python%{python3_pkgversion}-keyring >= 23.1
 Requires:       python%{python3_pkgversion}-lockfile >= 0.12.2
 Requires:       python%{python3_pkgversion}-packaging >= 24.0
 Requires:       python%{python3_pkgversion}-pexpect >= 4.7.0
-Requires:       python%{python3_pkgversion}-pkginfo >= 1.12
+Requires:       python%{python3_pkgversion}-pkginfo >= 1.10
 Requires:       python%{python3_pkgversion}-platformdirs >= 3.0.0
 Requires:       python%{python3_pkgversion}-platformdirs < 5
-Requires:       python%{python3_pkgversion}-poetry_core == %{version}
+Requires:       python%{python3_pkgversion}-poetry_core == 1.9.1
 Requires:       python%{python3_pkgversion}-pyproject_hooks >= 1.0.0
 Requires:       python%{python3_pkgversion}-requests-toolbelt >= 1.0.0
 Requires:       python%{python3_pkgversion}-requests >= 2.26
@@ -89,14 +89,8 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
-* Tue Mar 11 2025 Odilon Sousa <osousa@redhat.com> - 2.1.1-2
-- Change pbs_installer requirement to match pypi package
-
-* Sun Mar 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.1.1-1
-- Update to 2.1.1
-
-* Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.4-1
-- Update to 1.8.4
+* Thu Mar 13 2025 Odilon Sousa <osousa@redhat.com> - 1.8.3-1
+- Release python-poetry 1.8.3
 
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 1.5.1-4
 - Add python39 obsoletes to package
