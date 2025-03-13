@@ -3,7 +3,7 @@
 %global pypi_name poetry_core
 
 Name:           python-%{pypi_name}
-Version:        2.1.1
+Version:        1.9.0
 Release:        1%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
@@ -53,14 +53,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
-* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.1.1-1
-- Update to 2.1.1
-
-* Tue Feb 18 2025 Odilon Sousa <osousa@redhat.com> - 1.9.1-2
-- Remove macro that disable rich dependencies
-
-* Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.9.1-1
-- Update to 1.9.1
+* Thu Mar 13 2025 Odilon Sousa <osousa@redhat.com> - 1.9.0-1
+- Release python-poetry_core 1.9.0
 
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.6.1-6
 - Remove SCL bits
