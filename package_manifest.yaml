@@ -90,6 +90,7 @@ tier2_packages:
     python-pyproject-metadata: {}
     python-meson-python: {}
     python-installer: {}
+    python-uv: {}
 
 tier3_packages:
   hosts:
