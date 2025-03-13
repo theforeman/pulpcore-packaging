@@ -17,6 +17,7 @@
       <packagereq type="default">libcomps</packagereq>
       <packagereq type="default">libcomps-devel</packagereq>
       <packagereq type="default">meson</packagereq>
+      <packagereq type="default">uv</packagereq>
       <packagereq type="default">postgresql-debversion</packagereq>
       <packagereq type="default">postgresql-evr</packagereq>
       <packagereq type="default">pulpcore-obsolete-packages</packagereq>
@@ -314,6 +315,7 @@
       <packagereq type="default">python3.12-urlman</packagereq>
       <packagereq type="default">python3.12-userpath</packagereq>
       <packagereq type="default">python3.12-uuid6</packagereq>
+      <packagereq type="default">python3.12-uv</packagereq>
       <packagereq type="default">python3.12-virtualenv</packagereq>
       <packagereq type="default">python3.12-wcmatch</packagereq>
       <packagereq type="default">python3.12-webencodings</packagereq>
