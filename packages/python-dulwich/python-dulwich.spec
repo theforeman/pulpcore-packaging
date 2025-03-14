@@ -7,7 +7,7 @@
 %global pypi_name dulwich
 
 Name:           python-%{pypi_name}
-Version:        0.22.8
+Version:        0.21.7
 Release:        1%{?dist}
 Summary:        Python Git Library
 
@@ -67,8 +67,8 @@ set -ex
 
 
 %changelog
-* Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.22.8-1
-- Update to 0.22.8
+* Fri Mar 14 2025 Odilon Sousa <osousa@redhat.com> - 0.21.7-1
+- Release python-dulwich 0.21.7
 
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 0.21.3-3
 - Add python39 obsoletes to package
