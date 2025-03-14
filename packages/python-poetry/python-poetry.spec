@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.8.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -47,7 +47,7 @@ Requires:       python%{python3_pkgversion}-pexpect >= 4.7.0
 Requires:       python%{python3_pkgversion}-pkginfo >= 1.10
 Requires:       python%{python3_pkgversion}-platformdirs >= 3.0.0
 Requires:       python%{python3_pkgversion}-platformdirs < 5
-Requires:       python%{python3_pkgversion}-poetry_core == 1.9.1
+Requires:       python%{python3_pkgversion}-poetry_core == 1.9.0
 Requires:       python%{python3_pkgversion}-pyproject_hooks >= 1.0.0
 Requires:       python%{python3_pkgversion}-requests-toolbelt >= 1.0.0
 Requires:       python%{python3_pkgversion}-requests >= 2.26
@@ -89,6 +89,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Fri Mar 14 2025 Odilon Sousa <osousa@redhat.com> - 1.8.3-3
+- Fix poetry_core requirement
+
 * Fri Mar 14 2025 Odilon Sousa <osousa@redhat.com> - 1.8.3-2
 - Fix virtualenv requirement
 
