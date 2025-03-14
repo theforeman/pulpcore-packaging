@@ -6,16 +6,17 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-ansible
+%global src_name pulp_ansible
 
 Name:           python-%{pypi_name}
-Version:        0.22.3
-Release:        2%{?dist}
+Version:        0.22.4
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
 License:        GPLv2+
 URL:            https://github.com/pulp/pulp_ansible
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -59,9 +60,9 @@ Obsoletes:      python39-%{pypi_name} < %{epoch}:%{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
@@ -82,6 +83,9 @@ set -ex
 
 
 %changelog
+* Fri Mar 14 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.22.4-1
+- Update to 0.22.4
+
 * Thu Nov 14 2024 Odilon Sousa <osousa@redhat.com> - 1:0.22.3-2
 - Update python-pulp-ansible with macro to disable dependency generation
 
