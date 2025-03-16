@@ -5,7 +5,7 @@
 %global pypi_name google-api-core
 
 Name:           python-%{pypi_name}
-Version:        2.24.1
+Version:        2.24.2
 Release:        1%{?dist}
 Summary:        Google API client core library
 
@@ -77,6 +77,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.24.2-1
+- Update to 2.24.2
+
 * Wed Jan 29 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.24.1-1
 - Update to 2.24.1
 
