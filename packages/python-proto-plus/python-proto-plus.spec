@@ -6,7 +6,7 @@
 %global src_name proto_plus
 
 Name:           python-%{pypi_name}
-Version:        1.26.0
+Version:        1.26.1
 Release:        1%{?dist}
 Summary:        Beautiful, Pythonic protocol buffers.
 
@@ -27,7 +27,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-protobuf >= 3.19.0
-Requires:       python%{python3_pkgversion}-protobuf < 6
+Requires:       python%{python3_pkgversion}-protobuf < 7
 
 
 %description -n python%{python3_pkgversion}-%{pypi_name}
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.26.1-1
+- Update to 1.26.1
+
 * Wed Jan 29 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.26.0-1
 - Update to 1.26.0
 
