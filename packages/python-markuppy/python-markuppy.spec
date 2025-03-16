@@ -6,8 +6,8 @@
 %global srcname markuppy
 
 Name:           python-%{srcname}
-Version:        1.14
-Release:        7%{?dist}
+Version:        1.17
+Release:        1%{?dist}
 Summary:        An HTML/XML generator
 
 License:        MIT
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.17-1
+- Update to 1.17
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.14-7
 - Remove SCL bits
 
