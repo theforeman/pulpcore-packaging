@@ -5,8 +5,8 @@
 %global pypi_name sniffio
 
 Name:           python-%{pypi_name}
-Version:        1.3.0
-Release:        5%{?dist}
+Version:        1.3.1
+Release:        1%{?dist}
 Summary:        Sniff out which async library your code is running under
 
 License:        MIT OR Apache-2.0
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.3.1-1
+- Update to 1.3.1
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.3.0-5
 - Remove SCL bits
 
