@@ -5,7 +5,7 @@
 %global pypi_name filelock
 
 Name:           python-%{pypi_name}
-Version:        3.17.0
+Version:        3.18.0
 Release:        1%{?dist}
 Summary:        A platform independent file lock
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.18.0-1
+- Update to 3.18.0
+
 * Wed Jan 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.17.0-1
 - Update to 3.17.0
 
