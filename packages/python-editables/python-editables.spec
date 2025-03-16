@@ -3,8 +3,8 @@
 %global pypi_name editables 
 
 Name:           python-%{pypi_name}
-Version:        0.4
-Release:        4%{?dist}
+Version:        0.5
+Release:        1%{?dist}
 Summary:        Editable installations
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.5-1
+- Update to 0.5
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.4-4
 - Rollback overzealous obsoletes
 
