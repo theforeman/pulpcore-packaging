@@ -9,7 +9,7 @@
 %global pkg_name json_stream_rs_tokenizer
 
 Name:           python-%{pypi_name}
-Version:        0.4.27
+Version:        0.4.28
 Release:        1%{?dist}
 Summary:        Faster tokenizer for the json-stream Python library
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.28-1
+- Update to 0.4.28
+
 * Fri Jan 10 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.27-1
 - Update to 0.4.27
 
