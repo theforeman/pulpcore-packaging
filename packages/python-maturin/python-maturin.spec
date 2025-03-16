@@ -7,7 +7,7 @@
 %global pypi_name maturin
 
 Name:           python-%{pypi_name}
-Version:        1.8.2
+Version:        1.8.3
 Release:        1%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.3-1
+- Update to 1.8.3
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.2-1
 - Update to 1.8.2
 
