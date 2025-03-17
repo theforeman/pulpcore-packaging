@@ -45,10 +45,10 @@ copr_projects:
           comps_file: "{{ inventory_dir }}/comps/comps-pulpcore-el{{ rhel_9 }}.xml"
           buildroot_packages:
             - gcc-c++
-            - python3.11-rpm-macros
-            - python3.11
-            - python3.11-devel
-            - python3.11-pip
+            - python3.12-rpm-macros
+            - python3.12
+            - python3.12-devel
+            - python3.12-pip
           external_repos:
             - "{{ pulpcore_staging }}/rhel-{{ rhel_9 }}-x86_64"
 
