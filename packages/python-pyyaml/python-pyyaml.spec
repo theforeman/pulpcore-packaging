@@ -1,14 +1,14 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 %global debug_package %{nil}
 # Created by pyp2rpm-3.3.3
 %global pypi_name PyYAML
 %global srcname pyyaml
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        6.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
@@ -26,17 +26,11 @@ BuildRequires:  libyaml-devel
 %{summary}
 
 
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Provides:       python%{python3_pkgversion}-%{pypi_name} = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-yaml}
 Provides:       python%{python3_pkgversion}-yaml = %{version}-%{release}
-
-
-%description -n python%{python3_pkgversion}-%{srcname}
-%{summary}
 
 
 %prep
@@ -64,6 +58,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 17 2025 Odilon Sousa <osousa@redhat.com> - 6.0.2-2
+- Rebuild against python 3.12
+
 * Sun Nov 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.2-1
 - Update to 6.0.2
 
