@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name packaging
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        24.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -15,24 +15,18 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  python%{python3_pkgversion}-pip
-BuildRequires:  python%{python3_pkgversion}-flit_core
+BuildRequires:  python%{python3_pkgversion}-flit-core
+BuildRequires:  pyproject-rpm-macros
 
 
 %description
 %{summary}
 
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Conflicts:      python%{python3_pkgversion}-pyparsing = 3.0.5
 Requires:       python%{python3_pkgversion}-pyparsing >= 2.0.2
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -56,6 +50,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 17 2025 Odilon Sousa <osousa@redhat.com> - 24.2-2
+- Rebuild against python 3.12
+
 * Wed Nov 13 2024 Foreman Packaging Automation <packaging@theforeman.org> - 24.2-1
 - Update to 24.2
 
