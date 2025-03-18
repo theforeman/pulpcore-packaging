@@ -95,8 +95,8 @@ tier3_packages:
     python-flit_scm: {}
     python-editables: {}
     python-tomli_w: {}
-    python-frozenlist: {}
     python-pathspec: {}
+    python-frozenlist: {}
     python-pbr: {}
     python-fastjsonschema: {}
     python-poetry_plugin_export: {}
