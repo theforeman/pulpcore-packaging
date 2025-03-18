@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        24.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -19,14 +19,15 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit-core
 BuildRequires:  pyproject-rpm-macros
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+Conflicts:      python%{python3_pkgversion}-pyparsing = 3.0.5
+Requires:       python%{python3_pkgversion}-pyparsing >= 2.0.2
+
 
 %description
 %{summary}
 
 
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Conflicts:      python%{python3_pkgversion}-pyparsing = 3.0.5
-Requires:       python%{python3_pkgversion}-pyparsing >= 2.0.2
 
 
 %prep
@@ -50,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 24.2-3
+- Change Requirements and Provides location in the specfile
+
 * Mon Mar 17 2025 Odilon Sousa <osousa@redhat.com> - 24.2-2
 - Rebuild against python 3.12
 
