@@ -1,10 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name editables 
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Editable installations
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -19,17 +19,9 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 BuildRequires:  pyproject-rpm-macros
 
-
-
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -53,6 +45,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 0.5-2
+- Rebuild against python3.12
+
 * Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.5-1
 - Update to 0.5
 
