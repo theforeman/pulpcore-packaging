@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.1.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python parsing module
 
 License:        MIT License
@@ -20,10 +20,11 @@ BuildRequires:  python%{python3_pkgversion}-flit-core
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
+%{summary}
 
 
 %prep
@@ -45,6 +46,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 3.1.4-3
+- Change Requirements and Provides location in the specfile
+
 * Mon Mar 17 2025 Odilon Sousa <osousa@redhat.com> - 3.1.4-2
 - Rebuild python-pyparsing against python3.12
 
