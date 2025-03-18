@@ -96,6 +96,7 @@ tier3_packages:
     python-editables: {}
     python-tomli_w: {}
     python-pathspec: {}
+    python-pluggy: {}
     python-frozenlist: {}
     python-pbr: {}
     python-fastjsonschema: {}
@@ -115,7 +116,6 @@ tier3_packages:
     python-sqlparse: {}
     python-calver: {}
     python-trove-classifiers: {}
-    python-pluggy: {}
     python-hatchling: {}
     python-hatch_vcs: {}
     python-hatch_fancy_pypi_readme: {}
