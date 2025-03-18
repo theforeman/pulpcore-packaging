@@ -1,11 +1,11 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 %global pypi_name flit
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.11.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -22,23 +22,15 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core >= %{version}
 BuildRequires:  python%{python3_pkgversion}-flit_core < 4
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-tomli_w
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-docutils
 Requires:       python%{python3_pkgversion}-flit_core >= %{version}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
 %{summary}
-
 
 %prep
 set -ex
@@ -63,6 +55,9 @@ set -ex
 %{_bindir}/flit
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 3.11.0-2
+- Rebuild against python3.12
+
 * Sun Feb 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.0-1
 - Update to 3.11.0
 
