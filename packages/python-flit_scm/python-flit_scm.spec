@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
+
 
 %global pypi_name flit_scm
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.7.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        A PEP 518 build backend that uses setuptools_scm to generate a version file from your version control system, then flit_core to build the package.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -23,18 +23,13 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-setuptools-scm
 Requires:       python%{python3_pkgversion}-tomli
 Requires:       python%{python3_pkgversion}-flit_core
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -60,6 +55,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 1.7.0-7
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.7.0-6
 - Remove SCL bits
 
