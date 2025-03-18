@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
+
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name setuptools-scm
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        7.1.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        the blessed package to manage your versions by scm tags
 
 License:        MIT
@@ -19,6 +19,10 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-packaging >= 20.0
 
+Requires:       python%{python3_pkgversion}-setuptools >= 45
+Requires:       python%{python3_pkgversion}-packaging >= 20.0
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 setuptools_scm setuptools_scm handles managing your Python package versions in
@@ -28,22 +32,7 @@ usage To use setuptools_scm just modify your project's setup.py file like
 this:* Add setuptools_scm to the setup_requires parameter. * Add the
 use_scm_version...
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
-Requires:       python%{python3_pkgversion}-setuptools >= 45
-Requires:       python%{python3_pkgversion}-packaging >= 20.0
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-setuptools_scm setuptools_scm handles managing your Python package versions in
-SCM metadata instead of declaring them as the version argument or in a SCM
-managed file.It also handles file finders for the supported SCMs. setup.py
-usage To use setuptools_scm just modify your project's setup.py file like
-this:* Add setuptools_scm to the setup_requires parameter. * Add the
-use_scm_version...
 
 
 %prep
@@ -71,6 +60,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 7.1.0-5
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 7.1.0-4
 - Remove SCL bits
 
