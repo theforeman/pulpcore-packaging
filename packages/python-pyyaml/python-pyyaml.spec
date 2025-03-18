@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        6.0.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
@@ -21,17 +21,14 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  gcc
 BuildRequires:  libyaml-devel
 
-
-%description
-%{summary}
-
-
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Provides:       python%{python3_pkgversion}-%{pypi_name} = %{version}-%{release}
 %{?python_provide:%python_provide python%{python3_pkgversion}-yaml}
 Provides:       python%{python3_pkgversion}-yaml = %{version}-%{release}
 
+%description
+%{summary}
 
 %prep
 set -ex
@@ -58,6 +55,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 6.0.2-3
+- Change Requirements and Provides location in the specfile
+
 * Mon Mar 17 2025 Odilon Sousa <osousa@redhat.com> - 6.0.2-2
 - Rebuild against python 3.12
 
