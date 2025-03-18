@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.2
 %global pypi_name setuptools_scm_git_archive
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.4.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        setuptools_scm plugin for git archives
 
 License:        MIT
@@ -20,18 +20,11 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-typing-extensions
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
 Requires:       python%{python3_pkgversion}-setuptools
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -60,6 +53,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 1.4.1-5
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.4.1-4
 - Remove SCL bits
 
