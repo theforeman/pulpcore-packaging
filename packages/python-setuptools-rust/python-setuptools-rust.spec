@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name setuptools-rust
 %global pkg_name setuptools_rust
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Setuptools Rust extension plugin
 
 License:        MIT
@@ -22,21 +22,16 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
 Requires:       python%{python3_pkgversion}-semantic-version >= 2.6
 Requires:       python%{python3_pkgversion}-semantic-version < 3
 Requires:       python%{python3_pkgversion}-setuptools >= 62.4
 
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
 %{summary}
+
 
 %prep
 set -ex
@@ -59,6 +54,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 1.9.0-2
+- Rebuild against python3.12
+
 * Fri Mar 22 2024 Odilon Sousa <osousa@redhat.com> - 1.9.0-1
 - Release python-setuptools-rust 1.9.0
 
