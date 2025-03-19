@@ -1,10 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name poetry
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.8.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -18,12 +18,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-poetry_core
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
 Requires:       python%{python3_pkgversion}-build >= 1.0.3
 Requires:       python%{python3_pkgversion}-cachecontrol >= 0.14.0
 Requires:       python%{python3_pkgversion}-cleo >= 2.1.0
@@ -60,12 +56,8 @@ Requires:       python%{python3_pkgversion}-pbs_installer >= 2025.1.6
 Requires:       python%{python3_pkgversion}-pbs_installer < 2026.0.0
 Requires:       python%{python3_pkgversion}-findpython >= 0.6.2
 Requires:       python%{python3_pkgversion}-findpython < 0.7.0
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -89,6 +81,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.8.3-4
+- Rebuild against python3.12
+
 * Fri Mar 14 2025 Odilon Sousa <osousa@redhat.com> - 1.8.3-3
 - Fix poetry_core requirement
 
