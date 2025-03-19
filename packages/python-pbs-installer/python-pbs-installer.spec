@@ -1,5 +1,5 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Disable debug
 %define debug_package %{nil}
@@ -8,9 +8,9 @@
 %global pypi_name pbs-installer
 %global srcname pbs_installer
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2025.2.12
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Installer for Python Build Standalone
 BuildArch:      noarch
 
@@ -24,17 +24,9 @@ BuildRequires:  python%{python3_pkgversion}-pdm-backend
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-
-%description -n python%{python3_pkgversion}-%{srcname}
+%description
 %{summary}
 
 
@@ -82,5 +74,8 @@ set -ex
 
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 2025.2.12-2
+- Rebuild against python3.12
+
 * Mon Mar 10 2025 Odilon Sousa - 2025.2.12-1
 - Initial package.
