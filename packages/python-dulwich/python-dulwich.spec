@@ -1,14 +1,14 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Disable debug
 %define debug_package %{nil}
 # Created by pyp2rpm-3.3.8
 %global pypi_name dulwich
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.21.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python Git Library
 
 License:        Apachev2 or later or GPLv2
@@ -23,21 +23,11 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
+Requires:       python%{python3_pkgversion}-urllib3 >= 1.24.1
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-urllib3 >= 1.24.1
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
@@ -67,6 +57,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 0.21.7-2
+- Rebuild against python3.12
+
 * Fri Mar 14 2025 Odilon Sousa <osousa@redhat.com> - 0.21.7-1
 - Release python-dulwich 0.21.7
 
