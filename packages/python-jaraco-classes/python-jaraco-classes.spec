@@ -1,11 +1,11 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name jaraco.classes
 %global package_name jaraco-classes
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.2.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Utility functions for Python class constructs
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -22,16 +22,10 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-more-itertools
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -57,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against python3.12
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.2.3-4
 - Rollback overzealous obsoletes
 
