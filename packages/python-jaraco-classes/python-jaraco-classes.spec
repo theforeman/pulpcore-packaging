@@ -51,7 +51,7 @@ set -ex
 
 
 %changelog
-* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com>
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 3.2.3-5
 - Rebuild against python3.12
 
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 3.2.3-4
