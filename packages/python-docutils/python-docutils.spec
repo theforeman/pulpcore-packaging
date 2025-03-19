@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 %{_bindir}/python3.11
+%global python3_pkgversion 3.12
+%global __python3 %{_bindir}/python3.12
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name docutils
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.21.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Docutils -- Python Documentation Utilities
 
 License:        Public Domain and BSD and Python and GPLv3+
@@ -19,19 +19,9 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 BuildRequires:  python%{python3_pkgversion}-flit_scm
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
@@ -73,6 +63,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 0.21.2-2
+- Rebuild against python3.12
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.21.2-1
 - Update to 0.21.2
 
