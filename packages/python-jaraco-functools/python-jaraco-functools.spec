@@ -52,7 +52,7 @@ set -ex
 
 
 %changelog
-* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com>
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 4.1.0-2
 - Rebuild against python3.12
 
 * Wed Jul 19 2023 Odilon Sousa - 4.1.0-1
