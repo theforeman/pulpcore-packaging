@@ -15,7 +15,7 @@ Source0:        https://files.pythonhosted.org/packages/source/z/%{pypi_name}/%{
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
-BuildRequires:  python%{python3_pkgversion}-cffi >= 1.17.0
+BuildRequires:  python%{python3_pkgversion}-cffi >= 1.16.0
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
@@ -45,7 +45,7 @@ set -ex
 
 
 %changelog
-* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com>
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 0.23.0-2
 - Rebuild against python3.12
 
 * Mon Mar 10 2025 Odilon Sousa - 0.23.0-1
