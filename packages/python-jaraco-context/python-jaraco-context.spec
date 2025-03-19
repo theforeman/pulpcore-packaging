@@ -1,11 +1,11 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name jaraco_context
 %global package_name jaraco-context
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Useful decorators and context managers
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -22,15 +22,10 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -56,5 +51,8 @@ set -ex
 
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 6.0.1-2
+- Rebuild against python3.12
+
 * Mon Mar 10 2025 Odilon Sousa - 6.0.1-1
 - Initial package.
