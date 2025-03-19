@@ -98,6 +98,7 @@ tier3_packages:
     python-pathspec: {}
     python-pluggy: {}
     python-calver: {}
+    python-docutils: {}
     python-frozenlist: {}
     python-pbr: {}
     python-fastjsonschema: {}
@@ -200,7 +201,6 @@ tier4_packages:
     python-django-storages: {}
     python-djangorestframework: {}
     python-djangorestframework-queryfields: {}
-    python-docutils: {}
     python-dotenv: {}
     python-drf-access-policy: {}
     python-drf-nested-routers: {}
