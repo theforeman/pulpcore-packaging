@@ -1,5 +1,5 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Disable debug
 %define debug_package %{nil}
@@ -7,9 +7,9 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name findpython
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.6.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A utility to find python versions on your system
 BuildArch:      noarch
 
@@ -23,17 +23,12 @@ BuildRequires:  python%{python3_pkgversion}-pdm-backend
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:  python%{python3_pkgversion}-packaging
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+
+%description
 %{summary}
 
 
@@ -56,5 +51,8 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 0.6.3-2
+- Rebuild against python3.12
+
 * Mon Mar 10 2025 Odilon Sousa - 0.6.3-1
 - Initial package.
