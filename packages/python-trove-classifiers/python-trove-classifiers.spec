@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name trove-classifiers
 %global src_name trove_classifiers
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2025.3.13.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Canonical source for classifiers on PyPI (pypi.org)
 License:        None
 URL:            https://github.com/pypa/trove-classifiers
@@ -18,17 +18,9 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-calver
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -57,6 +49,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 2025.3.13.13-2
+- Rebuild against python3.12
+
 * Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.3.13.13-1
 - Update to 2025.3.13.13
 
