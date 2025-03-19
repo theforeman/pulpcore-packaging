@@ -48,7 +48,7 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
-* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com>
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.8.0-2
 - Rebuild against python3.12
 
 * Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.0-1
