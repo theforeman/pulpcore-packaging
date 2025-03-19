@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.8.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -34,8 +34,6 @@ Requires:       python%{python3_pkgversion}-html5lib >= 1.0
 Requires:       python%{python3_pkgversion}-html5lib < 2.0
 Requires:       python%{python3_pkgversion}-installer >= 0.7.0
 Requires:       python%{python3_pkgversion}-installer < 0.8.0
-Requires:       python%{python3_pkgversion}-jsonschema >= 4.10.0
-Requires:       python%{python3_pkgversion}-jsonschema < 5.0.0
 Requires:       python%{python3_pkgversion}-keyring >= 23.1
 Requires:       python%{python3_pkgversion}-lockfile >= 0.12.2
 Requires:       python%{python3_pkgversion}-packaging >= 24.0
@@ -81,6 +79,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.8.3-5
+- Drop jsonschema from requirement
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.8.3-4
 - Rebuild against python3.12
 
