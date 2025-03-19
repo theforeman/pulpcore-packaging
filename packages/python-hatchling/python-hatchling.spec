@@ -1,10 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name hatchling 
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.21.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -23,25 +23,18 @@ BuildRequires:  python%{python3_pkgversion}-packaging >= 21.3
 BuildRequires:  python%{python3_pkgversion}-trove-classifiers
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-editables >= 0.3
 Requires:       python%{python3_pkgversion}-pathspec >= 0.10.1
 Requires:       python%{python3_pkgversion}-pluggy >= 1.0.0
 Requires:       python%{python3_pkgversion}-packaging >= 21.3
 Requires:       python%{python3_pkgversion}-trove-classifiers
 Requires:       pyproject-rpm-macros
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
 %{summary}
-
 
 %prep
 set -ex
@@ -63,6 +56,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.21.1-2
+- Rebuild against python3.12
+
 * Tue Mar 11 2025 Odilon Sousa <osousa@redhat.com> - 1.21.1-1
 - Release python-hatchling 1.21.1
 

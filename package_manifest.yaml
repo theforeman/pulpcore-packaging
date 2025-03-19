@@ -100,6 +100,7 @@ tier3_packages:
     python-calver: {}
     python-docutils: {}
     python-trove-classifiers: {}
+    python-hatchling: {}
     python-frozenlist: {}
     python-pbr: {}
     python-fastjsonschema: {}
@@ -117,7 +118,6 @@ tier3_packages:
     python-pycairo: {}
     python-pytz: {}
     python-sqlparse: {}
-    python-hatchling: {}
     python-hatch_vcs: {}
     python-hatch_fancy_pypi_readme: {}
     python-hatch: {}
