@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name CacheControl
 %global srcname cachecontrol
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.14.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        httplib2 caching for requests
 
 License:        None
@@ -20,26 +20,16 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       python%{python3_pkgversion}-lockfile >= 0.9
 Requires:       python%{python3_pkgversion}-msgpack >= 0.5.2
 Requires:       python%{python3_pkgversion}-msgpack < 2.0.0
 Requires:       python%{python3_pkgversion}-requests  >= 2.16.0
 Requires:       python%{python3_pkgversion}-filelock >= 3.8.0
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{srcname} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 
-%description -n python%{python3_pkgversion}-%{srcname}
+%description
 %{summary}
 
 
@@ -75,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Mar 21 2025 Odilon Sousa <osousa@redhat.com> - 0.14.2-3
+- Rebuild against python3.12
+
 * Wed Feb 19 2025 Odilon Sousa <osousa@redhat.com> - 0.14.2-2
 - Add filecache metapackage to cachecontrol
 

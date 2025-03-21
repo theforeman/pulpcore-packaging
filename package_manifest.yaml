@@ -115,6 +115,7 @@ tier3_packages:
     python-pbs-installer: {}
     python-findpython: {}
     python-dulwich: {}
+    python-cachecontrol: {}
     python-poetry: {}
     python-pycairo: {}
     python-pytz: {}
@@ -164,7 +165,6 @@ tier4_packages:
     python-bracex: {}
     python-brotli: {}
     python-build: {}
-    python-cachecontrol: {}
     python-certifi: {}
     python-cffi: {}
     python-chardet: {}
