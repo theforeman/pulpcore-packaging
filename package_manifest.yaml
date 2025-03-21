@@ -118,6 +118,7 @@ tier3_packages:
     python-cachecontrol: {}
     python-build: {}
     python-cleo: {}
+    python-crashtest: {}
     python-poetry: {}
     python-pycairo: {}
     python-pytz: {}
@@ -177,7 +178,6 @@ tier4_packages:
     python-contextlib2: {}
     python-coreapi: {}
     python-coreschema: {}
-    python-crashtest: {}
     python-cryptography: {}
     python-dataclasses: {}
     python-dateutil: {}
