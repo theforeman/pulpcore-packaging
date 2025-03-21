@@ -1,10 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name build
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.2.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A simple, correct Python build frontend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -17,22 +17,17 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
-%description
-%{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-packaging >= 19.0
 Requires:       python%{python3_pkgversion}-pyproject_hooks
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 4.6
 Requires:       python%{python3_pkgversion}-tomli >= 1.1.0
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
 %{summary}
+
 
 
 %prep
@@ -56,6 +51,9 @@ set -ex
 
 
 %changelog
+* Fri Mar 21 2025 Odilon Sousa <osousa@redhat.com> - 1.2.2-2
+- Rebuild against python3.12
+
 * Sun Feb 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.2-1
 - Update to 1.2.2.post1
 
