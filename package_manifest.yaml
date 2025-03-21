@@ -116,6 +116,7 @@ tier3_packages:
     python-findpython: {}
     python-dulwich: {}
     python-cachecontrol: {}
+    python-build: {}
     python-poetry: {}
     python-pycairo: {}
     python-pytz: {}
@@ -164,7 +165,6 @@ tier4_packages:
     python-box: {}
     python-bracex: {}
     python-brotli: {}
-    python-build: {}
     python-certifi: {}
     python-cffi: {}
     python-chardet: {}
