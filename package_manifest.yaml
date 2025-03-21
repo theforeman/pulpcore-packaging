@@ -105,6 +105,7 @@ tier3_packages:
     python-frozenlist: {}
     python-pbr: {}
     python-fastjsonschema: {}
+    python-hatch_vcs: {}
     python-poetry_plugin_export: {}
     python-zstandard: {}
     python-jaraco-classes: {}
@@ -123,7 +124,6 @@ tier3_packages:
     python-pycairo: {}
     python-pytz: {}
     python-sqlparse: {}
-    python-hatch_vcs: {}
     python-hatch_fancy_pypi_readme: {}
     python-hatch: {}
     python-protobuf: {}

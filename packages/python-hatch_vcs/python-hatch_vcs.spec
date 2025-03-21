@@ -1,11 +1,11 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name hatch_vcs 
-%{?python_disable_dependency_generator}
 
-Name:           python-%{pypi_name}
+
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.3.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Hatch plugin for versioning with your preferred VCS
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -21,19 +21,14 @@ BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-tomli
 
+Requires:  python%{python3_pkgversion}-hatchling
+Requires:  python%{python3_pkgversion}-setuptools-scm
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 %{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:  python%{python3_pkgversion}-hatchling
-Requires:  python%{python3_pkgversion}-setuptools-scm
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -56,6 +51,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Mar 21 2025 Odilon Sousa <osousa@redhat.com> - 0.3.0-6
+- Rebuild against python3.12
+
 * Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 0.3.0-5
 - Rollback overzealous obsoletes
 
