@@ -117,6 +117,7 @@ tier3_packages:
     python-dulwich: {}
     python-cachecontrol: {}
     python-build: {}
+    python-cleo: {}
     python-poetry: {}
     python-pycairo: {}
     python-pytz: {}
@@ -169,7 +170,6 @@ tier4_packages:
     python-cffi: {}
     python-chardet: {}
     python-charset-normalizer: {}
-    python-cleo: {}
     python-click: {}
     python-click-shell: {}
     python-colorama: {}
