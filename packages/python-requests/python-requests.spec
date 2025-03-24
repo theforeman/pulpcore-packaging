@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name requests
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.32.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -21,13 +21,6 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-certifi >= 2017.4.17
 Requires:       python%{python3_pkgversion}-charset-normalizer < 4
 Requires:       python%{python3_pkgversion}-charset-normalizer >= 2
@@ -37,8 +30,9 @@ Requires:       python%{python3_pkgversion}-pyOpenSSL >= 0.14
 Requires:       python%{python3_pkgversion}-urllib3 < 3
 Requires:       python%{python3_pkgversion}-urllib3 >= 1.21.1
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -62,6 +56,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 2.32.3-3
+- Rebuild against python3.12
+
 * Mon Oct 07 2024 Odilon Sousa <osousa@redhat.com> - 2.32.3-2
 - Rebuild package using PEP-517 macros
 
