@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
+
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name requests-toolbelt
 
-Name:           python-%{pypi_name}
+Name:           pytpython%{python3_pkgversion}-%{pypi_name}
 Version:        1.0.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        A utility belt for advanced users of python-requests
 
 License:        Apache 2.0
@@ -18,18 +18,12 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-requests < 3
 Requires:       python%{python3_pkgversion}-requests >= 2.0.1
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -58,6 +52,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.0.0-5
 - Remove SCL bits
 
