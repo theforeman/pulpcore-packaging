@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pyOpenSSL
 %global srcname pyopenssl
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        24.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
@@ -18,18 +18,13 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-%description
-%{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-cryptography >= 41.0.5
 Requires:       python%{python3_pkgversion}-cryptography < 44
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -58,6 +53,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 24.3.0-2
+- Rebuild against python3.12
+
 * Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 24.3.0-1
 - Update to 24.3.0
 
