@@ -1,11 +1,11 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name virtualenv
 
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        20.25.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -21,25 +21,18 @@ BuildRequires:  python%{python3_pkgversion}-hatch_vcs
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:  python%{python3_pkgversion}-distlib >= 0.3.7
 Requires:  python%{python3_pkgversion}-distlib < 1
 Requires:  python%{python3_pkgversion}-filelock >= 3.12.2
 Requires:  python%{python3_pkgversion}-filelock < 4
 Requires:  python%{python3_pkgversion}-platformdirs >= 3.9.1
 Requires:  python%{python3_pkgversion}-platformdirs < 5
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
+
 
 
 %prep
@@ -62,6 +55,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against python3.12
+
 * Tue Mar 11 2025 Odilon Sousa <osousa@redhat.com> - 20.25.3-1
 - Release python-virtualenv 20.25.3
 
