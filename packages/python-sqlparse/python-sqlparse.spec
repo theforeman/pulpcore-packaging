@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name sqlparse
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.5.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A non-validating SQL parser
 
 License:        BSD-3-Clause
@@ -22,21 +22,9 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires: /usr/bin/pathfix.py
 
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-setuptools
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
 %{summary}
 
 
@@ -63,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 0.5.3-2
+- Rebuild against python3.12
+
 * Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.3-1
 - Update to 0.5.3
 
