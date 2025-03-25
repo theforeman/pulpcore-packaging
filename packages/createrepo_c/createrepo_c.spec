@@ -1,5 +1,5 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 %global libmodulemd_version 2.3.0
 
@@ -46,7 +46,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        1.1.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -127,6 +127,7 @@ Summary:        Python 3 bindings for the createrepo_c library
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
 Requires:       %{name}-libs = %{version}-%{release}
 %if 0%{?scl:1}
 Obsoletes:      python3-%{name} < %{version}-%{release}
@@ -172,7 +173,7 @@ pushd build-py3
       -DWITH_LEGACY_HASHES=%{?with_legacy_hashes:ON}%{!?with_legacy_hashes:OFF} \
       -DWITH_ZSTD=%{?with_zstd:ON}%{!?with_zstd:OFF} \
       -DENABLE_DRPM=%{?with_drpm:ON}%{!?with_drpm:OFF} \
-      -DPYTHON_EXECUTABLE=%{__python3} -DPYTHON_LIBRARY=/usr/lib64/libpython3.11.so
+      -DPYTHON_EXECUTABLE=%{__python3} -DPYTHON_LIBRARY=/usr/lib64/libpython3.12.so
   make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}"
   # Build C documentation
   make doc-c
@@ -270,6 +271,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 1.1.3-2
+- Rebuild against python3.12
+
 * Wed Jul 03 2024 Odilon Sousa <osousa@redhat.com> - 1.1.3-1
 - Release createrepo_c 1.1.3
 
