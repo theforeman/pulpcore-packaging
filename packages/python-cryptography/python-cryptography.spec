@@ -1,6 +1,9 @@
 %global python3_pkgversion 3.12
 %global __python3 /usr/bin/python3.12
 
+# Disable debug
+%define debug_package %{nil}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name cryptography
 
