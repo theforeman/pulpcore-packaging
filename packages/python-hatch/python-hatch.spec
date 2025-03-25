@@ -1,11 +1,11 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name hatch
 
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.9.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Modern, extensible Python project management
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -22,12 +22,6 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-tomli
 
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:  python%{python3_pkgversion}-click >= 8.0.6
 Requires:  python%{python3_pkgversion}-hatchling < 1.22
 Requires:  python%{python3_pkgversion}-httpx >= 0.22.0
@@ -45,13 +39,10 @@ Requires:  python%{python3_pkgversion}-userpath >= 1.7
 Requires:  python%{python3_pkgversion}-userpath < 2.0
 Requires:  python%{python3_pkgversion}-virtualenv < 20.26.0
 Requires:  python%{python3_pkgversion}-zstandard < 1
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -76,6 +67,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 1.9.7-3
+- Rebuild against python3.12
+
 * Fri Mar 14 2025 Odilon Sousa <osousa@redhat.com> - 1.9.7-2
 - Fix virtualenv requirement
 
