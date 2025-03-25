@@ -5,7 +5,7 @@
 # Created by pyp2rpm-3.3.8
 %global pypi_name requests-toolbelt
 
-Name:           pytpython%{python3_pkgversion}-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.0.0
 Release:        6%{?dist}
 Summary:        A utility belt for advanced users of python-requests
@@ -52,7 +52,7 @@ set -ex
 
 
 %changelog
-* Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com>
+* Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 1.0.0-6
 - Rebuild against python3.12
 
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.0.0-5
