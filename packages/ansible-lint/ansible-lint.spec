@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %{?python_disable_dependency_generator}
 # Created by pyp2rpm-3.3.3
 %global pypi_name ansible-lint
 
 Name:           %{pypi_name}
 Version:        5.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
 License:        MIT
@@ -18,7 +18,10 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 7.0.5
 BuildRequires:  python%{python3_pkgversion}-setuptools_scm_git_archive
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
+
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 # This should be
@@ -59,6 +62,9 @@ set -ex
 %{python3_sitelib}/ansible_lint-%{version}.dist-info/
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 5.4.0-2
+- Rebuild against python3.12
+
 * Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.4.0-1
 - Release ansible-lint 5.4.0
 
