@@ -55,7 +55,7 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
-* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com>
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 20.25.3-2
 - Rebuild against python3.12
 
 * Tue Mar 11 2025 Odilon Sousa <osousa@redhat.com> - 20.25.3-1
