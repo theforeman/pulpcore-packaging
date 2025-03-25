@@ -1,10 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name hatch_fancy_pypi_readme
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        23.1.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Fancy PyPI READMEs with Hatch
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -19,20 +19,14 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
+Requires:  python%{python3_pkgversion}-hatchling
+Requires:  python%{python3_pkgversion}-tomli
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
 %description
 %{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:  python%{python3_pkgversion}-hatchling
-Requires:  python%{python3_pkgversion}-tomli
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -55,6 +49,9 @@ set -ex
 %{_bindir}/hatch-fancy-pypi-readme
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 23.1.0-4
+- Rebuild against python3.12
+
 * Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 23.1.0-3
 - Add python39 obsoletes to package
 
