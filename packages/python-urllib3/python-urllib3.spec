@@ -4,9 +4,9 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name urllib3
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 
 License:        MIT
@@ -20,17 +20,9 @@ BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-hatch_vcs
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -54,6 +46,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 2.3.0-2
+- Rebuild against python3.12
+
 * Wed Dec 25 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.0-1
 - Update to 2.3.0
 
