@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        24.3.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Store and access your passwords safely.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -22,7 +22,6 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-importlib-metadata
 Requires:       python%{python3_pkgversion}-jaraco.classes
 Requires:       python%{python3_pkgversion}-SecretStorage
 Requires:       python%{python3_pkgversion}-jeepney
@@ -56,6 +55,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 24.3.1-3
+- Drop python-importlib-metadata requirement
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 24.3.1-2
 - Rebuild against python3.12
 
