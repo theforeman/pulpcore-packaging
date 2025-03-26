@@ -4,7 +4,7 @@
 # Created by pyp2rpm-3.3.8
 %global pypi_name httpcore
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.0.7
 Release:        2%{?dist}
 Summary:        A minimal low-level HTTP client
