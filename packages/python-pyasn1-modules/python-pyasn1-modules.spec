@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name pyasn1-modules
 %global src_name pyasn1_modules
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A collection of ASN.1-based protocols modules
 
 License:        BSD-2-Clause
@@ -18,20 +18,14 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+Requires:       python%{python3_pkgversion}-pyasn1 >= 0.4.6
+Requires:       python%{python3_pkgversion}-pyasn1 < 0.7.0
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-pyasn1 >= 0.4.6
-Requires:       python%{python3_pkgversion}-pyasn1 < 0.7.0
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -59,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 0.4.1-2
+- Bump release against python3.12
+
 * Tue Oct 22 2024 Odilon Sousa <osousa@redhat.com> - 0.4.1-1
 - Release python-pyasn1-modules 0.4.1
 
