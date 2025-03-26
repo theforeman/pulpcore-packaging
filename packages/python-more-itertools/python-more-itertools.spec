@@ -1,10 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name more-itertools
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        10.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -19,15 +19,9 @@ BuildRequires:  python%{python3_pkgversion}-flit_core
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -50,6 +44,9 @@ set -ex
 %{python3_sitelib}/more_itertools-%{version}.dist-info/
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 10.6.0-2
+- Rebuild against python3.12
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 10.6.0-1
 - Update to 10.6.0
 
