@@ -4,7 +4,7 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name pycares
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.5.0
 Release:        2%{?dist}
 Summary:        Python interface for c-ares
