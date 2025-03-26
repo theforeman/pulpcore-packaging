@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name enrich
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.2.6
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        enrich
 
 License:        MIT
@@ -22,25 +22,14 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
+Requires:       python%{python3_pkgversion}-rich >= 9.5.1
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-rich >= 9.5.1
-
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -63,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 1.2.6-10
+- Rebuild against python3.12
+
 * Tue Apr 30 2024 Odilon Sousa <osousa@redhat.com> - 1.2.6-9
 - Rebuild with new package metadata
 
