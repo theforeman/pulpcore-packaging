@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.14.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        httplib2 caching for requests
 
 License:        None
@@ -20,7 +20,6 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 
-Requires:       python%{python3_pkgversion}-lockfile >= 0.9
 Requires:       python%{python3_pkgversion}-msgpack >= 0.5.2
 Requires:       python%{python3_pkgversion}-msgpack < 2.0.0
 Requires:       python%{python3_pkgversion}-requests  >= 2.16.0
@@ -65,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 0.14.2-4
+- Drop python-filelock dependancy
+
 * Fri Mar 21 2025 Odilon Sousa <osousa@redhat.com> - 0.14.2-3
 - Rebuild against python3.12
 
