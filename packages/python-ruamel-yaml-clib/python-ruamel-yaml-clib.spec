@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name ruamel.yaml.clib
 %global srcname ruamel-yaml-clib
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.2.12
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C version of reader, parser and emitter for ruamel
 
 License:        MIT
@@ -20,17 +20,11 @@ BuildRequires:  gcc
 BuildRequires:  libyaml-devel
 
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-
-
-%description -n python%{python3_pkgversion}-%{srcname}
-%{summary}
 
 
 %prep
@@ -59,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 0.2.12-2
+- Rebuild against python3.12
+
 * Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.2.12-1
 - Update to 0.2.12
 
