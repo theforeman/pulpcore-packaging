@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name PyJWT
 %global srcname pyjwt
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -18,22 +18,15 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Provides:       python%{python3_pkgversion}-jwt = %{version}-%{release}
 Obsoletes:      python%{python3_pkgversion}-jwt < %{version}-%{release}
 Requires:       python%{python3_pkgversion}-cryptography >= 3.4.0
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{srcname} < %{version}-%{release}
-%endif
 
-%description -n python%{python3_pkgversion}-%{srcname}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
+%description
 %{summary}
+
 
 
 %prep
@@ -62,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 2.9.0-2
+- Rebuild against python3.12
+
 * Wed Dec 25 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.0-1
 - Update to 2.9.0
 
