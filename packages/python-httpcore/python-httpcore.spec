@@ -55,7 +55,7 @@ set -ex
 
 
 %changelog
-* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 1.0.7-1
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 1.0.7-2
 - Rebuild against python3.12
 
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.7-1
