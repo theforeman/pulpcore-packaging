@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pycares
 
 Name:           python-%{pypi_name}
 Version:        4.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -17,20 +17,14 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-cffi >= 1.5.0
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+Requires:       python%{python3_pkgversion}-cffi >= 1.5.0
+Requires:       python%{python3_pkgversion}-idna >= 2.1
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-cffi >= 1.5.0
-Requires:       python%{python3_pkgversion}-idna >= 2.1
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -58,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 4.5.0-2
+- Rebuild against python3.12
+
 * Wed Nov 27 2024 Foreman Packaging Automation <packaging@theforeman.org> - 4.5.0-1
 - Update to 4.5.0
 
