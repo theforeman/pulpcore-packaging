@@ -1,10 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name rsa
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pure-Python RSA implementation
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -18,15 +18,11 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-poetry_core
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-pyasn1 >= 0.1.3
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
 %{summary}
 
 
@@ -55,5 +51,8 @@ set -ex
 %{_bindir}/pyrsa-verify
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 4.9-2
+- Rebuild against python3.12
+
 * Mon Sep 23 2024 Odilon Sousa - 4.9-1
 - Initial package.
