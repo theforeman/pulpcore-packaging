@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name tenacity
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        7.0.0
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Retry code until it succeeds
 
 License:        Apache 2.0
@@ -19,17 +19,11 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-typing-extensions
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-six >= 1.9.0
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -58,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 7.0.0-8
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 7.0.0-7
 - Remove SCL bits
 
