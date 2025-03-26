@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name httpcore
 
 Name:           python-%{pypi_name}
 Version:        1.0.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A minimal low-level HTTP client
 
 License:        BSD
@@ -20,21 +20,16 @@ BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-anyio
 Requires:       python%{python3_pkgversion}-certifi
 Requires:       python%{python3_pkgversion}-h11
 Requires:       python%{python3_pkgversion}-sniffio
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
+
 
 
 %prep
@@ -60,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 1.0.7-1
+- Rebuild against python3.12
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.7-1
 - Update to 1.0.7
 
