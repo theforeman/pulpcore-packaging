@@ -53,7 +53,7 @@ set -ex
 
 
 %changelog
-* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com>
+* Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 6.0.1-6
 - Rebuild against python3.12
 
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 6.0.1-5
