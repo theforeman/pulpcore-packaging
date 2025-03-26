@@ -238,7 +238,6 @@ tier4_packages:
     python-isodate: {}
     python-jeepney: {}
     python-lxml: {}
-    python-lockfile: {}
     python-marshmallow: {}
     python-more-itertools: {}
     python-msgpack: {}
