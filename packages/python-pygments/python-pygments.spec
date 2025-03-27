@@ -49,7 +49,7 @@ set -ex
 
 
 %changelog
-* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com>
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 2.19.1-2
 - Rebuild against python3.12
 
 * Wed Jan 08 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.19.1-1
