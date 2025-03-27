@@ -1,0 +1,62 @@
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
+
+# Disable debug
+%define debug_package %{nil}
+
+# Created by pyp2rpm-3.3.3
+%global pypi_name scikit-build
+%global srcname scikit_build
+
+Name:           python%{python3_pkgversion}-%{pypi_name}
+Version:        0.18.1
+Release:        1%{?dist}
+Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
+
+License:        MIT License
+URL:            https://github.com/scikit-build/
+Source0:        https://files.pythonhosted.org/packages/source/s/%{srcname}/%{srcname}-%{version}.tar.gz
+
+BuildArch:      noarch
+
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-hatchling >= 0.21.1
+BuildRequires:  python%{python3_pkgversion}-hatch_vcs
+BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme
+
+Requires: python%{python3_pkgversion}-distro
+Requires: python%{python3_pkgversion}-packaging
+Requires: python%{python3_pkgversion}-setuptools
+Requires: python%{python3_pkgversion}-wheel
+
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
+%{summary}
+
+
+
+%prep
+set -ex
+%autosetup -n %{srcname}-%{version}
+
+
+%build
+set -ex
+%pyproject_wheel
+
+
+%install
+set -ex
+%pyproject_install
+
+%files -n python%{python3_pkgversion}-%{pypi_name}
+%{python3_sitelib}/skbuild
+%{python3_sitelib}/%{srcname}-%{version}.dist-info/
+
+
+%changelog
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> -  0.18.1-1
+- Initial package.

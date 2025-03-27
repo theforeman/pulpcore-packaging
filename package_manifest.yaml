@@ -125,6 +125,7 @@ tier3_packages:
     python-pytz: {}
     python-sqlparse: {}
     python-hatch_fancy_pypi_readme: {}
+    python-scikit-build: {}
     python-hatch: {}
     python-protobuf: {}
     python-proto-plus: {}
