@@ -1,14 +1,14 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %{?python_disable_dependency_generator}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-import-export
 %global src_name django_import_export
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.3.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -19,27 +19,15 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-django >= 3.2
 Requires:       python%{python3_pkgversion}-diff-match-patch
 Requires:       python%{python3_pkgversion}-tablib >= 3.2.1
 
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
+
 
 
 %prep
@@ -67,6 +55,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 3.3.9-2
+- Rebuild against python3.12
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.9-1
 - Update to 3.3.9
 
