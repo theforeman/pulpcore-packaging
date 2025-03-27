@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name Django
 %global srcname django
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        4.2.20
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -18,29 +18,17 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       python%{python3_pkgversion}-asgiref < 4
 Requires:       python%{python3_pkgversion}-asgiref >= 3.3.2
 Requires:       python%{python3_pkgversion}-pytz
 Requires:       python%{python3_pkgversion}-sqlparse >= 0.2.2
-%if 0%{?!scl:1}
-Obsoletes:      python3-%{srcname} < %{version}-%{release}
-%endif
-%if 0%{?rhel} == 8
-Obsoletes:      python38-%{srcname} < %{version}-%{release}
-Obsoletes:      python39-%{srcname} < %{version}-%{release}
-%endif
 
 
-%description -n python%{python3_pkgversion}-%{srcname}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
+%description
 %{summary}
+
 
 
 %prep
@@ -76,6 +64,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 4.2.20-2
+- Rebuild against python3.12
+
 * Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.20-1
 - Update to 4.2.20
 
