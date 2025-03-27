@@ -1,14 +1,14 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global debug_package %{nil}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name Pygments
 %global srcname pygments
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.19.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
 License:        BSD
@@ -20,20 +20,12 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{srcname} < %{version}-%{release}
-%endif
-
-%description -n python%{python3_pkgversion}-%{srcname}
-%{summary}
 
 
 %prep
@@ -57,6 +49,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against python3.12
+
 * Wed Jan 08 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.19.1-1
 - Update to 2.19.1
 
