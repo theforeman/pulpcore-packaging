@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        13.3.1
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        None
@@ -17,12 +17,8 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-Requires:       python%{python3_pkgversion}-colorama < 0.5.0
-Requires:       python%{python3_pkgversion}-colorama >= 0.4.0
-Requires:       python%{python3_pkgversion}-commonmark < 0.10.0
-Requires:       python%{python3_pkgversion}-commonmark >= 0.9.0
-Requires:       python%{python3_pkgversion}-dataclasses < 0.9
-Requires:       python%{python3_pkgversion}-dataclasses >= 0.7
+Requires:       python%{python3_pkgversion}-markdown-it-py >= 2.1
+Requires:       python%{python3_pkgversion}-markdown-it-py < 3
 Requires:       python%{python3_pkgversion}-pygments < 3.0.0
 Requires:       python%{python3_pkgversion}-pygments >= 2.6.0
 
@@ -56,6 +52,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 13.3.1-10
+- Update dependencies requirement
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 13.3.1-9
 - Bump python-rich against python3.12
 
