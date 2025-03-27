@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-storages
 %global src_name django_storages
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.14.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
@@ -21,24 +21,15 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-django >= 2.2
 Requires:       python%{python3_pkgversion}-azure-storage-blob >= 12.0.0
 Requires:       python%{python3_pkgversion}-boto3 >= 1.4.4
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
+
 
 
 %prep
@@ -66,6 +57,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 1.14.5-2
+- Rebuild against python3.12
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.14.5-1
 - Update to 1.14.5
 
