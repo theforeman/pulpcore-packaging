@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-prometheus
 
 Name:           python-%{pypi_name}
 Version:        2.1.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Django middlewares to monitor your application with Prometheus
 
 License:        Apache
@@ -17,23 +17,13 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+Requires:       python%{python3_pkgversion}-prometheus-client >= 0.7
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-prometheus-client >= 0.7
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -63,6 +53,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.1.0-6
 - Remove SCL bits
 
