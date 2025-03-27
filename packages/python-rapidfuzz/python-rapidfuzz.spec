@@ -6,8 +6,8 @@
 %global pypi_name rapidfuzz
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.15.1
-Release:        6%{?dist}
+Version:        3.9.7
+Release:        1%{?dist}
 Summary:        rapid fuzzy string matching
 
 License:        MIT
@@ -16,6 +16,8 @@ Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-scikit-build
+BuildRequires:  python%{python3_pkgversion}-Cython
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -48,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 3.9.7-1
+- Release python-rapidfuzz 3.9.7
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 2.15.1-6
 - Rebuild against python3.12
 
