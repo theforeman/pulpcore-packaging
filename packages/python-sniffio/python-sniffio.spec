@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name sniffio
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.3.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Sniff out which async library your code is running under
 
 License:        MIT OR Apache-2.0
@@ -17,18 +17,11 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -56,6 +49,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 1.3.0-6
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.3.0-5
 - Remove SCL bits
 
