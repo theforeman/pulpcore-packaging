@@ -119,6 +119,7 @@ tier3_packages:
     python-cachecontrol: {}
     python-build: {}
     python-cleo: {}
+    python-distro: {}
     python-crashtest: {}
     python-poetry: {}
     python-pycairo: {}
@@ -186,7 +187,6 @@ tier4_packages:
     python-deprecated: {}
     python-diff-match-patch: {}
     python-distlib: {}
-    python3-distro: {}
     python-django: {}
     python-django-auth-ldap: {}
     python-django-cleanup: {}

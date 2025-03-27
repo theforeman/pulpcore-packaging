@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name distro
 %global pypi_version 1.7.0
 
-Name:           python3-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        %{pypi_version}
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Distro - an OS platform information API
 
 License:        Apache License, Version 2.0
@@ -18,22 +18,9 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       python%{python3_pkgversion}-setuptools
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -65,6 +52,9 @@ set -ex
 
 
 %changelog
+* Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 1.7.0-6
+- Rebuild against python3.12
+
 * Mon Sep 09 2024 Odilon Sousa <osousa@redhat.com> - 1.7.0-5
 - Bump version to rebuild with python3 build name
 
