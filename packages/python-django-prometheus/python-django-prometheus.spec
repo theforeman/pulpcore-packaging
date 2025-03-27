@@ -4,7 +4,7 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name django-prometheus
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.1.0
 Release:        7%{?dist}
 Summary:        Django middlewares to monitor your application with Prometheus
