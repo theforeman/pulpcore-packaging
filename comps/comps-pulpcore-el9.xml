@@ -279,6 +279,7 @@
       <packagereq type="default">python3.12-ruamel-yaml-clib</packagereq>
       <packagereq type="default">python3.12-s3transfer</packagereq>
       <packagereq type="default">python3.12-schema</packagereq>
+      <packagereq type="default">python3.12-scikit-build</packagereq>
       <packagereq type="default">python3.12-semantic-version</packagereq>
       <packagereq type="default">python3.12-setuptools-rust</packagereq>
       <packagereq type="default">python3.12-setuptools-scm</packagereq>
