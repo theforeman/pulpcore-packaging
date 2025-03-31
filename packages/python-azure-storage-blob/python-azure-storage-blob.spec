@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name azure-storage-blob
 %global src_name azure_storage_blob
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        12.24.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Microsoft Azure Blob Storage Client Library for Python
 
 License:        MIT License
@@ -18,23 +18,15 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
 Requires:       python%{python3_pkgversion}-azure-core < 2
 Requires:       python%{python3_pkgversion}-azure-core >= 1.30.0
 Requires:       python%{python3_pkgversion}-cryptography >= 2.1.4
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.6.0
 Requires:       python%{python3_pkgversion}-isodate >= 0.6.1
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -63,6 +55,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 12.24.1-2
+- Rebuild against python3.12
+
 * Mon Jan 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 12.24.1-1
 - Update to 12.24.1
 
