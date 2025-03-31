@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name diff-match-patch
 %global srcname diff_match_patch
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        20241021
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Repackaging of Google's Diff Match and Patch libraries
 
 License:        Apache
@@ -20,18 +20,11 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 %prep
 set -ex
@@ -54,6 +47,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 20241021-2
+- Rebuild against python3.12
+
 * Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 20241021-1
 - Update to 20241021
 
