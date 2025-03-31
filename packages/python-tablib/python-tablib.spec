@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name tablib
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 
 License:        MIT
@@ -21,13 +21,6 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 6.2
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-markuppy
 Requires:       python%{python3_pkgversion}-odfpy
 Requires:       python%{python3_pkgversion}-openpyxl >= 2.6.0
@@ -35,10 +28,9 @@ Requires:       python%{python3_pkgversion}-pyyaml
 Requires:       python%{python3_pkgversion}-xlrd
 Requires:       python%{python3_pkgversion}-xlwt
 
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -62,6 +54,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.5.0-2
+- Rebuild python-tablib against python3.12
+
 * Wed Sep 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.0-1
 - Update to 3.5.0
 
