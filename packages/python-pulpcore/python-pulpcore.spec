@@ -1,15 +1,14 @@
 %{!?_root_bindir:%global _root_bindir %{_bindir}}
 %{!?_root_libexecdir:%global _root_libexecdir %{_libexecdir}}
-%{?python_disable_dependency_generator}
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
-Name:           python-%{pypi_name}
-Version:        3.63.11
+Name:           python%{python3_pkgversion}-%{pypi_name}
+Version:        3.73.2
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -20,23 +19,12 @@ Patch0:         0001-Mark-md5-usage-as-usedforsecurity-False.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools < 66.0.0
-BuildRequires:  python%{python3_pkgversion}-setuptools >= 39.2.0
-
-%description
-Pulp is a platform for managing repositories of content, such as software
-packages, and pushing that content out to large numbers of consumers.
-
-Using Pulp you can:
-- Locally mirror all or part of a repository
-- Host your own content in a new repository
-- Manage content from multiple sources in one place
-- Promote content through different repos in an organized way
+BuildRequires:  python%{python3_pkgversion}-setuptools >= 40.8.0
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel >= 0.29.0
+BuildRequires:  pyproject-rpm-macros
 
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-django >= 4.2.0
 Conflicts:      python%{python3_pkgversion}-django >= 4.3.0
 Requires:       python%{python3_pkgversion}-PyYAML < 6.0.3
@@ -46,7 +34,7 @@ Requires:       python%{python3_pkgversion}-aiodns <= 3.2.0
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 24.2.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.4
-Requires:       python%{python3_pkgversion}-aiohttp < 3.10.12
+Requires:       python%{python3_pkgversion}-aiohttp < 3.11.14
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Conflicts:      python%{python3_pkgversion}-asyncio-throttle >= 1.1
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
@@ -72,14 +60,14 @@ Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
 Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
 Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.94.1
 Requires:       python%{python3_pkgversion}-drf-spectacular = 0.27.2
-Requires:       python%{python3_pkgversion}-dynaconf >= 3.1.12
+Requires:       python%{python3_pkgversion}-dynaconf >= 3.2.5
 Requires:       python%{python3_pkgversion}-dynaconf <= 3.3.0
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
-Requires:       python%{python3_pkgversion}-gnupg <= 0.5.3
-Requires:       python%{python3_pkgversion}-gunicorn >= 20.1.0
-Requires:       python%{python3_pkgversion}-gunicorn < 23.1.0
+Requires:       python%{python3_pkgversion}-gnupg <= 0.5.4
+Requires:       python%{python3_pkgversion}-gunicorn >= 20.1
+Requires:       python%{python3_pkgversion}-gunicorn < 23.1
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
-Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.5
+Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.6
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
 Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
@@ -89,20 +77,18 @@ Requires:       python%{python3_pkgversion}-jq < 1.9.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.32
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 25
-Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp >= 0.45b0
-Requires:       python%{python3_pkgversion}-opentelemetry_distro_otlp <= 0.48b0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.24.0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http <= 1.27.0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django >= 0.45b0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_django <= 0.48b0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi >= 0.45b0
-Requires:       python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi <= 0.48b0
+Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
+Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.31
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.31
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.27
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.31
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 5.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg <= 3.2.3
+Requires:       python%{python3_pkgversion}-psycopg <= 3.2.5
 Requires:       python%{python3_pkgversion}-psycopg_c >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg_c <= 3.2.3
+Requires:       python%{python3_pkgversion}-psycopg_c <= 3.2.5
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0 
@@ -110,23 +96,21 @@ Requires:       python%{python3_pkgversion}-pyparsing <= 3.1.4
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
 Requires:       python%{python3_pkgversion}-pyyaml <= 6.0.2
 Requires:       python%{python3_pkgversion}-redis >= 4.3
-Requires:       python%{python3_pkgversion}-redis < 5.0.9
+Requires:       python%{python3_pkgversion}-redis < 5.2.2
 Requires:       python%{python3_pkgversion}-tablib < 3.6.0
 Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
 Conflicts:      python%{python3_pkgversion}-url-normalize >= 1.5
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
 Requires:       python%{python3_pkgversion}-uuid6 <= 2024.7.10
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
-Requires:       python%{python3_pkgversion}-whitenoise < 6.8.0
+Requires:       python%{python3_pkgversion}-whitenoise < 6.10
 Requires:       python%{python3_pkgversion}-yarl >= 1.8
-Requires:       python%{python3_pkgversion}-yarl < 1.15.3
+Requires:       python%{python3_pkgversion}-yarl < 1.18.4
 
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-# Pulp-file and Pulp-certguard are now part of pulpcore
+Provides:       %{pypi_name} = %{version}
+
 Obsoletes:      python3.11-pulp-file < 1.16.0-1
 Provides:       python%{python3_pkgversion}-pulp-file = %{version}
 Provides:       pulpcore-plugin(file) = %{version}
@@ -138,9 +122,8 @@ Provides:       pulpcore-plugin(certguard) = %{version}
 # this is a soft-dependency in certguard, but for Katello we always want it
 Requires:       python%{python3_pkgversion}-rhsm
 
-Provides:       %{pypi_name} = %{version}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 Pulp is a platform for managing repositories of content, such as software
 packages, and pushing that content out to large numbers of consumers.
 
@@ -151,6 +134,7 @@ Using Pulp you can:
 - Promote content through different repos in an organized way
 
 
+
 %prep
 set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
@@ -158,11 +142,11 @@ set -ex
 rm -rf %{pypi_name}.egg-info
 
 # psycopg 'binary' extra isn't needed in production
-sed -i 's/psycopg\[binary\]/psycopg/' requirements.txt
+sed -i 's/psycopg\[binary\]/psycopg/' pyproject.toml
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 for wrapper in %{wrappers}
 do
   printf '#!/bin/bash\nexec %s "$@"\n' ${wrapper} > ${wrapper}
@@ -171,15 +155,14 @@ done
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 for wrapper in %{wrappers}
 do
   install -D -m 755 ${wrapper} %{buildroot}%{_root_libexecdir}/%{pypi_name}/${wrapper}
 done
 
+
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.md
 %{_bindir}/pulpcore-content
 %{_bindir}/pulpcore-api
 %{_bindir}/pulpcore-manager
@@ -188,10 +171,13 @@ done
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/pulp_certguard
 %{python3_sitelib}/pulp_file
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Mon Mar 31 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.2-1
+- Update to 3.73.2
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.63.11-1
 - Update to 3.63.11
 
