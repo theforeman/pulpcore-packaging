@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name aiohttp
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.10.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -16,14 +16,6 @@ Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-brotli
 Requires:       python%{python3_pkgversion}-aiodns >= 2.3.0
 Requires:       python%{python3_pkgversion}-aiohappyeyeballs
@@ -34,12 +26,12 @@ Requires:       python%{python3_pkgversion}-multidict < 7.0
 Requires:       python%{python3_pkgversion}-multidict >= 4.5
 Requires:       python%{python3_pkgversion}-yarl < 2.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.0
-
 # aiohttp depends on stdlib's mimetypes which reads /etc/mime.types
 Requires:       /etc/mime.types
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -68,6 +60,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.10.11-2
+- Rebuild against python3.12
+
 * Mon Dec 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.11-1
 - Update to 3.10.11
 
