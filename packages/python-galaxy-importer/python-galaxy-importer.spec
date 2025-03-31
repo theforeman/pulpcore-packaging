@@ -1,14 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
-
-%{?python_disable_dependency_generator}
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name galaxy-importer
 
 Name:           python-%{pypi_name}
 Version:        0.4.19
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -19,13 +17,6 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 # We don't care if Ansible is Python 2 or 3 as we just call the CLI
 Requires:       /usr/bin/ansible
 Requires:       /usr/bin/ansible-test
@@ -53,11 +44,9 @@ Requires:       tar
 
 Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -90,6 +79,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com>  - 0.4.19-4
+- Rebuild against python3.12
+
 * Mon Nov 25 2024 Evgeni Golov - 0.4.19-3
 - make galaxy-importer require ansible-lint on EL9
 
