@@ -1,77 +1,59 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name jsonschema
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.10.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
 URL:            https://github.com/Julian/jsonschema
 Source0:        https://files.pythonhosted.org/packages/source/j/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-#jsonschema switching to strictly pyobject.toml, this is the setup.cfg from 4.5.1
-#it's to keep builds working unitl our infrastructure can handle pyboject.toml based building
-Source1:        001-SETUP-CFG
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-setuptools-scm
+BuildRequires:  python%{python3_pkgversion}-hatchling
+BuildRequires:  python%{python3_pkgversion}-hatch_vcs
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-tomli
 
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-attrs >= 17.4.0
 Requires:       python%{python3_pkgversion}-pyrsistent >= 0.14.0
-Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-six >= 1.11.0
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-# create a minimal setup.py, the rest will be done by setuptools
-printf 'from setuptools import setup\nsetup(use_scm_version=True)' > setup.py
-cp %{_topdir}/SOURCES/001-SETUP-CFG setup.cfg
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license json/LICENSE
-%doc json/README.md README.rst
 %exclude %{_bindir}/jsonschema
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
+
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 4.10.3-5
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 4.10.3-4
 - Remove SCL bits
 
