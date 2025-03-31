@@ -1,5 +1,5 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # explicitly define, as we build on top of an scl, not inside with scl_package
 %if 0%{?scl:1}
@@ -36,7 +36,7 @@
 
 Name:           libcomps
 Version:        0.1.21
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -289,6 +289,9 @@ popd
 %endif
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 0.1.21-2
+- Rebuild against python3.12
+
 * Wed Jul 03 2024 Odilon Sousa <osousa@redhat.com> - 0.1.21-1
 - Release libcomps 0.1.21
 
