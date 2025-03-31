@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name botocore
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.37.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        Apache License 2.0
@@ -17,15 +17,7 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.11"
+%if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.12"
 Requires:       python%{python3_pkgversion}-dateutil < 1:3.0.0
 Requires:       python%{python3_pkgversion}-dateutil >= 1:2.1
 %else
@@ -38,8 +30,9 @@ Requires:       python%{python3_pkgversion}-urllib3 < 3
 Conflicts:       python%{python3_pkgversion}-urllib3 = 2.2.0
 Requires:       python%{python3_pkgversion}-urllib3 >= 1.25.4
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -68,6 +61,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.37.6-2
+- Rebuild against python3.12
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.37.6-1
 - Update to 1.37.6
 
