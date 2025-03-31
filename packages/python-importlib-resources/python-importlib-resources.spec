@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name importlib-resources
 %global src_name importlib_resources
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.4.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Read resources from Python packages
 
 License:        Apache2
@@ -22,17 +22,9 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -56,6 +48,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 6.4.5-2
+- Rebuild against python3.12
+
 * Tue Oct 01 2024 Odilon Sousa <osousa@redhat.com> - 6.4.5-1
 - Release python-importlib-resources 6.4.5
 
