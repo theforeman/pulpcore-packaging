@@ -256,6 +256,7 @@
       <packagereq type="default">python3.12-pygtrie</packagereq>
       <packagereq type="default">python3.12-pyjwkest</packagereq>
       <packagereq type="default">python3.12-pyjwt</packagereq>
+      <packagereq type="default">python3.12-pyjwt_crypto</packagereq>
       <packagereq type="default">python3.12-pyparsing</packagereq>
       <packagereq type="default">python3.12-pyperclip</packagereq>
       <packagereq type="default">python3.12-pypi-simple</packagereq>

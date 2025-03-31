@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.9.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -16,7 +16,10 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{sr
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 Provides:       python%{python3_pkgversion}-jwt = %{version}-%{release}
 Obsoletes:      python%{python3_pkgversion}-jwt < %{version}-%{release}
@@ -27,34 +30,44 @@ Requires:       python%{python3_pkgversion}-cryptography >= 3.4.0
 %description
 %{summary}
 
+%package -n python%{python3_pkgversion}-%{srcname}_crypto
+Summary: Metapackage for python%{python3_pkgversion}-%{srcname}: crypto extra
+Requires: python%{python3_pkgversion}-cryptography >= 3.4.0
+
+%description -n python%{python3_pkgversion}-%{srcname}_crypto
+This is a metapackage bringing in crypto extra requires for python%{python3_pkgversion}-%{srcname}
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-%{srcname}_crypto
+%ghost %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 
 %prep
 set -ex
 %autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
+rm -rf %{srcname}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license LICENSE
-%doc README.rst
 %exclude %{_bindir}/pyjwt
 %{python3_sitelib}/jwt
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 2.9.0-3
+- Provides metapackage crypto
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 2.9.0-2
 - Rebuild against python3.12
 
