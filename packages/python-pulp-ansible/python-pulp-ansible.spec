@@ -1,15 +1,13 @@
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
-
-%{?python_disable_dependency_generator}
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-ansible
 %global src_name pulp_ansible
 
-Name:           python-%{pypi_name}
-Version:        0.22.4
+Name:           python%{python3_pkgversion}-%{pypi_name}
+Version:        0.24.1
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -20,16 +18,11 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{s
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
 Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.4.1
@@ -39,22 +32,19 @@ Conflicts:      python%{python3_pkgversion}-async-lru >= 2.1
 Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.4.5
 Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.9
-Requires:       python%{python3_pkgversion}-jsonschema < 4.23
+Requires:       python%{python3_pkgversion}-jsonschema < 4.24
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
 Requires:       python%{python3_pkgversion}-pulpcore < 3.70
 Requires:       python%{python3_pkgversion}-semantic-version >= 2.9
 Conflicts:      python%{python3_pkgversion}-semantic-version >= 2.11
 Requires:       python%{python3_pkgversion}-pillow >= 10.3
-Requires:       python%{python3_pkgversion}-pillow < 10.4
-Requires:       python%{python3_pkgversion}-setuptools
+Requires:       python%{python3_pkgversion}-pillow < 11.2
 
-Provides:       pulpcore-plugin(ansible) = %{version}
-Obsoletes:      python3-%{pypi_name} < %{epoch}:%{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{epoch}:%{version}-%{release}
-%endif
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
 %{summary}
 
 
@@ -64,25 +54,25 @@ set -ex
 # Remove bundled egg-info
 rm -rf %{src_name}.egg-info
 
-
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst
-%{python3_sitelib}/pulp_ansible
-%{python3_sitelib}/pulp_ansible-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{src_name}
+%{python3_sitelib}/%{src_name}-%{version}.dist-info/
 
 
 %changelog
+* Mon Mar 31 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.24.1-1
+- Update to 0.24.1
+
 * Fri Mar 14 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.22.4-1
 - Update to 0.22.4
 
