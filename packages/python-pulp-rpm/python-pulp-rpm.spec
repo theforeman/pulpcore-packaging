@@ -1,90 +1,77 @@
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-rpm
+%global src_name pulp_rpm
 
-Name:           python-%{pypi_name}
-Version:        3.27.2
+Name:           python%{python3_pkgversion}-%{pypi_name}
+Version:        3.29.0
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            http://www.pulpproject.org
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-%if 0%{?rhel} == 7
-Requires:       libmodulemd2 >= 2.12
-%else
-Requires:       libmodulemd >= 2.12
-%endif
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
 Requires:       python%{python3_pkgversion}-createrepo_c >= 1.1.0
 Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.2.0
 Requires:       python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
 Conflicts:      python%{python3_pkgversion}-jsonschema >= 5.0
-Requires:       python%{python3_pkgversion}-libcomps >= 0.1.21
+Requires:       python%{python3_pkgversion}-libcomps >= 0.1.20
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.49
-Requires:       python%{python3_pkgversion}-pulpcore < 3.70
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.85
+Requires:       python%{python3_pkgversion}-pulpcore < 3.73
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
 Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
 Requires:       python%{python3_pkgversion}-importlib-resources < 6.5
 
-Provides:       pulpcore-plugin(rpm) = %{version}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 # remove "solv" dependency from setup.py as python3-solv does not provide an egg
-sed -i "/solv/d" requirements.txt
-
+sed -i "/solv/d" pyproject.toml
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE
-%doc README.rst
-%{python3_sitelib}/pulp_rpm
-%{python3_sitelib}/pulp_rpm-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{src_name}
+%{python3_sitelib}/%{src_name}-%{version}.dist-info/
 
 
 %changelog
+* Mon Mar 31 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.29.0-1
+- Update to 3.29.0
+
 * Thu Oct 24 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.2-1
 - Update to 3.27.2
 
