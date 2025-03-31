@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name GitPython
 %global srcname gitpython
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.1.44
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        GitPython is a python library used to interact with Git repositories
 
 License:        BSD
@@ -18,21 +18,14 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       git-core
 Requires:       python%{python3_pkgversion}-gitdb < 5
 Requires:       python%{python3_pkgversion}-gitdb >= 4.0.1
 Requires:       python%{python3_pkgversion}-typing-extensions >= 3.7.4.3
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-%description -n python%{python3_pkgversion}-%{srcname}
+%description
 %{summary}
 
 
@@ -61,6 +54,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.1.44-2
+- Rebuild against python3.12
+
 * Mon Jan 06 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.44-1
 - Update to 3.1.44
 
