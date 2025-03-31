@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name openpyxl
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.1.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Python library to read/write Excel 2010 xlsx/xlsm files
 
 License:        MIT
@@ -17,18 +17,11 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-et-xmlfile
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -56,6 +49,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.1.5-2
+- Rebuild against python3.12
+
 * Wed Sep 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.5-1
 - Update to 3.1.5
 
