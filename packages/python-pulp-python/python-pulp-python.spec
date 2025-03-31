@@ -1,12 +1,12 @@
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-python
 %global src_name pulp_python
 
-Name:           python-%{pypi_name}
-Version:        3.12.6
+Name:           python%{python3_pkgversion}-%{pypi_name}
+Version:        3.13.2
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -21,31 +21,18 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
-Requires:       python%{python3_pkgversion}-bandersnatch >= 6.1
-Conflicts:      python%{python3_pkgversion}-bandersnatch >= 6.2
-Requires:       python%{python3_pkgversion}-pkginfo >= 1.12.0
+Requires:       python%{python3_pkgversion}-bandersnatch >= 6.3
+Conflicts:      python%{python3_pkgversion}-bandersnatch >= 7.0
+Requires:       python%{python3_pkgversion}-pkginfo >= 1.10.0
 Requires:       python%{python3_pkgversion}-pkginfo < 1.13.0
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49
-Requires:       python%{python3_pkgversion}-pulpcore < 3.70
-Requires:       python%{python3_pkgversion}-pypi-simple >= 0.9
-Conflicts:      python%{python3_pkgversion}-pypi-simple >= 1.0.0
+Requires:       python%{python3_pkgversion}-pulpcore < 3.85
+Requires:       python%{python3_pkgversion}-pypi-simple >= 1.5.0
+Requires:       python%{python3_pkgversion}-pypi-simple < 2.0
 
-Provides:       pulpcore-plugin(python) = %{version}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -71,6 +58,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.13.2-1
+- Update to 3.13.2
+
 * Wed Feb 26 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.12.6-1
 - Update to 3.12.6
 
