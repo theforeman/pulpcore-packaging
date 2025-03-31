@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name python-ldap
 %global srcname ldap
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.4.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Python modules for implementing LDAP clients
 
 License:        Python style
@@ -21,14 +21,6 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  openldap-devel
 BuildRequires:  openssl-devel
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       python%{python3_pkgversion}-pyasn1 >= 0.3.7
 Requires:       python%{python3_pkgversion}-pyasn1-modules >= 0.1.5
 Requires:       openldap
@@ -36,9 +28,11 @@ Obsoletes: python3-pyldap < 3
 Provides:  python3-pyldap = %{version}-%{release}
 Provides:  python3-pyldap%{?_isa} = %{version}-%{release}
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-%description -n python%{python3_pkgversion}-%{srcname}
+%description
 %{summary}
+
 
 
 %prep
@@ -69,6 +63,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.4.2-6
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.4.2-5
 - Remove SCL bits
 
