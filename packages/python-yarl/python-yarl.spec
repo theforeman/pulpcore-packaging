@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name yarl
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.15.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Yet another URL library
 
 License:        Apache 2
@@ -22,20 +22,13 @@ BuildRequires:  python%{python3_pkgversion}-expandvars
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-idna >= 2.0
 Requires:       python%{python3_pkgversion}-multidict >= 4.0
 Requires:       python%{python3_pkgversion}-propcache >= 0.2.0
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -59,6 +52,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.15.2-2
+- Rebuild against python3.12
+
 * Mon Dec 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.15.2-1
 - Update to 1.15.2
 
