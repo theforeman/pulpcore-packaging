@@ -1,11 +1,11 @@
 %global debug_package %{nil}
 
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 %global pypi_name json-stream
 %global pkg_name json_stream
 
-Name:           python%{python3_pkgversion}-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pkg_name}
 Version:        2.3.3
 Release:        2%{?dist}
 Summary:        Streaming JSON encoder and decoder
@@ -50,7 +50,7 @@ set -ex
 %{python3_sitelib}/%{pkg_name}/
 
 %changelog
-* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com>
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 2.3.3-2
 - Rebuild against python3.12
 
 * Sun Jan 12 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.3-1
