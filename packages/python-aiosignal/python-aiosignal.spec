@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name aiosignal
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        aiosignal: a list of registered asynchronous callbacks
 
 License:        Apache 2.0
@@ -18,18 +18,11 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-frozenlist >= 1.1.0
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-frozenlist >= 1.1.0
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -58,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.3.2-2
+- Rebuild against python3.12
+
 * Wed Dec 18 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.3.2-1
 - Update to 1.3.2
 
