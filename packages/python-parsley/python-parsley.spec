@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name Parsley
 %global srcname parsley
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        1.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Parsing and pattern matching made easy
 
 License:        MIT License
@@ -18,18 +18,11 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
 Provides:       python%{python3_pkgversion}-%{pypi_name} = %{version}
+
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-
-%description -n python%{python3_pkgversion}-%{srcname}
+%description
 %{summary}
 
 
@@ -59,6 +52,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.3-7
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.3-6
 - Remove SCL bits
 
