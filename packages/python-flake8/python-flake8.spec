@@ -4,7 +4,7 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name flake8
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.1.0
 Release:        2%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
