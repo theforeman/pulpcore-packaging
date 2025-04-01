@@ -1,11 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name opentelemetry_instrumentation_django
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.48b0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Instrumentation for Django
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -20,12 +19,6 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:  python%{python3_pkgversion}-opentelemetry_api >= 1.12
 Requires:  python%{python3_pkgversion}-opentelemetry_api < 2
 Requires:  python%{python3_pkgversion}-opentelemetry_instrumentation = %{version}
@@ -33,15 +26,10 @@ Requires:  python%{python3_pkgversion}-opentelemetry_instrumentation_wsgi = %{ve
 Requires:  python%{python3_pkgversion}-opentelemetry_semantic_conventions = %{version}
 Requires:  python%{python3_pkgversion}-opentelemetry_util_http = %{version}
 
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
-
 
 %prep
 set -ex
@@ -63,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.48b0-2
+- Rebuild against python3.12
+
 * Sun Sep 29 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.48b0-1
 - Update to 0.48b0
 
