@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name python-dateutil
 %global srcname dateutil
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.8.2
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -22,18 +22,12 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       python%{python3_pkgversion}-six >= 1.5
 Requires:       tzdata
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-%description -n python%{python3_pkgversion}-%{srcname}
+%description
 %{summary}
 
 
@@ -57,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 2.8.2-8
+- Rebuild against python3.12
+
 * Tue Apr 30 2024 Odilon Sousa <osousa@redhat.com> - 2.8.2-7
 - Rebuild with new package metadata
 
