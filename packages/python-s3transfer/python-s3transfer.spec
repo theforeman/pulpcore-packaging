@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name s3transfer
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.11.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An Amazon S3 Transfer Manager
 
 License:        Apache License 2.0
@@ -17,19 +17,12 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+Requires:       python%{python3_pkgversion}-botocore < 2.0a.0
+Requires:       python%{python3_pkgversion}-botocore >= 1.36.0
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-botocore < 2.0a.0
-Requires:       python%{python3_pkgversion}-botocore >= 1.36.0
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -57,6 +50,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.11.2-2
+- Rebuild against python3.12
+
 * Mon Jan 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.11.2-1
 - Update to 0.11.2
 
