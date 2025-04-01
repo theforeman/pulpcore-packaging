@@ -1,4 +1,3 @@
-%{?python_disable_dependency_generator}
 %global debug_package %{nil}
 
 %global __python3 /usr/bin/python3.11
@@ -6,9 +5,9 @@
 %global pypi_name json-stream
 %global pkg_name json_stream
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.3.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Streaming JSON encoder and decoder
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -24,16 +23,11 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pkg_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pkg_name}}
 Requires:       python%{python3_pkgversion}-json_stream_rs_tokenizer >= 0.4.17
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pkg_name}}
 
-%description -n python%{python3_pkgversion}-%{pkg_name}
+%description
 %{summary}
 
 
@@ -56,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pkg_name}/
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against python3.12
+
 * Sun Jan 12 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.3-1
 - Update to 2.3.3
 
