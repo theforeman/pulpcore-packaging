@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name Jinja2
 %global srcname jinja2
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.1.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A very fast and expressive template engine
 
 License:        BSD-3-Clause
@@ -20,16 +20,11 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       python%{python3_pkgversion}-markupsafe >= 2.0
 
-%description -n python%{python3_pkgversion}-%{srcname}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
+%description
 %{summary}
 
 
@@ -54,6 +49,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 3.1.5-2
+- Rebuild against python3.12
+
 * Fri Jan 10 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.5-1
 - Update to 3.1.5
 
