@@ -1,16 +1,16 @@
 %global debug_package %{nil}
 
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 
 # Created by pyp2rpm-3.3.8
 %global pypi_name json-stream-rs-tokenizer
 %global pkg_name json_stream_rs_tokenizer
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.28
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Faster tokenizer for the json-stream Python library
 
 License:        MIT
@@ -21,16 +21,9 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-rust
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pkg_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pkg_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pkg_name}
+%description
 %{summary}
 
 
@@ -59,6 +52,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against pyton3.12
+
 * Sun Mar 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.28-1
 - Update to 0.4.28
 
