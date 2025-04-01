@@ -19,7 +19,6 @@ BuildRequires:  python%{python3_pkgversion}-pbr
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm
-BuildRequires:  python%{python3_pkgversion}-toml
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
