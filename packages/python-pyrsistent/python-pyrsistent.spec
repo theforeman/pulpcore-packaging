@@ -22,6 +22,11 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %description
 %{summary}
 
+%prep
+set -ex
+%autosetup -n %{pypi_name}-%{version}
+# Remove bundled egg-info
+rm -rf %{pypi_name}.egg-info
 
 %build
 set -ex
