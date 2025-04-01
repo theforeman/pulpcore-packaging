@@ -1,11 +1,10 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global pypi_name opentelemetry_api
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.27.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Python API.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -20,24 +19,13 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-%description
-%{summary}
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-deprecated >= 1.2.6
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0
-Requires:       python%{python3_pkgversion}-importlib-metadata < 7.0
+Requires:       python%{python3_pkgversion}-importlib-metadata < 8.7.0
 
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -60,6 +48,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.27.0-2
+- Rebuild against python3.12
+
 * Tue Oct 01 2024 Foreman Packaging Automation <packaging@theforeman.org> - 1.27.0-1
 - Update to 1.27.0
 
