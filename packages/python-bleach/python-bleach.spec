@@ -4,7 +4,7 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name bleach
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.3.1
 Release:        7%{?dist}
 Summary:        An easy safelist-based HTML-sanitizing tool
@@ -52,7 +52,7 @@ set -ex
 
 
 %changelog
-* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com>
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 3.3.1-7
 - Rebuild against python3.12
 
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 3.3.1-6
