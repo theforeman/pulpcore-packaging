@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name aiohappyeyeballs
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.4.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        This library exists to allow connecting with Happy Eyeballs (RFC 8305) when you already have a list of addrinfo and not a DNS name.
 
 License:        Python Software Foundation License 2.0
@@ -18,17 +18,9 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-poetry_core
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -52,6 +44,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 2.4.4-2
+- Rebuild against python3.12
+
 * Wed Dec 11 2024 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.4-1
 - Update to 2.4.4
 
