@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name isodate
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.7.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An ISO 8601 date/time/duration parser and formatter
 
 License:        BSD
@@ -23,21 +23,12 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
 
 %description
 ISO 8601 date/time parser This module implements ISO 8601 date, time and
 duration parsing.
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-ISO 8601 date/time parser This module implements ISO 8601 date, time and
-duration parsing.
-
 
 
 %prep
@@ -61,6 +52,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.7.2-2
+- Rebuild against python3.12
+
 * Mon Oct 21 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.7.2-1
 - Update to 0.7.2
 
