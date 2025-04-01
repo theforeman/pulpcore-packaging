@@ -23,7 +23,8 @@ BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-
+%description
+%{summary}
 
 %prep
 set -ex
