@@ -45,7 +45,7 @@ set -ex
 %files -n python%{python3_pkgversion}-%{srcname}
 %{python3_sitelib}/__pycache__/gnupg.*
 %{python3_sitelib}/gnupg.py
-%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
+%{python3_sitelib}/python_gnupg-%{version}.dist-info/
 
 
 %changelog
