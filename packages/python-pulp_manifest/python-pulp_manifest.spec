@@ -1,13 +1,13 @@
 %global pkg_name %{name}
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name pulp_manifest
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.0.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Tool to generate a PULP_MANIFEST file for a given directory, so the directory can be recognized by Pulp
 
 License:        GPLv2+
@@ -18,29 +18,21 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+Provides:       pulp-manifest = %{version}-%{release}
+Requires:       python%{python3_pkgversion}-setuptools
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
 %description
 %{summary}
 
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
-Provides:       pulp-manifest = %{version}-%{release}
-Requires:       python%{python3_pkgversion}-setuptools
-
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
 set -ex
 %autosetup -n pulp-manifest-%{version}
-
 
 
 %build
@@ -63,6 +55,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against python3.12
+
 * Fri Jul 26 2024 Odilon Sousa <osousa@redhat.com> - 3.0.0-5
 - Add provides pulp-manifest
 
