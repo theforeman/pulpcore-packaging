@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.31.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -25,8 +25,6 @@ Requires:       python%{python3_pkgversion}-PyYAML < 6.1
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.3
 Requires:       python%{python3_pkgversion}-click < 9.0.0
 Requires:       python%{python3_pkgversion}-click >= 8.0.0
-Requires:       python%{python3_pkgversion}-click-shell < 3
-Requires:       python%{python3_pkgversion}-click-shell >= 2.1
 Requires:       python%{python3_pkgversion}-packaging >= 20.0
 Requires:       python%{python3_pkgversion}-packaging < 25
 Requires:       python%{python3_pkgversion}-pygments >= 2.17.2
@@ -35,9 +33,9 @@ Requires:       python%{python3_pkgversion}-requests < 2.33
 Requires:       python%{python3_pkgversion}-requests >= 2.24.0
 Requires:       python%{python3_pkgversion}-schema < 0.8
 Requires:       python%{python3_pkgversion}-schema >= 0.7.5
+Requires:       python%{python3_pkgversion}-tomli_w >= 1.0.0
+Requires:       python%{python3_pkgversion}-tomli_w < 2
 Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-toml < 0.11
-Requires:       python%{python3_pkgversion}-toml >= 0.10.2
 Requires:       python%{python3_pkgversion}-pulp-glue == %{version}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -71,6 +69,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.31.1-3
+- Update requirements
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.31.1-2
 - Rebuild against python3.12
 
