@@ -1,21 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name MarkupSafe
 %global srcname markupsafe
 
-# Our EL8 buildroots default to Python 3.8, but let's also build 3.6, just to be safe
-# to make dnf happy
-%if 0%{?rhel} == 8
-%bcond_without python39
-%else
-%bcond_with python3
-%endif
-
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Safely add untrusted strings to HTML/XML markup
 
 License:        BSD-3-Clause
@@ -25,28 +17,12 @@ Source0:        https://files.pythonhosted.org/packages/source/m/%{srcname}/%{sr
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 %description
 %{summary}
 
 
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
-
-
-%description -n python%{python3_pkgversion}-%{srcname}
-%{summary}
-
-%if %{with python36}
-%package -n python3-%{srcname}
-Summary:        %{summary}
-BuildRequires:  python36-devel
-Provides:       python36-%{srcname} = %{version}-%{release}
-
-%description -n python3-%{srcname}
-%{summary}
-%endif
 
 %prep
 set -ex
@@ -59,20 +35,10 @@ rm -rf %{srcname}.egg-info
 set -ex
 %py3_build
 
-%if %{with python36}
-CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
- /usr/bin/python3.6 setup.py  build --executable="/usr/bin/python3.6 -s"
-%endif
-
 
 %install
 set -ex
 %py3_install
-
-%if %{with python36}
-CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
- /usr/bin/python3.6 setup.py  install --skip-build --root %{buildroot}
-%endif
 
 
 %files -n python%{python3_pkgversion}-%{srcname}
@@ -81,13 +47,11 @@ CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}"\
 %{python3_sitearch}/markupsafe
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
-%if %{with python36}
-%files -n python3-%{srcname}
-/usr/lib64/python3.6/site-packages/markupsafe
-/usr/lib64/python3.6/site-packages/%{pypi_name}-%{version}-py*.egg-info
-%endif
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 3.0.2-2
+- Rebuild against python3.12
+
 * Wed Oct 23 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.0.2-1
 - Update to 3.0.2
 
