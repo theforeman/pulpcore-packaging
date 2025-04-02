@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 %global debug_package %{nil}
 
 %global pypi_name pulp-glue-deb
 %global srcname pulp_glue_deb
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API. (deb plugin)
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -22,20 +22,14 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
+Requires:       python%{python3_pkgversion}-pulp-glue >= 0.23.2
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.32
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-pulp-glue >= 0.23.2
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.32
-
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -57,6 +51,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.3.2-2
+- Rebuild against python3.12
+
 * Thu Feb 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.2-1
 - Update to 0.3.2
 
