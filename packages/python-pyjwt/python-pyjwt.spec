@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.9.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -23,23 +23,23 @@ BuildRequires:  pyproject-rpm-macros
 
 Provides:       python%{python3_pkgversion}-jwt = %{version}-%{release}
 Obsoletes:      python%{python3_pkgversion}-jwt < %{version}-%{release}
-Requires:       python%{python3_pkgversion}-cryptography >= 3.4.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
 %description
 %{summary}
 
-%package -n python%{python3_pkgversion}-%{srcname}_crypto
-Summary: Metapackage for python%{python3_pkgversion}-%{srcname}: crypto extra
+
+%package -n python%{python3_pkgversion}-%{srcname}+crypto
+Summary: Metapackage for python3-pyjwt: crypto extra
 Requires: python%{python3_pkgversion}-cryptography >= 3.4.0
 
-%description -n python%{python3_pkgversion}-%{srcname}_crypto
+%description -n python%{python3_pkgversion}-%{srcname}+crypto
 This is a metapackage bringing in crypto extra requires for python%{python3_pkgversion}-%{srcname}
 It contains no code, just makes sure the dependencies are installed.
 
-%files -n python%{python3_pkgversion}-%{srcname}_crypto
-%ghost %{python3_sitelib}/%{srcname}-%{version}.dist-info/
+%files -n python%{python3_pkgversion}-%{srcname}+crypto
+%ghost %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %prep
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 2.9.0-4
+- Fix metapackage metadata
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 2.9.0-3
 - Provides metapackage crypto
 
