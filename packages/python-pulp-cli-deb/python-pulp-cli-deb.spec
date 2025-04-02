@@ -1,14 +1,14 @@
 
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name pulp-cli-deb
 %global pkg_name pulp_cli_deb
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -22,30 +22,17 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
 Requires:       python%{python3_pkgversion}-pulp-cli >= 0.23.2
 Requires:       python%{python3_pkgversion}-pulp-cli < 0.32
 Requires:       python%{python3_pkgversion}-click
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-pulp-glue-deb == %{version}
 
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 Provides:       %{pypi_name} = %{version}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -71,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.3.2-2
+- Rebuild against python3.12
+
 * Thu Feb 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.2-1
 - Update to 0.3.2
 
