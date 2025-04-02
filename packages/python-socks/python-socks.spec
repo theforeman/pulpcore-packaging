@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name python_socks
 %global srcname socks
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
 License:        Apache 2
@@ -22,19 +22,25 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
+
 %description
 %{summary}
 
 
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
+%package -n python%{python3_pkgversion}-%{srcname}+asyncio
+Summary: Metapackage for python%{python3_pkgversion}-%{srcname}: asyncio extra
 Requires:       python%{python3_pkgversion}-async-timeout >= 3.0.1
 
+%description -n python%{python3_pkgversion}-%{srcname}+asyncio
+This is a metapackage bringing in filecache extra requires for python%{python3_pkgversion}-%{srcname}
+It contains no code, just makes sure the dependencies are installed.
 
-%description -n python%{python3_pkgversion}-%{srcname}
-%{summary}
-
+%files -n python%{python3_pkgversion}-%{srcname}+asyncio
+%ghost %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %prep
 set -ex
@@ -59,6 +65,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 2.7.1-2
+- Rebuild against python3.12
+
 * Wed Feb 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.7.1-1
 - Update to 2.7.1
 
