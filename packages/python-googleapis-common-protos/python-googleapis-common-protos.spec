@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name googleapis-common-protos
 %global srcname googleapis_common_protos
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.69.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        Apache-2.0
@@ -30,13 +30,6 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Conflicts:      python%{python3_pkgversion}-protobuf = 3.20.0
 Conflicts:      python%{python3_pkgversion}-protobuf = 3.20.1
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.1
@@ -49,8 +42,10 @@ Requires:       python%{python3_pkgversion}-grpcio >= 1.44.0
 Requires:       python%{python3_pkgversion}-protobuf < 5.0.0.dev0
 Requires:       python%{python3_pkgversion}-protobuf >= 3.19.5
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%description
 %{summary}
 
 
@@ -78,6 +73,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.69.0-2
+- Rebuild against python3.12
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.69.0-1
 - Update to 1.69.0
 
