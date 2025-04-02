@@ -36,6 +36,7 @@ files (order of sections & options, indentation, comments, and blank\
 lines are preserved when data is updated), and is more convenient to\
 use.
 
+%description %{_description}
 
 %prep
 set -ex
