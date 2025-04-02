@@ -26,9 +26,6 @@ Requires:       python%{python3_pkgversion}-setuptools
 %description
 %{summary}
 
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-
 
 %prep
 set -ex
@@ -55,7 +52,7 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
-* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com>
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 3.0.0-6
 - Rebuild against python3.12
 
 * Fri Jul 26 2024 Odilon Sousa <osousa@redhat.com> - 3.0.0-5
