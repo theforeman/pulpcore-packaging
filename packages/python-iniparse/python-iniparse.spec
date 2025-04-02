@@ -1,14 +1,14 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 %global modname iniparse
 
 # Use the same directory of the main package for subpackage licence and docs
 %global _docdir_fmt %{pkg_name}
 
-Name:           python-%{modname}
+Name:           python%{python3_pkgversion}-%{modname}
 Version:        0.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
@@ -18,6 +18,14 @@ Patch6:         0006-Fix-compatibility-issues-with-Python-3.11.patch
 # https://github.com/candlepin/python-iniparse/pull/29
 Patch7:         0001-Fix-tests-with-python-3.12.1.patch
 
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-six
+BuildRequires:  python%{python3_pkgversion}-test
+Requires:       python%{python3_pkgversion}-six
+Obsoletes:      platform-python-%{modname} < %{version}-%{release}
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{modname}}
 
 BuildArch: noarch
 
@@ -28,23 +36,6 @@ files (order of sections & options, indentation, comments, and blank\
 lines are preserved when data is updated), and is more convenient to\
 use.
 
-
-%description %{_description}
-
-%package -n python%{python3_pkgversion}-%{modname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{modname}}
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-six
-BuildRequires:  python%{python3_pkgversion}-test
-Requires:       python%{python3_pkgversion}-six
-Obsoletes:      platform-python-%{modname} < %{version}-%{release}
-
-
-%description -n python%{python3_pkgversion}-%{modname} %{_description}
-
-Python 3 version.
 
 %prep
 set -ex
@@ -76,6 +67,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.5-2
+- Rebuild against python3.12
+
 * Tue Nov 12 2024 Odilon Sousa <osousa@redhat.com> - 0.5-1
 - Release python-iniparse 0.5
 
