@@ -26,10 +26,6 @@ Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
 %{summary}
 
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
-
-
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
