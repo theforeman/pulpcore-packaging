@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.7
 %global pypi_name rhsm
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.19.2
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        A Python library to communicate with a Red Hat Unified Entitlement Platform
 
 License:        GPLv2
@@ -18,20 +18,13 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 
 BuildRequires:  openssl-devel
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-
 Requires:       python%{python3_pkgversion}-iniparse
 Requires:       python%{python3_pkgversion}-dateutil
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+%description
+%{summary}
 
 
 %prep
@@ -57,6 +50,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.19.2-8
+- Rebuild against python3.12
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 1.19.2-7
 - Remove SCL bits
 
