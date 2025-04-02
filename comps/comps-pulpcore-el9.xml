@@ -292,6 +292,7 @@
       <packagereq type="default">python3.12-social-auth-app-django</packagereq>
       <packagereq type="default">python3.12-social-auth-core</packagereq>
       <packagereq type="default">python3.12-socks</packagereq>
+      <packagereq type="default">python3.12-socks+asyncio</packagereq>
       <packagereq type="default">python3.12-solv</packagereq>
       <packagereq type="default">python3.12-solv</packagereq>
       <packagereq type="default">python3.12-soupsieve</packagereq>
