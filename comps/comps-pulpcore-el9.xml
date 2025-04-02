@@ -237,10 +237,8 @@
       <packagereq type="default">python3.12-pulp-ostree</packagereq>
       <packagereq type="default">python3.12-pulp-python</packagereq>
       <packagereq type="default">python3.12-pulp-rpm</packagereq>
-      <packagereq type="default">python3.12-pulp-rpm-client</packagereq>
       <packagereq type="default">python3.12-pulp_manifest</packagereq>
       <packagereq type="default">python3.12-pulpcore</packagereq>
-      <packagereq type="default">python3.12-pulpcore-client</packagereq>
       <packagereq type="default">python3.12-pyOpenSSL</packagereq>
       <packagereq type="default">python3.12-pyasn1</packagereq>
       <packagereq type="default">python3.12-pyasn1-modules</packagereq>
