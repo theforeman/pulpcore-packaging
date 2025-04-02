@@ -1,13 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
-%{?python_disable_dependency_generator}
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name drf-spectacular
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.27.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
@@ -18,13 +17,6 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-django >= 2.2
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.1
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.10.3
@@ -32,11 +24,10 @@ Requires:       python%{python3_pkgversion}-inflection >= 0.3.1
 Requires:       python%{python3_pkgversion}-jsonschema >= 2.6.0
 Requires:       python%{python3_pkgversion}-uritemplate >= 2.0.0
 
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+
+%description
 %{summary}
 
 
@@ -65,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.27.2-2
+- Rebuild against python3.12
+
 * Tue Oct 01 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.27.2-1
 - Update to 0.27.2
 
