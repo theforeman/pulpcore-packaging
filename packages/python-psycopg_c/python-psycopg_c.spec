@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name psycopg_c
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.2.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        PostgreSQL database adapter for Python - C extension
 
 License:        LGPL-3.0-only
@@ -21,16 +21,9 @@ BuildRequires:  python%{python3_pkgversion}-Cython
 BuildRequires:  gcc
 BuildRequires:  postgresql-devel
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -59,5 +52,8 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild against python3.12
+
 * Wed Oct 09 2024 Evgeni Golov - 3.2.3-1
 - Initial package.
