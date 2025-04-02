@@ -1,7 +1,7 @@
 %global libname solv
 
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 %bcond_without python_bindings
 
@@ -28,9 +28,9 @@
 
 %define __cmake_switch(b:) %{expand:%%{?with_%{-b*}:ON}}%{expand:%%{!?with_%{-b*}:OFF}}
 
-Name:           python-%{libname}
+Name:           python%{python3_pkgversion}-%{libname}
 Version:        0.7.28
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python bindings for the lib%{libname} library
 
 License:        BSD
@@ -69,11 +69,12 @@ BuildRequires:  libzstd-devel
 # -DENABLE_ZCHUNK_COMPRESSION=ON
 BuildRequires:  libzck-devel
 %endif
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{libname}}
 
 %description
 Python bindings for the %{name} library.
 
-Python 3 version.
+Python %{python3_pkgversion} version.
 
 
 
@@ -139,13 +140,6 @@ export PYTHONPATH=%{buildroot}%{python3_sitearch}
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %python3 -c 'import solv'
 
-%package -n     python%{python3_pkgversion}-%{libname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{libname}}
-
-%description -n python%{python3_pkgversion}-%{libname}
-%{summary}
-
 
 %files -n python%{python3_pkgversion}-%{libname}
 %license LICENSE*
@@ -156,5 +150,8 @@ Summary:        %{summary}
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.7.28-2
+- Rebuild against python3.12
+
 * Tue Feb 27 2024 Patrick Creech <pcreech@redhat.com> - 0.7.28-1
 - Build python3 bindings statically linked.
