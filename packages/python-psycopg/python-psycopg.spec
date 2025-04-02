@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name psycopg
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.2.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        PostgreSQL database adapter for Python
 
 License:        GNU Lesser General Public License v3 (LGPLv3)
@@ -18,18 +18,11 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel >= 0.37
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.1
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -58,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 3.2.3-2
+- Rebuild against python3.12
+
 * Thu Oct 03 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.3-1
 - Update to 3.2.3
 
