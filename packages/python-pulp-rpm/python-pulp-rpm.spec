@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.29.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -22,8 +22,8 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
-Requires:       python%{python3_pkgversion}-createrepo_c >= 1.1.0
-Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.2.0
+Requires:       python%{python3_pkgversion}-createrepo_c >= 1.2.1
+Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.3
 Requires:       python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
 Conflicts:      python%{python3_pkgversion}-jsonschema >= 5.0
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 3.29.0-4
+- Update createrepo_c requirement
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 3.29.0-3
 - Add provides pulpcore-plugin(rpm)
 
