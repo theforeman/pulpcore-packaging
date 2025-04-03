@@ -32,6 +32,7 @@
       <packagereq type="default">python3.12-aiohttp-xmlrpc</packagereq>
       <packagereq type="default">python3.12-aioredis</packagereq>
       <packagereq type="default">python3.12-aiosignal</packagereq>
+      <packagereq type="default">python3.12-annotated-types</packagereq>
       <packagereq type="default">python3.12-ansible-builder</packagereq>
       <packagereq type="default">python3.12-anyio</packagereq>
       <packagereq type="default">python3.12-asgiref</packagereq>

@@ -363,6 +363,7 @@ tier4_packages:
     python-aiohappyeyeballs: {}
     python-propcache: {}
     python-typing-inspection: {}
+    python-annotated-types: {}
 
 pulpcore_packages:
   hosts:
