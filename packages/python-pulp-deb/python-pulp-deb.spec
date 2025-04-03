@@ -1,13 +1,13 @@
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-deb
 %global src_name pulp_deb
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.5.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -21,14 +21,6 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-debian < 0.2.0
 Requires:       python%{python3_pkgversion}-debian >= 0.1.44
 Requires:       python%{python3_pkgversion}-pulpcore < 3.85
@@ -39,13 +31,12 @@ Requires:       python%{python3_pkgversion}-jsonschema < 5.0
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
 
 Provides:       pulpcore-plugin(deb) = %{version}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
 %{summary}
+
 
 
 %prep
@@ -69,6 +60,9 @@ set -ex
 %{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com>
+- Rebuild python-pulp-deb against python3.12
+
 * Mon Feb 24 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.1-1
 - Update to 3.5.1
 
