@@ -307,6 +307,7 @@
       <packagereq type="default">python3.12-trove-classifiers</packagereq>
       <packagereq type="default">python3.12-types-cryptography</packagereq>
       <packagereq type="default">python3.12-typing-extensions</packagereq>
+      <packagereq type="default">python3.12-typing-inspection</packagereq>
       <packagereq type="default">python3.12-uritemplate</packagereq>
       <packagereq type="default">python3.12-url-normalize</packagereq>
       <packagereq type="default">python3.12-urllib3</packagereq>
