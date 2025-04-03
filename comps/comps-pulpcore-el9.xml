@@ -180,6 +180,7 @@
       <packagereq type="default">python3.12-marshmallow</packagereq>
       <packagereq type="default">python3.12-maturin</packagereq>
       <packagereq type="default">python3.12-mccabe</packagereq>
+      <packagereq type="default">python3.12-mdurl</packagereq>
       <packagereq type="default">python3.12-meson-python</packagereq>
       <packagereq type="default">python3.12-more-itertools</packagereq>
       <packagereq type="default">python3.12-msgpack</packagereq>
