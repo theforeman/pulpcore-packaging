@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.29.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -40,6 +40,8 @@ Requires:       python%{python3_pkgversion}-importlib-resources < 6.5
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+Provides:       pulpcore-plugin(rpm) = %{version}
+
 %description
 %{summary}
 
@@ -69,6 +71,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 3.29.0-3
+- Add provides pulpcore-plugin(rpm)
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.29.0-2
 - Fix requirements for pulpcore
 
