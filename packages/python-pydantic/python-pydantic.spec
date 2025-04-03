@@ -5,7 +5,7 @@
 %global pypi_name pydantic
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.11.1
+Version:        2.11.2
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -49,6 +49,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 2.11.2-1
+- Release python-pydantic 2.11.2
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 2.11.1-1
 - Initial Release
 
