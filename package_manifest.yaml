@@ -275,6 +275,7 @@ tier4_packages:
     python-jsonschema: {}
     python-ldap: {}
     python-markdown: {}
+    python-markdown-it-py: {}
     python-markuppy: {}
     python-markupsafe: {}
     python-mccabe: {}
