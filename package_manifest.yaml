@@ -303,6 +303,7 @@ tier4_packages:
     python-pycodestyle: {}
     python-pycparser: {}
     python-pycryptodomex: {}
+    python-pydantic: {}
     python-pyflakes: {}
     python-pygments: {}
     python-pygtrie: {}
