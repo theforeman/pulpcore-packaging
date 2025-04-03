@@ -364,6 +364,7 @@ tier4_packages:
     python-propcache: {}
     python-typing-inspection: {}
     python-annotated-types: {}
+    python-pydantic-core: {}
 
 pulpcore_packages:
   hosts:
