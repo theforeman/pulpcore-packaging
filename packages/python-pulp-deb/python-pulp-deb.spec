@@ -60,7 +60,7 @@ set -ex
 %{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
-* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com>
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 3.5.1-2
 - Rebuild python-pulp-deb against python3.12
 
 * Mon Feb 24 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.1-1
