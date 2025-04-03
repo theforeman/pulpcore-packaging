@@ -318,6 +318,7 @@ tier4_packages:
     python-redis: {}
     python-requests: {}
     python-requirements-parser: {}
+    python-mdurl: {}
     python-rich: {}
     python-rq: {}
     python-ruamel-yaml: {}
