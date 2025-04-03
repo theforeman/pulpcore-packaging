@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Markdown URL utilities
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -17,8 +17,6 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
-
-Requires:  python%{python3_pkgversion}-flit_core
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -45,5 +43,8 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 0.1.2-2
+- Drop flit_core as requirement
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.1.2-1
 - Initial package.
