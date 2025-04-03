@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.24.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -29,6 +29,8 @@ Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
 Requires:       python%{python3_pkgversion}-jsonschema < 4.24
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Provides:       pulpcore-plugin(container) = %{version}
 
 %description
 %{summary}
@@ -56,6 +58,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 2.24.0-2
+- Add provides pulpcore-plugin(contaier)
+
 * Mon Mar 31 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.24.0-1
 - Update to 2.24.0
 
