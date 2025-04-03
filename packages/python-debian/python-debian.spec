@@ -1,13 +1,13 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name python-debian
 %global srcname debian
 
-Name:           python-%{srcname}
+Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.1.49
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Debian package related modules
 
 License:        GPL-2+
@@ -18,19 +18,12 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{srcname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 Requires:       python%{python3_pkgversion}-chardet
 Requires:       zstd
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-%description -n python%{python3_pkgversion}-%{srcname}
+%description
 %{summary}
 
 
@@ -61,6 +54,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 0.1.49-2
+- Rebuild against python3.12
+
 * Mon Sep 16 2024 Foreman Packaging Automation <packaging@theforeman.org> - 0.1.49-1
 - Update to 0.1.49
 
