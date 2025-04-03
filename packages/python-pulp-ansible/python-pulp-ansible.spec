@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.24.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -40,7 +40,7 @@ Conflicts:      python%{python3_pkgversion}-semantic-version >= 2.11
 Requires:       python%{python3_pkgversion}-pillow >= 10.3
 Requires:       python%{python3_pkgversion}-pillow < 11.2
 
-
+Provides:       pulpcore-plugin(ansible) = %{version}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 1:0.24.1-3
+- Add provides pulpcore-plugin(ansible)
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1:0.24.1-2
 - Update pulpcore requirement
 
