@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.13.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -29,6 +29,8 @@ Requires:       python%{python3_pkgversion}-pulpcore >= 3.49
 Requires:       python%{python3_pkgversion}-pulpcore < 3.85
 Requires:       python%{python3_pkgversion}-pypi-simple >= 1.5.0
 Requires:       python%{python3_pkgversion}-pypi-simple < 2.0
+
+Provides:       pulpcore-plugin(python) = %{version}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -58,6 +60,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 3.13.2-2
+- Add provides pulpcore-plugin(python)
+
 * Mon Mar 31 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.13.2-1
 - Update to 3.13.2
 
