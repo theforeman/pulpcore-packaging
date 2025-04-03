@@ -1,5 +1,5 @@
-%global __python3 /usr/bin/python3.11
-%global python3_pkgversion 3.11
+%global __python3 /usr/bin/python3.12
+%global python3_pkgversion 3.12
 
 
 # Created by pyp2rpm-3.3.3
@@ -7,11 +7,9 @@
 %global src_name pulp_ostree
 
  
-%global release 1
-
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.4.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
 License:        GPLv2+
@@ -25,17 +23,13 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-%description
-A Pulp plugin to support hosting ostree repositories.
+Provides:       pulpcore-plugin(ostree) = %{version}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
 Requires:       python%{python3_pkgversion}-pulpcore < 3.85
 Requires:       python%{python3_pkgversion}-setuptools
-%if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.11"
+%if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.12"
 Requires:       python%{python3_pkgversion}-gobject >= 3.40.1
 Requires:       python%{python3_pkgversion}-gobject < 3.41
 %else
@@ -44,15 +38,8 @@ Requires:       python%{python3_pkgversion}-pygobject < 1:3.41
 %endif
 Requires:       ostree
 
-Provides:       pulpcore-plugin(ostree) = %{version}
-Obsoletes:      python3-%{pypi_name} < %{version}-%{release}
-%if 0%{?rhel} == 8
-Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
-%endif
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 A Pulp plugin to support hosting ostree repositories.
-
 
 %prep
 set -ex
@@ -76,6 +63,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 2.4.6-2
+- Rebuild against python3.12
+
 * Tue Feb 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.6-1
 - Update to 2.4.6
 
