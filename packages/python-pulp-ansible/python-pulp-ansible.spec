@@ -7,8 +7,8 @@
 %global src_name pulp_ansible
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.24.1
-Release:        3%{?dist}
+Version:        0.24.3
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -29,6 +29,7 @@ Requires:       python%{python3_pkgversion}-PyYAML >= 5.4.1
 Requires:       python%{python3_pkgversion}-PyYAML < 7.0
 Requires:       python%{python3_pkgversion}-async-lru >= 1.0
 Conflicts:      python%{python3_pkgversion}-async-lru >= 2.1
+Requires:       python%{python3_pkgversion}-djangorestframework < 3.16
 Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.4.5
 Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.9
@@ -70,6 +71,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.24.3-1
+- Update to 0.24.3
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 1:0.24.1-3
 - Add provides pulpcore-plugin(ansible)
 
