@@ -1,23 +1,30 @@
 %global python3_pkgversion 3.12
 %global __python3 /usr/bin/python3.12
 
+%global debug_package %{nil}
+
 # Created by pyp2rpm-3.3.3
 %global pypi_name PyGObject
 %global srcname pygobject
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.40.1
-Release:        8%{?dist}
+Version:        3.48.2
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
 License:        GNU LGPL
 URL:            https://pygobject.readthedocs.io
-Source0:        https://files.pythonhosted.org/packages/source/P/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-pycairo >= 1.16.0
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-meson-python
+BuildRequires:  python%{python3_pkgversion}-pycairo >= 1.16.0
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
+
 
 BuildRequires:  cairo-gobject-devel
 BuildRequires:  gobject-introspection-devel
@@ -33,32 +40,31 @@ Requires:       python%{python3_pkgversion}-pycairo >= 1.16.0
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
-
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{srcname}
-%license docs/images/LICENSE
-%doc .gitlab-ci/README.rst README.rst
+%{_includedir}/python%{python3_pkgversion}/%{srcname}/pygobject-3.0
 %{python3_sitearch}/gi
 %{python3_sitearch}/pygtkcompat
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
-%{_libdir}/pkgconfig/pygobject-3.0.pc
-%{_includedir}/pygobject-3.0
+%{python3_sitearch}/%{srcname}-%{version}.dist-info/
 
 
 %changelog
+* Fri Apr 04 2025 Odilon Sousa <osousa@redhat.com> - 1:3.48.2-1
+- Release python-pygobject 3.48.2
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 1:3.40.1-8
 - Rebuild against python3.12
 
