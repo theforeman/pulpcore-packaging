@@ -6,8 +6,8 @@
 %global src_name pulp_container
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.24.0
-Release:        3%{?dist}
+Version:        2.24.1
+Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.24.1-1
+- Update to 2.24.1
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.24.0-3
 - Add obsoletes for python3.11 package
 
