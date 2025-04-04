@@ -6,8 +6,8 @@
 %global srcname jinja2
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.1.5
-Release:        2%{?dist}
+Version:        3.1.6
+Release:        1%{?dist}
 Summary:        A very fast and expressive template engine
 
 License:        BSD-3-Clause
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.6-1
+- Update to 3.1.6
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 3.1.5-2
 - Rebuild against python3.12
 
