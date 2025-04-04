@@ -6,8 +6,8 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.29.0
-Release:        4%{?dist}
+Version:        3.29.1
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.29.1-1
+- Update to 3.29.1
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 3.29.0-4
 - Update createrepo_c requirement
 
