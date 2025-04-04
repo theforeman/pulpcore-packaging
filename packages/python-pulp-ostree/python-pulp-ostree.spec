@@ -8,8 +8,8 @@
 
  
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.4.6
-Release:        2%{?dist}
+Version:        2.4.7
+Release:        1%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
 License:        GPLv2+
@@ -31,10 +31,10 @@ Requires:       python%{python3_pkgversion}-pulpcore < 3.85
 Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.12"
 Requires:       python%{python3_pkgversion}-gobject >= 3.40.1
-Requires:       python%{python3_pkgversion}-gobject < 3.41
+Requires:       python%{python3_pkgversion}-gobject < 3.51
 %else
 Requires:       python%{python3_pkgversion}-pygobject >= 1:3.40.1
-Requires:       python%{python3_pkgversion}-pygobject < 1:3.41
+Requires:       python%{python3_pkgversion}-pygobject < 1:3.51
 %endif
 Requires:       ostree
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.7-1
+- Update to 2.4.7
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 2.4.6-2
 - Rebuild against python3.12
 
