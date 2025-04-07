@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        4.2.20
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -25,6 +25,8 @@ Requires:       python%{python3_pkgversion}-sqlparse >= 0.2.2
 
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
+Obsoletes:      python3.11-%{srcname} < %{version}-%{release}
 
 %description
 %{summary}
@@ -64,6 +66,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 4.2.20-3
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 4.2.20-2
 - Rebuild against python3.12
 
