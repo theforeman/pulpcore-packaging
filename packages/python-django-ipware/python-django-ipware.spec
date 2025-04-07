@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.0.7
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        A Django application to retrieve user's IP address
 
 License:        MIT
@@ -18,6 +18,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -49,6 +51,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 3.0.7-7
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 3.0.7-6
 - Rebuild against pyton3.12
 
