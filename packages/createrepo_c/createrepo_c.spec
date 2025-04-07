@@ -46,7 +46,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        1.2.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -136,6 +136,10 @@ Obsoletes:      python3-%{name} < %{version}-%{release}
 Obsoletes:      python38-%{name} < %{version}-%{release}
 Obsoletes:      python39-%{name} < %{version}-%{release}
 %endif
+%if 0%{?rhel} == 9
+Obsoletes:      python3.11-%{name} < %{version}-%{release}
+%endif
+
 
 %description -n python%{python3_pkgversion}-%{name}
 Python 3 bindings for the createrepo_c library.
@@ -271,6 +275,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.2.1-2
+- Add obsoletes for python3.11 package
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.2.1-1
 - Release createrepo_c 1.2.1
 
