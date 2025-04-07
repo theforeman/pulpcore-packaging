@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A tool for building Ansible Execution Environments
 
 License:        Apache-2.0
@@ -28,6 +28,8 @@ Requires:       python%{python3_pkgversion}-requirements-parser
 Requires:       python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -53,6 +55,9 @@ set -ex
 %{python3_sitelib}/ansible_builder-%{version}.dist-info/
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 3.0.0-3
+- Add obsoletes for python3.11 package
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 3.0.0-2
 - Rebuild against python3.12
 
