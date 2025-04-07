@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Serialize a partial subset of fields in the API
 
 License:        MIT
@@ -18,6 +18,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -48,6 +50,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.1.0-3
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 1.1.0-2
 - Rebuild against python3.12
 
