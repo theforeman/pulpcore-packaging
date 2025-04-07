@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.12.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Binary dependency utility
 
 License:        Apache License, Version 2.0
@@ -25,6 +25,8 @@ Requires:       python%{python3_pkgversion}-pbr >= 2.0.0
 Requires:       python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -56,6 +58,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 2.12.0-3
+- Add obsolete for python3.11 package
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 2.12.0-2
 - Rebuild against python3.12
 
