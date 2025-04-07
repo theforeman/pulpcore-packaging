@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.2.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
@@ -23,6 +23,8 @@ Requires:       python%{python3_pkgversion}-django >= 2.0
 Requires:       python%{python3_pkgversion}-packaging >= 21.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -54,6 +56,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.2.4-3
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 1.2.4-2
 - Rebuild against python3.12
 
