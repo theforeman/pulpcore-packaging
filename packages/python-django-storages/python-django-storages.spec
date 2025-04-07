@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.14.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
@@ -26,6 +26,8 @@ Requires:       python%{python3_pkgversion}-azure-storage-blob >= 12.0.0
 Requires:       python%{python3_pkgversion}-boto3 >= 1.4.4
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -57,6 +59,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.14.5-3
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 1.14.5-2
 - Rebuild against python3.12
 
