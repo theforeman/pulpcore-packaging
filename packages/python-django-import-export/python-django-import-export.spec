@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.3.9
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -24,6 +24,8 @@ Requires:       python%{python3_pkgversion}-diff-match-patch
 Requires:       python%{python3_pkgversion}-tablib >= 3.2.1
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -55,6 +57,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 3.3.9-3
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 3.3.9-2
 - Rebuild against python3.12
 
