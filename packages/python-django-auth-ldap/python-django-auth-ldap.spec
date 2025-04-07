@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.0.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Django LDAP authentication backend
 
 License:        BSD
@@ -22,6 +22,8 @@ Requires:       python%{python3_pkgversion}-django >= 2.2
 Requires:       python%{python3_pkgversion}-ldap >= 3.1
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -55,6 +57,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 4.0.0-6
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 4.0.0-5
 - Rebuild against python3.12
 
