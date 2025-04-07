@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.2.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A simple, correct Python build frontend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -24,6 +24,8 @@ Requires:       python%{python3_pkgversion}-importlib-metadata >= 4.6
 Requires:       python%{python3_pkgversion}-tomli >= 1.1.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -51,6 +53,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.2.2-3
+- Add obsolete for python3.11 package
+
 * Fri Mar 21 2025 Odilon Sousa <osousa@redhat.com> - 1.2.2-2
 - Rebuild against python3.12
 
