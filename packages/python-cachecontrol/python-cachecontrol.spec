@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.14.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        httplib2 caching for requests
 
 License:        None
@@ -27,6 +27,7 @@ Requires:       python%{python3_pkgversion}-filelock >= 3.8.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
+Obsoletes:      python3.11-%{srcname} < %{version}-%{release}
 
 %description
 %{summary}
@@ -64,6 +65,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 0.14.2-5
+- Add obsoletes for python3.11 package
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 0.14.2-4
 - Drop python-filelock dependancy
 
