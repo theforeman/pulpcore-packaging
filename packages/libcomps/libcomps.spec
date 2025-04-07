@@ -36,7 +36,7 @@
 
 Name:           libcomps
 Version:        0.1.21
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -97,6 +97,9 @@ Obsoletes:      python3-%{name} < %{version}-%{release}
 %if 0%{?rhel} == 8
 Obsoletes:      python38-%{name} < %{version}-%{release}
 Obsoletes:      python39-%{name} < %{version}-%{release}
+%endif
+%if 0%{?rhel} == 9
+Obsoletes:      python3.11-%{name} < %{version}-%{release}
 %endif
 
 %description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
@@ -289,6 +292,9 @@ popd
 %endif
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 0.1.21-3
+- Add obsoletes for python3.11 package
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 0.1.21-2
 - Rebuild against python3.12
 
