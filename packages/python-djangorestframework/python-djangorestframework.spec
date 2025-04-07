@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.15.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -21,6 +21,8 @@ Requires:       python%{python3_pkgversion}-django >= 3.0
 Requires:       python%{python3_pkgversion}-pytz
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -53,6 +55,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 3.15.2-3
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 3.15.2-2
 - Rebuild against python3.12
 
