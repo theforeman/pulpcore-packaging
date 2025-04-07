@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.1.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Make Django model fields readonly
 
 License:        MIT
@@ -22,6 +22,8 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 Requires:       python%{python3_pkgversion}-django
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -57,6 +59,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.1.2-6
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 1.1.2-5
 - Rebuild against python3.12
 
