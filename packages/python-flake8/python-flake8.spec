@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
 License:        MIT
@@ -27,6 +27,8 @@ Requires:       python%{python3_pkgversion}-pyflakes >= 3.1.0
 Requires:       python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 
 %description
@@ -59,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 6.1.0-3
+- Add obsoletes for python3.11 package
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 6.1.0-2
 - Rebuild against python3.12
 
