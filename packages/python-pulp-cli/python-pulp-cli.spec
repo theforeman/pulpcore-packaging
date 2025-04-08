@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.31.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -42,6 +42,8 @@ Requires:       python%{python3_pkgversion}-pulp-glue == %{version}
 
 Provides:       %{pypi_name} = %{version}
 
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
+
 %description
 %{summary}
 
@@ -69,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.31.1-4
+- Add obsoletes for python3.11 package
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.31.1-3
 - Update requirements
 
