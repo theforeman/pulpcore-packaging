@@ -9,7 +9,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.73.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -133,7 +133,14 @@ Using Pulp you can:
 - Manage content from multiple sources in one place
 - Promote content through different repos in an organized way
 
+%package -n %{pypi_name}-storage-s3
+Summary: Pulp dependencies to use s3-compatible storage
 
+Requires:       %{name} = %{version}
+Requires:       python%{python3_pkgversion}-django-storages
+
+%description -n %{pypi_name}-storage-s3
+Ensure the dependencies are present to manage storage on s3-compatible storage.
 
 %prep
 set -ex
@@ -173,8 +180,13 @@ done
 %{python3_sitelib}/pulp_file
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
+%files -n %{pypi_name}-storage-s3
+
 
 %changelog
+* Tue Apr 08 2025 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 3.73.3-2
+- Add s3 compatible storage subpackage
+
 * Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.3-1
 - Update to 3.73.3
 
