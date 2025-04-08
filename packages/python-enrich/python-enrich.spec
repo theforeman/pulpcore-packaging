@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.2.6
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        enrich
 
 License:        MIT
@@ -26,6 +26,7 @@ Requires:       python%{python3_pkgversion}-rich >= 9.5.1
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -52,6 +53,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 1.2.6-11
+- Add obsoletes for python3.11 package
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 1.2.6-10
 - Rebuild against python3.12
 
