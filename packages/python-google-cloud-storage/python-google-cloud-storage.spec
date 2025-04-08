@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.10
 %global pypi_name google-cloud-storage
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Google Cloud Storage API client library
 
 License:        Apache 2.0
@@ -20,13 +20,6 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-google-api-core < 3
 Requires:       python%{python3_pkgversion}-google-api-core >= 2.15
 Requires:       python%{python3_pkgversion}-google-auth < 3
@@ -40,10 +33,10 @@ Requires:       python%{python3_pkgversion}-protobuf < 6
 Requires:       python%{python3_pkgversion}-requests < 3
 Requires:       python%{python3_pkgversion}-requests >= 2.18
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
-
 
 %prep
 set -ex
@@ -71,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.1.0-2
+- Rebuild against python3.12
+
 * Wed Mar 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.0-1
 - Update to 3.1.0
 
