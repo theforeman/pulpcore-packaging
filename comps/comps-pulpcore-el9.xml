@@ -100,6 +100,9 @@
       <packagereq type="default">python3.12-django-prometheus</packagereq>
       <packagereq type="default">python3.12-django-readonly-field</packagereq>
       <packagereq type="default">python3.12-django-storages</packagereq>
+      <packagereq type="default">python3.12-django-storages+s3</packagereq>
+      <packagereq type="default">python3.12-django-storages+google</packagereq>
+      <packagereq type="default">python3.12-django-storages+azure</packagereq>
       <packagereq type="default">python3.12-djangorestframework</packagereq>
       <packagereq type="default">python3.12-djangorestframework-queryfields</packagereq>
       <packagereq type="default">python3.12-docutils</packagereq>
