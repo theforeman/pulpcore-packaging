@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.94.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
 License:        Apache
@@ -21,6 +21,8 @@ Requires:       python%{python3_pkgversion}-django >= 3.2
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -52,6 +54,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.94.1-3
+- Add obsoletes for python3.11 package
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.94.1-2
 - Rebuild against python3.12
 
