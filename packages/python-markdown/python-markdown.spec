@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -22,6 +22,8 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
+
+Obsoletes:      python3.11-%{srcname} < %{version}-%{release}
 
 %description
 %{summary}
@@ -48,6 +50,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.7-3
+- Add obsoletes for python3.11 package
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 3.7-2
 - Rebuild against python3.12
 
