@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.29.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -42,6 +42,8 @@ Requires:       python%{python3_pkgversion}-importlib-resources < 6.5
 
 Provides:       pulpcore-plugin(rpm) = %{version}
 
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
+
 %description
 %{summary}
 
@@ -71,6 +73,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.29.1-2
+- Add obsoletes for python3.11 package
+
 * Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.29.1-1
 - Update to 3.29.1
 
