@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.10
 %global pypi_name google-api-core
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.24.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Google API client core library
 
 License:        Apache 2.0
@@ -18,13 +18,6 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Conflicts:      python%{python3_pkgversion}-protobuf = 3.20
 Conflicts:      python%{python3_pkgversion}-protobuf = 3.20.1
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21
@@ -44,8 +37,9 @@ Requires:       python%{python3_pkgversion}-protobuf >= 3.19.5
 Requires:       python%{python3_pkgversion}-requests < 3
 Requires:       python%{python3_pkgversion}-requests >= 2.18
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -77,6 +71,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.24.1-2
+- Rebuild against python3.12
+
 * Wed Jan 29 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.24.1-1
 - Update to 2.24.1
 
