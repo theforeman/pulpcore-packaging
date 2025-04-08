@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.29.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -28,6 +28,7 @@ Requires:       python%{python3_pkgversion}-urllib3 >= 1.15
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -57,6 +58,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.29.1-2
+- Add obsoletes for python3.11 package
+
 * Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.29.1-1
 - Update to 3.29.1
 
