@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.2.10
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -18,6 +18,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools >= 38.6.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -49,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.2.10-3
+- Add obsoletes for python3.11 package
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 3.2.10-2
 - Rebuild against python3.12
 
