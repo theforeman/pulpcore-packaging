@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.0.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Tool to generate a PULP_MANIFEST file for a given directory, so the directory can be recognized by Pulp
 
 License:        GPLv2+
@@ -22,6 +22,8 @@ Provides:       pulp-manifest = %{version}-%{release}
 Requires:       python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -52,6 +54,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.0.0-7
+- Add obsoletes for python3.11 package
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 3.0.0-6
 - Rebuild against python3.12
 
