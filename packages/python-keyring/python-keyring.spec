@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        24.3.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Store and access your passwords safely.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -27,6 +27,8 @@ Requires:       python%{python3_pkgversion}-SecretStorage
 Requires:       python%{python3_pkgversion}-jeepney
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -55,6 +57,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 24.3.1-4
+- Add obsoletes for python3.11 package
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 24.3.1-3
 - Drop python-importlib-metadata requirement
 
