@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.10
 %global pypi_name google-auth
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.38.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Google Authentication Library
 
 License:        Apache 2.0
@@ -17,22 +17,15 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-
-%description
-%{summary}
-
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-cachetools < 6
 Requires:       python%{python3_pkgversion}-cachetools >= 2
 Requires:       python%{python3_pkgversion}-pyasn1-modules >= 0.2.1
 Requires:       python%{python3_pkgversion}-rsa < 5
 Requires:       python%{python3_pkgversion}-rsa >= 3.1.4
 
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description
 %{summary}
 
 
@@ -64,6 +57,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.38.0-2
+- Rebuild against python3.12
+
 * Mon Jan 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.38.0-1
 - Update to 2.38.0
 
