@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.5.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Declarative access policies/permissions modeled after AWS' IAM policies
 
 License:        MIT
@@ -21,6 +21,8 @@ Requires:       python%{python3_pkgversion}-djangorestframework
 Requires:       python%{python3_pkgversion}-pyparsing
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -51,6 +53,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 1.5.0-3
+- Add obsoletes for python3.11 package
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.5.0-2
 - Rebuild against python3.12
 
