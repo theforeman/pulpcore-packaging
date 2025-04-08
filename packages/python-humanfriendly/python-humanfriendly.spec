@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        10.0
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Human friendly output for text interfaces using Python
 
 License:        MIT
@@ -18,6 +18,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -49,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 10.0-9
+- Add obsoletes for python3.11 package
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 10.0-8
 - Rebuild python-humanfriendly against python3.12
 
