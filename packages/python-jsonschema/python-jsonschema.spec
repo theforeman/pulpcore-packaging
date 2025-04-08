@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.10.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
@@ -25,6 +25,8 @@ Requires:       python%{python3_pkgversion}-attrs >= 17.4.0
 Requires:       python%{python3_pkgversion}-pyrsistent >= 0.14.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -51,6 +53,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 4.10.3-6
+- Add obsoletes for python3.11 package
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 4.10.3-5
 - Rebuild against python3.12
 
