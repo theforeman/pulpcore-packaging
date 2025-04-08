@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.13.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -33,6 +33,8 @@ Requires:       python%{python3_pkgversion}-pypi-simple < 2.0
 Provides:       pulpcore-plugin(python) = %{version}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -60,6 +62,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.13.2-3
+- Add obsoletes for python3.11 package
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 3.13.2-2
 - Add provides pulpcore-plugin(python)
 
