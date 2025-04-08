@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.73.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -25,7 +25,7 @@ Requires:       python%{python3_pkgversion}-dateutil
 Requires:       python%{python3_pkgversion}-six >= 1.10
 Requires:       python%{python3_pkgversion}-urllib3 >= 1.15
 
-
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.73.2-2
+- Add obsoletes for python3.11 package
+
 * Mon Mar 31 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.2-1
 - Update to 3.73.2
 
