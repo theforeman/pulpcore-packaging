@@ -9,7 +9,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.73.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -109,6 +109,8 @@ Requires:       python%{python3_pkgversion}-yarl < 1.18.4
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
+
 Provides:       %{pypi_name} = %{version}
 
 Obsoletes:      python3.11-pulp-file < 1.16.0-1
@@ -175,6 +177,9 @@ done
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.73.3-2
+- Add obsoletes for python3.11 package
+
 * Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.3-1
 - Update to 3.73.3
 
