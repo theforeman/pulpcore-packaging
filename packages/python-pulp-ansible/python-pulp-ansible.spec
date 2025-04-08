@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.24.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -45,6 +45,8 @@ Provides:       pulpcore-plugin(ansible) = %{version}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
+
 %description
 %{summary}
 
@@ -71,6 +73,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 1:0.24.3-2
+- Add obsoletes for python3.11 package
+
 * Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.24.3-1
 - Update to 0.24.3
 
