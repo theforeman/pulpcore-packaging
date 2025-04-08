@@ -1,12 +1,12 @@
-%global python3_pkgversion 3.11
-%global __python3 /usr/bin/python3.11
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
 
 # Created by pyp2rpm-3.3.10
 %global pypi_name google-resumable-media
 
-Name:           python-%{pypi_name}
+Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.7.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 
 License:        Apache 2.0
@@ -17,19 +17,14 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+Requires:       python%{python3_pkgversion}-google-crc32c < 2
+Requires:       python%{python3_pkgversion}-google-crc32c >= 1
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
 %description
 %{summary}
 
-
-%package -n     python%{python3_pkgversion}-%{pypi_name}
-Summary:        %{summary}
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-google-crc32c < 2
-Requires:       python%{python3_pkgversion}-google-crc32c >= 1
-
-%description -n python%{python3_pkgversion}-%{pypi_name}
-%{summary}
 
 
 %prep
@@ -60,5 +55,8 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.7.2-2
+- Rebuild against python3.12
+
 * Mon Sep 23 2024 Dieter Maes <dmaes@inuits.eu> - 2.7.2-1
 - Initial package.
