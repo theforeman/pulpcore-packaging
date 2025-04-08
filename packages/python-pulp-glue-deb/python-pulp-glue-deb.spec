@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.3.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API. (deb plugin)
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -26,6 +26,8 @@ Requires:       python%{python3_pkgversion}-pulp-glue >= 0.23.2
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.32
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -51,6 +53,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.3.2-3
+- Add obsoletes for python3.11 package
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.3.2-2
 - Rebuild against python3.12
 
