@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.14.5
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
@@ -32,7 +32,39 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 %description
 %{summary}
 
+%package -n python%{python3_pkgversion}-%{pypi_name}+s3
+Summary: Metapackage for python%{python3_pkgversion}-pulpcore: s3 compatible extra
+Requires: python%{python3_pkgversion}-boto3 >= 1.4.4
 
+%description -n python%{python3_pkgversion}-%{pypi_name}+s3
+This is a metapackage bringing in filecache extra requires for python%{python3_pkgversion}-%{pypi_name}
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-%{pypi_name}+s3
+%ghost %{python3_sitelib}/%{src_name}-%{version}.dist-info/
+
+%package -n python%{python3_pkgversion}-%{pypi_name}+azure
+Summary: Metapackage for python%{python3_pkgversion}-pulpcore: azure compatible extra
+Requires: python%{python3_pkgversion}-azure-storage-blob >= 12.0.0
+Requires: python%{python3_pkgversion}-azure-core >= 1.13
+
+%description -n python%{python3_pkgversion}-%{pypi_name}+azure
+This is a metapackage bringing in filecache extra requires for python%{python3_pkgversion}-%{pypi_name}
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-%{pypi_name}+azure
+%ghost %{python3_sitelib}/%{src_name}-%{version}.dist-info/
+
+%package -n python%{python3_pkgversion}-%{pypi_name}+google
+Summary: Metapackage for python%{python3_pkgversion}-pulpcore: google compatible extra
+Requires: python%{python3_pkgversion}-google-cloud-storage >= 1.32
+
+%description -n python%{python3_pkgversion}-%{pypi_name}+google
+This is a metapackage bringing in filecache extra requires for python%{python3_pkgversion}-%{pypi_name}
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-%{pypi_name}+google
+%ghost %{python3_sitelib}/%{src_name}-%{version}.dist-info/
 
 %prep
 set -ex
@@ -59,6 +91,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 1.14.5-4
+- Add new metapackages for s3, azure and google
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.14.5-3
 - Add obsoletes for python3.11 package
 
