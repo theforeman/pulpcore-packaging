@@ -6,7 +6,7 @@
 # Created by pyp2rpm-3.3.10
 %global pypi_name google-crc32c
 
-Name:          python-%{pypi_name}
+Name:          python%{python3_pkgversion}-%{pypi_name}
 Version:        1.6.0
 Release:        2%{?dist}
 Summary:        A python wrapper of the C library 'Google CRC32C'
@@ -53,7 +53,7 @@ set -ex
 
 
 %changelog
-* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com>
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 1.6.0-2
 - Rebuild against python3.12
 
 * Mon Sep 23 2024 Dieter Maes <dmaes@inuits.eu> - 1.6.0-1
