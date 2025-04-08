@@ -9,7 +9,7 @@
  
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.4.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
 License:        GPLv2+
@@ -38,6 +38,8 @@ Requires:       python%{python3_pkgversion}-pygobject < 1:3.51
 %endif
 Requires:       ostree
 
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
+
 %description
 A Pulp plugin to support hosting ostree repositories.
 
@@ -63,6 +65,9 @@ set -ex
 
 
 %changelog
+* Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.4.7-2
+- Add obsoletes for python3.11 package
+
 * Fri Apr 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.7-1
 - Update to 2.4.7
 
