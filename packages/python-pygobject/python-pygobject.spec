@@ -9,7 +9,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.48.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
@@ -31,6 +31,8 @@ BuildRequires:  gobject-introspection-devel
 
 Provides:       python%{python3_pkgversion}-%{pypi_name} = %{version}
 Requires:       python%{python3_pkgversion}-pycairo >= 1.16.0
+
+Obsoletes:      python3.11-%{srcname} < %{version}-%{release}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
@@ -62,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 1:3.48.2-2
+- Add obsoletes for python3.11 package
+
 * Fri Apr 04 2025 Odilon Sousa <osousa@redhat.com> - 1:3.48.2-1
 - Release python-pygobject 3.48.2
 
