@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        %{pypi_version}
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Distro - an OS platform information API
 
 License:        Apache License, Version 2.0
@@ -19,6 +19,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -52,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 1.7.0-7
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 1.7.0-6
 - Rebuild against python3.12
 
