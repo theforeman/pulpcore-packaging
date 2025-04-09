@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.1.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python Build Reasonableness
 
 License:        None
@@ -22,6 +22,8 @@ BuildArch:      noarch
 Requires:       python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -52,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 6.1.1-3
+- Add obsoletes for python3.11 package
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 6.1.1-2
 - Rebuild against python3.12
 
