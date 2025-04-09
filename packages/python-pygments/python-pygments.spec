@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.19.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pygments is a syntax highlighting package written in Python
 
 License:        BSD
@@ -22,6 +22,7 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
+Obsoletes:      python3.11-%{srcname} < %{version}-%{release}
 
 %description
 %{summary}
@@ -49,6 +50,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 2.19.1-3
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 2.19.1-2
 - Rebuild against python3.12
 
