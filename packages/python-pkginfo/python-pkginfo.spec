@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.12.1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Query metadatdata from sdists / bdists / installed packages
 
 License:        MIT
@@ -21,6 +21,8 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -52,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 1.12.1.2-3
+- Add obsoletes for python3.11 package
+
 * Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 1.12.1.2-2
 - Rebuild against python3.12
 
