@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        20.25.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -29,6 +29,8 @@ Requires:  python%{python3_pkgversion}-platformdirs >= 3.9.1
 Requires:  python%{python3_pkgversion}-platformdirs < 5
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -55,6 +57,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 20.25.3-3
+- Add obsoletes for python3.11 package
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 20.25.3-2
 - Rebuild against python3.12
 
