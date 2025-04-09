@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.27.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenTelemetry Protobuf encoding
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -22,6 +22,8 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 Requires:       python%{python3_pkgversion}-opentelemetry_proto >= 1.19.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -47,6 +49,9 @@ set -ex
 %{python3_sitelib}/opentelemetry/exporter/otlp
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 1.27.0-3
+- Add obsoletes for python3.11 package
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.27.0-2
 - Rebuild against python3.12
 
