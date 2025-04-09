@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        13.3.1
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        None
@@ -24,6 +24,7 @@ Requires:       python%{python3_pkgversion}-pygments >= 2.6.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
+Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %description
 %{summary}
@@ -52,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 13.3.1-11
+- Add obsoletes for python3.11 package
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 13.3.1-10
 - Update dependencies requirement
 
