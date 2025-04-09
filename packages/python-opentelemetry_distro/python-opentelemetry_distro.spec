@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.48b0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        OpenTelemetry Python Distro
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -36,6 +36,7 @@ Version:        %{version}
 
 Requires:       python%{python3_pkgversion}-%{pypi_name} = %{version}
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp = 1.27.0
+Obsoletes:      python3.11-%{pypi_name}_otlp < %{version}-%{release}
 
 %description -n python%{python3_pkgversion}-%{pypi_name}_otlp
 This is a metapackage bringing in “otlp” extras requires for
@@ -64,6 +65,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 0.48b0-4
+- Add obsoletes to oltp extra packages for python3.11
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 0.48b0-3
 - Add obsoletes for python3.11 package
 
