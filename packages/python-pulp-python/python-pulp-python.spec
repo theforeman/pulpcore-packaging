@@ -6,8 +6,8 @@
 %global src_name pulp_python
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.13.2
-Release:        3%{?dist}
+Version:        3.13.4
+Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -22,7 +22,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-bandersnatch >= 6.3
-Conflicts:      python%{python3_pkgversion}-bandersnatch >= 7.0
+Conflicts:      python%{python3_pkgversion}-bandersnatch < 6.4
 Requires:       python%{python3_pkgversion}-pkginfo >= 1.10.0
 Requires:       python%{python3_pkgversion}-pkginfo < 1.13.0
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.13.4-1
+- Update to 3.13.4
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.13.2-3
 - Add obsoletes for python3.11 package
 
