@@ -8,8 +8,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.73.3
-Release:        2%{?dist}
+Version:        3.73.4
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -177,6 +177,9 @@ done
 
 
 %changelog
+* Fri Apr 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.4-1
+- Update to 3.73.4
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.73.3-2
 - Add obsoletes for python3.11 package
 
