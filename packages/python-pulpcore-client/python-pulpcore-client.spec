@@ -6,8 +6,8 @@
 %global src_name pulpcore_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.73.2
-Release:        2%{?dist}
+Version:        3.73.4
+Release:        1%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.4-1
+- Update to 3.73.4
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.73.2-2
 - Add obsoletes for python3.11 package
 
