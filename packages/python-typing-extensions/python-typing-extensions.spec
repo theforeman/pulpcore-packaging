@@ -5,8 +5,8 @@
 %global pypi_name typing-extensions
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.12.2
-Release:        2%{?dist}
+Version:        4.13.2
+Release:        1%{?dist}
 Summary:        Backported and Experimental Type Hints for Python 3
 
 License:        PSF
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 20 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.13.2-1
+- Update to 4.13.2
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 4.12.2-2
 - Rebuild against python3.12
 
