@@ -6,8 +6,8 @@
 %global src_name trove_classifiers
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2025.3.13.13
-Release:        2%{?dist}
+Version:        2025.4.11.15
+Release:        1%{?dist}
 Summary:        Canonical source for classifiers on PyPI (pypi.org)
 License:        None
 URL:            https://github.com/pypa/trove-classifiers
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 20 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.4.11.15-1
+- Update to 2025.4.11.15
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 2025.3.13.13-2
 - Rebuild against python3.12
 
