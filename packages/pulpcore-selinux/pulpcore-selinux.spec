@@ -1,11 +1,12 @@
 %define selinux_variants mls strict targeted
 %define selinux_modules pulpcore_port pulpcore pulpcore_rhsmcertd
 %define debug_package %{nil}
-%define pulpcore_python 3.11
+%define pulpcore_python 3.12
+%define pulpcore_pkg python%{pulpcore_python}-pulpcore
 
 Name:           pulpcore-selinux
 Version:        2.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -16,7 +17,7 @@ BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy-devel
 BuildRequires:  systemd
 Requires:       selinux-policy >= %{_selinux_policy_version}
-Requires:       pulpcore
+Requires:       %{pulpcore_pkg}
 Requires(post): policycoreutils, pulpcore
 Requires(postun): policycoreutils
 %{?systemd_requires}
@@ -61,7 +62,7 @@ do
   done
 done
 systemctl daemon-reexec &>/dev/null || :
-/sbin/fixfiles -R python%{pulpcore_python}-pulpcore restore || :
+/sbin/fixfiles -R %{pulpcore_pkg} restore || :
 
 %postun
 if [ $1 -eq 0 ] ; then
@@ -73,7 +74,7 @@ if [ $1 -eq 0 ] ; then
     done
   done
   systemctl daemon-reexec &>/dev/null || :
-  /sbin/fixfiles -R python%{pulpcore_python}-pulpcore restore || :
+  /sbin/fixfiles -R %{pulpcore_pkg} restore || :
 fi
 
 %files
@@ -84,6 +85,9 @@ fi
 
 
 %changelog
+* Tue Apr 22 2025 Evgeni Golov - 2.0.1-2
+- Use Python 3.12 as used by Pulpcore 3.73+
+
 * Fri Jan 12 2024 Evgeni Golov - 2.0.1-1
 - Release pulpcore-selinux 2.0.1
 
