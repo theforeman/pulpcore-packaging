@@ -5,8 +5,8 @@
 %global pypi_name protobuf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.25.6
-Release:        2%{?dist}
+Version:        5.29.4
+Release:        1%{?dist}
 Summary:        Protocol Buffers
 
 License:        BSD-3-Clause
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 5.29.4-1
+- Update to 5.29.4
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 4.25.6-2
 - Rebuild against python3.12
 
