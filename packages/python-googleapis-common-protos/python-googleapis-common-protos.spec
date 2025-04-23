@@ -6,8 +6,8 @@
 %global srcname googleapis_common_protos
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.69.0
-Release:        2%{?dist}
+Version:        1.70.0
+Release:        1%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        Apache-2.0
@@ -16,15 +16,6 @@ Source0:        https://files.pythonhosted.org/packages/source/g/%{srcname}/%{sr
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildConflicts: python%{python3_pkgversion}-protobuf = 3.20.0
-BuildConflicts: python%{python3_pkgversion}-protobuf = 3.20.1
-BuildConflicts: python%{python3_pkgversion}-protobuf = 4.21.1
-BuildConflicts: python%{python3_pkgversion}-protobuf = 4.21.2
-BuildConflicts: python%{python3_pkgversion}-protobuf = 4.21.3
-BuildConflicts: python%{python3_pkgversion}-protobuf = 4.21.4
-BuildConflicts: python%{python3_pkgversion}-protobuf = 4.21.5
-BuildRequires:  python%{python3_pkgversion}-protobuf < 5.0.0.dev0
-BuildRequires:  python%{python3_pkgversion}-protobuf >= 3.19.5
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
@@ -39,7 +30,7 @@ Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.4
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.5
 Requires:       python%{python3_pkgversion}-grpcio < 2.0.0.dev0
 Requires:       python%{python3_pkgversion}-grpcio >= 1.44.0
-Requires:       python%{python3_pkgversion}-protobuf < 5.0.0.dev0
+Requires:       python%{python3_pkgversion}-protobuf < 7.0.0
 Requires:       python%{python3_pkgversion}-protobuf >= 3.19.5
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -73,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.70.0-1
+- Update to 1.70.0
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.69.0-2
 - Rebuild against python3.12
 
