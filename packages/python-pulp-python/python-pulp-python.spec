@@ -6,8 +6,8 @@
 %global src_name pulp_python
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.13.4
-Release:        2%{?dist}
+Version:        3.13.5
+Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.13.5-1
+- Update to 3.13.5
+
 * Fri Apr 11 2025 Odilon Sousa <osousa@redhat.com> - 3.13.4-2
 - Update requirements for bandersnatch
 
