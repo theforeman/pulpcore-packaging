@@ -8,7 +8,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.73.4
+Version:        3.73.6
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -177,6 +177,9 @@ done
 
 
 %changelog
+* Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.6-1
+- Update to 3.73.6
+
 * Fri Apr 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.4-1
 - Update to 3.73.4
 
