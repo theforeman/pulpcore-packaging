@@ -6,8 +6,8 @@
 %global srcname gnupg
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        0.5.3
-Release:        2%{?dist}
+Version:        0.5.4
+Release:        1%{?dist}
 Summary:        A wrapper for the Gnu Privacy Guard (GPG or GnuPG)
 
 License:        BSD-3-Clause
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.4-1
+- Update to 0.5.4
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.5.3-2
 - Rebuild against python3.12
 
