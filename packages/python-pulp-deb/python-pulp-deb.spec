@@ -6,8 +6,8 @@
 %global src_name pulp_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.5.1
-Release:        3%{?dist}
+Version:        3.5.2
+Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -62,6 +62,9 @@ set -ex
 %{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
+* Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.2-1
+- Update to 3.5.2
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.5.1-3
 - Add obsoletes for python3.11 package
 
