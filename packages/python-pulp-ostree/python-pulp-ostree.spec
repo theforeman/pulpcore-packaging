@@ -8,8 +8,8 @@
 
  
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.4.7
-Release:        2%{?dist}
+Version:        2.4.8
+Release:        1%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
 License:        GPLv2+
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.8-1
+- Update to 2.4.8
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.4.7-2
 - Add obsoletes for python3.11 package
 
