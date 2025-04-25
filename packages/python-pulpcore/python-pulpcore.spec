@@ -8,7 +8,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.73.7
+Version:        3.73.8
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -42,11 +42,11 @@ Conflicts:      python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.1.8
 Requires:       python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       python%{python3_pkgversion}-cryptography < 43.0.2
+Requires:       python%{python3_pkgversion}-cryptography < 44.0.3
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
-Requires:       python%{python3_pkgversion}-django-filter <= 24.3
+Requires:       python%{python3_pkgversion}-django-filter <= 25.1
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
-Requires:       python%{python3_pkgversion}-django-guid <= 3.5.0
+Requires:       python%{python3_pkgversion}-django-guid <= 3.5.1
 Requires:       python%{python3_pkgversion}-django-import-export >= 2.9
 Requires:       python%{python3_pkgversion}-django-import-export < 3.4.0
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
@@ -76,7 +76,7 @@ Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.9.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.32
-Requires:       python%{python3_pkgversion}-pyOpenSSL < 25
+Requires:       python%{python3_pkgversion}-pyOpenSSL < 26.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
 Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.31
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27
@@ -84,7 +84,7 @@ Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_ht
 Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.27
 Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.31
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
-Requires:       python%{python3_pkgversion}-protobuf < 5.0
+Requires:       python%{python3_pkgversion}-protobuf < 6.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
 Requires:       python%{python3_pkgversion}-psycopg <= 3.2.5
 Requires:       python%{python3_pkgversion}-psycopg_c >= 3.1.8
@@ -177,6 +177,9 @@ done
 
 
 %changelog
+* Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.8-1
+- Update to 3.73.8
+
 * Thu Apr 24 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.7-1
 - Update to 3.73.7
 
