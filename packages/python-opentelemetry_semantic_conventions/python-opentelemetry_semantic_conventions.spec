@@ -3,8 +3,8 @@
 %global pypi_name opentelemetry_semantic_conventions
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.48b0
-Release:        3%{?dist}
+Version:        0.51b0
+Release:        1%{?dist}
 Summary:        OpenTelemetry Semantic Conventions
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.51b0-1
+- Update to 0.51b0
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 0.48b0-3
 - Add obsoletes for python3.11 package
 
