@@ -5,8 +5,8 @@
 %global pypi_name h11
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.14.0
-Release:        6%{?dist}
+Version:        0.16.0
+Release:        1%{?dist}
 Summary:        A pure-Python, bring-your-own-I/O implementation of HTTP/1
 
 License:        MIT
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.16.0-1
+- Update to 0.16.0
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 0.14.0-6
 - Rebuild against python3.12
 
