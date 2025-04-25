@@ -5,8 +5,8 @@
 %global pypi_name httpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.0.7
-Release:        2%{?dist}
+Version:        1.0.9
+Release:        1%{?dist}
 Summary:        A minimal low-level HTTP client
 
 License:        BSD
@@ -22,7 +22,7 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 
 Requires:       python%{python3_pkgversion}-anyio
 Requires:       python%{python3_pkgversion}-certifi
-Requires:       python%{python3_pkgversion}-h11
+Requires:       python%{python3_pkgversion}-h11 >= 0.16
 Requires:       python%{python3_pkgversion}-sniffio
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.9-1
+- Update to 1.0.9
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 1.0.7-2
 - Rebuild against python3.12
 
