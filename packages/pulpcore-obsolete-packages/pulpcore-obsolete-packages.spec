@@ -1,5 +1,5 @@
 Name: pulpcore-obsolete-packages
-Version: 1.2.0
+Version: 1.3.0
 Release: 1%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
@@ -24,6 +24,17 @@ Obsoletes:      python39-aiohttp-socks < 0.7.1-4
 Obsoletes:      python39-pypi-simple < 0.9.0-3
 %endif
 
+### OpenTelemetry unneeded packages
+
+Obsoletes:      python3.11-opentelemetry_distro < 0.51b0-1
+Obsoletes:      python3.11-opentelemetry_distro_otlp < 0.51b0-1
+Obsoletes:      python3.11-opentelemetry_exporter_otlp < 1.30.0-1
+Obsoletes:      python3.11-opentelemetry_exporter_otlp_proto_grpc < 1.30.0-1
+Obsoletes:      python3.11-opentelemetry_instrumentation < 0.51b0-1
+Obsoletes:      python3.11-opentelemetry_instrumentation_django < 0.51b0-1
+Obsoletes:      python3.11-opentelemetry_instrumentation_wsgi < 0.51b0-1
+Obsoletes:      python3.11-opentelemetry_util_http < 0.51b0-1
+
 %description
 This package exists only to obsolete other packages which need to be removed
 from the distribution for some reason.
@@ -37,6 +48,9 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Fri Apr 25 2025 Odilon Sousa <osousa@redhat.com> - 1.3.0-1
+- Obsolete unneeded opentelemetry packages after python3.12 rebuild
+
 * Tue Apr 16 2024 Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl> - 1.2.0-1
 - Obsolete python3-pulp-2to3-migration & mongo deps
 
