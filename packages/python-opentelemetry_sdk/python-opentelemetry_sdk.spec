@@ -3,8 +3,8 @@
 %global pypi_name opentelemetry_sdk
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.27.0
-Release:        3%{?dist}
+Version:        1.30.0
+Release:        1%{?dist}
 Summary:        OpenTelemetry Python SDK
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -19,8 +19,7 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.19
-Requires:       python%{python3_pkgversion}-opentelemetry_api < 2
+Requires:       python%{python3_pkgversion}-opentelemetry_api == %{version}
 Requires:       python%{python3_pkgversion}-opentelemetry_semantic_conventions >= 0.40b0
 Requires:       python%{python3_pkgversion}-typing-extensions >= 3.7.4
 
@@ -51,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.30.0-1
+- Update to 1.30.0
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 1.27.0-3
 - Add obsoletes for python3.11 package
 
