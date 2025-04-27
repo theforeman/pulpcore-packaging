@@ -5,8 +5,8 @@
 %global pypi_name s3transfer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.11.2
-Release:        2%{?dist}
+Version:        0.12.0
+Release:        1%{?dist}
 Summary:        An Amazon S3 Transfer Manager
 
 License:        Apache License 2.0
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.12.0-1
+- Update to 0.12.0
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.11.2-2
 - Rebuild against python3.12
 
