@@ -5,8 +5,8 @@
 %global pypi_name redis
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        5.0.8
-Release:        2%{?dist}
+Version:        5.2.1
+Release:        1%{?dist}
 Summary:        Python client for Redis database and key-value store
 
 License:        MIT
@@ -17,7 +17,6 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-Requires:       python%{python3_pkgversion}-async-timeout >= 4.0.3
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -50,6 +49,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 5.2.1-1
+- Update to 5.2.1
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 5.0.8-2
 - Rebuild against python3.12
 
