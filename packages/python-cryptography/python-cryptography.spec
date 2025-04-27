@@ -8,14 +8,19 @@
 %global pypi_name cryptography
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        43.0.1
-Release:        2%{?dist}
+Version:        44.0.2
+Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
 URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.gz
+
+	
+# Merged for 45.0.0+
+# https://github.com/pyca/cryptography/pull/12091
+Patch: 12091.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -43,7 +48,7 @@ Requires:       python%{python3_pkgversion}-cffi >= 1.12
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 %cargo_prep -V 1
 
 
@@ -62,6 +67,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 44.0.2-1
+- Update to 44.0.2
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 43.0.1-2
 - Rebuild against python3.12
 
