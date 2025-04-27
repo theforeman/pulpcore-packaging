@@ -5,8 +5,8 @@
 %global pypi_name certifi
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2025.1.31
-Release:        2%{?dist}
+Version:        2025.4.26
+Release:        1%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPL-2.0
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.4.26-1
+- Update to 2025.4.26
+
 * Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 2025.1.31-2
 - Rebuild against python3.12
 
