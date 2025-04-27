@@ -5,8 +5,8 @@
 %global pypi_name bindep
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.12.0
-Release:        3%{?dist}
+Version:        2.13.0
+Release:        1%{?dist}
 Summary:        Binary dependency utility
 
 License:        Apache License, Version 2.0
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.0-1
+- Update to 2.13.0
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 2.12.0-3
 - Add obsolete for python3.11 package
 
