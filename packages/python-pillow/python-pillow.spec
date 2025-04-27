@@ -6,8 +6,8 @@
 %global srcname pillow
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        10.3.0
-Release:        2%{?dist}
+Version:        11.1.0
+Release:        1%{?dist}
 Summary:        Python Imaging Library (Fork)
 
 License:        HPND
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitearch}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 11.1.0-1
+- Update to 11.1.0
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 10.3.0-2
 - Rebuild against python3.12
 
