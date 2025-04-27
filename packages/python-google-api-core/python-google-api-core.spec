@@ -5,8 +5,8 @@
 %global pypi_name google-api-core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.24.1
-Release:        2%{?dist}
+Version:        2.24.2
+Release:        1%{?dist}
 Summary:        Google API client core library
 
 License:        Apache 2.0
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.24.2-1
+- Update to 2.24.2
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.24.1-2
 - Rebuild against python3.12
 
