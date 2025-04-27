@@ -5,8 +5,8 @@
 %global pypi_name psycopg_c
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.3
-Release:        2%{?dist}
+Version:        3.2.5
+Release:        1%{?dist}
 Summary:        PostgreSQL database adapter for Python - C extension
 
 License:        LGPL-3.0-only
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.5-1
+- Update to 3.2.5
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 3.2.3-2
 - Rebuild against python3.12
 
