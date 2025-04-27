@@ -6,8 +6,8 @@
 %global pypi_name pyparsing
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.1.4
-Release:        3%{?dist}
+Version:        3.2.1
+Release:        1%{?dist}
 Summary:        Python parsing module
 
 License:        MIT License
@@ -46,6 +46,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.1-1
+- Update to 3.2.1
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 3.1.4-3
 - Change Requirements and Provides location in the specfile
 
