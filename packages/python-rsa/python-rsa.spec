@@ -3,8 +3,8 @@
 %global pypi_name rsa
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.9
-Release:        2%{?dist}
+Version:        4.9.1
+Release:        1%{?dist}
 Summary:        Pure-Python RSA implementation
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -51,6 +51,9 @@ set -ex
 %{_bindir}/pyrsa-verify
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.9.1-1
+- Update to 4.9.1
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 4.9-2
 - Rebuild against python3.12
 
