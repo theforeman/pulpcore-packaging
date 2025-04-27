@@ -6,8 +6,8 @@
 %global src_name django_storages
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.14.5
-Release:        4%{?dist}
+Version:        1.14.6
+Release:        1%{?dist}
 Summary:        Support for many storage backends in Django
 
 License:        BSD-3-Clause
@@ -91,6 +91,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.14.6-1
+- Update to 1.14.6
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 1.14.5-4
 - Add new metapackages for s3, azure and google
 
