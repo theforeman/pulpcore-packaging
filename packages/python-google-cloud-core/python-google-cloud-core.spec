@@ -6,8 +6,8 @@
 %global src_name google_cloud_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.4.2
-Release:        2%{?dist}
+Version:        2.4.3
+Release:        1%{?dist}
 Summary:        Google Cloud API client core library
 
 License:        Apache 2.0
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.3-1
+- Update to 2.4.3
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.4.2-2
 - Rebuild against python3.12
 
