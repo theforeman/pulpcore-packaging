@@ -5,8 +5,8 @@
 %global pypi_name propcache
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.3.0
-Release:        2%{?dist}
+Version:        0.3.1
+Release:        1%{?dist}
 Summary:        Fast property caching.
 
 License:        Apache-2.0
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.1-1
+- Update to 0.3.1
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.3.0-2
 - Rebuild against python3.12
 
