@@ -4,8 +4,8 @@
 %global pypi_name flit_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.11.0
-Release:        2%{?dist}
+Version:        3.12.0
+Release:        1%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -54,6 +54,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.12.0-1
+- Update to 3.12.0
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 3.11.0-2
 - Rebuild against python3.12
 
