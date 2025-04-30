@@ -5,8 +5,8 @@
 %global pypi_name beautifulsoup4
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.13.3
-Release:        2%{?dist}
+Version:        4.13.4
+Release:        1%{?dist}
 Summary:        Screen-scraping library
 
 License:        MIT
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.13.4-1
+- Update to 4.13.4
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 4.13.3-2
 - Rebuild against python3.12
 
