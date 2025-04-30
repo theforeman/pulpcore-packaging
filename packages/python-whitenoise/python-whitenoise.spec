@@ -5,8 +5,8 @@
 %global pypi_name whitenoise
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.7.0
-Release:        2%{?dist}
+Version:        6.9.0
+Release:        1%{?dist}
 Summary:        Radically simplified static file serving for WSGI applications
 
 License:        MIT
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.9.0-1
+- Update to 6.9.0
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 6.7.0-2
 - Rebuild against python3.12
 
