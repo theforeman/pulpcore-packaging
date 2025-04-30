@@ -5,8 +5,8 @@
 %global pypi_name pycares
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.5.0
-Release:        2%{?dist}
+Version:        4.6.1
+Release:        1%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.6.1-1
+- Update to 4.6.1
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 4.5.0-2
 - Rebuild against python3.12
 
