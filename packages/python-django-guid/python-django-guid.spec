@@ -6,8 +6,8 @@
 %global src_name django_guid
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.5.0
-Release:        3%{?dist}
+Version:        3.5.1
+Release:        1%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
 License:        BSD
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.1-1
+- Update to 3.5.1
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 3.5.0-3
 - Add obsoletes for python3.11 package
 
