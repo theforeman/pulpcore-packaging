@@ -3,8 +3,8 @@
 %global pypi_name anyio
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.8.0
-Release:        2%{?dist}
+Version:        4.9.0
+Release:        1%{?dist}
 Summary:        High level compatibility layer for multiple asynchronous event loop implementations
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.9.0-1
+- Update to 4.9.0
+
 * Thu Mar 27 2025 Odilon Sousa <osousa@redhat.com> - 4.8.0-2
 - Rebuild against python3.12
 
