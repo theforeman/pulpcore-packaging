@@ -9,7 +9,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.73.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -92,7 +92,7 @@ Requires:       python%{python3_pkgversion}-psycopg_c <= 3.2.5
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0 
-Requires:       python%{python3_pkgversion}-pyparsing <= 3.1.4
+Requires:       python%{python3_pkgversion}-pyparsing <= 3.2.1
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
 Requires:       python%{python3_pkgversion}-pyyaml <= 6.0.2
 Requires:       python%{python3_pkgversion}-redis >= 4.3
@@ -177,6 +177,9 @@ done
 
 
 %changelog
+* Wed Apr 30 2025 Odilon Sousa <osousa@redhat.com> - 3.73.8-2
+- Update requirement for pyparsing
+
 * Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.8-1
 - Update to 3.73.8
 
