@@ -6,8 +6,8 @@
 %global srcname cachecontrol
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        0.14.2
-Release:        5%{?dist}
+Version:        0.14.3
+Release:        1%{?dist}
 Summary:        httplib2 caching for requests
 
 License:        None
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.14.3-1
+- Update to 0.14.3
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 0.14.2-5
 - Add obsoletes for python3.11 package
 
