@@ -5,8 +5,8 @@
 %global pypi_name boto3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.38.2
-Release:        2%{?dist}
+Version:        1.38.5
+Release:        1%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.38.5-1
+- Update to 1.38.5
+
 * Wed Apr 30 2025 Odilon Sousa <osousa@redhat.com> - 1.38.2-2
 - Fix botocore and s3transfer requirements
 
