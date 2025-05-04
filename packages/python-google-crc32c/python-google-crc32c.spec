@@ -7,8 +7,8 @@
 %global pypi_name google-crc32c
 
 Name:          python%{python3_pkgversion}-%{pypi_name}
-Version:        1.6.0
-Release:        2%{?dist}
+Version:        1.7.1
+Release:        1%{?dist}
 Summary:        A python wrapper of the C library 'Google CRC32C'
 
 License:        Apache 2.0
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Sun May 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.7.1-1
+- Update to 1.7.1
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 1.6.0-2
 - Rebuild against python3.12
 
