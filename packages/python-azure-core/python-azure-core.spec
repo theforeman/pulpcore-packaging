@@ -6,8 +6,8 @@
 %global src_name azure_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.32.0
-Release:        2%{?dist}
+Version:        1.34.0
+Release:        1%{?dist}
 Summary:        Microsoft Azure Core Library for Python
 
 License:        MIT License
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Sun May 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.34.0-1
+- Update to 1.34.0
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.32.0-2
 - Rebuild against python3.12
 
