@@ -6,8 +6,8 @@
 %global src_name charset_normalizer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.4.1
-Release:        2%{?dist}
+Version:        3.4.2
+Release:        1%{?dist}
 Summary:        The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Sun May 04 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.4.2-1
+- Update to 3.4.2
+
 * Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 3.4.1-2
 - Rebuild against python3.12
 
