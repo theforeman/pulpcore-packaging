@@ -8,8 +8,8 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.73.8
-Release:        2%{?dist}
+Version:        3.73.9
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -75,7 +75,7 @@ Requires:       python%{python3_pkgversion}-json_stream < 2.4
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.9.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.18.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.32
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.33
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 26.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
 Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.31
@@ -177,6 +177,9 @@ done
 
 
 %changelog
+* Wed May 07 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.9-1
+- Update to 3.73.9
+
 * Wed Apr 30 2025 Odilon Sousa <osousa@redhat.com> - 3.73.8-2
 - Update requirement for pyparsing
 
