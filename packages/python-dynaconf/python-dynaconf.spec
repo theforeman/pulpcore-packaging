@@ -5,8 +5,8 @@
 %global pypi_name dynaconf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.10
-Release:        3%{?dist}
+Version:        3.2.11
+Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed May 07 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.11-1
+- Update to 3.2.11
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.2.10-3
 - Add obsoletes for python3.11 package
 
