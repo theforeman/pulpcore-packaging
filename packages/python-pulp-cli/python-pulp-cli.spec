@@ -6,8 +6,8 @@
 %global pypi_name pulp-cli
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.31.1
-Release:        4%{?dist}
+Version:        0.32.1
+Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Thu May 08 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.32.1-1
+- Update to 0.32.1
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.31.1-4
 - Add obsoletes for python3.11 package
 
