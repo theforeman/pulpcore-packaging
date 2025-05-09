@@ -1,0 +1,26 @@
+From 486452edfa4a31a4c7737f65843d10eaecce05d5 Mon Sep 17 00:00:00 2001
+From: Odilon Sousa <osousa@redhat.com>
+Date: Fri, 9 May 2025 09:42:10 -0300
+Subject: [PATCH] Rollback setuptools update because EL9 don't ship with new
+ setuptools on python3.12
+
+---
+ pyproject.toml | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 4635d0e1f5..85a2805007 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,8 +1,5 @@
+ [build-system]
+-requires = [
+-    "setuptools>=75.8.1; python_version >= '3.9'",
+-    "setuptools<75.4.0; python_version < '3.9'",
+-]
++requires = ["setuptools>=61.0.0"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+-- 
+2.49.0
