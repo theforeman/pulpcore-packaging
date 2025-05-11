@@ -8,8 +8,8 @@
 %global srcname pygobject
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.48.2
-Release:        2%{?dist}
+Version:        3.50.0
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sun May 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:3.50.0-1
+- Update to 3.50.0
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 1:3.48.2-2
 - Add obsoletes for python3.11 package
 
