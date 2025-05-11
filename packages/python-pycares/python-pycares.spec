@@ -5,7 +5,7 @@
 %global pypi_name pycares
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.6.1
+Version:        4.8.0
 Release:        1%{?dist}
 Summary:        Python interface for c-ares
 
@@ -46,12 +46,15 @@ set -ex
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE deps/c-ares/LICENSE.md
-%doc PYPIREADME.rst README.rst deps/c-ares/README.cares deps/c-ares/README.md deps/c-ares/README.msvc deps/c-ares/test/README.md
+%doc PYPIREADME.rst README.rst deps/c-ares/README.md deps/c-ares/README.msvc deps/c-ares/test/README.md
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Sun May 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.8.0-1
+- Update to 4.8.0
+
 * Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.6.1-1
 - Update to 4.6.1
 
