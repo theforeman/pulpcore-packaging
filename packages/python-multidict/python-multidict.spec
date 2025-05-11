@@ -5,8 +5,8 @@
 %global pypi_name multidict
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.1.0
-Release:        2%{?dist}
+Version:        6.2.0
+Release:        1%{?dist}
 Summary:        multidict implementation
 
 License:        Apache 2
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Sun May 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.2.0-1
+- Update to 6.2.0
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 6.1.0-2
 - Rebuild against python3.12
 
