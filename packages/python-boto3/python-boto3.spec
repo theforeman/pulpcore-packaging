@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.38.23
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -21,8 +21,8 @@ Requires:       python%{python3_pkgversion}-botocore >= %{version}
 Requires:       python%{python3_pkgversion}-botocore < 1.39.0
 Requires:       python%{python3_pkgversion}-jmespath < 2.0.0
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
-Requires:       python%{python3_pkgversion}-s3transfer < 0.13.0
-Requires:       python%{python3_pkgversion}-s3transfer >= 0.12.0
+Requires:       python%{python3_pkgversion}-s3transfer < 0.14.0
+Requires:       python%{python3_pkgversion}-s3transfer >= 0.13.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Mon May 26 2025 Odilon Sousa <osousa@redhat.com> - 1.38.23-2
+- Update requirements for s3transfer
+
 * Sun May 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.38.23-1
 - Update to 1.38.23
 
