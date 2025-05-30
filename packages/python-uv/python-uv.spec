@@ -7,7 +7,7 @@
 
 Name:           %{pypi_name}
 Version:        0.6.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An extremely fast Python package and project manager, written in Rust.
 
 
@@ -154,6 +154,9 @@ BuildRequires:  gcc
 %description
 %{summary}
 
+%files -n %{pypi_name}
+%ghost %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
+
 
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
@@ -190,5 +193,8 @@ set -ex
 
 
 %changelog
+* Fri May 30 2025 Odilon Sousa <osousa@redhat.com>  - 0.6.5-2
+- Add uv metapackage
+
 * Tue Mar 11 2025 Odilon Sousa - 0.6.5-1
 - Initial package.
