@@ -5,8 +5,8 @@
 %global pypi_name aiohttp
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.10.11
-Release:        2%{?dist}
+Version:        3.11.18
+Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.18-1
+- Update to 3.11.18
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.10.11-2
 - Rebuild against python3.12
 
