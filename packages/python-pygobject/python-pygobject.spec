@@ -8,7 +8,7 @@
 %global srcname pygobject
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.50.0
+Version:        3.50.1
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:3.50.1-1
+- Update to 3.50.1
+
 * Sun May 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:3.50.0-1
 - Update to 3.50.0
 
