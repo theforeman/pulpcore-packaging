@@ -6,8 +6,8 @@
 %global srcname markdown
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.7
-Release:        3%{?dist}
+Version:        3.8
+Release:        1%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.8-1
+- Update to 3.8
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.7-3
 - Add obsoletes for python3.11 package
 
