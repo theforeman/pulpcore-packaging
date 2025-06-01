@@ -5,8 +5,8 @@
 %global pypi_name bracex
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.5
-Release:        2%{?dist}
+Version:        2.5.post1
+Release:        1%{?dist}
 Summary:        Bash style brace expander
 
 License:        MIT License
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.post1-1
+- Update to 2.5.post1
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 2.5-2
 - Rebuild against python3.12
 
