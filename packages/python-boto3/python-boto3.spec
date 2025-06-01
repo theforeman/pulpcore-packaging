@@ -5,8 +5,8 @@
 %global pypi_name boto3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.38.23
-Release:        2%{?dist}
+Version:        1.38.27
+Release:        1%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.38.27-1
+- Update to 1.38.27
+
 * Mon May 26 2025 Odilon Sousa <osousa@redhat.com> - 1.38.23-2
 - Update requirements for s3transfer
 
