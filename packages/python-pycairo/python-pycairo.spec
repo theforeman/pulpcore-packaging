@@ -5,8 +5,8 @@
 %global pypi_name pycairo
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.20.1
-Release:        8%{?dist}
+Version:        1.28.0
+Release:        1%{?dist}
 Summary:        Python interface for cairo
 
 License:        LGPL-2.1-only OR MPL-1.1
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.28.0-1
+- Update to 1.28.0
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.20.1-8
 - Rebuild against python3.12
 
