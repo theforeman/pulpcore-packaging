@@ -8,7 +8,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.73.9
+Version:        3.73.11
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -41,8 +41,8 @@ Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
 Conflicts:      python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.1.8
-Requires:       python%{python3_pkgversion}-cryptography >= 38.0.1
-Requires:       python%{python3_pkgversion}-cryptography < 44.0.3
+Requires:       python%{python3_pkgversion}-cryptography >= 44.0.2
+Requires:       python%{python3_pkgversion}-cryptography < 45.0.4
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       python%{python3_pkgversion}-django-filter <= 25.1
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
@@ -86,9 +86,9 @@ Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.31
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 6.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg <= 3.2.5
+Requires:       python%{python3_pkgversion}-psycopg < 3.3
 Requires:       python%{python3_pkgversion}-psycopg_c >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg_c <= 3.2.5
+Requires:       python%{python3_pkgversion}-psycopg_c < 3.3
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0 
@@ -177,6 +177,9 @@ done
 
 
 %changelog
+* Thu Jun 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.11-1
+- Update to 3.73.11
+
 * Wed May 07 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.9-1
 - Update to 3.73.9
 
