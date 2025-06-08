@@ -7,8 +7,8 @@
 %global pypi_name maturin
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.8.2
-Release:        2%{?dist}
+Version:        1.8.6
+Release:        1%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
 License:        MIT OR Apache-2.0
@@ -24,7 +24,7 @@ Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-setuptools-rust >= 1.4.0
+BuildRequires:  python%{python3_pkgversion}-setuptools-rust >= 1.11.0
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 08 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.6-1
+- Update to 1.8.6
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 1.8.2-2
 - Rebuild against python3.12
 
