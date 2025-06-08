@@ -6,7 +6,7 @@
 %global srcname django
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        4.2.21
+Version:        4.2.22
 Release:        1%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 08 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.22-1
+- Update to 4.2.22
+
 * Fri May 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.21-1
 - Update to 4.2.21
 
