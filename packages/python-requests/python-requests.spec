@@ -5,8 +5,8 @@
 %global pypi_name requests
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.32.3
-Release:        3%{?dist}
+Version:        2.32.4
+Release:        1%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Jun 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.32.4-1
+- Update to 2.32.4
+
 * Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 2.32.3-3
 - Rebuild against python3.12
 
