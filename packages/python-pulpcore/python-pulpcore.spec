@@ -8,7 +8,7 @@
 %global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.73.11
+Version:        3.73.12
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -42,7 +42,7 @@ Conflicts:      python%{python3_pkgversion}-backoff >= 2.2.2
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.1.8
 Requires:       python%{python3_pkgversion}-cryptography >= 44.0.2
-Requires:       python%{python3_pkgversion}-cryptography < 45.0.4
+Requires:       python%{python3_pkgversion}-cryptography < 45.0.5
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       python%{python3_pkgversion}-django-filter <= 25.1
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
@@ -177,6 +177,9 @@ done
 
 
 %changelog
+* Wed Jun 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.12-1
+- Update to 3.73.12
+
 * Thu Jun 05 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.11-1
 - Update to 3.73.11
 
