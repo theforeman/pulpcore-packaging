@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        25.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
@@ -20,7 +20,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
 Requires:       python%{python3_pkgversion}-cryptography >= 41.0.5
-Requires:       python%{python3_pkgversion}-cryptography < 45
+Requires:       python%{python3_pkgversion}-cryptography < 46
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.9.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed Jun 11 2025 Odilon Sousa <osousa@redhat.com> - 25.1.0-2
+- Update python-cryptography requirements
+
 * Sun May 18 2025 Foreman Packaging Automation <packaging@theforeman.org> - 25.1.0-1
 - Update to 25.1.0
 
