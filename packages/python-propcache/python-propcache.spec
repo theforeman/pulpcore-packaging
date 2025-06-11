@@ -5,7 +5,7 @@
 %global pypi_name propcache
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.3.1
+Version:        0.3.2
 Release:        1%{?dist}
 Summary:        Fast property caching.
 
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Wed Jun 11 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.2-1
+- Update to 0.3.2
+
 * Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.1-1
 - Update to 0.3.1
 
