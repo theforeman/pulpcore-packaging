@@ -29,6 +29,18 @@ def parse_package_list(lines):
                 name = name.replace('_', '-')
             elif name.startswith('poetry'):
                 name = name.replace('-', '_')
+            elif name.startswith('et'):
+                name = name.replace('_', '-')
+            elif name.startswith('aiohttp'):
+                name = name.replace('_', '-')
+            elif name.startswith('importlib_resources'):
+                name = name.replace('_', '-')
+            elif name.startswith('pyasn1'):
+                    name = name.replace('_', '-')
+            elif name.startswith('jaraco'):
+                    name = name.replace('.', '-')
+            elif name.startswith('pydantic'):
+                    name = name.replace('_', '-')
             #Lower Case all libs that needs to be lowercased(is this a verb?)
             elif name.startswith('PyYAML'):
                 name = name.lower()
@@ -51,6 +63,10 @@ def parse_package_list(lines):
             elif name.startswith('Pygments'):
                 name = name.lower()
             elif name.startswith('PyJWT'):
+                name = name.lower()
+            elif name.startswith('RapidFuzz'):
+                name = name.lower()
+            elif name.startswith('SecretStorage'):
                 name = name.lower()
             yield {'package_name': name, 'new_version': version}
 
