@@ -5,8 +5,8 @@
 %global pypi_name msgpack
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.1.0
-Release:        2%{?dist}
+Version:        1.1.1
+Release:        1%{?dist}
 Summary:        MessagePack serializer
 
 License:        Apache 2.0
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Fri Jun 13 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.1-1
+- Update to 1.1.1
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 1.1.0-2
 - Rebuild against python3.12
 
