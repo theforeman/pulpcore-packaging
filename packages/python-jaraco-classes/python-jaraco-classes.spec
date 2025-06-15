@@ -4,8 +4,8 @@
 %global package_name jaraco-classes
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.3
-Release:        5%{?dist}
+Version:        3.4.0
+Release:        1%{?dist}
 Summary:        Utility functions for Python class constructs
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.4.0-1
+- Update to 3.4.0
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 3.2.3-5
 - Rebuild against python3.12
 
