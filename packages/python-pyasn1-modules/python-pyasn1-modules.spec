@@ -6,8 +6,8 @@
 %global src_name pyasn1_modules
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.1
-Release:        2%{?dist}
+Version:        0.4.2
+Release:        1%{?dist}
 Summary:        A collection of ASN.1-based protocols modules
 
 License:        BSD-2-Clause
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.2-1
+- Update to 0.4.2
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 0.4.1-2
 - Bump release against python3.12
 
