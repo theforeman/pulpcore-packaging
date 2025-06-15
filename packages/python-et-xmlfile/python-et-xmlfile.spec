@@ -5,8 +5,8 @@
 %global pypi_name et-xmlfile
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.1.0
-Release:        7%{?dist}
+Version:        2.0.0
+Release:        1%{?dist}
 Summary:        An implementation of lxml.xmlfile for the standard library
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.0.0-1
+- Update to 2.0.0
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.1.0-7
 - Rebuild against python3.12
 
