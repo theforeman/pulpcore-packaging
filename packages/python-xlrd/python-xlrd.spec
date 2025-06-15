@@ -5,8 +5,8 @@
 %global pypi_name xlrd
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.0.1
-Release:        10%{?dist}
+Version:        2.0.2
+Release:        1%{?dist}
 Summary:        Library for developers to extract data from Microsoft Excel (tm)
 
 License:        BSD
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.0.2-1
+- Update to 2.0.2
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 2.0.1-10
 - Rebuild against python3.12
 
