@@ -7,7 +7,7 @@ gpgkey=https://yum.theforeman.org/pulpcore/@PULPCORE_VERSION@/GPG-RPM-KEY-pulpco
 enabled=1
 gpgcheck=@REPO_GPGCHECK@
 
-# source repositorie
+# source repository
 
 [pulpcore-source]
 name=pulpcore source

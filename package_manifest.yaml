@@ -361,7 +361,7 @@ tier4_packages:
     python-annotated-types: {}
     python-pydantic-core: {}
     python-scikit-build-core: {}
-    pulpcore-repo: {}
+    pulpcore-release: {}
 
 pulpcore_packages:
   hosts:
