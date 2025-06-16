@@ -15,7 +15,7 @@ Summary:        Definition of yum repositories for Pulp
 Group:          Applications/Internet
 License:        GPLv2
 URL:            https://pulpproject.org/
-Source0:        pulpcore.repo
+Source0:        pulpcore-release.repo
 
 BuildArch:      noarch
 
@@ -66,5 +66,5 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
-* Thu Apr 24 2025 Odilon Sousa <osousa@redhat.com> - 3.73-0.1.nightly
+* Mon Jun 16 2025 Odilon Sousa <osousa@redhat.com> - 3.73-0.1.nightly
 - Initial package
