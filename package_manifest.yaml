@@ -370,6 +370,7 @@ pulpcore_packages:
     python-pulp-cli: {}
     python-pulp-cli-deb: {}
     python-pulp-rpm: {}
+    python-pulp-smart-proxy: {}
     python-pulp-container: {}
     python-pulp-deb: {}
     python-pulp_manifest: {}

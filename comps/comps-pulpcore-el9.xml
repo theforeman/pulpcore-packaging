@@ -237,6 +237,7 @@
       <packagereq type="default">python3.12-pulp-ostree</packagereq>
       <packagereq type="default">python3.12-pulp-python</packagereq>
       <packagereq type="default">python3.12-pulp-rpm</packagereq>
+      <packagereq type="default">python3.12-pulp-smart-proxy</packagereq>
       <packagereq type="default">python3.12-pulp_manifest</packagereq>
       <packagereq type="default">python3.12-pulpcore</packagereq>
       <packagereq type="default">python3.12-pyOpenSSL</packagereq>
