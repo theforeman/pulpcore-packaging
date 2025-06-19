@@ -5,9 +5,9 @@
 
 %global prereleasesource nightly
 %global prerelease %{?prereleasesource:.}%{?prereleasesource}
-%global release 1
+%global release 2
 
-Name:           pulpcore-repos
+Name:           pulpcore-release
 Version:        3.73
 Release:        %{?prerelease:0.}%{release}%{?prerelease}%{?dist}
 Summary:        Definition of yum repositories for Pulp
@@ -66,5 +66,8 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Thu Jun 19 2025 Eric D. Helms <ericdhelms@gmail.com> - 3.73-0.2.nightly
+- Bump release to rebuild
+
 * Mon Jun 16 2025 Odilon Sousa <osousa@redhat.com> - 3.73-0.1.nightly
 - Initial package
