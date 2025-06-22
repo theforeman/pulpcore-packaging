@@ -5,8 +5,8 @@
 %global pypi_name aiohttp-socks
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.8.4
-Release:        2%{?dist}
+Version:        0.10.1
+Release:        1%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -16,6 +16,9 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-aiohttp >= 2.3.2
 Requires:       python%{python3_pkgversion}-socks < 3.0.0
@@ -33,25 +36,24 @@ set -ex
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
-
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
-
+%pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE.txt
-%doc README.md
 %{python3_sitelib}/aiohttp_socks
-%{python3_sitelib}/aiohttp_socks-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/aiohttp_socks-%{version}.dist-info/
 
 
 %changelog
+* Sun Jun 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.10.1-1
+- Update to 0.10.1
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.8.4-2
 - Rebuild against python3.12
 
