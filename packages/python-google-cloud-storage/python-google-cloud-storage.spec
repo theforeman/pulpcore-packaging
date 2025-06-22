@@ -5,8 +5,8 @@
 %global pypi_name google-cloud-storage
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.1.0
-Release:        2%{?dist}
+Version:        3.1.1
+Release:        1%{?dist}
 Summary:        Google Cloud Storage API client library
 
 License:        Apache 2.0
@@ -27,11 +27,11 @@ Requires:       python%{python3_pkgversion}-google-auth >= 2.26.1
 Requires:       python%{python3_pkgversion}-google-cloud-core < 3
 Requires:       python%{python3_pkgversion}-google-cloud-core >= 2.4.2
 Requires:       python%{python3_pkgversion}-google-crc32c < 2
-Requires:       python%{python3_pkgversion}-google-crc32c >= 1
+Requires:       python%{python3_pkgversion}-google-crc32c >= 1.1.3
 Requires:       python%{python3_pkgversion}-google-resumable-media >= 2.7.2
-Requires:       python%{python3_pkgversion}-protobuf < 6
+Requires:       python%{python3_pkgversion}-protobuf < 7
 Requires:       python%{python3_pkgversion}-requests < 3
-Requires:       python%{python3_pkgversion}-requests >= 2.18
+Requires:       python%{python3_pkgversion}-requests >= 2.22
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.1-1
+- Update to 3.1.1
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.1.0-2
 - Rebuild against python3.12
 
