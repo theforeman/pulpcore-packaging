@@ -1,15 +1,12 @@
-%{!?_root_bindir:%global _root_bindir %{_bindir}}
-%{!?_root_libexecdir:%global _root_libexecdir %{_libexecdir}}
 %global __python3 /usr/bin/python3.12
 %global python3_pkgversion 3.12
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulpcore
-%global wrappers gunicorn pulpcore-worker pulp-content pulpcore-manager
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.73.14
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -91,7 +88,7 @@ Requires:       python%{python3_pkgversion}-psycopg_c >= 3.1.8
 Requires:       python%{python3_pkgversion}-psycopg_c < 3.3
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
-Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0 
+Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0
 Requires:       python%{python3_pkgversion}-pyparsing <= 3.2.1
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
 Requires:       python%{python3_pkgversion}-pyyaml <= 6.0.2
@@ -149,19 +146,11 @@ sed -i 's/psycopg\[binary\]/psycopg/' pyproject.toml
 %build
 set -ex
 %pyproject_wheel
-for wrapper in %{wrappers}
-do
-  printf '#!/bin/bash\nexec %s "$@"\n' ${wrapper} > ${wrapper}
-done
 
 
 %install
 set -ex
 %pyproject_install
-for wrapper in %{wrappers}
-do
-  install -D -m 755 ${wrapper} %{buildroot}%{_root_libexecdir}/%{pypi_name}/${wrapper}
-done
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
@@ -169,7 +158,6 @@ done
 %{_bindir}/pulpcore-api
 %{_bindir}/pulpcore-manager
 %{_bindir}/pulpcore-worker
-%{_root_libexecdir}/%{pypi_name}/*
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/pulp_certguard
 %{python3_sitelib}/pulp_file
@@ -177,6 +165,9 @@ done
 
 
 %changelog
+* Mon Jul 14 2025 Evgeni Golov - 3.73.14-2
+- drop libexec wrappers, nobody uses them anymore
+
 * Mon Jun 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.14-1
 - Update to 3.73.14
 
