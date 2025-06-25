@@ -5,8 +5,8 @@
 %define pulpcore_pkg python%{pulpcore_python}-pulpcore
 
 Name:           pulpcore-selinux
-Version:        2.0.1
-Release:        2%{?dist}
+Version:        2.1.0
+Release:        1%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -85,6 +85,9 @@ fi
 
 
 %changelog
+* Wed Jun 25 2025 Evgeni Golov - 2.1.0-1
+- Release pulpcore-selinux 2.1.0
+
 * Tue Apr 22 2025 Evgeni Golov - 2.0.1-2
 - Use Python 3.12 as used by Pulpcore 3.73+
 
