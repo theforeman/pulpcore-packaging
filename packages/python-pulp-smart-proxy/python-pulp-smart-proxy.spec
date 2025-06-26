@@ -6,7 +6,7 @@
 %global src_name pulp_smart_proxy
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.0.0
+Version:        0.1.0
 Release:        1%{?dist}
 Summary:        Smart Proxy plugin for the Pulp Project
 
@@ -54,5 +54,8 @@ set -ex
 
 
 %changelog
+* Thu Jun 26 2025 Evgeni Golov - 0.1.0-1
+- Release python-pulp-smart-proxy 0.1.0
+
 * Tue Jun 17 2025 Evgeni Golov - 0.0.0-1
 - Initial package.
