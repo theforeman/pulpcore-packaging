@@ -5,8 +5,8 @@
 %global pypi_name wcmatch
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        10.0
-Release:        2%{?dist}
+Version:        10.1
+Release:        1%{?dist}
 Summary:        Wildcard/glob file name matcher
 
 License:        MIT License
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 29 2025 Foreman Packaging Automation <packaging@theforeman.org> - 10.1-1
+- Update to 10.1
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 10.0-2
 - Rebuild against python3.12
 
