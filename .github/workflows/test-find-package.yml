@@ -1,0 +1,37 @@
+name: Test find_package.py
+
+on:
+  pull_request:
+    paths:
+      - 'find_package.py'
+      - 'test/**'
+      - '.github/workflows/test-find-package.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install test dependencies
+      run: python -m pip install --upgrade pip
+
+    
+    - name: Run tests
+      run: |
+        python run_tests.py
+    
+    - name: Run integration test specifically
+      run: |
+        cd test
+        python -m unittest test_integration.TestIntegration.test_real_world_sample_data -v 
