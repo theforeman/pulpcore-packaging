@@ -6,68 +6,102 @@ import json
 import os
 
 def parse_package_list(lines):
+    # Define transformation rules for better maintainability
+    
+    # Packages that need prefix removal
+    prefix_removals = {
+        'python-': ''
+    }
+    
+    # Specific package name mappings (exact matches)
+    package_mappings = {
+        'typing_extensions': 'typing-extensions',
+        'galaxy_importer': 'galaxy-importer',
+        'psycopg-c': 'psycopg_c',
+        'importlib_resources': 'importlib-resources',
+        'ruamel.yaml': 'ruamel-yaml',
+        'ruamel.yaml.clib': 'ruamel-yaml-clib',
+        'jaraco.classes': 'jaraco-classes',
+        'et_xmlfile': 'et-xmlfile',
+        'aiohttp_socks': 'aiohttp-socks',
+        'pyasn1_modules': 'pyasn1-modules',
+        'pydantic_core': 'pydantic-core',
+        'flit_core': 'flit-core',
+        'poetry_core': 'poetry-core',
+        'poetry_plugin_export': 'poetry-plugin-export',
+    }
+    
+    # Packages that need to be lowercased
+    lowercase_packages = {
+        'PyYAML': 'pyyaml',
+        'GitPython': 'gitpython', 
+        'Deprecated': 'deprecated',
+        'CacheControl': 'cachecontrol',
+        'Django': 'django',
+        'Jinja2': 'jinja2',
+        'MarkupPy': 'markuppy',
+        'MarkupSafe': 'markupsafe',
+        'Parsley': 'parsley',
+        'PyGObject': 'pygobject',
+        'Pygments': 'pygments',
+        'PyJWT': 'pyjwt',
+        'RapidFuzz': 'rapidfuzz',
+        'SecretStorage': 'secretstorage',
+    }
+    
+    # Pattern-based transformations
+    def apply_pattern_transformations(name):
+        # OpenTelemetry packages: replace - with _
+        if name.startswith('opentelemetry'):
+            return name.replace('-', '_')
+        # Poetry packages: only transform the main poetry package and core packages with underscores
+        elif name == 'poetry' or (name.startswith('poetry') and '_' in name):
+            return name.replace('-', '_')
+        # Flit packages: replace _ with -
+        elif name.startswith('flit') and '_' in name:
+            return name.replace('_', '-')
+        # ET packages: replace _ with -
+        elif name.startswith('et') and '_' in name:
+            return name.replace('_', '-')
+        # AioHTTP packages: replace _ with -
+        elif name.startswith('aiohttp') and '_' in name:
+            return name.replace('_', '-')
+        # PyASN1 packages: replace _ with -
+        elif name.startswith('pyasn1') and '_' in name:
+            return name.replace('_', '-')
+        # Jaraco packages: replace . with -
+        elif name.startswith('jaraco') and '.' in name:
+            return name.replace('.', '-')
+        # Pydantic packages: replace _ with -
+        elif name.startswith('pydantic') and '_' in name:
+            return name.replace('_', '-')
+        # Ruamel packages: replace . with -
+        elif name.startswith('ruamel') and '.' in name:
+            return name.replace('.', '-')
+        # Default: no transformation
+        return name
+    
     for line in lines:
         line = line.strip()
         if line:
             name, version = line.split('==')
-            # Opentelemetry packages have _ on pypi
-            if name.startswith('opentelemetry'):
-                name = name.replace('-', '_')
-            # debian, dateutil, gnugg and sockes starts with python-
-            # and that breaks my wonky update_packages script
-            elif name.startswith('python-'):
-                name = name.replace('python-', '', 1)
-            elif name.startswith('typing_extensions'):
-                name = name.replace('_', '-')
-            elif name.startswith('ruamel'):
-                name = name.replace('.', '-')
-            elif name.startswith('galaxy_importer'):
-                name = name.replace('_', '-')
-            elif name.startswith('psycopg-c'):
-                name = name.replace('-', '_')
-            elif name.startswith('flit'):
-                name = name.replace('_', '-')
-            elif name.startswith('poetry'):
-                name = name.replace('-', '_')
-            elif name.startswith('et'):
-                name = name.replace('_', '-')
-            elif name.startswith('aiohttp'):
-                name = name.replace('_', '-')
-            elif name.startswith('importlib_resources'):
-                name = name.replace('_', '-')
-            elif name.startswith('pyasn1'):
-                    name = name.replace('_', '-')
-            elif name.startswith('jaraco'):
-                    name = name.replace('.', '-')
-            elif name.startswith('pydantic'):
-                    name = name.replace('_', '-')
-            #Lower Case all libs that needs to be lowercased(is this a verb?)
-            elif name.startswith('PyYAML'):
-                name = name.lower()
-            elif name.startswith('GitPython'):
-                name = name.lower()
-            elif name.startswith('Deprecated'):
-                name = name.lower()
-            elif name.startswith('CacheControl'):
-                name = name.lower()
-            elif name.startswith('Django'):
-                name = name.lower()
-            elif name.startswith('Jinja2'):
-                name = name.lower()
-            elif name.startswith('Mark'):
-                name = name.lower()
-            elif name.startswith('Parsley'):
-                name = name.lower()
-            elif name.startswith('PyGObject'):
-                name = name.lower()
-            elif name.startswith('Pygments'):
-                name = name.lower()
-            elif name.startswith('PyJWT'):
-                name = name.lower()
-            elif name.startswith('RapidFuzz'):
-                name = name.lower()
-            elif name.startswith('SecretStorage'):
-                name = name.lower()
+            
+            # Apply prefix removals first
+            for prefix, replacement in prefix_removals.items():
+                if name.startswith(prefix):
+                    name = name.replace(prefix, replacement, 1)
+                    break
+            
+            # Apply specific package mappings
+            if name in package_mappings:
+                name = package_mappings[name]
+            # Apply lowercase mappings
+            elif name in lowercase_packages:
+                name = lowercase_packages[name]
+            # Apply pattern-based transformations
+            else:
+                name = apply_pattern_transformations(name)
+            
             yield {'package_name': name, 'new_version': version}
 
 def find_packages(pkg, new_version):
