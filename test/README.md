@@ -88,6 +88,7 @@ python -m pytest test/ -n auto
 
 - `test_parse_package_list.py`: Main test file with 8 unit tests
 - `test_integration.py`: Integration test with real-world data (191 packages)
+- `conftest.py`: Pytest configuration with shared fixtures for import path setup
 - `requirements-test.txt`: Test dependencies (pytest and optional plugins)
 - `__init__.py`: Makes the test directory a Python package
 - `README.md`: This documentation file
