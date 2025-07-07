@@ -50,26 +50,45 @@ Tests a combination of different transformation types in one test case.
 
 ## Running the Tests
 
+### Install test dependencies:
+```bash
+pip install -r test/requirements-test.txt
+```
+
 ### From the main directory:
 ```bash
 python run_tests.py
 ```
 
-### From the test directory:
+### Using pytest directly:
 ```bash
-cd test
-python -m unittest test_parse_package_list.py -v
+# Run all tests
+python -m pytest test/ -v
+
+# Run specific test file
+python -m pytest test/test_parse_package_list.py -v
+
+# Run specific test function
+python -m pytest test/test_parse_package_list.py::test_prefix_removals -v
+
+# Run integration test
+python -m pytest test/test_integration.py::test_real_world_sample_data -v
 ```
 
-### Running specific test methods:
+### Additional pytest options:
 ```bash
-cd test
-python -m unittest test_parse_package_list.TestParsePackageList.test_prefix_removals -v
+# Run tests with coverage report
+python -m pytest test/ --cov=find_package --cov-report=html
+
+# Run tests in parallel (if pytest-xdist is installed)
+python -m pytest test/ -n auto
 ```
 
 ## Test Structure
 
-- `test_parse_package_list.py`: Main test file containing all test cases
+- `test_parse_package_list.py`: Main test file with 8 unit tests
+- `test_integration.py`: Integration test with real-world data (191 packages)
+- `requirements-test.txt`: Test dependencies (pytest and optional plugins)
 - `__init__.py`: Makes the test directory a Python package
 - `README.md`: This documentation file
 
@@ -77,7 +96,7 @@ python -m unittest test_parse_package_list.TestParsePackageList.test_prefix_remo
 
 When adding new transformation rules to `find_package.py`, make sure to:
 
-1. Add corresponding test cases to `test_parse_package_list.py`
+1. Add corresponding test functions to `test_parse_package_list.py`
 2. Include both the input and expected output
 3. Test edge cases and variations
 4. Run the full test suite to ensure nothing is broken
@@ -86,16 +105,28 @@ When adding new transformation rules to `find_package.py`, make sure to:
 
 All tests should pass with output similar to:
 ```
-test_empty_input ... ok
-test_exact_package_mappings ... ok
-test_lowercase_packages ... ok
-test_mixed_transformations ... ok
-test_no_transformation_needed ... ok
-test_pattern_based_transformations ... ok
-test_prefix_removals ... ok
-test_whitespace_handling ... ok
+=============================== test session starts ================================
+platform linux -- Python 3.11.x, pytest-7.x.x, py-1.x.x, pluggy-1.x.x
+collected 9 items
 
-----------------------------------------------------------------------
-Ran 8 tests in 0.000s
+test/test_integration.py::test_real_world_sample_data PASSED          [ 11%]
+test/test_parse_package_list.py::test_prefix_removals PASSED          [ 22%]
+test/test_parse_package_list.py::test_exact_package_mappings PASSED   [ 33%]
+test/test_parse_package_list.py::test_lowercase_packages PASSED       [ 44%]
+test/test_parse_package_list.py::test_pattern_based_transformations PASSED [ 55%]
+test/test_parse_package_list.py::test_no_transformation_needed PASSED [ 66%]
+test/test_parse_package_list.py::test_mixed_transformations PASSED    [ 77%]
+test/test_parse_package_list.py::test_empty_input PASSED              [ 88%]
+test/test_parse_package_list.py::test_whitespace_handling PASSED      [100%]
 
-OK 
+=============================== 9 passed in 0.05s ================================
+```
+
+## Continuous Integration
+
+The repository includes a GitHub Actions workflow (`.github/workflows/test-find-package.yml`) that automatically runs the test suite when:
+- `find_package.py` is modified
+- Files in the `test/` directory are changed  
+- The workflow file itself is modified
+
+The workflow tests against Python 3.11 and 3.12 and uses pytest for test execution. 
