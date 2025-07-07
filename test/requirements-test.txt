@@ -1,0 +1,4 @@
+# Test dependencies for find_package.py test suite
+pytest>=7.0.0
+pytest-cov>=4.0.0  # For test coverage reports (optional)
+pytest-xdist>=3.0.0  # For parallel test execution (optional) 
