@@ -5,7 +5,7 @@
 %global pypi_name boto3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.39.1
+Version:        1.39.3
 Release:        1%{?dist}
 Summary:        The AWS SDK for Python
 
@@ -18,7 +18,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 Requires:       python%{python3_pkgversion}-botocore >= %{version}
-Requires:       python%{python3_pkgversion}-botocore < 1.39.0
+Requires:       python%{python3_pkgversion}-botocore < 1.40.0
 Requires:       python%{python3_pkgversion}-jmespath < 2.0.0
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
 Requires:       python%{python3_pkgversion}-s3transfer < 0.14.0
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.39.3-1
+- Update to 1.39.3
+
 * Wed Jul 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.39.1-1
 - Update to 1.39.1
 
