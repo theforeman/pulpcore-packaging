@@ -5,8 +5,8 @@
 %global pypi_name asgiref
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.8.1
-Release:        2%{?dist}
+Version:        3.9.1
+Release:        1%{?dist}
 Summary:        ASGI specs, helper code, and adapters
 
 License:        BSD
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.9.1-1
+- Update to 3.9.1
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.8.1-2
 - Rebuil against python3.12
 
