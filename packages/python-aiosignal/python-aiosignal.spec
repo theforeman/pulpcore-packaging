@@ -5,8 +5,8 @@
 %global pypi_name aiosignal
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.3.2
-Release:        2%{?dist}
+Version:        1.4.0
+Release:        1%{?dist}
 Summary:        aiosignal: a list of registered asynchronous callbacks
 
 License:        Apache 2.0
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.4.0-1
+- Update to 1.4.0
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.3.2-2
 - Rebuild against python3.12
 
