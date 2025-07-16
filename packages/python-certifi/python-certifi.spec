@@ -5,14 +5,14 @@
 %global pypi_name certifi
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2025.4.26
+Version:        2025.7.14
 Release:        1%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPL-2.0
 URL:            https://github.com/certifi/python-certifi
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         certifi-2024.08.30-use-system-cert.patch
+Patch0:         certifi-2025.07.14-use-system-cert.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -44,12 +44,27 @@ set -ex
 %install
 set -ex
 %pyproject_install
+%pyproject_save_files certifi
+
+	
+%check
+set -ex
+# sanity check
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+test $(%{__python3} -m certifi) == /etc/pki/tls/certs/ca-bundle.crt
+test $(%{__python3} -c 'import certifi; print(certifi.where())') == /etc/pki/tls/certs/ca-bundle.crt
+%{__python3} -c 'import certifi; print(certifi.contents())' > contents
+diff --ignore-blank-lines /etc/pki/tls/certs/ca-bundle.crt contents
+
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Jul 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.7.14-1
+- Update to 2025.7.14
+
 * Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.4.26-1
 - Update to 2025.4.26
 
