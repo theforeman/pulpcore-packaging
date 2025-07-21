@@ -138,7 +138,6 @@ tier4_packages:
     ansible-lint: {}
     createrepo_c: {}
     libcomps: {}
-    libsolv: {}
     postgresql-debversion: {}
     postgresql-evr: {}
     python-aiodns: {}
