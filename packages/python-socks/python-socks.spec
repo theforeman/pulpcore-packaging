@@ -6,8 +6,8 @@
 %global srcname socks
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        2.7.1
-Release:        2%{?dist}
+Version:        2.7.2
+Release:        1%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
 License:        Apache 2
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Fri Aug 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.7.2-1
+- Update to 2.7.2
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 2.7.1-2
 - Rebuild against python3.12
 
