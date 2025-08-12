@@ -22,7 +22,7 @@ jobs:
     container:
       image: quay.io/centos/centos:stream9
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: rpm/develop
       - name: Install dnf-plugins-core
@@ -65,7 +65,7 @@ jobs:
       matrix: 
        include: ${{ fromJson(needs.generate_package_list.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: rpm/develop
       - name: Install dependencies
