@@ -21,7 +21,7 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'dependabot')
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
     - name: Install dependencies
@@ -68,7 +68,7 @@ jobs:
     container:
       image: quay.io/centos/centos:stream9
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Install dnf-plugins-core
       run: dnf install 'dnf-command(config-manager)' -y && dnf config-manager --set-enabled crb
