@@ -3,9 +3,7 @@
 %define repo_dir %{_sysconfdir}/yum.repos.d
 %define repo_dist %{dist}
 
-%global prereleasesource nightly
-%global prerelease %{?prereleasesource:.}%{?prereleasesource}
-%global release 2
+%global release 1
 
 Name:           pulpcore-release
 Version:        3.73
@@ -66,6 +64,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Tue Sep 9 2025 Evgeni Golov - 3.73-1
+- Release 3.73
+
 * Thu Jun 19 2025 Eric D. Helms <ericdhelms@gmail.com> - 3.73-0.2.nightly
 - Bump release to rebuild
 
