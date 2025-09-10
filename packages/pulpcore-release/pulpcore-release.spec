@@ -1,9 +1,9 @@
-%global pulpcore_version nightly
+%global pulpcore_version 3.73
 
 %define repo_dir %{_sysconfdir}/yum.repos.d
 %define repo_dist %{dist}
 
-%global release 1
+%global release 2
 
 Name:           pulpcore-release
 Version:        3.73
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Wed Sep 10 2025 Evgeni Golov - 3.73-2
+- Correct release macro to use 3.73
+
 * Tue Sep 9 2025 Evgeni Golov - 3.73-1
 - Release 3.73
 
