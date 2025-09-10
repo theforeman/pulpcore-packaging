@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.73.14
-Release:        2%{?dist}
+Version:        3.73.15
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -30,7 +30,7 @@ Requires:       python%{python3_pkgversion}-aiodns >= 3.0.0
 Requires:       python%{python3_pkgversion}-aiodns <= 3.2.0
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 24.2.0
-Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.4
+Requires:       python%{python3_pkgversion}-aiohttp >= 3.9.0
 Requires:       python%{python3_pkgversion}-aiohttp < 3.12
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Conflicts:      python%{python3_pkgversion}-asyncio-throttle >= 1.1
@@ -101,7 +101,7 @@ Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
 Requires:       python%{python3_pkgversion}-uuid6 <= 2024.7.10
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       python%{python3_pkgversion}-whitenoise < 6.10
-Requires:       python%{python3_pkgversion}-yarl >= 1.8
+Requires:       python%{python3_pkgversion}-yarl >= 1.9.1
 Requires:       python%{python3_pkgversion}-yarl < 1.18.4
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -165,6 +165,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 10 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.73.15-1
+- Update to 3.73.15
+
 * Mon Jul 14 2025 Evgeni Golov - 3.73.14-2
 - drop libexec wrappers, nobody uses them anymore
 
