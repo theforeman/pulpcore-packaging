@@ -35,8 +35,8 @@
 %bcond_with doc
 
 Name:           libcomps
-Version:        0.1.21
-Release:        3%{?dist}
+Version:        0.1.23
+Release:        1%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -292,6 +292,9 @@ popd
 %endif
 
 %changelog
+* Thu Sep 11 2025 Odilon Sousa <osousa@redhat.com> - 0.1.23-1
+- Release libcomps 0.1.23
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 0.1.21-3
 - Add obsoletes for python3.11 package
 
