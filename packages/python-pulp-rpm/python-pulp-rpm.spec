@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.29.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -56,6 +56,7 @@ rm -rf %{src_name}.egg-info
 
 # remove "solv" dependency from setup.py as python3-solv does not provide an egg
 sed -i "/solv/d" pyproject.toml
+sed -i "/libcomps/d" pyproject.toml
 
 %build
 set -ex
@@ -73,6 +74,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 16 2025 Odilon Sousa <osousa@redhat.com> - 3.29.7-2
+- Fix libcomps requirement
+
 * Tue Sep 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.29.7-1
 - Update to 3.29.7
 
