@@ -3,19 +3,23 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name async-lru
+%global src_name async_lru
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.0.4
-Release:        2%{?dist}
+Version:        2.0.5
+Release:        1%{?dist}
 Summary:        Simple lru_cache for asyncio
 
 License:        MIT
 URL:            https://github.com/aio-libs/async_lru
-Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -24,29 +28,31 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+%autosetup -n %{src_name}-%{version}
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/async_lru
-%{python3_sitelib}/async_lru-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/async_lru-%{version}.dist-info
 
 
 %changelog
+* Sun Sep 21 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.0.5-1
+- Update to 2.0.5
+- Migrate to pyproject_wheel build macros
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 2.0.4-2
 - Rebuild against python3.12
 
