@@ -5,8 +5,8 @@
 %global pypi_name wrapt
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.17.2
-Release:        2%{?dist}
+Version:        1.17.3
+Release:        1%{?dist}
 Summary:        Module for decorators, wrappers and monkey patching
 
 License:        BSD
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Sun Sep 21 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.17.3-1
+- Update to 1.17.3
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.17.2-2
 - Rebuild against python3.12
 
