@@ -5,8 +5,8 @@
 %global pypi_name galaxy-importer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.19
-Release:        5%{?dist}
+Version:        0.4.33
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -80,6 +80,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.33-1
+- Update to 0.4.33
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.4.19-5
 - Add obsoletes for python3.11 package
 
