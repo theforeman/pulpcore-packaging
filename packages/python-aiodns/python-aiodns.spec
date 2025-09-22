@@ -5,8 +5,8 @@
 %global pypi_name aiodns
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.0
-Release:        2%{?dist}
+Version:        3.5.0
+Release:        1%{?dist}
 Summary:        Simple DNS resolver for asyncio
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.0-1
+- Update to 3.5.0
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.2.0-2
 - Rebuild against python3.12
 
