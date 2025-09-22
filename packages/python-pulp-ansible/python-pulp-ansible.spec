@@ -7,7 +7,7 @@
 %global src_name pulp_ansible
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.24.7
+Version:        0.28.0
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -25,20 +25,20 @@ BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
 Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
-Requires:       python%{python3_pkgversion}-PyYAML >= 5.4.1
+Requires:       python%{python3_pkgversion}-PyYAML >= 6.0.2
 Requires:       python%{python3_pkgversion}-PyYAML < 7.0
 Requires:       python%{python3_pkgversion}-async-lru >= 1.0
 Conflicts:      python%{python3_pkgversion}-async-lru >= 2.1
 Requires:       python%{python3_pkgversion}-galaxy-importer >= 0.4.5
 Conflicts:      python%{python3_pkgversion}-galaxy-importer >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.9
-Requires:       python%{python3_pkgversion}-jsonschema < 4.24
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
-Requires:       python%{python3_pkgversion}-pulpcore < 3.85
+Requires:       python%{python3_pkgversion}-jsonschema < 4.26
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.85
+Requires:       python%{python3_pkgversion}-pulpcore < 3.100
 Requires:       python%{python3_pkgversion}-semantic-version >= 2.9
 Conflicts:      python%{python3_pkgversion}-semantic-version >= 2.11
 Requires:       python%{python3_pkgversion}-pillow >= 10.3
-Requires:       python%{python3_pkgversion}-pillow < 11.2
+Requires:       python%{python3_pkgversion}-pillow < 11.4
 
 Provides:       pulpcore-plugin(ansible) = %{version}
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.28.0-1
+- Update to 0.28.0
+
 * Wed Jul 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.24.7-1
 - Update to 0.24.7
 
