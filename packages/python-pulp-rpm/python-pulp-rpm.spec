@@ -6,8 +6,8 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.29.7
-Release:        2%{?dist}
+Version:        3.32.0
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -31,8 +31,8 @@ Requires:       python%{python3_pkgversion}-libcomps >= 0.1.23
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
-Requires:       python%{python3_pkgversion}-pulpcore < 3.85
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.73
+Requires:       python%{python3_pkgversion}-pulpcore < 3.100
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.85
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
 Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.32.0-1
+- Update to 3.32.0
+
 * Tue Sep 16 2025 Odilon Sousa <osousa@redhat.com> - 3.29.7-2
 - Fix libcomps requirement
 
