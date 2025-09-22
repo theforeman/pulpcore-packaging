@@ -6,8 +6,8 @@
 %global src_name pulp_container
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.24.2
-Release:        2%{?dist}
+Version:        2.26.1
+Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -21,8 +21,8 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-pulpcore < 3.85
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.68.2
+Requires:       python%{python3_pkgversion}-pulpcore < 3.100
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.75
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.4
 Conflicts:      python%{python3_pkgversion}-pyjwt >= 2.11
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.26.1-1
+- Update to 2.26.1
+
 * Wed Apr 30 2025 Odilon Sousa <osousa@redhat.com> - 2.24.2-2
 - Update requirement for pyjwt
 
