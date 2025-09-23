@@ -194,6 +194,7 @@
       <packagereq type="default">python3.12-msrest</packagereq>
       <packagereq type="default">python3.12-multidict</packagereq>
       <packagereq type="default">python3.12-naya</packagereq>
+      <packagereq type="default">python3.12-nh3</packagereq>
       <packagereq type="default">python3.12-oauthlib</packagereq>
       <packagereq type="default">python3.12-odfpy</packagereq>
       <packagereq type="default">python3.12-openpyxl</packagereq>
