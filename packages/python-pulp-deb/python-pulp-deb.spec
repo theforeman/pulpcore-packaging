@@ -6,7 +6,7 @@
 %global src_name pulp_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.5.2
+Version:        3.5.3
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -62,6 +62,9 @@ set -ex
 %{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
+* Thu Sep 25 2025 ianballou <ianballou67@gmail.com> - 3.5.3-1
+- Update to 3.5.3
+
 * Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.2-1
 - Update to 3.5.2
 
