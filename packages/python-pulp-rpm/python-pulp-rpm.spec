@@ -5,7 +5,7 @@
 %global pypi_name pulp-rpm
 
 Name:           python-%{pypi_name}
-Version:        3.27.2
+Version:        3.27.8
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -85,6 +85,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 30 2025 Ian Ballou <ianballou67@gmail.com> - 3.27.8-1
+- Update to 3.27.8
+
 * Thu Oct 24 2024 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.2-1
 - Update to 3.27.2
 
