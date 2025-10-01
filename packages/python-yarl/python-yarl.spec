@@ -1,13 +1,15 @@
 %global python3_pkgversion 3.12
 %global __python3 /usr/bin/python3.12
+%define debug_package %{nil}
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name yarl
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.15.2
-Release:        2%{?dist}
+Version:        1.20.1
+Release:        1%{?dist}
 Summary:        Yet another URL library
+BuildArch:      noarch
 
 License:        Apache 2
 URL:            https://github.com/aio-libs/yarl/
@@ -39,6 +41,7 @@ set -ex
 
 %build
 set -ex
+export YARL_NO_EXTENSIONS=1
 %pyproject_wheel
 
 
@@ -47,11 +50,14 @@ set -ex
 %pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%{python3_sitearch}/%{pypi_name}
-%{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
+%{python3_sitelib}/%{pypi_name}
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Oct 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.20.1-1
+- Update to 1.20.1
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.15.2-2
 - Rebuild against python3.12
 
