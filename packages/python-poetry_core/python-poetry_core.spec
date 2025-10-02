@@ -3,8 +3,8 @@
 %global pypi_name poetry_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.9.0
-Release:        2%{?dist}
+Version:        2.2.1
+Release:        1%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -47,6 +47,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Oct 02 2025 Odilon Sousa <osousa@redhat.com> - 2.2.1-1
+- Release python-poetry_core 2.2.1
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 1.9.0-2
 - Rebuild against python3.12
 
