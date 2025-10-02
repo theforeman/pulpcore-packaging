@@ -105,15 +105,34 @@ def parse_package_list(lines):
             yield {'package_name': name, 'new_version': version}
 
 def find_packages(pkg, new_version):
+    # Create reverse mapping to find the original package name for directory lookup
+    reverse_mappings = {
+        'poetry-core': 'poetry_core',
+        'poetry-plugin-export': 'poetry_plugin_export',
+        'galaxy-importer': 'galaxy_importer',
+        'psycopg_c': 'psycopg-c',
+        'importlib-resources': 'importlib_resources',
+        'ruamel-yaml': 'ruamel.yaml',
+        'ruamel-yaml-clib': 'ruamel.yaml.clib',
+        'jaraco-classes': 'jaraco.classes',
+        'et-xmlfile': 'et_xmlfile',
+        'aiohttp-socks': 'aiohttp_socks',
+        'pyasn1-modules': 'pyasn1_modules',
+        'pydantic-core': 'pydantic_core',
+    }
+    
+    # Use original package name for directory lookup if it exists in reverse mapping
+    dir_pkg_name = reverse_mappings.get(pkg, pkg)
+    
     # Set paths and file names
-    spec_file = f"packages/python-{pkg}/python-{pkg}.spec"
+    spec_file = f"packages/python-{dir_pkg_name}/python-{dir_pkg_name}.spec"
 
     # Retrieve the current RPM version from the spec file
     try:
         rpm_version_cmd = ["rpmspec", "-q", "--queryformat=%{version}", spec_file, "--srpm"]
         rpm_version = subprocess.check_output(rpm_version_cmd).decode().strip()
     except subprocess.CalledProcessError:
-        print(f"Spec file not found for package {pkg}")
+        print(f"Spec file not found for package {pkg} (looked for {spec_file})")
         return
 
     # Compare versions using rpmdev-vercmp
