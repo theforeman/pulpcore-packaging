@@ -1,0 +1,41 @@
+From 3da22295eedaf8a5d89a4f1e5c6dfbeddd7963b8 Mon Sep 17 00:00:00 2001
+From: Odilon Sousa <osousa@redhat.com>
+Date: Thu, 2 Oct 2025 11:04:47 -0300
+Subject: [PATCH] Revert pyproject.toml: fix warnings change
+
+---
+ pyproject.toml | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d39f8b7f..362be34b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -7,7 +7,7 @@ name = "dulwich"
+ description = "Python Git Library"
+ readme = "README.rst"
+ authors = [{name = "Jelmer Vernooij", email = "jelmer@jelmer.uk"}]
+-license = "Apache-2.0 OR GPL-2.0-or-later"
++license = {text = "Apachev2 or later or GPLv2"}
+ keywords = ["vcs", "git"]
+ classifiers = [
+     "Development Status :: 4 - Beta",
+@@ -28,7 +28,6 @@ dependencies = [
+     'typing_extensions >=4.0 ; python_version < "3.12"',
+ ]
+ dynamic = ["version"]
+-license-files = ["COPYING"]
+ 
+ [project.urls]
+ Homepage = "https://www.dulwich.io/"
+@@ -114,6 +113,8 @@ script-files = [
+     "bin/dul-upload-pack",
+ ]
+ 
++license-files = ["COPYING"]
++
+ [tool.setuptools.dynamic]
+ version = {attr = "dulwich.__version__"}
+ 
+-- 
+2.50.0
