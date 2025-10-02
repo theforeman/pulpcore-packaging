@@ -3,8 +3,8 @@
 %global pypi_name keyring
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        24.3.1
-Release:        4%{?dist}
+Version:        25.6.0
+Release:        1%{?dist}
 Summary:        Store and access your passwords safely.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 25.6.0-1
+- Update to 25.6.0
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 24.3.1-4
 - Add obsoletes for python3.11 package
 
