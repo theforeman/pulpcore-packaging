@@ -5,8 +5,8 @@
 %global pypi_name aiohappyeyeballs
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.4.4
-Release:        2%{?dist}
+Version:        2.6.1
+Release:        1%{?dist}
 Summary:        This library exists to allow connecting with Happy Eyeballs (RFC 8305) when you already have a list of addrinfo and not a DNS name.
 
 License:        Python Software Foundation License 2.0
@@ -44,6 +44,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.6.1-1
+- Update to 2.6.1
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 2.4.4-2
 - Rebuild against python3.12
 
