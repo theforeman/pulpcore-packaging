@@ -4,8 +4,8 @@
 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        20.25.3
-Release:        3%{?dist}
+Version:        20.34.0
+Release:        1%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -57,6 +57,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 20.34.0-1
+- Update to 20.34.0
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 20.25.3-3
 - Add obsoletes for python3.11 package
 
