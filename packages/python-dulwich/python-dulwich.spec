@@ -7,13 +7,15 @@
 %global pypi_name dulwich
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.21.7
-Release:        3%{?dist}
+Version:        0.24.2
+Release:        1%{?dist}
 Summary:        Python Git Library
 
 License:        Apachev2 or later or GPLv2
 URL:            None
 Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+### Older versions of setuptools can't handle new LICENSE files structure
+Patch0:         0001-Revert-pyproject.toml-fix-warnings-change.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -35,7 +37,8 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
+
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -59,6 +62,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.24.2-1
+- Update to 0.24.2
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.21.7-3
 - Add obsoletes for python3.11 package
 
