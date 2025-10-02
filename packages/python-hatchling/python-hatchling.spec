@@ -3,8 +3,8 @@
 %global pypi_name hatchling 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.21.1
-Release:        2%{?dist}
+Version:        1.27.0
+Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -19,7 +19,7 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  python%{python3_pkgversion}-pathspec >= 0.10.1
 BuildRequires:  python%{python3_pkgversion}-pluggy >= 1.0.0
-BuildRequires:  python%{python3_pkgversion}-packaging >= 21.3
+BuildRequires:  python%{python3_pkgversion}-packaging >= 24.2
 BuildRequires:  python%{python3_pkgversion}-trove-classifiers
 BuildRequires:  pyproject-rpm-macros
 
@@ -27,7 +27,7 @@ BuildRequires:  pyproject-rpm-macros
 Requires:       python%{python3_pkgversion}-editables >= 0.3
 Requires:       python%{python3_pkgversion}-pathspec >= 0.10.1
 Requires:       python%{python3_pkgversion}-pluggy >= 1.0.0
-Requires:       python%{python3_pkgversion}-packaging >= 21.3
+Requires:       python%{python3_pkgversion}-packaging >= 24.2
 Requires:       python%{python3_pkgversion}-trove-classifiers
 Requires:       pyproject-rpm-macros
 
@@ -56,6 +56,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.27.0-1
+- Update to 1.27.0
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.21.1-2
 - Rebuild against python3.12
 
