@@ -5,7 +5,7 @@
 %define pulpcore_pkg python%{pulpcore_python}-pulpcore
 
 Name:           pulpcore-selinux
-Version:        2.1.0
+Version:        2.2.0
 Release:        1%{?dist}
 Summary:        SELinux policy for Pulp 3
 
@@ -85,6 +85,9 @@ fi
 
 
 %changelog
+* Wed Oct 08 2025 Evgeni Golov - 2.2.0-1
+- Release pulpcore-selinux 2.2.0
+
 * Wed Jun 25 2025 Evgeni Golov - 2.1.0-1
 - Release pulpcore-selinux 2.1.0
 
