@@ -35,13 +35,15 @@
 %bcond_with doc
 
 Name:           libcomps
-Version:        0.1.21
-Release:        1%{?dist}
+Version:        0.1.23
+Release:        0.1%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/libcomps
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+# Fix CMake CMP0148 policy compatibility with CMake < 3.27
+Patch0:         libcomps-cmake-cmp0148-fix.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
@@ -50,6 +52,8 @@ BuildRequires:  libxml2-devel
 BuildRequires:  check-devel
 BuildRequires:  expat-devel
 BuildRequires:  zlib-devel
+BuildRequires:  python3-sphinx
+BuildRequires:  doxygen
 
 %description
 Libcomps is library for structure-like manipulation with content of
@@ -289,6 +293,9 @@ popd
 %endif
 
 %changelog
+* Fri Oct 17 2025 Odilon Sousa <osousa@redhat.com> - 0.1.23-0.1
+- Release libcomps 0.1.23
+
 * Wed Jul 03 2024 Odilon Sousa <osousa@redhat.com> - 0.1.21-1
 - Release libcomps 0.1.21
 
