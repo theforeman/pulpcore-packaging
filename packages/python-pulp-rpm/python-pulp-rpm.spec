@@ -3,6 +3,7 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-rpm
+%global src_name pulp_rpm
 
 Name:           python-%{pypi_name}
 Version:        3.27.8
@@ -11,7 +12,7 @@ Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
 URL:            http://www.pulpproject.org
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -31,12 +32,12 @@ Requires:       libmodulemd2 >= 2.12
 Requires:       libmodulemd >= 2.12
 %endif
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
-Requires:       python%{python3_pkgversion}-createrepo_c >= 1.1.0
-Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.2.0
+Requires:       python%{python3_pkgversion}-createrepo_c >= 1.2.1
+Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.3
 Requires:       python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
 Conflicts:      python%{python3_pkgversion}-jsonschema >= 5.0
-Requires:       python%{python3_pkgversion}-libcomps >= 0.1.21
+Requires:       python%{python3_pkgversion}-libcomps >= 0.1.23
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
@@ -59,9 +60,9 @@ Obsoletes:      python39-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 # remove "solv" dependency from setup.py as python3-solv does not provide an egg
 sed -i "/solv/d" requirements.txt
