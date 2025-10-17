@@ -45,8 +45,8 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        1.1.3
-Release:        1%{?dist}
+Version:        1.2.1
+Release:        0.1%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -270,6 +270,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Fri Oct 17 2025 Odilon Sousa <osousa@redhat.com> - 1.2.1-0.1
+- Release createrepo_c 1.2.1
+
 * Wed Jul 03 2024 Odilon Sousa <osousa@redhat.com> - 1.1.3-1
 - Release createrepo_c 1.1.3
 
