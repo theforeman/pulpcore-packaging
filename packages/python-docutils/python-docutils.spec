@@ -5,8 +5,8 @@
 %global pypi_name docutils
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.21.2
-Release:        3%{?dist}
+Version:        0.22.2
+Release:        1%{?dist}
 Summary:        Docutils -- Python Documentation Utilities
 
 License:        Public Domain and BSD and Python and GPLv3+
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.22.2-1
+- Update to 0.22.2
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.21.2-3
 - Add obsoletes for python3.11 package
 
