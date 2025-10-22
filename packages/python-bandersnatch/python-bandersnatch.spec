@@ -5,7 +5,7 @@
 %global pypi_name bandersnatch
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.3.0
+Version:        6.5.0
 Release:        1%{?dist}
 Summary:        Mirroring tool that implements the client (mirror) side of PEP 381
 
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.5.0-1
+- Update to 6.5.0
+
 * Fri Apr 11 2025 Odilon Sousa <osousa@redhat.com> - 6.3.0-1
 - Release python-bandersnatch 6.3.0
 
