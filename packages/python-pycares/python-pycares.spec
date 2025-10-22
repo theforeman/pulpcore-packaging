@@ -5,7 +5,7 @@
 %global pypi_name pycares
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.10.0
+Version:        4.11.0
 Release:        1%{?dist}
 Summary:        Python interface for c-ares
 
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.11.0-1
+- Update to 4.11.0
+
 * Wed Aug 06 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.10.0-1
 - Update to 4.10.0
 
