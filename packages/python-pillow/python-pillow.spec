@@ -6,7 +6,7 @@
 %global srcname pillow
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        11.1.0
+Version:        11.3.0
 Release:        1%{?dist}
 Summary:        Python Imaging Library (Fork)
 
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitearch}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 11.3.0-1
+- Update to 11.3.0
+
 * Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 11.1.0-1
 - Update to 11.1.0
 
