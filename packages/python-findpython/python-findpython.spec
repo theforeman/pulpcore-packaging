@@ -8,8 +8,8 @@
 %global pypi_name findpython
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.6.3
-Release:        2%{?dist}
+Version:        0.7.0
+Release:        1%{?dist}
 Summary:        A utility to find python versions on your system
 BuildArch:      noarch
 
@@ -51,6 +51,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.7.0-1
+- Update to 0.7.0
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 0.6.3-2
 - Rebuild against python3.12
 
