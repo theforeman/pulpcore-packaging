@@ -3,7 +3,7 @@
 %global pypi_name opentelemetry_proto
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.30.0
+Version:        1.36.0
 Release:        1%{?dist}
 Summary:        OpenTelemetry Python Proto.
 
@@ -49,6 +49,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.36.0-1
+- Update to 1.36.0
+
 * Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.30.0-1
 - Update to 1.30.0
 
