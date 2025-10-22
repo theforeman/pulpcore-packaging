@@ -6,7 +6,7 @@
 %global src_name pypi_simple
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.6.1
+Version:        1.8.0
 Release:        1%{?dist}
 Summary:        PyPI Simple Repository API client library
 
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.0-1
+- Update to 1.8.0
+
 * Wed Apr 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.6.1-1
 - Update to 1.6.1
 
