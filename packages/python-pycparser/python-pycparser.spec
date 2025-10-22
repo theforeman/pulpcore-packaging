@@ -5,8 +5,8 @@
 %global pypi_name pycparser
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.22
-Release:        2%{?dist}
+Version:        2.23
+Release:        1%{?dist}
 Summary:        C parser in Python
 
 License:        BSD
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.23-1
+- Update to 2.23
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 2.22-2
 - Rebuild against python3.12
 
