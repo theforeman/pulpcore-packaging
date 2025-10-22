@@ -5,7 +5,7 @@
 %global pypi_name dynaconf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.11
+Version:        3.2.12
 Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.12-1
+- Update to 3.2.12
+
 * Wed May 07 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.11-1
 - Update to 3.2.11
 
