@@ -5,8 +5,8 @@
 %global pypi_name idna
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.10
-Release:        2%{?dist}
+Version:        3.11
+Release:        1%{?dist}
 Summary:        Internationalized Domain Names in Applications (IDNA)
 
 License:        BSD-3-Clause
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.11-1
+- Update to 3.11
+
 * Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 3.10-2
 - Rebuild against python3.12
 
