@@ -3,8 +3,8 @@
 %global pypi_name distlib
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.3.9
-Release:        2%{?dist}
+Version:        0.4.0
+Release:        1%{?dist}
 Summary:        Distlib is a library which implements low-level functions that relate to packaging and distribution of Python software.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.0-1
+- Update to 0.4.0
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 0.3.9-2
 - Rebuild against python3.12
 
