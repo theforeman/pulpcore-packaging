@@ -6,8 +6,8 @@
 %global srcname markuppy
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.14
-Release:        8%{?dist}
+Version:        1.18
+Release:        1%{?dist}
 Summary:        An HTML/XML generator
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.18-1
+- Update to 1.18
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.14-8
 - Rebuild against python 3.12
 
