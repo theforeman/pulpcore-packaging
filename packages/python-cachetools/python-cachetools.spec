@@ -5,8 +5,8 @@
 %global pypi_name cachetools
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        5.5.2
-Release:        2%{?dist}
+Version:        6.2.1
+Release:        1%{?dist}
 Summary:        Extensible memoizing collections and decorators
 
 License:        MIT
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.2.1-1
+- Update to 6.2.1
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 5.5.2-2
 - Rebuild against python3.12
 
