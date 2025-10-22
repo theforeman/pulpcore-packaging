@@ -5,7 +5,7 @@
 %global pypi_name asgiref
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.9.1
+Version:        3.10.0
 Release:        1%{?dist}
 Summary:        ASGI specs, helper code, and adapters
 
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.0-1
+- Update to 3.10.0
+
 * Wed Jul 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.9.1-1
 - Update to 3.9.1
 
