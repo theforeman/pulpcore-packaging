@@ -3,7 +3,7 @@
 %global pypi_name opentelemetry_exporter_otlp_proto_http
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.30.0
+Version:        1.36.0
 Release:        1%{?dist}
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.36.0-1
+- Update to 1.36.0
+
 * Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.30.0-1
 - Update to 1.30.0
 
