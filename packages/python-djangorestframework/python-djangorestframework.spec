@@ -5,8 +5,8 @@
 %global pypi_name djangorestframework
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.15.2
-Release:        3%{?dist}
+Version:        3.16.1
+Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.16.1-1
+- Update to 3.16.1
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 3.15.2-3
 - Add obsoletes for python3.11 package
 
