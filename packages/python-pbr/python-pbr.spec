@@ -5,8 +5,8 @@
 %global pypi_name pbr
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.1.1
-Release:        3%{?dist}
+Version:        7.0.1
+Release:        1%{?dist}
 Summary:        Python Build Reasonableness
 
 License:        None
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 7.0.1-1
+- Update to 7.0.1
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 6.1.1-3
 - Add obsoletes for python3.11 package
 
