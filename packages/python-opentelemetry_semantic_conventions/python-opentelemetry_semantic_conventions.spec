@@ -3,7 +3,7 @@
 %global pypi_name opentelemetry_semantic_conventions
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.51b0
+Version:        0.57b0
 Release:        1%{?dist}
 Summary:        OpenTelemetry Semantic Conventions
 
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.57b0-1
+- Update to 0.57b0
+
 * Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.51b0-1
 - Update to 0.51b0
 
