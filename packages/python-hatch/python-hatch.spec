@@ -4,7 +4,7 @@
 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.14.2
+Version:        1.15.1
 Release:        1%{?dist}
 Summary:        Modern, extensible Python project management
 
@@ -68,6 +68,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.15.1-1
+- Update to 1.15.1
+
 * Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.14.2-1
 - Update to 1.14.2
 
