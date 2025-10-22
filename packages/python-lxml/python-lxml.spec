@@ -5,7 +5,7 @@
 %global pypi_name lxml
 
 Name:           python-%{pypi_name}
-Version:        6.0.0
+Version:        6.0.2
 Release:        1%{?dist}
 Summary:        Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.2-1
+- Update to 6.0.2
+
 * Sun Jun 29 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.0-1
 - Update to 6.0.0
 
