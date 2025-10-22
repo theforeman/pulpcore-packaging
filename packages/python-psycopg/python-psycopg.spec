@@ -5,7 +5,7 @@
 %global pypi_name psycopg
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.10
+Version:        3.2.11
 Release:        1%{?dist}
 Summary:        PostgreSQL database adapter for Python
 
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.11-1
+- Update to 3.2.11
+
 * Sun Sep 14 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.10-1
 - Update to 3.2.10
 
