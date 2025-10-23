@@ -7,7 +7,7 @@
 
 Name:           python-%{pypi_name}
 Version:        3.27.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -66,6 +66,7 @@ rm -rf %{src_name}.egg-info
 
 # remove "solv" dependency from setup.py as python3-solv does not provide an egg
 sed -i "/solv/d" requirements.txt
+sed -i "/libcomps/d" requirements.txt
 
 
 %build
@@ -86,6 +87,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 23 2025 Odilon Sousa <osousa@redhat.com> - 3.27.8-2
+- Relax libcomps requirement for rich dependency
+
 * Tue Sep 30 2025 Ian Ballou <ianballou67@gmail.com> - 3.27.8-1
 - Update to 3.27.8
 
