@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.85.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -24,8 +24,6 @@ BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-django >= 4.2.0
 Conflicts:      python%{python3_pkgversion}-django >= 4.3.0
-Requires:       python%{python3_pkgversion}-PyYAML < 6.0.3
-Requires:       python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       python%{python3_pkgversion}-aiodns >= 3.3.0
 Requires:       python%{python3_pkgversion}-aiodns < 3.6
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
@@ -92,6 +90,8 @@ Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0
 Requires:       python%{python3_pkgversion}-pyparsing < 3.3
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
 Requires:       python%{python3_pkgversion}-pyyaml < 6.1
+Requires:       python%{python3_pkgversion}-PyYAML < 6.1
+Requires:       python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       python%{python3_pkgversion}-redis >= 4.3
 Requires:       python%{python3_pkgversion}-redis < 6.5
 Requires:       python%{python3_pkgversion}-tablib < 3.6.0
@@ -165,6 +165,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 28 2025 Odilon Sousa <osousa@redhat.com> - 3.85.1-2
+- Allow newer version of PyYAML
+
 * Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.1-1
 - Update to 3.85.1
 
