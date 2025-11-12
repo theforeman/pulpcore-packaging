@@ -1,9 +1,9 @@
-%global pulpcore_version 3.83
+%global pulpcore_version 3.85
 
 %define repo_dir %{_sysconfdir}/yum.repos.d
 %define repo_dist %{dist}
 
-%global release 1
+%global release 2
 
 Name:           pulpcore-release
 Version:        3.85
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Wed Nov 12 2025 Odilon Sousa <osousa@redhat.com> - 3.85-2
+- Fix version typo on the release
+
 * Wed Nov 12 2025 Odilon Sousa <osousa@redhat.com> - 3.85-1
 - Release pulpcore-release 3.85.0
 
