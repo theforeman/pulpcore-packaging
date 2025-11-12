@@ -1,10 +1,8 @@
-%global pulpcore_version nightly
+%global pulpcore_version 3.83
 
 %define repo_dir %{_sysconfdir}/yum.repos.d
 %define repo_dist %{dist}
 
-%global prereleasesource nightly
-%global prerelease %{?prereleasesource:.}%{?prereleasesource}
 %global release 1
 
 Name:           pulpcore-release
@@ -66,6 +64,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Wed Nov 12 2025 Odilon Sousa <osousa@redhat.com> - 3.85-1
+- Release pulpcore-release 3.85.0
+
 * Wed Oct 08 2025 Odilon Sousa <osousa@redhat.com> - 3.85-0.1.nightly
 - Release pulpcore-release 3.85
 
