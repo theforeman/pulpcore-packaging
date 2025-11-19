@@ -5,7 +5,7 @@
 %global pypi_name cachetools
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.2.1
+Version:        6.2.2
 Release:        1%{?dist}
 Summary:        Extensible memoizing collections and decorators
 
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.2.2-1
+- Update to 6.2.2
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.2.1-1
 - Update to 6.2.1
 
