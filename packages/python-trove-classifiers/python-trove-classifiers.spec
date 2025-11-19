@@ -6,7 +6,7 @@
 %global src_name trove_classifiers
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2025.9.11.17
+Version:        2025.11.14.15
 Release:        1%{?dist}
 Summary:        Canonical source for classifiers on PyPI (pypi.org)
 License:        None
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.11.14.15-1
+- Update to 2025.11.14.15
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2025.9.11.17-1
 - Update to 2025.9.11.17
 
