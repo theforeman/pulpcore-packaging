@@ -5,8 +5,8 @@
 %global pypi_name google-resumable-media
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.7.2
-Release:        2%{?dist}
+Version:        2.8.0
+Release:        1%{?dist}
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 
 License:        Apache 2.0
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.8.0-1
+- Update to 2.8.0
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 2.7.2-2
 - Rebuild against python3.12
 
