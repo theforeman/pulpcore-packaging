@@ -6,8 +6,8 @@
 %global pkg_name json_stream
 
 Name:           python%{python3_pkgversion}-%{pkg_name}
-Version:        2.3.3
-Release:        2%{?dist}
+Version:        2.3.4
+Release:        1%{?dist}
 Summary:        Streaming JSON encoder and decoder
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pkg_name}/
 
 %changelog
+* Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.4-1
+- Update to 2.3.4
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 2.3.3-2
 - Rebuild against python3.12
 
