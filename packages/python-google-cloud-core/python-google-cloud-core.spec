@@ -6,7 +6,7 @@
 %global src_name google_cloud_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.4.3
+Version:        2.5.0
 Release:        1%{?dist}
 Summary:        Google Cloud API client core library
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.0-1
+- Update to 2.5.0
+
 * Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.3-1
 - Update to 2.4.3
 
