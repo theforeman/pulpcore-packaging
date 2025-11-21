@@ -20,7 +20,7 @@ jobs:
     container:
       image: quay.io/centos/centos:stream9
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install dnf-plugins-core
         run: dnf install 'dnf-command(config-manager)' -y && dnf config-manager --set-enabled crb
       - name: Install Required Packages
