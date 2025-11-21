@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.85.1
-Release:        2%{?dist}
+Version:        3.85.3
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -165,6 +165,9 @@ set -ex
 
 
 %changelog
+* Fri Nov 21 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.3-1
+- Update to 3.85.3
+
 * Tue Oct 28 2025 Odilon Sousa <osousa@redhat.com> - 3.85.1-2
 - Allow newer version of PyYAML
 
