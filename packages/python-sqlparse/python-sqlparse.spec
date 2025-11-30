@@ -5,8 +5,8 @@
 %global pypi_name sqlparse
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.5.3
-Release:        3%{?dist}
+Version:        0.5.4
+Release:        1%{?dist}
 Summary:        A non-validating SQL parser
 
 License:        BSD-3-Clause
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Sun Nov 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.4-1
+- Update to 0.5.4
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 0.5.3-3
 - Add obsoletes for python3.11 package
 
