@@ -5,7 +5,7 @@
 %global pypi_name docutils
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.22.3
+Version:        0.22.4
 Release:        1%{?dist}
 Summary:        Docutils -- Python Documentation Utilities
 
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Sun Jan 18 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.22.4-1
+- Update to 0.22.4
+
 * Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.22.3-1
 - Update to 0.22.3
 
