@@ -3,7 +3,7 @@
 %global pypi_name tomlkit
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.13.3
+Version:        0.14.0
 Release:        1%{?dist}
 Summary:        Style preserving TOML library
 
@@ -44,6 +44,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Jan 18 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.14.0-1
+- Update to 0.14.0
+
 * Sun Jun 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.13.3-1
 - Update to 0.13.3
 
