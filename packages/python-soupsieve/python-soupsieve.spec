@@ -5,7 +5,7 @@
 %global pypi_name soupsieve
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.7
+Version:        2.8.1
 Release:        1%{?dist}
 Summary:        A modern CSS selector implementation for Beautiful Soup
 
@@ -44,6 +44,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Jan 18 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.8.1-1
+- Update to 2.8.1
+
 * Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.7-1
 - Update to 2.7
 
