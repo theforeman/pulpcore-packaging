@@ -5,7 +5,7 @@
 %global pypi_name typing-extensions
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.14.1
+Version:        4.15.0
 Release:        1%{?dist}
 Summary:        Backported and Experimental Type Hints for Python 3
 
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Sun Jan 18 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.15.0-1
+- Update to 4.15.0
+
 * Sun Jul 13 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.14.1-1
 - Update to 4.14.1
 
