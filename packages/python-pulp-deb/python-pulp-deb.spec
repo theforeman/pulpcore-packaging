@@ -6,8 +6,8 @@
 %global src_name pulp_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.7.0
-Release:        2%{?dist}
+Version:        3.8.0
+Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -62,6 +62,9 @@ set -ex
 %{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
+* Tue Jan 20 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.8.0-1
+- Update to 3.8.0
+
 * Tue Sep 23 2025 Odilon Sousa <osousa@redhat.com> - 3.7.0-2
 - Allow newer pulpcore
 
