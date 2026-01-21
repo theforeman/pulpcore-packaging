@@ -5,7 +5,7 @@
 %global pypi_name aiodns
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.5.0
+Version:        3.6.1
 Release:        1%{?dist}
 Summary:        Simple DNS resolver for asyncio
 
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jan 21 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.6.1-1
+- Update to 3.6.1
+
 * Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.0-1
 - Update to 3.5.0
 
