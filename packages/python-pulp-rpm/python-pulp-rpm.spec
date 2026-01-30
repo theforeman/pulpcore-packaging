@@ -6,7 +6,7 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.32.5
+Version:        3.32.6
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Fri Jan 30 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.32.6-1
+- Update to 3.32.6
+
 * Thu Oct 16 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.32.5-1
 - Update to 3.32.5
 
