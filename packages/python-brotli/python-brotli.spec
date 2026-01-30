@@ -6,13 +6,13 @@
 %global srcname brotli
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.0.9
-Release:        7%{?dist}
+Version:        1.2.0
+Release:        1%{?dist}
 Summary:        Python bindings for the Brotli compression library
 
 License:        MIT
 URL:            https://github.com/google/brotli
-Source0:        https://files.pythonhosted.org/packages/source/B/%{pypi_name}/%{pypi_name}-%{version}.zip
+Source0:        https://files.pythonhosted.org/packages/source/b/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -25,9 +25,9 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{srcname}.egg-info
 
 
 %build
@@ -46,10 +46,13 @@ set -ex
 %{python3_sitearch}/__pycache__/brotli.*
 %{python3_sitearch}/brotli.py
 %{python3_sitearch}/_brotli.*
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{srcname}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Fri Jan 30 2026 Odilon Sousa <osousa@redhat.com> - 1.2.0-1
+- Release python-brotli 1.2.0
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.0.9-7
 - Rebuild against python3.12
 
