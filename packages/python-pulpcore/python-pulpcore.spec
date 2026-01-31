@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.85.7
-Release:        2%{?dist}
+Version:        3.85.9
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -29,7 +29,7 @@ Requires:       python%{python3_pkgversion}-aiodns < 3.7
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 24.2.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.3
-Requires:       python%{python3_pkgversion}-aiohttp < 3.13
+Requires:       python%{python3_pkgversion}-aiohttp < 3.14
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Requires:       python%{python3_pkgversion}-asyncio-throttle < 1.0.3
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
@@ -165,6 +165,9 @@ set -ex
 
 
 %changelog
+* Sat Jan 31 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.9-1
+- Update to 3.85.9
+
 * Wed Jan 28 2026 Odilon Sousa <osousa@redhat.com> - 3.85.7-2
 - Update aiodns requirement
 
