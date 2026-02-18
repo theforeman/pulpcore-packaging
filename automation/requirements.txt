@@ -1,5 +1,5 @@
 pulpcore==3.63.11
-pulp-container==2.22.1
+pulp-container==2.22.3
 pulp-deb==3.5.1
 pulp-rpm==3.27.8
 pulp-ansible==0.22.4
