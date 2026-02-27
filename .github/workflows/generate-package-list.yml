@@ -43,13 +43,13 @@ jobs:
         id: set-matrix
         run: ./build_matrix_all.py < $PULPCORE_PACKAGES_TO_UPDATE
       - name: 'Upload Full List Of Packages'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: full-package-list.txt
           path: pulpcore-requirements.txt
           retention-days: 14
       - name: 'Upload List of Packages to update'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: packages-to-update.txt
           path: packages-to-update.txt
