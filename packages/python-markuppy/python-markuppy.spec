@@ -6,13 +6,13 @@
 %global srcname markuppy
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.14
-Release:        8%{?dist}
+Version:        1.18
+Release:        1%{?dist}
 Summary:        An HTML/XML generator
 
 License:        MIT
 URL:            https://github.com/tylerbakke/MarkupPy
-Source0:        https://files.pythonhosted.org/packages/source/M/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/M/%{pypi_name}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -27,7 +27,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -48,6 +48,10 @@ set -ex
 
 
 %changelog
+* Sun Mar 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.18-1
+- Update to 1.18
+- Fix Source0: tarball filename uses lowercase (markuppy) since 1.18
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.14-8
 - Rebuild against python 3.12
 
