@@ -6,13 +6,13 @@
 %global src_name pulpcore_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.85.1
+Version:        3.85.12
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
 URL:            https://pulpproject.org
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -33,7 +33,7 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{src_name}.egg-info
 
@@ -53,6 +53,10 @@ set -ex
 
 
 %changelog
+* Mon Mar 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.12-1
+- Update to 3.85.12
+- Fix Source0: tarball uses underscores (pulpcore_client) since 3.85.x
+
 * Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.1-1
 - Update to 3.85.1
 
