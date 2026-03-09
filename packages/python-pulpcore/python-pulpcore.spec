@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.85.9
+Version:        3.85.12
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -23,7 +23,9 @@ BuildRequires:  pyproject-rpm-macros
 
 
 Requires:       python%{python3_pkgversion}-django >= 4.2.0
-Conflicts:      python%{python3_pkgversion}-django >= 4.3.0
+Conflicts:      python%{python3_pkgversion}-django == 5.0
+Conflicts:      python%{python3_pkgversion}-django == 5.1
+Requires:       python%{python3_pkgversion}-django < 5.3
 Requires:       python%{python3_pkgversion}-aiodns >= 3.3.0
 Requires:       python%{python3_pkgversion}-aiodns < 3.7
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
@@ -43,7 +45,7 @@ Requires:       python%{python3_pkgversion}-django-filter <= 25.1
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
 Requires:       python%{python3_pkgversion}-django-guid < 3.6
 Requires:       python%{python3_pkgversion}-django-import-export >= 2.9
-Requires:       python%{python3_pkgversion}-django-import-export < 3.4.0
+Requires:       python%{python3_pkgversion}-django-import-export < 5.0
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
 Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.2.4
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
@@ -94,7 +96,8 @@ Requires:       python%{python3_pkgversion}-PyYAML < 6.1
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       python%{python3_pkgversion}-redis >= 4.3
 Requires:       python%{python3_pkgversion}-redis < 6.5
-Requires:       python%{python3_pkgversion}-tablib < 3.6.0
+Requires:       python%{python3_pkgversion}-tablib < 4.0
+Conflicts:      python%{python3_pkgversion}-tablib == 3.6
 Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
 Requires:       python%{python3_pkgversion}-url-normalize < 2.3
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
@@ -165,6 +168,9 @@ set -ex
 
 
 %changelog
+* Mon Mar 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.12-1
+- Update to 3.85.12
+
 * Sat Jan 31 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.9-1
 - Update to 3.85.9
 
