@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.85.12
+Version:        3.85.13
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -168,6 +168,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.13-1
+- Update to 3.85.13
+
 * Mon Mar 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.12-1
 - Update to 3.85.12
 
