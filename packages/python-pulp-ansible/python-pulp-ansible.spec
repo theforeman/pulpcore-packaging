@@ -7,7 +7,7 @@
 %global src_name pulp_ansible
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.28.1
+Version:        0.28.5
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -38,7 +38,7 @@ Requires:       python%{python3_pkgversion}-pulpcore < 3.100
 Requires:       python%{python3_pkgversion}-semantic-version >= 2.9
 Conflicts:      python%{python3_pkgversion}-semantic-version >= 2.11
 Requires:       python%{python3_pkgversion}-pillow >= 10.3
-Requires:       python%{python3_pkgversion}-pillow < 11.4
+Requires:       python%{python3_pkgversion}-pillow < 13
 
 Provides:       pulpcore-plugin(ansible) = %{version}
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.28.5-1
+- Update to 0.28.5
+
 * Mon Jan 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.28.1-1
 - Update to 0.28.1
 
