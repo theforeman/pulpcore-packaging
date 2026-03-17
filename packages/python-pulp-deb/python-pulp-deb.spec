@@ -6,7 +6,7 @@
 %global src_name pulp_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.8.0
+Version:        3.8.1
 Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
@@ -23,8 +23,8 @@ BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-debian < 0.2.0
 Requires:       python%{python3_pkgversion}-debian >= 0.1.44
-Requires:       python%{python3_pkgversion}-pulpcore < 3.100
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.75
+Requires:       python%{python3_pkgversion}-pulpcore < 3.115
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.85
 Requires:       python%{python3_pkgversion}-gnupg < 0.6
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5
 Requires:       python%{python3_pkgversion}-jsonschema < 5.0
@@ -62,6 +62,9 @@ set -ex
 %{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
+* Tue Mar 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.8.1-1
+- Update to 3.8.1
+
 * Tue Jan 20 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.8.0-1
 - Update to 3.8.0
 
