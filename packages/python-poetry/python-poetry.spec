@@ -3,7 +3,7 @@
 %global pypi_name poetry
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.2.1
+Version:        2.3.2
 Release:        1%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
@@ -20,15 +20,15 @@ BuildRequires:  python%{python3_pkgversion}-poetry_core >= 2.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       python%{python3_pkgversion}-poetry_core ==  %{version}
+Requires:       python%{python3_pkgversion}-poetry_core == 2.3.1
 Requires:       python%{python3_pkgversion}-build >= 1.2.1
 Requires:       python%{python3_pkgversion}-build < 2.0.0
 Requires:       python%{python3_pkgversion}-cachecontrol >= 0.14.0
 Requires:       python%{python3_pkgversion}-cachecontrol < 0.15.0
 Requires:       python%{python3_pkgversion}-cleo >= 2.1.0
 Requires:       python%{python3_pkgversion}-cleo < 3.0.0
-Requires:       python%{python3_pkgversion}-dulwich >= 0.24.0
-Requires:       python%{python3_pkgversion}-dulwich < 0.25.0
+Requires:       python%{python3_pkgversion}-dulwich >= 0.25.0
+Requires:       python%{python3_pkgversion}-dulwich < 2
 Requires:       python%{python3_pkgversion}-fastjsonschema >= 2.18.0
 Requires:       python%{python3_pkgversion}-fastjsonschema < 3.0.0
 Requires:       python%{python3_pkgversion}-installer >= 0.7.0
@@ -54,8 +54,7 @@ Requires:       python%{python3_pkgversion}-trove-classifiers >= 2022.5.19
 Requires:       python%{python3_pkgversion}-virtualenv >= 20.26.6
 Requires:       python%{python3_pkgversion}-findpython >= 0.6.2
 Requires:       python%{python3_pkgversion}-findpython < 0.8.0
-Requires:       python%{python3_pkgversion}-pbs_installer >= 2025.1.6
-Requires:       python%{python3_pkgversion}-pbs_installer < 2026.0.0
+Requires:       python%{python3_pkgversion}-pbs_installer >= 2025.6.10
 
 %description
 %{summary}
@@ -81,6 +80,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Mar 18 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.2-1
+- Update to 2.3.2
+
 * Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.2.1-1
 - Update to 2.2.1
 
