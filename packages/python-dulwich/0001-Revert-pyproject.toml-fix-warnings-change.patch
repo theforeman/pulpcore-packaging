@@ -1,16 +1,23 @@
-From 3da22295eedaf8a5d89a4f1e5c6dfbeddd7963b8 Mon Sep 17 00:00:00 2001
+From d4c5ac1d4b685db8178d0bb1795a8b3059055bcd Mon Sep 17 00:00:00 2001
 From: Odilon Sousa <osousa@redhat.com>
-Date: Thu, 2 Oct 2025 11:04:47 -0300
-Subject: [PATCH] Revert pyproject.toml: fix warnings change
+Date: Fri, 20 Mar 2026 16:51:23 -0300
+Subject: [PATCH] Revert pyproject.toml changes to build on downstream EL9
 
 ---
- pyproject.toml | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ pyproject.toml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index d39f8b7f..362be34b 100644
+index a7e81c22..931f19dc 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools>=77.0.0"]
++requires = ["setuptools>=61.2"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
 @@ -7,7 +7,7 @@ name = "dulwich"
  description = "Python Git Library"
  readme = "README.rst"
@@ -19,23 +26,22 @@ index d39f8b7f..362be34b 100644
 +license = {text = "Apachev2 or later or GPLv2"}
  keywords = ["vcs", "git"]
  classifiers = [
-     "Development Status :: 4 - Beta",
+     "Development Status :: 5 - Production/Stable",
 @@ -28,7 +28,6 @@ dependencies = [
-     'typing_extensions >=4.0 ; python_version < "3.12"',
+     'typing_extensions >=4.6.0 ; python_version < "3.12"',
  ]
  dynamic = ["version"]
 -license-files = ["COPYING"]
  
  [project.urls]
  Homepage = "https://www.dulwich.io/"
-@@ -114,6 +113,8 @@ script-files = [
+@@ -122,6 +121,7 @@ script-files = [
+     "bin/dul-receive-pack",
      "bin/dul-upload-pack",
  ]
- 
 +license-files = ["COPYING"]
-+
+ 
  [tool.setuptools.dynamic]
  version = {attr = "dulwich.__version__"}
- 
 -- 
-2.50.0
+2.53.0
