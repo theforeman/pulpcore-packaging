@@ -7,8 +7,8 @@
 %global src_name django_import_export
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.3.9
-Release:        3%{?dist}
+Version:        4.4.0
+Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -17,7 +17,11 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{src_name}/%{s
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-setuptools-scm
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-django >= 3.2
 Requires:       python%{python3_pkgversion}-diff-match-patch
@@ -41,22 +45,26 @@ rm -rf %{src_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/import_export
-%{python3_sitelib}/django_import_export-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/django_import_export-%{version}.dist-info/
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.4.0-1
+- Update to 4.4.0
+- Switch to pyproject build (setup.py removed upstream)
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 3.3.9-3
 - Add obsoletes for python3.11 package
 
