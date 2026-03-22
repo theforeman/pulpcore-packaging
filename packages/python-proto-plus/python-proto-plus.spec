@@ -6,7 +6,7 @@
 %global src_name proto_plus
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.27.0
+Version:        1.27.1
 Release:        1%{?dist}
 Summary:        Beautiful, Pythonic protocol buffers.
 
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.27.1-1
+- Update to 1.27.1
+
 * Wed Jan 21 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.27.0-1
 - Update to 1.27.0
 
