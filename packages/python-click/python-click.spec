@@ -5,8 +5,8 @@
 %global pypi_name click
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        8.1.7
-Release:        2%{?dist}
+Version:        8.1.8
+Release:        1%{?dist}
 Summary:        Composable command line interface toolkit
 
 License:        BSD-3-Clause
@@ -15,7 +15,10 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-flit-core
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -33,22 +36,26 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE.rst docs/license.rst
-%doc README.rst
+%license LICENSE.txt docs/license.rst
+%doc README.md
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.1.8-1
+- Update to 8.1.8
+- Switch to pyproject build (setup.py removed upstream, uses flit-core)
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 8.1.7-2
 - Rebuild against python3.12
 
