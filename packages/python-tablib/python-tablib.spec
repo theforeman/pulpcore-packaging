@@ -5,8 +5,8 @@
 %global pypi_name tablib
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.5.0
-Release:        2%{?dist}
+Version:        3.9.0
+Release:        1%{?dist}
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 
 License:        MIT
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.9.0-1
+- Update to 3.9.0
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.5.0-2
 - Rebuild python-tablib against python3.12
 
