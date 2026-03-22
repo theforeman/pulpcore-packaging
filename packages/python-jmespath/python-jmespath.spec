@@ -5,8 +5,8 @@
 %global pypi_name jmespath
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.0.1
-Release:        3%{?dist}
+Version:        1.1.0
+Release:        1%{?dist}
 Summary:        JSON Matching Expressions
 
 License:        MIT
@@ -43,7 +43,7 @@ set -ex
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE.txt
+%license LICENSE
 %doc README.rst
 %{_bindir}/jp.py
 %{python3_sitelib}/%{pypi_name}
@@ -51,6 +51,10 @@ set -ex
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.0-1
+- Update to 1.1.0
+- Fix license filename (LICENSE.txt -> LICENSE)
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 1.0.1-3
 - Add obsoletes for python3.11 package
 
