@@ -5,7 +5,7 @@
 %global pypi_name bindep
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.13.0
+Version:        2.14.0
 Release:        1%{?dist}
 Summary:        Binary dependency utility
 
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.14.0-1
+- Update to 2.14.0
+
 * Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.0-1
 - Update to 2.13.0
 
