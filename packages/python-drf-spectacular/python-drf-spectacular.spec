@@ -3,19 +3,23 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name drf-spectacular
+%global src_name drf_spectacular
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.27.2
-Release:        3%{?dist}
+Version:        0.29.0
+Release:        1%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
 URL:            https://github.com/tfranzel/drf-spectacular
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{src_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-django >= 2.2
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.1
@@ -34,29 +38,36 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
+# Convert PEP 639 SPDX license string to table format for RHEL9 pip compatibility
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE docs/license.rst
 %doc README.rst docs/readme.rst
 %{python3_sitelib}/drf_spectacular
-%{python3_sitelib}/drf_spectacular-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/drf_spectacular-%{version}.dist-info/
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.29.0-1
+- Update to 0.29.0
+- Fix Source0 tarball name (drf_spectacular underscore)
+- Switch to pyproject build; patch pyproject.toml for RHEL9 pip compatibility
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.27.2-3
 - Add obsoletes for python3.11 package
 
