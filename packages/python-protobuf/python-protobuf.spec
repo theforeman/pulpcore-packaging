@@ -5,7 +5,7 @@
 %global pypi_name protobuf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        5.29.5
+Version:        5.29.6
 Release:        1%{?dist}
 Summary:        Protocol Buffers
 
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 5.29.6-1
+- Update to 5.29.6
+
 * Sun Jun 08 2025 Foreman Packaging Automation <packaging@theforeman.org> - 5.29.5-1
 - Update to 5.29.5
 
