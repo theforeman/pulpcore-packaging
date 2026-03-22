@@ -6,7 +6,7 @@
 %global srcname django
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        4.2.29
+Version:        5.2.12
 Release:        1%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
@@ -40,6 +40,9 @@ Obsoletes:      python3.11-%{srcname} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -p1 -n %{srcname}-%{version}
+# Convert PEP 639 SPDX license string to table format for RHEL9 pip compatibility
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -67,6 +70,10 @@ set -ex
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 5.2.12-1
+- Update to 5.2.12
+- Refresh setuptools patch for django 5.2.12 pyproject.toml format
+
 * Sun Mar 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.29-1
 - Update to 4.2.29
 
