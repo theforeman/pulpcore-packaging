@@ -5,17 +5,20 @@
 %global pypi_name rich
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        13.3.1
-Release:        11%{?dist}
+Version:        14.3.3
+Release:        1%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
-License:        None
+License:        MIT
 URL:            https://github.com/Textualize/rich
 Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-poetry_core
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-markdown-it-py >= 2.1
 Requires:       python%{python3_pkgversion}-markdown-it-py < 3
@@ -37,22 +40,27 @@ set -ex
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 14.3.3-1
+- Update to 14.3.3
+- Switch to pyproject build (setup.py removed upstream, uses poetry-core)
+- Fix PEP 639 license format for RHEL9 pip compatibility
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 13.3.1-11
 - Add obsoletes for python3.11 package
 
