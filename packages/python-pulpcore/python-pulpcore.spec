@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.85.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -56,7 +56,8 @@ Requires:       python%{python3_pkgversion}-drf-access-policy >= 1.1.2
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
 Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
 Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.94.2
-Requires:       python%{python3_pkgversion}-drf-spectacular = 0.27.2
+Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.27.2
+Requires:       python%{python3_pkgversion}-drf-spectacular < 0.30
 Requires:       python%{python3_pkgversion}-dynaconf >= 3.2.5
 Requires:       python%{python3_pkgversion}-dynaconf <= 3.3.0
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
@@ -168,6 +169,9 @@ set -ex
 
 
 %changelog
+* Wed Mar 25 2026 Odilon Sousa <osousa@redhat.com> - 3.85.13-2
+- Relax drf-spectacular constraint to allow 0.27.2 through 0.29.x
+
 * Wed Mar 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.13-1
 - Update to 3.85.13
 
