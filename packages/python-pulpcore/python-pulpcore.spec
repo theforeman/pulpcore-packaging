@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.85.13
-Release:        2%{?dist}
+Version:        3.85.15
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -74,7 +74,7 @@ Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.9.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.28.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.37
-Requires:       python%{python3_pkgversion}-pyOpenSSL < 26.0
+Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
 Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.37
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27
@@ -169,6 +169,10 @@ set -ex
 
 
 %changelog
+* Wed Mar 25 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.15-1
+- Update to 3.85.15
+- Relax PyOpenSSL constraint to < 27.0 (upstream raised ceiling in 3.85.15)
+
 * Wed Mar 25 2026 Odilon Sousa <osousa@redhat.com> - 3.85.13-2
 - Relax drf-spectacular constraint to allow 0.27.2 through 0.29.x
 
