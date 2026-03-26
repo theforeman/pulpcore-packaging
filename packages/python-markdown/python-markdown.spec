@@ -6,8 +6,8 @@
 %global srcname markdown
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.7
-Release:        3%{?dist}
+Version:        3.8.2
+Release:        1%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -32,6 +32,8 @@ Obsoletes:      python3.11-%{srcname} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{srcname}-%{version}
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 
 
 %build
@@ -50,6 +52,10 @@ set -ex
 
 
 %changelog
+* Wed Jul 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.8.2-1
+- Update to 3.8.2
+- Fix PEP 639 license format in pyproject.toml
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 3.7-3
 - Add obsoletes for python3.11 package
 
