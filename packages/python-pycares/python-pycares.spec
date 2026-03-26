@@ -5,7 +5,7 @@
 %global pypi_name pycares
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.11.0
+Version:        5.0.0
 Release:        1%{?dist}
 Summary:        Python interface for c-ares
 
@@ -14,8 +14,13 @@ URL:            http://github.com/saghul/pycares
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-cffi >= 1.5.0
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  gcc
+BuildRequires:  cmake
 
 Requires:       python%{python3_pkgversion}-cffi >= 1.5.0
 Requires:       python%{python3_pkgversion}-idna >= 2.1
@@ -30,28 +35,35 @@ Requires:       python%{python3_pkgversion}-idna >= 2.1
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+# docs/ is not included in the PyPI sdist; drop the cmake subdirectory reference
+sed -i '/ADD_SUBDIRECTORY (docs)/d' deps/c-ares/CMakeLists.txt
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE deps/c-ares/LICENSE.md
 %doc PYPIREADME.rst README.rst deps/c-ares/README.md deps/c-ares/README.msvc deps/c-ares/test/README.md
 %{python3_sitearch}/%{pypi_name}
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Sun Dec 14 2025 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.0-1
+- Update to 5.0.0
+- Migrate to pyproject_wheel; fix PEP 639 license format in pyproject.toml
+- Build against bundled c-ares via cmake; add cmake and gcc BuildRequires
+- Drop docs/ ADD_SUBDIRECTORY from bundled c-ares CMakeLists.txt (not in PyPI sdist)
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.11.0-1
 - Update to 4.11.0
 
