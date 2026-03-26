@@ -175,6 +175,7 @@
       <packagereq type="default">python3.12-json_stream_rs_tokenizer</packagereq>
       <packagereq type="default">python3.12-jsonschema</packagereq>
       <packagereq type="default">python3.12-keyring</packagereq>
+      <packagereq type="default">python3.12-lazy-imports</packagereq>
       <packagereq type="default">python3.12-ldap</packagereq>
       <packagereq type="default">python3.12-libcomps</packagereq>
       <packagereq type="default">python3.12-libcomps</packagereq>
