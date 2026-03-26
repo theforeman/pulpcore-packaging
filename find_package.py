@@ -110,7 +110,6 @@ def find_packages(pkg, new_version):
         'poetry-core': 'poetry_core',
         'poetry-plugin-export': 'poetry_plugin_export',
         'galaxy-importer': 'galaxy_importer',
-        'psycopg_c': 'psycopg-c',
         'importlib-resources': 'importlib_resources',
         'ruamel-yaml': 'ruamel.yaml',
         'ruamel-yaml-clib': 'ruamel.yaml.clib',
