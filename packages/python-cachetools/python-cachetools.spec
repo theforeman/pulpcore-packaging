@@ -5,7 +5,7 @@
 %global pypi_name cachetools
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.2.2
+Version:        6.2.4
 Release:        1%{?dist}
 Summary:        Extensible memoizing collections and decorators
 
@@ -29,6 +29,8 @@ BuildRequires:  pyproject-rpm-macros
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 
 
 %build
@@ -46,6 +48,10 @@ set -ex
 
 
 %changelog
+* Mon Jan 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 6.2.4-1
+- Update to 6.2.4
+- Fix PEP 639 license format in pyproject.toml
+
 * Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.2.2-1
 - Update to 6.2.2
 
