@@ -4,7 +4,7 @@
 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.15.1
+Version:        1.16.5
 Release:        1%{?dist}
 Summary:        Modern, extensible Python project management
 
@@ -16,21 +16,24 @@ Source:         https://files.pythonhosted.org/packages/source/h/%{pypi_name}/%{
 
 BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-hatchling >= 1.26.3
+BuildRequires:  python%{python3_pkgversion}-hatchling >= 1.27.0
 BuildRequires:  python%{python3_pkgversion}-hatch_vcs >= 0.3.0
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-tomli
 
 
+Requires:  python%{python3_pkgversion}-backports-zstd >= 1.0.0
 Requires:  python%{python3_pkgversion}-click >= 8.0.6
-Requires:  python%{python3_pkgversion}-hatchling >= 1.26.3
+Requires:  python%{python3_pkgversion}-discovery >= 1.1
+Requires:  python%{python3_pkgversion}-hatchling >= 1.27.0
 Requires:  python%{python3_pkgversion}-httpx >= 0.22.0
 Requires:  python%{python3_pkgversion}-hyperlink >= 21.0.0
 Requires:  python%{python3_pkgversion}-keyring >= 23.5.0
-Requires:  python%{python3_pkgversion}-packaging >= 23.2
+Requires:  python%{python3_pkgversion}-packaging >= 24.2
 Requires:  python%{python3_pkgversion}-pexpect >= 4.8
 Requires:  python%{python3_pkgversion}-pexpect < 5
 Requires:  python%{python3_pkgversion}-platformdirs >= 2.5.0
+Requires:  python%{python3_pkgversion}-pyproject_hooks
 Requires:  python%{python3_pkgversion}-rich >= 11.2.0
 Requires:  python%{python3_pkgversion}-shellingham >= 1.4.0
 Requires:  python%{python3_pkgversion}-tomli_w >= 1.0
@@ -38,8 +41,7 @@ Requires:  python%{python3_pkgversion}-tomlkit >= 0.11.1
 Requires:  python%{python3_pkgversion}-userpath >= 1.7
 Requires:  python%{python3_pkgversion}-userpath < 2.0
 Requires:  python%{python3_pkgversion}-uv >= 0.5.23
-Requires:  python%{python3_pkgversion}-virtualenv >= 20.26.0
-Requires:  python%{python3_pkgversion}-zstandard < 1
+Requires:  python%{python3_pkgversion}-virtualenv >= 21
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -68,6 +70,13 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sun Mar 29 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.16.5-1
+- Update to 1.16.5
+- Add backports-zstd >= 1.0.0 requirement (replaces zstandard)
+- Add python-discovery >= 1.1 requirement
+- Add pyproject_hooks requirement
+- Update hatchling to >= 1.27.0, packaging to >= 24.2, virtualenv to >= 21
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.15.1-1
 - Update to 1.15.1
 
