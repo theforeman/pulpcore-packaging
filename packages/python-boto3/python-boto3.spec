@@ -5,8 +5,8 @@
 %global pypi_name boto3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.40.30
-Release:        2%{?dist}
+Version:        1.42.78
+Release:        1%{?dist}
 Summary:        The AWS SDK for Python
 
 License:        Apache License 2.0
@@ -18,11 +18,11 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 Requires:       python%{python3_pkgversion}-botocore >= %{version}
-Requires:       python%{python3_pkgversion}-botocore < 1.41.0
+Requires:       python%{python3_pkgversion}-botocore < 1.43.0
 Requires:       python%{python3_pkgversion}-jmespath < 2.0.0
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
-Requires:       python%{python3_pkgversion}-s3transfer < 0.15.0
-Requires:       python%{python3_pkgversion}-s3transfer >= 0.14.0
+Requires:       python%{python3_pkgversion}-s3transfer < 0.17.0
+Requires:       python%{python3_pkgversion}-s3transfer >= 0.16.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -55,6 +55,11 @@ set -ex
 
 
 %changelog
+* Sun Mar 29 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.42.78-1
+- Update to 1.42.78
+- Fix s3transfer requirement: < 0.17.0, >= 0.16.0 (was < 0.15.0, >= 0.14.0)
+- Fix botocore requirement: < 1.43.0 (was < 1.41.0)
+
 * Tue Sep 16 2025 Odilon Sousa <osousa@redhat.com> - 1.40.30-2
 - Fix requirement for s3transfer
 
