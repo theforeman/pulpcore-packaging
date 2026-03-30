@@ -3,22 +3,26 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name drf-nested-routers
+%global src_name drf_nested_routers
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.94.1
-Release:        3%{?dist}
+Version:        0.94.2
+Release:        1%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
 License:        Apache
 URL:            https://github.com/alanjds/drf-nested-routers
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-django >= 3.2
-Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
+Requires:       python%{python3_pkgversion}-django >= 4.2
+Requires:       python%{python3_pkgversion}-djangorestframework >= 3.15.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -30,19 +34,19 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{src_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
@@ -50,10 +54,17 @@ set -ex
 %doc README.md
 %{python3_sitelib}/rest_framework_nested
 %{python3_sitelib}/rest_framework_nested/runtests
-%{python3_sitelib}/drf_nested_routers-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{src_name}-%{version}.dist-info/
 
 
 %changelog
+* Mon Mar 30 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.94.2-1
+- Update to 0.94.2
+- Fix Source0: tarball uses underscores (drf_nested_routers) since 0.94.2
+- Tighten Requires: django >= 4.2, djangorestframework >= 3.15.0 (upstream requirements)
+- Fix %files: use .dist-info instead of .egg-info
+- Switch to pyproject build (setup.py removed in 0.94.2)
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.94.1-3
 - Add obsoletes for python3.11 package
 
