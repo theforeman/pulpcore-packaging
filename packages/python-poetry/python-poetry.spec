@@ -3,7 +3,7 @@
 %global pypi_name poetry
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.3.2
+Version:        2.3.3
 Release:        1%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
@@ -80,6 +80,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Mon Mar 30 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.3-1
+- Update to 2.3.3
+
 * Wed Mar 18 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.2-1
 - Update to 2.3.2
 
