@@ -188,6 +188,7 @@ tier4_packages:
     python-defusedxml: {}
     python-deprecated: {}
     python-diff-match-patch: {}
+    python-discovery: {}
     python-distlib: {}
     python-django: {}
     python-django-auth-ldap: {}

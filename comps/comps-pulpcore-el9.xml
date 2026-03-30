@@ -87,6 +87,7 @@
       <packagereq type="default">python3.12-defusedxml</packagereq>
       <packagereq type="default">python3.12-deprecated</packagereq>
       <packagereq type="default">python3.12-diff-match-patch</packagereq>
+      <packagereq type="default">python3.12-discovery</packagereq>
       <packagereq type="default">python3.12-distlib</packagereq>
       <packagereq type="default">python3.12-distro</packagereq>
       <packagereq type="default">python3.12-django</packagereq>
