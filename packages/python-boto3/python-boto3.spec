@@ -5,7 +5,7 @@
 %global pypi_name boto3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.42.78
+Version:        1.42.79
 Release:        1%{?dist}
 Summary:        The AWS SDK for Python
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Tue Mar 31 2026 Odilon Sousa <osousa@redhat.com> - 1.42.79-1
+- Release python-boto3 1.42.79
+
 * Sun Mar 29 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.42.78-1
 - Update to 1.42.78
 - Fix s3transfer requirement: < 0.17.0, >= 0.16.0 (was < 0.15.0, >= 0.14.0)
