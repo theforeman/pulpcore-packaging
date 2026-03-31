@@ -3,7 +3,7 @@
 %global pypi_name poetry_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.3.1
+Version:        2.3.2
 Release:        1%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
@@ -47,6 +47,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Mar 31 2026 Odilon Sousa <osousa@redhat.com> - 2.3.2-1
+- Release python-poetry_core 2.3.2
+
 * Fri Mar 20 2026 Odilon Sousa <osousa@redhat.com> - 2.3.1-1
 - Release python-poetry_core 2.3.1
 
