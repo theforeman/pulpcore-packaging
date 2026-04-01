@@ -5,18 +5,21 @@
 %global pypi_name uuid6
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2024.7.10
-Release:        2%{?dist}
+Version:        2025.0.1
+Release:        1%{?dist}
 Summary:        New time-based UUID formats which are suited for use as a database key
 
-License:        None
+License:        MIT
 URL:            https://github.com/oittaa/uuid6-python
 Source0:        https://files.pythonhosted.org/packages/source/u/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -28,30 +31,33 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-#replace the Version to use the one provided with the macro %version
-sed -i 's/VERSION = "0.0.0.dev0"/VERSION = "%{version}"/g' setup.py
 
 
 %build
 set -ex
-%py3_build
+SETUPTOOLS_SCM_PRETEND_VERSION=%{version} %pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2025.0.1-1
+- Update to 2025.0.1
+- Switch to pyproject build (setup.py removed upstream); add setuptools-scm
+- Pass SETUPTOOLS_SCM_PRETEND_VERSION to avoid missing git repo in mock
+- Fix License tag: None -> MIT
+- Fix files section: use .dist-info instead of .egg-info
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 2024.7.10-2
 - Rebuild against python3.12
 
