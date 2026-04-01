@@ -5,7 +5,7 @@
 %global pypi_name beautifulsoup4
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.13.4
+Version:        4.14.3
 Release:        1%{?dist}
 Summary:        Screen-scraping library
 
@@ -44,11 +44,14 @@ set -ex
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %{python3_sitelib}/bs4
 %{python3_sitelib}/bs4/builder
-%{python3_sitelib}/bs4/tests
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.14.3-1
+- Update to 4.14.3
+- Drop bs4/tests from %files (no longer installed by upstream since 4.14.x)
+
 * Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.13.4-1
 - Update to 4.13.4
 
