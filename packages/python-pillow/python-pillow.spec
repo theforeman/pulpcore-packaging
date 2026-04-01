@@ -6,7 +6,7 @@
 %global srcname pillow
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        11.1.0
+Version:        12.1.1
 Release:        1%{?dist}
 Summary:        Python Imaging Library (Fork)
 
@@ -18,6 +18,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-pybind11
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
@@ -33,6 +34,9 @@ set -ex
 %autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 
 
 %build
@@ -50,6 +54,9 @@ set -ex
 %{python3_sitearch}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 12.1.1-1
+- Update to 12.1.1
+
 * Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 11.1.0-1
 - Update to 11.1.0
 
