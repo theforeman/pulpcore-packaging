@@ -7,7 +7,7 @@
 %global pypi_name maturin
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.8.6
+Version:        1.12.6
 Release:        1%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
@@ -41,6 +41,9 @@ BuildRequires:  gcc
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/,/^\]/d' pyproject.toml
 %cargo_prep -V 1
 
 
@@ -60,6 +63,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.12.6-1
+- Update to 1.12.6
+- Fix PEP 639 license field in pyproject.toml for RHEL 9 setuptools
+
 * Sun Jun 08 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.6-1
 - Update to 1.8.6
 
