@@ -3,7 +3,7 @@
 %global pypi_name anyio
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.9.0
+Version:        4.13.0
 Release:        1%{?dist}
 Summary:        High level compatibility layer for multiple asynchronous event loop implementations
 
@@ -34,6 +34,8 @@ Requires:       python%{python3_pkgversion}-typing-extensions >= 4.5
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = \"\(.*\)\"/license = {text = \"\1\"}/' pyproject.toml
 # Remove bundled egg-info
 # rm -rf %{pypi_name}.egg-info
 
@@ -53,6 +55,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.13.0-1
+- Update to 4.13.0
+- Fix PEP 639 license field for RHEL 9 pip compatibility
+
 * Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 4.9.0-1
 - Update to 4.9.0
 
