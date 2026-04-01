@@ -5,7 +5,7 @@
 %global pypi_name pydantic
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.11.2
+Version:        2.12.5
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -21,7 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme >= 22.5.0
 
 Requires:  python%{python3_pkgversion}-typing-extensions >= 4.12.2
 Requires:  python%{python3_pkgversion}-annotated-types >= 0.6.0
-Requires:  python%{python3_pkgversion}-pydantic-core == 2.33.1
+Requires:  python%{python3_pkgversion}-pydantic-core == 2.41.5
 Requires:  python%{python3_pkgversion}-typing-inspection >= 0.4.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -49,6 +49,10 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.12.5-1
+- Update to 2.12.5
+- Update pydantic-core requirement to 2.41.5
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 2.11.2-1
 - Release python-pydantic 2.11.2
 
