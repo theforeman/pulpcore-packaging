@@ -6,7 +6,7 @@
 %global pypi_name pyparsing
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.1
+Version:        3.2.5
 Release:        1%{?dist}
 Summary:        Python parsing module
 
@@ -30,6 +30,9 @@ BuildRequires:  pyproject-rpm-macros
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = \"\(.*\)\"/license = {text = \"\1\"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 
 
 %build
@@ -46,6 +49,10 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.5-1
+- Update to 3.2.5
+- Fix PEP 639 license field for RHEL 9 pip compatibility
+
 * Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.1-1
 - Update to 3.2.1
 
