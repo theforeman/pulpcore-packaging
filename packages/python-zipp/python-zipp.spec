@@ -5,8 +5,8 @@
 %global pypi_name zipp
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.21.0
-Release:        2%{?dist}
+Version:        3.23.0
+Release:        1%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
 License:        MIT
@@ -31,6 +31,9 @@ BuildRequires:  pyproject-rpm-macros
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = \"\(.*\)\"/license = {text = \"\1\"}/' pyproject.toml
+sed -i '/"coherent.licensed"/d' pyproject.toml
 
 
 %build
@@ -48,6 +51,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.23.0-1
+- Update to 3.23.0
+- Fix PEP 639 license field for RHEL 9 pip compatibility
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 3.21.0-2
 - Rebuild against python3.12
 
