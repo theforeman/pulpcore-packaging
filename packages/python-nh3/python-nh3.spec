@@ -5,7 +5,7 @@
 %global pypi_name nh3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.3.0
+Version:        0.3.4
 Release:        1%{?dist}
 Summary:        Python binding to Ammonia HTML sanitizer Rust crate
 
@@ -44,6 +44,9 @@ to customize the sanitization.
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 %cargo_prep -V 1
 
 %build
@@ -59,5 +62,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.4-1
+- Update to 0.3.4
+- Fix PEP 639 license field in pyproject.toml for RHEL 9 setuptools
+
 * Tue Sep 23 2025 Odilon Sousa <osousa@redhat.com> - 0.3.0-1
 - Initial package. 
