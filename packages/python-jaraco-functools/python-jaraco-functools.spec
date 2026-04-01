@@ -4,8 +4,8 @@
 %global package_name jaraco-functools
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.1.0
-Release:        2%{?dist}
+Version:        4.4.0
+Release:        1%{?dist}
 Summary:        Additional functools in the spirit of stdlib's functools.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -33,6 +33,9 @@ Requires:       python%{python3_pkgversion}-more-itertools
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = \"\(.*\)\"/license = {text = \"\1\"}/' pyproject.toml
+sed -i '/"coherent.licensed"/d' pyproject.toml
 # Remove bundled egg-info
 # rm -rf %{pypi_name}.egg-info
 
@@ -52,6 +55,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.4.0-1
+- Update to 4.4.0
+- Fix PEP 639 license field for RHEL 9 pip compatibility
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 4.1.0-2
 - Rebuild against python3.12
 
