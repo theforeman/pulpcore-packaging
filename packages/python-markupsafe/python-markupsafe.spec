@@ -6,8 +6,8 @@
 %global srcname markupsafe
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.0.2
-Release:        2%{?dist}
+Version:        3.0.3
+Release:        1%{?dist}
 Summary:        Safely add untrusted strings to HTML/XML markup
 
 License:        BSD-3-Clause
@@ -27,6 +27,9 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %prep
 set -ex
 %autosetup -n %{srcname}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 # Remove bundled egg-info
 rm -rf %{srcname}.egg-info
 
@@ -49,6 +52,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.0.3-1
+- Update to 3.0.3
+- Fix PEP 639 license field incompatibility with RHEL 9 setuptools
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 3.0.2-2
 - Rebuild against python3.12
 
