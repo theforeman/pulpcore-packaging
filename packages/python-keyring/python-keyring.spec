@@ -3,7 +3,7 @@
 %global pypi_name keyring
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        25.6.0
+Version:        25.7.0
 Release:        1%{?dist}
 Summary:        Store and access your passwords safely.
 
@@ -37,6 +37,9 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = \"\(.*\)\"/license = {text = \"\1\"}/' pyproject.toml
+sed -i '/"coherent.licensed"/d' pyproject.toml
 # Remove bundled egg-info
 # rm -rf %{pypi_name}.egg-info
 
@@ -57,6 +60,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 25.7.0-1
+- Update to 25.7.0
+- Fix PEP 639 license field for RHEL 9 pip compatibility
+
 * Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 25.6.0-1
 - Update to 25.6.0
 
