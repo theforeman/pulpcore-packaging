@@ -3,21 +3,25 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name url-normalize
+%global src_name url_normalize
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.4.3
-Release:        9%{?dist}
+Version:        2.2.1
+Release:        1%{?dist}
 Summary:        URL normalization for Python
 
 License:        MIT
 URL:            https://github.com/niksite/url-normalize
-Source0:        https://files.pythonhosted.org/packages/source/u/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/u/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-six
+Requires:       python%{python3_pkgversion}-idna
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -28,27 +32,35 @@ Requires:       python%{python3_pkgversion}-six
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
+%{_bindir}/url-normalize
 %{python3_sitelib}/url_normalize
-%{python3_sitelib}/url_normalize-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{src_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.2.1-1
+- Update to 2.2.1
+- Fix Source0: tarball uses underscores (url_normalize) since 2.x
+- Drop stale Requires: python-six; add Requires: python-idna (new dep in 2.x)
+- Switch to pyproject build (setup.py removed in 2.x)
+- Add url-normalize binary to files section
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.4.3-9
 - Rebuild against python3.12
 
