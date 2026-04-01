@@ -8,7 +8,7 @@
 %global pypi_name cryptography
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        45.0.4
+Version:        46.0.6
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
@@ -21,7 +21,7 @@ Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildConflicts: python%{python3_pkgversion}-cffi = 1.11.3
-BuildRequires:  python%{python3_pkgversion}-cffi >= 1.12
+BuildRequires:  python%{python3_pkgversion}-cffi >= 2.0.0
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-rust >= 1.7.0
 BuildRequires:  python%{python3_pkgversion}-wheel
@@ -33,7 +33,7 @@ BuildRequires:  rust-toolset
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
 
-Requires:       python%{python3_pkgversion}-cffi >= 1.12
+Requires:       python%{python3_pkgversion}-cffi >= 2.0.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -45,6 +45,9 @@ Requires:       python%{python3_pkgversion}-cffi >= 1.12
 %prep
 set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 %cargo_prep -V 1
 
 
@@ -63,6 +66,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 46.0.6-1
+- Update to 46.0.6
+- Fix PEP 639 license field in pyproject.toml for RHEL 9 setuptools
+
 * Tue Jun 10 2025 Odilon Sousa <osousa@redhat.com> - 45.0.4-1
 - Release python-cryptography 45.0.4
 
