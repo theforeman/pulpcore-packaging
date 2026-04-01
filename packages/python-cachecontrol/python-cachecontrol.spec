@@ -6,19 +6,18 @@
 %global srcname cachecontrol
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        0.14.3
+Version:        0.14.4
 Release:        1%{?dist}
 Summary:        httplib2 caching for requests
 
-License:        None
+License:        Apache-2.0
 URL:            https://github.com/ionrock/cachecontrol
 Source0:        https://files.pythonhosted.org/packages/source/c/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  python%{python3_pkgversion}-pip
-BuildRequires:  python%{python3_pkgversion}-flit_core
+BuildRequires:  python%{python3_pkgversion}-uv-build
 
 Requires:       python%{python3_pkgversion}-msgpack >= 0.5.2
 Requires:       python%{python3_pkgversion}-msgpack < 2.0.0
@@ -47,6 +46,12 @@ It contains no code, just makes sure the dependencies are installed.
 %prep
 set -ex
 %autosetup -n %{srcname}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = \"\(.*\)\"/license = {text = \"\1\"}/' pyproject.toml
+sed -i '/^license-files/,/^\]/d' pyproject.toml
+
+%generate_buildrequires
+%pyproject_buildrequires -x filecache
 
 
 %build
@@ -65,6 +70,13 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.14.4-1
+- Update to 0.14.4
+- Fix PEP 639 license field for RHEL 9 pip compatibility
+- Switch build backend from flit_core to uv_build; add python3.12-uv-build BuildRequires
+- Use %%generate_buildrequires / %%pyproject_buildrequires to resolve uv_build deps
+- Fix License tag to Apache-2.0
+
 * Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.14.3-1
 - Update to 0.14.3
 
