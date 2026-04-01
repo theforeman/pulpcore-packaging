@@ -5,7 +5,7 @@
 %global pypi_name msgpack
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.1.1
+Version:        1.1.2
 Release:        1%{?dist}
 Summary:        MessagePack serializer
 
@@ -30,6 +30,8 @@ BuildRequires:  pyproject-rpm-macros
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = \"\(.*\)\"/license = {text = \"\1\"}/' pyproject.toml
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -50,6 +52,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.2-1
+- Update to 1.1.2
+- Fix PEP 639 license field for RHEL 9 pip compatibility
+
 * Fri Jun 13 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.1-1
 - Update to 1.1.1
 
