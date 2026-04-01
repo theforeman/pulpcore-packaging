@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.3.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -20,7 +20,7 @@ BuildRequires:  python%{python3_pkgversion}-poetry_core >= 2.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       python%{python3_pkgversion}-poetry_core == 2.3.1
+Requires:       python%{python3_pkgversion}-poetry_core == 2.3.2
 Requires:       python%{python3_pkgversion}-build >= 1.2.1
 Requires:       python%{python3_pkgversion}-build < 2.0.0
 Requires:       python%{python3_pkgversion}-cachecontrol >= 0.14.0
@@ -80,6 +80,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Apr 01 2026 Odilon Sousa <osousa@redhat.com> - 2.3.3-2
+- Fix poetry_core requirement: 2.3.1 -> 2.3.2
+
 * Mon Mar 30 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.3-1
 - Update to 2.3.3
 
