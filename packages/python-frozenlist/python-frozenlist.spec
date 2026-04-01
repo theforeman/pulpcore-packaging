@@ -5,18 +5,18 @@
 %global pypi_name frozenlist
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.5.0
-Release:        2%{?dist}
+Version:        1.8.0
+Release:        1%{?dist}
 Summary:        A list-like structure which implements collections
 
 License:        Apache 2
 URL:            https://github.com/aio-libs/frozenlist
 Source0:        https://files.pythonhosted.org/packages/source/f/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Patch0:         0001-Downstream-only-Build-normal-wheels-in-place.patch
+BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
-BuildRequires:  python%{python3_pkgversion}-Cython
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-expandvars
 BuildRequires:  python%{python3_pkgversion}-wheel
@@ -32,12 +32,10 @@ BuildRequires:  pyproject-rpm-macros
 set -ex
 %autosetup -n %{pypi_name}-%{version} -p1
 
-# Remove Cython-generated sources; we must ensure they are regenerated.
-find . -type f -name '*.c' -print -delete
-
 
 %build
 set -ex
+export FROZENLIST_NO_EXTENSIONS=1
 %pyproject_wheel
 
 
@@ -49,11 +47,15 @@ set -ex
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
-%{python3_sitearch}/%{pypi_name}
-%{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
+%{python3_sitelib}/%{pypi_name}
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.0-1
+- Update to 1.8.0
+- Build pure Python; frozenlist 1.8.0 requires Cython 3 for C extension
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.5.0-2
 - Rebuild against python3.12
 
