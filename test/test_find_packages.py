@@ -130,7 +130,6 @@ class TestFindPackages(unittest.TestCase):
             'et-xmlfile': 'et_xmlfile',
             'aiohttp-socks': 'aiohttp_socks',
             'pyasn1-modules': 'pyasn1_modules',
-            'pydantic-core': 'pydantic_core',
         }
         
         # Mock the rpmspec command to return a version
@@ -176,6 +175,20 @@ class TestFindPackages(unittest.TestCase):
         
         # Verify the package was written to the update file
         self.assertEqual(written_content, ['poetry-core 1.9.0\n'])
+
+    @patch('subprocess.check_output')
+    @patch('subprocess.run')
+    @patch('builtins.open', new_callable=mock_open)
+    def test_pydantic_core_no_reverse_mapping_needed(self, mock_file, mock_subprocess_run, mock_subprocess_check_output):
+        """Test that pydantic-core uses hyphenated directory path (no reverse mapping)"""
+        mock_subprocess_check_output.return_value = b'2.33.2'
+        mock_subprocess_run.return_value = MagicMock(returncode=0)
+
+        find_packages('pydantic-core', '2.33.2')
+
+        mock_subprocess_check_output.assert_called_with(
+            ["rpmspec", "-q", "--queryformat=%{version}", "packages/python-pydantic-core/python-pydantic-core.spec", "--srpm"]
+        )
 
     @patch('subprocess.check_output')
     @patch('subprocess.run')
