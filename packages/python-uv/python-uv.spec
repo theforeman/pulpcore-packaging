@@ -6,8 +6,8 @@
 %global pypi_name uv
 
 Name:           %{pypi_name}
-Version:        0.6.5
-Release:        2%{?dist}
+Version:        0.9.7
+Release:        1%{?dist}
 Summary:        An extremely fast Python package and project manager, written in Rust.
 
 
@@ -130,13 +130,13 @@ License:        %{shrink:
 URL:            https://github.com/astral-sh/uv
 Source0:        https://files.pythonhosted.org/packages/source/u/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
-# Generated with tar xf uv-0.6.5.tar.gz ;   
-# pushd uv-0.6.5 ;  cargo vendor-filterer --platform=x86_64-unknown-linux-gnu
-# && tar Jcvf ../uv-0.6.5-vendor.tar.xz vendor/ ; popd
+# Generated with tar xf uv-%%{version}.tar.gz ;
+# pushd uv-%%{version} ; cargo vendor-filterer --platform=x86_64-unknown-linux-gnu
+# && tar Jcvf ../uv-%%{version}-vendor.tar.xz vendor/ ; popd
 
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.xz
-Patch:         0001-Path-Cargo.toml-for-build-with-vendored-libs.patch
 
+Patch0:         0001-Patch-Cargo.toml-for-build-with-vendored-libs.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -170,7 +170,7 @@ Requires:       uv = %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -p1 -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version} -p1
 
 %cargo_prep -V 1
 
@@ -193,6 +193,10 @@ set -ex
 
 
 %changelog
+* Thu Apr 02 2026 Odilon Sousa <osousa@redhat.com> - 0.9.7-1
+- Release python-uv 0.9.7 (highest version compatible with rustc 1.88 on RHEL 9)
+- Drop Cargo.toml patch; cargo vendor-filterer now handles git deps via vendor tarball
+
 * Fri May 30 2025 Odilon Sousa <osousa@redhat.com>  - 0.6.5-2
 - Add uv metapackage
 
