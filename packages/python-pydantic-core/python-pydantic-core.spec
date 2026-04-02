@@ -9,7 +9,7 @@
 %global srcname pydantic_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.33.2
+Version:        2.41.5
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -18,8 +18,8 @@ URL:            https://github.com/pydantic/pydantic/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 Source1:        https://downloads.theforeman.org/vendor/%{srcname}-%{version}-vendor.tar.gz
 ## vendor rust content generated
-## tar xf pydantic_core-2.33.1.tar.gz ; pushd pydantic_core-2.33.1 ;  
-## cargo vendor-filterer --all-features --platform=x86_64-unknown-linux-gnu && 
+## tar xf pydantic_core-2.33.1.tar.gz ; pushd pydantic_core-2.33.1 ;
+## cargo vendor-filterer --all-features --platform=x86_64-unknown-linux-gnu &&
 ## tar Jcvf ../pydantic_core-2.33.1-vendor.tar.xz vendor/ ; popd
 
 
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 02 2026 Odilon Sousa <osousa@redhat.com> - 2.41.5-1
+- Release python-pydantic-core 2.41.5
+
 * Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.33.2-1
 - Update to 2.33.2
 - Fix PEP 639 license field in pyproject.toml for RHEL 9 setuptools

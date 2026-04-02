@@ -117,7 +117,6 @@ def find_packages(pkg, new_version):
         'et-xmlfile': 'et_xmlfile',
         'aiohttp-socks': 'aiohttp_socks',
         'pyasn1-modules': 'pyasn1_modules',
-        'pydantic-core': 'pydantic_core',
     }
     
     # Use original package name for directory lookup if it exists in reverse mapping
