@@ -5,17 +5,17 @@
 %global pypi_name pycairo
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.20.1
-Release:        8%{?dist}
+Version:        1.29.0
+Release:        1%{?dist}
 Summary:        Python interface for cairo
 
 License:        LGPL-2.1-only OR MPL-1.1
 URL:            https://pycairo.readthedocs.io
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
+BuildRequires:  gcc
+BuildRequires:  meson
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
-
 BuildRequires:  cairo-devel
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -37,33 +37,37 @@ libraries so that they interoperate with py3cairo.
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%meson -Dpython=%{__python3}
+%meson_build
 
 
 %install
 set -ex
-%py3_install
+%meson_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license COPYING-LGPL-2.1 COPYING-MPL-1.1
 %doc README.rst
 %{python3_sitearch}/cairo
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{pypi_name}*.dist-info/
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}-devel
+%dir %{_includedir}/pycairo
+%{_includedir}/pycairo/py3cairo.h
 %{_libdir}/pkgconfig/py3cairo.pc
-%{_includedir}/pycairo
 
 
 %changelog
+* Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.29.0-1
+- Update to 1.29.0
+- Switch to meson build (setup.py removed in 1.29.0)
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 1.20.1-8
 - Rebuild against python3.12
 
