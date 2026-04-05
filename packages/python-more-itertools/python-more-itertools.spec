@@ -1,17 +1,18 @@
 %global python3_pkgversion 3.12
 %global __python3 /usr/bin/python3.12
 %global pypi_name more-itertools
+%global src_name more_itertools
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        10.6.0
-Release:        2%{?dist}
+Version:        11.0.1
+Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
 # https://docs.fedoraproject.org/en-US/packaging-guidelines/LicensingGuidelines/
 License:        MIT
 URL:            https://github.com/pypa/hatch/tree/master/backend
-Source:         https://files.pythonhosted.org/packages/source/m/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/%{pypi_name}/%{src_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -27,7 +28,7 @@ BuildRequires:  pyproject-rpm-macros
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{src_name}-%{version}
 
 
 %build
@@ -44,6 +45,10 @@ set -ex
 %{python3_sitelib}/more_itertools-%{version}.dist-info/
 
 %changelog
+* Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 11.0.1-1
+- Update to 11.0.1
+- Fix Source: tarball uses underscores (more_itertools) since 10.x
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 10.6.0-2
 - Rebuild against python3.12
 
