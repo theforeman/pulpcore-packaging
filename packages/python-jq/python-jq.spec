@@ -8,8 +8,8 @@
 %global pypi_name jq
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.8.0
-Release:        2%{?dist}
+Version:        1.10.0
+Release:        1%{?dist}
 Summary:        jq is a lightweight and flexible JSON processor
 
 License:        BSD 2-Clause
@@ -17,6 +17,7 @@ URL:            https://github.com/mwilliamson/jq.py
 Source0:        https://files.pythonhosted.org/packages/source/j/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-Cython
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -50,6 +51,10 @@ set -ex
 
 
 %changelog
+* Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.10.0-1
+- Update to 1.10.0
+- Add Cython as BuildRequires for jq 1.10.0
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.8.0-2
 - Rebuild python-jq against python3.12
 
