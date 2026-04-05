@@ -5,8 +5,8 @@
 %global pypi_name schema
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.7.7
-Release:        2%{?dist}
+Version:        0.7.8
+Release:        1%{?dist}
 Summary:        Simple data validation library
 
 License:        MIT
@@ -44,12 +44,15 @@ set -ex
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE-MIT
 %doc README.rst
-%{python3_sitelib}/__pycache__/*
-%{python3_sitelib}/%{pypi_name}.py
+%{python3_sitelib}/%{pypi_name}/
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.7.8-1
+- Update to 0.7.8
+- Update %%files for schema 0.7.8 package restructure (schema.py → schema/)
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.7.7-2
 - Rebuild against python3.12
 
