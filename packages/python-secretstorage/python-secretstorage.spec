@@ -4,15 +4,15 @@
 %global package_name secretstorage
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.3.3
-Release:        5%{?dist}
+Version:        3.5.0
+Release:        1%{?dist}
 Summary:        Python bindings to FreeDesktop.org Secret Service API
 
 # Check if the automatically generated License and its spelling is correct for Fedora
 # https://docs.fedoraproject.org/en-US/packaging-guidelines/LicensingGuidelines/
 License:        BSD
 URL:            https://github.com/mitya57/secretstorage
-Source0:        https://files.pythonhosted.org/packages/source/s/%{package_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/%{package_name}/%{package_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -32,9 +32,9 @@ Requires:       python%{python3_pkgversion}-cryptography
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-# rm -rf %{pypi_name}.egg-info
+%autosetup -n %{package_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 
 
 %build
@@ -52,6 +52,10 @@ set -ex
 
 
 %changelog
+* Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.0-1
+- Update to 3.5.0
+- Fix Source0: tarball filename uses lowercase (secretstorage) since 3.5.0
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 3.3.3-5
 - Rebuild against python3.12
 
