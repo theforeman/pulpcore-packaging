@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.85.15
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -39,7 +39,7 @@ Requires:       python%{python3_pkgversion}-backoff < 2.3
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.3
 Requires:       python%{python3_pkgversion}-cryptography >= 44.0.3
-Requires:       python%{python3_pkgversion}-cryptography < 46.0
+Requires:       python%{python3_pkgversion}-cryptography < 47.0
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       python%{python3_pkgversion}-django-filter <= 25.1
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
@@ -169,6 +169,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 06 2026 Odilon Sousa <osousa@redhat.com> - 3.85.15-2
+- Relax cryptography constraint to < 47.0 (upstream pyproject.toml allows < 47)
+
 * Wed Mar 25 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.15-1
 - Update to 3.85.15
 - Relax PyOpenSSL constraint to < 27.0 (upstream raised ceiling in 3.85.15)
