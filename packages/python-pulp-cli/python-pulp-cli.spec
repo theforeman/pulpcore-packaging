@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.32.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -28,7 +28,6 @@ Requires:       python%{python3_pkgversion}-click >= 8.0.0
 Requires:       python%{python3_pkgversion}-packaging >= 20.0
 Requires:       python%{python3_pkgversion}-packaging < 25
 Requires:       python%{python3_pkgversion}-pygments >= 2.17.2
-Requires:       python%{python3_pkgversion}-pygments < 2.20
 Requires:       python%{python3_pkgversion}-requests < 2.33
 Requires:       python%{python3_pkgversion}-requests >= 2.24.0
 Requires:       python%{python3_pkgversion}-schema < 0.8
@@ -71,6 +70,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 06 2026 Odilon Sousa <osousa@redhat.com> - 0.32.3-2
+- Relax pygments upper bound: remove < 2.20 to unblock repoclosure with pygments 2.20.0
+
 * Tue May 13 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.32.3-1
 - Update to 0.32.3
 
