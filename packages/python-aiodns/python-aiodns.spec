@@ -5,7 +5,7 @@
 %global pypi_name aiodns
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.6.1
+Version:        4.0.0
 Release:        1%{?dist}
 Summary:        Simple DNS resolver for asyncio
 
@@ -17,7 +17,7 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-Requires:       python%{python3_pkgversion}-pycares >= 4.0.0
+Requires:       python%{python3_pkgversion}-pycares >= 5.0.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Mon Apr 06 2026 Odilon Sousa <osousa@redhat.com> - 4.0.0-1
+- Release python-aiodns 4.0.0
+
 * Wed Jan 21 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.6.1-1
 - Update to 3.6.1
 
