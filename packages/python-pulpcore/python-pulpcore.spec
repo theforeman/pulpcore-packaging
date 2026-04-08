@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.85.15
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -71,7 +71,7 @@ Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
 Requires:       python%{python3_pkgversion}-json_stream < 2.4
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
-Requires:       python%{python3_pkgversion}-jq < 1.9.0
+Requires:       python%{python3_pkgversion}-jq < 1.11.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.28.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.37
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
@@ -169,6 +169,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 08 2026 Odilon Sousa <osousa@redhat.com> - 3.85.15-3
+- Relax jq constraint to < 1.11.0 (upstream pulpcore 3.85 allows < 1.11.0)
+
 * Mon Apr 06 2026 Odilon Sousa <osousa@redhat.com> - 3.85.15-2
 - Relax cryptography constraint to < 47.0 (upstream pyproject.toml allows < 47)
 
