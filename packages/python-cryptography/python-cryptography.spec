@@ -8,7 +8,7 @@
 %global pypi_name cryptography
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        46.0.6
+Version:        46.0.7
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
@@ -63,9 +63,17 @@ set -ex
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
+%exclude %{python3_sitearch}/docs
+%exclude %{python3_sitearch}/tests
+%exclude %{python3_sitearch}/CHANGELOG.rst
+%exclude %{python3_sitearch}/CONTRIBUTING.rst
 
 
 %changelog
+* Wed Apr 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 46.0.7-1
+- Update to 46.0.7
+- Exclude docs/, tests/, CHANGELOG.rst and CONTRIBUTING.rst installed by upstream into site-packages
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 46.0.6-1
 - Update to 46.0.6
 - Fix PEP 639 license field in pyproject.toml for RHEL 9 setuptools
