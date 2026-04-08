@@ -6,7 +6,7 @@
 %global pypi_name rapidfuzz
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.14.3
+Version:        3.14.5
 Release:        1%{?dist}
 Summary:        rapid fuzzy string matching
 
@@ -51,6 +51,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.14.5-1
+- Update to 3.14.5
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.14.3-1
 - Update to 3.14.3
 - Switch to pyproject build (setup.py removed, migrated to scikit-build-core at 3.10.0)
