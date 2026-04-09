@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.85.15
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -22,6 +22,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel >= 0.29.0
 BuildRequires:  pyproject-rpm-macros
 
 
+Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-django >= 4.2.0
 Conflicts:      python%{python3_pkgversion}-django == 5.0
 Conflicts:      python%{python3_pkgversion}-django == 5.1
@@ -169,6 +170,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 09 2026 Odilon Sousa <osousa@redhat.com> - 3.85.15-4
+- Add python3.12-setuptools as runtime Requires (provides distutils shim for Python 3.12, required by pulpcore/app/tasks/export.py)
+
 * Wed Apr 08 2026 Odilon Sousa <osousa@redhat.com> - 3.85.15-3
 - Relax jq constraint to < 1.11.0 (upstream pulpcore 3.85 allows < 1.11.0)
 
