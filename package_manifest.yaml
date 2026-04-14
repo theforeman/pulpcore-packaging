@@ -266,6 +266,7 @@ tier4_packages:
     python-rhsm: {}
     python-s3transfer: {}
     python-schema: {}
+    python-securesystemslib: {}
     python-secretstorage: {}
     python-social-auth-app-django: {}
     python-social-auth-core: {}
