@@ -6,7 +6,7 @@
 %global src_name pulp_python
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.19.1
+Version:        3.27.0
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -21,14 +21,15 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-bandersnatch >= 6.3
-Requires:       python%{python3_pkgversion}-bandersnatch < 6.6
+Requires:       python%{python3_pkgversion}-bandersnatch >= 6.6.0
+Requires:       python%{python3_pkgversion}-bandersnatch < 6.7
 Requires:       python%{python3_pkgversion}-pkginfo >= 1.12.0
 Requires:       python%{python3_pkgversion}-pkginfo < 1.13.0
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.81
-Requires:       python%{python3_pkgversion}-pulpcore < 3.100
-Requires:       python%{python3_pkgversion}-pypi-simple >= 1.5.0
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.85.3
+Requires:       python%{python3_pkgversion}-pulpcore < 3.115
+Requires:       python%{python3_pkgversion}-pypi-simple >= 1.8.0
 Requires:       python%{python3_pkgversion}-pypi-simple < 2.0
+Requires:       python%{python3_pkgversion}-pypi-attestations == 0.0.28
 
 Provides:       pulpcore-plugin(python) = %{version}
 
@@ -62,6 +63,13 @@ set -ex
 
 
 %changelog
+* Tue Apr 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.0-1
+- Update to 3.27.0
+- Sync bandersnatch bounds: >= 6.6.0, < 6.7
+- Sync pypi-simple lower bound: >= 1.8.0
+- Sync pulpcore bounds: >= 3.85.3, < 3.115
+- Add pypi-attestations == 0.0.28 (new upstream dep)
+
 * Tue Oct 14 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.19.1-1
 - Update to 3.19.1
 
