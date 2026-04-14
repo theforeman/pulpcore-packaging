@@ -158,6 +158,7 @@
       <packagereq type="default">python3.12-hyperlink</packagereq>
       <packagereq type="default">python3.12-idna</packagereq>
       <packagereq type="default">python3.12-idna-ssl</packagereq>
+      <packagereq type="default">python3.12-id</packagereq>
       <packagereq type="default">python3.12-importlib-metadata</packagereq>
       <packagereq type="default">python3.12-importlib-resources</packagereq>
       <packagereq type="default">python3.12-inflection</packagereq>

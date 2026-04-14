@@ -222,6 +222,7 @@ tier4_packages:
     python-gitpython: {}
     python-humanfriendly: {}
     python-hyperlink: {}
+    python-id: {}
     python-jmespath: {}
     python-filelock: {}
     python-flake8: {}
