@@ -267,6 +267,7 @@ tier4_packages:
     python-s3transfer: {}
     python-schema: {}
     python-secretstorage: {}
+    python-sigstore-models: {}
     python-social-auth-app-django: {}
     python-social-auth-core: {}
     python-socks: {}
