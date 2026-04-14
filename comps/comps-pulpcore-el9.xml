@@ -297,6 +297,7 @@
       <packagereq type="default">python3.12-setuptools_scm_git_archive</packagereq>
       <packagereq type="default">python3.12-shellingham</packagereq>
       <packagereq type="default">python3.12-six</packagereq>
+      <packagereq type="default">python3.12-sigstore-models</packagereq>
       <packagereq type="default">python3.12-smmap</packagereq>
       <packagereq type="default">python3.12-sniffio</packagereq>
       <packagereq type="default">python3.12-social-auth-app-django</packagereq>
