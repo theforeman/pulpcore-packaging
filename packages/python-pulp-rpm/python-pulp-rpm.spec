@@ -6,7 +6,7 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.32.9
+Version:        3.35.2
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -25,14 +25,15 @@ Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
 Requires:       python%{python3_pkgversion}-createrepo_c >= 1.2.1
 Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.3
 Requires:       python%{python3_pkgversion}-django-readonly-field >= 1.1.1
+Conflicts:      python%{python3_pkgversion}-django-readonly-field >= 1.2
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
 Conflicts:      python%{python3_pkgversion}-jsonschema >= 5.0
 Requires:       python%{python3_pkgversion}-libcomps >= 0.1.23
 Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
-Requires:       python%{python3_pkgversion}-pulpcore < 3.100
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.85
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.103.0
+Requires:       python%{python3_pkgversion}-pulpcore < 3.115
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
 Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
@@ -74,6 +75,11 @@ set -ex
 
 
 %changelog
+* Tue Apr 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.35.2-1
+- Update to 3.35.2
+- Sync pulpcore bounds with upstream 3.35.2: >= 3.103.0, < 3.115
+- Add Conflicts: django-readonly-field >= 1.2 (upstream pins ~= 1.1.1)
+
 * Tue Mar 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.32.9-1
 - Update to 3.32.9
 
