@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.85.15
-Release:        4%{?dist}
+Version:        3.105.0
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -23,32 +23,32 @@ BuildRequires:  pyproject-rpm-macros
 
 
 Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-django >= 4.2.0
+Requires:       python%{python3_pkgversion}-django >= 4.2.24
 Conflicts:      python%{python3_pkgversion}-django == 5.0
 Conflicts:      python%{python3_pkgversion}-django == 5.1
 Requires:       python%{python3_pkgversion}-django < 5.3
 Requires:       python%{python3_pkgversion}-aiodns >= 3.3.0
 Requires:       python%{python3_pkgversion}-aiodns < 3.7
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
-Requires:       python%{python3_pkgversion}-aiofiles < 24.2.0
-Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.3
+Requires:       python%{python3_pkgversion}-aiofiles <= 25.1.0
+Requires:       python%{python3_pkgversion}-aiohttp >= 3.10.10
 Requires:       python%{python3_pkgversion}-aiohttp < 3.14
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Requires:       python%{python3_pkgversion}-asyncio-throttle < 1.0.3
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
 Requires:       python%{python3_pkgversion}-backoff < 2.3
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
-Requires:       python%{python3_pkgversion}-click < 8.3
+Requires:       python%{python3_pkgversion}-click < 8.4
 Requires:       python%{python3_pkgversion}-cryptography >= 44.0.3
 Requires:       python%{python3_pkgversion}-cryptography < 47.0
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
-Requires:       python%{python3_pkgversion}-django-filter <= 25.1
+Requires:       python%{python3_pkgversion}-django-filter <= 25.2
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
 Requires:       python%{python3_pkgversion}-django-guid < 3.6
 Requires:       python%{python3_pkgversion}-django-import-export >= 2.9
 Requires:       python%{python3_pkgversion}-django-import-export < 5.0
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
-Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.2.4
+Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.2.7
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
 Requires:       python%{python3_pkgversion}-djangorestframework <= 3.16.1
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
@@ -56,48 +56,51 @@ Requires:       python%{python3_pkgversion}-djangorestframework-queryfields <= 1
 Requires:       python%{python3_pkgversion}-drf-access-policy >= 1.1.2
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
 Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
-Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.94.2
+Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.95.0
 Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.27.2
 Requires:       python%{python3_pkgversion}-drf-spectacular < 0.30
 Requires:       python%{python3_pkgversion}-dynaconf >= 3.2.5
-Requires:       python%{python3_pkgversion}-dynaconf <= 3.3.0
+Requires:       python%{python3_pkgversion}-dynaconf < 3.3.0
+Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
+Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
 Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
-Requires:       python%{python3_pkgversion}-gnupg <= 0.5.4
+Requires:       python%{python3_pkgversion}-gnupg < 0.6
 Requires:       python%{python3_pkgversion}-gunicorn >= 22.0
-Requires:       python%{python3_pkgversion}-gunicorn < 23.1.0
+Requires:       python%{python3_pkgversion}-gunicorn < 25.2.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
 Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.6
 Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
 Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
-Requires:       python%{python3_pkgversion}-json_stream < 2.4
+Requires:       python%{python3_pkgversion}-json_stream < 2.5
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
-Requires:       python%{python3_pkgversion}-jq < 1.11.0
-Requires:       python%{python3_pkgversion}-pulp-glue >= 0.28.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.37
+Requires:       python%{python3_pkgversion}-jq < 1.12.0
+Requires:       python%{python3_pkgversion}-pulp-glue >= 0.30.0
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.39
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.37
+Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.41
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.37
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.41
 Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.37
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.41
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 7.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg < 3.3
+Requires:       python%{python3_pkgversion}-psycopg < 3.4
 Requires:       python%{python3_pkgversion}-psycopg_c >= 3.1.8
-Requires:       python%{python3_pkgversion}-psycopg_c < 3.3
+Requires:       python%{python3_pkgversion}-psycopg_c < 3.4
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0
-Requires:       python%{python3_pkgversion}-pyparsing < 3.3
+Requires:       python%{python3_pkgversion}-pyparsing < 3.4
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
 Requires:       python%{python3_pkgversion}-pyyaml < 6.1
 Requires:       python%{python3_pkgversion}-PyYAML < 6.1
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.1.1
 Requires:       python%{python3_pkgversion}-redis >= 4.3
-Requires:       python%{python3_pkgversion}-redis < 6.5
+Requires:       python%{python3_pkgversion}-redis < 7.2
+Requires:       python%{python3_pkgversion}-tablib >= 3.5.0
 Requires:       python%{python3_pkgversion}-tablib < 4.0
 Conflicts:      python%{python3_pkgversion}-tablib == 3.6
 Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
@@ -105,9 +108,9 @@ Requires:       python%{python3_pkgversion}-url-normalize < 2.3
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
 Requires:       python%{python3_pkgversion}-uuid6 <= 2025.0.1
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
-Requires:       python%{python3_pkgversion}-whitenoise < 6.10
-Requires:       python%{python3_pkgversion}-yarl >= 1.9.1
-Requires:       python%{python3_pkgversion}-yarl < 1.21
+Requires:       python%{python3_pkgversion}-whitenoise < 6.13.0
+Requires:       python%{python3_pkgversion}-yarl >= 1.12.0
+Requires:       python%{python3_pkgversion}-yarl < 1.24
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -145,8 +148,14 @@ set -ex
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+
 # psycopg 'binary' extra isn't needed in production
 sed -i 's/psycopg\[binary\]/psycopg/' pyproject.toml
+
+# Relax PyOpenSSL constraint to < 27.0 (staging has 26.x which is compatible)
+sed -i 's/PyOpenSSL<26\.0/PyOpenSSL<27.0/' pyproject.toml
 
 %build
 set -ex
@@ -170,6 +179,16 @@ set -ex
 
 
 %changelog
+* Tue Apr 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.0-1
+- Update to 3.105.0
+- Fix PEP 639 license field for RHEL 9 pip compatibility
+- Add gitpython >= 3.1.24, < 3.2 (new upstream dep)
+- Sync Requires bounds with upstream 3.105.0 pyproject.toml: aiofiles, aiohttp,
+  click, django, django-filter, django-lifecycle, drf-nested-routers, dynaconf,
+  gnupg, gunicorn, jinja2, json_stream, jq, opentelemetry-*, psycopg, psycopg_c,
+  pulp-glue, pyparsing, redis, tablib, whitenoise, yarl
+- Relax PyOpenSSL to < 27.0 (upstream 3.105.0 pins < 26.0 but staging has 26.x)
+
 * Thu Apr 09 2026 Odilon Sousa <osousa@redhat.com> - 3.85.15-4
 - Add python3.12-setuptools as runtime Requires (provides distutils shim for Python 3.12, required by pulpcore/app/tasks/export.py)
 
