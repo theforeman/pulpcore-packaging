@@ -6,7 +6,7 @@
 %global src_name pulp_container
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.26.8
+Version:        2.27.2
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -21,12 +21,12 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-pulpcore < 3.100
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.75
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.73.2
+Requires:       python%{python3_pkgversion}-pulpcore < 3.115
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.4
 Conflicts:      python%{python3_pkgversion}-pyjwt >= 2.11
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
-Requires:       python%{python3_pkgversion}-jsonschema < 4.24
+Requires:       python%{python3_pkgversion}-jsonschema < 4.26
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -60,6 +60,11 @@ set -ex
 
 
 %changelog
+* Tue Apr 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.2-1
+- Update to 2.27.2
+- Sync pulpcore bounds with upstream 2.27.2: >= 3.73.2, < 3.115
+- Sync jsonschema upper bound: < 4.26
+
 * Wed Mar 25 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.26.8-1
 - Update to 2.26.8
 
