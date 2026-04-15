@@ -109,6 +109,7 @@
       <packagereq type="default">python3.12-django-storages+azure</packagereq>
       <packagereq type="default">python3.12-djangorestframework</packagereq>
       <packagereq type="default">python3.12-djangorestframework-queryfields</packagereq>
+      <packagereq type="default">python3.12-dnspython</packagereq>
       <packagereq type="default">python3.12-docutils</packagereq>
       <packagereq type="default">python3.12-dotenv</packagereq>
       <packagereq type="default">python3.12-drf-access-policy</packagereq>
