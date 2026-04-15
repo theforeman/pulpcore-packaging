@@ -336,6 +336,7 @@ tier4_packages:
     python-tablib: {}
     python-tomlkit: {}
     python-toml: {}
+    python-tuf: {}
     python-types-cryptography: {}
     python-uritemplate: {}
     python-url-normalize: {}
