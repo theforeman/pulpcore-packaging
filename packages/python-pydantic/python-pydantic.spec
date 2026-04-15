@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.12.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -48,7 +48,23 @@ set -ex
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
+%package -n python%{python3_pkgversion}-%{pypi_name}+email
+Summary:        Optional email validation support for %{name}
+Requires:       python%{python3_pkgversion}-%{pypi_name} = %{version}-%{release}
+Requires:       python%{python3_pkgversion}-email-validator
+
+%description -n python%{python3_pkgversion}-%{pypi_name}+email
+%{summary}.
+
+This package installs the "email" extra for %{name}.
+
+%files -n python%{python3_pkgversion}-%{pypi_name}+email
+%ghost %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
+
 %changelog
+* Wed Apr 15 2026 Odilon Sousa <osousa@redhat.com> - 2.12.5-2
+- Add +email subpackage for pydantic[email] extra
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.12.5-1
 - Update to 2.12.5
 - Update pydantic-core requirement to 2.41.5
