@@ -5,7 +5,7 @@
 %global pypi_name pydantic
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.12.5
+Version:        2.13.0
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -30,6 +30,20 @@ Requires:  python%{python3_pkgversion}-typing-inspection >= 0.4.0
 %{summary}
 
 
+%package -n python%{python3_pkgversion}-%{pypi_name}+email
+Summary:        Metapackage for python%{python3_pkgversion}-pydantic: email extra
+Requires:       python%{python3_pkgversion}-%{pypi_name} = %{version}-%{release}
+Requires:       python%{python3_pkgversion}-email-validator
+
+%description -n python%{python3_pkgversion}-%{pypi_name}+email
+This is a metapackage bringing in email extra requires for
+python%{python3_pkgversion}-%{pypi_name}.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-%{pypi_name}+email
+%ghost %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
+
+
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
@@ -49,6 +63,10 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.0-1
+- Update to 2.13.0
+- Add +email metapackage for pydantic[email] extra (requires email-validator)
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.12.5-1
 - Update to 2.12.5
 - Update pydantic-core requirement to 2.41.5
