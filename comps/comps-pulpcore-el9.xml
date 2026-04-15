@@ -282,6 +282,7 @@
       <packagereq type="default">python3.12-requests-toolbelt</packagereq>
       <packagereq type="default">python3.12-requirements-parser</packagereq>
       <packagereq type="default">python3.12-rfc3161-client</packagereq>
+      <packagereq type="default">python3.12-rfc8785</packagereq>
       <packagereq type="default">python3.12-rhsm</packagereq>
       <packagereq type="default">python3.12-rich</packagereq>
       <packagereq type="default">python3.12-rq</packagereq>
