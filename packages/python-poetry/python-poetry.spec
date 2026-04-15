@@ -3,8 +3,8 @@
 %global pypi_name poetry
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.3.3
-Release:        2%{?dist}
+Version:        2.3.4
+Release:        1%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -80,6 +80,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.4-1
+- Update to 2.3.4
+
 * Wed Apr 01 2026 Odilon Sousa <osousa@redhat.com> - 2.3.3-2
 - Fix poetry_core requirement: 2.3.1 -> 2.3.2
 
