@@ -5,7 +5,7 @@
 %global pypi_name rich
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        14.3.3
+Version:        14.3.4
 Release:        1%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 14.3.4-1
+- Update to 14.3.4
+
 * Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 14.3.3-1
 - Update to 14.3.3
 - Switch to pyproject build (setup.py removed upstream, uses poetry-core)
