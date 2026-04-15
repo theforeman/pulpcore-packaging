@@ -258,6 +258,7 @@
       <packagereq type="default">python3.12-pycparser</packagereq>
       <packagereq type="default">python3.12-pycryptodomex</packagereq>
       <packagereq type="default">python3.12-pydantic</packagereq>
+      <packagereq type="default">python3.12-pydantic+email</packagereq>
       <packagereq type="default">python3.12-pydantic-core</packagereq>
       <packagereq type="default">python3.12-pyflakes</packagereq>
       <packagereq type="default">python3.12-pygments</packagereq>
