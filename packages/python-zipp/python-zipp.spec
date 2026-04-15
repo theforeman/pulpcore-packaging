@@ -5,7 +5,7 @@
 %global pypi_name zipp
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.23.0
+Version:        3.23.1
 Release:        1%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.23.1-1
+- Update to 3.23.1
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.23.0-1
 - Update to 3.23.0
 - Fix PEP 639 license field for RHEL 9 pip compatibility
