@@ -3,16 +3,17 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name python-gnupg
+%global src_name python_gnupg
 %global srcname gnupg
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        0.5.4
+Version:        0.5.6
 Release:        1%{?dist}
 Summary:        A wrapper for the Gnu Privacy Guard (GPG or GnuPG)
 
 License:        BSD-3-Clause
 URL:            https://docs.red-dove.com/python-gnupg/
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -29,8 +30,6 @@ BuildRequires:  pyproject-rpm-macros
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 
 %build
@@ -49,6 +48,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.6-1
+- Update to 0.5.6
+- Fix Source0 URL: use python_gnupg (underscore) as src tarball name
+
 * Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.4-1
 - Update to 0.5.4
 
