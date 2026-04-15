@@ -260,6 +260,7 @@ tier4_packages:
     python-psycopg_c: {}
     python-pyasn1: {}
     python-pyasn1-modules: {}
+    python-pypi-attestations: {}
     python-pygobject: {}
     python-python3-openid: {}
     python-requests-oauthlib: {}
