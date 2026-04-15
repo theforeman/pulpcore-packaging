@@ -214,6 +214,7 @@ tier4_packages:
     python-drf-yasg: {}
     python-dynaconf: {}
     python-ecdsa: {}
+    python-email-validator: {}
     python-enrich: {}
     python-et-xmlfile: {}
     python-exceptiongroup: {}

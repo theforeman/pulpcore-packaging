@@ -119,6 +119,7 @@
       <packagereq type="default">python3.12-dynaconf</packagereq>
       <packagereq type="default">python3.12-ecdsa</packagereq>
       <packagereq type="default">python3.12-editables</packagereq>
+      <packagereq type="default">python3.12-email-validator</packagereq>
       <packagereq type="default">python3.12-enrich</packagereq>
       <packagereq type="default">python3.12-et-xmlfile</packagereq>
       <packagereq type="default">python3.12-exceptiongroup</packagereq>
