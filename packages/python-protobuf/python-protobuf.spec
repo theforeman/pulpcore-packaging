@@ -5,7 +5,7 @@
 %global pypi_name protobuf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        5.29.6
+Version:        6.33.6
 Release:        1%{?dist}
 Summary:        Protocol Buffers
 
@@ -14,7 +14,10 @@ URL:            https://developers.google.com/protocol-buffers/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -25,28 +28,30 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %doc README.md
 %{python3_sitearch}/google
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}-nspkg.pth
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 6.33.6-1
+- Update to 6.33.6
+- Switch to pyproject_wheel/install (protobuf 6.x builds C extension wheel)
+- Fix %files: use sitearch (binary wheel), dist-info; remove nspkg.pth and egg-info (gone in 6.x)
+
 * Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 5.29.6-1
 - Update to 5.29.6
 
