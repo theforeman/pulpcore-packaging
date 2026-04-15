@@ -264,6 +264,7 @@ tier4_packages:
     python-python3-openid: {}
     python-requests-oauthlib: {}
     python-requests-toolbelt: {}
+    python-rfc3986: {}
     python-rfc3161-client: {}
     python-rhsm: {}
     python-s3transfer: {}
