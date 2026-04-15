@@ -6,7 +6,7 @@
 %global pypi_name pyparsing
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.5
+Version:        3.3.2
 Release:        1%{?dist}
 Summary:        Python parsing module
 
@@ -49,6 +49,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.2-1
+- Update to 3.3.2
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.5-1
 - Update to 3.2.5
 - Fix PEP 639 license field for RHEL 9 pip compatibility
