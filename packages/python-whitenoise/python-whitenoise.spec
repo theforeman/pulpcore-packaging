@@ -5,7 +5,7 @@
 %global pypi_name whitenoise
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.9.0
+Version:        6.12.0
 Release:        1%{?dist}
 Summary:        Radically simplified static file serving for WSGI applications
 
@@ -30,6 +30,9 @@ BuildRequires:  pyproject-rpm-macros
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/g' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 
 
 %build
@@ -47,6 +50,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 6.12.0-1
+- Update to 6.12.0
+
 * Wed Apr 30 2025 Foreman Packaging Automation <packaging@theforeman.org> - 6.9.0-1
 - Update to 6.9.0
 
