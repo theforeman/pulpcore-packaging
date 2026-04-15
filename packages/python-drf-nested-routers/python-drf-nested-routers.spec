@@ -6,7 +6,7 @@
 %global src_name drf_nested_routers
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.94.2
+Version:        0.95.0
 Release:        1%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.95.0-1
+- Update to 0.95.0
+
 * Mon Mar 30 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.94.2-1
 - Update to 0.94.2
 - Fix Source0: tarball uses underscores (drf_nested_routers) since 0.94.2
