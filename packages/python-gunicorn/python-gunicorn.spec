@@ -5,8 +5,8 @@
 %global pypi_name gunicorn
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        23.0.0
-Release:        3%{?dist}
+Version:        25.1.0
+Release:        1%{?dist}
 Summary:        WSGI HTTP Server for UNIX
 
 License:        MIT
@@ -33,6 +33,9 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/g' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 
 
 %build
@@ -46,13 +49,17 @@ set -ex
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
-%doc docs/README.rst README.rst
+%doc README.md
 %{_bindir}/gunicorn
+%{_bindir}/gunicornc
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 25.1.0-1
+- Update to 25.1.0
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 23.0.0-3
 - Add obsoletes for python3.11 package
 
