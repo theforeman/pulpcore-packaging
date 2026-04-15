@@ -8,7 +8,7 @@
 %global pypi_name jq
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.10.0
+Version:        1.11.0
 Release:        1%{?dist}
 Summary:        jq is a lightweight and flexible JSON processor
 
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.11.0-1
+- Update to 1.11.0
+
 * Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.10.0-1
 - Update to 1.10.0
 - Add Cython as BuildRequires for jq 1.10.0
