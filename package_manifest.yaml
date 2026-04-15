@@ -271,6 +271,7 @@ tier4_packages:
     python-securesystemslib: {}
     python-secretstorage: {}
     python-sigstore-models: {}
+    python-sigstore: {}
     python-social-auth-app-django: {}
     python-social-auth-core: {}
     python-socks: {}
