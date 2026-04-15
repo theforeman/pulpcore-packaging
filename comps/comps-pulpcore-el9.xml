@@ -261,6 +261,7 @@
       <packagereq type="default">python3.12-pygments</packagereq>
       <packagereq type="default">python3.12-pygobject</packagereq>
       <packagereq type="default">python3.12-pygtrie</packagereq>
+      <packagereq type="default">python3.12-pypi-attestations</packagereq>
       <packagereq type="default">python3.12-pyjwkest</packagereq>
       <packagereq type="default">python3.12-pyjwt</packagereq>
       <packagereq type="default">python3.12-pyjwt+crypto</packagereq>
