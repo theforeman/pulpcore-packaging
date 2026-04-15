@@ -265,6 +265,7 @@ tier4_packages:
     python-requests-oauthlib: {}
     python-requests-toolbelt: {}
     python-rfc3161-client: {}
+    python-rfc8785: {}
     python-rhsm: {}
     python-s3transfer: {}
     python-schema: {}
