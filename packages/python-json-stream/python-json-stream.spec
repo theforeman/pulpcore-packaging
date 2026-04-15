@@ -6,7 +6,7 @@
 %global pkg_name json_stream
 
 Name:           python%{python3_pkgversion}-%{pkg_name}
-Version:        2.3.4
+Version:        2.4.1
 Release:        1%{?dist}
 Summary:        Streaming JSON encoder and decoder
 
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pkg_name}/
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.1-1
+- Update to 2.4.1
+
 * Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.4-1
 - Update to 2.3.4
 
