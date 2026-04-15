@@ -5,8 +5,8 @@
 %global pypi_name aiofiles
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        24.1.0
-Release:        2%{?dist}
+Version:        25.1.0
+Release:        1%{?dist}
 Summary:        File support for asyncio
 
 License:        Apache 2.0
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 25.1.0-1
+- Update to 25.1.0
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 24.1.0-2
 - Rebuild against python3.12
 
