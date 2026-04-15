@@ -6,8 +6,8 @@
 %global src_name django_lifecycle
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.2.4
-Release:        3%{?dist}
+Version:        1.2.7
+Release:        1%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.7-1
+- Update to 1.2.7
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.2.4-3
 - Add obsoletes for python3.11 package
 
