@@ -6,7 +6,7 @@
 %global pypi_name yarl
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.20.1
+Version:        1.23.0
 Release:        1%{?dist}
 Summary:        Yet another URL library
 BuildArch:      noarch
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.23.0-1
+- Update to 1.23.0
+
 * Wed Oct 01 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.20.1-1
 - Update to 1.20.1
 
