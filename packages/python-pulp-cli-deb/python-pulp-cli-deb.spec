@@ -7,13 +7,13 @@
 %global pkg_name pulp_cli_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.1
+Version:        0.4.3
 Release:        1%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
 URL:            https://github.com/pulp/pulp-cli-deb
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pkg_name}/%{pkg_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -23,7 +23,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-pulp-cli >= 0.23.2
-Requires:       python%{python3_pkgversion}-pulp-cli < 0.33
+Requires:       python%{python3_pkgversion}-pulp-cli < 0.38
 Requires:       python%{python3_pkgversion}-click
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-pulp-glue-deb == %{version}
@@ -41,7 +41,7 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 
 %build
@@ -60,6 +60,11 @@ set -ex
 
 
 %changelog
+* Fri Apr 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.3-1
+- Update to 0.4.3
+- Update pulp-cli upper bound to < 0.38 (upstream pins <0.38)
+- Fix Source URL and %prep dir to use pkg_name (underscores) for PyPI compatibility
+
 * Mon Oct 20 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.1-1
 - Update to 0.4.1
 
