@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.30.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Google API client core library
 
 License:        Apache 2.0
@@ -32,8 +32,8 @@ Requires:       python%{python3_pkgversion}-googleapis-common-protos < 2
 Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 1.56.2
 Requires:       python%{python3_pkgversion}-proto-plus < 2
 Requires:       python%{python3_pkgversion}-proto-plus >= 1.22.3
-Requires:       python%{python3_pkgversion}-protobuf < 6
-Requires:       python%{python3_pkgversion}-protobuf >= 3.19.5
+Requires:       python%{python3_pkgversion}-protobuf < 8
+Requires:       python%{python3_pkgversion}-protobuf >= 4.25.8
 Requires:       python%{python3_pkgversion}-requests < 3
 Requires:       python%{python3_pkgversion}-requests >= 2.18
 
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 17 2026 Odilon Sousa <osousa@redhat.com> - 2.30.3-2
+- Fix protobuf bounds: >= 3.19.5,< 6 -> >= 4.25.8,< 8 (upstream 2.30.3 requires protobuf<8,>=4.25.8)
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.30.3-1
 - Update to 2.30.3
 
