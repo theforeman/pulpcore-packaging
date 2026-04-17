@@ -6,7 +6,7 @@
 %global src_name pulp_python
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.27.0
+Version:        3.27.2
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Apr 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.2-1
+- Update to 3.27.2
+
 * Tue Apr 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.0-1
 - Update to 3.27.0
 - Sync bandersnatch bounds: >= 6.6.0, < 6.7
