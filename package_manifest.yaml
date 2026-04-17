@@ -323,6 +323,7 @@ tier4_packages:
     python-pypi-simple: {}
     python-pyproject_hooks: {}
     python-pyrsistent: {}
+    python-pysequoia: {}
     python-pytz: {}
     python-rapidfuzz: {}
     python-redis: {}
