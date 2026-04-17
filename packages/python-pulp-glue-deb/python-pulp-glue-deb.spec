@@ -6,7 +6,7 @@
 %global srcname pulp_glue_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.1
+Version:        0.4.3
 Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API. (deb plugin)
 
@@ -14,7 +14,7 @@ Summary:        Version agnostic glue library to talk to pulpcore's REST API. (d
 # https://docs.fedoraproject.org/en-US/packaging-guidelines/LicensingGuidelines/
 License:        GPL-2.0-or-later
 URL:            https://pypi.org/project/pulp-glue-deb/
-Source:         https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -36,7 +36,7 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 %build
 set -ex
@@ -53,6 +53,10 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Fri Apr 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.3-1
+- Update to 0.4.3
+- Fix Source URL and %prep dir to use srcname (underscores) for PyPI compatibility
+
 * Mon Oct 20 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.1-1
 - Update to 0.4.1
 
