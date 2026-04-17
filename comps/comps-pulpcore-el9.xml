@@ -274,6 +274,7 @@
       <packagereq type="default">python3.12-pyproject_hooks</packagereq>
       <packagereq type="default">python3.12-pyproject-metadata</packagereq>
       <packagereq type="default">python3.12-pyrsistent</packagereq>
+      <packagereq type="default">python3.12-pysequoia</packagereq>
       <packagereq type="default">python3.12-python3-openid</packagereq>
       <packagereq type="default">python3.12-pytz</packagereq>
       <packagereq type="default">python3.12-pyyaml</packagereq>
