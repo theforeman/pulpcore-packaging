@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.0
+Version:        3.105.3
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -154,8 +154,6 @@ sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 # psycopg 'binary' extra isn't needed in production
 sed -i 's/psycopg\[binary\]/psycopg/' pyproject.toml
 
-# Relax PyOpenSSL constraint to < 27.0 (staging has 26.x which is compatible)
-sed -i 's/PyOpenSSL<26\.0/PyOpenSSL<27.0/' pyproject.toml
 
 %build
 set -ex
@@ -179,6 +177,10 @@ set -ex
 
 
 %changelog
+* Fri Apr 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.3-1
+- Update to 3.105.3
+- Remove PyOpenSSL sed patch: upstream 3.105.3 already ships PyOpenSSL<27.0
+
 * Tue Apr 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.0-1
 - Update to 3.105.0
 - Fix PEP 639 license field for RHEL 9 pip compatibility
