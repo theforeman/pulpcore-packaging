@@ -6,7 +6,7 @@
 %global src_name pulp_container
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.27.2
+Version:        2.27.6
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -24,9 +24,10 @@ BuildRequires:  pyproject-rpm-macros
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.73.2
 Requires:       python%{python3_pkgversion}-pulpcore < 3.115
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.4
-Conflicts:      python%{python3_pkgversion}-pyjwt >= 2.11
+Requires:       python%{python3_pkgversion}-pyjwt < 2.13
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
 Requires:       python%{python3_pkgversion}-jsonschema < 4.26
+Requires:       python%{python3_pkgversion}-pysequoia
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -60,6 +61,11 @@ set -ex
 
 
 %changelog
+* Fri Apr 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.6-1
+- Update to 2.27.6
+- Replace Conflicts: pyjwt >= 2.11 with Requires: pyjwt < 2.13 (upstream pins <2.13)
+- Add Requires: pysequoia (new runtime dep in 2.27.6)
+
 * Tue Apr 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.2-1
 - Update to 2.27.2
 - Sync pulpcore bounds with upstream 2.27.2: >= 3.73.2, < 3.115
