@@ -6,7 +6,7 @@
 %global srcname pyjwt
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        2.10.1
+Version:        2.12.1
 Release:        1%{?dist}
 Summary:        JSON Web Token implementation in Python
 
@@ -47,6 +47,10 @@ set -ex
 %autosetup -n %{srcname}-%{version}
 # Remove bundled egg-info
 rm -rf %{srcname}.egg-info
+# Convert PEP 639 SPDX license string to dict format for RHEL 9 setuptools compatibility
+sed -i 's/^license = "\(.*\)"$/license = {text = "\1"}/' pyproject.toml
+# Lower minimum setuptools version to what RHEL 9 provides
+sed -i 's/setuptools>=77.0.3/setuptools>=68/' pyproject.toml
 
 %build
 set -ex
@@ -65,6 +69,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.12.1-1
+- Update to 2.12.1
+- Fix PEP 639 license string and lower setuptools requirement for RHEL 9 buildroot
+
 * Sun Apr 27 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.10.1-1
 - Update to 2.10.1
 
