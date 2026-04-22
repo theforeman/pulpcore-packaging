@@ -9,7 +9,7 @@
 %global srcname pydantic_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.46.0
+Version:        2.46.3
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -18,10 +18,10 @@ URL:            https://github.com/pydantic/pydantic/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 Source1:        https://downloads.theforeman.org/vendor/%{srcname}-%{version}-vendor.tar.gz
 ## vendor rust content generated via:
-## curl -sL https://files.pythonhosted.org/packages/source/p/pydantic_core/pydantic_core-2.46.0.tar.gz -o /tmp/pydantic_core-2.46.0.tar.gz
-## cd /tmp && tar xzf pydantic_core-2.46.0.tar.gz && cd pydantic_core-2.46.0
+## curl -sL https://files.pythonhosted.org/packages/source/p/pydantic_core/pydantic_core-2.46.3.tar.gz -o /tmp/pydantic_core-2.46.3.tar.gz
+## cd /tmp && tar xzf pydantic_core-2.46.3.tar.gz && cd pydantic_core-2.46.3
 ## cargo vendor-filterer --all-features --platform=x86_64-unknown-linux-gnu
-## tar czf ../pydantic_core-2.46.0-vendor.tar.gz vendor/
+## tar czf ../pydantic_core-2.46.3-vendor.tar.gz vendor/
 
 
 
@@ -68,6 +68,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.46.3-1
+- Update to 2.46.3
+- Regenerate vendor tarball for 2.46.3
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.46.0-1
 - Update to 2.46.0
 
