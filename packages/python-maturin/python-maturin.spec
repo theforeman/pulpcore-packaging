@@ -7,7 +7,7 @@
 %global pypi_name maturin
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.12.6
+Version:        1.13.1
 Release:        1%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
@@ -16,10 +16,11 @@ URL:            https://github.com/PyO3/maturin
 Source0:        https://files.pythonhosted.org/packages/source/m/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.xz
 
-#To create the vendor tarball:#
-# tar xf %%{name}-%%{version}.tar.gz ; pushd %%{name}-%%{version} ; \ 
-# cargo vendor --versioned-dirs --platform=x86_64-unknown-linux-gnu --version && \
-# tar Jcvf ../%%{name}-%%{version}-vendor.tar.xz vendor/ ; popd
+# To create the vendor tarball:
+# curl -sL https://files.pythonhosted.org/packages/source/m/maturin/maturin-1.13.1.tar.gz -o /tmp/maturin-1.13.1.tar.gz
+# cd /tmp && tar xzf maturin-1.13.1.tar.gz && cd maturin-1.13.1
+# cargo vendor --versioned-dirs
+# tar Jcf ../maturin-1.13.1-vendor.tar.xz vendor/
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -63,6 +64,10 @@ set -ex
 
 
 %changelog
+* Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.13.1-1
+- Update to 1.13.1
+- Regenerate vendor tarball for 1.13.1
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.12.6-1
 - Update to 1.12.6
 - Fix PEP 639 license field in pyproject.toml for RHEL 9 setuptools
