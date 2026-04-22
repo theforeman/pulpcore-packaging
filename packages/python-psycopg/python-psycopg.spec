@@ -5,7 +5,7 @@
 %global pypi_name psycopg
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.13
+Version:        3.3.3
 Release:        1%{?dist}
 Summary:        PostgreSQL database adapter for Python
 
@@ -17,6 +17,7 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel >= 0.37
+BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.1
 
@@ -31,26 +32,34 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# Convert PEP 639 SPDX license fields for RHEL 9 setuptools compatibility
+sed -i 's/^license = "\(.*\)"$/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files\s*=/d' pyproject.toml
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.txt
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.3-1
+- Update to 3.3.3
+- Switch to pyproject_wheel/install; psycopg 3.3.3 dropped setup.py
+- Fix PEP 639 license fields for RHEL 9 setuptools compatibility
+
 * Mon Mar 30 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.2.13-1
 - Update to 3.2.13
 
