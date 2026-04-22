@@ -5,8 +5,8 @@
 %global pypi_name pydantic
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.13.0
-Release:        2%{?dist}
+Version:        2.13.3
+Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.3-1
+- Update to 2.13.3
+
 * Wed Apr 15 2026 Odilon Sousa <osousa@redhat.com> - 2.13.0-2
 - Update pydantic-core requirement to 2.46.0
 
