@@ -6,7 +6,7 @@
 %global srcname gitpython
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.1.46
+Version:        3.1.47
 Release:        1%{?dist}
 Summary:        GitPython is a python library used to interact with Git repositories
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.47-1
+- Update to 3.1.47
+
 * Mon Jan 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.1.46-1
 - Update to 3.1.46
 
