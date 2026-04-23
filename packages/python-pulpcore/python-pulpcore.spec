@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.3
+Version:        3.105.4
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -177,6 +177,9 @@ set -ex
 
 
 %changelog
+* Thu Apr 23 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.4-1
+- Update to 3.105.4
+
 * Fri Apr 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.3-1
 - Update to 3.105.3
 - Remove PyOpenSSL sed patch: upstream 3.105.3 already ships PyOpenSSL<27.0
