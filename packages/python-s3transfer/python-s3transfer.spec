@@ -5,7 +5,7 @@
 %global pypi_name s3transfer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.16.0
+Version:        0.16.1
 Release:        1%{?dist}
 Summary:        An Amazon S3 Transfer Manager
 
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 26 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.16.1-1
+- Update to 0.16.1
+
 * Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.16.0-1
 - Update to 0.16.0
 
