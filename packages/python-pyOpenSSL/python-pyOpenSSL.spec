@@ -6,8 +6,8 @@
 %global srcname pyopenssl
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        26.0.0
-Release:        2%{?dist}
+Version:        26.1.0
+Release:        1%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Sun Apr 26 2026 Foreman Packaging Automation <packaging@theforeman.org> - 26.1.0-1
+- Update to 26.1.0
+
 * Tue Apr 07 2026 Odilon Sousa <osousa@redhat.com> - 26.0.0-2
 - Update cryptography requirement to >= 46.0.0, < 47 (upstream pyOpenSSL 26.0.0)
 
