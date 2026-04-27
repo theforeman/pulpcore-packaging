@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.13.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -21,7 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme >= 22.5.0
 
 Requires:  python%{python3_pkgversion}-typing-extensions >= 4.12.2
 Requires:  python%{python3_pkgversion}-annotated-types >= 0.6.0
-Requires:  python%{python3_pkgversion}-pydantic-core == 2.46.0
+Requires:  python%{python3_pkgversion}-pydantic-core == 2.46.3
 Requires:  python%{python3_pkgversion}-typing-inspection >= 0.4.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -63,6 +63,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Mon Apr 27 2026 Odilon Sousa <osousa@redhat.com> - 2.13.3-2
+- Update pydantic-core requirement to 2.46.3
+
 * Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.3-1
 - Update to 2.13.3
 
