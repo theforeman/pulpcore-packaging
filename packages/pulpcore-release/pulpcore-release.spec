@@ -8,7 +8,7 @@
 %global release 1
 
 Name:           pulpcore-release
-Version:        3.85
+Version:        3.105
 Release:        %{?prerelease:0.}%{release}%{?prerelease}%{?dist}
 Summary:        Definition of yum repositories for Pulp
 
@@ -66,6 +66,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Wed Apr 29 2026 Odilon Sousa <osousa@redhat.com> - 3.105-1.nightly
+- Release pulpcore-release 3.105
+
 * Wed Oct 08 2025 Odilon Sousa <osousa@redhat.com> - 3.85-0.1.nightly
 - Release pulpcore-release 3.85
 
