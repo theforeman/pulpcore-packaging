@@ -1,0 +1,106 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Odilon Sousa <osousa@redhat.com>
+Date: Mon, 04 May 2026 15:19:51 -0300
+Subject: [PATCH] Add --control-socket option to pulpcore-api and pulpcore-content
+
+Backport of pulp/pulpcore#7670: exposes gunicorn's control socket path
+as a CLI option so operators can redirect it away from locations that
+cause permission errors on certain deployments (e.g. shared PVCs on
+k8s rolling updates). Silently ignored on gunicorn<25.1.
+
+Fixes: pulp/pulpcore#7574
+---
+--- a/pulpcore/app/entrypoint.py	2026-04-28 11:09:51.000000000 -0300
++++ b/pulpcore/app/entrypoint.py	2026-05-04 15:19:41.769863652 -0300
+@@ -12,7 +12,10 @@
+ 
+ from pulpcore.app.apps import pulp_plugin_configs
+ from pulpcore.app.netutil import has_ipv6
+-from pulpcore.app.pulpcore_gunicorn_application import PulpcoreGunicornApplication
++from pulpcore.app.pulpcore_gunicorn_application import (
++    PulpcoreGunicornApplication,
++    handle_control_interface_feature,
++)
+ 
+ logger = getLogger(__name__)
+ 
+@@ -145,6 +148,11 @@
+ @click.option("--user", "-u")
+ @click.option("--group", "-g")
+ @click.option(
++    "--control-socket",
++    "control_socket",
++    help="Path to the gunicorn control socket (requires gunicorn>=25.1).",
++)
++@click.option(
+     "--name-template",
+     type=str,
+     help="Format string to use for the status name. "
+@@ -154,5 +162,6 @@
+ def main(bind, name_template, **options):
+     name_template_var.set(name_template)
+     options["bind"] = list(bind)
++    handle_control_interface_feature(options)
+     sys.argv = sys.argv[:1]
+     PulpcoreApiApplication(options).run()
+--- a/pulpcore/app/pulpcore_gunicorn_application.py	2026-04-28 11:09:51.000000000 -0300
++++ b/pulpcore/app/pulpcore_gunicorn_application.py	2026-05-04 15:18:38.691693756 -0300
+@@ -1,8 +1,25 @@
+ import sys
+ 
++from importlib.metadata import version as pkg_version
++
+ from gunicorn.app.base import Application
+ 
+ 
++def handle_control_interface_feature(options):
++    """Drop control_socket from options if gunicorn<25.1, which introduced the feature."""
++    # TODO: remove this function when gunicorn lowerbound>=25.1
++    if options.get("control_socket") is None:
++        return
++
++    gunicorn_version = tuple(int(x) for x in pkg_version("gunicorn").split(".")[:2])
++    if gunicorn_version < (25, 1):
++        sys.stderr.write(
++            "Warning: --control-socket requires gunicorn>=25.1, ignoring "
++            f"(installed: {'.'.join(str(x) for x in gunicorn_version)}).\n"
++        )
++        options["control_socket"] = None
++
++
+ class PulpcoreGunicornApplication(Application):
+     """
+     A common class for the api and content applications to inherit from that loads the default
+--- a/pulpcore/content/entrypoint.py	2026-04-28 11:09:51.000000000 -0300
++++ b/pulpcore/content/entrypoint.py	2026-05-04 15:19:41.769907143 -0300
+@@ -4,7 +4,10 @@
+ from django.conf import settings
+ 
+ from pulpcore.app.netutil import has_ipv6
+-from pulpcore.app.pulpcore_gunicorn_application import PulpcoreGunicornApplication
++from pulpcore.app.pulpcore_gunicorn_application import (
++    PulpcoreGunicornApplication,
++    handle_control_interface_feature,
++)
+ 
+ 
+ class PulpcoreContentApplication(PulpcoreGunicornApplication):
+@@ -52,6 +55,11 @@
+ @click.option("--user", "-u")
+ @click.option("--group", "-g")
+ @click.option(
++    "--control-socket",
++    "control_socket",
++    help="Path to the gunicorn control socket (requires gunicorn>=25.1).",
++)
++@click.option(
+     "--name-template",
+     type=str,
+     help="Format string to use for the status name. "
+@@ -62,5 +70,6 @@
+     if name_template:
+         settings.set("WORKER_NAME_TEMPLATE", name_template)
+     options["bind"] = list(bind)
++    handle_control_interface_feature(options)
+     sys.argv = sys.argv[:1]
+     PulpcoreContentApplication(options).run()
