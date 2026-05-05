@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.5
+Version:        3.105.6
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -13,7 +13,6 @@ License:        GPLv2+
 URL:            https://pulpproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Patch0:         0001-Mark-md5-usage-as-usedforsecurity-False.patch
-Patch1:         0002-Add-control-socket-option-to-pulpcore-api-and-conten.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -178,6 +177,10 @@ set -ex
 
 
 %changelog
+* Tue May 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.6-1
+- Update to 3.105.6
+- Drop control-socket patch (now included upstream in 3.105.6, pulp/pulpcore#7574)
+
 * Mon May 04 2026 Odilon Sousa <osousa@redhat.com> - 3.105.5-1
 - Update to 3.105.5
 - Add patch for --control-socket option in pulpcore-api and pulpcore-content (pulp/pulpcore#7574)
