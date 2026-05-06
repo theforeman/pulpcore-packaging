@@ -3,7 +3,7 @@
 %global pypi_name poetry
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.3.4
+Version:        2.4.0
 Release:        1%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
@@ -20,7 +20,7 @@ BuildRequires:  python%{python3_pkgversion}-poetry_core >= 2.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
-Requires:       python%{python3_pkgversion}-poetry_core == 2.3.2
+Requires:       python%{python3_pkgversion}-poetry_core == 2.4.0
 Requires:       python%{python3_pkgversion}-build >= 1.2.1
 Requires:       python%{python3_pkgversion}-build < 2.0.0
 Requires:       python%{python3_pkgversion}-cachecontrol >= 0.14.0
@@ -31,8 +31,8 @@ Requires:       python%{python3_pkgversion}-dulwich >= 0.25.0
 Requires:       python%{python3_pkgversion}-dulwich < 2
 Requires:       python%{python3_pkgversion}-fastjsonschema >= 2.18.0
 Requires:       python%{python3_pkgversion}-fastjsonschema < 3.0.0
-Requires:       python%{python3_pkgversion}-installer >= 0.7.0
-Requires:       python%{python3_pkgversion}-installer < 0.8.0
+Requires:       python%{python3_pkgversion}-installer >= 1.0.0
+Requires:       python%{python3_pkgversion}-installer < 2.0.0
 Requires:       python%{python3_pkgversion}-keyring >= 25.1.0
 Requires:       python%{python3_pkgversion}-keyring < 26.0.0
 Requires:       python%{python3_pkgversion}-packaging >= 24.2
@@ -53,7 +53,7 @@ Requires:       python%{python3_pkgversion}-tomlkit < 1.0.0
 Requires:       python%{python3_pkgversion}-trove-classifiers >= 2022.5.19
 Requires:       python%{python3_pkgversion}-virtualenv >= 20.26.6
 Requires:       python%{python3_pkgversion}-findpython >= 0.6.2
-Requires:       python%{python3_pkgversion}-findpython < 0.8.0
+Requires:       python%{python3_pkgversion}-findpython < 0.9.0
 Requires:       python%{python3_pkgversion}-pbs_installer >= 2025.6.10
 
 %description
@@ -80,6 +80,12 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.0-1
+- Update to 2.4.0
+- Fix poetry_core requirement: 2.4.0 (was 2.3.2)
+- Fix installer requirement: >= 1.0.0, < 2.0.0 (was >= 0.7.0, < 0.8.0)
+- Fix findpython requirement: < 0.9.0 (was < 0.8.0)
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.3.4-1
 - Update to 2.3.4
 
