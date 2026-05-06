@@ -3,8 +3,8 @@
 %global pypi_name installer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.7.0
-Release:        6%{?dist}
+Version:        1.0.0
+Release:        1%{?dist}
 Summary:        A library for installing Python wheels.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -43,6 +43,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.0-1
+- Update to 1.0.0
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 0.7.0-6
 - Rebuild against python3.12
 
