@@ -3,7 +3,7 @@
 %global pypi_name build
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.4.4
+Version:        1.5.0
 Release:        1%{?dist}
 Summary:        A simple, correct Python build frontend
 
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.5.0-1
+- Update to 1.5.0
+
 * Sun Apr 26 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.4.4-1
 - Update to 1.4.4
 
