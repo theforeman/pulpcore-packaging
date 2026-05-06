@@ -6,7 +6,7 @@
 %global srcname pyopenssl
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        26.1.0
+Version:        26.2.0
 Release:        1%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 26.2.0-1
+- Update to 26.2.0
+
 * Sun Apr 26 2026 Foreman Packaging Automation <packaging@theforeman.org> - 26.1.0-1
 - Update to 26.1.0
 
