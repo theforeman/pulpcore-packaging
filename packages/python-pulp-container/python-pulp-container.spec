@@ -6,7 +6,7 @@
 %global src_name pulp_container
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.27.7
+Version:        2.27.8
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.8-1
+- Update to 2.27.8
+
 * Mon Apr 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.7-1
 - Update to 2.27.7
 - Update pysequoia bounds: >= 0.1.33, < 0.2 (upstream changed from ==0.1.32)
