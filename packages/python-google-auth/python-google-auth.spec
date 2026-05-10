@@ -5,7 +5,7 @@
 %global pypi_name google-auth
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.50.0
+Version:        2.52.0
 Release:        1%{?dist}
 Summary:        Google Authentication Library
 
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Sun May 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.52.0-1
+- Update to 2.52.0
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.50.0-1
 - Update to 2.50.0
 
