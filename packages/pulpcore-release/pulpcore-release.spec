@@ -1,10 +1,8 @@
-%global pulpcore_version nightly
+%global pulpcore_version 3.105
 
 %define repo_dir %{_sysconfdir}/yum.repos.d
 %define repo_dist %{dist}
 
-%global prereleasesource nightly
-%global prerelease %{?prereleasesource:.}%{?prereleasesource}
 %global release 1
 
 Name:           pulpcore-release
@@ -66,6 +64,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Mon May 11 2026 Odilon Sousa <osousa@redhat.com> - 3.105-1
+- Release pulpcore-release 3.105
+
 * Wed Apr 29 2026 Odilon Sousa <osousa@redhat.com> - 3.105-0.1.nightly
 - Release pulpcore-release 3.105
 
