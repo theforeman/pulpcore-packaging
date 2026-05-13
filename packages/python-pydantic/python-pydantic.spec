@@ -5,8 +5,8 @@
 %global pypi_name pydantic
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.13.3
-Release:        2%{?dist}
+Version:        2.13.4
+Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -19,10 +19,10 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme >= 22.5.0
 
-Requires:  python%{python3_pkgversion}-typing-extensions >= 4.12.2
+Requires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
 Requires:  python%{python3_pkgversion}-annotated-types >= 0.6.0
-Requires:  python%{python3_pkgversion}-pydantic-core == 2.46.3
-Requires:  python%{python3_pkgversion}-typing-inspection >= 0.4.0
+Requires:  python%{python3_pkgversion}-pydantic-core == 2.46.4
+Requires:  python%{python3_pkgversion}-typing-inspection >= 0.4.2
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -63,6 +63,11 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed May 13 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.4-1
+- Update to 2.13.4
+- Update pydantic-core requirement to 2.46.4
+- Update typing-extensions lower bound to >= 4.14.1, typing-inspection to >= 0.4.2
+
 * Mon Apr 27 2026 Odilon Sousa <osousa@redhat.com> - 2.13.3-2
 - Update pydantic-core requirement to 2.46.3
 
