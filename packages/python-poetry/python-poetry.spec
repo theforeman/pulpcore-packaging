@@ -3,7 +3,7 @@
 %global pypi_name poetry
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.4.0
+Version:        2.4.1
 Release:        1%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
@@ -80,6 +80,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed May 13 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.1-1
+- Update to 2.4.1
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.4.0-1
 - Update to 2.4.0
 - Fix poetry_core requirement: 2.4.0 (was 2.3.2)
