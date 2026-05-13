@@ -9,7 +9,7 @@
 %global srcname pydantic_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.46.3
+Version:        2.46.4
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -18,24 +18,24 @@ URL:            https://github.com/pydantic/pydantic/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 Source1:        https://downloads.theforeman.org/vendor/%{srcname}-%{version}-vendor.tar.gz
 ## vendor rust content generated via:
-## curl -sL https://files.pythonhosted.org/packages/source/p/pydantic_core/pydantic_core-2.46.3.tar.gz -o /tmp/pydantic_core-2.46.3.tar.gz
-## cd /tmp && tar xzf pydantic_core-2.46.3.tar.gz && cd pydantic_core-2.46.3
+## curl -sL https://files.pythonhosted.org/packages/source/p/pydantic_core/pydantic_core-2.46.4.tar.gz -o /tmp/pydantic_core-2.46.4.tar.gz
+## cd /tmp && tar xzf pydantic_core-2.46.4.tar.gz && cd pydantic_core-2.46.4
 ## cargo vendor-filterer --all-features --platform=x86_64-unknown-linux-gnu
-## tar czf ../pydantic_core-2.46.3-vendor.tar.gz vendor/
+## tar czf ../pydantic_core-2.46.4-vendor.tar.gz vendor/
 
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-maturin
-BuildRequires:  python%{python3_pkgversion}-typing-extensions >= 4.6.0
+BuildRequires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
 BuildRequires:  pyproject-rpm-macros
 
 BuildRequires:  rust-toolset
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
 
-Requires:  python%{python3_pkgversion}-typing-extensions >= 4.6.0
+Requires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
 
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -68,6 +68,11 @@ set -ex
 
 
 %changelog
+* Wed May 13 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.46.4-1
+- Update to 2.46.4
+- Regenerate vendor tarball for 2.46.4
+- Update typing-extensions lower bound to >= 4.14.1
+
 * Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.46.3-1
 - Update to 2.46.3
 - Regenerate vendor tarball for 2.46.3
