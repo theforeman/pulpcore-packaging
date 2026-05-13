@@ -5,8 +5,8 @@
 %global pypi_name packaging
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        24.2
-Release:        3%{?dist}
+Version:        25.0
+Release:        1%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed May 13 2026 Foreman Packaging Automation <packaging@theforeman.org> - 25.0-1
+- Update to 25.0
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 24.2-3
 - Change Requirements and Provides location in the specfile
 
