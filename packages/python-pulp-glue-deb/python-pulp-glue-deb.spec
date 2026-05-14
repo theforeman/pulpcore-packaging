@@ -6,7 +6,7 @@
 %global srcname pulp_glue_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.3
+Version:        0.4.4
 Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API. (deb plugin)
 
@@ -53,6 +53,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.4-1
+- Update to 0.4.4
+
 * Fri Apr 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.3-1
 - Update to 0.4.3
 - Fix Source URL and %prep dir to use srcname (underscores) for PyPI compatibility
