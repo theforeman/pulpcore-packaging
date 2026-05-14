@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.6
+Version:        3.105.7
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -177,6 +177,9 @@ set -ex
 
 
 %changelog
+* Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.7-1
+- Update to 3.105.7
+
 * Tue May 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.6-1
 - Update to 3.105.6
 - Drop control-socket patch (now included upstream in 3.105.6, pulp/pulpcore#7574)
