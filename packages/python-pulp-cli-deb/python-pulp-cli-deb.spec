@@ -7,7 +7,7 @@
 %global pkg_name pulp_cli_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.3
+Version:        0.4.4
 Release:        1%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.4-1
+- Update to 0.4.4
+
 * Fri Apr 17 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.3-1
 - Update to 0.4.3
 - Update pulp-cli upper bound to < 0.38 (upstream pins <0.38)
