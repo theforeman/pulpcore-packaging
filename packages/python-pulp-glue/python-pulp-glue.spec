@@ -3,15 +3,16 @@
 
 # Created by pyp2rpm-3.3.3
 %global pypi_name pulp-glue
+%global pypi_name_u pulp_glue
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.32.3
+Version:        0.39.1
 Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
 URL:            https://github.com/pulp/pulp-cli
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name_u}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -20,10 +21,14 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-packaging < 25
-Requires:       python%{python3_pkgversion}-packaging >= 20.0
-Requires:       python%{python3_pkgversion}-requests < 2.33
+Requires:       python%{python3_pkgversion}-multidict >= 6.0.5
+Requires:       python%{python3_pkgversion}-multidict < 6.8
+Requires:       python%{python3_pkgversion}-packaging >= 22.0
+Requires:       python%{python3_pkgversion}-packaging <= 26.2
+Requires:       python%{python3_pkgversion}-pydantic >= 2.9.2
+Requires:       python%{python3_pkgversion}-pydantic < 2.13
 Requires:       python%{python3_pkgversion}-requests >= 2.24.0
+Requires:       python%{python3_pkgversion}-requests < 2.34
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -35,7 +40,9 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name_u}-%{version}
+# setuptools < 70 (RHEL 9) does not support PEP 639 bare SPDX license strings
+sed -i 's/^license = "\(.*\)"$/license = {text = "\1"}/' pyproject.toml
 
 %build
 set -ex
@@ -49,10 +56,16 @@ set -ex
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %{python3_sitelib}/pulp_glue
-%{python3_sitelib}/pulp_glue-%{version}.dist-info/
+%{python3_sitelib}/pulp_glue-%{version}.dist-info
 
 
 %changelog
+* Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.39.1-1
+- Update to 0.39.1
+- Update Requires to match 0.39.1: relax packaging to <=26.2, requests to <2.34, add multidict and pydantic
+- Fix Source0 filename: upstream now ships pulp_glue (underscore) not pulp-glue
+- Patch pyproject.toml in %%prep for PEP 639 license field (setuptools < 70 on RHEL 9)
+
 * Tue May 13 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.32.3-1
 - Update to 0.32.3
 
