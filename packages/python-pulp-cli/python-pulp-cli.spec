@@ -4,15 +4,16 @@
 
 # Created by pyp2rpm-3.3.6
 %global pypi_name pulp-cli
+%global pypi_name_u pulp_cli
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.32.3
+Version:        0.39.1
 Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
 URL:            https://github.com/pulp/pulp-cli
-Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name_u}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -23,14 +24,10 @@ BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-PyYAML < 6.1
 Requires:       python%{python3_pkgversion}-PyYAML >= 5.3
-Requires:       python%{python3_pkgversion}-click < 9.0.0
 Requires:       python%{python3_pkgversion}-click >= 8.0.0
-Requires:       python%{python3_pkgversion}-packaging >= 20.0
-Requires:       python%{python3_pkgversion}-packaging < 25
+Requires:       python%{python3_pkgversion}-click < 8.4
 Requires:       python%{python3_pkgversion}-pygments >= 2.17.2
-Requires:       python%{python3_pkgversion}-pygments < 2.20
-Requires:       python%{python3_pkgversion}-requests < 2.33
-Requires:       python%{python3_pkgversion}-requests >= 2.24.0
+Requires:       python%{python3_pkgversion}-pygments < 2.21
 Requires:       python%{python3_pkgversion}-schema < 0.8
 Requires:       python%{python3_pkgversion}-schema >= 0.7.5
 Requires:       python%{python3_pkgversion}-tomli_w >= 1.0.0
@@ -50,7 +47,9 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name_u}-%{version}
+# setuptools < 70 (RHEL 9) does not support PEP 639 bare SPDX license strings
+sed -i 's/^license = "\(.*\)"$/license = {text = "\1"}/' pyproject.toml
 
 %build
 set -ex
@@ -71,6 +70,12 @@ set -ex
 
 
 %changelog
+* Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.39.1-1
+- Update to 0.39.1
+- Update Requires: remove dropped packaging/requests deps, tighten click to <8.4, pygments to <2.21
+- Fix Source0 filename: upstream now ships pulp_cli (underscore) not pulp-cli
+- Patch pyproject.toml in %%prep for PEP 639 license field (setuptools < 70 on RHEL 9)
+
 * Tue May 13 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.32.3-1
 - Update to 0.32.3
 
