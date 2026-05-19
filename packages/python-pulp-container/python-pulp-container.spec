@@ -6,7 +6,7 @@
 %global src_name pulp_container
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.27.8
+Version:        2.27.9
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Tue May 19 2026 Ondřej Gajdušek <ogajduse@redhat.com> - 2.27.9-1
+- Release python-pulp-container 2.27.9
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.8-1
 - Update to 2.27.8
 
