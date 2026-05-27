@@ -5,7 +5,7 @@
 %global pypi_name packaging
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        25.0
+Version:        26.2
 Release:        1%{?dist}
 Summary:        Core utilities for Python packages
 
@@ -33,6 +33,8 @@ Requires:       python%{python3_pkgversion}-pyparsing >= 2.0.2
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# PEP 639: flit-core rejects bare SPDX string; convert to dict form
+sed -i 's/^license = "\(.*\)"$/license = {text = "\1"}/' pyproject.toml
 
 
 %build
@@ -51,6 +53,10 @@ set -ex
 
 
 %changelog
+* Wed May 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 26.2-1
+- Update to 26.2
+- Fix PEP 639 license field for flit-core compatibility
+
 * Wed May 13 2026 Foreman Packaging Automation <packaging@theforeman.org> - 25.0-1
 - Update to 25.0
 
