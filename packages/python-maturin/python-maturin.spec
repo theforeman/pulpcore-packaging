@@ -7,7 +7,7 @@
 %global pypi_name maturin
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.13.1
+Version:        1.13.3
 Release:        1%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
@@ -17,10 +17,10 @@ Source0:        https://files.pythonhosted.org/packages/source/m/%{pypi_name}/%{
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.xz
 
 # To create the vendor tarball:
-# curl -sL https://files.pythonhosted.org/packages/source/m/maturin/maturin-1.13.1.tar.gz -o /tmp/maturin-1.13.1.tar.gz
-# cd /tmp && tar xzf maturin-1.13.1.tar.gz && cd maturin-1.13.1
+# curl -sL https://files.pythonhosted.org/packages/source/m/maturin/maturin-1.13.3.tar.gz -o /tmp/maturin-1.13.3.tar.gz
+# cd /tmp && tar xzf maturin-1.13.3.tar.gz && cd maturin-1.13.3
 # cargo vendor --versioned-dirs
-# tar Jcf ../maturin-1.13.1-vendor.tar.xz vendor/
+# tar Jcf ../maturin-1.13.3-vendor.tar.xz vendor/
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -64,6 +64,10 @@ set -ex
 
 
 %changelog
+* Wed May 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.13.3-1
+- Update to 1.13.3
+- Regenerate vendor tarball for 1.13.3
+
 * Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.13.1-1
 - Update to 1.13.1
 - Regenerate vendor tarball for 1.13.1
