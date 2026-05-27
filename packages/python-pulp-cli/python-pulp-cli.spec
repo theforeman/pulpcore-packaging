@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.39.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -32,7 +32,6 @@ Requires:       python%{python3_pkgversion}-schema < 0.8
 Requires:       python%{python3_pkgversion}-schema >= 0.7.5
 Requires:       python%{python3_pkgversion}-tomli_w >= 1.0.0
 Requires:       python%{python3_pkgversion}-tomli_w < 2
-Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-pulp-glue == %{version}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -70,6 +69,9 @@ set -ex
 
 
 %changelog
+* Wed May 27 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-2
+- Remove stale Requires: python3.12-setuptools (not a runtime dep of pulp-cli 0.39.1)
+
 * Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.39.1-1
 - Update to 0.39.1
 - Update Requires: remove dropped packaging/requests deps, tighten click to <8.4, pygments to <2.21
