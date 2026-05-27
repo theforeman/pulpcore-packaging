@@ -10,7 +10,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.46.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -28,14 +28,14 @@ Source1:        https://downloads.theforeman.org/vendor/%{srcname}-%{version}-ve
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-maturin
-BuildRequires:  python%{python3_pkgversion}-typing-extensions >= 4.6.0
+BuildRequires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
 BuildRequires:  pyproject-rpm-macros
 
 BuildRequires:  rust-toolset
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
 
-Requires:  python%{python3_pkgversion}-typing-extensions >= 4.6.0
+Requires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
 
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Wed May 27 2026 Odilon Sousa <osousa@redhat.com> - 2.46.4-2
+- Update typing-extensions lower bound to >= 4.14.1 to match upstream 2.46.4
+
 * Wed May 13 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.46.4-1
 - Update to 2.46.4
 - Regenerate vendor tarball for 2.46.4
