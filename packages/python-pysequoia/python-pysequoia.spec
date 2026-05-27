@@ -5,7 +5,7 @@
 %global pypi_name pysequoia
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.1.33
+Version:        0.1.34
 Release:        1%{?dist}
 Summary:        Provides OpenPGP facilities using Sequoia-PGP library
 
@@ -15,10 +15,10 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.xz
 
 ## vendor rust content generated via:
-## curl -sL https://files.pythonhosted.org/packages/source/p/pysequoia/pysequoia-0.1.33.tar.gz -o /tmp/pysequoia-0.1.33.tar.gz
-## cd /tmp && tar xzf pysequoia-0.1.33.tar.gz && cd pysequoia-0.1.33
+## curl -sL https://files.pythonhosted.org/packages/source/p/pysequoia/pysequoia-0.1.34.tar.gz -o /tmp/pysequoia-0.1.34.tar.gz
+## cd /tmp && tar xzf pysequoia-0.1.34.tar.gz && cd pysequoia-0.1.34
 ## cargo vendor-filterer --all-features --platform=x86_64-unknown-linux-gnu
-## tar Jcf ../pysequoia-0.1.33-vendor.tar.xz vendor/
+## tar Jcf ../pysequoia-0.1.34-vendor.tar.xz vendor/
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -64,6 +64,10 @@ set -ex
 
 
 %changelog
+* Wed May 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.1.34-1
+- Update to 0.1.34
+- Regenerate vendor tarball for 0.1.34
+
 * Mon Apr 27 2026 Odilon Sousa <osousa@redhat.com> - 0.1.33-1
 - Release python-pysequoia 0.1.33
 
