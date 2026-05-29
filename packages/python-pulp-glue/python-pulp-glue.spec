@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.39.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -26,7 +26,7 @@ Requires:       python%{python3_pkgversion}-multidict < 6.8
 Requires:       python%{python3_pkgversion}-packaging >= 22.0
 Requires:       python%{python3_pkgversion}-packaging <= 26.2
 Requires:       python%{python3_pkgversion}-pydantic >= 2.9.2
-Requires:       python%{python3_pkgversion}-pydantic < 2.13
+Requires:       python%{python3_pkgversion}-pydantic < 2.14
 Requires:       python%{python3_pkgversion}-requests >= 2.24.0
 Requires:       python%{python3_pkgversion}-requests < 2.34
 
@@ -43,6 +43,9 @@ set -ex
 %autosetup -n %{pypi_name_u}-%{version}
 # setuptools < 70 (RHEL 9) does not support PEP 639 bare SPDX license strings
 sed -i 's/^license = "\(.*\)"$/license = {text = "\1"}/' pyproject.toml
+# upstream pins pydantic<2.13; relax to <2.14 to allow pydantic 2.13.x
+# constraint is "pydantic>=2.9.2,<2.13" — match on the pydantic line only
+sed -i '/pydantic/s/<2\.13/<2.14/' pyproject.toml
 
 %build
 set -ex
@@ -60,6 +63,10 @@ set -ex
 
 
 %changelog
+* Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-2
+- Relax pydantic upper bound to < 2.14 (upstream pins <2.13; pydantic 2.13.x in staging)
+- Patch pyproject.toml in %%prep to match relaxed bound
+
 * Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.39.1-1
 - Update to 0.39.1
 - Update Requires to match 0.39.1: relax packaging to <=26.2, requests to <2.34, add multidict and pydantic
