@@ -5,7 +5,7 @@
 %global pypi_name galaxy-importer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.33
+Version:        0.4.39
 Release:        1%{?dist}
 Summary:        Galaxy content importer
 
@@ -20,20 +20,20 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 # We don't care if Ansible is Python 2 or 3 as we just call the CLI
 Requires:       /usr/bin/ansible
 Requires:       /usr/bin/ansible-test
-Requires:       ansible-lint < 6.14.4
-Requires:       ansible-lint >= 5.0.8
+Requires:       ansible-lint <= 26.4.0
+Requires:       ansible-lint >= 6.2.2
 Requires:       python%{python3_pkgversion}-ansible-builder < 4.0
-Requires:       python%{python3_pkgversion}-ansible-builder >= 1.0.1
+Requires:       python%{python3_pkgversion}-ansible-builder >= 1.2.0
 Requires:       python%{python3_pkgversion}-attrs < 23
 Requires:       python%{python3_pkgversion}-attrs >= 21.4.0
-Requires:       python%{python3_pkgversion}-bleach < 4
-Requires:       python%{python3_pkgversion}-bleach >= 3.3.0
-Requires:       python%{python3_pkgversion}-bleach-allowlist < 2
-Requires:       python%{python3_pkgversion}-bleach-allowlist >= 1.0.3
 Requires:       python%{python3_pkgversion}-flake8 < 7
 Requires:       python%{python3_pkgversion}-flake8 >= 5.0.0
 Requires:       python%{python3_pkgversion}-markdown < 4
 Requires:       python%{python3_pkgversion}-markdown >= 3.3.4
+Requires:       python%{python3_pkgversion}-nh3 < 3
+Requires:       python%{python3_pkgversion}-nh3 >= 0.2.18
+Requires:       python%{python3_pkgversion}-packaging < 27
+Requires:       python%{python3_pkgversion}-packaging >= 23.2
 Requires:       python%{python3_pkgversion}-pyyaml < 7
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.4.1
 Requires:       python%{python3_pkgversion}-requests < 3
@@ -80,6 +80,14 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 0.4.39-1
+- Update to 0.4.39
+- Relax packaging bound: < 25 → < 27 (upstream: packaging<27,>=23.2)
+- Add missing Requires: nh3 >= 0.2.18, < 3
+- Update ansible-lint bounds: >= 6.2.2, <= 26.4.0 (upstream 0.4.39 requires ansible-lint>=6.2.2,<=26.4.0)
+- Update ansible-builder lower bound: >= 1.2.0 (was >= 1.0.1)
+- Drop bleach and bleach-allowlist Requires (removed upstream)
+
 * Mon Sep 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.33-1
 - Update to 0.4.33
 
