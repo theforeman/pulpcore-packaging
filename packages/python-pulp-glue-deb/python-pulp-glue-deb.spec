@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API. (deb plugin)
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -23,7 +23,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.23.2
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.33
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.40
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -53,6 +53,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 0.4.4-2
+- Relax pulp-glue upper bound to < 0.40 (upstream: pulp-glue<0.40,>=0.23.2)
+
 * Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.4-1
 - Update to 0.4.4
 

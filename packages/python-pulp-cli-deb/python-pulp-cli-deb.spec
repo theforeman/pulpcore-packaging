@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -23,7 +23,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-pulp-cli >= 0.23.2
-Requires:       python%{python3_pkgversion}-pulp-cli < 0.38
+Requires:       python%{python3_pkgversion}-pulp-cli < 0.40
 Requires:       python%{python3_pkgversion}-click
 Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-pulp-glue-deb == %{version}
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 0.4.4-2
+- Relax pulp-cli upper bound to < 0.40 (upstream: pulp-cli<0.40,>=0.23.2)
+
 * Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.4-1
 - Update to 0.4.4
 
