@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.105.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -76,7 +76,7 @@ Requires:       python%{python3_pkgversion}-json_stream < 2.5
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.12.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.30.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.39
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.40
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
 Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.41
@@ -177,6 +177,9 @@ set -ex
 
 
 %changelog
+* Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 3.105.7-2
+- Relax pulp-glue upper bound to < 0.40 (upstream requires pulp-glue<0.40,>=0.30.0)
+
 * Thu May 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.7-1
 - Update to 3.105.7
 
