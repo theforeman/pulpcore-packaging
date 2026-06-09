@@ -6,7 +6,7 @@
 %global srcname pyjwt
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        2.12.1
+Version:        2.13.0
 Release:        1%{?dist}
 Summary:        JSON Web Token implementation in Python
 
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Tue Jun 09 2026 Odilon Sousa <osousa@redhat.com> - 2.13.0-1
+- Update to 2.13.0 (fixes CVE-2026-48526)
+
 * Wed Apr 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.12.1-1
 - Update to 2.12.1
 - Fix PEP 639 license string and lower setuptools requirement for RHEL 9 buildroot
