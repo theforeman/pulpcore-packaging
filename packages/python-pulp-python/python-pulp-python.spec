@@ -6,7 +6,7 @@
 %global src_name pulp_python
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.27.3
+Version:        3.27.4
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Jun 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.4-1
+- Update to 3.27.4
+
 * Wed May 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.3-1
 - Update to 3.27.3
 
