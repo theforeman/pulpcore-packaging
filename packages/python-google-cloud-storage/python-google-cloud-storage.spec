@@ -5,7 +5,7 @@
 %global pypi_name google-cloud-storage
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.10.1
+Version:        3.11.0
 Release:        1%{?dist}
 Summary:        Google Cloud Storage API client library
 
@@ -21,13 +21,13 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-google-api-core < 3
-Requires:       python%{python3_pkgversion}-google-api-core >= 2.15
+Requires:       python%{python3_pkgversion}-google-api-core >= 2.27.0
 Requires:       python%{python3_pkgversion}-google-auth < 3
 Requires:       python%{python3_pkgversion}-google-auth >= 2.26.1
 Requires:       python%{python3_pkgversion}-google-cloud-core < 3
 Requires:       python%{python3_pkgversion}-google-cloud-core >= 2.4.2
 Requires:       python%{python3_pkgversion}-google-crc32c < 2
-Requires:       python%{python3_pkgversion}-google-crc32c >= 1.1.3
+Requires:       python%{python3_pkgversion}-google-crc32c >= 1.6.0
 Requires:       python%{python3_pkgversion}-google-resumable-media >= 2.7.2
 Requires:       python%{python3_pkgversion}-protobuf < 7
 Requires:       python%{python3_pkgversion}-requests < 3
@@ -64,6 +64,10 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.0-1
+- Update to 3.11.0
+- Update google-api-core minimum to >= 2.27.0, google-crc32c minimum to >= 1.6.0
+
 * Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.1-1
 - Update to 3.10.1
 
