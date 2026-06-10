@@ -7,7 +7,7 @@
 %global pypi_name dulwich
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.2.1
+Version:        1.2.6
 Release:        1%{?dist}
 Summary:        Python Git Library
 
@@ -25,7 +25,7 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-urllib3 >= 1.24.1
+Requires:       python%{python3_pkgversion}-urllib3 >= 2.2.2
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -62,6 +62,10 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.6-1
+- Update to 1.2.6
+- Update urllib3 minimum requirement to >= 2.2.2 (upstream 1.2.6 requires urllib3 >= 2.2.2)
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.1-1
 - Update to 1.2.1
 
