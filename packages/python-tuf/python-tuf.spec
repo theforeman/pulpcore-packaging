@@ -5,7 +5,7 @@
 %global pypi_name tuf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.0.0
+Version:        7.0.0
 Release:        1%{?dist}
 Summary:        A Framework for Securing Software Update Systems
 
@@ -55,5 +55,8 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 7.0.0-1
+- Update to 7.0.0
+
 * Tue Apr 14 2026 Odilon Sousa <osousa@redhat.com> - 6.0.0-1
 - Initial package.
