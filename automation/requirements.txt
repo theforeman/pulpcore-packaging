@@ -7,8 +7,8 @@ pulp-python==3.27.4
 pulpcore-client==3.105.8
 pulp-rpm-client==3.35.3
 pulp-ostree==2.6.0
-pulp-glue==0.39.1
-pulp-cli==0.39.1
+pulp-glue==0.40.1
+pulp-cli==0.40.1
 pulp-cli-deb==0.4.4
 pulp-glue-deb==0.4.4
 pulp-smart-proxy==0.4.0
