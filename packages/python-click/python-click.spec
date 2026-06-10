@@ -5,7 +5,7 @@
 %global pypi_name click
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        8.1.8
+Version:        8.3.3
 Release:        1%{?dist}
 Summary:        Composable command line interface toolkit
 
@@ -32,6 +32,9 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# Patch pyproject.toml for RHEL 9 flit_core compatibility (PEP 639 license format)
+sed -i '/^license-files/d' pyproject.toml
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 
 
 %build
@@ -45,13 +48,18 @@ set -ex
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
-%license LICENSE.txt docs/license.rst
+%license LICENSE.txt docs/license.md
 %doc README.md
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.3.3-1
+- Update to 8.3.3
+- Fix pyproject.toml for RHEL 9 flit_core: convert PEP 639 license string to dict format
+- Update %%license: docs/license.rst renamed to docs/license.md in 8.3.3
+
 * Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.1.8-1
 - Update to 8.1.8
 - Switch to pyproject build (setup.py removed upstream, uses flit-core)
