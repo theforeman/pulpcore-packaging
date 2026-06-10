@@ -3,7 +3,7 @@
 %global pypi_name distlib
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.0
+Version:        0.4.2
 Release:        1%{?dist}
 Summary:        Distlib is a library which implements low-level functions that relate to packaging and distribution of Python software.
 
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.2-1
+- Update to 0.4.2
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.0-1
 - Update to 0.4.0
 
