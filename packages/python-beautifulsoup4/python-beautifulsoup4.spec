@@ -5,7 +5,7 @@
 %global pypi_name beautifulsoup4
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.14.3
+Version:        4.15.0
 Release:        1%{?dist}
 Summary:        Screen-scraping library
 
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.15.0-1
+- Update to 4.15.0
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.14.3-1
 - Update to 4.14.3
 - Drop bs4/tests from %files (no longer installed by upstream since 4.14.x)
