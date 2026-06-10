@@ -5,7 +5,7 @@
 %global pypi_name requests
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.32.5
+Version:        2.33.1
 Release:        1%{?dist}
 Summary:        Python HTTP for Humans
 
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.33.1-1
+- Update to 2.33.1
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.32.5-1
 - Update to 2.32.5
 
