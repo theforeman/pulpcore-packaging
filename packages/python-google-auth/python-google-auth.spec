@@ -5,7 +5,7 @@
 %global pypi_name google-auth
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.52.0
+Version:        2.53.0
 Release:        1%{?dist}
 Summary:        Google Authentication Library
 
@@ -17,6 +17,7 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
+Requires:       python%{python3_pkgversion}-cryptography >= 38.0.3
 Requires:       python%{python3_pkgversion}-cachetools < 7
 Requires:       python%{python3_pkgversion}-cachetools >= 2
 Requires:       python%{python3_pkgversion}-pyasn1-modules >= 0.2.1
@@ -57,6 +58,10 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.53.0-1
+- Update to 2.53.0
+- Add cryptography >= 38.0.3 runtime dependency (required by upstream 2.53.0)
+
 * Sun May 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.52.0-1
 - Update to 2.52.0
 
