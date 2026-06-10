@@ -5,7 +5,7 @@
 %global pypi_name google-resumable-media
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.9.0
+Version:        2.10.0
 Release:        1%{?dist}
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.10.0-1
+- Update to 2.10.0
+
 * Sun May 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.0-1
 - Update to 2.9.0
 
