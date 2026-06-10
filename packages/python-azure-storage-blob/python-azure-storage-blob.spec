@@ -6,7 +6,7 @@
 %global src_name azure_storage_blob
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        12.28.0
+Version:        12.30.0
 Release:        1%{?dist}
 Summary:        Microsoft Azure Blob Storage Client Library for Python
 
@@ -19,7 +19,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 Requires:       python%{python3_pkgversion}-azure-core < 2
-Requires:       python%{python3_pkgversion}-azure-core >= 1.30.0
+Requires:       python%{python3_pkgversion}-azure-core >= 1.37.0
 Requires:       python%{python3_pkgversion}-cryptography >= 2.1.4
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.6.0
 Requires:       python%{python3_pkgversion}-isodate >= 0.6.1
@@ -55,6 +55,10 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 12.30.0-1
+- Update to 12.30.0
+- Update azure-core minimum requirement to >= 1.37.0
+
 * Mon Mar 30 2026 Foreman Packaging Automation <packaging@theforeman.org> - 12.28.0-1
 - Update to 12.28.0
 
