@@ -3,7 +3,7 @@
 %global pypi_name installer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.0.0
+Version:        1.0.1
 Release:        1%{?dist}
 Summary:        A library for installing Python wheels.
 
@@ -43,6 +43,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.1-1
+- Update to 1.0.1
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.0-1
 - Update to 1.0.0
 
