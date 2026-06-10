@@ -5,7 +5,7 @@
 %global pypi_name s3transfer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.17.0
+Version:        0.18.0
 Release:        1%{?dist}
 Summary:        An Amazon S3 Transfer Manager
 
@@ -18,7 +18,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 Requires:       python%{python3_pkgversion}-botocore < 2.0a.0
-Requires:       python%{python3_pkgversion}-botocore >= 1.36.0
+Requires:       python%{python3_pkgversion}-botocore >= 1.37.4
 
 %description
 %{summary}
@@ -50,6 +50,10 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.18.0-1
+- Update to 0.18.0
+- Update botocore minimum to >= 1.37.4 (upstream 0.18.0 requires botocore >= 1.37.4)
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.17.0-1
 - Update to 0.17.0
 
