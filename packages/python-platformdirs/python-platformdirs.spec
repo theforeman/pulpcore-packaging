@@ -5,7 +5,7 @@
 %global pypi_name platformdirs
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.9.6
+Version:        4.10.0
 Release:        1%{?dist}
 Summary:        A small Python module for determining appropriate platform-specific dirs, e
 
@@ -45,6 +45,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.10.0-1
+- Update to 4.10.0
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.9.6-1
 - Update to 4.9.6
 
