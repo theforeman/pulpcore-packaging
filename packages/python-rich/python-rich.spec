@@ -5,7 +5,7 @@
 %global pypi_name rich
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        14.3.4
+Version:        15.0.0
 Release:        1%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
@@ -20,10 +20,10 @@ BuildRequires:  python%{python3_pkgversion}-poetry_core
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-markdown-it-py >= 2.1
+Requires:       python%{python3_pkgversion}-markdown-it-py >= 2.2.0
 Requires:       python%{python3_pkgversion}-markdown-it-py < 3
 Requires:       python%{python3_pkgversion}-pygments < 3.0.0
-Requires:       python%{python3_pkgversion}-pygments >= 2.6.0
+Requires:       python%{python3_pkgversion}-pygments >= 2.13.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -56,6 +56,10 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 15.0.0-1
+- Update to 15.0.0
+- Update markdown-it-py minimum to >= 2.2.0, pygments minimum to >= 2.13.0
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 14.3.4-1
 - Update to 14.3.4
 
