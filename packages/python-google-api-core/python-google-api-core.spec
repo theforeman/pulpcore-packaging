@@ -5,8 +5,8 @@
 %global pypi_name google-api-core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.30.3
-Release:        2%{?dist}
+Version:        2.31.0
+Release:        1%{?dist}
 Summary:        Google API client core library
 
 License:        Apache 2.0
@@ -29,13 +29,13 @@ Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.5
 Requires:       python%{python3_pkgversion}-google-auth < 3
 Requires:       python%{python3_pkgversion}-google-auth >= 2.14.1
 Requires:       python%{python3_pkgversion}-googleapis-common-protos < 2
-Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 1.56.2
+Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 1.63.2
 Requires:       python%{python3_pkgversion}-proto-plus < 2
-Requires:       python%{python3_pkgversion}-proto-plus >= 1.22.3
+Requires:       python%{python3_pkgversion}-proto-plus >= 1.24.0
 Requires:       python%{python3_pkgversion}-protobuf < 8
-Requires:       python%{python3_pkgversion}-protobuf >= 4.25.8
+Requires:       python%{python3_pkgversion}-protobuf >= 5.29.6
 Requires:       python%{python3_pkgversion}-requests < 3
-Requires:       python%{python3_pkgversion}-requests >= 2.18
+Requires:       python%{python3_pkgversion}-requests >= 2.33.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -71,6 +71,10 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.31.0-1
+- Update to 2.31.0
+- Update googleapis-common-protos to >= 1.63.2, proto-plus to >= 1.24.0, protobuf to >= 5.29.6, requests to >= 2.33.0
+
 * Fri Apr 17 2026 Odilon Sousa <osousa@redhat.com> - 2.30.3-2
 - Fix protobuf bounds: >= 3.19.5,< 6 -> >= 4.25.8,< 8 (upstream 2.30.3 requires protobuf<8,>=4.25.8)
 
