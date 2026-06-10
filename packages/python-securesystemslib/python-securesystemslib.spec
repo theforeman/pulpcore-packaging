@@ -5,7 +5,7 @@
 %global pypi_name securesystemslib
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.3.1
+Version:        1.4.0
 Release:        1%{?dist}
 Summary:        A library that provides cryptographic and general-purpose routines
 
@@ -49,5 +49,8 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.4.0-1
+- Update to 1.4.0
+
 * Tue Apr 14 2026 Odilon Sousa <osousa@redhat.com> - 1.3.1-1
 - Initial package.
