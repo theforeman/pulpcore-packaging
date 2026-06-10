@@ -5,7 +5,7 @@
 %global pypi_name urllib3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.6.3
+Version:        2.7.0
 Release:        1%{?dist}
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.7.0-1
+- Update to 2.7.0
+
 * Sun Jan 18 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.6.3-1
 - Update to 2.6.3
 
