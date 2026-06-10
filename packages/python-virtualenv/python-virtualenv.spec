@@ -4,7 +4,7 @@
 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        21.3.3
+Version:        21.4.2
 Release:        1%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
@@ -21,7 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-hatch_vcs
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-Requires:  python%{python3_pkgversion}-discovery >= 1.3.1
+Requires:  python%{python3_pkgversion}-discovery >= 1.4
 Requires:  python%{python3_pkgversion}-distlib >= 0.3.7
 Requires:  python%{python3_pkgversion}-distlib < 1
 Requires:  python%{python3_pkgversion}-filelock >= 3.24.2
@@ -58,6 +58,10 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 21.4.2-1
+- Update to 21.4.2
+- Update discovery minimum to >= 1.4 (upstream 21.4.2 requires python-discovery >= 1.4)
+
 * Wed May 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 21.3.3-1
 - Update to 21.3.3
 - Update python-discovery lower bound to >= 1.3.1
