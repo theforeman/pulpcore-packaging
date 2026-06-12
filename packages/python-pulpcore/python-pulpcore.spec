@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.7
-Release:        2%{?dist}
+Version:        3.105.9
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -177,6 +177,9 @@ set -ex
 
 
 %changelog
+* Fri Jun 12 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.9-1
+- Update to 3.105.9
+
 * Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 3.105.7-2
 - Relax pulp-glue upper bound to < 0.40 (upstream requires pulp-glue<0.40,>=0.30.0)
 
