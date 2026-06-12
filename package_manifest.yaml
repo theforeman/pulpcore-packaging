@@ -149,6 +149,7 @@ tier4_packages:
     python-aioredis: {}
     python-aiosignal: {}
     python-ansible-builder: {}
+    python-ansible-compat: {}
     python-anyio: {}
     python-asgiref: {}
     python-async-lru: {}
