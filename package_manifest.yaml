@@ -64,6 +64,7 @@ repoclosures:
           - el9-baseos
           - el9-appstream
           - el9-crb
+          - el9-foreman-plugins-nightly
 
 buildroot_packages:
   hosts:
