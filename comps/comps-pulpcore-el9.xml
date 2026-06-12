@@ -50,6 +50,8 @@
       <packagereq type="default">python3.12-azure-storage-common</packagereq>
       <packagereq type="default">python3.12-backoff</packagereq>
       <packagereq type="default">python3.12-backports-zstd</packagereq>
+      <packagereq type="default">python3.12-black</packagereq>
+      <packagereq type="default">python3.12-blackd</packagereq>
       <packagereq type="default">python3.12-bandersnatch</packagereq>
       <packagereq type="default">python3.12-beautifulsoup4</packagereq>
       <packagereq type="default">python3.12-bindep</packagereq>
