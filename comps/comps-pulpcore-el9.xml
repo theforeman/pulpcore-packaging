@@ -198,6 +198,7 @@
       <packagereq type="default">python3.12-meson-python</packagereq>
       <packagereq type="default">python3.12-more-itertools</packagereq>
       <packagereq type="default">python3.12-msgpack</packagereq>
+      <packagereq type="default">python3.12-mypy-extensions</packagereq>
       <packagereq type="default">python3.12-msrest</packagereq>
       <packagereq type="default">python3.12-multidict</packagereq>
       <packagereq type="default">python3.12-naya</packagereq>
