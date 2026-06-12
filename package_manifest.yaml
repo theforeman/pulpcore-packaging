@@ -162,6 +162,7 @@ tier4_packages:
     python-azure-storage-common: {}
     python-backoff: {}
     python-backports-zstd: {}
+    python-black: {}
     python-bandersnatch: {}
     python-beautifulsoup4: {}
     python-bindep: {}
