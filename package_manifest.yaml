@@ -283,6 +283,7 @@ tier4_packages:
     python-social-auth-core: {}
     python-socks: {}
     python-soupsieve: {}
+    python-subprocess-tee: {}
     python-tenacity: {}
     python-wcmatch: {}
     python-iniparse: {}

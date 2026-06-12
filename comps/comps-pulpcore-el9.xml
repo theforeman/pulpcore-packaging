@@ -317,6 +317,7 @@
       <packagereq type="default">python3.12-solv</packagereq>
       <packagereq type="default">python3.12-solv</packagereq>
       <packagereq type="default">python3.12-soupsieve</packagereq>
+      <packagereq type="default">python3.12-subprocess-tee</packagereq>
       <packagereq type="default">python3.12-sqlparse</packagereq>
       <packagereq type="default">python3.12-tablib</packagereq>
       <packagereq type="default">python3.12-tenacity</packagereq>
