@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.1.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Ansible compatibility goodies
 
 License:        MIT
@@ -35,6 +35,9 @@ Requires:       python%{python3_pkgversion}-subprocess-tee >= 0.4.1
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
+# ansible-core is provided by foreman-packaging; strip it so it is not
+# auto-generated as an RPM dep from the dist-info
+sed -i '/ansible-core/d' pyproject.toml
 
 
 %build
@@ -56,5 +59,9 @@ set -ex
 
 
 %changelog
+* Fri Jun 12 2026 Odilon Sousa <osousa@redhat.com> - 4.1.11-2
+- Strip ansible-core from pyproject.toml in %%prep so it is not emitted
+  as an RPM dep (ansible-core is provided by foreman-packaging)
+
 * Fri Jun 12 2026 Odilon Sousa <osousa@redhat.com> - 4.1.11-1
 - Initial package
