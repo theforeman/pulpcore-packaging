@@ -359,6 +359,7 @@ tier4_packages:
     python-xlrd: {}
     python-xlwt: {}
     python-yarl: {}
+    python-yamllint: {}
     python-zipp: {}
     python-jq: {}
     python-json-stream-rs-tokenizer: {}
