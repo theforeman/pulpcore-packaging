@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.15.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Screen-scraping library
 
 License:        MIT
@@ -19,7 +19,8 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-Requires:       python%{python3_pkgversion}-soupsieve > 1.2
+Requires:       python%{python3_pkgversion}-soupsieve >= 1.6.1
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.0.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -48,6 +49,10 @@ set -ex
 
 
 %changelog
+* Fri Jun 12 2026 Odilon Sousa <osousa@redhat.com> - 4.15.0-2
+- Update soupsieve minimum to >= 1.6.1 (upstream 4.15.0 requires soupsieve >= 1.6.1)
+- Add typing-extensions >= 4.0.0 runtime dependency (new in upstream 4.15.0)
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.15.0-1
 - Update to 4.15.0
 
