@@ -251,6 +251,7 @@ tier4_packages:
     python-marshmallow: {}
     python-more-itertools: {}
     python-msgpack: {}
+    python-mypy-extensions: {}
     python-msrest: {}
     python-oauthlib: {}
     python-parsley: {}
