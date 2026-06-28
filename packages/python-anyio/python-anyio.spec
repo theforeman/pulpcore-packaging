@@ -3,7 +3,7 @@
 %global pypi_name anyio
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.13.0
+Version:        4.14.1
 Release:        1%{?dist}
 Summary:        High level compatibility layer for multiple asynchronous event loop implementations
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.14.1-1
+- Update to 4.14.1
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.13.0-1
 - Update to 4.13.0
 - Fix PEP 639 license field for RHEL 9 pip compatibility
