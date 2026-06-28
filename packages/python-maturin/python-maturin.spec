@@ -7,7 +7,7 @@
 %global pypi_name maturin
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.13.3
+Version:        1.14.1
 Release:        1%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.14.1-1
+- Update to 1.14.1
+
 * Wed May 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.13.3-1
 - Update to 1.13.3
 - Regenerate vendor tarball for 1.13.3
