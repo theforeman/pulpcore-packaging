@@ -5,7 +5,7 @@
 %global pypi_name msgpack
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.1.2
+Version:        1.2.1
 Release:        1%{?dist}
 Summary:        MessagePack serializer
 
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.1-1
+- Update to 1.2.1
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.2-1
 - Update to 1.1.2
 - Fix PEP 639 license field for RHEL 9 pip compatibility
