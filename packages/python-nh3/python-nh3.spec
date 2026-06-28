@@ -5,7 +5,7 @@
 %global pypi_name nh3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.3.5
+Version:        0.3.6
 Release:        1%{?dist}
 Summary:        Python binding to Ammonia HTML sanitizer Rust crate
 
@@ -62,6 +62,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.6-1
+- Update to 0.3.6
+
 * Sun Apr 26 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.5-1
 - Update to 0.3.5
 
