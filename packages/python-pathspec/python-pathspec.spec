@@ -5,7 +5,7 @@
 %global pypi_name pathspec
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.0.4
+Version:        1.1.1
 Release:        1%{?dist}
 Summary:        Utility library for gitignore style pattern matching of file paths
 
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.1-1
+- Update to 1.1.1
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.4-1
 - Update to 1.0.4
 
