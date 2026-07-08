@@ -5,7 +5,7 @@
 %global srcname discovery
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.4.2
+Version:        1.4.3
 Release:        1%{?dist}
 Summary:        A utility to discover Python interpreters
 
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.4.3-1
+- Update to 1.4.3
+
 * Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.4.2-1
 - Update to 1.4.2
 
