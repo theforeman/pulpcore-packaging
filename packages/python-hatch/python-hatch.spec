@@ -4,7 +4,7 @@
 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.16.5
+Version:        1.17.1
 Release:        1%{?dist}
 Summary:        Modern, extensible Python project management
 
@@ -70,6 +70,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.17.1-1
+- Update to 1.17.1
+
 * Sun Mar 29 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.16.5-1
 - Update to 1.16.5
 - Add backports-zstd >= 1.0.0 requirement (replaces zstandard)
