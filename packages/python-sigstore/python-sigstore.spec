@@ -5,7 +5,7 @@
 %global pypi_name sigstore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.3.0
+Version:        4.4.0
 Release:        1%{?dist}
 Summary:        A tool for signing and verifying Python package distributions
 
@@ -72,6 +72,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.4.0-1
+- Update to 4.4.0
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.3.0-1
 - Update to 4.3.0
 - Update cryptography bound to < 49, tuf Conflicts to >= 8.0, rich bound to < 16
