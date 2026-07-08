@@ -5,7 +5,7 @@
 %global pypi_name cffi
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.0.0
+Version:        2.1.0
 Release:        1%{?dist}
 Summary:        Foreign Function Interface for Python calling C code
 
@@ -32,6 +32,7 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
 sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -49,12 +50,18 @@ set -ex
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.md
+%exclude %{_bindir}/cffi-gen-src
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/_cffi_backend.cpython-3*-x86_64-linux-gnu.so
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 
 %changelog
+* Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.1.0-1
+- Update to 2.1.0
+- Remove PEP 639 license-files field incompatible with RHEL 9 setuptools
+- Exclude /usr/bin/cffi-gen-src (new binary in 2.1.0, not needed)
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.0.0-1
 - Update to 2.0.0
 - Fix PEP 639 license field incompatibility with RHEL 9 setuptools
