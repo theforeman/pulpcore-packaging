@@ -8,7 +8,7 @@
 %global src_name rfc3161_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.0.6
+Version:        1.0.7
 Release:        1%{?dist}
 Summary:        A client library for RFC 3161 Time-Stamp Protocol
 
@@ -65,5 +65,8 @@ set -ex
 
 
 %changelog
+* Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.7-1
+- Update to 1.0.7
+
 * Tue Apr 14 2026 Odilon Sousa <osousa@redhat.com> - 1.0.6-1
 - Initial package.
