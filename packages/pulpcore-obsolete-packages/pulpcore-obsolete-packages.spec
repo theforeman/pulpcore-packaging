@@ -1,5 +1,5 @@
 Name: pulpcore-obsolete-packages
-Version: 1.4.0
+Version: 1.5.0
 Release: 1%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
@@ -152,6 +152,13 @@ Obsoletes:      python3.11-xlwt < 1.3.0-8
 Obsoletes:      python3.11-yarl < 1.15.2-2
 Obsoletes:      python3.11-zipp < 3.20.2-2
 
+## EL10 transition removals
+Obsoletes:      python3.11-exceptiongroup < 1.1.2-5
+Obsoletes:      python3.11-bleach-whitelist < 0.0.11-8
+Obsoletes:      python3.11-coreapi < 2.3.3-9
+Obsoletes:      python3.11-coreschema < 0.0.4-9
+Obsoletes:      python3.11-drf-yasg < 1.17.1-8
+
 %description
 This package exists only to obsolete other packages which need to be removed
 from the distribution for some reason.
@@ -165,6 +172,10 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Mon Jul 14 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.5.0-1
+- Remove obsolete packages for EL10 transition
+- Obsolete python3.11-exceptiongroup, bleach-whitelist, coreapi, coreschema, drf-yasg
+
 * Thu May 21 2026 Odilon Sousa <osousa@redhat.com> - 1.4.0-1
 - Obsolete python3.11 pulpcore packages to clear old installations
 

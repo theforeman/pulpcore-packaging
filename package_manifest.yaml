@@ -169,7 +169,6 @@ tier4_packages:
     python-bindep: {}
     python-bleach: {}
     python-bleach-allowlist: {}
-    python-bleach-whitelist: {}
     python-boto3: {}
     python-botocore: {}
     python-box: {}
@@ -182,12 +181,7 @@ tier4_packages:
     python-click: {}
     python-click-shell: {}
     python-colorama: {}
-    python-commonmark: {}
-    python-contextlib2: {}
-    python-coreapi: {}
-    python-coreschema: {}
     python-cryptography: {}
-    python-dataclasses: {}
     python-dateutil: {}
     python-debian: {}
     python-defusedxml: {}
@@ -215,13 +209,11 @@ tier4_packages:
     python-drf-access-policy: {}
     python-drf-nested-routers: {}
     python-drf-spectacular: {}
-    python-drf-yasg: {}
     python-dynaconf: {}
     python-ecdsa: {}
     python-email-validator: {}
     python-enrich: {}
     python-et-xmlfile: {}
-    python-exceptiongroup: {}
     python-filecache: {}
     python-gitdb: {}
     python-gitpython: {}
@@ -231,7 +223,6 @@ tier4_packages:
     python-jmespath: {}
     python-filelock: {}
     python-flake8: {}
-    python-future: {}
     python-galaxy-importer: {}
     python-gnupg: {}
     python-googleapis-common-protos: {}
@@ -242,7 +233,6 @@ tier4_packages:
     python-httpcore: {}
     python-httpx: {}
     python-idna: {}
-    python-idna-ssl: {}
     python-importlib-metadata: {}
     python-importlib-resources: {}
     python-inflection: {}
@@ -321,7 +311,6 @@ tier4_packages:
     python-pyflakes: {}
     python-pygments: {}
     python-pygtrie: {}
-    python-pyjwkest: {}
     python-pyjwt: {}
     python-pyOpenSSL: {}
     python-pyperclip: {}
@@ -346,7 +335,6 @@ tier4_packages:
     python-sniffio: {}
     python-tablib: {}
     python-tomlkit: {}
-    python-toml: {}
     python-tuf: {}
     python-types-cryptography: {}
     python-uritemplate: {}
