@@ -1,5 +1,5 @@
 Name: pulpcore-obsolete-packages
-Version: 1.4.0
+Version: 1.5.0
 Release: 1%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
@@ -152,6 +152,62 @@ Obsoletes:      python3.11-xlwt < 1.3.0-8
 Obsoletes:      python3.11-yarl < 1.15.2-2
 Obsoletes:      python3.11-zipp < 3.20.2-2
 
+## EL10 transition - additional python3.11 Obsoletes for removed packages
+
+Obsoletes:      python3.11-azure-storage-common < 2.1.0-7
+Obsoletes:      python3.11-bleach-whitelist < 0.0.11-8
+Obsoletes:      python3.11-box < 5.1.0-7
+Obsoletes:      python3.11-cchardet < 2.1.7-5
+Obsoletes:      python3.11-coreapi < 2.3.3-9
+Obsoletes:      python3.11-coreschema < 0.0.4-9
+Obsoletes:      python3.11-django-picklefield < 3.0.1-6
+Obsoletes:      python3.11-dotenv < 0.14.0-11
+Obsoletes:      python3.11-drf-yasg < 1.17.1-8
+Obsoletes:      python3.11-exceptiongroup < 1.1.2-5
+Obsoletes:      python3.11-filecache < 0.81-5
+Obsoletes:      python3.11-galaxy-ng < 4.5.2-3
+Obsoletes:      python3.11-itypes < 1.2.0-7
+Obsoletes:      python3.11-jdcal < 1.4.1-7
+Obsoletes:      python3.11-marshmallow < 3.13.0-6
+Obsoletes:      python3.11-msrest < 0.6.21-6
+Obsoletes:      python3.11-naya < 1.1.1-7
+Obsoletes:      python3.11-oauthlib < 3.1.1-6
+Obsoletes:      python3.11-psycopg2 < 2.9.3-6
+Obsoletes:      python3.11-pyperclip < 1.8.2-5
+Obsoletes:      python3.11-python3-openid < 3.2.0-6
+Obsoletes:      python3.11-requests-oauthlib < 1.3.0-6
+Obsoletes:      python3.11-rq < 1.9.0-7
+Obsoletes:      python3.11-social-auth-app-django < 3.4.0-6
+Obsoletes:      python3.11-social-auth-core < 3.4.0-6
+
+## EL10 transition - python3.12 Obsoletes for removed packages
+
+Obsoletes:      python3.12-async-timeout < 4.0.3-2
+Obsoletes:      python3.12-bleach < 3.3.1-7
+Obsoletes:      python3.12-bleach-allowlist < 1.0.3-8
+Obsoletes:      python3.12-django-auth-ldap < 4.0.0-6
+Obsoletes:      python3.12-django-cleanup < 5.1.0-8
+Obsoletes:      python3.12-django-guardian < 2.4.0-10
+Obsoletes:      python3.12-django-ipware < 3.0.7-7
+Obsoletes:      python3.12-django-prometheus < 2.1.0-8
+Obsoletes:      python3.12-django-storages < 1.14.6-1
+Obsoletes:      python3.12-enrich < 1.2.6-11
+Obsoletes:      python3.12-html5lib < 1.1-6
+Obsoletes:      python3.12-importlib-metadata < 6.0.1-6
+Obsoletes:      python3.12-importlib-resources < 6.4.5-2
+Obsoletes:      python3.12-lazy-imports < 1.2.0-1
+Obsoletes:      python3.12-oauthlib < 3.1.1-6
+Obsoletes:      python3.12-python3-openid < 3.2.0-6
+Obsoletes:      python3.12-requests-oauthlib < 1.3.0-6
+Obsoletes:      python3.12-setuptools_scm_git_archive < 1.4.1-5
+Obsoletes:      python3.12-social-auth-app-django < 3.4.0-6
+Obsoletes:      python3.12-social-auth-core < 3.4.0-6
+Obsoletes:      python3.12-tenacity < 7.0.0-8
+Obsoletes:      python3.12-webencodings < 0.5.1-8
+Obsoletes:      python3.12-xlrd < 2.0.2-1
+Obsoletes:      python3.12-xlwt < 1.3.0-8
+Obsoletes:      python3.12-zipp < 4.1.0-1
+
 %description
 This package exists only to obsolete other packages which need to be removed
 from the distribution for some reason.
@@ -165,6 +221,9 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.5.0-1
+- Add Obsoletes for packages removed during EL10 transition
+
 * Thu May 21 2026 Odilon Sousa <osousa@redhat.com> - 1.4.0-1
 - Obsolete python3.11 pulpcore packages to clear old installations
 
