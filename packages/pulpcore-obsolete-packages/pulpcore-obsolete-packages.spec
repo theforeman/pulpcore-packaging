@@ -44,7 +44,7 @@ Obsoletes:      python3.11-aiofiles < 24.1.0-2
 Obsoletes:      python3.11-aiohappyeyeballs < 2.4.4-2
 Obsoletes:      python3.11-aiohttp < 3.10.11-2
 Obsoletes:      python3.11-aiohttp-xmlrpc < 1.5.0-7
-Obsoletes:      python3.11-aioredis < 2.0.1-7
+Obsoletes:      python3.11-aioredis < 2.0.1-8
 Obsoletes:      python3.11-aiosignal < 1.3.2-2
 Obsoletes:      python3.11-asgiref < 3.8.1-2
 Obsoletes:      python3.11-async-lru < 2.0.4-2
