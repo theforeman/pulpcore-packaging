@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.9
+Version:        3.105.12
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -32,7 +32,7 @@ Requires:       python%{python3_pkgversion}-aiodns < 3.7
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles <= 25.1.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.10.10
-Requires:       python%{python3_pkgversion}-aiohttp < 3.14
+Requires:       python%{python3_pkgversion}-aiohttp < 3.15
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Requires:       python%{python3_pkgversion}-asyncio-throttle < 1.0.3
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
@@ -177,6 +177,10 @@ set -ex
 
 
 %changelog
+* Mon Jul 20 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.12-1
+- Update to 3.105.12
+- Sync aiohttp upper bound with upstream pyproject.toml: < 3.14 -> < 3.15
+
 * Fri Jun 12 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.9-1
 - Update to 3.105.9
 
