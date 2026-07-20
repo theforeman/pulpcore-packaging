@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.1.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        the modular source code checker: pep8 pyflakes and co
 
 License:        MIT
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 6.1.0-4
+- Drop importlib-metadata requirement
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 6.1.0-3
 - Add obsoletes for python3.11 package
 

@@ -7,7 +7,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.0.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        asyncio (PEP 3156) Redis support
 
 License:        MIT
@@ -26,7 +26,6 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 %package -n     python%{python3_pkgversion}-%{pypi_name}
 Summary:        %{summary}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
-Requires:       python%{python3_pkgversion}-async-timeout
 Requires:       python%{python3_pkgversion}-typing-extensions
 
 
@@ -59,6 +58,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 2.0.1-7
+- Drop async-timeout requirement, asyncio.timeout is in stdlib since Python 3.11
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 2.0.1-6
 - Remove SCL bits
 

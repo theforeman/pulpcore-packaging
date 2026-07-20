@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.105.12
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -175,6 +175,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 3.105.12-2
+- Drop importlib-metadata requirement
+
 * Mon Jul 20 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.12-1
 - Update to 3.105.12
 - Sync aiohttp upper bound with upstream pyproject.toml: < 3.14 -> < 3.15
