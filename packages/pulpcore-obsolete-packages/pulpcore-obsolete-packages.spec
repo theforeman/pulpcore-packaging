@@ -225,7 +225,7 @@ from the distribution for some reason.
 %files
 
 %changelog
-* Mon Jul 21 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.6.0-1
+* Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.6.0-1
 - Remove 43 additional obsolete packages for EL10 transition
 - Obsolete dead leaves, deprecated upstream packages, galaxy-ng chain,
   and python-async-timeout stdlib backport
