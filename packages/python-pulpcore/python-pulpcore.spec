@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.85.13
+Version:        3.85.26
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -31,13 +31,13 @@ Requires:       python%{python3_pkgversion}-aiodns < 3.7
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles < 24.2.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.8.3
-Requires:       python%{python3_pkgversion}-aiohttp < 3.14
+Requires:       python%{python3_pkgversion}-aiohttp < 3.15
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
 Requires:       python%{python3_pkgversion}-asyncio-throttle < 1.0.3
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
 Requires:       python%{python3_pkgversion}-backoff < 2.3
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
-Requires:       python%{python3_pkgversion}-click < 8.3
+Requires:       python%{python3_pkgversion}-click < 8.4
 Requires:       python%{python3_pkgversion}-cryptography >= 44.0.3
 Requires:       python%{python3_pkgversion}-cryptography < 46.0
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
@@ -70,10 +70,10 @@ Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
 Requires:       python%{python3_pkgversion}-json_stream < 2.4
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
-Requires:       python%{python3_pkgversion}-jq < 1.9.0
+Requires:       python%{python3_pkgversion}-jq < 1.11.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.28.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.37
-Requires:       python%{python3_pkgversion}-pyOpenSSL < 26.0
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.39
+Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
 Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.37
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27
@@ -168,6 +168,13 @@ set -ex
 
 
 %changelog
+* Mon Jul 20 2026 Odilon Sousa <osousa@redhat.com> - 3.85.26-1
+- Update to 3.85.26, fixes CVE-2026-12701 (path traversal in filesystem exports)
+- Sync Requires bounds with upstream pyproject.toml: aiohttp < 3.15, click < 8.4,
+  pulp-glue < 0.39, pyOpenSSL < 27.0
+- Fix pre-existing drift: jq upper bound was < 1.9.0, upstream pyproject.toml has
+  required < 1.11.0 since before 3.85.13
+
 * Wed Mar 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.85.13-1
 - Update to 3.85.13
 
