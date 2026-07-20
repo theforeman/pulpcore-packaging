@@ -20,7 +20,6 @@ BuildRequires:  python%{python3_pkgversion}-flit_core
 
 Requires:       python%{python3_pkgversion}-packaging >= 19.0
 Requires:       python%{python3_pkgversion}-pyproject_hooks
-Requires:       python%{python3_pkgversion}-importlib-metadata >= 4.6
 Requires:       python%{python3_pkgversion}-tomli >= 1.1.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}

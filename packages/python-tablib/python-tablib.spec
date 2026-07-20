@@ -25,8 +25,6 @@ Requires:       python%{python3_pkgversion}-markuppy
 Requires:       python%{python3_pkgversion}-odfpy
 Requires:       python%{python3_pkgversion}-openpyxl >= 2.6.0
 Requires:       python%{python3_pkgversion}-pyyaml
-Requires:       python%{python3_pkgversion}-xlrd
-Requires:       python%{python3_pkgversion}-xlwt
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
