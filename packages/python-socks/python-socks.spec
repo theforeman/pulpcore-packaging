@@ -33,7 +33,6 @@ BuildRequires:  pyproject-rpm-macros
 
 %package -n python%{python3_pkgversion}-%{srcname}+asyncio
 Summary: Metapackage for python%{python3_pkgversion}-%{srcname}: asyncio extra
-Requires:       python%{python3_pkgversion}-async-timeout >= 3.0.1
 
 %description -n python%{python3_pkgversion}-%{srcname}+asyncio
 This is a metapackage bringing in filecache extra requires for python%{python3_pkgversion}-%{srcname}

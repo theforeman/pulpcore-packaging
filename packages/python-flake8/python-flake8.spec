@@ -17,7 +17,6 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-Requires:       python%{python3_pkgversion}-importlib-metadata
 Requires:       python%{python3_pkgversion}-mccabe < 0.8.0
 Requires:       python%{python3_pkgversion}-mccabe >= 0.7.0
 Requires:       python%{python3_pkgversion}-pycodestyle < 2.12.0

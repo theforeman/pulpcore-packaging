@@ -85,7 +85,6 @@ tier2_packages:
     python-semantic-version: {}
     python-typing-extensions: {}
     python-setuptools-rust: {}
-    python-setuptools_scm_git_archive: {}
     python-maturin: {}
     meson: {}
     python-pyproject-metadata: {}
@@ -154,25 +153,19 @@ tier4_packages:
     python-anyio: {}
     python-asgiref: {}
     python-async-lru: {}
-    python-async-timeout: {}
     python-asyncio-throttle: {}
     python-attrs: {}
     python-azure-common: {}
     python-azure-core: {}
     python-azure-storage-blob: {}
-    python-azure-storage-common: {}
     python-backoff: {}
     python-backports-zstd: {}
     python-black: {}
     python-bandersnatch: {}
     python-beautifulsoup4: {}
     python-bindep: {}
-    python-bleach: {}
-    python-bleach-allowlist: {}
-    python-bleach-whitelist: {}
     python-boto3: {}
     python-botocore: {}
-    python-box: {}
     python-bracex: {}
     python-brotli: {}
     python-certifi: {}
@@ -184,8 +177,6 @@ tier4_packages:
     python-colorama: {}
     python-commonmark: {}
     python-contextlib2: {}
-    python-coreapi: {}
-    python-coreschema: {}
     python-cryptography: {}
     python-dataclasses: {}
     python-dateutil: {}
@@ -196,33 +187,21 @@ tier4_packages:
     python-discovery: {}
     python-distlib: {}
     python-django: {}
-    python-django-auth-ldap: {}
-    python-django-cleanup: {}
     python-django-filter: {}
-    python-django-guardian: {}
     python-django-guid: {}
     python-django-import-export: {}
-    python-django-ipware: {}
     python-django-lifecycle: {}
-    python-django-picklefield: {}
-    python-django-prometheus: {}
     python-django-readonly-field: {}
-    python-django-storages: {}
     python-djangorestframework: {}
     python-djangorestframework-queryfields: {}
     python-dnspython: {}
-    python-dotenv: {}
     python-drf-access-policy: {}
     python-drf-nested-routers: {}
     python-drf-spectacular: {}
-    python-drf-yasg: {}
     python-dynaconf: {}
     python-ecdsa: {}
     python-email-validator: {}
-    python-enrich: {}
     python-et-xmlfile: {}
-    python-exceptiongroup: {}
-    python-filecache: {}
     python-gitdb: {}
     python-gitpython: {}
     python-humanfriendly: {}
@@ -238,24 +217,17 @@ tier4_packages:
     python-grpcio: {}
     python-gunicorn: {}
     python-h11: {}
-    python-html5lib: {}
     python-httpcore: {}
     python-httpx: {}
     python-idna: {}
     python-idna-ssl: {}
-    python-importlib-metadata: {}
-    python-importlib-resources: {}
     python-inflection: {}
     python-isodate: {}
     python-jeepney: {}
-    python-lazy-imports: {}
     python-lxml: {}
-    python-marshmallow: {}
     python-more-itertools: {}
     python-msgpack: {}
     python-mypy-extensions: {}
-    python-msrest: {}
-    python-oauthlib: {}
     python-parsley: {}
     python-pexpect: {}
     python-pillow: {}
@@ -268,8 +240,6 @@ tier4_packages:
     python-pyasn1-modules: {}
     python-pypi-attestations: {}
     python-pygobject: {}
-    python-python3-openid: {}
-    python-requests-oauthlib: {}
     python-requests-toolbelt: {}
     python-rfc3986: {}
     python-rfc3161-client: {}
@@ -282,16 +252,11 @@ tier4_packages:
     python-sigstore-models: {}
     python-sigstore-rekor-types: {}
     python-sigstore: {}
-    python-social-auth-app-django: {}
-    python-social-auth-core: {}
     python-socks: {}
     python-soupsieve: {}
     python-subprocess-tee: {}
-    python-tenacity: {}
     python-wcmatch: {}
     python-iniparse: {}
-    python-itypes: {}
-    python-jdcal: {}
     python-jinja2: {}
     python-jsonschema: {}
     python-ldap: {}
@@ -301,7 +266,6 @@ tier4_packages:
     python-markupsafe: {}
     python-mccabe: {}
     python-multidict: {}
-    python-naya: {}
     python-odfpy: {}
     python-openpyxl: {}
     python-opentelemetry_api: {}
@@ -312,7 +276,6 @@ tier4_packages:
     python-opentelemetry_proto: {}
     python-productmd: {}
     python-prometheus-client: {}
-    python-psycopg2: {}
     python-pycares: {}
     python-pycodestyle: {}
     python-pycparser: {}
@@ -324,7 +287,6 @@ tier4_packages:
     python-pyjwkest: {}
     python-pyjwt: {}
     python-pyOpenSSL: {}
-    python-pyperclip: {}
     python-pypi-simple: {}
     python-pyproject_hooks: {}
     python-pyrsistent: {}
@@ -336,7 +298,6 @@ tier4_packages:
     python-requirements-parser: {}
     python-mdurl: {}
     python-rich: {}
-    python-rq: {}
     python-ruamel-yaml: {}
     python-ruamel-yaml-clib: {}
     python-shellingham: {}
@@ -356,14 +317,10 @@ tier4_packages:
     python-userpath: {}
     python-uuid6: {}
     python-virtualenv: {}
-    python-webencodings: {}
     python-whitenoise: {}
     python-wrapt: {}
-    python-xlrd: {}
-    python-xlwt: {}
     python-yarl: {}
     python-yamllint: {}
-    python-zipp: {}
     python-jq: {}
     python-json-stream-rs-tokenizer: {}
     python-json-stream: {}
