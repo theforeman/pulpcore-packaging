@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A simple, correct Python build frontend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.5.0-2
+- Drop importlib-metadata requirement
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.5.0-1
 - Update to 1.5.0
 

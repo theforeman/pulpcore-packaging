@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.8.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
 License:        Apache 2
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 2.8.2-2
+- Drop async-timeout requirement from +asyncio subpackage
+
 * Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.8.2-1
 - Update to 2.8.2
 
