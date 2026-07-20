@@ -69,8 +69,6 @@ Requires:       python%{python3_pkgversion}-gunicorn >= 22.0
 Requires:       python%{python3_pkgversion}-gunicorn < 25.2.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
 Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.6
-Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0.1
-Requires:       python%{python3_pkgversion}-importlib-metadata <= 6.0.1
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
 Requires:       python%{python3_pkgversion}-json_stream < 2.5
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0

@@ -1,5 +1,5 @@
 Name: pulpcore-obsolete-packages
-Version: 1.4.0
+Version: 1.5.0
 Release: 1%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
@@ -152,6 +152,11 @@ Obsoletes:      python3.11-xlwt < 1.3.0-8
 Obsoletes:      python3.11-yarl < 1.15.2-2
 Obsoletes:      python3.11-zipp < 3.20.2-2
 
+## Remove stdlib backports (built into Python 3.8+/3.11+)
+Obsoletes:      python3.12-importlib-metadata < 6.0.1-6
+Obsoletes:      python3.12-importlib-resources < 6.4.5-2
+Obsoletes:      python3.12-zipp < 4.1.0-1
+
 %description
 This package exists only to obsolete other packages which need to be removed
 from the distribution for some reason.
@@ -165,6 +170,10 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.5.0-1
+- Remove stdlib backports: importlib-metadata, importlib-resources, zipp
+- Remove orphaned packages: libsolv0, subscription-manager
+
 * Thu May 21 2026 Odilon Sousa <osousa@redhat.com> - 1.4.0-1
 - Obsolete python3.11 pulpcore packages to clear old installations
 

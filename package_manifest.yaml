@@ -243,8 +243,6 @@ tier4_packages:
     python-httpx: {}
     python-idna: {}
     python-idna-ssl: {}
-    python-importlib-metadata: {}
-    python-importlib-resources: {}
     python-inflection: {}
     python-isodate: {}
     python-jeepney: {}
@@ -363,7 +361,6 @@ tier4_packages:
     python-xlwt: {}
     python-yarl: {}
     python-yamllint: {}
-    python-zipp: {}
     python-jq: {}
     python-json-stream-rs-tokenizer: {}
     python-json-stream: {}

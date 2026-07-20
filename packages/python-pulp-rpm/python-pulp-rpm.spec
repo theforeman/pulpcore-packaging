@@ -36,8 +36,6 @@ Requires:       python%{python3_pkgversion}-pulpcore >= 3.103.0
 Requires:       python%{python3_pkgversion}-pulpcore < 3.115
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
-Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
-Requires:       python%{python3_pkgversion}-importlib-resources < 6.5
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 

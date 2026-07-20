@@ -20,8 +20,6 @@ BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
 Requires:       python%{python3_pkgversion}-deprecated >= 1.2.6
-Requires:       python%{python3_pkgversion}-importlib-metadata >= 6.0
-Requires:       python%{python3_pkgversion}-importlib-metadata < 8.7.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
