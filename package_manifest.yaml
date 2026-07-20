@@ -146,7 +146,6 @@ tier4_packages:
     python-aiohttp: {}
     python-aiohttp-socks: {}
     python-aiohttp-xmlrpc: {}
-    python-aioredis: {}
     python-aiosignal: {}
     python-ansible-builder: {}
     python-ansible-compat: {}
