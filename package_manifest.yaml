@@ -18,11 +18,17 @@ packages:
     repoclosure_target_repos:
       el9:
         - "el9-pulpcore-{{ pulpcore_version }}-staging"
+      el10:
+        - "el10-pulpcore-{{ pulpcore_version }}-staging"
     repoclosure_lookaside_repos:
       el9:
         - el9-baseos
         - el9-appstream
         - el9-crb
+      el10:
+        - el10-baseos
+        - el10-appstream
+        - el10-crb
   children:
     buildroot_packages: {}
     tier1_packages: {}
@@ -34,6 +40,7 @@ packages:
 copr_projects:
   vars:
     rhel_9: '9'
+    rhel_10: '10'
     root_repo_url: https://download.copr.fedorainfracloud.org/results/@theforeman
     pulpcore_staging: "{{ root_repo_url }}/pulpcore-{{ pulpcore_version }}-staging"
   hosts:
@@ -51,6 +58,16 @@ copr_projects:
             - python3.12-pip
           external_repos:
             - "{{ pulpcore_staging }}/rhel-{{ rhel_9 }}-x86_64"
+        - name: "rhel-{{ rhel_10 }}-x86_64"
+          comps_file: "{{ inventory_dir }}/comps/comps-pulpcore-el{{ rhel_10 }}.xml"
+          buildroot_packages:
+            - gcc-c++
+            - python-srpm-macros
+            - python3.12
+            - python3.12-devel
+            - python3.12-pip
+          external_repos:
+            - "{{ pulpcore_staging }}/rhel-{{ rhel_10 }}-x86_64"
 
 repoclosures:
   hosts:
@@ -65,6 +82,17 @@ repoclosures:
           - el9-appstream
           - el9-crb
           - el9-foreman-plugins-nightly
+    pulpcore-staging-repoclosure-el10:
+      repoclosure_target_repos:
+        el10:
+          - "el10-pulpcore-{{ pulpcore_version }}-staging"
+      repoclosure_target_dist: el10
+      repoclosure_lookaside_repos:
+        el10:
+          - el10-baseos
+          - el10-appstream
+          - el10-crb
+          - el10-foreman-plugins-nightly
 
 buildroot_packages:
   hosts:
