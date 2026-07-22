@@ -1,0 +1,88 @@
+%global python3_pkgversion 3.12
+%global __python3 /usr/bin/python3.12
+
+# Created by pyp2rpm-3.3.3
+%global pypi_name importlib-resources
+%global src_name importlib_resources
+
+Name:           python%{python3_pkgversion}-%{pypi_name}
+Version:        6.4.5
+Release:        3%{?dist}
+Summary:        Read resources from Python packages
+
+License:        Apache2
+URL:            https://github.com/python/importlib_resources
+Source0:        https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{src_name}-%{version}.tar.gz
+BuildArch:      noarch
+
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 3.4.1
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
+
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+
+%description
+%{summary}
+
+
+%prep
+set -ex
+%autosetup -n %{src_name}-%{version}
+
+
+%build
+set -ex
+%pyproject_wheel
+
+
+%install
+set -ex
+%pyproject_install
+
+%files -n python%{python3_pkgversion}-%{pypi_name}
+%{python3_sitelib}/%{src_name}
+%{python3_sitelib}/%{src_name}-%{version}.dist-info/
+
+
+%changelog
+* Wed Jul 22 2026 Odilon Sousa <osousa@redhat.com> - 6.4.5-3
+- Restore package: python3.12-pulp-rpm declares importlib-resources as an
+  unconditional (non-marker-gated) upstream dependency, so it was
+  incorrectly removed in the EL10 obsolete-package cleanup (#2766),
+  breaking nightly repoclosure
+
+* Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 6.4.5-2
+- Rebuild against python3.12
+
+* Tue Oct 01 2024 Odilon Sousa <osousa@redhat.com> - 6.4.5-1
+- Release python-importlib-resources 6.4.5
+
+* Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> - 5.4.0-8
+- Remove SCL bits
+
+* Tue Dec 12 2023 Patrick Creech <pcreech@redhat.com> - 5.4.0-7
+- Rollback overzealous obsoletes
+
+* Tue Nov 21 2023 Patrick Creech <pcreech@redhat.com> - 5.4.0-6
+- Add python39 obsoletes to package
+
+* Sat Nov 11 2023 Odilon Sousa <osousa@redhat.com> - 5.4.0-5
+- Build against python 3.11
+
+* Mon Aug 08 2022 Odilon Sousa <osousa@redhat.com> - 5.4.0-4
+- Force setuptools_scm usage for older setuptools
+
+* Fri Apr 22 2022 Yanis Guenane <yguenane@redhat.com> - 5.4.0-2
+- Build against python 3.9
+
+* Fri Feb 04 2022 Odilon Sousa <osousa@redhat.com> - 5.4.0-1
+- Release python-importlib-resources 5.4.0
+
+* Wed Sep 08 2021 Evgeni Golov - 5.0.0-2
+- Build against Python 3.8
+
+* Tue Jul 13 2021 Evgeni Golov - 5.0.0-1
+- Initial package.
