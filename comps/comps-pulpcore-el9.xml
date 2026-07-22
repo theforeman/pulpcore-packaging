@@ -305,6 +305,7 @@
       <packagereq type="default">python3.12-wrapt</packagereq>
       <packagereq type="default">python3.12-yarl</packagereq>
       <packagereq type="default">python3.12-yamllint</packagereq>
+      <packagereq type="default">python3.12-zipp</packagereq>
       <packagereq type="default">python3.12-zstandard</packagereq>
     </packagelist>
   </group>
