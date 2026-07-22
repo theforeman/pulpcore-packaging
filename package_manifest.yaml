@@ -220,6 +220,7 @@ tier4_packages:
     python-httpx: {}
     python-idna: {}
     python-idna-ssl: {}
+    python-importlib-metadata: {}
     python-inflection: {}
     python-isodate: {}
     python-jeepney: {}
