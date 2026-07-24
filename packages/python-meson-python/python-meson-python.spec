@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.16.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Meson Python build backend (PEP 517)
 
 License:        MIT
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 0.16.0-3
+- Bump release for EL10 rebuild
+
 * Fri Apr 04 2025 Odilon Sousa <osousa@redhat.com> - 0.16.0-2
 - Rebuild against python3.12
 
