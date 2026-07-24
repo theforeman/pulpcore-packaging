@@ -10,7 +10,7 @@
 
 Name:           meson
 Version:        1.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        High productivity build system
 
 License:        ASL 2.0
@@ -115,6 +115,9 @@ export MESON_PRINT_TEST_OUTPUT=1
 %{_datadir}/polkit-1/actions/com.mesonbuild.install.policy
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 1.7.1-2
+- Bump release for EL10 rebuild
+
 * Fri Apr 04 2025 Odilon Sousa <osousa@redhat.com> - 1.7.1-1
 - Release meson 1.7.1
 
