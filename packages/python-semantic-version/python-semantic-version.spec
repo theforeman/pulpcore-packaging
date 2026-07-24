@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.10.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        A library implementing the 'SemVer' scheme
 
 License:        BSD
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 2.10.0-7
+- Bump release for EL10 rebuild
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 2.10.0-6
 - Rebuild against python3.12
 
