@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        26.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 26.2-2
+- Bump release for EL10 rebuild
+
 * Wed May 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 26.2-1
 - Update to 26.2
 - Fix PEP 639 license field for flit-core compatibility
