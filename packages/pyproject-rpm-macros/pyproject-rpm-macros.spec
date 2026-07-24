@@ -12,7 +12,7 @@ License:        MIT
 #   Increment Z when this is a bugfix or a cosmetic change
 # Dropping support for EOL Fedoras is *not* considered a breaking change
 Version:        1.9.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 
 # Macro files
 Source001:      macros.pyproject
@@ -45,10 +45,16 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 # We build on top of those:
 BuildRequires:  python-rpm-macros
 BuildRequires:  python-srpm-macros
-BuildRequires:  python%{python3_pkgversion}-rpm-macros
 Requires:       python-rpm-macros
 Requires:       python-srpm-macros
+# The versioned python3.12-rpm-macros only exists as a distinct package on
+# distros where python3.12 is an additional, non-default interpreter (EL9).
+# On EL10, python3.12 is the default and python-rpm-macros/python-srpm-macros
+# above already cover it.
+%if 0%{?rhel} && 0%{?rhel} < 10
+BuildRequires:  python%{python3_pkgversion}-rpm-macros
 Requires:       python%{python3_pkgversion}-rpm-macros
+%endif
 Requires:       python%{python3_pkgversion}-pip
 Requires:       python%{python3_pkgversion}-wheel
 Requires:       python%{python3_pkgversion}-tomli
@@ -131,6 +137,12 @@ test "$signature1" != ""
 
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 1.9.0-5
+- Bump release for EL10 rebuild
+- Make the versioned python3.12-rpm-macros Build/Requires conditional on
+  EL9 only — it doesn't exist as a separate package on EL10, where
+  python3.12 is the default interpreter
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 1.9.0-4
 - Rebuild against python3.12
 
