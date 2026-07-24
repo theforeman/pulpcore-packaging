@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        7.1.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        the blessed package to manage your versions by scm tags
 
 License:        MIT
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 7.1.0-6
+- Bump release for EL10 rebuild
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 7.1.0-5
 - Rebuild against python3.12
 
