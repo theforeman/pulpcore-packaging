@@ -6,7 +6,7 @@ pulp-ansible==0.29.8
 pulp-python==3.27.5
 pulpcore-client==3.105.12
 pulp-rpm-client==3.35.3
-pulp-ostree==2.6.0
+pulp-ostree==2.6.1
 pulp-glue==0.39.1
 pulp-cli==0.39.1
 pulp-cli-deb==0.4.4
