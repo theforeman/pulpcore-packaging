@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.11.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Setuptools Rust extension plugin
 
 License:        MIT
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 1.11.1-2
+- Bump release for EL10 rebuild
+
 * Tue Jun 10 2025 Odilon Sousa <osousa@redhat.com> - 1.11.1-1
 - Release python-setuptools-rust 1.11.1
 
