@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.14.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
 License:        MIT OR Apache-2.0
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 1.14.1-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.14.1-1
 - Update to 1.14.1
 
