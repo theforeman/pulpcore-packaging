@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.0.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        A little TOML parser for Python
 
 License:        MIT
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 2.0.1-7
+- Bump release for EL10 rebuild
+
 * Mon Mar 17 2025 Odilon Sousa <osousa@redhat.com> - 2.0.1-6
 - Rebuild against python 3.12
 
