@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        25.7.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Store and access your passwords safely.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 25.7.0-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 25.7.0-1
 - Update to 25.7.0
 - Fix PEP 639 license field for RHEL 9 pip compatibility
