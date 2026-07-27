@@ -10,7 +10,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.4.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The build backend used by PDM that supports latest packaging standards.
 
 License:        MIT license
@@ -73,6 +73,9 @@ git config --global user.email "john@doe.com"
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 2.4.3-3
+- Bump release for EL10 rebuild
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 2.4.3-2
 - Rebuild against python3.12
 
