@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.29.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A platform independent file lock
 
 License:        Unlicense
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 3.29.6-2
+- Bump release for EL10 rebuild
+
 * Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.29.6-1
 - Update to 3.29.6
 
