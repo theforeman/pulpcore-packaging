@@ -132,6 +132,7 @@ tier3_packages:
     python-findpython: {}
     python-dulwich: {}
     python-filelock: {}
+    python-msgpack: {}
     python-cachecontrol: {}
     python-build: {}
     python-cleo: {}
@@ -239,7 +240,6 @@ tier4_packages:
     python-jeepney: {}
     python-lxml: {}
     python-more-itertools: {}
-    python-msgpack: {}
     python-mypy-extensions: {}
     python-parsley: {}
     python-pexpect: {}
