@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Utility functions for Python class constructs
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 3.4.0-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.4.0-1
 - Update to 3.4.0
 
