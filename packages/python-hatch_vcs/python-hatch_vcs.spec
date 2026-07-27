@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.3.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Hatch plugin for versioning with your preferred VCS
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -51,6 +51,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.3.0-7
+- Bump release for EL10 rebuild
+
 * Fri Mar 21 2025 Odilon Sousa <osousa@redhat.com> - 0.3.0-6
 - Rebuild against python3.12
 
