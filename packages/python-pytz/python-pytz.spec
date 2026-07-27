@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2022.2.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        World timezone definitions, modern and historical
 
 License:        MIT
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 2022.2.1-8
+- Bump release for EL10 rebuild
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 2022.2.1-7
 - Rebuild against python3.12
 
