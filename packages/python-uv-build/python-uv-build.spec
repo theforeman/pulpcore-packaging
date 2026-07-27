@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.9.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The uv build backend
 
 License:        MIT OR Apache-2.0
@@ -61,5 +61,8 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.9.7-2
+- Bump release for EL10 rebuild
+
 * Thu Apr 02 2026 Odilon Sousa <osousa@redhat.com> - 0.9.7-1
 - Initial package
