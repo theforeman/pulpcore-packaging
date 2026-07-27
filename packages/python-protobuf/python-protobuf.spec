@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.33.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Protocol Buffers
 
 License:        BSD-3-Clause
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 6.33.6-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 6.33.6-1
 - Update to 6.33.6
 - Switch to pyproject_wheel/install (protobuf 6.x builds C extension wheel)
