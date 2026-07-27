@@ -7,7 +7,7 @@
 
 Name:           %{pypi_name}
 Version:        0.9.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An extremely fast Python package and project manager, written in Rust.
 
 
@@ -177,6 +177,14 @@ set -ex
 
 %build
 set -ex
+# el10 builders inject -Cdebuginfo=2 by default (el9 doesn't), which combined
+# with the fat-LTO release profile makes the final `uv` binary link step
+# OOM/thrash on the el10 COPR builder. Fedora's own uv.spec hits the same
+# issue and works around it the same way (see comments on rustflags_debuginfo
+# in https://src.fedoraproject.org/rpms/uv, epel10 branch). Capping build
+# parallelism also reduces peak memory during the parallel compile stages.
+export RUSTFLAGS="-C debuginfo=0"
+export CARGO_BUILD_JOBS=4
 %pyproject_wheel
 
 
@@ -190,9 +198,20 @@ set -ex
 %{_bindir}/uvx
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
+# Not part of the installed package; bundled into site-packages by maturin's
+# default include list alongside the uv wheel.
+%exclude %{python3_sitearch}/rust-toolchain.toml
+%exclude %{python3_sitearch}/crates
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.9.7-2
+- Bump release for EL10 rebuild
+- Exclude rust-toolchain.toml and crates/ vendor metadata now bundled into
+  site-packages by maturin; they were causing an unpackaged-files build failure
+- Lower RUSTFLAGS debuginfo and cap CARGO_BUILD_JOBS to avoid OOM/thrashing
+  during the fat-LTO link of the uv binary on el10 COPR builders
+
 * Thu Apr 02 2026 Odilon Sousa <osousa@redhat.com> - 0.9.7-1
 - Release python-uv 0.9.7 (highest version compatible with rustc 1.88 on RHEL 9)
 - Drop Cargo.toml patch; cargo vendor-filterer now handles git deps via vendor tarball
