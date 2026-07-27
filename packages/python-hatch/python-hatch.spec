@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.16.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Modern, extensible Python project management
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -70,6 +70,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.16.5-2
+- Bump release for EL10 rebuild
+
 * Sun Mar 29 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.16.5-1
 - Update to 1.16.5
 - Add backports-zstd >= 1.0.0 requirement (replaces zstandard)
