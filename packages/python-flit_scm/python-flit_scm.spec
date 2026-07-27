@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.7.0
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        A PEP 518 build backend that uses setuptools_scm to generate a version file from your version control system, then flit_core to build the package.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -55,6 +55,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.7.0-8
+- Bump release for EL10 rebuild
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 1.7.0-7
 - Rebuild against python3.12
 
