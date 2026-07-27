@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Cleo allows you to create beautiful and testable command-line interfaces.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -46,6 +46,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 2.1.0-3
+- Bump release for EL10 rebuild
+
 * Fri Mar 21 2025 Odilon Sousa <osousa@redhat.com> - 2.1.0-2
 - Rebuild against python3.12
 
