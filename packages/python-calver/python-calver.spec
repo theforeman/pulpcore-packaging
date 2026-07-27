@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2022.06.26
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Setuptools extension for CalVer package versions
 
 License:        None
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 2022.06.26-7
+- Bump release for EL10 rebuild
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 2022.06.26-6
 - Rebuild against python3.12
 
