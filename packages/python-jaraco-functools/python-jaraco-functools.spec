@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Additional functools in the spirit of stdlib's functools.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 4.5.0-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.5.0-1
 - Update to 4.5.0
 
