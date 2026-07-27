@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.5.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A non-validating SQL parser
 
 License:        BSD-3-Clause
@@ -19,7 +19,6 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
-BuildRequires: /usr/bin/pathfix.py
 
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -34,7 +33,7 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 set -ex
 %autosetup -n %{pypi_name}-%{version}
 #Fix cli.py ambiguous python shebang
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" sqlparse/cli.py
+%py3_shebang_fix sqlparse/cli.py
 
 
 %build
@@ -53,6 +52,11 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.5.5-2
+- Bump release for EL10 rebuild
+- Switch to %%py3_shebang_fix instead of the standalone pathfix.py binary,
+  which isn't provided by any package on el10
+
 * Mon Jan 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.5-1
 - Update to 0.5.5
 
