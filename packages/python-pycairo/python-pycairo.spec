@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.29.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface for cairo
 
 License:        LGPL-2.1-only OR MPL-1.1
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.29.0-2
+- Bump release for EL10 rebuild
+
 * Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.29.0-1
 - Update to 1.29.0
 - Switch to meson build (setup.py removed in 1.29.0)
