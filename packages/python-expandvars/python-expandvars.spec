@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.12.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Expand system variables Unix style
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -44,6 +44,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}.py
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.12.0-3
+- Bump release for EL10 rebuild
+
 * Wed Mar 19 2025 Odilon Sousa <osousa@redhat.com> - 0.12.0-2
 - Rebuild against python3.12
 
