@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        7.0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python Build Reasonableness
 
 License:        None
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 7.0.3-2
+- Bump release for EL10 rebuild
+
 * Wed Nov 19 2025 Foreman Packaging Automation <packaging@theforeman.org> - 7.0.3-1
 - Update to 7.0.3
 
