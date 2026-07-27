@@ -10,7 +10,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2026.6.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Installer for Python Build Standalone
 BuildArch:      noarch
 
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 2026.6.10-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2026.6.10-1
 - Update to 2026.6.10
 
