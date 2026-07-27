@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2026.6.1.19
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Canonical source for classifiers on PyPI (pypi.org)
 License:        None
 URL:            https://github.com/pypa/trove-classifiers
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 2026.6.1.19-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2026.6.1.19-1
 - Update to 2026.6.1.19
 
