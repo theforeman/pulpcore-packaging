@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.23
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Docutils -- Python Documentation Utilities
 
 License:        Public Domain and BSD and Python and GPLv3+
@@ -65,6 +65,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.23-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.23-1
 - Update to 0.23
 
