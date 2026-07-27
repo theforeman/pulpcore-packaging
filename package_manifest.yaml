@@ -131,6 +131,7 @@ tier3_packages:
     python-pbs-installer: {}
     python-findpython: {}
     python-dulwich: {}
+    python-filelock: {}
     python-cachecontrol: {}
     python-build: {}
     python-cleo: {}
@@ -219,7 +220,6 @@ tier4_packages:
     python-hyperlink: {}
     python-id: {}
     python-jmespath: {}
-    python-filelock: {}
     python-flake8: {}
     python-future: {}
     python-galaxy-importer: {}
