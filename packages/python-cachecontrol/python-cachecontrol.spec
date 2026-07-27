@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.14.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        httplib2 caching for requests
 
 License:        Apache-2.0
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.14.4-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.14.4-1
 - Update to 0.14.4
 - Fix PEP 639 license field for RHEL 9 pip compatibility
