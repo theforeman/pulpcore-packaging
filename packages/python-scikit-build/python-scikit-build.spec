@@ -10,7 +10,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.18.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 
 License:        MIT License
@@ -58,5 +58,8 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.18.1-2
+- Bump release for EL10 rebuild
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> -  0.18.1-1
 - Initial package.
