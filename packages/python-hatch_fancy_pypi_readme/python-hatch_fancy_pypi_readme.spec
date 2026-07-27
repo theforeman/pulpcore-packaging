@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        23.1.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Fancy PyPI READMEs with Hatch
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -49,6 +49,9 @@ set -ex
 %{_bindir}/hatch-fancy-pypi-readme
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 23.1.0-5
+- Bump release for EL10 rebuild
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 23.1.0-4
 - Rebuild against python3.12
 
