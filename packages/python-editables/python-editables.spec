@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Editable installations
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -45,6 +45,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.5-3
+- Bump release for EL10 rebuild
+
 * Tue Mar 18 2025 Odilon Sousa <osousa@redhat.com> - 0.5-2
 - Rebuild against python3.12
 
