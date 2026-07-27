@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.25.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python bindings to the Zstandard (zstd) compression library
 
 License:        BSD-3-Clause license
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.25.0-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.25.0-1
 - Update to 0.25.0
 
