@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.8.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A list-like structure which implements collections
 
 License:        Apache 2
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.8.0-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.0-1
 - Update to 1.8.0
 - Build pure Python; frozenlist 1.8.0 requires Cython 3 for C extension
