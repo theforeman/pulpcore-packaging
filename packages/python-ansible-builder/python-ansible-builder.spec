@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.0.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A tool for building Ansible Execution Environments
 
 License:        Apache-2.0
@@ -55,6 +55,9 @@ set -ex
 %{python3_sitelib}/ansible_builder-%{version}.dist-info/
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 3.0.0-4
+- Bump release for EL10 rebuild
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 3.0.0-3
 - Add obsoletes for python3.11 package
 
