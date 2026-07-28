@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.1.27
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Microsoft Azure Client Library for Python (Common)
 
 License:        MIT License
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.1.27-9
+- Bump release for EL10 rebuild
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.1.27-8
 - Rebuild against python3.12
 
