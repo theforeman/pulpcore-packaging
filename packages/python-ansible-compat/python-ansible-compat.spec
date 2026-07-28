@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.1.11
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Ansible compatibility goodies
 
 License:        MIT
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.1.11-3
+- Bump release for EL10 rebuild
+
 * Fri Jun 12 2026 Odilon Sousa <osousa@redhat.com> - 4.1.11-2
 - Strip ansible-core from pyproject.toml in %%prep so it is not emitted
   as an RPM dep (ansible-core is provided by foreman-packaging)
