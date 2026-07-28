@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        24.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The uncompromising code formatter
 
 License:        MIT
@@ -72,5 +72,8 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 24.10.0-2
+- Bump release for EL10 rebuild
+
 * Fri Jun 12 2026 Odilon Sousa <osousa@redhat.com> - 24.10.0-1
 - Initial package
