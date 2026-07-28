@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        5.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Universal encoding detector for Python 3
 
 License:        LGPL
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 5.2.0-2
+- Bump release for EL10 rebuild
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 5.2.0-1
 - Release python-chardet 5.2.0
 
