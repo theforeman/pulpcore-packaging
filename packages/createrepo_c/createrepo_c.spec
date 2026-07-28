@@ -46,7 +46,7 @@
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
 Version:        1.2.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -275,6 +275,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.2.1-3
+- Bump release for EL10 rebuild
+
 * Mon Apr 07 2025 Odilon Sousa <osousa@redhat.com> - 1.2.1-2
 - Add obsoletes for python3.11 package
 
