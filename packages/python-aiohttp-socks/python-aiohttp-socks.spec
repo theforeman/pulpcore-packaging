@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.10.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 0.10.1-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.10.1-1
 - Update to 0.10.1
 
