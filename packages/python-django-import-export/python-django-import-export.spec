@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.4.1-2
+- Bump release for EL10 rebuild
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.4.1-1
 - Update to 4.4.1
 
