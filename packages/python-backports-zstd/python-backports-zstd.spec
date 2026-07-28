@@ -10,7 +10,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        1.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Backport of the Python 3.14 compression.zstd module
 
 License:        PSF-2.0
@@ -60,5 +60,8 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.3.0-2
+- Bump release for EL10 rebuild
+
 * Mon Mar 30 2026 Odilon Sousa <osousa@redhat.com> - 1.3.0-1
 - Initial package.
