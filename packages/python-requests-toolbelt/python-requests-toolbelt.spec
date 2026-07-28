@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.0.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        A utility belt for advanced users of python-requests
 
 License:        Apache 2.0
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.0.0-7
+- Bump release for EL10 rebuild
+
 * Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 1.0.0-6
 - Rebuild against python3.12
 
