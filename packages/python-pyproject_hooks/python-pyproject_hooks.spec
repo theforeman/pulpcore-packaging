@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.2.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Wrappers to call pyproject.toml-based build backend hooks.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -43,6 +43,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.2.0-3
+- Bump release for EL10 rebuild
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 1.2.0-2
 - Rebuild against python3.12
 
