@@ -6,7 +6,7 @@
 
 Name:           %{pypi_name}
 Version:        6.22.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Checks playbooks for practices and behaviour that could potentially be improved
 
 License:        GPLv3+
@@ -61,6 +61,9 @@ set -ex
 %{python3_sitelib}/ansible_lint-%{version}.dist-info/
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 6.22.2-2
+- Bump release for EL10 rebuild
+
 * Fri Jun 12 2026 Odilon Sousa <osousa@redhat.com> - 6.22.2-1
 - Update to 6.22.2
 - Update License to GPLv3+
