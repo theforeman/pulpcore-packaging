@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Bash style brace expander
 
 License:        MIT License
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 3.0-2
+- Bump release for EL10 rebuild
+
 * Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.0-1
 - Update to 3.0
 
