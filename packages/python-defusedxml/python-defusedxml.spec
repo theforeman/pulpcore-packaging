@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.7.1
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        XML bomb protection for Python stdlib modules
 
 License:        PSFL
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 0.7.1-9
+- Bump release for EL10 rebuild
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.7.1-8
 - Rebuild against python3.12
 
