@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.14.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        High level compatibility layer for multiple asynchronous event loop implementations
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.14.1-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.14.1-1
 - Update to 4.14.1
 
