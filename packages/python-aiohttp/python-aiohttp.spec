@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.13.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 3.13.5-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.13.5-1
 - Update to 3.13.5
 
