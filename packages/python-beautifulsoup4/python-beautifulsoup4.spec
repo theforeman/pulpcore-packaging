@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.15.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Screen-scraping library
 
 License:        MIT
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.15.0-3
+- Bump release for EL10 rebuild
+
 * Fri Jun 12 2026 Odilon Sousa <osousa@redhat.com> - 4.15.0-2
 - Update soupsieve minimum to >= 1.6.1 (upstream 4.15.0 requires soupsieve >= 1.6.1)
 - Add typing-extensions >= 4.0.0 runtime dependency (new in upstream 4.15.0)
