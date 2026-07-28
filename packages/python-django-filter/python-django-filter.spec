@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        25.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 25.1-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 23 2025 Foreman Packaging Automation <packaging@theforeman.org> - 25.1-1
 - Update to 25.1
 
