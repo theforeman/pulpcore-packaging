@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.29.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 
 License:        BSD
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 0.29.0-2
+- Bump release for EL10 rebuild
+
 * Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.29.0-1
 - Update to 0.29.0
 - Fix Source0 tarball name (drf_spectacular underscore)
