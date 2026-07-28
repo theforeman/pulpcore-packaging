@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.2.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Function decoration for backoff and retry
 
 License:        MIT
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 2.2.1-7
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 2.2.1-6
 - Rebuild against python3.12
 
