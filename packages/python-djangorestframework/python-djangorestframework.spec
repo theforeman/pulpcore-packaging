@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.16.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 3.16.1-2
+- Bump release for EL10 rebuild
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.16.1-1
 - Update to 3.16.1
 
