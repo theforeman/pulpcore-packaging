@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.43.42
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        Apache License 2.0
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.43.42-2
+- Bump release for EL10 rebuild
+
 * Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.43.42-1
 - Update to 1.43.42
 
