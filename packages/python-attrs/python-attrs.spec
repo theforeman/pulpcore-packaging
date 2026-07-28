@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        22.2.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Classes Without Boilerplate
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 22.2.0-3
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 22.2.0-2
 - Rebuild against python3.12
 
