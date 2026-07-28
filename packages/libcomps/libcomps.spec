@@ -1,42 +1,17 @@
 %global python3_pkgversion 3.12
 %global __python3 /usr/bin/python3.12
 
-# explicitly define, as we build on top of an scl, not inside with scl_package
-%if 0%{?scl:1}
-%global scl_prefix %{scl}-
-%global python3_sitearch /opt/theforeman/tfm-pulpcore/root/usr/lib64/python3.8/site-packages/
-%global python3_version %python38python3_version
-%global __os_install_post %python38_os_install_post
-%global __python_requires %python38_python_requires
-%global __python_provides %python38_python_provides
-%global __python3 %python38__python
-%endif
-
-# Always build Python3 bindings
-%bcond_without python3
-
-# Our EL8 buildroots default to Python 3.8, but we also need a 3.6 build of libcomps
-# to make dnf happy
-%if 0%{?rhel} == 8
-%bcond_without python36
-%else
-%bcond_with python36
-%endif
-
-# Our EL9 buildroots default to Python 3.9, we also need a 3.9 build of libcomps
-# to make dnf happy
+# RHEL9's default python is 3.9, and dnf needs its own libcomps bindings
+# against that interpreter, separate from our python3.12 build.
 %if 0%{?rhel} == 9
 %bcond_without python39
 %else
 %bcond_with python39
 %endif
 
-# Never build docs by default
-%bcond_with doc
-
 Name:           libcomps
 Version:        0.1.23
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Comps XML file manipulation library
 
 License:        GPLv2+
@@ -52,8 +27,6 @@ BuildRequires:  libxml2-devel
 BuildRequires:  check-devel
 BuildRequires:  expat-devel
 BuildRequires:  zlib-devel
-BuildRequires:  python3-sphinx
-BuildRequires:  doxygen
 
 %description
 Libcomps is library for structure-like manipulation with content of
@@ -66,61 +39,26 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %description devel
 Development files for libcomps library.
 
-%if %{with doc}
-%package doc
-Summary:        Documentation files for libcomps library
-Requires:       %{name} = %{version}-%{release}
-BuildArch:      noarch
-BuildRequires:  doxygen
-
-%description doc
-Documentation files for libcomps library.
-
-%package -n %{?scl_prefix}python-%{name}-doc
-Summary:        Documentation files for python bindings libcomps library
-Requires:       %{name} = %{version}-%{release}
-BuildArch:      noarch
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-sphinx
-
-%description -n %{?scl_prefix}python-%{name}-doc
-Documentation files for python bindings libcomps library.
-%endif
-
-%if %{with python3}
-%package -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
+%package -n python%{python3_pkgversion}-%{name}
 Summary:        Python 3 bindings for libcomps library
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-devel
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-setuptools
-BuildRequires:  %{?scl_prefix}python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{name}}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Obsoletes:      %{?scl_prefix}platform-python-%{name} < %{version}-%{release}
-%if 0%{?scl:1}
-Obsoletes:      python3-%{name} < %{version}-%{release}
-%endif
-%if 0%{?rhel} == 8
-Obsoletes:      python38-%{name} < %{version}-%{release}
-Obsoletes:      python39-%{name} < %{version}-%{release}
-%endif
+Obsoletes:      platform-python-%{name} < %{version}-%{release}
 %if 0%{?rhel} == 9
 Obsoletes:      python3.11-%{name} < %{version}-%{release}
 %endif
-
-%description -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
-Python3 bindings for libcomps library.
+%if 0%{?rhel} == 10
+# RHEL10's default python is also 3.12, so the OS-provided (unversioned)
+# python3-libcomps would otherwise own the same site-packages files as
+# this package.
+Obsoletes:      python3-%{name} < %{version}-%{release}
 %endif
 
-%if %{with python36}
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libcomps library
-BuildRequires:  python36-devel
-Provides:       python36-%{name} = %{version}-%{release}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Obsoletes:      platform-python-%{name} < %{version}-%{release}
-
-%description -n python3-%{name}
+%description -n python%{python3_pkgversion}-%{name}
 Python3 bindings for libcomps library.
-%endif
 
 %if %{with python39}
 %package -n python3-%{name}
@@ -135,129 +73,46 @@ Python3 bindings for libcomps library.
 %endif
 
 %prep
-%{?scl:scl enable %{scl} - << \EOF}
-set -ex
 %autosetup -p1 -n %{name}-%{version}
 # workaround for https://github.com/rpm-software-management/libcomps/pull/64
 sed -i 's/EXACT//' libcomps/src/python/src/CMakeLists.txt
 
-# it can't detect our special PYTHONPATH and uses the compiled-in from the SCL Python
-%if 0%{?scl:1}
-sed -i "/OUTPUT_VARIABLE PYTHON_INSTALL_DIR/ s#))#).replace('rh/rh-python38', 'theforeman/tfm-pulpcore'))#" libcomps/src/python/src/CMakeLists.txt
-%endif
-
-%if %{with python3}
 mkdir build-py3
-%endif
-%if %{with python36}
-mkdir build-py36
-%endif
 %if %{with python39}
 mkdir build-py39
 %endif
-%if %{with doc}
-mkdir build-doc
-%endif
-%{?scl:EOF}
-
 
 %build
-%{?scl:scl enable %{scl} - << \EOF}
-set -ex
-
-%if %{with python3}
-%if 0%{?rhel} == 7
 pushd build-py3
-  # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3 -DPYTHON_EXECUTABLE=%{__python3} %{?scl:-DPYTHON_INCLUDE_DIR=/opt/rh/rh-python38/root/usr/include/python3.8/ -DPYTHON_LIBRARY=/opt/rh/rh-python38/root/lib64/libpython3.8.so}
-  %make_build
-popd
-%else
-pushd build-py3
-  # Build for el9
   %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3 -DPYTHON_EXECUTABLE=%{__python3}
   %cmake_build
 popd
-%endif
-%endif
-
-%if %{with python36}
-pushd build-py36
-  # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3.6 -DPYTHON_EXECUTABLE=/usr/bin/python3.6
-  %make_build
-popd
-%endif
 
 %if %{with python39}
 pushd build-py39
-  # explicitly set INCLUDE_DIR and LIBRARY when inside the SCL, otherwise it's not found
   %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3.9 -DPYTHON_EXECUTABLE=/usr/bin/python3.9
   %cmake_build
 popd
 %endif
 
-%if %{with doc}
-pushd build-doc
-%if %{with python3}
-  %cmake ../libcomps/ -DPYTHON_DESIRED:STRING=3
-%endif
-  make %{?_smp_mflags} docs
-  make %{?_smp_mflags} pydocs
-popd
-%endif
-%{?scl:EOF}
-
-
 %install
-%{?scl:scl enable %{scl} - << \EOF}
-set -ex
-
-%if %{with python3}
 pushd build-py3
-%if 0%{?rhel} == 7
-  %make_install
-%else
   %cmake_install
-%endif
 popd
-%endif
-
-%if %{with python36}
-pushd build-py36
-  %make_install
-popd
-%endif
 
 %if %{with python39}
 pushd build-py39
   %cmake_install
 popd
 %endif
-%{?scl:EOF}
 
-%if 0%{?rhel} != 9
 %check
-%{?scl:scl enable %{scl} - << \EOF}
-set -ex
-# only run tests on python3 as they are broken on py2/EL7
-
-%if %{with python3}
 pushd build-py3
-  make test
-  make pytest
-%endif
+  %cmake_build --target test
+  %cmake_build --target pytest
 popd
-%endif
 
-%{?scl:EOF}
-
-%if %{undefined ldconfig_scriptlets}
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-%else
 %ldconfig_scriptlets
-%endif
 
 %files
 %license COPYING
@@ -269,25 +124,9 @@ popd
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/
 
-%if %{with doc}
-%files doc
-%doc build-doc/docs/libcomps-doc/html
-
-%files -n %{?scl_prefix}python-%{name}-doc
-%doc build-doc/src/python/docs/html
-%endif
-
-%if %{with python3}
-%files -n %{?scl_prefix}python%{python3_pkgversion}-%{name}
+%files -n python%{python3_pkgversion}-%{name}
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
-%endif
-
-%if %{with python36}
-%files -n python3-%{name}
-/usr/lib64/python3.6/site-packages/%{name}/
-/usr/lib64/python3.6/site-packages/%{name}-%{version}-py*.egg-info
-%endif
 
 %if %{with python39}
 %files -n python3-%{name}
@@ -296,6 +135,25 @@ popd
 %endif
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 0.1.23-2
+- Trim spec to el9/el10 only: drop SCL and the python36 (EL8-only) build
+  variant, adopt %%cmake_build/%%cmake_install/%%ldconfig_scriptlets,
+  matching CentOS Stream 9/10's own libcomps.spec structure. Keep the
+  python3.12-libcomps package name (python-pulp-rpm requires it
+  explicitly) rather than CS's unversioned python3-libcomps, and keep
+  building the python39 bindings on el9 (its default python, needed by
+  dnf).
+- Fix %%check: the old bare "make test" ran in build-py3 itself, but the
+  %%cmake macro actually configures into a nested build-py3/redhat-linux-build
+  directory, so "test" was never a real make target there ("No rule to
+  make target 'test'" on el10; el9's %%check was simply skipped entirely
+  before this, masking the same bug). Use %%cmake_build --target test/
+  pytest instead, which resolves the build directory correctly
+- Obsolete python3-libcomps on el10, matching CentOS Stream 10's own
+  libcomps.spec naming for the python bindings subpackage, to avoid a
+  file conflict with the OS-provided package (el10's default python is
+  also 3.12, unlike el9's 3.9)
+
 * Thu Sep 11 2025 Odilon Sousa <osousa@redhat.com> - 0.1.23-1
 - Release libcomps 0.1.23
 - Fix CMake CMP0148 policy compatibility with CMake < 3.27
@@ -555,4 +413,3 @@ popd
 
 * Tue Jun 25 2013 Jindrich Luza <jluza@redhat.com> 0.1.1-1
 - Automatic commit of package [libcomps] release [0.1.1-1].
-
