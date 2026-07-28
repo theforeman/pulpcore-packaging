@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        2.8.2
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 2.8.2-9
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 2.8.2-8
 - Rebuild against python3.12
 
