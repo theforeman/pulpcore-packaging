@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        4.2.30
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
@@ -67,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.2.30-2
+- Bump release for EL10 rebuild
+
 * Tue Apr 07 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.30-1
 - Update to 4.2.30
 
