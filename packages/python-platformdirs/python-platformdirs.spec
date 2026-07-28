@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A small Python module for determining appropriate platform-specific dirs, e
 
 License:        MIT
@@ -45,6 +45,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.10.0-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.10.0-1
 - Update to 4.10.0
 
