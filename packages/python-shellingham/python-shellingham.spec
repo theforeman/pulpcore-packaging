@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.5.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Tool to Detect Surrounding Shell
 
 License:        ISC License
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.5.4-3
+- Bump release for EL10 rebuild
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 1.5.4-2
 - Rebuild against python3.12
 
