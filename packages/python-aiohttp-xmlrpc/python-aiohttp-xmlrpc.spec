@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.5.0
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        aiohttp XML-RPC server handler and client
 
 License:        MIT
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.5.0-8
+- Bump release for EL10 rebuild
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.5.0-7
 - Rebuild against python3.12
 
