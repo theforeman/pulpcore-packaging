@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        1.2.18
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python @deprecated decorator to deprecate old python classes, functions or methods
 
 License:        MIT
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.2.18-3
+- Bump release for EL10 rebuild
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.2.18-2
 - Rebuild against python3.12
 
