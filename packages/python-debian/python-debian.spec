@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.1.49
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Debian package related modules
 
 License:        GPL-2+
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 0.1.49-3
+- Bump release for EL10 rebuild
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 0.1.49-2
 - Rebuild against python3.12
 
