@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        21.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -58,6 +58,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 21.6.0-2
+- Bump release for EL10 rebuild
+
 * Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 21.6.0-1
 - Update to 21.6.0
 
