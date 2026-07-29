@@ -10,7 +10,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.11.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Build backend for CMake based projects
 
 License:        MIT License
@@ -57,5 +57,8 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.11.1-2
+- Bump release for EL10 rebuild
+
 * Tue Jan 16 2024 Odilon Sousa <osousa@redhat.com> -  0.11.1-1
 - Initial package.
