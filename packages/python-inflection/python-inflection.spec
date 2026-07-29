@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.5.1
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        A port of Ruby on Rails inflector to Python
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.5.1-9
+- Bump release for EL10 rebuild
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.5.1-8
 - Rebuild against python3.12
 
