@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Markdown URL utilities
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -43,6 +43,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.1.2-3
+- Bump release for EL10 rebuild
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 0.1.2-2
 - Drop flit_core as requirement
 
