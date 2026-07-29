@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.18.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Persistent/Functional/Immutable data structures
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.18.1-8
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.18.1-7
 - Rebuild against python3.12
 
