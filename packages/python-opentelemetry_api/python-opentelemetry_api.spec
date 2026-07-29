@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.40.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenTelemetry Python API.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -48,6 +48,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.40.0-3
+- Bump release for EL10 rebuild
+
 * Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.40.0-2
 - Drop importlib-metadata requirement
 
