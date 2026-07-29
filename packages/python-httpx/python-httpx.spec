@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.28.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        The next generation HTTP client.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -54,6 +54,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.28.1-4
+- Bump release for EL10 rebuild
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 0.28.1-3
 - Add obsoletes for python3.11 package
 
