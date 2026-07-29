@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        %{pypi_version}
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Distro - an OS platform information API
 
 License:        Apache License, Version 2.0
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.7.0-9
+- Bump release for EL10 rebuild
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.7.0-8
 - Bump release for EL10 rebuild
 
