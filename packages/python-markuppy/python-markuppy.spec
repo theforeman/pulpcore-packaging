@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        1.18
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An HTML/XML generator
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.18-2
+- Bump release for EL10 rebuild
+
 * Sun Mar 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.18-1
 - Update to 1.18
 - Fix Source0: tarball filename uses lowercase (markuppy) since 1.18
