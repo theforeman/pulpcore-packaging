@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.5.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A wrapper for the Gnu Privacy Guard (GPG or GnuPG)
 
 License:        BSD-3-Clause
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.5.6-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.6-1
 - Update to 0.5.6
 - Fix Source0 URL: use python_gnupg (underscore) as src tarball name
