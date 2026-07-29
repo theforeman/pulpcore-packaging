@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An implementation of lxml.xmlfile for the standard library
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 2.0.0-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 2.0.0-1
 - Update to 2.0.0
 
