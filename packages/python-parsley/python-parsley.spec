@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        1.3
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Parsing and pattern matching made easy
 
 License:        MIT License
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.3-8
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 1.3-7
 - Rebuild against python3.12
 
