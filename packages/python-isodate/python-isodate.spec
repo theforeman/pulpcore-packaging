@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.7.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An ISO 8601 date/time/duration parser and formatter
 
 License:        BSD
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.7.2-3
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.7.2-2
 - Rebuild against python3.12
 
