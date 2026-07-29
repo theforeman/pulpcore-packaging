@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        multidict implementation
 
 License:        Apache 2
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 6.7.1-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 6.7.1-1
 - Update to 6.7.1
 
