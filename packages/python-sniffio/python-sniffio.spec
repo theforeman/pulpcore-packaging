@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Sniff out which async library your code is running under
 
 License:        MIT OR Apache-2.0
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.3.1-2
+- Bump release for EL10 rebuild
+
 * Wed Nov 26 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.3.1-1
 - Update to 1.3.1
 - Switch to pyproject build (setup.py removed upstream, uses setuptools + setuptools-scm)
