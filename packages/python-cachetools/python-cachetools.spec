@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.2.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Extensible memoizing collections and decorators
 
 License:        MIT
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 6.2.4-2
+- Bump release for EL10 rebuild
+
 * Mon Jan 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 6.2.4-1
 - Update to 6.2.4
 - Fix PEP 639 license format in pyproject.toml
