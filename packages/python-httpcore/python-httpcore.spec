@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.0.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A minimal low-level HTTP client
 
 License:        BSD
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.0.9-2
+- Bump release for EL10 rebuild
+
 * Fri Apr 25 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.9-1
 - Update to 1.0.9
 
