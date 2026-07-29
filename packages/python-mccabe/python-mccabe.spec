@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.7.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        McCabe checker, plugin for flake8
 
 License:        Expat license
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.7.0-6
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.7.0-5
 - Rebuild against python3.12
 
