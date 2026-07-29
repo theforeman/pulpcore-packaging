@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.4.5
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Read resources from Python packages
 
 License:        Apache2
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 6.4.5-4
+- Bump release for EL10 rebuild
+
 * Wed Jul 22 2026 Odilon Sousa <osousa@redhat.com> - 6.4.5-3
 - Restore package: python3.12-pulp-rpm declares importlib-resources as an
   unconditional (non-marker-gated) upstream dependency, so it was
