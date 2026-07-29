@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.7.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Run a subprocess in a pseudo terminal
 
 License:        None
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.7.0-7
+- Bump release for EL10 rebuild
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 0.7.0-6
 - Rebuild against python3.12
 
