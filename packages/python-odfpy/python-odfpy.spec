@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.4.1
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Python API and tools to manipulate OpenDocument files
 
 License:        GPLv2+ or Apache-2.0
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.4.1-12
+- Bump release for EL10 rebuild
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.4.1-11
 - Rebuild against python3.12
 
