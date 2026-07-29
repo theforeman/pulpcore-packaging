@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.8.0
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Python client for the Prometheus monitoring system
 
 License:        Apache Software License 2.0
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.8.0-9
+- Bump release for EL10 rebuild
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 0.8.0-8
 - Rebuild against python 3.12
 
