@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        This library exists to allow connecting with Happy Eyeballs (RFC 8305) when you already have a list of addrinfo and not a DNS name.
 
 License:        Python Software Foundation License 2.0
@@ -44,6 +44,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 2.7.1-2
+- Bump release for EL10 rebuild
+
 * Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.7.1-1
 - Update to 2.7.1
 
