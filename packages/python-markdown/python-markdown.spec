@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.8.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 3.8.2-2
+- Bump release for EL10 rebuild
+
 * Wed Jul 09 2025 Foreman Packaging Automation <packaging@theforeman.org> - 3.8.2-1
 - Update to 3.8.2
 - Fix PEP 639 license format in pyproject.toml
