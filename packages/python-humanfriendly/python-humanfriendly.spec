@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        10.0
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Human friendly output for text interfaces using Python
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 10.0-10
+- Bump release for EL10 rebuild
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 10.0-9
 - Add obsoletes for python3.11 package
 
