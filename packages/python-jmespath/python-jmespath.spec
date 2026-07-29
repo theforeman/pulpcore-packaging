@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        JSON Matching Expressions
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.1.0-2
+- Bump release for EL10 rebuild
+
 * Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.1.0-1
 - Update to 1.1.0
 - Fix license filename (LICENSE.txt -> LICENSE)
