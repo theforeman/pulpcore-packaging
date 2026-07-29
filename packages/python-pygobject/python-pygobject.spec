@@ -9,7 +9,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.50.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Python bindings for GObject Introspection
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1:3.50.2-2
+- Bump release for EL10 rebuild
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 1:3.50.2-1
 - Update to 3.50.2
 
