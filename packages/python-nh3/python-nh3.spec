@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.3.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python binding to Ammonia HTML sanitizer Rust crate
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -62,6 +62,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.3.6-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.6-1
 - Update to 0.3.6
 
