@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.61b0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Semantic Conventions
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.61b0-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.61b0-1
 - Update to 0.61b0
 
