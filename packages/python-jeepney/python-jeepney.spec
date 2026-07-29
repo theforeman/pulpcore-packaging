@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.9.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -44,6 +44,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.9.0-3
+- Bump release for EL10 rebuild
+
 * Tue Mar 25 2025 Odilon Sousa <osousa@redhat.com> - 0.9.0-2
 - Rebuild against python3.12
 
