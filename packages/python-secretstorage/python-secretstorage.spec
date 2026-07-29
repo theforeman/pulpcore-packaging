@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python bindings to FreeDesktop.org Secret Service API
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 3.5.0-2
+- Bump release for EL10 rebuild
+
 * Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.5.0-1
 - Update to 3.5.0
 - Fix Source0: tarball filename uses lowercase (secretstorage) since 3.5.0
