@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.5.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Fast property caching.
 
 License:        Apache-2.0
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.5.2-2
+- Bump release for EL10 rebuild
+
 * Sun May 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.2-1
 - Update to 0.5.2
 
