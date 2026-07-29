@@ -10,7 +10,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.46.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 2.46.4-3
+- Bump release for EL10 rebuild
+
 * Wed May 27 2026 Odilon Sousa <osousa@redhat.com> - 2.46.4-2
 - Update typing-extensions lower bound to >= 4.14.1 to match upstream 2.46.4
 
