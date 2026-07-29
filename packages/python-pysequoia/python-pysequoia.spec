@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.1.34
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Provides OpenPGP facilities using Sequoia-PGP library
 
 License:        Apache-2.0
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.1.34-2
+- Bump release for EL10 rebuild
+
 * Wed May 27 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.1.34-1
 - Update to 0.1.34
 - Regenerate vendor tarball for 0.1.34
