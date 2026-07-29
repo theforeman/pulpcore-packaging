@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C parser in Python
 
 License:        BSD
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 3.0-2
+- Bump release for EL10 rebuild
+
 * Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.0-1
 - Update to 3.0
 - Switch to pyproject build; patch pyproject.toml for RHEL9 pip compatibility
