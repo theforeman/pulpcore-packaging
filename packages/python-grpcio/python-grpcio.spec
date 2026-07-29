@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        1.70.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        HTTP/2-based RPC framework
 
 License:        Apache License 2.0
@@ -46,6 +46,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.70.0-3
+- Bump release for EL10 rebuild
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.70.0-2
 - Rebuild against python3.12
 
