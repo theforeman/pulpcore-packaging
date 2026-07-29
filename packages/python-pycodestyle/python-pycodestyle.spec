@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.11.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python style guide checker
 
 License:        Expat license
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 2.11.1-4
+- Bump release for EL10 rebuild
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 2.11.1-3
 - Add obsoletes for python3.11 package
 
