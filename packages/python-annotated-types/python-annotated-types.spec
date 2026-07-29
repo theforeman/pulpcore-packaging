@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.7.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -45,6 +45,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.7.0-2
+- Bump release for EL10 rebuild
+
 * Thu Apr 03 2025 Odilon Sousa <osousa@redhat.com> - 0.7.0-1
 - Initial Release
 
