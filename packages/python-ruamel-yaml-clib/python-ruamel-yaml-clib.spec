@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.2.14
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C version of reader, parser and emitter for ruamel
 
 License:        MIT
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.2.14-2
+- Bump release for EL10 rebuild
+
 * Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.2.14-1
 - Update to 0.2.14
 - Migrate to pyproject_wheel build macros
