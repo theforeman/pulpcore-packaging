@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.9.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 
 License:        MIT
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.9.0-3
+- Bump release for EL10 rebuild
+
 * Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 3.9.0-2
 - Drop xlrd and xlwt requirements
 
