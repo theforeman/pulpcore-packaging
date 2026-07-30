@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.1.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A Python library to read/write Excel 2010 xlsx/xlsm files
 
 License:        MIT
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.1.5-3
+- Bump release for EL10 rebuild
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.1.5-2
 - Rebuild against python3.12
 
