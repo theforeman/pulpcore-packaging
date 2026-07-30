@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.0.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data models for Sigstore
 
 License:        Apache-2.0
@@ -51,5 +51,8 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.0.6-2
+- Bump release for EL10 rebuild
+
 * Tue Apr 14 2026 Odilon Sousa <osousa@redhat.com> - 0.0.6-1
 - Initial package.
