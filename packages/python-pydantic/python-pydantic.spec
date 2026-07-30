@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.13.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -63,6 +63,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.13.4-2
+- Bump release for EL10 rebuild
+
 * Wed May 13 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.4-1
 - Update to 2.13.4
 - Update pydantic-core requirement to 2.46.4
