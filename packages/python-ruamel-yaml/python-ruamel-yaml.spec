@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        0.18.15
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
 
 License:        MIT license
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.18.15-2
+- Bump release for EL10 rebuild
+
 * Thu Oct 02 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.18.15-1
 - Update to 0.18.15
 - Migrate to pyproject_wheel; remove gcc/libyaml-devel (pure Python)
