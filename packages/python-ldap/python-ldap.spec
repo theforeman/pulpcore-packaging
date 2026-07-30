@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        3.4.2
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Python modules for implementing LDAP clients
 
 License:        Python style
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.4.2-7
+- Bump release for EL10 rebuild
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 3.4.2-6
 - Rebuild against python3.12
 
