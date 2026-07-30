@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        15.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
 
 License:        MIT
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 15.0.0-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 15.0.0-1
 - Update to 15.0.0
 - Update markdown-it-py minimum to >= 2.2.0, pygments minimum to >= 2.13.0
