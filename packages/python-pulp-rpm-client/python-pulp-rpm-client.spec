@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.35.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -24,6 +24,8 @@ BuildRequires:  pyproject-rpm-macros
 
 
 Requires:       python%{python3_pkgversion}-dateutil
+Requires:       python%{python3_pkgversion}-lazy-imports >= 1
+Requires:       python%{python3_pkgversion}-lazy-imports < 2
 Requires:       python%{python3_pkgversion}-urllib3 >= 1.15
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -56,6 +58,12 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.35.3-2
+- Bump release for EL10 rebuild
+- Add explicit Requires on python-lazy-imports (real Requires-Dist per
+  upstream PKG-INFO, previously only picked up by RPM's automatic
+  dependency generator and missed when the package was pruned in #2766)
+
 * Tue Jun 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.35.3-1
 - Update to 3.35.3
 
