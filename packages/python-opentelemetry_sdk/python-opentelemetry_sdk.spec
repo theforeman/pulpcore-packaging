@@ -4,7 +4,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.40.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenTelemetry Python SDK
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.40.0-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.40.0-1
 - Update to 1.40.0
 
