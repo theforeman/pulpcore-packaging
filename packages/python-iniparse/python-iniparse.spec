@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{modname}
 Version:        0.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python Module for Accessing and Modifying Configuration Data in INI files
 License:        MIT and Python
 URL:            https://pypi.org/project/iniparse/
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.5-3
+- Bump release for EL10 rebuild
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.5-2
 - Rebuild against python3.12
 
