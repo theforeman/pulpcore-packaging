@@ -30,7 +30,7 @@
 
 Name:           python%{python3_pkgversion}-%{libname}
 Version:        0.7.28
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python bindings for the lib%{libname} library
 
 License:        BSD
@@ -150,6 +150,9 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.7.28-3
+- Bump release for EL10 rebuild
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 0.7.28-2
 - Rebuild against python3.12
 
