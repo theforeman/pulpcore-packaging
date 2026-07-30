@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.31.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Google API client core library
 
 License:        Apache 2.0
@@ -71,6 +71,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.31.0-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.31.0-1
 - Update to 2.31.0
 - Update googleapis-common-protos to >= 1.63.2, proto-plus to >= 1.24.0, protobuf to >= 5.29.6, requests to >= 2.33.0
