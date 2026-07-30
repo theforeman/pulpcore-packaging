@@ -1,6 +1,6 @@
 Name: pulpcore-obsolete-packages
 Version: 1.5.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
 URL: https://github.com/theforeman/pulpcore-packaging
@@ -218,6 +218,9 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.5.0-2
+- Bump release for EL10 rebuild
+
 * Wed Jul 22 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.5.0-1
 - Add Obsoletes for packages removed during EL10 transition
 
