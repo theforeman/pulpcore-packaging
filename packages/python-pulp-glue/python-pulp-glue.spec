@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.39.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-3
+- Bump release for EL10 rebuild
+
 * Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-2
 - Relax pydantic upper bound to < 2.14 (upstream pins <2.13; pydantic 2.13.x in staging)
 - Patch pyproject.toml in %%prep to match relaxed bound
