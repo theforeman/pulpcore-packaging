@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Validating URI References per the RFC
 
 License:        Apache-2.0
@@ -49,5 +49,8 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.0.0-2
+- Bump release for EL10 rebuild
+
 * Tue Apr 14 2026 Odilon Sousa <osousa@redhat.com> - 2.0.0-1
 - Initial package.
