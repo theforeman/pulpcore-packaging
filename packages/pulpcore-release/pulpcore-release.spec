@@ -5,7 +5,7 @@
 
 %global prereleasesource nightly
 %global prerelease %{?prereleasesource:.}%{?prereleasesource}
-%global release 1
+%global release 2
 
 Name:           pulpcore-release
 Version:        3.105
@@ -66,6 +66,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.105-0.2.nightly
+- Bump release for EL10 rebuild
+
 * Wed Apr 29 2026 Odilon Sousa <osousa@redhat.com> - 3.105-0.1.nightly
 - Release pulpcore-release 3.105
 
