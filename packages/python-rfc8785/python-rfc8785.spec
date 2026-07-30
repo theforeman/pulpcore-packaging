@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.1.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        JSON Canonicalization Scheme (JCS) implementation per RFC 8785
 
 License:        Apache-2.0
@@ -47,5 +47,8 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.1.4-2
+- Bump release for EL10 rebuild
+
 * Tue Apr 14 2026 Odilon Sousa <osousa@redhat.com> - 0.1.4-1
 - Initial package.
