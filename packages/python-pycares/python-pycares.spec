@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        5.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface for c-ares
 
 License:        MIT
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 5.0.0-2
+- Bump release for EL10 rebuild
+
 * Sun Dec 14 2025 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.0-1
 - Update to 5.0.0
 - Migrate to pyproject_wheel; fix PEP 639 license format in pyproject.toml
