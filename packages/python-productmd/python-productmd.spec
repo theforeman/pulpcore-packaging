@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.33
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Product, compose and installation media metadata library
 
 License:        LGPLv2.1
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.33-9
+- Bump release for EL10 rebuild
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 1.33-8
 - Rebuild python-productmd against python3.12
 
