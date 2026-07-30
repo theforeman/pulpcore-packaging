@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.39
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -80,6 +80,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.4.39-2
+- Bump release for EL10 rebuild
+
 * Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 0.4.39-1
 - Update to 0.4.39
 - Relax packaging bound: < 25 → < 27 (upstream: packaging<27,>=23.2)
