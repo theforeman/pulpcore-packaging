@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        7.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python client for Redis database and key-value store
 
 License:        MIT
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 7.1.1-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 7.1.1-1
 - Update to 7.1.1
 
