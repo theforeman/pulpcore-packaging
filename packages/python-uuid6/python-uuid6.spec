@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2025.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        New time-based UUID formats which are suited for use as a database key
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2025.0.1-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 01 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2025.0.1-1
 - Update to 2025.0.1
 - Switch to pyproject build (setup.py removed upstream); add setuptools-scm
