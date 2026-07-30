@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        21.0.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        A featureful, immutable, and correct URL for Python
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 21.0.0-7
+- Bump release for EL10 rebuild
+
 * Wed Mar 26 2025 Odilon Sousa <osousa@redhat.com> - 21.0.0-6
 - Rebuild against python3.12
 
