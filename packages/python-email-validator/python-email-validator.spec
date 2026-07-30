@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A robust email address syntax and deliverability validation library
 
 License:        Unlicense
@@ -54,5 +54,8 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.3.0-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 15 2026 Odilon Sousa <osousa@redhat.com> - 2.3.0-1
 - Initial package.
