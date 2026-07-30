@@ -9,7 +9,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.0.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A client library for RFC 3161 Time-Stamp Protocol
 
 License:        Apache-2.0
@@ -65,5 +65,8 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.0.6-2
+- Bump release for EL10 rebuild
+
 * Tue Apr 14 2026 Odilon Sousa <osousa@redhat.com> - 1.0.6-1
 - Initial package.
