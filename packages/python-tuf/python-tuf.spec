@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        7.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Framework for Securing Software Update Systems
 
 License:        Apache-2.0 OR MIT
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 7.0.0-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 7.0.0-1
 - Update to 7.0.0
 
