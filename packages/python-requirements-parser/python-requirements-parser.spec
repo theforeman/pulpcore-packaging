@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.2.0
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Parses Pip requirement files
 
 License:        BSD
@@ -48,6 +48,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.2.0-9
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 0.2.0-8
 - Rebuild against python3.12
 
