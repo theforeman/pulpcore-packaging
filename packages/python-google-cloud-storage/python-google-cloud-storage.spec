@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.12.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Google Cloud Storage API client library
 
 License:        Apache 2.0
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.12.0-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 28 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.12.0-1
 - Update to 3.12.0
 
