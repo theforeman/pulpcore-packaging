@@ -1,6 +1,6 @@
 Name: pulpcore-obsolete-packages
 Version: 1.5.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
 URL: https://github.com/theforeman/pulpcore-packaging
@@ -102,7 +102,6 @@ Obsoletes:      python3.11-packaging < 23.2-2
 Obsoletes:      python3.11-parsley < 1.3-7
 Obsoletes:      python3.11-pbr < 6.1.0-2
 Obsoletes:      python3.11-pexpect < 4.8.0-6
-Obsoletes:      python3.11-pillow < 12.1.1-2
 Obsoletes:      python3.11-productmd < 1.33-8
 Obsoletes:      python3.11-propcache < 0.2.1-2
 Obsoletes:      python3.11-protobuf < 4.25.5-2
@@ -116,7 +115,6 @@ Obsoletes:      python3.11-pycryptodomex < 3.20.0-2
 Obsoletes:      python3.11-pyflakes < 3.1.0-2
 Obsoletes:      python3.11-pygtrie < 2.5.0-6
 Obsoletes:      python3.11-pyjwkest < 1.4.2-9
-Obsoletes:      python3.11-pyjwt < 2.9.0-2
 Obsoletes:      python3.11-pyparsing < 3.1.4-2
 Obsoletes:      python3.11-pyrsistent < 0.18.1-7
 Obsoletes:      python3.11-pytz < 2022.2.1-7
@@ -179,6 +177,11 @@ Obsoletes:      python3.11-requests-oauthlib < 1.3.0-7
 Obsoletes:      python3.11-rq < 1.9.0-8
 Obsoletes:      python3.11-social-auth-app-django < 3.4.0-7
 Obsoletes:      python3.11-social-auth-core < 3.4.0-7
+Obsoletes:      python3.11-pyjwt < 2.13.0-2
+Obsoletes:      python3.11-pyjwt+crypto < 2.13.0-2
+Obsoletes:      python3.11-pysequoia < 0.1.33-2
+Obsoletes:      python3.11-markdown < 3.8.2-2
+Obsoletes:      python3.11-pillow < 12.3.0-2
 
 ## EL10 transition - python3.12 Obsoletes for removed packages
 
@@ -217,6 +220,13 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Thu Jul 30 2026 Joniel Pasqualetto <jpasqual@redhat.com> - 1.5.0-3
+- Add python3.11-pysequoia to obsolete list
+- Add python3.11-markdown to obsolete list
+- Add python3.11-pyjwt+crypto to obslete list
+- Update reference to python3.11-pyjwt
+- Update reference to python3.11-pillow
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.5.0-2
 - Bump release for EL10 rebuild
 - Drop erroneous Obsoletes for python3.12-lazy-imports: it is a real
