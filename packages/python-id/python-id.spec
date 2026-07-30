@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.6.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A library for generating OIDC identities
 
 License:        Apache-2.0
@@ -50,5 +50,8 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.6.1-2
+- Bump release for EL10 rebuild
+
 * Tue Apr 14 2026 Odilon Sousa <osousa@redhat.com> - 1.6.1-1
 - Initial package.
