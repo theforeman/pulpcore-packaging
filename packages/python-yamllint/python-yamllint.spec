@@ -5,7 +5,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.38.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A linter for YAML files
 
 License:        GPLv3+
@@ -54,5 +54,8 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.38.0-2
+- Bump release for EL10 rebuild
+
 * Fri Jun 12 2026 Odilon Sousa <osousa@redhat.com> - 1.38.0-1
 - Initial package
