@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.7.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple data validation library
 
 License:        MIT
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.7.8-2
+- Bump release for EL10 rebuild
+
 * Sun Apr 05 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.7.8-1
 - Update to 0.7.8
 - Update %%files for schema 0.7.8 package restructure (schema.py → schema/)
