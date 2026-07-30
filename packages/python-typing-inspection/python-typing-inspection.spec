@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -46,6 +46,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.4.2-2
+- Bump release for EL10 rebuild
+
 * Wed Oct 22 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.2-1
 - Update to 0.4.2
 
