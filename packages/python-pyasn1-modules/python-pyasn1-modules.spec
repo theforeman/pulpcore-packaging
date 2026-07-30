@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A collection of ASN.1-based protocols modules
 
 License:        BSD-2-Clause
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.4.2-2
+- Bump release for EL10 rebuild
+
 * Sun Jun 15 2025 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.2-1
 - Update to 0.4.2
 
