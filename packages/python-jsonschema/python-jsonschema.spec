@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.10.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        An implementation of JSON Schema validation for Python
 
 License:        MIT
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 4.10.3-7
+- Bump release for EL10 rebuild
+
 * Tue Apr 08 2025 Odilon Sousa <osousa@redhat.com> - 4.10.3-6
 - Add obsoletes for python3.11 package
 
