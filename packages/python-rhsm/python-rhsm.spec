@@ -6,12 +6,13 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.19.2
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        A Python library to communicate with a Red Hat Unified Entitlement Platform
 
 License:        GPLv2
 URL:            http://fedorahosted.org/candlepin
 Source0:        %{pypi_source}
+Patch0:         python-rhsm-fix-py3-init-return.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -29,7 +30,7 @@ Requires:       python%{python3_pkgversion}-dateutil
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version} -p1
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -50,6 +51,12 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.19.2-9
+- Bump release for EL10 rebuild
+- Fix src/certificate.c: PyInit__certificate returned void on an error path,
+  which GCC on el10 treats as an error (return-type mismatch); patch it to
+  return NULL for Python 3 builds
+
 * Wed Apr 02 2025 Odilon Sousa <osousa@redhat.com> - 1.19.2-8
 - Rebuild against python3.12
 
