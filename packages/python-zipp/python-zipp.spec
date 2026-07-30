@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 4.1.0-3
+- Bump release for EL10 rebuild
+
 * Wed Jul 22 2026 Odilon Sousa <osousa@redhat.com> - 4.1.0-2
 - Restore package: python3.12-importlib-metadata (restored in this same PR)
   declares zipp>=0.5 as an unconditional upstream dependency, so it was
