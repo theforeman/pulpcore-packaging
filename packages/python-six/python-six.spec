@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.17.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python 2 and 3 compatibility utilities
 
 License:        MIT
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.17.0-3
+- Bump release for EL10 rebuild
+
 * Mon Mar 24 2025 Odilon Sousa <osousa@redhat.com> - 1.17.0-2
 - Rebuild against python3.12
 
