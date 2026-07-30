@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.23.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Yet another URL library
 BuildArch:      noarch
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.23.0-2
+- Bump release for EL10 rebuild
+
 * Wed Apr 15 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.23.0-1
 - Update to 1.23.0
 
