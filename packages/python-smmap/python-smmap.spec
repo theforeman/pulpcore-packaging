@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        5.0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A pure Python implementation of a sliding window memory map manager
 
 License:        BSD-3-Clause
@@ -49,6 +49,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 5.0.3-2
+- Bump release for EL10 rebuild
+
 * Sun Mar 22 2026 Foreman Packaging Automation <packaging@theforeman.org> - 5.0.3-1
 - Update to 5.0.3
 
