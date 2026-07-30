@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.0.12
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Git Object Database
 
 License:        BSD License
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 4.0.12-3
+- Bump release for EL10 rebuild
+
 * Tue Apr 01 2025 Odilon Sousa <osousa@redhat.com> - 4.0.12-2
 - Rebuild against python3.12
 
