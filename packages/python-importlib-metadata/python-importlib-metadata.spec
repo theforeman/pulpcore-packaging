@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        6.0.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Read metadata from Python packages
 
 License:        Apache Software License
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 6.0.1-8
+- Bump release for EL10 rebuild
+
 * Wed Jul 22 2026 Odilon Sousa <osousa@redhat.com> - 6.0.1-7
 - Restore package: python3.12-opentelemetry_api and python3.12-bandersnatch
   declare importlib-metadata as an unconditional (non-marker-gated) upstream
