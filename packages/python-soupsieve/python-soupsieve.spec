@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.8.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A modern CSS selector implementation for Beautiful Soup
 
 License:        MIT License
@@ -44,6 +44,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.8.4-2
+- Bump release for EL10 rebuild
+
 * Wed Jun 10 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.8.4-1
 - Update to 2.8.4
 
