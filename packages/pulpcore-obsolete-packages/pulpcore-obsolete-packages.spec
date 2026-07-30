@@ -193,7 +193,6 @@ Obsoletes:      python3.12-django-prometheus < 2.1.0-9
 Obsoletes:      python3.12-django-storages < 1.14.6-2
 Obsoletes:      python3.12-enrich < 1.2.6-12
 Obsoletes:      python3.12-html5lib < 1.1-7
-Obsoletes:      python3.12-lazy-imports < 1.2.0-2
 Obsoletes:      python3.12-oauthlib < 3.1.1-7
 Obsoletes:      python3.12-python3-openid < 3.2.0-7
 Obsoletes:      python3.12-requests-oauthlib < 1.3.0-7
@@ -220,6 +219,9 @@ from the distribution for some reason.
 %changelog
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.5.0-2
 - Bump release for EL10 rebuild
+- Drop erroneous Obsoletes for python3.12-lazy-imports: it is a real
+  Requires-Dist of python-pulpcore-client and python-pulp-rpm-client,
+  wrongly removed as unused in #2766; re-added at 1.2.0-2
 
 * Wed Jul 22 2026 Zach Huntington-Meath <zhunting@redhat.com> - 1.5.0-1
 - Add Obsoletes for packages removed during EL10 transition

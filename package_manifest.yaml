@@ -238,6 +238,7 @@ tier4_packages:
     python-inflection: {}
     python-isodate: {}
     python-jeepney: {}
+    python-lazy-imports: {}
     python-lxml: {}
     python-more-itertools: {}
     python-mypy-extensions: {}
