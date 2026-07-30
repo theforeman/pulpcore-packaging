@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        10.2.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Wildcard/glob file name matcher
 
 License:        MIT License
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 10.2.1-2
+- Bump release for EL10 rebuild
+
 * Wed Jul 08 2026 Foreman Packaging Automation <packaging@theforeman.org> - 10.2.1-1
 - Update to 10.2.1
 
