@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.9.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Cross-platform tool for adding locations to the user PATH, no elevated privileges required!
 
 License:        MIT OR Apache-2.0
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.9.2-4
+- Bump release for EL10 rebuild
+
 * Wed Apr 09 2025 Odilon Sousa <osousa@redhat.com> - 1.9.2-3
 - Add obsoletes for python3.11 package
 
