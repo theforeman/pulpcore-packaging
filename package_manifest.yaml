@@ -18,11 +18,17 @@ packages:
     repoclosure_target_repos:
       el9:
         - "el9-pulpcore-{{ pulpcore_version }}-staging"
+      el10:
+        - "el10-pulpcore-{{ pulpcore_version }}-staging"
     repoclosure_lookaside_repos:
       el9:
         - el9-baseos
         - el9-appstream
         - el9-crb
+      el10:
+        - el10-baseos
+        - el10-appstream
+        - el10-crb
   children:
     buildroot_packages: {}
     tier1_packages: {}
@@ -76,6 +82,17 @@ repoclosures:
           - el9-appstream
           - el9-crb
           - el9-foreman-plugins-nightly
+    pulpcore-staging-repoclosure-el10:
+      repoclosure_target_repos:
+        el10:
+          - "el10-pulpcore-{{ pulpcore_version }}-staging"
+      repoclosure_target_dist: el10
+      repoclosure_lookaside_repos:
+        el10:
+          - el10-baseos
+          - el10-appstream
+          - el10-crb
+          - el10-foreman-plugins-nightly
 
 buildroot_packages:
   hosts:
