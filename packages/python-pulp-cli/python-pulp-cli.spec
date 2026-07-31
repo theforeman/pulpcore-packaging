@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.39.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-3
+- Bump release for EL10 rebuild
+
 * Wed May 27 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-2
 - Remove stale Requires: python3.12-setuptools (not a runtime dep of pulp-cli 0.39.1)
 
