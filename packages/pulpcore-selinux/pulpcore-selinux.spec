@@ -6,7 +6,7 @@
 
 Name:           pulpcore-selinux
 Version:        2.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        SELinux policy for Pulp 3
 
 License:        GPL2+
@@ -85,6 +85,9 @@ fi
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 2.2.0-2
+- Bump release for EL10 rebuild
+
 * Wed Oct 08 2025 Evgeni Golov - 2.2.0-1
 - Release pulpcore-selinux 2.2.0
 
