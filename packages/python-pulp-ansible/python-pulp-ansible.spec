@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.29.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
 
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 1:0.29.8-2
+- Bump release for EL10 rebuild
+
 * Wed May 06 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.29.8-1
 - Update to 0.29.8
 
