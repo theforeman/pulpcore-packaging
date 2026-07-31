@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API. (deb plugin)
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -53,6 +53,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 0.4.4-3
+- Bump release for EL10 rebuild
+
 * Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 0.4.4-2
 - Relax pulp-glue upper bound to < 0.40 (upstream: pulp-glue<0.40,>=0.23.2)
 
