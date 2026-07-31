@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Command line interface (CLI) for Pulp's pulp_deb plugin.
 
 License:        GPLv2+
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 0.4.4-3
+- Bump release for EL10 rebuild
+
 * Fri May 29 2026 Odilon Sousa <osousa@redhat.com> - 0.4.4-2
 - Relax pulp-cli upper bound to < 0.40 (upstream: pulp-cli<0.40,>=0.23.2)
 
