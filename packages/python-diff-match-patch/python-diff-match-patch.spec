@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        20241021
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Repackaging of Google's Diff Match and Patch libraries
 
 License:        Apache
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 20241021-3
+- Bump release for EL10 rebuild
+
 * Mon Mar 31 2025 Odilon Sousa <osousa@redhat.com> - 20241021-2
 - Rebuild against python3.12
 
