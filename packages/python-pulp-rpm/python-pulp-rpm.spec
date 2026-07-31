@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.35.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -73,6 +73,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 3.35.3-3
+- Bump release for EL10 rebuild
+
 * Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 3.35.3-2
 - Drop importlib-resources requirement
 
