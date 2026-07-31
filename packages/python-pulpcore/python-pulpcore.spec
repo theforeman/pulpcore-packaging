@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.105.12
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -175,6 +175,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 3.105.12-3
+- Bump release for EL10 rebuild
+
 * Mon Jul 20 2026 Zach Huntington-Meath <zhunting@redhat.com> - 3.105.12-2
 - Drop importlib-metadata requirement
 
