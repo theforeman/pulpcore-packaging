@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.27.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 2.27.10-2
+- Bump release for EL10 rebuild
+
 * Tue Jun 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.10-1
 - Update to 2.27.10
 - Update pyjwt requirement to < 2.14 (upstream 2.27.10 allows pyjwt < 2.14)
