@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.8.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -62,6 +62,9 @@ set -ex
 %{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 3.8.2-2
+- Bump release for EL10 rebuild
+
 * Tue May 12 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.8.2-1
 - Update to 3.8.2
 
