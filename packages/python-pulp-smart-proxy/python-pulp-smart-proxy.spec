@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Smart Proxy plugin for the Pulp Project
 
 License:        GPLv2+
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 0.4.0-2
+- Bump release for EL10 rebuild
+
 * Tue Apr 14 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.0-1
 - Update to 0.4.0
 - Sync pulpcore upper bound with upstream 0.4.0: < 3.106
