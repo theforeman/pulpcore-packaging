@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.4.39
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -24,7 +24,7 @@ Requires:       ansible-lint <= 26.4.0
 Requires:       ansible-lint >= 6.2.2
 Requires:       python%{python3_pkgversion}-ansible-builder < 4.0
 Requires:       python%{python3_pkgversion}-ansible-builder >= 1.2.0
-Requires:       python%{python3_pkgversion}-attrs < 23
+Requires:       python%{python3_pkgversion}-attrs < 24
 Requires:       python%{python3_pkgversion}-attrs >= 21.4.0
 Requires:       python%{python3_pkgversion}-flake8 < 7
 Requires:       python%{python3_pkgversion}-flake8 >= 5.0.0
@@ -59,6 +59,10 @@ rm -rf %{pypi_name}.egg-info
 
 sed -i -E '/\s+ansible($|-core|-lint)/d' setup.cfg
 
+# Relax attrs bound: < 23 -> < 24, matching the spec Requires override above
+# (ansible/galaxy-importer#438, not yet merged/released)
+sed -i '/attrs/s/<23/<24/' setup.cfg
+
 
 %build
 set -ex
@@ -80,6 +84,11 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Mon Aug 03 2026 Odilon Sousa <osousa@redhat.com> - 0.4.39-3
+- Relax attrs bound: < 23 -> < 24, to unblock EL10 install (baseos python3-attrs
+  obsoletes our attrs < 23.2.0-7; overrides upstream's conservative pin ahead of
+  ansible/galaxy-importer#438 'Allow attrs < 24')
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.4.39-2
 - Bump release for EL10 rebuild
 
