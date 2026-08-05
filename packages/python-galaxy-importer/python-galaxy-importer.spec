@@ -5,8 +5,8 @@
 %global pypi_name galaxy-importer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.39
-Release:        3%{?dist}
+Version:        0.4.41
+Release:        1%{?dist}
 Summary:        Galaxy content importer
 
 License:        Apache-2.0
@@ -20,7 +20,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 # We don't care if Ansible is Python 2 or 3 as we just call the CLI
 Requires:       /usr/bin/ansible
 Requires:       /usr/bin/ansible-test
-Requires:       ansible-lint <= 26.4.0
+Requires:       ansible-lint <= 26.6.0
 Requires:       ansible-lint >= 6.2.2
 Requires:       python%{python3_pkgversion}-ansible-builder < 4.0
 Requires:       python%{python3_pkgversion}-ansible-builder >= 1.2.0
@@ -30,8 +30,8 @@ Requires:       python%{python3_pkgversion}-flake8 < 7
 Requires:       python%{python3_pkgversion}-flake8 >= 5.0.0
 Requires:       python%{python3_pkgversion}-markdown < 4
 Requires:       python%{python3_pkgversion}-markdown >= 3.3.4
-Requires:       python%{python3_pkgversion}-nh3 < 3
-Requires:       python%{python3_pkgversion}-nh3 >= 0.2.18
+Requires:       python%{python3_pkgversion}-nh3 < 4
+Requires:       python%{python3_pkgversion}-nh3 >= 0.3.6
 Requires:       python%{python3_pkgversion}-packaging < 27
 Requires:       python%{python3_pkgversion}-packaging >= 23.2
 Requires:       python%{python3_pkgversion}-pyyaml < 7
@@ -59,10 +59,6 @@ rm -rf %{pypi_name}.egg-info
 
 sed -i -E '/\s+ansible($|-core|-lint)/d' setup.cfg
 
-# Relax attrs bound: < 23 -> < 24, matching the spec Requires override above
-# (ansible/galaxy-importer#438, not yet merged/released)
-sed -i '/attrs/s/<23/<24/' setup.cfg
-
 
 %build
 set -ex
@@ -84,6 +80,16 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Wed Aug 05 2026 Odilon Sousa <osousa@redhat.com> - 0.4.41-1
+- Update to 0.4.41
+- Drop local attrs < 24 override sed - upstream now ships attrs>=21.4.0,<24
+  natively (ansible/galaxy-importer#438), so the spec Requires bound is kept
+  as-is but no longer needs the setup.cfg patch
+- Update nh3 bound: >= 0.2.18, < 3 -> >= 0.3.6, < 4 (upstream 0.4.41 requires
+  nh3>=0.3.6,<4)
+- Update ansible-lint upper bound: <= 26.4.0 -> <= 26.6.0 (upstream 0.4.41
+  requires ansible-lint>=6.2.2,<=26.6.0)
+
 * Mon Aug 03 2026 Odilon Sousa <osousa@redhat.com> - 0.4.39-3
 - Relax attrs bound: < 23 -> < 24, to unblock EL10 install (baseos python3-attrs
   obsoletes our attrs < 23.2.0-7; overrides upstream's conservative pin ahead of
