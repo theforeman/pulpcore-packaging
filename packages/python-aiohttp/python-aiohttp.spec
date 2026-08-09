@@ -5,8 +5,8 @@
 %global pypi_name aiohttp
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.13.5
-Release:        2%{?dist}
+Version:        3.14.3
+Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
 License:        Apache 2
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.14.3-1
+- Update to 3.14.3
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 3.13.5-2
 - Bump release for EL10 rebuild
 
