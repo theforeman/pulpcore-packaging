@@ -5,8 +5,8 @@
 %global pypi_name certifi
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2026.6.17
-Release:        2%{?dist}
+Version:        2026.7.22
+Release:        1%{?dist}
 Summary:        Python package for providing Mozilla's CA Bundle
 
 License:        MPL-2.0
@@ -62,6 +62,9 @@ diff --ignore-blank-lines /etc/pki/tls/certs/ca-bundle.crt contents
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2026.7.22-1
+- Update to 2026.7.22
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 2026.6.17-2
 - Bump release for EL10 rebuild
 
