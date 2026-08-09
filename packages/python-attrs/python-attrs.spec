@@ -5,8 +5,8 @@
 %global pypi_name attrs
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        22.2.0
-Release:        3%{?dist}
+Version:        23.2.0
+Release:        1%{?dist}
 Summary:        Classes Without Boilerplate
 
 License:        MIT
@@ -16,8 +16,9 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
-BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  python%{python3_pkgversion}-hatchling
+BuildRequires:  python%{python3_pkgversion}-hatch_vcs
+BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme
 BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -48,6 +49,10 @@ set -ex
 
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 23.2.0-1
+- Update to 23.2.0
+- Switch BuildRequires from setuptools/wheel to hatchling/hatch_vcs/hatch_fancy_pypi_readme (23.2.0 switched build backend)
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 22.2.0-3
 - Bump release for EL10 rebuild
 
