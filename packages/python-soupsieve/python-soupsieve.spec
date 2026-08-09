@@ -5,8 +5,8 @@
 %global pypi_name soupsieve
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.8.4
-Release:        2%{?dist}
+Version:        2.9.2
+Release:        1%{?dist}
 Summary:        A modern CSS selector implementation for Beautiful Soup
 
 License:        MIT License
@@ -44,6 +44,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.2-1
+- Update to 2.9.2
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.8.4-2
 - Bump release for EL10 rebuild
 
