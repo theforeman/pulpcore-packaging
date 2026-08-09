@@ -7,8 +7,8 @@
 %global pypi_name dulwich
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.2.10
-Release:        2%{?dist}
+Version:        1.2.12
+Release:        1%{?dist}
 Summary:        Python Git Library
 
 License:        Apachev2 or later or GPLv2
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.12-1
+- Update to 1.2.12
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.2.10-2
 - Bump release for EL10 rebuild
 
