@@ -6,8 +6,8 @@
 %global src_name proto_plus
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.28.0
-Release:        2%{?dist}
+Version:        1.28.3
+Release:        1%{?dist}
 Summary:        Beautiful, Pythonic protocol buffers.
 
 License:        Apache 2.0
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.28.3-1
+- Update to 1.28.3
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.28.0-2
 - Bump release for EL10 rebuild
 
