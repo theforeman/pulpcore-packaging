@@ -3,8 +3,8 @@
 %global pypi_name hatchling 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.29.0
-Release:        2%{?dist}
+Version:        1.31.0
+Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -56,6 +56,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.31.0-1
+- Update to 1.31.0
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.29.0-2
 - Bump release for EL10 rebuild
 
