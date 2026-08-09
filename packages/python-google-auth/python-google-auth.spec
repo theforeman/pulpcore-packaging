@@ -5,8 +5,8 @@
 %global pypi_name google-auth
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.55.2
-Release:        2%{?dist}
+Version:        2.56.3
+Release:        1%{?dist}
 Summary:        Google Authentication Library
 
 License:        Apache 2.0
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.56.3-1
+- Update to 2.56.3
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.55.2-2
 - Bump release for EL10 rebuild
 
