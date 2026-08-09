@@ -6,8 +6,8 @@
 %global src_name google_cloud_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.6.0
-Release:        2%{?dist}
+Version:        2.6.1
+Release:        1%{?dist}
 Summary:        Google Cloud API client core library
 
 License:        Apache 2.0
@@ -23,9 +23,9 @@ BuildRequires:  pyproject-rpm-macros
 
 Conflicts:      python%{python3_pkgversion}-google-api-core = 2.3
 Requires:       python%{python3_pkgversion}-google-api-core < 3
-Requires:       python%{python3_pkgversion}-google-api-core >= 1.31.6
+Requires:       python%{python3_pkgversion}-google-api-core >= 2.28.0
 Requires:       python%{python3_pkgversion}-google-auth < 3
-Requires:       python%{python3_pkgversion}-google-auth >= 1.25
+Requires:       python%{python3_pkgversion}-google-auth >= 2.14.1
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -59,6 +59,10 @@ set -ex
 
 
 %changelog
+* Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.6.1-1
+- Update to 2.6.1
+- Bump stale google-api-core and google-auth Requires floors to match upstream 2.6.1
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.6.0-2
 - Bump release for EL10 rebuild
 
