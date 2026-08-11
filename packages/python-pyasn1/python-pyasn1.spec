@@ -5,8 +5,8 @@
 %global pypi_name pyasn1
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.6.3
-Release:        2%{?dist}
+Version:        0.6.4
+Release:        1%{?dist}
 Summary:        ASN.1 types and codecs
 
 License:        BSD
@@ -53,6 +53,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.6.4-1
+- Update to 0.6.4
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.6.3-2
 - Bump release for EL10 rebuild
 
