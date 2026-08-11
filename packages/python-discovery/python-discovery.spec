@@ -5,8 +5,8 @@
 %global srcname discovery
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.4.3
-Release:        2%{?dist}
+Version:        1.5.1
+Release:        1%{?dist}
 Summary:        A utility to discover Python interpreters
 
 License:        MIT
@@ -21,8 +21,6 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-filelock >= 3.15.4
-Requires:       python%{python3_pkgversion}-platformdirs >= 4.3.6
-Requires:       python%{python3_pkgversion}-platformdirs < 5
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
@@ -53,6 +51,10 @@ set -ex
 
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.5.1-1
+- Update to 1.5.1
+- Remove stale platformdirs Requires (dropped by upstream in 1.5.1)
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.4.3-2
 - Bump release for EL10 rebuild
 
