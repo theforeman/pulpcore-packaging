@@ -9,8 +9,8 @@
 %global pkg_name json_stream_rs_tokenizer
 
 Name:           python%{python3_pkgversion}-%{pkg_name}
-Version:        0.5.1
-Release:        2%{?dist}
+Version:        0.5.3
+Release:        1%{?dist}
 Summary:        Faster tokenizer for the json-stream Python library
 
 License:        MIT
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.3-1
+- Update to 0.5.3
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.5.1-2
 - Bump release for EL10 rebuild
 
