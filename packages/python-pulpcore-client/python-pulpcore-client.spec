@@ -6,8 +6,8 @@
 %global src_name pulpcore_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.12
-Release:        2%{?dist}
+Version:        3.105.15
+Release:        1%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.15-1
+- Update to 3.105.15
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.105.12-2
 - Bump release for EL10 rebuild
 - Add explicit Requires on python-lazy-imports (real Requires-Dist per
