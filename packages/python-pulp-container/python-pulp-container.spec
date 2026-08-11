@@ -6,8 +6,8 @@
 %global src_name pulp_container
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.27.10
-Release:        2%{?dist}
+Version:        2.27.11
+Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
 License:        GPLv2+
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.11-1
+- Update to 2.27.11
+
 * Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 2.27.10-2
 - Bump release for EL10 rebuild
 
