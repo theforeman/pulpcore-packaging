@@ -6,8 +6,8 @@
 %global srcname annotated_types
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.7.0
-Release:        2%{?dist}
+Version:        0.8.0
+Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -45,6 +45,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.8.0-1
+- Update to 0.8.0
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.7.0-2
 - Bump release for EL10 rebuild
 
