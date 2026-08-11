@@ -3,8 +3,8 @@
 %global pypi_name tomlkit
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.15.0
-Release:        2%{?dist}
+Version:        0.15.1
+Release:        1%{?dist}
 Summary:        Style preserving TOML library
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -44,6 +44,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.15.1-1
+- Update to 0.15.1
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 0.15.0-2
 - Bump release for EL10 rebuild
 
