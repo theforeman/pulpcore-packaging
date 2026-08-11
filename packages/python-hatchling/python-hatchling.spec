@@ -3,7 +3,7 @@
 %global pypi_name hatchling 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.31.0
+Version:        1.32.0
 Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
@@ -21,6 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-pathspec >= 0.10.1
 BuildRequires:  python%{python3_pkgversion}-pluggy >= 1.0.0
 BuildRequires:  python%{python3_pkgversion}-packaging >= 24.2
 BuildRequires:  python%{python3_pkgversion}-trove-classifiers
+BuildRequires:  python%{python3_pkgversion}-tomlkit >= 0.11.1
 BuildRequires:  pyproject-rpm-macros
 
 
@@ -29,6 +30,7 @@ Requires:       python%{python3_pkgversion}-pathspec >= 0.10.1
 Requires:       python%{python3_pkgversion}-pluggy >= 1.0.0
 Requires:       python%{python3_pkgversion}-packaging >= 24.2
 Requires:       python%{python3_pkgversion}-trove-classifiers
+Requires:       python%{python3_pkgversion}-tomlkit >= 0.11.1
 Requires:       pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -56,6 +58,10 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.32.0-1
+- Update to 1.32.0
+- Add BuildRequires/Requires for tomlkit >= 0.11.1 (new dependency in 1.32.0)
+
 * Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.31.0-1
 - Update to 1.31.0
 
