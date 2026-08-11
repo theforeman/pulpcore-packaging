@@ -6,8 +6,8 @@
 %global src_name pulp_python
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.27.5
-Release:        2%{?dist}
+Version:        3.27.6
+Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
 License:        GPLv2+
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.6-1
+- Update to 3.27.6
+
 * Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 3.27.5-2
 - Bump release for EL10 rebuild
 
