@@ -6,8 +6,8 @@
 %global srcname googleapis_common_protos
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.75.0
-Release:        2%{?dist}
+Version:        1.75.1
+Release:        1%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        Apache-2.0
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.75.1-1
+- Update to 1.75.1
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.75.0-2
 - Bump release for EL10 rebuild
 
