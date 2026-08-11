@@ -8,8 +8,8 @@
 
  
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.6.0
-Release:        2%{?dist}
+Version:        2.6.1
+Release:        1%{?dist}
 Summary:        Ostree plugin for the Pulp Project
 
 License:        GPLv2+
@@ -27,7 +27,7 @@ Provides:       pulpcore-plugin(ostree) = %{version}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
-Requires:       python%{python3_pkgversion}-pulpcore < 3.115
+Requires:       python%{python3_pkgversion}-pulpcore < 3.130
 Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.12"
 Requires:       python%{python3_pkgversion}-gobject >= 3.40.1
@@ -65,6 +65,10 @@ set -ex
 
 
 %changelog
+* Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.6.1-1
+- Update to 2.6.1
+- Sync pulpcore upper bound with upstream 2.6.1: < 3.130
+
 * Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 2.6.0-2
 - Bump release for EL10 rebuild
 
