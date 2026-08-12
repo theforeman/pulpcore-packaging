@@ -1,6 +1,6 @@
 Name: pulpcore-obsolete-packages
 Version: 1.5.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: MIT
 Summary: A package to obsolete retired packages
 URL: https://github.com/theforeman/pulpcore-packaging
@@ -43,6 +43,7 @@ Obsoletes:      python3.11-aiodns < 3.2.0-2
 Obsoletes:      python3.11-aiofiles < 24.1.0-2
 Obsoletes:      python3.11-aiohappyeyeballs < 2.4.4-2
 Obsoletes:      python3.11-aiohttp < 3.10.11-2
+Obsoletes:      python3.11-aiohttp-socks < 0.8.4-2
 Obsoletes:      python3.11-aiohttp-xmlrpc < 1.5.0-7
 Obsoletes:      python3.11-aioredis < 2.0.1-8
 Obsoletes:      python3.11-aiosignal < 1.3.2-2
@@ -85,20 +86,21 @@ Obsoletes:      python3.11-idna-ssl < 1.2
 Obsoletes:      python3.11-importlib-metadata < 6.0.1-6
 Obsoletes:      python3.11-importlib-resources < 6.4.5-2
 Obsoletes:      python3.11-inflection < 0.5.1-8
-Obsoletes:      python3.11-iniparse < 0.4-40
+Obsoletes:      python3.11-iniparse < 0.4-41
 Obsoletes:      python3.11-jinja2 < 3.1.5-2
 Obsoletes:      python3.11-jq < 1.8.0-2
 Obsoletes:      python3.11-json_stream < 2.3.3-2
 Obsoletes:      python3.11-json_stream_rs_tokenizer < 0.4.27-2
 Obsoletes:      python3.11-lockfile < 0.12.2-5
 Obsoletes:      python3.11-lxml < 5.3.0-2
+Obsoletes:      python3.11-mailbits < 0.2.1-2
 Obsoletes:      python3.11-markuppy < 1.14-8
 Obsoletes:      python3.11-markupsafe < 2.1.2-5
 Obsoletes:      python3.11-mccabe < 0.7.0-5
 Obsoletes:      python3.11-multidict < 6.1.0-2
 Obsoletes:      python3.11-odfpy < 1.4.1-11
 Obsoletes:      python3.11-openpyxl < 3.1.5-2
-Obsoletes:      python3.11-packaging < 23.2-2
+Obsoletes:      python3.11-packaging < 24.1-2
 Obsoletes:      python3.11-parsley < 1.3-7
 Obsoletes:      python3.11-pbr < 6.1.0-2
 Obsoletes:      python3.11-pexpect < 4.8.0-6
@@ -116,6 +118,7 @@ Obsoletes:      python3.11-pyflakes < 3.1.0-2
 Obsoletes:      python3.11-pygtrie < 2.5.0-6
 Obsoletes:      python3.11-pyjwkest < 1.4.2-9
 Obsoletes:      python3.11-pyparsing < 3.1.4-2
+Obsoletes:      python3.11-pypi-simple < 0.10.0-2
 Obsoletes:      python3.11-pyrsistent < 0.18.1-7
 Obsoletes:      python3.11-pytz < 2022.2.1-7
 Obsoletes:      python3.11-pyyaml < 6.0.2-2
@@ -129,6 +132,7 @@ Obsoletes:      python3.11-schema < 0.7.7-2
 Obsoletes:      python3.11-semantic-version < 2.10.0-6
 Obsoletes:      python3.11-six < 1.17.0-2
 Obsoletes:      python3.11-smmap < 5.0.1-2
+Obsoletes:      python3.11-socks < 2.5.3-2
 Obsoletes:      python3.11-solv < 0.7.28-2
 Obsoletes:      python3.11-tablib < 3.5.0-2
 Obsoletes:      python3.11-tenacity < 7.0.0-8
@@ -220,6 +224,17 @@ from the distribution for some reason.
 %files
 
 %changelog
+* Wed Aug 12 2026 Odilon Sousa <osousa@redhat.com> - 1.5.0-4
+- Fix foreman-maintain packages update DNF resolution failure caused by
+  incomplete/stale python3.11 Obsoletes: bump python3.11-packaging
+  (< 23.2-2 was below the last-shipped 24.1-1, so it never got obsoleted
+  while its dependency python3.11-pyparsing did) and python3.11-iniparse
+  (< 0.4-40 excluded the exact last-shipped release instead of covering
+  it); add missing Obsoletes for python3.11-mailbits, python3.11-socks,
+  python3.11-aiohttp-socks, and python3.11-pypi-simple, which were never
+  obsoleted at all and were blocking removal of attrs/async-timeout/
+  aiohttp respectively via their own Requires
+
 * Thu Jul 30 2026 Joniel Pasqualetto <jpasqual@redhat.com> - 1.5.0-3
 - Add python3.11-pysequoia to obsolete list
 - Add python3.11-markdown to obsolete list
