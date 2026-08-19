@@ -5,7 +5,7 @@
 %global srcname discovery
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.5.1
+Version:        1.5.2
 Release:        1%{?dist}
 Summary:        A utility to discover Python interpreters
 
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Aug 19 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.5.2-1
+- Update to 1.5.2
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.5.1-1
 - Update to 1.5.1
 - Remove stale platformdirs Requires (dropped by upstream in 1.5.1)
