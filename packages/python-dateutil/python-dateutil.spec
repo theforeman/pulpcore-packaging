@@ -6,8 +6,8 @@
 %global srcname dateutil
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        2.8.2
-Release:        9%{?dist}
+Version:        2.9.0.post0
+Release:        1%{?dist}
 Summary:        Extensions to the standard Python datetime module
 
 License:        Dual License
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Wed Aug 19 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.0.post0-1
+- Update to 2.9.0.post0
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 2.8.2-9
 - Bump release for EL10 rebuild
 
