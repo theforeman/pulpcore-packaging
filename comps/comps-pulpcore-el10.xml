@@ -27,6 +27,7 @@
       <packagereq type="default">python3-createrepo_c</packagereq>
       <packagereq type="default">python3-cryptography</packagereq>
       <packagereq type="default">python3-libcomps</packagereq>
+      <packagereq type="default">python3-requests</packagereq>
       <packagereq type="default">python3.12-SecretStorage</packagereq>
       <packagereq type="default">python3.12-aiodns</packagereq>
       <packagereq type="default">python3.12-aiofiles</packagereq>
