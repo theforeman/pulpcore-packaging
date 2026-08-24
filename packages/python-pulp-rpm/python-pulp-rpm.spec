@@ -6,8 +6,8 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.29.7
-Release:        2%{?dist}
+Version:        3.29.11
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Fri Aug 21 2026 Pablo N. Hess <phess@redhat.com> - 3.29.11-1
+- Release python-pulp-rpm 3.29.11 to add repair_4007
+
 * Tue Sep 16 2025 Odilon Sousa <osousa@redhat.com> - 3.29.7-2
 - Fix libcomps requirement
 
