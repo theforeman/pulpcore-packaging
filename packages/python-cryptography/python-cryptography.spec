@@ -9,7 +9,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        46.0.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
@@ -34,6 +34,12 @@ BuildRequires:  openssl-devel
 BuildRequires:  gcc
 
 Requires:       python%{python3_pkgversion}-cffi >= 2.0.0
+
+%if 0%{?rhel} >= 10
+Obsoletes: python3-%{pypi_name} < %{version}-%{release}
+Provides:  python3-%{pypi_name} = %{version}-%{release}
+Provides:  python3-%{pypi_name}%{?_isa} = %{version}-%{release}
+%endif
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -70,6 +76,10 @@ set -ex
 
 
 %changelog
+* Mon Aug 24 2026 Odilon Sousa <osousa@redhat.com> - 46.0.7-3
+- Add Obsoletes/Provides for python3-cryptography on RHEL 10
+- Prevent file conflicts with the BaseOS-provided package
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 46.0.7-2
 - Bump release for EL10 rebuild
 

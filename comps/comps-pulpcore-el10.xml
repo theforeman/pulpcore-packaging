@@ -25,6 +25,7 @@
       <packagereq type="default">pulpcore-selinux</packagereq>
       <packagereq type="default">pyproject-rpm-macros</packagereq>
       <packagereq type="default">python3-createrepo_c</packagereq>
+      <packagereq type="default">python3-cryptography</packagereq>
       <packagereq type="default">python3-libcomps</packagereq>
       <packagereq type="default">python3.12-SecretStorage</packagereq>
       <packagereq type="default">python3.12-aiodns</packagereq>
