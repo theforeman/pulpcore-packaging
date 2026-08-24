@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.33.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python HTTP for Humans
 
 License:        Apache 2.0
@@ -29,6 +29,11 @@ Requires:       python%{python3_pkgversion}-idna >= 2.5
 Requires:       python%{python3_pkgversion}-pyOpenSSL >= 0.14
 Requires:       python%{python3_pkgversion}-urllib3 < 3
 Requires:       python%{python3_pkgversion}-urllib3 >= 1.21.1
+
+%if 0%{?rhel} >= 10
+Obsoletes: python3-%{pypi_name} < %{version}-%{release}
+Provides:  python3-%{pypi_name} = %{version}-%{release}
+%endif
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -56,6 +61,10 @@ set -ex
 
 
 %changelog
+* Mon Aug 24 2026 Odilon Sousa <osousa@redhat.com> - 2.33.1-3
+- Add Obsoletes/Provides for python3-requests on RHEL 10
+- Prevent file conflicts with the BaseOS-provided package
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.33.1-2
 - Bump release for EL10 rebuild
 
