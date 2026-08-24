@@ -5,8 +5,8 @@
 %global pypi_name pbr
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        7.0.3
-Release:        2%{?dist}
+Version:        7.1.1
+Release:        1%{?dist}
 Summary:        Python Build Reasonableness
 
 License:        None
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Mon Aug 24 19:46:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 7.1.1-1
+- Update to 7.1.1
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 7.0.3-2
 - Bump release for EL10 rebuild
 
