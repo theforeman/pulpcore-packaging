@@ -6,7 +6,7 @@
 %global srcname typing_inspection
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.3
+Version:        0.4.4
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -46,6 +46,9 @@ set -ex
 %{python3_sitelib}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Thu Aug 27 11:20:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.4-1
+- Update to 0.4.4
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.3-1
 - Update to 0.4.3
 - Bump stale typing-extensions Requires floor to match upstream 0.4.3: >= 4.15.0
