@@ -6,7 +6,7 @@
 %global srcname googleapis_common_protos
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.75.1
+Version:        1.75.2
 Release:        1%{?dist}
 Summary:        Common protobufs used in Google APIs
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 11:20:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.75.2-1
+- Update to 1.75.2
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.75.1-1
 - Update to 1.75.1
 
