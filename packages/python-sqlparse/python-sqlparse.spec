@@ -5,8 +5,8 @@
 %global pypi_name sqlparse
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.5.5
-Release:        2%{?dist}
+Version:        0.6.0
+Release:        1%{?dist}
 Summary:        A non-validating SQL parser
 
 License:        BSD-3-Clause
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 11:20:27 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.6.0-1
+- Update to 0.6.0
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.5.5-2
 - Bump release for EL10 rebuild
 - Switch to %%py3_shebang_fix instead of the standalone pathfix.py binary,
