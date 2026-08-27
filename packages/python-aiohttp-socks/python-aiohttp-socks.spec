@@ -5,8 +5,8 @@
 %global pypi_name aiohttp-socks
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.10.1
-Release:        2%{?dist}
+Version:        0.12.0
+Release:        1%{?dist}
 Summary:        Proxy connector for aiohttp
 
 License:        Apache 2
@@ -21,7 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-aiohttp >= 2.3.2
-Requires:       python%{python3_pkgversion}-socks < 3.0.0
+Requires:       python%{python3_pkgversion}-socks < 4.0.0
 Requires:       python%{python3_pkgversion}-socks >= 2.4.3
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -35,6 +35,9 @@ set -ex
 %autosetup -n aiohttp_socks-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+
+# Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 
 %build
 set -ex
@@ -51,6 +54,13 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 0.12.0-1
+- Update to 0.12.0
+- Fix PEP 639 license field: upstream 0.12.0 switched to SPDX string format
+  (license = "Apache-2.0"), which RHEL 9/10 setuptools cannot parse
+- Relax socks upper bound to < 4.0.0 (upstream 0.12.0 allows python-socks<4.0.0,
+  needed to unblock python-socks 3.0.0)
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 0.10.1-2
 - Bump release for EL10 rebuild
 
