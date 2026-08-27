@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        4.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tool for signing and verifying Python package distributions
 
 License:        Apache-2.0
@@ -20,7 +20,6 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-cryptography >= 42
-Requires:       python%{python3_pkgversion}-cryptography < 49
 Requires:       python%{python3_pkgversion}-id >= 1.1.0
 Requires:       python%{python3_pkgversion}-pyasn1 >= 0.6
 Conflicts:      python%{python3_pkgversion}-pyasn1 >= 0.7
@@ -72,6 +71,10 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 4.5.0-2
+- Drop stale cryptography upper bound (< 49): upstream 4.5.0 only requires
+  cryptography>=42 with no cap, needed for EL10 baseos python3-cryptography-49.0.0
+
 * Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.5.0-1
 - Update to 4.5.0
 
