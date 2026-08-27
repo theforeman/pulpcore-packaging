@@ -4,13 +4,7 @@ import json
 import os
 import sys
 
-
-def parse_package_list(lines):
-    for line in lines:
-        line = line.strip()
-        if line:
-            name, version = line.split('==')
-            yield {'package_name': name, 'new_version': version}
+from find_package import parse_package_list
 
 
 def main():

@@ -27,6 +27,25 @@ def test_parses_name_and_version_verbatim():
     assert list(parse_package_list(test_input)) == expected
 
 
+def test_skips_unparseable_lines_instead_of_crashing(capsys):
+    # Requirements freezes can carry VCS/URL/editable deps ('name @ url', '-e git+...')
+    # that don't have a '==' pin. One bad line shouldn't abort the whole run.
+    test_input = [
+        "requests==2.32.4",
+        "some-vcs-dep @ git+https://example.com/some-vcs-dep.git",
+        "-e git+https://example.com/editable-dep.git#egg=editable-dep",
+        "click==8.1.8",
+    ]
+
+    expected = [
+        {"package_name": "requests", "new_version": "2.32.4"},
+        {"package_name": "click", "new_version": "8.1.8"},
+    ]
+
+    assert list(parse_package_list(test_input)) == expected
+    assert "Skipping unparseable requirements line" in capsys.readouterr().out
+
+
 def test_empty_input():
     assert list(parse_package_list([])) == []
 
