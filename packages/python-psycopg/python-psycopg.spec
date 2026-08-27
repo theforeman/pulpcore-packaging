@@ -5,8 +5,8 @@
 %global pypi_name psycopg
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.13
-Release:        2%{?dist}
+Version:        3.3.4
+Release:        1%{?dist}
 Summary:        PostgreSQL database adapter for Python
 
 License:        GNU Lesser General Public License v3 (LGPLv3)
@@ -17,8 +17,9 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel >= 0.37
+BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-typing-extensions >= 4.1
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.6
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -32,25 +33,36 @@ set -ex
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
+# Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
+
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.txt
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 3.3.4-1
+- Update to 3.3.4, needed for pulpcore 3.105.17's psycopg>=3.3.4,<3.4
+- Switch to %%pyproject_wheel/%%pyproject_install: upstream 3.3.4 dropped setup.py
+  in favor of a pure pyproject.toml + setuptools.build_meta build
+- Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+- Raise typing-extensions lower bound to >= 4.6 (upstream 3.3.4 requires >= 4.6)
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 3.2.13-2
 - Bump release for EL10 rebuild
 
