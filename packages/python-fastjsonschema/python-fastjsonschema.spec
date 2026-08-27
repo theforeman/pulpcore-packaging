@@ -5,7 +5,7 @@
 %global pypi_name fastjsonschema
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.22.1
+Version:        2.22.2
 Release:        1%{?dist}
 Summary:        Fast JSON schema validator for Python.
 
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 11:20:47 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.22.2-1
+- Update to 2.22.2
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.22.1-1
 - Update to 2.22.1
 
