@@ -6,8 +6,8 @@
 %global srcname socks
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        2.8.2
-Release:        3%{?dist}
+Version:        3.0.0
+Release:        1%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
 License:        Apache 2
@@ -46,6 +46,8 @@ set -ex
 %autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+# Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+sed -i "s/^license = '\(.*\)'/license = {text = \"\1\"}/" pyproject.toml
 
 
 %build
@@ -64,6 +66,12 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 3.0.0-1
+- Update to 3.0.0
+- Fix PEP 639 license field: upstream 3.0.0 switched to SPDX string format
+  (license = 'Apache-2.0'), which RHEL 9/10 setuptools cannot parse; sed-patch
+  to the table form in the prep script like other packages in this repo
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.8.2-3
 - Bump release for EL10 rebuild
 
