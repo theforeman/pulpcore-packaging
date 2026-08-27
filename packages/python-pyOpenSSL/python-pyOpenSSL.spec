@@ -6,8 +6,8 @@
 %global srcname pyopenssl
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        26.2.0
-Release:        2%{?dist}
+Version:        26.4.0
+Release:        1%{?dist}
 Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
@@ -19,8 +19,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 
-Requires:       python%{python3_pkgversion}-cryptography >= 46.0.0
-Requires:       python%{python3_pkgversion}-cryptography < 47
+Requires:       python%{python3_pkgversion}-cryptography >= 49.0.0
+Requires:       python%{python3_pkgversion}-cryptography < 51
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.9.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -54,6 +54,11 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 26.4.0-1
+- Update to 26.4.0
+- Update cryptography requirement to >= 49.0.0, < 51 (upstream pyOpenSSL 26.4.0),
+  needed for pulpcore 3.105.17's cryptography>=49.0.0,<51.0
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 26.2.0-2
 - Bump release for EL10 rebuild
 
