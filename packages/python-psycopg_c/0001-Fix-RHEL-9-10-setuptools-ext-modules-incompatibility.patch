@@ -1,0 +1,98 @@
+From 6ac059d1bf3aeff87ec037c0e9fb5bf332bc7c1f Mon Sep 17 00:00:00 2001
+From: Odilon Sousa <osousa@redhat.com>
+Date: Thu, 27 Aug 2026 17:10:56 -0300
+Subject: [PATCH] Fix RHEL 9/10 setuptools ext-modules incompatibility
+
+RHEL 9/10 setuptools does not support the (still experimental upstream)
+[tool.setuptools.ext-modules] pyproject.toml schema, so metadata generation
+fails with:
+
+  configuration error: `tool.setuptools` must not contain {'ext-modules'} properties
+
+Strip that whole table and supply the same packages/ext-modules/cmdclass
+config via a classic setup.py instead; the [project] table elsewhere is
+unaffected.
+---
+ pyproject.toml | 39 ---------------------------------------
+ setup.py       | 25 +++++++++++++++++++++++++
+ 2 files changed, 25 insertions(+), 39 deletions(-)
+ create mode 100644 setup.py
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 93b4fc1..35fdd21 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -63,42 +63,3 @@ Funding = "https://github.com/sponsors/dvarrazzo"
+ [project.readme]
+ file = "README.rst"
+ content-type = "text/x-rst"
+-
+-[tool.setuptools]
+-packages = [
+-    "psycopg_c",
+-    "psycopg_c.pq",
+-    "psycopg_c._psycopg",
+-    "psycopg_c.types",
+-]
+-zip-safe = false
+-include-package-data = true
+-
+-[tool.setuptools.package-data]
+-# NOTE: do not include .pyx files: they shouldn't be in the sdist
+-# package, so that build is only performed from the .c files (which are
+-# distributed instead).
+-psycopg_c = [
+-    "py.typed",
+-    "*.pyi",
+-    "*.pxd",
+-    "_psycopg/*.pxd",
+-    "pq/*.pxd",
+-]
+-psycopg_binary = [
+-    "py.typed",
+-    "*.pyi",
+-]
+-
+-# Note: these ext modules lack details such as libraries and directories.
+-# They are added by the 'psycopg_build_ext' build module.
+-[[tool.setuptools.ext-modules]]
+-name = "psycopg_c._psycopg"
+-sources = ["psycopg_c/_psycopg.c", "psycopg_c/types/numutils.c"]
+-
+-[[tool.setuptools.ext-modules]]
+-name = "psycopg_c.pq"
+-sources = ["psycopg_c/pq.c"]
+-
+-[tool.setuptools.cmdclass]
+-build_ext = "psycopg_build_ext.psycopg_build_ext"
+diff --git a/setup.py b/setup.py
+new file mode 100644
+index 0000000..c02f868
+--- /dev/null
++++ b/setup.py
+@@ -0,0 +1,25 @@
++import os
++import sys
++
++sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "build_backend"))
++
++from setuptools import Extension, setup
++from psycopg_build_ext import psycopg_build_ext
++
++setup(
++    packages=["psycopg_c", "psycopg_c.pq", "psycopg_c._psycopg", "psycopg_c.types"],
++    zip_safe=False,
++    include_package_data=True,
++    package_data={
++        "psycopg_c": ["py.typed", "*.pyi", "*.pxd", "_psycopg/*.pxd", "pq/*.pxd"],
++        "psycopg_binary": ["py.typed", "*.pyi"],
++    },
++    ext_modules=[
++        Extension(
++            "psycopg_c._psycopg",
++            sources=["psycopg_c/_psycopg.c", "psycopg_c/types/numutils.c"],
++        ),
++        Extension("psycopg_c.pq", sources=["psycopg_c/pq.c"]),
++    ],
++    cmdclass={"build_ext": psycopg_build_ext},
++)
