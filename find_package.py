@@ -2,128 +2,77 @@
 
 import subprocess
 import sys
-import json
-import os
+import re
+import glob
+
+PACKAGES_DIR = "packages"
+
+
+def canonicalize(name):
+    """PEP 503 style canonicalization: lowercase, collapse runs of -_. into a single '-'.
+
+    Used to match PyPI project names (which may use '-', '_' or '.' inconsistently,
+    e.g. 'ruamel.yaml', 'poetry_core', 'opentelemetry-api') against the on-disk spec
+    directory suffix for the same package, regardless of which separator style either
+    side happens to use.
+    """
+    return re.sub(r"[-_.]+", "-", name).lower()
+
+
+def strip_python_prefix(name):
+    """Strip a single leading 'python-' from a PyPI project name.
+
+    Some PyPI projects (python-socks, python-dateutil, python-debian, ...) already
+    include this prefix in their own name, on top of the 'python-' prefix every spec
+    directory in this repo uses. Stripping it here means both cases resolve the same
+    way against the directory index below.
+    """
+    if name.lower().startswith("python-"):
+        return name[len("python-"):]
+    return name
+
+
+def build_directory_index(packages_dir=PACKAGES_DIR):
+    """Map canonical package name -> actual on-disk spec directory suffix.
+
+    Every RPM-packaged python library lives at packages/python-<suffix>/python-<suffix>.spec.
+    <suffix> doesn't always match the PyPI project name's separator style (e.g. the directory
+    suffix is 'poetry_core' while the PyPI project is 'poetry-core', or 'et-xmlfile' while the
+    PyPI project is 'et_xmlfile'). Building this index from the actual directories on disk means
+    every current and future package resolves correctly without a hand-maintained mapping table.
+    """
+    index = {}
+    for spec_path in glob.glob(f"{packages_dir}/python-*/python-*.spec"):
+        dir_name = spec_path.split("/")[-2]
+        suffix = dir_name[len("python-"):]
+        index[canonicalize(suffix)] = suffix
+    return index
+
+
+def resolve_package_dir(pkg, directory_index=None):
+    """Resolve a PyPI package name to its on-disk spec directory suffix, if packaged."""
+    if directory_index is None:
+        directory_index = build_directory_index()
+    base = strip_python_prefix(pkg)
+    return directory_index.get(canonicalize(base))
+
 
 def parse_package_list(lines):
-    # Define transformation rules for better maintainability
-    
-    # Packages that need prefix removal
-    prefix_removals = {
-        'python-': ''
-    }
-    
-    # Specific package name mappings (exact matches)
-    package_mappings = {
-        'typing_extensions': 'typing-extensions',
-        'galaxy_importer': 'galaxy-importer',
-        'psycopg-c': 'psycopg_c',
-        'importlib_resources': 'importlib-resources',
-        'ruamel.yaml': 'ruamel-yaml',
-        'ruamel.yaml.clib': 'ruamel-yaml-clib',
-        'jaraco.classes': 'jaraco-classes',
-        'et_xmlfile': 'et-xmlfile',
-        'aiohttp_socks': 'aiohttp-socks',
-        'pyasn1_modules': 'pyasn1-modules',
-        'pydantic_core': 'pydantic-core',
-        'flit_core': 'flit-core',
-        'poetry_core': 'poetry-core',
-        'poetry_plugin_export': 'poetry-plugin-export',
-    }
-    
-    # Packages that need to be lowercased
-    lowercase_packages = {
-        'PyYAML': 'pyyaml',
-        'GitPython': 'gitpython', 
-        'Deprecated': 'deprecated',
-        'CacheControl': 'cachecontrol',
-        'Django': 'django',
-        'Jinja2': 'jinja2',
-        'MarkupPy': 'markuppy',
-        'MarkupSafe': 'markupsafe',
-        'Parsley': 'parsley',
-        'PyGObject': 'pygobject',
-        'Pygments': 'pygments',
-        'PyJWT': 'pyjwt',
-        'RapidFuzz': 'rapidfuzz',
-        'SecretStorage': 'secretstorage',
-    }
-    
-    # Pattern-based transformations
-    def apply_pattern_transformations(name):
-        # OpenTelemetry packages: replace - with _
-        if name.startswith('opentelemetry'):
-            return name.replace('-', '_')
-        # Poetry packages: only transform the main poetry package and core packages with underscores
-        elif name == 'poetry' or (name.startswith('poetry') and '_' in name):
-            return name.replace('-', '_')
-        # Flit packages: replace _ with -
-        elif name.startswith('flit') and '_' in name:
-            return name.replace('_', '-')
-        # ET packages: replace _ with -
-        elif name.startswith('et') and '_' in name:
-            return name.replace('_', '-')
-        # AioHTTP packages: replace _ with -
-        elif name.startswith('aiohttp') and '_' in name:
-            return name.replace('_', '-')
-        # PyASN1 packages: replace _ with -
-        elif name.startswith('pyasn1') and '_' in name:
-            return name.replace('_', '-')
-        # Jaraco packages: replace . with -
-        elif name.startswith('jaraco') and '.' in name:
-            return name.replace('.', '-')
-        # Pydantic packages: replace _ with -
-        elif name.startswith('pydantic') and '_' in name:
-            return name.replace('_', '-')
-        # Ruamel packages: replace . with -
-        elif name.startswith('ruamel') and '.' in name:
-            return name.replace('.', '-')
-        # Default: no transformation
-        return name
-    
     for line in lines:
         line = line.strip()
         if line:
-            name, version = line.split('==')
-            
-            # Apply prefix removals first
-            for prefix, replacement in prefix_removals.items():
-                if name.startswith(prefix):
-                    name = name.replace(prefix, replacement, 1)
-                    break
-            
-            # Apply specific package mappings
-            if name in package_mappings:
-                name = package_mappings[name]
-            # Apply lowercase mappings
-            elif name in lowercase_packages:
-                name = lowercase_packages[name]
-            # Apply pattern-based transformations
-            else:
-                name = apply_pattern_transformations(name)
-            
-            yield {'package_name': name, 'new_version': version}
+            name, version = line.split("==")
+            yield {"package_name": name, "new_version": version}
+
 
 def find_packages(pkg, new_version):
-    # Create reverse mapping to find the original package name for directory lookup
-    reverse_mappings = {
-        'poetry-core': 'poetry_core',
-        'poetry-plugin-export': 'poetry_plugin_export',
-        'galaxy-importer': 'galaxy_importer',
-        'importlib-resources': 'importlib_resources',
-        'ruamel-yaml': 'ruamel.yaml',
-        'ruamel-yaml-clib': 'ruamel.yaml.clib',
-        'jaraco-classes': 'jaraco.classes',
-        'et-xmlfile': 'et_xmlfile',
-        'aiohttp-socks': 'aiohttp_socks',
-        'pyasn1-modules': 'pyasn1_modules',
-    }
-    
-    # Use original package name for directory lookup if it exists in reverse mapping
-    dir_pkg_name = reverse_mappings.get(pkg, pkg)
-    
-    # Set paths and file names
-    spec_file = f"packages/python-{dir_pkg_name}/python-{dir_pkg_name}.spec"
+    dir_pkg_name = resolve_package_dir(pkg)
+
+    if dir_pkg_name is None:
+        print(f"Spec file not found for package {pkg} (no packages/python-* directory matches)")
+        return
+
+    spec_file = f"{PACKAGES_DIR}/python-{dir_pkg_name}/python-{dir_pkg_name}.spec"
 
     # Retrieve the current RPM version from the spec file
     try:
@@ -137,14 +86,18 @@ def find_packages(pkg, new_version):
     vercmp_cmd = ["rpmdev-vercmp", rpm_version, new_version]
     exit_code = subprocess.run(vercmp_cmd).returncode
 
+    # The resolved directory suffix (not the raw PyPI name) is what downstream tooling
+    # (update_packages.sh, PR title/branch name) expects, since it builds spec paths the
+    # same naive "packages/python-$pkg/python-$pkg.spec" way without re-resolving names.
     if exit_code == 12:
-        print(f"RPM for Package {pkg} needs to be updated from {rpm_version} to {new_version}")
+        print(f"RPM for Package {dir_pkg_name} needs to be updated from {rpm_version} to {new_version}")
         with open("packages-to-update.txt", "a") as file:
-            file.write(f"{pkg} {new_version}\n")
+            file.write(f"{dir_pkg_name} {new_version}\n")
     elif exit_code == 0:
-        print(f"Package {pkg} version is the same as the packaged RPM")
+        print(f"Package {dir_pkg_name} version is the same as the packaged RPM")
     elif exit_code == 11:
-        print(f"Packaged {pkg} RPM is newer than the version in requirements")
+        print(f"Packaged {dir_pkg_name} RPM is newer than the version in requirements")
+
 
 def build_package_list(file_handle):
     for line in file_handle:
@@ -157,13 +110,12 @@ def build_package_list(file_handle):
         find_packages(pkg, new_version)
 
 
-
 def main():
     packages = list(parse_package_list(sys.stdin.readlines()))
-    
-    for package in packages:
-        find_packages(package['package_name'], package['new_version'])
-        
 
-if __name__ == '__main__':
+    for package in packages:
+        find_packages(package["package_name"], package["new_version"])
+
+
+if __name__ == "__main__":
     main()
