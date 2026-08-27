@@ -6,7 +6,7 @@
 %global src_name google_cloud_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.6.1
+Version:        2.7.0
 Release:        1%{?dist}
 Summary:        Google Cloud API client core library
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 11:20:32 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.7.0-1
+- Update to 2.7.0
+
 * Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.6.1-1
 - Update to 2.6.1
 - Bump stale google-api-core and google-auth Requires floors to match upstream 2.6.1
