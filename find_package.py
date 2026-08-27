@@ -6,6 +6,7 @@ import re
 import glob
 
 PACKAGES_DIR = "packages"
+PYTHON_PREFIX = "python-"
 
 
 def canonicalize(name):
@@ -14,22 +15,10 @@ def canonicalize(name):
     Used to match PyPI project names (which may use '-', '_' or '.' inconsistently,
     e.g. 'ruamel.yaml', 'poetry_core', 'opentelemetry-api') against the on-disk spec
     directory suffix for the same package, regardless of which separator style either
-    side happens to use.
+    side happens to use. Applied before any prefix stripping, since pip freeze can emit
+    either 'python-socks' or 'python_socks' for the same project.
     """
     return re.sub(r"[-_.]+", "-", name).lower()
-
-
-def strip_python_prefix(name):
-    """Strip a single leading 'python-' from a PyPI project name.
-
-    Some PyPI projects (python-socks, python-dateutil, python-debian, ...) already
-    include this prefix in their own name, on top of the 'python-' prefix every spec
-    directory in this repo uses. Stripping it here means both cases resolve the same
-    way against the directory index below.
-    """
-    if name.lower().startswith("python-"):
-        return name[len("python-"):]
-    return name
 
 
 def build_directory_index(packages_dir=PACKAGES_DIR):
@@ -40,29 +29,60 @@ def build_directory_index(packages_dir=PACKAGES_DIR):
     suffix is 'poetry_core' while the PyPI project is 'poetry-core', or 'et-xmlfile' while the
     PyPI project is 'et_xmlfile'). Building this index from the actual directories on disk means
     every current and future package resolves correctly without a hand-maintained mapping table.
+
+    Raises if two directories canonicalize to the same key: that would make resolution
+    filesystem-order-dependent, and this repo has renamed directories between separator
+    styles before (galaxy_importer -> galaxy-importer, importlib_resources -> importlib-resources).
     """
     index = {}
-    for spec_path in glob.glob(f"{packages_dir}/python-*/python-*.spec"):
+    for spec_path in sorted(glob.glob(f"{packages_dir}/python-*/python-*.spec")):
         dir_name = spec_path.split("/")[-2]
-        suffix = dir_name[len("python-"):]
-        index[canonicalize(suffix)] = suffix
+        suffix = dir_name[len(PYTHON_PREFIX):]
+        key = canonicalize(suffix)
+        if key in index and index[key] != suffix:
+            raise ValueError(
+                f"Ambiguous package directory: '{index[key]}' and '{suffix}' both canonicalize to '{key}'"
+            )
+        index[key] = suffix
     return index
 
 
 def resolve_package_dir(pkg, directory_index=None):
-    """Resolve a PyPI package name to its on-disk spec directory suffix, if packaged."""
+    """Resolve a PyPI package name to its on-disk spec directory suffix, if packaged.
+
+    Tries an exact canonical match first, since a handful of PyPI projects (e.g. 'gnupg'
+    and 'python-gnupg') are genuinely distinct packages that happen to differ only by a
+    'python-' prefix -- stripping the prefix unconditionally would collapse them onto the
+    same directory. Only if there's no exact match do we fall back to stripping a leading
+    'python-' from the canonical form, for projects (python-socks, python-dateutil, ...)
+    that bundle this repo's own directory-naming prefix into their PyPI name.
+    """
     if directory_index is None:
         directory_index = build_directory_index()
-    base = strip_python_prefix(pkg)
-    return directory_index.get(canonicalize(base))
+
+    canonical_pkg = canonicalize(pkg)
+
+    if canonical_pkg in directory_index:
+        return directory_index[canonical_pkg]
+
+    if canonical_pkg.startswith(PYTHON_PREFIX):
+        stripped = canonical_pkg[len(PYTHON_PREFIX):]
+        if stripped in directory_index:
+            return directory_index[stripped]
+
+    return None
 
 
 def parse_package_list(lines):
     for line in lines:
         line = line.strip()
-        if line:
-            name, version = line.split("==")
-            yield {"package_name": name, "new_version": version}
+        if not line:
+            continue
+        if "==" not in line:
+            print(f"Skipping unparseable requirements line: {line}")
+            continue
+        name, version = line.split("==")
+        yield {"package_name": name, "new_version": version}
 
 
 def find_packages(pkg, new_version, directory_index=None):
@@ -99,21 +119,15 @@ def find_packages(pkg, new_version, directory_index=None):
         print(f"Packaged {dir_pkg_name} RPM is newer than the version in requirements")
 
 
-def build_package_list(file_handle):
-    directory_index = build_directory_index()
-    for line in file_handle:
-        pkg_info = line.strip().split()
-        if len(pkg_info) != 2:
-            print(f"Invalid entry in list: {line.strip()}")
-            continue
-
-        pkg, new_version = pkg_info
-        find_packages(pkg, new_version, directory_index)
-
-
 def main():
     packages = list(parse_package_list(sys.stdin.readlines()))
     directory_index = build_directory_index()
+
+    if not directory_index:
+        sys.exit(
+            f"No package directories found under '{PACKAGES_DIR}/python-*/'. "
+            "Run this script from the repository root."
+        )
 
     for package in packages:
         find_packages(package["package_name"], package["new_version"], directory_index)

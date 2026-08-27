@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
+import os
+import tempfile
 import unittest
 from unittest.mock import patch, mock_open, MagicMock
 import subprocess
-from find_package import find_packages, resolve_package_dir, canonicalize, strip_python_prefix
+from find_package import find_packages, resolve_package_dir, canonicalize, build_directory_index
 
 
 class TestCanonicalize(unittest.TestCase):
@@ -16,10 +18,6 @@ class TestCanonicalize(unittest.TestCase):
         self.assertEqual(canonicalize("opentelemetry-api"), "opentelemetry-api")
         self.assertEqual(canonicalize("jaraco.classes"), "jaraco-classes")
 
-    def test_strip_python_prefix(self):
-        self.assertEqual(strip_python_prefix("python-socks"), "socks")
-        self.assertEqual(strip_python_prefix("python-dateutil"), "dateutil")
-        self.assertEqual(strip_python_prefix("aiohttp-socks"), "aiohttp-socks")
 
 
 class TestResolvePackageDir(unittest.TestCase):
@@ -50,6 +48,7 @@ class TestResolvePackageDir(unittest.TestCase):
                 "typing-extensions",
                 "flit-core",
                 "pyyaml",
+                "gnupg",
             ]
         }
 
@@ -91,6 +90,24 @@ class TestResolvePackageDir(unittest.TestCase):
 
     def test_unpackaged_name_returns_none(self):
         self.assertIsNone(resolve_package_dir("nonexistent-package", self.index))
+
+    def test_python_prefix_stripping_survives_underscore_spelling(self):
+        # pip freeze can emit either 'python-socks' or 'python_socks' for the same
+        # PyPI project (metadata Name fields aren't consistently hyphen-spelled).
+        # Canonicalization has to happen before prefix stripping, or the underscore
+        # spelling never gets recognized as carrying the 'python-' prefix at all.
+        self.assertEqual(resolve_package_dir("python_socks", self.index), "socks")
+        self.assertEqual(resolve_package_dir("python-socks", self.index), "socks")
+
+    def test_exact_match_preferred_over_prefix_stripped_fallback(self):
+        # gnupg and python-gnupg are genuinely distinct PyPI projects. If a directory
+        # exists for the exact ('python-gnupg' -> suffix 'python-gnupg') spelling, it
+        # must win over blindly stripping 'python-' and resolving to the unrelated
+        # 'gnupg' directory.
+        index = dict(self.index)
+        index[canonicalize("python-gnupg")] = "python-gnupg"
+        self.assertEqual(resolve_package_dir("python-gnupg", index), "python-gnupg")
+        self.assertEqual(resolve_package_dir("gnupg", index), "gnupg")
 
 
 class TestFindPackages(unittest.TestCase):
@@ -173,6 +190,50 @@ class TestFindPackages(unittest.TestCase):
                             find_packages("poetry-core", "2.0.0")
 
                             mock_print.assert_called_with(expected_message)
+
+
+class TestMain(unittest.TestCase):
+    """Test main()'s guard against running with an empty/missing packages/ tree, e.g.
+    from the wrong working directory -- otherwise every package silently prints
+    'Spec file not found' and the script exits 0, looking like a successful no-op run."""
+
+    def test_exits_loudly_on_empty_directory_index(self):
+        with patch("find_package.build_directory_index", return_value={}):
+            with patch("sys.stdin.readlines", return_value=["requests==2.32.4"]):
+                with self.assertRaises(SystemExit):
+                    import find_package
+                    find_package.main()
+
+
+class TestBuildDirectoryIndex(unittest.TestCase):
+    """Test build_directory_index() against a real (temporary) filesystem tree, since it
+    globs actual directories rather than taking a pre-built index."""
+
+    def _make_spec_dir(self, root, suffix):
+        spec_dir = os.path.join(root, f"python-{suffix}")
+        os.makedirs(spec_dir, exist_ok=True)
+        open(os.path.join(spec_dir, f"python-{suffix}.spec"), "w").close()
+
+    def test_empty_tree_returns_empty_index(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(build_directory_index(tmp), {})
+
+    def test_indexes_real_directories(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self._make_spec_dir(tmp, "requests")
+            self._make_spec_dir(tmp, "poetry_core")
+            index = build_directory_index(tmp)
+            self.assertEqual(index, {"requests": "requests", "poetry-core": "poetry_core"})
+
+    def test_colliding_directories_raise(self):
+        # Two directories that canonicalize to the same key (e.g. mid-rename, or a
+        # future PyPI project literally differing only by separator style) would make
+        # resolution silently depend on filesystem iteration order without this check.
+        with tempfile.TemporaryDirectory() as tmp:
+            self._make_spec_dir(tmp, "poetry_core")
+            self._make_spec_dir(tmp, "poetry-core")
+            with self.assertRaises(ValueError):
+                build_directory_index(tmp)
 
 
 if __name__ == "__main__":
