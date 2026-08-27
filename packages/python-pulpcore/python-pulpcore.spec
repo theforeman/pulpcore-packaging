@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.16
+Version:        3.105.17
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -39,8 +39,8 @@ Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
 Requires:       python%{python3_pkgversion}-backoff < 2.3
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
 Requires:       python%{python3_pkgversion}-click < 8.4
-Requires:       python%{python3_pkgversion}-cryptography >= 44.0.3
-Requires:       python%{python3_pkgversion}-cryptography < 47.0
+Requires:       python%{python3_pkgversion}-cryptography >= 49.0.0
+Requires:       python%{python3_pkgversion}-cryptography < 51.0
 Requires:       python%{python3_pkgversion}-django-filter >= 23.1
 Requires:       python%{python3_pkgversion}-django-filter <= 25.2
 Requires:       python%{python3_pkgversion}-django-guid >= 3.3
@@ -63,8 +63,8 @@ Requires:       python%{python3_pkgversion}-dynaconf >= 3.2.5
 Requires:       python%{python3_pkgversion}-dynaconf < 3.3.0
 Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
 Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
-Requires:       python%{python3_pkgversion}-gnupg >= 0.5.0
-Requires:       python%{python3_pkgversion}-gnupg < 0.6
+Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.33
+Requires:       python%{python3_pkgversion}-pysequoia < 0.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 22.0
 Requires:       python%{python3_pkgversion}-gunicorn < 25.2.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
@@ -75,6 +75,7 @@ Requires:       python%{python3_pkgversion}-jq >= 1.6.0
 Requires:       python%{python3_pkgversion}-jq < 1.12.0
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.30.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.40
+Requires:       python%{python3_pkgversion}-pyOpenSSL >= 26.3.0
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
 Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.41
@@ -84,9 +85,9 @@ Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.27
 Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.41
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 7.0
-Requires:       python%{python3_pkgversion}-psycopg >= 3.1.8
+Requires:       python%{python3_pkgversion}-psycopg >= 3.3.4
 Requires:       python%{python3_pkgversion}-psycopg < 3.4
-Requires:       python%{python3_pkgversion}-psycopg_c >= 3.1.8
+Requires:       python%{python3_pkgversion}-psycopg_c >= 3.3.4
 Requires:       python%{python3_pkgversion}-psycopg_c < 3.4
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
@@ -175,6 +176,12 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 3.105.17-1
+- Update to 3.105.17
+- Bump cryptography to >= 49.0.0, < 51.0 and pyOpenSSL to >= 26.3.0 (PQC support)
+- Bump psycopg/psycopg_c lower bound to 3.3.4
+- Replace gnupg Requires with pysequoia >= 0.1.33, < 0.2
+
 * Mon Aug 24 20:07:03 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.105.16-1
 - Update to 3.105.16
 
