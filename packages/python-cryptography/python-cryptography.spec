@@ -8,8 +8,8 @@
 %global pypi_name cryptography
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        46.0.7
-Release:        3%{?dist}
+Version:        50.0.1
+Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
 License:        BSD or Apache License, Version 2.0
@@ -76,6 +76,10 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 50.0.1-1
+- Update to 50.0.1, needed for pulpcore 3.105.17's cryptography>=49.0.0,<51.0
+- Regenerate vendored Rust crates for 50.0.1
+
 * Mon Aug 24 2026 Odilon Sousa <osousa@redhat.com> - 46.0.7-3
 - Add Obsoletes/Provides for python3-cryptography on RHEL 10
 - Prevent file conflicts with the BaseOS-provided package
