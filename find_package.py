@@ -65,8 +65,8 @@ def parse_package_list(lines):
             yield {"package_name": name, "new_version": version}
 
 
-def find_packages(pkg, new_version):
-    dir_pkg_name = resolve_package_dir(pkg)
+def find_packages(pkg, new_version, directory_index=None):
+    dir_pkg_name = resolve_package_dir(pkg, directory_index)
 
     if dir_pkg_name is None:
         print(f"Spec file not found for package {pkg} (no packages/python-* directory matches)")
@@ -100,6 +100,7 @@ def find_packages(pkg, new_version):
 
 
 def build_package_list(file_handle):
+    directory_index = build_directory_index()
     for line in file_handle:
         pkg_info = line.strip().split()
         if len(pkg_info) != 2:
@@ -107,14 +108,15 @@ def build_package_list(file_handle):
             continue
 
         pkg, new_version = pkg_info
-        find_packages(pkg, new_version)
+        find_packages(pkg, new_version, directory_index)
 
 
 def main():
     packages = list(parse_package_list(sys.stdin.readlines()))
+    directory_index = build_directory_index()
 
     for package in packages:
-        find_packages(package["package_name"], package["new_version"])
+        find_packages(package["package_name"], package["new_version"], directory_index)
 
 
 if __name__ == "__main__":
