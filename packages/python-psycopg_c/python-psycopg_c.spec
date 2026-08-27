@@ -5,17 +5,19 @@
 %global pypi_name psycopg_c
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.13
-Release:        2%{?dist}
+Version:        3.3.4
+Release:        1%{?dist}
 Summary:        PostgreSQL database adapter for Python - C extension
 
 License:        LGPL-3.0-only
 URL:            https://psycopg.org/psycopg3/
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         0001-Fix-RHEL-9-10-setuptools-ext-modules-incompatibility.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel >= 0.37
+BuildRequires:  pyproject-rpm-macros
 
 BuildRequires:  python%{python3_pkgversion}-Cython
 BuildRequires:  gcc
@@ -29,29 +31,43 @@ BuildRequires:  postgresql-devel
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+
+# Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.txt
 %doc README.rst
 %{python3_sitearch}/%{pypi_name}
-%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 3.3.4-1
+- Update to 3.3.4, needed for pulpcore 3.105.17's psycopg_c>=3.3.4,<3.4
+- Switch to %%pyproject_wheel/%%pyproject_install: upstream 3.3.4 dropped setup.py
+  in favor of a pyproject.toml-only build (custom cython_backend, builds from the
+  bundled .c sources so Cython isn't actually invoked from the sdist)
+- Fix PEP 639 license field (RHEL 9 setuptools does not support SPDX string format)
+- Add Patch0: strip [tool.setuptools.ext-modules] from pyproject.toml (RHEL 9/10
+  setuptools rejects this still-experimental upstream schema key) and reintroduce
+  a setup.py declaring the same packages/ext-modules/cmdclass config classically
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 3.2.13-2
 - Bump release for EL10 rebuild
 
