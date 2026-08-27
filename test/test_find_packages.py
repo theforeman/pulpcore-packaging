@@ -3,217 +3,177 @@
 import unittest
 from unittest.mock import patch, mock_open, MagicMock
 import subprocess
-from find_package import find_packages
+from find_package import find_packages, resolve_package_dir, canonicalize, strip_python_prefix
+
+
+class TestCanonicalize(unittest.TestCase):
+    """Test the name-normalization helpers directly."""
+
+    def test_lowercases_and_collapses_separators(self):
+        self.assertEqual(canonicalize("PyYAML"), "pyyaml")
+        self.assertEqual(canonicalize("ruamel.yaml.clib"), "ruamel-yaml-clib")
+        self.assertEqual(canonicalize("poetry_core"), "poetry-core")
+        self.assertEqual(canonicalize("opentelemetry-api"), "opentelemetry-api")
+        self.assertEqual(canonicalize("jaraco.classes"), "jaraco-classes")
+
+    def test_strip_python_prefix(self):
+        self.assertEqual(strip_python_prefix("python-socks"), "socks")
+        self.assertEqual(strip_python_prefix("python-dateutil"), "dateutil")
+        self.assertEqual(strip_python_prefix("aiohttp-socks"), "aiohttp-socks")
+
+
+class TestResolvePackageDir(unittest.TestCase):
+    """Test resolving PyPI names to on-disk spec directory suffixes via a fake index,
+    covering every separator-mismatch case that used to require a hand-maintained
+    reverse-mapping table."""
+
+    def setUp(self):
+        # A representative slice of the real packages/ tree, including every case that
+        # previously needed an entry in the old package_mappings/reverse_mappings tables.
+        self.index = {
+            canonicalize(suffix): suffix
+            for suffix in [
+                "socks",
+                "aiohttp-socks",
+                "poetry_core",
+                "poetry_plugin_export",
+                "galaxy_importer",
+                "importlib-resources",
+                "ruamel-yaml",
+                "ruamel-yaml-clib",
+                "jaraco-classes",
+                "et-xmlfile",
+                "pyasn1-modules",
+                "psycopg_c",
+                "pydantic-core",
+                "opentelemetry_api",
+                "typing-extensions",
+                "flit-core",
+                "pyyaml",
+            ]
+        }
+
+    def test_hyphenated_pypi_name_resolves_to_underscored_directory(self):
+        self.assertEqual(resolve_package_dir("poetry-core", self.index), "poetry_core")
+        self.assertEqual(resolve_package_dir("poetry-plugin-export", self.index), "poetry_plugin_export")
+        self.assertEqual(resolve_package_dir("galaxy-importer", self.index), "galaxy_importer")
+        self.assertEqual(resolve_package_dir("psycopg-c", self.index), "psycopg_c")
+        self.assertEqual(resolve_package_dir("opentelemetry-api", self.index), "opentelemetry_api")
+
+    def test_dotted_pypi_name_resolves_to_hyphenated_directory(self):
+        self.assertEqual(resolve_package_dir("ruamel.yaml", self.index), "ruamel-yaml")
+        self.assertEqual(resolve_package_dir("ruamel.yaml.clib", self.index), "ruamel-yaml-clib")
+        self.assertEqual(resolve_package_dir("jaraco.classes", self.index), "jaraco-classes")
+
+    def test_underscored_pypi_name_resolves_to_hyphenated_directory(self):
+        self.assertEqual(resolve_package_dir("et_xmlfile", self.index), "et-xmlfile")
+        self.assertEqual(resolve_package_dir("pyasn1_modules", self.index), "pyasn1-modules")
+        self.assertEqual(resolve_package_dir("importlib_resources", self.index), "importlib-resources")
+
+    def test_hyphenated_pypi_name_matching_directory_exactly(self):
+        self.assertEqual(resolve_package_dir("typing-extensions", self.index), "typing-extensions")
+        self.assertEqual(resolve_package_dir("flit-core", self.index), "flit-core")
+        self.assertEqual(resolve_package_dir("pydantic-core", self.index), "pydantic-core")
+
+    def test_mixed_case_pypi_name(self):
+        self.assertEqual(resolve_package_dir("PyYAML", self.index), "pyyaml")
+
+    def test_pypi_name_with_own_python_prefix(self):
+        # python-socks is the literal PyPI project name; the repo convention adds
+        # another 'python-' on top for the RPM directory (packages/python-socks).
+        self.assertEqual(resolve_package_dir("python-socks", self.index), "socks")
+
+    def test_aiohttp_socks_bug_regression(self):
+        # This is the exact case that used to break: aiohttp-socks (hyphen, matches
+        # its own directory suffix exactly) was incorrectly reverse-mapped to a
+        # nonexistent 'aiohttp_socks' (underscore) directory.
+        self.assertEqual(resolve_package_dir("aiohttp-socks", self.index), "aiohttp-socks")
+
+    def test_unpackaged_name_returns_none(self):
+        self.assertIsNone(resolve_package_dir("nonexistent-package", self.index))
 
 
 class TestFindPackages(unittest.TestCase):
-    """Test the find_packages function with reverse mapping functionality"""
+    """Test find_packages() end to end, including that packages-to-update.txt and the
+    printed messages use the resolved on-disk directory suffix -- since update_packages.sh
+    and the PR title/branch downstream reuse that exact string to rebuild the spec path."""
 
-    def setUp(self):
-        """Set up test fixtures"""
-        # Clear any existing packages-to-update.txt content for each test
-        self.packages_to_update_content = []
+    @patch("subprocess.check_output")
+    @patch("subprocess.run")
+    @patch("builtins.open", new_callable=mock_open)
+    def test_update_needed_writes_resolved_directory_suffix(self, mock_file, mock_run, mock_check_output):
+        mock_check_output.return_value = b"1.8.0"
+        mock_run.return_value = MagicMock(returncode=12)
 
-    def mock_file_write(self, content):
-        """Mock file write to capture what would be written to packages-to-update.txt"""
-        self.packages_to_update_content.append(content)
+        written_content = []
+        mock_file.return_value.write = lambda content: written_content.append(content)
 
-    @patch('subprocess.check_output')
-    @patch('subprocess.run')
-    @patch('builtins.open', new_callable=mock_open)
-    def test_poetry_core_reverse_mapping(self, mock_file, mock_subprocess_run, mock_subprocess_check_output):
-        """Test that poetry-core correctly maps to poetry_core directory"""
-        # Mock the rpmspec command to return a version
-        mock_subprocess_check_output.return_value = b'1.8.0'
-        
-        # Mock rpmdev-vercmp to return 12 (first version is older)
-        mock_subprocess_run.return_value = MagicMock(returncode=12)
-        
-        # Mock file write
-        mock_file.return_value.write = self.mock_file_write
-        
-        # Test the function
-        find_packages('poetry-core', '1.9.0')
-        
-        # Verify the correct spec file path was used
-        mock_subprocess_check_output.assert_called_with(
+        with patch("find_package.resolve_package_dir", return_value="poetry_core"):
+            find_packages("poetry-core", "1.9.0")
+
+        mock_check_output.assert_called_with(
             ["rpmspec", "-q", "--queryformat=%{version}", "packages/python-poetry_core/python-poetry_core.spec", "--srpm"]
         )
-        
-        # Verify version comparison was called
-        mock_subprocess_run.assert_called_with(["rpmdev-vercmp", "1.8.0", "1.9.0"])
-        
-        # Verify file was opened for append
-        mock_file.assert_called_with("packages-to-update.txt", "a")
+        mock_run.assert_called_with(["rpmdev-vercmp", "1.8.0", "1.9.0"])
+        self.assertEqual(written_content, ["poetry_core 1.9.0\n"])
 
-    @patch('subprocess.check_output')
-    @patch('subprocess.run')
-    @patch('builtins.open', new_callable=mock_open)
-    def test_typing_extensions_no_reverse_mapping_needed(self, mock_file, mock_subprocess_run, mock_subprocess_check_output):
-        """Test that typing-extensions doesn't need reverse mapping (directory exists as-is)"""
-        # Mock the rpmspec command to return a version
-        mock_subprocess_check_output.return_value = b'4.8.0'
-        
-        # Mock rpmdev-vercmp to return 0 (versions are the same)
-        mock_subprocess_run.return_value = MagicMock(returncode=0)
-        
-        # Test the function
-        find_packages('typing-extensions', '4.8.0')
-        
-        # Verify the correct spec file path was used (no reverse mapping)
-        mock_subprocess_check_output.assert_called_with(
-            ["rpmspec", "-q", "--queryformat=%{version}", "packages/python-typing-extensions/python-typing-extensions.spec", "--srpm"]
+    @patch("subprocess.check_output")
+    @patch("subprocess.run")
+    @patch("builtins.open", new_callable=mock_open)
+    def test_aiohttp_socks_resolves_to_its_own_hyphenated_directory(self, mock_file, mock_run, mock_check_output):
+        mock_check_output.return_value = b"0.10.1"
+        mock_run.return_value = MagicMock(returncode=12)
+
+        with patch("find_package.resolve_package_dir", return_value="aiohttp-socks"):
+            find_packages("aiohttp-socks", "0.12.0")
+
+        mock_check_output.assert_called_with(
+            ["rpmspec", "-q", "--queryformat=%{version}", "packages/python-aiohttp-socks/python-aiohttp-socks.spec", "--srpm"]
         )
 
-    @patch('subprocess.check_output')
-    @patch('subprocess.run')
-    @patch('builtins.open', new_callable=mock_open)
-    def test_flit_core_no_reverse_mapping_needed(self, mock_file, mock_subprocess_run, mock_subprocess_check_output):
-        """Test that flit-core doesn't need reverse mapping (directory exists as-is)"""
-        # Mock the rpmspec command to return a version
-        mock_subprocess_check_output.return_value = b'3.9.0'
-        
-        # Mock rpmdev-vercmp to return 11 (first version is newer)
-        mock_subprocess_run.return_value = MagicMock(returncode=11)
-        
-        # Test the function
-        find_packages('flit-core', '3.8.0')
-        
-        # Verify the correct spec file path was used (no reverse mapping)
-        mock_subprocess_check_output.assert_called_with(
-            ["rpmspec", "-q", "--queryformat=%{version}", "packages/python-flit-core/python-flit-core.spec", "--srpm"]
+    @patch("builtins.print")
+    def test_unresolvable_package_prints_error_without_calling_rpmspec(self, mock_print):
+        with patch("find_package.resolve_package_dir", return_value=None):
+            find_packages("nonexistent-package", "1.0.0")
+
+        mock_print.assert_called_with(
+            "Spec file not found for package nonexistent-package (no packages/python-* directory matches)"
         )
 
-    @patch('subprocess.check_output')
-    def test_spec_file_not_found_error_handling(self, mock_subprocess_check_output):
-        """Test error handling when spec file is not found"""
-        # Mock subprocess to raise CalledProcessError
-        mock_subprocess_check_output.side_effect = subprocess.CalledProcessError(1, 'rpmspec')
-        
-        # Capture print output
-        with patch('builtins.print') as mock_print:
-            find_packages('nonexistent-package', '1.0.0')
-            
-            # Verify error message was printed
-            mock_print.assert_called_with(
-                "Spec file not found for package nonexistent-package (looked for packages/python-nonexistent-package/python-nonexistent-package.spec)"
-            )
+    @patch("subprocess.check_output")
+    def test_spec_file_missing_on_disk_despite_resolved_directory(self, mock_check_output):
+        mock_check_output.side_effect = subprocess.CalledProcessError(1, "rpmspec")
 
-    @patch('subprocess.check_output')
-    def test_reverse_mapping_with_spec_file_not_found(self, mock_subprocess_check_output):
-        """Test error handling when spec file is not found even with reverse mapping"""
-        # Mock subprocess to raise CalledProcessError
-        mock_subprocess_check_output.side_effect = subprocess.CalledProcessError(1, 'rpmspec')
-        
-        # Capture print output
-        with patch('builtins.print') as mock_print:
-            find_packages('poetry-core', '1.0.0')
-            
-            # Verify error message shows the actual path that was looked for
-            mock_print.assert_called_with(
-                "Spec file not found for package poetry-core (looked for packages/python-poetry_core/python-poetry_core.spec)"
-            )
+        with patch("find_package.resolve_package_dir", return_value="poetry_core"):
+            with patch("builtins.print") as mock_print:
+                find_packages("poetry-core", "1.0.0")
 
-    @patch('subprocess.check_output')
-    @patch('subprocess.run')
-    @patch('builtins.open', new_callable=mock_open)
-    def test_all_reverse_mappings(self, mock_file, mock_subprocess_run, mock_subprocess_check_output):
-        """Test all packages in the reverse mapping dictionary"""
-        reverse_mappings = {
-            'poetry-core': 'poetry_core',
-            'poetry-plugin-export': 'poetry_plugin_export',
-            'galaxy-importer': 'galaxy_importer',
-            'importlib-resources': 'importlib_resources',
-            'ruamel-yaml': 'ruamel.yaml',
-            'ruamel-yaml-clib': 'ruamel.yaml.clib',
-            'jaraco-classes': 'jaraco.classes',
-            'et-xmlfile': 'et_xmlfile',
-            'aiohttp-socks': 'aiohttp_socks',
-            'pyasn1-modules': 'pyasn1_modules',
-        }
-        
-        # Mock the rpmspec command to return a version
-        mock_subprocess_check_output.return_value = b'1.0.0'
-        
-        # Mock rpmdev-vercmp to return 0 (versions are the same)
-        mock_subprocess_run.return_value = MagicMock(returncode=0)
-        
-        for transformed_name, original_name in reverse_mappings.items():
-            with self.subTest(package=transformed_name):
-                # Reset mocks for each iteration
-                mock_subprocess_check_output.reset_mock()
-                
-                # Test the function
-                find_packages(transformed_name, '1.0.0')
-                
-                # Verify the correct spec file path was used
-                expected_path = f"packages/python-{original_name}/python-{original_name}.spec"
-                mock_subprocess_check_output.assert_called_with(
-                    ["rpmspec", "-q", "--queryformat=%{version}", expected_path, "--srpm"]
-                )
-
-    @patch('subprocess.check_output')
-    @patch('subprocess.run')
-    @patch('builtins.open', new_callable=mock_open)
-    def test_package_update_needed(self, mock_file, mock_subprocess_run, mock_subprocess_check_output):
-        """Test that packages needing updates are written to the file"""
-        # Mock the rpmspec command to return an older version
-        mock_subprocess_check_output.return_value = b'1.8.0'
-        
-        # Mock rpmdev-vercmp to return 12 (first version is older, update needed)
-        mock_subprocess_run.return_value = MagicMock(returncode=12)
-        
-        # Mock file write to capture content
-        written_content = []
-        def mock_write(content):
-            written_content.append(content)
-        
-        mock_file.return_value.write = mock_write
-        
-        # Test the function
-        find_packages('poetry-core', '1.9.0')
-        
-        # Verify the package was written to the update file
-        self.assertEqual(written_content, ['poetry-core 1.9.0\n'])
-
-    @patch('subprocess.check_output')
-    @patch('subprocess.run')
-    @patch('builtins.open', new_callable=mock_open)
-    def test_pydantic_core_no_reverse_mapping_needed(self, mock_file, mock_subprocess_run, mock_subprocess_check_output):
-        """Test that pydantic-core uses hyphenated directory path (no reverse mapping)"""
-        mock_subprocess_check_output.return_value = b'2.33.2'
-        mock_subprocess_run.return_value = MagicMock(returncode=0)
-
-        find_packages('pydantic-core', '2.33.2')
-
-        mock_subprocess_check_output.assert_called_with(
-            ["rpmspec", "-q", "--queryformat=%{version}", "packages/python-pydantic-core/python-pydantic-core.spec", "--srpm"]
+        mock_print.assert_called_with(
+            "Spec file not found for package poetry-core (looked for packages/python-poetry_core/python-poetry_core.spec)"
         )
 
-    @patch('subprocess.check_output')
-    @patch('subprocess.run')
-    def test_version_comparison_outcomes(self, mock_subprocess_run, mock_subprocess_check_output):
-        """Test all possible version comparison outcomes"""
-        # Mock the rpmspec command to return a version
-        mock_subprocess_check_output.return_value = b'1.0.0'
-        
+    @patch("subprocess.check_output")
+    @patch("subprocess.run")
+    def test_version_comparison_outcomes_use_resolved_name(self, mock_run, mock_check_output):
+        mock_check_output.return_value = b"1.0.0"
+
         test_cases = [
-            (0, "Package poetry-core version is the same as the packaged RPM"),
-            (11, "Packaged poetry-core RPM is newer than the version in requirements"),
-            (12, "RPM for Package poetry-core needs to be updated from 1.0.0 to 2.0.0")
+            (0, "Package poetry_core version is the same as the packaged RPM"),
+            (11, "Packaged poetry_core RPM is newer than the version in requirements"),
+            (12, "RPM for Package poetry_core needs to be updated from 1.0.0 to 2.0.0"),
         ]
-        
+
         for return_code, expected_message in test_cases:
             with self.subTest(return_code=return_code):
-                mock_subprocess_run.return_value = MagicMock(returncode=return_code)
-                
-                with patch('builtins.print') as mock_print:
-                    with patch('builtins.open', mock_open()):
-                        find_packages('poetry-core', '2.0.0')
-                        
-                        # Check that the expected message was printed
-                        mock_print.assert_called_with(expected_message)
+                mock_run.return_value = MagicMock(returncode=return_code)
+
+                with patch("find_package.resolve_package_dir", return_value="poetry_core"):
+                    with patch("builtins.print") as mock_print:
+                        with patch("builtins.open", mock_open()):
+                            find_packages("poetry-core", "2.0.0")
+
+                            mock_print.assert_called_with(expected_message)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
