@@ -5,8 +5,8 @@
 %global pypi_name msgpack
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.2.1
-Release:        2%{?dist}
+Version:        1.2.2
+Release:        1%{?dist}
 Summary:        MessagePack serializer
 
 License:        Apache 2.0
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Thu Aug 27 11:20:35 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.2-1
+- Update to 1.2.2
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.2.1-2
 - Bump release for EL10 rebuild
 
