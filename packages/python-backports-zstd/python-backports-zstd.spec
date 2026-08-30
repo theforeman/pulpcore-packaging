@@ -9,8 +9,8 @@
 %global srcname backports-zstd
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.3.0
-Release:        2%{?dist}
+Version:        1.7.0
+Release:        1%{?dist}
 Summary:        Backport of the Python 3.14 compression.zstd module
 
 License:        PSF-2.0
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Sun Aug 30 04:26:26 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.7.0-1
+- Update to 1.7.0
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.3.0-2
 - Bump release for EL10 rebuild
 
