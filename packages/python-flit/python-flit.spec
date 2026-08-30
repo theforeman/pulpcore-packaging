@@ -4,8 +4,8 @@
 %global pypi_name flit
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.12.0
-Release:        2%{?dist}
+Version:        4.0.2
+Release:        1%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -20,7 +20,6 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core >= %{version}
-BuildRequires:  python%{python3_pkgversion}-flit_core < 4
 
 Requires:       python%{python3_pkgversion}-tomli_w
 Requires:       python%{python3_pkgversion}-requests
@@ -55,6 +54,10 @@ set -ex
 %{_bindir}/flit
 
 %changelog
+* Sun Aug 30 04:26:30 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.0.2-1
+- Update to 4.0.2
+- Remove unsatisfiable flit_core < 4 upper bound (flit 4.0.2 requires flit_core >= 4.0.2)
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 3.12.0-2
 - Bump release for EL10 rebuild
 
