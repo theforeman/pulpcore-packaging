@@ -5,7 +5,7 @@
 %global pypi_name galaxy-importer
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.41
+Version:        0.4.43
 Release:        1%{?dist}
 Summary:        Galaxy content importer
 
@@ -80,6 +80,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/galaxy-importer/
 
 
 %changelog
+* Sun Aug 30 04:26:25 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.4.43-1
+- Update to 0.4.43
+
 * Wed Aug 05 2026 Odilon Sousa <osousa@redhat.com> - 0.4.41-1
 - Update to 0.4.41
 - Drop local attrs < 24 override sed - upstream now ships attrs>=21.4.0,<24
