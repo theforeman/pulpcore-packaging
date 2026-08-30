@@ -6,8 +6,8 @@
 %global srcname markdown
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.8.2
-Release:        2%{?dist}
+Version:        3.10.3
+Release:        1%{?dist}
 Summary:        Python implementation of Markdown
 
 License:        BSD License
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Sun Aug 30 04:26:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.10.3-1
+- Update to 3.10.3
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 3.8.2-2
 - Bump release for EL10 rebuild
 
