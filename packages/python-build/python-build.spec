@@ -3,8 +3,8 @@
 %global pypi_name build
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.5.0
-Release:        3%{?dist}
+Version:        1.6.0
+Release:        1%{?dist}
 Summary:        A simple, correct Python build frontend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Sun Aug 30 04:26:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.6.0-1
+- Update to 1.6.0
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.5.0-3
 - Bump release for EL10 rebuild
 
