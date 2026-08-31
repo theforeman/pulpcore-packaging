@@ -101,7 +101,9 @@ def parse_requires_entries(rest):
         if i + 1 < len(tokens) and re.match(r"^[><=!]", tokens[i + 1]):
             op = tokens[i + 1]
             i += 2
-            if i < len(tokens) and not re.match(r"^[><=!%a-z]", tokens[i]):
+            # Consume next token as the version value unless it looks like another operator
+            # or a bare lowercase package name. RPM macros like %{version} are valid values.
+            if i < len(tokens) and not re.match(r"^[><=!a-z]", tokens[i]):
                 constraint = f"{op} {tokens[i]}"
                 i += 1
             else:
