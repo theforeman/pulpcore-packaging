@@ -256,7 +256,6 @@ tier4_packages:
     python-isodate: {}
     python-jeepney: {}
     python-lazy-imports: {}
-    python-lxml: {}
     python-more-itertools: {}
     python-mypy-extensions: {}
     python-parsley: {}
