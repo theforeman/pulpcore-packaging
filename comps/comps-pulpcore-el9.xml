@@ -159,7 +159,6 @@
       <packagereq type="default">python3.12-ldap</packagereq>
       <packagereq type="default">python3.12-libcomps</packagereq>
       <packagereq type="default">python3.12-libcomps</packagereq>
-      <packagereq type="default">python3.12-lxml</packagereq>
       <packagereq type="default">python3.12-mailbits</packagereq>
       <packagereq type="default">python3.12-markdown</packagereq>
       <packagereq type="default">python3.12-markdown-it-py</packagereq>
