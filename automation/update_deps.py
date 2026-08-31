@@ -52,6 +52,17 @@ def pypi_mandatory_deps(pypi_name, version):
     for dep in requires_dist:
         if "extra ==" in dep or "extra==" in dep:
             continue
+        # Skip Windows/macOS-only deps; we build for Linux only
+        marker_part = dep.split(";", 1)[1] if ";" in dep else ""
+        if re.search(
+            r'sys_platform\s*==\s*["\']win32["\']'
+            r'|platform_system\s*==\s*["\']Windows["\']'
+            r'|os_name\s*==\s*["\']nt["\']'
+            r'|sys_platform\s*==\s*["\']darwin["\']'
+            r'|platform_system\s*==\s*["\']Darwin["\']',
+            marker_part,
+        ):
+            continue
         # Strip environment markers (everything after ';')
         dep_clean = dep.split(";")[0].strip().strip("()")
         # Parse name and optional version constraint
