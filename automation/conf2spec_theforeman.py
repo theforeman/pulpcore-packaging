@@ -36,16 +36,17 @@ TEMPLATE_PATH = Path(__file__).parent / "template.spec"
 
 
 def _packager_string() -> str:
-    """Return 'Full Name <email>' from git config, falling back to env."""
-    try:
-        name = subprocess.check_output(
-            ["git", "config", "user.name"], text=True
-        ).strip()
-        email = subprocess.check_output(
-            ["git", "config", "user.email"], text=True
-        ).strip()
+    """Return 'Full Name <email>' from env vars, git config, or a default."""
+    import os
+    name = os.environ.get("GIT_AUTHOR_NAME") or os.environ.get("GIT_COMMITTER_NAME")
+    email = os.environ.get("GIT_AUTHOR_EMAIL") or os.environ.get("GIT_COMMITTER_EMAIL")
+    if name and email:
         return f"{name} <{email}>"
-    except subprocess.CalledProcessError:
+    try:
+        name = subprocess.check_output(["git", "config", "user.name"], text=True).strip()
+        email = subprocess.check_output(["git", "config", "user.email"], text=True).strip()
+        return f"{name} <{email}>"
+    except (subprocess.CalledProcessError, FileNotFoundError):
         return "Foreman Packaging Automation <packaging@theforeman.org>"
 
 
