@@ -8,7 +8,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        0.39.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -27,7 +27,6 @@ Requires:       python%{python3_pkgversion}-PyYAML >= 5.3
 Requires:       python%{python3_pkgversion}-click >= 8.0.0
 Requires:       python%{python3_pkgversion}-click < 8.4
 Requires:       python%{python3_pkgversion}-pygments >= 2.17.2
-Requires:       python%{python3_pkgversion}-pygments < 2.21
 Requires:       python%{python3_pkgversion}-schema < 0.8
 Requires:       python%{python3_pkgversion}-schema >= 0.7.5
 Requires:       python%{python3_pkgversion}-tomli_w >= 1.0.0
@@ -69,6 +68,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 01 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-4
+- Remove pygments < 2.21 upper bound to allow pygments 2.21.0
+
 * Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-3
 - Bump release for EL10 rebuild
 
