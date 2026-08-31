@@ -14,7 +14,8 @@ import re
 import sys
 import urllib.request
 
-PYTHON_VER = "3.12"
+PYTHON_VER = "3.12"           # concrete version used only for detection/comparison
+PYTHON_RPM_PREFIX = "python%{python3_pkgversion}"  # macro form written to spec files
 _SEP_RE = re.compile(r"[-_.]+")
 _RPM_MACRO_RE = re.compile(r"%\{python3_pkgversion\}|%\{python3_abi\}")
 
@@ -51,13 +52,28 @@ def pypi_mandatory_deps(pypi_name, version):
     for dep in requires_dist:
         if "extra ==" in dep or "extra==" in dep:
             continue
-        name = re.split(r"[><=!;\s\(]", dep)[0].strip()
-        if not name:
+        # Strip environment markers (everything after ';')
+        dep_clean = dep.split(";")[0].strip().strip("()")
+        # Parse name and optional version constraint
+        m = re.match(r"^([A-Za-z0-9][A-Za-z0-9._-]*)\s*([><=!~,\s\d.*]+)?$", dep_clean)
+        if not m:
             continue
-        canonical = canonicalize(name)
+        raw_name = m.group(1).strip()
+        version_part = (m.group(2) or "").strip()
+        canonical = canonicalize(raw_name)
         if canonical.startswith("python-"):
             canonical = canonical[len("python-"):]
-        rpm_names.add(f"python{PYTHON_VER}-{canonical}")
+        rpm_name = f"{PYTHON_RPM_PREFIX}-{canonical}"
+        # Preserve first version constraint (>= only; skip != / == / < which are unusual in Requires)
+        if version_part:
+            first = version_part.split(",")[0].strip()
+            op_m = re.match(r"([><=!~]+)\s*(\S+)", first)
+            if op_m:
+                op, ver = op_m.group(1), op_m.group(2)
+                if op in (">=", "~="):
+                    rpm_names.add(f"{rpm_name} >= {ver}")
+                    continue
+        rpm_names.add(rpm_name)
     return sorted(rpm_names)
 
 
