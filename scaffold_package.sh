@@ -1,9 +1,12 @@
 #!/bin/bash
 # scaffold_package.sh <pypi_name> [<version>]
 #
-# Scaffold a new RPM spec for a PyPI package using pyp2spec.
+# Scaffold a new RPM spec for a PyPI package using pyp2spec's two-phase pipeline:
+#   1. pyp2conf  — gathers PyPI metadata into a TOML config
+#   2. conf2spec_theforeman.py — renders spec using our packaging conventions
+#
 # Creates packages/python-<normalized-name>/ with spec + source tarball.
-# Review license, summary, %description, and %check before opening a PR.
+# Review summary, %description, and %check before opening a PR.
 set -euo pipefail
 
 if [ $# -lt 1 ]; then
@@ -17,52 +20,59 @@ VERSION="${2:-}"
 # PEP-503 canonicalization: collapse runs of -_. into -
 CANONICAL=$(python3 -c "import re,sys; print(re.sub(r'[-_.]+', '-', sys.argv[1]).lower())" "$PYPI_NAME")
 PKG_DIR="packages/python-${CANONICAL}"
+SPEC_FILE="${PKG_DIR}/python-${CANONICAL}.spec"
+CONF_FILE="${PKG_DIR}/python-${CANONICAL}.conf"
 
 if [ -d "$PKG_DIR" ]; then
     echo "ERROR: $PKG_DIR already exists. Use update_packages.sh to bump the version." >&2
     exit 1
 fi
 
-if ! command -v pyp2spec &> /dev/null; then
+if ! command -v pyp2conf &> /dev/null; then
     echo "ERROR: pyp2spec is not installed. Install with: pip install pyp2spec" >&2
     exit 1
 fi
 
-# Build pyp2spec argument
-if [ -n "$VERSION" ]; then
-    PKG_SPEC="${PYPI_NAME}==${VERSION}"
-else
-    PKG_SPEC="${PYPI_NAME}"
-fi
-
-echo "Generating spec for ${PKG_SPEC} → ${PKG_DIR}/"
+echo "Gathering PyPI metadata for ${PYPI_NAME}${VERSION:+==${VERSION}} → ${CONF_FILE}"
 mkdir -p "$PKG_DIR"
 
-# Run pyp2spec in automode; output spec file to the package directory
-pyp2spec -a "$PKG_SPEC" -o "${PKG_DIR}/python-${CANONICAL}.spec"
+# Phase 1: pyp2conf — gather metadata into TOML
+if [ -n "$VERSION" ]; then
+    pyp2conf -a -v "$VERSION" "$PYPI_NAME" -c "$CONF_FILE"
+else
+    pyp2conf -a "$PYPI_NAME" -c "$CONF_FILE"
+fi
 
-if [ ! -f "${PKG_DIR}/python-${CANONICAL}.spec" ]; then
-    echo "ERROR: pyp2spec did not produce ${PKG_DIR}/python-${CANONICAL}.spec" >&2
-    rmdir "$PKG_DIR"
+if [ ! -f "$CONF_FILE" ]; then
+    echo "ERROR: pyp2conf did not produce ${CONF_FILE}" >&2
+    rm -rf "$PKG_DIR"
+    exit 1
+fi
+
+# Phase 2: conf2spec_theforeman — render spec using our template
+python3 "$(dirname "$0")/automation/conf2spec_theforeman.py" "$CONF_FILE" -o "$SPEC_FILE"
+
+if [ ! -f "$SPEC_FILE" ]; then
+    echo "ERROR: conf2spec_theforeman.py did not produce ${SPEC_FILE}" >&2
+    rm -rf "$PKG_DIR"
     exit 1
 fi
 
 # Fetch source tarball and add via git-annex
-spectool --get-files "${PKG_DIR}/python-${CANONICAL}.spec" -C "$PKG_DIR"
-TARBALL=$(spectool --list-files "${PKG_DIR}/python-${CANONICAL}.spec" \
+spectool --get-files "$SPEC_FILE" -C "$PKG_DIR"
+TARBALL=$(spectool --list-files "$SPEC_FILE" \
     | cut -d' ' -f2 | grep http | xargs --no-run-if-empty -n 1 basename)
 if [ -n "$TARBALL" ] && [ -f "${PKG_DIR}/${TARBALL}" ]; then
     git annex add "${PKG_DIR}/${TARBALL}"
 fi
 
-git add "${PKG_DIR}/python-${CANONICAL}.spec"
+git add "$SPEC_FILE" "$CONF_FILE"
 
 echo ""
-echo "Scaffolded: ${PKG_DIR}/python-${CANONICAL}.spec"
+echo "Scaffolded: ${SPEC_FILE}"
 echo ""
 echo "TODO before opening a PR:"
-echo "  - Review %description (pyp2spec uses the PyPI summary, may need rewording)"
+echo "  - Review %description (uses PyPI summary, may need rewording)"
 echo "  - Verify License: tag matches the actual SPDX expression"
 echo "  - Add a %check section if the package ships a test suite"
-echo "  - Confirm Requires/BuildRequires are complete"
 echo "  - Run: obal scratch python-${CANONICAL}"
