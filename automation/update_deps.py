@@ -25,6 +25,10 @@ _TOOLCHAIN_RE = re.compile(
     r"pyproject-rpm-macros|gcc|make|cmake|perl|ruby"
 )
 
+# Stray RPM version/release macros that sometimes appear as Requires: %{version}
+# due to a past parse_requires_entries bug — not real package names.
+_STRAY_VERSION_MACRO_RE = re.compile(r"^%\{(version|epoch|release)\}$")
+
 
 def canonicalize(name):
     return _SEP_RE.sub("-", name).lower()
@@ -141,6 +145,11 @@ def rewrite_requires(spec_file, new_requires):
 
         rest = stripped[len("Requires:"):].strip()
         entries = parse_requires_entries(rest)
+        # Drop stray RPM version macros (e.g. %{version}) left by a past parser bug
+        entries = [(n, c) for n, c in entries if not _STRAY_VERSION_MACRO_RE.match(n)]
+        if not entries:
+            # Line contained only stray macros — drop it entirely
+            continue
         lib_entries = [(n, c) for n, c in entries if is_library_name(n)]
         preserved_entries = [(n, c) for n, c in entries if not is_library_name(n)]
 
