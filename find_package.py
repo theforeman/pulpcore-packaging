@@ -120,6 +120,24 @@ def find_packages(pkg, new_version, directory_index=None):
 
 
 def main():
+    if len(sys.argv) >= 3 and sys.argv[1] == "--resolve-dir":
+        pkg = sys.argv[2]
+        directory_index = build_directory_index()
+        if not directory_index:
+            sys.exit(
+                f"No package directories found under '{PACKAGES_DIR}/python-*/'. "
+                "Run this script from the repository root."
+            )
+        suffix = resolve_package_dir(pkg, directory_index)
+        if suffix is None:
+            print(
+                f"ERROR: cannot resolve '{pkg}' to any packages/python-*/ directory",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        print(f"python-{suffix}")
+        return
+
     packages = list(parse_package_list(sys.stdin.readlines()))
     directory_index = build_directory_index()
 

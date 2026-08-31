@@ -58,11 +58,38 @@ jobs:
       run: git annex init
     - name: Update Packages
       run: ./update_packages.sh  ${{ matrix.package_name }} ${{ matrix.new_version }}
+    - name: Generate dependency diff
+      id: dep_diff
+      run: |
+        import subprocess, os, sys
+        pkg = "${{ matrix.package_name }}"
+        version = "${{ matrix.new_version }}"
+        result = subprocess.run(
+            ["python3", "find_package.py", "--resolve-dir", pkg],
+            capture_output=True, text=True
+        )
+        if result.returncode != 0:
+            with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
+                gh.write("dep_diff=_Could not resolve package directory._\n")
+            sys.exit(0)
+        pkg_dir = result.stdout.strip()
+        spec_file = f"packages/{pkg_dir}/{pkg_dir}.spec"
+        diff = subprocess.run(
+            ["python3", "automation/dep_diff.py", spec_file, pkg, version],
+            capture_output=True, text=True
+        ).stdout
+        delimiter = "DEPDIFF_EOF"
+        with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
+            gh.write(f"dep_diff<<{delimiter}\n{diff}\n{delimiter}\n")
+      shell: python
     - name: Open a PR
       uses: peter-evans/create-pull-request@v8
       with:
         commit-message: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
         branch: "bump_rpm/${{ matrix.package_name }}"
         title: "Update ${{ matrix.package_name }} to ${{ matrix.new_version }}"
-        body: ''
+        body: |
+          ## Dependency changes
+
+          ${{ steps.dep_diff.outputs.dep_diff }}
         delete-branch: true
