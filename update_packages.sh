@@ -51,7 +51,14 @@ bump_spec() {
         TARBALL_TO_REMOVE=$(spectool --list-files "$SPEC_FILE" | cut -d' ' -f2 | grep http | xargs --no-run-if-empty -n 1 basename)
         git rm "packages/$PKG_DIR/$TARBALL_TO_REMOVE"
 
-        if command -v pyp2conf &>/dev/null; then
+        if grep -qE 'rust-toolset|%cargo_prep' "$SPEC_FILE"; then
+            # Rust-extension packages (maturin, cryptography, nh3, …): pyp2spec cannot model
+            # vendored crates tarballs or cargo macros — fall back to version-only bump.
+            # The vendor tarball must be regenerated manually before opening the PR.
+            # See: https://github.com/theforeman/pulpcore-packaging/issues/3024
+            echo "Rust package detected — pyp2spec skipped; vendor tarball must be regenerated manually" >&2
+            _bump_fallback "$SPEC_FILE" "$NEW_VERSION"
+        elif command -v pyp2conf &>/dev/null; then
             # Regenerate spec via pyp2conf + our template, preserving %changelog history
             pyp2conf -a -v "$NEW_VERSION" "$pkg" -c "$CONF_FILE" || {
                 echo "WARNING: pyp2conf failed for $pkg $NEW_VERSION, falling back to rpmdev-bumpspec" >&2
