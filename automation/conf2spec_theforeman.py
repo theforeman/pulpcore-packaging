@@ -2,7 +2,12 @@
 """Render a pyp2spec TOML config using the theforeman packaging template.
 
 Usage:
-    python3 automation/conf2spec_theforeman.py <pkg.conf> [-o <output.spec>]
+    # New package (scaffold):
+    python3 automation/conf2spec_theforeman.py <pkg.conf> -o <pkg.spec>
+
+    # Version bump (preserves existing %changelog):
+    python3 automation/conf2spec_theforeman.py <pkg.conf> \
+        --existing-spec <old.spec> -o <pkg.spec>
 
 Calls pyp2spec's config loading and helper functions, but renders with
 automation/template.spec instead of pyp2spec's Fedora-oriented template.
@@ -10,10 +15,13 @@ The result follows theforeman/pulpcore-packaging conventions:
   - python%{python3_pkgversion}-* naming
   - %pyproject_buildrequires (no explicit Requires needed)
   - %pyproject_wheel / %pyproject_install
-  - Release: 1%{?dist}, standard %changelog entry
+  - Release: 1%{?dist}
+  - %changelog: new entry prepended, existing history appended
 """
 
 import argparse
+import os
+import re
 import subprocess
 import sys
 from datetime import datetime
@@ -36,8 +44,7 @@ TEMPLATE_PATH = Path(__file__).parent / "template.spec"
 
 
 def _packager_string() -> str:
-    """Return 'Full Name <email>' from env vars, git config, or a default."""
-    import os
+    """Return 'Full Name <email>' from CI env vars, git config, or a default."""
     name = os.environ.get("GIT_AUTHOR_NAME") or os.environ.get("GIT_COMMITTER_NAME")
     email = os.environ.get("GIT_AUTHOR_EMAIL") or os.environ.get("GIT_COMMITTER_EMAIL")
     if name and email:
@@ -50,7 +57,16 @@ def _packager_string() -> str:
         return "Foreman Packaging Automation <packaging@theforeman.org>"
 
 
-def render(conf_path: str) -> str:
+def _extract_old_changelog(spec_path: str) -> str:
+    """Return everything in the spec after the %changelog header line."""
+    text = Path(spec_path).read_text(encoding="utf-8")
+    m = re.search(r"^%changelog\s*\n(.*)", text, re.MULTILINE | re.DOTALL)
+    if not m:
+        return ""
+    return m.group(1).rstrip("\n")
+
+
+def render(conf_path: str, existing_spec: str | None = None) -> str:
     config = ConfigFile(load_config_file(conf_path))
     template = Template(TEMPLATE_PATH.read_text(encoding="utf-8"))
 
@@ -60,6 +76,8 @@ def render(conf_path: str) -> str:
     top_level_modules = config.get_list("top_level_modules")
     scripts = config.get_list("scripts")
     license_str, license_notice = get_license_string(config)
+
+    old_changelog = _extract_old_changelog(existing_spec) if existing_spec else ""
 
     return template.render(
         additional_build_requires=list_additional_build_requires(config),
@@ -83,20 +101,26 @@ def render(conf_path: str) -> str:
         version=convert_version_to_rpm_scheme(version),
         changelog_date=datetime.now().strftime("%a %b %d %Y"),
         changelog_packager=_packager_string(),
+        old_changelog=old_changelog,
     )
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("conf", help="pyp2spec TOML config file")
+    parser.add_argument(
+        "--existing-spec",
+        metavar="SPEC",
+        help="Existing spec to extract %changelog history from (for version bumps)",
+    )
     parser.add_argument("-o", "--output", help="Output spec file path")
     args = parser.parse_args()
 
-    spec_content = render(args.conf)
+    spec_content = render(args.conf, existing_spec=args.existing_spec)
 
     if args.output:
         Path(args.output).write_text(spec_content, encoding="utf-8")
-        print(f"Spec written to {args.output}")
+        print(f"Spec written to {args.output}", file=sys.stderr)
     else:
         sys.stdout.write(spec_content)
 
