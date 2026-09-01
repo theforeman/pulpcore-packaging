@@ -21,7 +21,8 @@ VERSION="${2:-}"
 CANONICAL=$(python3 -c "import re,sys; print(re.sub(r'[-_.]+', '-', sys.argv[1]).lower())" "$PYPI_NAME")
 PKG_DIR="packages/python-${CANONICAL}"
 SPEC_FILE="${PKG_DIR}/python-${CANONICAL}.spec"
-CONF_FILE="${PKG_DIR}/python-${CANONICAL}.conf"
+CONF_FILE="$(mktemp /tmp/python-${CANONICAL}-XXXXXX.conf)"
+trap "rm -f $CONF_FILE" EXIT
 
 if [ -d "$PKG_DIR" ]; then
     echo "ERROR: $PKG_DIR already exists. Use update_packages.sh to bump the version." >&2
@@ -66,7 +67,7 @@ if [ -n "$TARBALL" ] && [ -f "${PKG_DIR}/${TARBALL}" ]; then
     git annex add "${PKG_DIR}/${TARBALL}"
 fi
 
-git add "$SPEC_FILE" "$CONF_FILE"
+git add "$SPEC_FILE"
 
 echo ""
 echo "Scaffolded: ${SPEC_FILE}"

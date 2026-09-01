@@ -67,3 +67,6 @@ set -ex
 %changelog
 * {{changelog_date}} {{changelog_packager}} - {{version}}-1
 - Update to {{version}}
+{% if old_changelog %}
+{{old_changelog}}
+{% endif %}
