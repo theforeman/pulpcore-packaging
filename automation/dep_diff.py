@@ -9,8 +9,10 @@ Uses the PyPI JSON API — no external tools required.
 """
 
 import json
+import random
 import re
 import sys
+import time
 import urllib.request
 
 PYTHON_VER = "3.12"
@@ -26,7 +28,6 @@ def canonicalize(name):
 
 def pypi_mandatory_deps(pypi_name, version):
     """Return set of python3.12-* RPM names for mandatory (non-extra) runtime deps."""
-    import random, time
     url = f"https://pypi.org/pypi/{pypi_name}/{version}/json"
     # Jitter 0-20s so concurrent matrix jobs don't hit PyPI simultaneously
     time.sleep(random.uniform(0, 20))

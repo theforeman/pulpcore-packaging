@@ -60,10 +60,10 @@ def _packager_string() -> str:
 def _extract_old_changelog(spec_path: str) -> str:
     """Return everything in the spec after the %changelog header line."""
     text = Path(spec_path).read_text(encoding="utf-8")
-    m = re.search(r"^%changelog\s*\n(.*)", text, re.MULTILINE | re.DOTALL)
-    if not m:
+    parts = re.split(r"^%changelog\s*\n", text, maxsplit=1, flags=re.MULTILINE)
+    if len(parts) < 2:
         return ""
-    return m.group(1).rstrip("\n")
+    return parts[1].rstrip("\n")
 
 
 def render(conf_path: str, existing_spec: str | None = None) -> str:
