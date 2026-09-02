@@ -128,6 +128,7 @@ def test_pypi_mandatory_deps_uses_macro_prefix():
     with patch("urllib.request.urlopen", return_value=mock_cm), \
          patch("time.sleep"):
         result = ud.pypi_mandatory_deps("somepkg", "1.0")
+    assert len(result) > 0, "Expected at least one dependency"
     assert all(r.startswith("python%{python3_pkgversion}-") for r in result)
     assert not any("python3.12-" in r for r in result)
 

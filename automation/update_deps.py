@@ -10,8 +10,10 @@ Toolchain BuildRequires (python3.12-devel, pyproject-rpm-macros, etc.) are untou
 """
 
 import json
+import random
 import re
 import sys
+import time
 import urllib.request
 
 PYTHON_VER = "3.12"           # concrete version used only for detection/comparison
@@ -36,7 +38,6 @@ def canonicalize(name):
 
 def pypi_mandatory_deps(pypi_name, version):
     """Return sorted list of python3.12-* RPM names for mandatory runtime deps."""
-    import random, time
     url = f"https://pypi.org/pypi/{pypi_name}/{version}/json"
     # Jitter 0-20s so concurrent matrix jobs don't hit PyPI simultaneously
     time.sleep(random.uniform(0, 20))
@@ -116,9 +117,8 @@ def parse_requires_entries(rest):
         if i + 1 < len(tokens) and re.match(r"^[><=!]", tokens[i + 1]):
             op = tokens[i + 1]
             i += 2
-            # Consume next token as the version value unless it looks like another operator
-            # or a bare lowercase package name. RPM macros like %{version} are valid values.
-            if i < len(tokens) and not re.match(r"^[><=!a-z]", tokens[i]):
+            # Consume next token as the version value: digits/dots or an RPM macro.
+            if i < len(tokens) and re.match(r"^(\d+[\d.]*|%\{[\w_]+\})$", tokens[i]):
                 constraint = f"{op} {tokens[i]}"
                 i += 1
             else:
@@ -146,7 +146,11 @@ def rewrite_requires(spec_file, new_requires):
         rest = stripped[len("Requires:"):].strip()
         entries = parse_requires_entries(rest)
         # Drop stray RPM version macros (e.g. %{version}) left by a past parser bug
-        entries = [(n, c) for n, c in entries if not _STRAY_VERSION_MACRO_RE.match(n)]
+        filtered = [(n, c) for n, c in entries if not _STRAY_VERSION_MACRO_RE.match(n)]
+        if len(filtered) < len(entries):
+            dropped = [n for n, _ in entries if _STRAY_VERSION_MACRO_RE.match(n)]
+            print(f"INFO: Removed stray macros from Requires: {', '.join(dropped)}", file=sys.stderr)
+        entries = filtered
         if not entries:
             # Line contained only stray macros — drop it entirely
             continue

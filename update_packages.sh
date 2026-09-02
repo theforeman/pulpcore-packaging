@@ -101,7 +101,11 @@ _bump_fallback() {
     local new_version="$2"
     rpmdev-bumpspec --comment "- Update to ${new_version}" --new "${new_version}" "$spec_file"
     git add "$spec_file"
-    python3 automation/update_deps.py "$spec_file" "$pkg" "$new_version" && git add "$spec_file"
+    if python3 automation/update_deps.py "$spec_file" "$pkg" "$new_version"; then
+        git add "$spec_file"
+    else
+        echo "WARNING: update_deps.py failed for $pkg $new_version" >&2
+    fi
 }
 
 bump_spec "$@"
