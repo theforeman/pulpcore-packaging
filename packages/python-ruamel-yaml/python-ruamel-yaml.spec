@@ -4,15 +4,16 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name ruamel.yaml
 %global srcname ruamel-yaml
+%global src_name ruamel_yaml
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        0.18.15
-Release:        2%{?dist}
+Version:        0.19.1
+Release:        1%{?dist}
 Summary:        ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order
 
 License:        MIT license
 URL:            https://sourceforge.net/p/ruamel-yaml/code/ci/default/tree
-Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{src_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -21,7 +22,6 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-ruamel-yaml-clib >= 0.2.6
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
@@ -52,6 +52,10 @@ set -ex
 
 
 %changelog
+* Thu Sep  3 21:39:56 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.19.1-1
+- Update to 0.19.1
+- Use a macro for the normalized source archive name
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.18.15-2
 - Bump release for EL10 rebuild
 
