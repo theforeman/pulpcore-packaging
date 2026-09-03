@@ -12,6 +12,7 @@ import re
 import sys
 import time
 import urllib.request
+from pathlib import Path
 
 from packaging.markers import default_environment
 from packaging.requirements import InvalidRequirement, Requirement
@@ -110,8 +111,8 @@ def requirements_from_metadata(requires_dist):
     return result
 
 
-def pypi_mandatory_deps(pypi_name, version):
-    """Fetch mandatory runtime requirements for Python 3.12/Linux."""
+def pypi_release_data(pypi_name, version):
+    """Fetch release metadata from PyPI, failing without mutating the spec."""
     url = f"https://pypi.org/pypi/{pypi_name}/{version}/json"
     time.sleep(random.uniform(0, 20))
     last_error = None
@@ -119,11 +120,9 @@ def pypi_mandatory_deps(pypi_name, version):
         try:
             with urllib.request.urlopen(url, timeout=15) as response:
                 data = json.load(response)
-            try:
-                requires_dist = data["info"].get("requires_dist") or []
-            except (KeyError, AttributeError) as exc:
-                raise MetadataError("PyPI response has no info.requires_dist field") from exc
-            return requirements_from_metadata(requires_dist)
+            if not isinstance(data.get("info"), dict):
+                raise MetadataError("PyPI response has no info field")
+            return data
         except MetadataError:
             raise
         except Exception as exc:
@@ -133,6 +132,88 @@ def pypi_mandatory_deps(pypi_name, version):
     raise MetadataError(
         f"PyPI API error for {pypi_name}=={version}: {last_error}"
     ) from last_error
+
+
+def pypi_mandatory_deps(pypi_name, version):
+    """Fetch mandatory runtime requirements for Python 3.12/Linux."""
+    data = pypi_release_data(pypi_name, version)
+    return requirements_from_metadata(data["info"].get("requires_dist") or [])
+
+
+def update_pypi_source_filename(spec_file, release_data, version):
+    """Match a conventional PyPI Source URL to the release's real sdist name."""
+    sdists = [
+        item for item in release_data.get("urls", [])
+        if item.get("packagetype") == "sdist" and item.get("filename")
+    ]
+    if len(sdists) != 1:
+        raise MetadataError(
+            f"expected exactly one PyPI sdist, found {len(sdists)}"
+        )
+    sdist_filename = sdists[0]["filename"]
+    if version not in sdist_filename:
+        raise MetadataError(
+            f"sdist filename {sdist_filename!r} does not contain version {version!r}"
+        )
+    filename_prefix, filename_suffix = sdist_filename.rsplit(version, 1)
+    macro_filename = f"{filename_prefix}%{{version}}{filename_suffix}"
+
+    path = Path(spec_file)
+    lines = path.read_text().splitlines(keepends=True)
+    macros = {}
+    for line in lines:
+        match = re.match(r"^%global\s+(\w+)\s+(\S+)", line)
+        if match:
+            macros[match.group(1)] = match.group(2)
+    changed = False
+    for index, line in enumerate(lines):
+        if not re.match(r"^Source\d*:\s*", line):
+            continue
+        if "files.pythonhosted.org/packages/source/" not in line:
+            continue
+        current_url = line.rstrip("\n")
+        prefix, _separator, current_filename = current_url.rpartition("/")
+        expanded_filename = current_filename.replace("%{version}", version)
+        for name, value in macros.items():
+            expanded_filename = expanded_filename.replace(f"%{{{name}}}", value)
+        expanded_filename = re.sub(r"%\{\?\w+\}", "", expanded_filename)
+        if expanded_filename == sdist_filename:
+            return
+        newline = "\n" if line.endswith("\n") else ""
+        lines[index] = f"{prefix}/{macro_filename}{newline}"
+        changed = True
+        break
+    if changed:
+        path.write_text("".join(lines))
+
+
+def unpackaged_dependencies(spec_file, new_requires):
+    """Return new Python requirements unknown to this packaging repository."""
+    spec_path = Path(spec_file).resolve()
+    packages_dir = next(
+        (parent for parent in spec_path.parents if parent.name == "packages"), None
+    )
+    if packages_dir is None:
+        return set()
+
+    known = set()
+    for candidate in packages_dir.glob("python-*/python-*.spec"):
+        known.add(canonicalize(candidate.parent.name[len("python-"):]))
+        for line in candidate.read_text().splitlines():
+            if not line.startswith("Requires:"):
+                continue
+            for name, _constraint in parse_requires_entries(
+                line[len("Requires:"):].strip()
+            ):
+                dependency_name = rpm_dependency_name(name)
+                if dependency_name is not None:
+                    known.add(dependency_name)
+
+    requested = {
+        rpm_dependency_name(requirement.partition(" ")[0])
+        for requirement in new_requires
+    }
+    return {name for name in requested if name and name not in known}
 
 
 def is_library_name(name):
@@ -180,19 +261,39 @@ def _with_preserved_names(new_requires, existing_names):
     return result
 
 
-def _has_conditional_requires(lines):
+def _normalized_requirements(entries, spec_version):
+    normalized = set()
+    for name, constraint in entries:
+        dependency_name = rpm_dependency_name(name)
+        if dependency_name is None:
+            continue
+        normalized_constraint = constraint.replace("%{version}", spec_version)
+        normalized.add((dependency_name, normalized_constraint))
+    return normalized
+
+
+def conditional_requirements(lines):
+    """Return conditional Requires line indexes and their Python package names."""
     conditional_depth = 0
-    for line in lines:
+    indexes = set()
+    dependency_names = set()
+    for index, line in enumerate(lines):
         stripped = line.strip()
         if re.match(r"^%(?:if|ifarch|ifnarch)\b", stripped):
             conditional_depth += 1
         elif stripped.startswith("%endif"):
             conditional_depth = max(0, conditional_depth - 1)
         elif conditional_depth and stripped.startswith("Requires:"):
-            value = stripped[len("Requires:"):].strip()
-            if value and is_library_name(value.split()[0]):
-                return True
-    return False
+            entries = parse_requires_entries(stripped[len("Requires:"):].strip())
+            names = {
+                rpm_dependency_name(name)
+                for name, _constraint in entries
+                if rpm_dependency_name(name) is not None
+            }
+            if names:
+                indexes.add(index)
+                dependency_names.update(names)
+    return indexes, dependency_names
 
 
 def _unconditional_dependency_indexes(lines):
@@ -219,12 +320,19 @@ def rewrite_requires(spec_file, new_requires):
         len(lines),
     )
     preamble = lines[:description_index]
-    if _has_conditional_requires(preamble):
-        raise UnsafeSpecError(
-            "conditional Requires found before %description; refusing to flatten distro policy"
-        )
+    conditional_indexes, protected_names = conditional_requirements(preamble)
+    version_match = next(
+        (
+            re.match(r"^Version:\s*(\S+)", line)
+            for line in preamble
+            if line.startswith("Version:")
+        ),
+        None,
+    )
+    spec_version = version_match.group(1) if version_match else ""
 
     existing_names = {}
+    existing_updatable_entries = []
     library_indexes = []
     for index, line in enumerate(preamble):
         stripped = line.rstrip()
@@ -236,11 +344,42 @@ def rewrite_requires(spec_file, new_requires):
             raise UnsafeSpecError(
                 "mixed Python and non-Python requirements found on one line; refusing a lossy rewrite"
             )
+        dependency_names = set()
         for name, _constraint in entries:
             dependency_name = rpm_dependency_name(name)
             if dependency_name is not None:
                 existing_names.setdefault(dependency_name, name)
-                library_indexes.append(index)
+                dependency_names.add(dependency_name)
+        if (
+            dependency_names
+            and index not in conditional_indexes
+            and not dependency_names.intersection(protected_names)
+        ):
+            library_indexes.append(index)
+            existing_updatable_entries.extend(
+                (name, constraint)
+                for name, constraint in entries
+                if rpm_dependency_name(name) is not None
+            )
+
+    updatable_requires = [
+        requirement
+        for requirement in new_requires
+        if rpm_dependency_name(requirement.partition(" ")[0]) not in protected_names
+    ]
+    if protected_names:
+        print(
+            "INFO: preserving conditional Requires for: "
+            + ", ".join(sorted(protected_names)),
+            file=sys.stderr,
+        )
+    new_updatable_entries = [
+        parse_requires_entries(requirement)[0] for requirement in updatable_requires
+    ]
+    if _normalized_requirements(
+        existing_updatable_entries, spec_version
+    ) == _normalized_requirements(new_updatable_entries, spec_version):
+        return
 
     requires_prefix = "Requires:       "
     if library_indexes:
@@ -249,7 +388,7 @@ def rewrite_requires(spec_file, new_requires):
             requires_prefix = match.group(1)
     rendered = [
         f"{requires_prefix}{value}\n"
-        for value in _with_preserved_names(new_requires, existing_names)
+        for value in _with_preserved_names(updatable_requires, existing_names)
     ]
     if library_indexes:
         first_index = min(library_indexes)
@@ -277,10 +416,21 @@ def main():
         return 2
 
     spec_file, pypi_name, version = sys.argv[1], sys.argv[2], sys.argv[3]
+    original_spec = Path(spec_file).read_text()
     try:
-        new_requires = pypi_mandatory_deps(pypi_name, version)
+        release_data = pypi_release_data(pypi_name, version)
+        new_requires = requirements_from_metadata(
+            release_data["info"].get("requires_dist") or []
+        )
+        unknown = unpackaged_dependencies(spec_file, new_requires)
+        if unknown:
+            raise UnsafeSpecError(
+                "unpackaged Python dependencies: " + ", ".join(sorted(unknown))
+            )
         rewrite_requires(spec_file, new_requires)
+        update_pypi_source_filename(spec_file, release_data, version)
     except (MetadataError, UnsafeSpecError) as exc:
+        Path(spec_file).write_text(original_spec)
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 
