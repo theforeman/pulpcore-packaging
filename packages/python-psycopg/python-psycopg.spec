@@ -5,7 +5,7 @@
 %global pypi_name psycopg
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.3.4
+Version:        3.3.5
 Release:        1%{?dist}
 Summary:        PostgreSQL database adapter for Python
 
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Thu Sep  3 21:39:58 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.5-1
+- Update to 3.3.5
+
 * Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 3.3.4-1
 - Update to 3.3.4, needed for pulpcore 3.105.17's psycopg>=3.3.4,<3.4
 - Switch to %%pyproject_wheel/%%pyproject_install: upstream 3.3.4 dropped setup.py
