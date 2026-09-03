@@ -5,8 +5,8 @@
 %global pypi_name tuf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        7.0.0
-Release:        2%{?dist}
+Version:        7.0.1
+Release:        1%{?dist}
 Summary:        A Framework for Securing Software Update Systems
 
 License:        Apache-2.0 OR MIT
@@ -20,9 +20,10 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-securesystemslib >= 1.0
-Conflicts:      python%{python3_pkgversion}-securesystemslib >= 2.0
-Requires:       python%{python3_pkgversion}-urllib3 >= 1.21.1
+Requires:       python%{python3_pkgversion}-securesystemslib < 2
+Requires:       python%{python3_pkgversion}-urllib3 >= 2.0
 Requires:       python%{python3_pkgversion}-urllib3 < 3
+Conflicts:      python%{python3_pkgversion}-securesystemslib >= 2.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -55,6 +56,9 @@ set -ex
 
 
 %changelog
+* Thu Sep  3 21:40:10 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 7.0.1-1
+- Update to 7.0.1
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 7.0.0-2
 - Bump release for EL10 rebuild
 
