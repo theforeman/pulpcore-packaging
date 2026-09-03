@@ -5,8 +5,8 @@
 %global pypi_name importlib-metadata
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.0.1
-Release:        8%{?dist}
+Version:        8.7.1
+Release:        1%{?dist}
 Summary:        Read metadata from Python packages
 
 License:        Apache Software License
@@ -15,10 +15,13 @@ Source0:        https://files.pythonhosted.org/packages/source/i/%{pypi_name}/im
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-setuptools-scm
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-zipp >= 0.5
+Requires:       python%{python3_pkgversion}-zipp >= 3.20
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -29,30 +32,35 @@ Requires:       python%{python3_pkgversion}-zipp >= 0.5
 %prep
 set -ex
 %autosetup -n importlib_metadata-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-# create a minimal setup.py, the rest will be done by setuptools
-printf 'from setuptools import setup\nsetup(use_scm_version=True)' > setup.py
+# Fix PEP 639 metadata for the older setuptools available on RHEL
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+# coherent.licensed is not packaged on RHEL and is not required for the sdist
+sed -i '/"coherent.licensed"/d' pyproject.toml
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/importlib_metadata
-%{python3_sitelib}/importlib_metadata-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/importlib_metadata-%{version}.dist-info/
 
 
 %changelog
+* Thu Sep  3 21:40:21 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.7.1-1
+- Update to 8.7.1
+- Switch to the pyproject wheel build
+- Patch PEP 639 metadata for RHEL setuptools compatibility
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 6.0.1-8
 - Bump release for EL10 rebuild
 
