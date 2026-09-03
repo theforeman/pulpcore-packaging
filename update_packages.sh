@@ -44,22 +44,36 @@ bump_spec() {
     if [ 12 -eq $exit_code ]; then
         echo "RPM for Package $PKG_DIR needs to be updated from $rpm_version to $NEW_VERSION"
 
-        # Remove old tarball from git-annex
-        TARBALL_TO_REMOVE=$(spectool --list-files "$SPEC_FILE" | cut -d' ' -f2 | grep http | xargs --no-run-if-empty -n 1 basename)
-        git rm "packages/$PKG_DIR/$TARBALL_TO_REMOVE"
+        OLD_TARBALLS=()
+        while IFS= read -r source_url; do
+            [ -n "$source_url" ] && OLD_TARBALLS+=("$(basename "$source_url")")
+        done < <(spectool --list-files "$SPEC_FILE" | cut -d' ' -f2 | grep '^http')
 
         # Existing specs are the source of truth for RHEL/CentOS packaging policy.
         # Never regenerate them with pyp2spec: it cannot preserve Sources, patches,
         # macros, conditional dependencies, vendored crates, or manual %files lists.
         _bump_in_place "$SPEC_FILE" "$NEW_VERSION" || exit 1
-        if grep -qE 'rust-toolset|%cargo_prep' "$SPEC_FILE"; then
+        if grep -qE 'rust-toolset|%cargo_prep|downloads\.theforeman\.org/vendor/' "$SPEC_FILE"; then
             echo "Rust package detected — vendor tarball must be regenerated manually" >&2
         fi
 
+        for tarball in "${OLD_TARBALLS[@]}"; do
+            git rm -- "packages/$PKG_DIR/$tarball" || exit 1
+        done
+
         # Fetch new tarball and track via git-annex
-        spectool --get-files "$SPEC_FILE" -C "packages/$PKG_DIR"
-        TARBALL_ADDED=$(spectool --list-files "$SPEC_FILE" | cut -d' ' -f2 | grep http | xargs --no-run-if-empty -n 1 basename)
-        git annex add "packages/$PKG_DIR/$TARBALL_ADDED"
+        if ! spectool --get-files "$SPEC_FILE" -C "packages/$PKG_DIR"; then
+            echo "ERROR: failed to fetch sources for $pkg $NEW_VERSION" >&2
+            exit 1
+        fi
+        while IFS= read -r source_url; do
+            [ -n "$source_url" ] || continue
+            tarball=$(basename "$source_url")
+            if ! git annex add "packages/$PKG_DIR/$tarball"; then
+                echo "ERROR: failed to add $tarball to git-annex" >&2
+                exit 1
+            fi
+        done < <(spectool --list-files "$SPEC_FILE" | cut -d' ' -f2 | grep '^http')
     fi
 
     if [ 0 -eq $exit_code ]; then

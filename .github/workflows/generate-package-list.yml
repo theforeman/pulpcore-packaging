@@ -77,6 +77,8 @@ jobs:
           printf '#!/bin/bash\necho "$GIT_AUTHOR_NAME <$GIT_AUTHOR_EMAIL>"' | sudo tee /usr/local/bin/rpmdev-packager
           sudo chmod +x /usr/local/bin/spectool /usr/local/bin/rpmdev-*
           pip install packaging
+          git config --global user.name "$GIT_AUTHOR_NAME"
+          git config --global user.email "$GIT_AUTHOR_EMAIL"
       - name: Initialize git annex
         run: git annex init
       - name: Generate dependency diff
