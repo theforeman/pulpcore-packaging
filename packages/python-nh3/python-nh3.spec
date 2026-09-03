@@ -5,8 +5,8 @@
 %global pypi_name nh3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.3.6
-Release:        2%{?dist}
+Version:        0.3.7
+Release:        1%{?dist}
 Summary:        Python binding to Ammonia HTML sanitizer Rust crate
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -16,10 +16,12 @@ URL:            https://github.com/messense/nh3
 Source0:        https://files.pythonhosted.org/packages/source/n/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.xz
 
-#To create the vendor tarball:#
-# tar xf %%{name}-%%{version}.tar.gz ; pushd %%{name}-%%{version} ; \ 
-# cargo vendor --versioned-dirs --platform=x86_64-unknown-linux-gnu --version && \
-# tar Jcvf ../%%{name}-%%{version}-vendor.tar.xz vendor/ ; popd
+# To create the vendor tarball:
+# tar xf %%{pypi_name}-%%{version}.tar.gz
+# pushd %%{pypi_name}-%%{version}
+# cargo vendor --versioned-dirs
+# tar Jcf ../%%{pypi_name}-%%{version}-vendor.tar.xz vendor/
+# popd
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -62,6 +64,10 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Sep  3 19:43:40 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.3.7-1
+- Update to 0.3.7
+- Regenerate vendor tarball for 0.3.7
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.3.6-2
 - Bump release for EL10 rebuild
 
