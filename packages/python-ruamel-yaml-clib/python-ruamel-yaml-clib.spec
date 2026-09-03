@@ -4,15 +4,16 @@
 # Created by pyp2rpm-3.3.3
 %global pypi_name ruamel.yaml.clib
 %global srcname ruamel-yaml-clib
+%global src_name ruamel_yaml_clib
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        0.2.14
-Release:        2%{?dist}
+Version:        0.2.15
+Release:        1%{?dist}
 Summary:        C version of reader, parser and emitter for ruamel
 
 License:        MIT
 URL:            https://sourceforge.net/p/ruamel-yaml-clib/code/ci/default/tree
-Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/r/%{pypi_name}/%{src_name}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -53,6 +54,10 @@ set -ex
 
 
 %changelog
+* Thu Sep  3 21:40:05 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.2.15-1
+- Update to 0.2.15
+- Use a macro for the normalized source archive name
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.2.14-2
 - Bump release for EL10 rebuild
 
