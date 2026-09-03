@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.17
+Version:        3.105.19
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -50,7 +50,7 @@ Requires:       python%{python3_pkgversion}-django-import-export < 5.0
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
 Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.2.7
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
-Requires:       python%{python3_pkgversion}-djangorestframework <= 3.16.1
+Requires:       python%{python3_pkgversion}-djangorestframework < 3.18
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields <= 1.1.0
 Requires:       python%{python3_pkgversion}-drf-access-policy >= 1.1.2
@@ -63,7 +63,7 @@ Requires:       python%{python3_pkgversion}-dynaconf >= 3.2.5
 Requires:       python%{python3_pkgversion}-dynaconf < 3.3.0
 Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
 Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
-Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.33
+Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.35
 Requires:       python%{python3_pkgversion}-pysequoia < 0.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 22.0
 Requires:       python%{python3_pkgversion}-gunicorn < 25.2.0
@@ -176,6 +176,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 03 2026 Odilon Sousa <osousa@redhat.com> - 3.105.19-1
+- Release python-pulpcore 3.105.19
+
 * Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 3.105.17-1
 - Update to 3.105.17
 - Bump cryptography to >= 49.0.0, < 51.0 and pyOpenSSL to >= 26.3.0 (PQC support)
