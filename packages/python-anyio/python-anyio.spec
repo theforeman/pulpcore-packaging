@@ -3,7 +3,7 @@
 %global pypi_name anyio
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.14.2
+Version:        4.15.0
 Release:        1%{?dist}
 Summary:        High level compatibility layer for multiple asynchronous event loop implementations
 
@@ -22,8 +22,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-idna >= 2.8
-Requires:       python%{python3_pkgversion}-sniffio >= 1.1
-Requires:       python%{python3_pkgversion}-typing-extensions >= 4.5
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.16.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -55,6 +54,9 @@ set -ex
 
 
 %changelog
+* Thu Sep  3 21:40:06 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.15.0-1
+- Update to 4.15.0
+
 * Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.14.2-1
 - Update to 4.14.2
 
