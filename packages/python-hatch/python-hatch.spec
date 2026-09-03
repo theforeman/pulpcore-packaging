@@ -4,8 +4,8 @@
 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.16.5
-Release:        2%{?dist}
+Version:        1.18.0
+Release:        1%{?dist}
 Summary:        Modern, extensible Python project management
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -25,8 +25,9 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 Requires:  python%{python3_pkgversion}-backports-zstd >= 1.0.0
 Requires:  python%{python3_pkgversion}-click >= 8.0.6
 Requires:  python%{python3_pkgversion}-discovery >= 1.1
+Requires:  python%{python3_pkgversion}-distro >= 1.0.0
 Requires:  python%{python3_pkgversion}-hatchling >= 1.27.0
-Requires:  python%{python3_pkgversion}-httpx >= 0.22.0
+Requires:  python%{python3_pkgversion}-httpx2 >= 0.22.0
 Requires:  python%{python3_pkgversion}-hyperlink >= 21.0.0
 Requires:  python%{python3_pkgversion}-keyring >= 23.5.0
 Requires:  python%{python3_pkgversion}-packaging >= 24.2
@@ -39,7 +40,7 @@ Requires:  python%{python3_pkgversion}-shellingham >= 1.4.0
 Requires:  python%{python3_pkgversion}-tomli_w >= 1.0
 Requires:  python%{python3_pkgversion}-tomlkit >= 0.11.1
 Requires:  python%{python3_pkgversion}-userpath >= 1.7
-Requires:  python%{python3_pkgversion}-userpath < 2.0
+Requires:  python%{python3_pkgversion}-userpath < 2
 Requires:  python%{python3_pkgversion}-uv >= 0.5.23
 Requires:  python%{python3_pkgversion}-virtualenv >= 21
 
@@ -70,6 +71,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Thu Sep  3 19:43:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.18.0-1
+- Update to 1.18.0
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.16.5-2
 - Bump release for EL10 rebuild
 
