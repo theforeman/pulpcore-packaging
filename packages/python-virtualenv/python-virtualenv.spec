@@ -4,7 +4,7 @@
 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        21.7.7
+Version:        21.7.8
 Release:        1%{?dist}
 Summary:        A tool for creating isolated virtual python environments.
 
@@ -58,6 +58,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Thu Sep  3 21:39:50 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 21.7.8-1
+- Update to 21.7.8
+
 * Sun Aug 30 04:26:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 21.7.7-1
 - Update to 21.7.7
 - Update discovery lower bound to >= 1.6
