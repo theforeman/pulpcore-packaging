@@ -7,8 +7,8 @@
 %global pypi_name maturin
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.14.1
-Release:        2%{?dist}
+Version:        1.15.0
+Release:        1%{?dist}
 Summary:        Build and publish crates with pyo3, cffi and uniffi bindings as well as rust binaries as python packages
 
 License:        MIT OR Apache-2.0
@@ -17,10 +17,11 @@ Source0:        https://files.pythonhosted.org/packages/source/m/%{pypi_name}/%{
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.xz
 
 # To create the vendor tarball:
-# curl -sL https://files.pythonhosted.org/packages/source/m/maturin/maturin-1.13.3.tar.gz -o /tmp/maturin-1.13.3.tar.gz
-# cd /tmp && tar xzf maturin-1.13.3.tar.gz && cd maturin-1.13.3
+# tar xf %%{pypi_name}-%%{version}.tar.gz
+# pushd %%{pypi_name}-%%{version}
 # cargo vendor --versioned-dirs
-# tar Jcf ../maturin-1.13.3-vendor.tar.xz vendor/
+# tar Jcf ../%%{pypi_name}-%%{version}-vendor.tar.xz vendor/
+# popd
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -64,6 +65,10 @@ set -ex
 
 
 %changelog
+* Thu Sep  3 19:43:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.15.0-1
+- Update to 1.15.0
+- Regenerate vendor tarball for 1.15.0
+
 * Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 1.14.1-2
 - Bump release for EL10 rebuild
 
