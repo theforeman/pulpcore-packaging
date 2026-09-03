@@ -6,8 +6,8 @@
 %global pypi_name rapidfuzz
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.14.5
-Release:        2%{?dist}
+Version:        3.14.6
+Release:        1%{?dist}
 Summary:        rapid fuzzy string matching
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 %{python3_sitearch}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Thu Sep  3 21:39:55 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.14.6-1
+- Update to 3.14.6
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 3.14.5-2
 - Bump release for EL10 rebuild
 
