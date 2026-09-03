@@ -27,9 +27,6 @@ bump_spec() {
         exit 1
     }
     SPEC_FILE="packages/$PKG_DIR/$PKG_DIR.spec"
-    CONF_FILE="$(mktemp /tmp/${PKG_DIR}-XXXXXX.conf)"
-    trap "rm -f $CONF_FILE" EXIT
-
     # Store the packaged version of the lib; fail loudly if spec is missing or malformed
     rpm_version=$(rpmspec -q --queryformat='%{version}' "$SPEC_FILE" --srpm) || {
         echo "ERROR: rpmspec failed on $SPEC_FILE" >&2
@@ -51,32 +48,12 @@ bump_spec() {
         TARBALL_TO_REMOVE=$(spectool --list-files "$SPEC_FILE" | cut -d' ' -f2 | grep http | xargs --no-run-if-empty -n 1 basename)
         git rm "packages/$PKG_DIR/$TARBALL_TO_REMOVE"
 
+        # Existing specs are the source of truth for RHEL/CentOS packaging policy.
+        # Never regenerate them with pyp2spec: it cannot preserve Sources, patches,
+        # macros, conditional dependencies, vendored crates, or manual %files lists.
+        _bump_in_place "$SPEC_FILE" "$NEW_VERSION" || exit 1
         if grep -qE 'rust-toolset|%cargo_prep' "$SPEC_FILE"; then
-            # Rust-extension packages (maturin, cryptography, nh3, …): pyp2spec cannot model
-            # vendored crates tarballs or cargo macros — fall back to version-only bump.
-            # The vendor tarball must be regenerated manually before opening the PR.
-            # See: https://github.com/theforeman/pulpcore-packaging/issues/3024
-            echo "Rust package detected — pyp2spec skipped; vendor tarball must be regenerated manually" >&2
-            _bump_fallback "$SPEC_FILE" "$NEW_VERSION"
-        elif command -v pyp2conf &>/dev/null; then
-            # Regenerate spec via pyp2conf + our template, preserving %changelog history
-            pyp2conf -a -v "$NEW_VERSION" "$pkg" -c "$CONF_FILE" || {
-                echo "WARNING: pyp2conf failed for $pkg $NEW_VERSION, falling back to rpmdev-bumpspec" >&2
-                _bump_fallback "$SPEC_FILE" "$NEW_VERSION"
-                return
-            }
-            python3 "$(dirname "$0")/automation/conf2spec_theforeman.py" \
-                "$CONF_FILE" \
-                --existing-spec "$SPEC_FILE" \
-                -o "$SPEC_FILE" || {
-                echo "WARNING: conf2spec_theforeman.py failed, falling back to rpmdev-bumpspec" >&2
-                _bump_fallback "$SPEC_FILE" "$NEW_VERSION"
-                return
-            }
-            git add "$SPEC_FILE"
-        else
-            echo "pyp2spec not installed, using rpmdev-bumpspec fallback" >&2
-            _bump_fallback "$SPEC_FILE" "$NEW_VERSION"
+            echo "Rust package detected — vendor tarball must be regenerated manually" >&2
         fi
 
         # Fetch new tarball and track via git-annex
@@ -96,15 +73,18 @@ bump_spec() {
     fi
 }
 
-_bump_fallback() {
+_bump_in_place() {
     local spec_file="$1"
     local new_version="$2"
-    rpmdev-bumpspec --comment "- Update to ${new_version}" --new "${new_version}" "$spec_file"
-    git add "$spec_file"
+    if ! rpmdev-bumpspec --comment "- Update to ${new_version}" --new "${new_version}" "$spec_file"; then
+        echo "ERROR: rpmdev-bumpspec failed for $pkg $new_version" >&2
+        return 1
+    fi
     if python3 automation/update_deps.py "$spec_file" "$pkg" "$new_version"; then
         git add "$spec_file"
     else
-        echo "WARNING: update_deps.py failed for $pkg $new_version" >&2
+        echo "ERROR: update_deps.py failed for $pkg $new_version" >&2
+        return 1
     fi
 }
 

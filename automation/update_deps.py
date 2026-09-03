@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-"""Regenerate Requires in an existing spec file using PyPI dependency metadata.
+"""Update the main package's runtime Requires from PyPI metadata.
 
-Usage:
-    python3 automation/update_deps.py <spec_file> <pypi_name> <version>
-
-Replaces mandatory (non-extra) Requires: python3.12-* entries in the spec
-with the new version's declared runtime dependencies from the PyPI JSON API.
-Toolchain BuildRequires (python3.12-devel, pyproject-rpm-macros, etc.) are untouched.
+This deliberately edits an existing spec instead of regenerating it. Specs in
+this repository contain RHEL/CentOS-specific Sources, macros, patches and file
+lists which a generic spec generator cannot reproduce safely.
 """
 
 import json
@@ -16,189 +13,283 @@ import sys
 import time
 import urllib.request
 
-PYTHON_VER = "3.12"           # concrete version used only for detection/comparison
-PYTHON_RPM_PREFIX = "python%{python3_pkgversion}"  # macro form written to spec files
+from packaging.markers import default_environment
+from packaging.requirements import InvalidRequirement, Requirement
+from packaging.version import Version
+
+PYTHON_VER = "3.12"
+PYTHON_RPM_PREFIX = "python%{python3_pkgversion}"
 _SEP_RE = re.compile(r"[-_.]+")
 _RPM_MACRO_RE = re.compile(r"%\{python3_pkgversion\}|%\{python3_abi\}")
 
-# Token patterns that are build toolchain, not Python library deps
-_TOOLCHAIN_RE = re.compile(
-    rf"python{re.escape(PYTHON_VER)}-(devel|wheel|pip|setuptools)|"
-    r"pyproject-rpm-macros|gcc|make|cmake|perl|ruby"
-)
 
-# Stray RPM version/release macros that sometimes appear as Requires: %{version}
-# due to a past parse_requires_entries bug — not real package names.
-_STRAY_VERSION_MACRO_RE = re.compile(r"^%\{(version|epoch|release)\}$")
+class MetadataError(RuntimeError):
+    """PyPI metadata could not be fetched or parsed safely."""
+
+
+class UnsafeSpecError(RuntimeError):
+    """The Requires block needs packaging-policy-aware human handling."""
 
 
 def canonicalize(name):
     return _SEP_RE.sub("-", name).lower()
 
 
+def _marker_environment():
+    environment = default_environment()
+    environment.update({
+        "python_version": PYTHON_VER,
+        "python_full_version": f"{PYTHON_VER}.0",
+        "implementation_name": "cpython",
+        "implementation_version": f"{PYTHON_VER}.0",
+        "os_name": "posix",
+        "platform_machine": "x86_64",
+        "platform_system": "Linux",
+        "platform_python_implementation": "CPython",
+        "sys_platform": "linux",
+        "extra": "",
+    })
+    return environment
+
+
+def _compatible_upper_bound(version):
+    parsed = Version(version)
+    release = list(parsed.release)
+    prefix = release[:-1] if len(release) > 1 else release
+    prefix[-1] += 1
+    return ".".join(str(part) for part in prefix)
+
+
+def _rpm_constraints(requirement):
+    constraints = set()
+    for specifier in requirement.specifier:
+        operator, version = specifier.operator, specifier.version
+        if operator == "~=":
+            constraints.add((">=", version))
+            constraints.add(("<", _compatible_upper_bound(version)))
+        elif operator in {">=", ">", "<", "<=", "=="} and "*" not in version:
+            constraints.add((operator, version))
+        elif operator not in {"!="}:
+            print(
+                f"WARNING: unsupported PyPI constraint {specifier} for {requirement.name}; ignoring it",
+                file=sys.stderr,
+            )
+    rank = {">=": 0, ">": 1, "==": 2, "<=": 3, "<": 4}
+    return sorted(constraints, key=lambda item: (rank[item[0]], Version(item[1])))
+
+
+def requirements_from_metadata(requires_dist):
+    """Translate applicable Python 3.12/Linux requirements to RPM Requires."""
+    dependencies = {}
+    environment = _marker_environment()
+    for value in requires_dist:
+        try:
+            requirement = Requirement(value)
+        except InvalidRequirement as exc:
+            raise MetadataError(f"invalid Requires-Dist entry {value!r}: {exc}") from exc
+        if requirement.marker and not requirement.marker.evaluate(environment):
+            continue
+
+        name = canonicalize(requirement.name)
+        if name.startswith("python-"):
+            name = name[len("python-"):]
+        dependencies.setdefault(name, set()).update(_rpm_constraints(requirement))
+
+    result = []
+    rank = {">=": 0, ">": 1, "==": 2, "<=": 3, "<": 4}
+    for name in sorted(dependencies):
+        rpm_name = f"{PYTHON_RPM_PREFIX}-{name}"
+        constraints = sorted(
+            dependencies[name], key=lambda item: (rank[item[0]], Version(item[1]))
+        )
+        result.extend(
+            f"{rpm_name} {operator} {version}" for operator, version in constraints
+        )
+        if not constraints:
+            result.append(rpm_name)
+    return result
+
+
 def pypi_mandatory_deps(pypi_name, version):
-    """Return sorted list of python3.12-* RPM names for mandatory runtime deps."""
+    """Fetch mandatory runtime requirements for Python 3.12/Linux."""
     url = f"https://pypi.org/pypi/{pypi_name}/{version}/json"
-    # Jitter 0-20s so concurrent matrix jobs don't hit PyPI simultaneously
     time.sleep(random.uniform(0, 20))
+    last_error = None
     for attempt in range(3):
         try:
-            with urllib.request.urlopen(url, timeout=15) as r:
-                data = json.load(r)
-            break
-        except Exception as e:
-            if attempt == 2:
-                print(f"WARNING: PyPI API error for {pypi_name}=={version}: {e}", file=sys.stderr)
-                return []
-            time.sleep(2 ** attempt + random.uniform(0, 3))
-
-    requires_dist = data["info"].get("requires_dist") or []
-    rpm_names = set()
-    for dep in requires_dist:
-        if "extra ==" in dep or "extra==" in dep:
-            continue
-        # Skip Windows/macOS-only deps; we build for Linux only
-        marker_part = dep.split(";", 1)[1] if ";" in dep else ""
-        if re.search(
-            r'sys_platform\s*==\s*["\']win32["\']'
-            r'|platform_system\s*==\s*["\']Windows["\']'
-            r'|os_name\s*==\s*["\']nt["\']'
-            r'|sys_platform\s*==\s*["\']darwin["\']'
-            r'|platform_system\s*==\s*["\']Darwin["\']',
-            marker_part,
-        ):
-            continue
-        # Strip environment markers (everything after ';')
-        dep_clean = dep.split(";")[0].strip().strip("()")
-        # Parse name and optional version constraint
-        m = re.match(r"^([A-Za-z0-9][A-Za-z0-9._-]*)\s*([><=!~,\s\d.*]+)?$", dep_clean)
-        if not m:
-            continue
-        raw_name = m.group(1).strip()
-        version_part = (m.group(2) or "").strip()
-        canonical = canonicalize(raw_name)
-        if canonical.startswith("python-"):
-            canonical = canonical[len("python-"):]
-        rpm_name = f"{PYTHON_RPM_PREFIX}-{canonical}"
-        # Preserve first version constraint (>= only; skip != / == / < which are unusual in Requires)
-        if version_part:
-            first = version_part.split(",")[0].strip()
-            op_m = re.match(r"([><=!~]+)\s*(\S+)", first)
-            if op_m:
-                op, ver = op_m.group(1), op_m.group(2)
-                if op in (">=", "~="):
-                    rpm_names.add(f"{rpm_name} >= {ver}")
-                    continue
-        rpm_names.add(rpm_name)
-    return sorted(rpm_names)
+            with urllib.request.urlopen(url, timeout=15) as response:
+                data = json.load(response)
+            try:
+                requires_dist = data["info"].get("requires_dist") or []
+            except (KeyError, AttributeError) as exc:
+                raise MetadataError("PyPI response has no info.requires_dist field") from exc
+            return requirements_from_metadata(requires_dist)
+        except MetadataError:
+            raise
+        except Exception as exc:
+            last_error = exc
+            if attempt < 2:
+                time.sleep(2 ** attempt + random.uniform(0, 3))
+    raise MetadataError(
+        f"PyPI API error for {pypi_name}=={version}: {last_error}"
+    ) from last_error
 
 
 def is_library_name(name):
-    """Return True if name (after macro expansion) is a python3.12-* library dep."""
     expanded = _RPM_MACRO_RE.sub(PYTHON_VER, name)
-    return (
-        expanded.startswith(f"python{PYTHON_VER}-")
-        and not _TOOLCHAIN_RE.search(expanded)
-    )
+    return expanded.startswith(f"python{PYTHON_VER}-")
+
+
+def rpm_dependency_name(name):
+    """Return the canonical PyPI-like portion of an RPM Python dependency."""
+    expanded = _RPM_MACRO_RE.sub(PYTHON_VER, name)
+    prefix = f"python{PYTHON_VER}-"
+    if not expanded.startswith(prefix):
+        return None
+    value = canonicalize(expanded[len(prefix):])
+    return value[len("python-"):] if value.startswith("python-") else value
 
 
 def parse_requires_entries(rest):
-    """Parse an RPM Requires value into list of (name, version_constraint) tuples.
-
-    Handles: 'foo', 'foo >= 1.0', 'foo >= 1.0 bar baz >= 2.0'
-    """
+    """Parse an RPM Requires value into ``(name, constraint)`` tuples."""
     entries = []
     tokens = rest.split()
-    i = 0
-    while i < len(tokens):
-        name = tokens[i]
+    index = 0
+    while index < len(tokens):
+        name = tokens[index]
         constraint = ""
-        # Consume optional version operator + value
-        if i + 1 < len(tokens) and re.match(r"^[><=!]", tokens[i + 1]):
-            op = tokens[i + 1]
-            i += 2
-            # Consume next token as the version value: digits/dots or an RPM macro.
-            if i < len(tokens) and re.match(r"^(\d+[\d.]*|%\{[\w_]+\})$", tokens[i]):
-                constraint = f"{op} {tokens[i]}"
-                i += 1
+        index += 1
+        if index < len(tokens) and re.match(r"^[><=!~]", tokens[index]):
+            operator = tokens[index]
+            index += 1
+            if index < len(tokens):
+                constraint = f"{operator} {tokens[index]}"
+                index += 1
             else:
-                constraint = op
-        else:
-            i += 1
+                constraint = operator
         entries.append((name, constraint))
     return entries
 
 
-def rewrite_requires(spec_file, new_requires):
-    """Replace python3.12-* library Requires: lines in spec with new_requires."""
-    with open(spec_file) as f:
-        lines = f.readlines()
+def _with_preserved_names(new_requires, existing_names):
+    result = []
+    for requirement in new_requires:
+        name, separator, constraint = requirement.partition(" ")
+        replacement = existing_names.get(rpm_dependency_name(name), name)
+        result.append(f"{replacement}{separator}{constraint}")
+    return result
 
-    out = []
-    library_block_written = False
 
+def _has_conditional_requires(lines):
+    conditional_depth = 0
     for line in lines:
+        stripped = line.strip()
+        if re.match(r"^%(?:if|ifarch|ifnarch)\b", stripped):
+            conditional_depth += 1
+        elif stripped.startswith("%endif"):
+            conditional_depth = max(0, conditional_depth - 1)
+        elif conditional_depth and stripped.startswith("Requires:"):
+            value = stripped[len("Requires:"):].strip()
+            if value and is_library_name(value.split()[0]):
+                return True
+    return False
+
+
+def _unconditional_dependency_indexes(lines):
+    indexes = []
+    conditional_depth = 0
+    for index, line in enumerate(lines):
+        stripped = line.strip()
+        if re.match(r"^%(?:if|ifarch|ifnarch)\b", stripped):
+            conditional_depth += 1
+        elif stripped.startswith("%endif"):
+            conditional_depth = max(0, conditional_depth - 1)
+        elif not conditional_depth and line.startswith(("Requires:", "BuildRequires:")):
+            indexes.append(index)
+    return indexes
+
+
+def rewrite_requires(spec_file, new_requires):
+    """Replace only the main package's Python Requires block."""
+    with open(spec_file) as handle:
+        lines = handle.readlines()
+
+    description_index = next(
+        (index for index, line in enumerate(lines) if line.startswith("%description")),
+        len(lines),
+    )
+    preamble = lines[:description_index]
+    if _has_conditional_requires(preamble):
+        raise UnsafeSpecError(
+            "conditional Requires found before %description; refusing to flatten distro policy"
+        )
+
+    existing_names = {}
+    library_indexes = []
+    for index, line in enumerate(preamble):
         stripped = line.rstrip()
         if not stripped.startswith("Requires:"):
-            out.append(line)
             continue
+        entries = parse_requires_entries(stripped[len("Requires:"):].strip())
+        library_entries = [name for name, _constraint in entries if is_library_name(name)]
+        if library_entries and len(library_entries) != len(entries):
+            raise UnsafeSpecError(
+                "mixed Python and non-Python requirements found on one line; refusing a lossy rewrite"
+            )
+        for name, _constraint in entries:
+            dependency_name = rpm_dependency_name(name)
+            if dependency_name is not None:
+                existing_names.setdefault(dependency_name, name)
+                library_indexes.append(index)
 
-        rest = stripped[len("Requires:"):].strip()
-        entries = parse_requires_entries(rest)
-        # Drop stray RPM version macros (e.g. %{version}) left by a past parser bug
-        filtered = [(n, c) for n, c in entries if not _STRAY_VERSION_MACRO_RE.match(n)]
-        if len(filtered) < len(entries):
-            dropped = [n for n, _ in entries if _STRAY_VERSION_MACRO_RE.match(n)]
-            print(f"INFO: Removed stray macros from Requires: {', '.join(dropped)}", file=sys.stderr)
-        entries = filtered
-        if not entries:
-            # Line contained only stray macros — drop it entirely
-            continue
-        lib_entries = [(n, c) for n, c in entries if is_library_name(n)]
-        preserved_entries = [(n, c) for n, c in entries if not is_library_name(n)]
+    requires_prefix = "Requires:       "
+    if library_indexes:
+        match = re.match(r"^(Requires:\s*)", preamble[min(library_indexes)])
+        if match:
+            requires_prefix = match.group(1)
+    rendered = [
+        f"{requires_prefix}{value}\n"
+        for value in _with_preserved_names(new_requires, existing_names)
+    ]
+    if library_indexes:
+        first_index = min(library_indexes)
+        library_index_set = set(library_indexes)
+        new_preamble = []
+        for index, line in enumerate(preamble):
+            if index == first_index:
+                new_preamble.extend(rendered)
+            if index not in library_index_set:
+                new_preamble.append(line)
+    elif rendered:
+        candidates = _unconditional_dependency_indexes(preamble)
+        insert_at = (max(candidates) + 1) if candidates else len(preamble)
+        new_preamble = preamble[:insert_at] + rendered + preamble[insert_at:]
+    else:
+        new_preamble = preamble
 
-        if not lib_entries:
-            # No library entries on this line — keep it unchanged
-            out.append(line)
-            continue
-
-        if library_block_written:
-            # Additional library-only Requires lines are consolidated above
-            continue
-
-        indent = "Requires:       "
-        # Write preserved non-library entries (with their version constraints)
-        for name, constraint in preserved_entries:
-            token = f"{name} {constraint}".strip()
-            out.append(f"{indent}{token}\n")
-        # Write the new library Requires
-        for req in new_requires:
-            out.append(f"{indent}{req}\n")
-        library_block_written = True
-
-    with open(spec_file, "w") as f:
-        f.writelines(out)
+    with open(spec_file, "w") as handle:
+        handle.writelines(new_preamble + lines[description_index:])
 
 
 def main():
     if len(sys.argv) != 4:
         print(f"Usage: {sys.argv[0]} <spec_file> <pypi_name> <version>", file=sys.stderr)
-        sys.exit(1)
+        return 2
 
     spec_file, pypi_name, version = sys.argv[1], sys.argv[2], sys.argv[3]
-    new_requires = pypi_mandatory_deps(pypi_name, version)
-
-    if not new_requires:
-        print(f"INFO: no mandatory runtime deps for {pypi_name}=={version}; "
-              "removing existing library Requires entries.")
-
-    rewrite_requires(spec_file, new_requires)
+    try:
+        new_requires = pypi_mandatory_deps(pypi_name, version)
+        rewrite_requires(spec_file, new_requires)
+    except (MetadataError, UnsafeSpecError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
 
     if new_requires:
         print(f"Updated Requires in {spec_file}: {', '.join(new_requires)}")
     else:
-        print(f"Cleared library Requires in {spec_file} (no mandatory deps declared).")
+        print(f"Cleared main Python Requires in {spec_file}; PyPI declares none.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
