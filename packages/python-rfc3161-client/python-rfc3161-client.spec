@@ -8,8 +8,8 @@
 %global src_name rfc3161_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.0.6
-Release:        2%{?dist}
+Version:        1.0.8
+Release:        1%{?dist}
 Summary:        A client library for RFC 3161 Time-Stamp Protocol
 
 License:        Apache-2.0
@@ -20,10 +20,12 @@ Patch0:         0001-Replace-git-dep-cryptography-x509-with-vendored-vers.patch
 Patch1:         0002-Add-cargo-vendor-config.patch
 Patch2:         0003-Use-system-openssl-instead-of-vendored.patch
 
-#To create the vendor tarball:#
-# tar xf %%{src_name}-%%{version}.tar.gz ; pushd %%{src_name}-%%{version} ; \
-# cargo vendor --versioned-dirs --platform=x86_64-unknown-linux-gnu && \
-# tar Jcvf ../%%{src_name}-%%{version}-vendor.tar.xz vendor/ ; popd
+# To create the vendor tarball:
+# tar xf %%{src_name}-%%{version}.tar.gz
+# pushd %%{src_name}-%%{version}
+# cargo vendor --versioned-dirs
+# tar Jcf ../%%{src_name}-%%{version}-vendor.tar.xz vendor/
+# popd
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-maturin >= 1.7
@@ -65,6 +67,10 @@ set -ex
 
 
 %changelog
+* Thu Sep  3 19:43:45 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.8-1
+- Update to 1.0.8
+- Regenerate vendor tarball for 1.0.8
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.0.6-2
 - Bump release for EL10 rebuild
 
