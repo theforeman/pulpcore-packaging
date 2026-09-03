@@ -5,8 +5,8 @@
 %global pypi_name djangorestframework
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.16.1
-Release:        2%{?dist}
+Version:        3.17.2
+Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
 License:        BSD
@@ -15,10 +15,12 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-django >= 3.0
-Requires:       python%{python3_pkgversion}-pytz
+Requires:       python%{python3_pkgversion}-django >= 4.2
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -32,29 +34,35 @@ Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+# Fix PEP 639 metadata for the older setuptools available on RHEL
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/d' pyproject.toml
 
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE.md
 %doc README.md
 %{python3_sitelib}/rest_framework
-%exclude %{python3_sitelib}/tutorial
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 
 %changelog
+* Thu Sep  3 21:39:52 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.17.2-1
+- Update to 3.17.2
+- Switch to the pyproject wheel build
+- Patch PEP 639 metadata for RHEL setuptools compatibility
+- Adjust the file list for the wheel contents
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 3.16.1-2
 - Bump release for EL10 rebuild
 
