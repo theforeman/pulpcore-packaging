@@ -338,6 +338,7 @@ tier4_packages:
     python-tablib: {}
     python-tomlkit: {}
     python-toml: {}
+    python-truststore: {}
     python-tuf: {}
     python-types-cryptography: {}
     python-uritemplate: {}
