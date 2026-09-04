@@ -248,6 +248,7 @@ tier4_packages:
     python-h11: {}
     python-httpcore: {}
     python-httpx: {}
+    python-httpx2: {}
     python-idna: {}
     python-idna-ssl: {}
     python-importlib-metadata: {}
