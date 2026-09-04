@@ -133,6 +133,7 @@
       <packagereq type="default">python3.12-hatchling</packagereq>
       <packagereq type="default">python3.12-httpcore</packagereq>
       <packagereq type="default">python3.12-httpx</packagereq>
+      <packagereq type="default">python3.12-httpx2</packagereq>
       <packagereq type="default">python3.12-humanfriendly</packagereq>
       <packagereq type="default">python3.12-hyperlink</packagereq>
       <packagereq type="default">python3.12-idna</packagereq>
