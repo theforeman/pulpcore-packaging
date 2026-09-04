@@ -247,6 +247,7 @@ tier4_packages:
     python-gunicorn: {}
     python-h11: {}
     python-httpcore: {}
+    python-httpcore2: {}
     python-httpx: {}
     python-idna: {}
     python-idna-ssl: {}
