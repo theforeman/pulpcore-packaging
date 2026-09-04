@@ -286,6 +286,7 @@
       <packagereq type="default">python3.12-tomli</packagereq>
       <packagereq type="default">python3.12-tomli_w</packagereq>
       <packagereq type="default">python3.12-tomlkit</packagereq>
+      <packagereq type="default">python3.12-truststore</packagereq>
       <packagereq type="default">python3.12-tuf</packagereq>
       <packagereq type="default">python3.12-trove-classifiers</packagereq>
       <packagereq type="default">python3.12-types-cryptography</packagereq>
