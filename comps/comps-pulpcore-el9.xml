@@ -132,6 +132,7 @@
       <packagereq type="default">python3.12-hatch_vcs</packagereq>
       <packagereq type="default">python3.12-hatchling</packagereq>
       <packagereq type="default">python3.12-httpcore</packagereq>
+      <packagereq type="default">python3.12-httpcore2</packagereq>
       <packagereq type="default">python3.12-httpx</packagereq>
       <packagereq type="default">python3.12-humanfriendly</packagereq>
       <packagereq type="default">python3.12-hyperlink</packagereq>
