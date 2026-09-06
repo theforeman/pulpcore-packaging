@@ -6,7 +6,7 @@
 %global srcname googleapis_common_protos
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.75.2
+Version:        1.75.3
 Release:        1%{?dist}
 Summary:        Common protobufs used in Google APIs
 
@@ -28,10 +28,8 @@ Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.2
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.3
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.4
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.5
-Requires:       python%{python3_pkgversion}-grpcio < 2.0.0.dev0
-Requires:       python%{python3_pkgversion}-grpcio >= 1.44.0
-Requires:       python%{python3_pkgversion}-protobuf < 7.0.0
-Requires:       python%{python3_pkgversion}-protobuf >= 3.19.5
+Requires:       python%{python3_pkgversion}-protobuf >= 6.33.5
+Requires:       python%{python3_pkgversion}-protobuf < 8.0.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -64,6 +62,9 @@ set -ex
 
 
 %changelog
+* Sun Sep  6 04:26:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.75.3-1
+- Update to 1.75.3
+
 * Thu Aug 27 11:20:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.75.2-1
 - Update to 1.75.2
 
