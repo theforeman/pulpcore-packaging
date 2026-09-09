@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.75.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        Apache-2.0
