@@ -41,6 +41,8 @@ Requires:       python%{python3_pkgversion}-protobuf < 8.0.0
 %prep
 set -ex
 %autosetup -n %{srcname}-%{version}
+# Fix PEP 639 license field (RHEL 9/10 setuptools does not support SPDX string format)
+sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -62,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 09 2026 Odilon Sousa <osousa@redhat.com> - 1.75.3-2
+- Fix PEP 639 license metadata for RHEL 9/10 setuptools compatibility
+
 * Sun Sep  6 04:26:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.75.3-1
 - Update to 1.75.3
 
