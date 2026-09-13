@@ -3,7 +3,7 @@
 %global pypi_name build
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.6.0
+Version:        1.6.1
 Release:        1%{?dist}
 Summary:        A simple, correct Python build frontend
 
@@ -18,9 +18,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 
-Requires:       python%{python3_pkgversion}-packaging >= 19.0
+Requires:       python%{python3_pkgversion}-packaging >= 24.0
 Requires:       python%{python3_pkgversion}-pyproject_hooks
-Requires:       python%{python3_pkgversion}-tomli >= 1.1.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -52,6 +51,9 @@ set -ex
 
 
 %changelog
+* Sun Sep 13 04:28:00 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.6.1-1
+- Update to 1.6.1
+
 * Sun Aug 30 04:26:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.6.0-1
 - Update to 1.6.0
 
