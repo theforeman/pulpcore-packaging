@@ -6,7 +6,7 @@
 %global src_name pulp_python
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.27.6
+Version:        3.36.2
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -25,11 +25,11 @@ Requires:       python%{python3_pkgversion}-bandersnatch >= 6.6.0
 Requires:       python%{python3_pkgversion}-bandersnatch < 6.7
 Requires:       python%{python3_pkgversion}-pkginfo >= 1.12.0
 Requires:       python%{python3_pkgversion}-pkginfo < 1.13.0
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.85.3
-Requires:       python%{python3_pkgversion}-pulpcore < 3.115
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.105.0
+Requires:       python%{python3_pkgversion}-pulpcore < 3.130
+Requires:       python%{python3_pkgversion}-pypi-attestations == 0.0.28
 Requires:       python%{python3_pkgversion}-pypi-simple >= 1.8.0
 Requires:       python%{python3_pkgversion}-pypi-simple < 2.0
-Requires:       python%{python3_pkgversion}-pypi-attestations == 0.0.28
 
 Provides:       pulpcore-plugin(python) = %{version}
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 14 15:42:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.36.2-1
+- Update to 3.36.2
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.6-1
 - Update to 3.27.6
 
