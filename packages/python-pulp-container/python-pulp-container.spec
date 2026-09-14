@@ -6,7 +6,7 @@
 %global src_name pulp_container
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.27.11
+Version:        2.29.0
 Release:        1%{?dist}
 Summary:        Container plugin for the Pulp Project
 
@@ -21,14 +21,14 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.73.2
-Requires:       python%{python3_pkgversion}-pulpcore < 3.115
+Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
+Requires:       python%{python3_pkgversion}-jsonschema < 4.27
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.111.0
+Requires:       python%{python3_pkgversion}-pulpcore < 3.130
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.4
 Requires:       python%{python3_pkgversion}-pyjwt < 2.14
-Requires:       python%{python3_pkgversion}-jsonschema >= 4.4
-Requires:       python%{python3_pkgversion}-jsonschema < 4.26
 Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.33
-Requires:       python%{python3_pkgversion}-pysequoia < 0.2
+Requires:       python%{python3_pkgversion}-pysequoia < 0.2.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 14 15:42:20 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.29.0-1
+- Update to 2.29.0
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.27.11-1
 - Update to 2.27.11
 
