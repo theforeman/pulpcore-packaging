@@ -6,8 +6,8 @@
 %global src_name pulp_rpm_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.35.3
-Release:        2%{?dist}
+Version:        3.39.0
+Release:        1%{?dist}
 Summary:        Pulp 3 API
 
 License:        GPLv2+
@@ -23,10 +23,11 @@ BuildRequires:  pyproject-rpm-macros
 
 
 
-Requires:       python%{python3_pkgversion}-dateutil
-Requires:       python%{python3_pkgversion}-lazy-imports >= 1
-Requires:       python%{python3_pkgversion}-lazy-imports < 2
-Requires:       python%{python3_pkgversion}-urllib3 >= 1.15
+Requires:       python%{python3_pkgversion}-dateutil >= 2.8.2
+Requires:       python%{python3_pkgversion}-pydantic >= 2
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.7.1
+Requires:       python%{python3_pkgversion}-urllib3 >= 2.1.0
+Requires:       python%{python3_pkgversion}-urllib3 < 3.0.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -58,6 +59,9 @@ set -ex
 
 
 %changelog
+* Mon Sep 14 15:42:38 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.39.0-1
+- Update to 3.39.0
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.35.3-2
 - Bump release for EL10 rebuild
 - Add explicit Requires on python-lazy-imports (real Requires-Dist per
