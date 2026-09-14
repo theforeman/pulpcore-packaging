@@ -6,8 +6,8 @@
 %global src_name pulp_deb
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.8.2
-Release:        2%{?dist}
+Version:        3.11.1
+Release:        1%{?dist}
 Summary:        pulp-deb plugin for the Pulp Project
 
 License:        GPLv2+
@@ -21,14 +21,12 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-debian < 0.2.0
 Requires:       python%{python3_pkgversion}-debian >= 0.1.44
-Requires:       python%{python3_pkgversion}-pulpcore < 3.115
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.85
-Requires:       python%{python3_pkgversion}-gnupg < 0.6
-Requires:       python%{python3_pkgversion}-gnupg >= 0.5
-Requires:       python%{python3_pkgversion}-jsonschema < 5.0
+Requires:       python%{python3_pkgversion}-debian < 0.2.0
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
+Requires:       python%{python3_pkgversion}-jsonschema < 5.0
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.113.0
+Requires:       python%{python3_pkgversion}-pulpcore < 3.130
 
 Provides:       pulpcore-plugin(deb) = %{version}
 
@@ -62,6 +60,9 @@ set -ex
 %{python3_sitelib}/pulp_deb-%{version}.dist-info/
 
 %changelog
+* Mon Sep 14 15:42:19 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.1-1
+- Update to 3.11.1
+
 * Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 3.8.2-2
 - Bump release for EL10 rebuild
 
