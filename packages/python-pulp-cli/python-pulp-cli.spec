@@ -7,8 +7,8 @@
 %global pypi_name_u pulp_cli
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.39.1
-Release:        4%{?dist}
+Version:        0.40.6
+Release:        1%{?dist}
 Summary:        Command line interface to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -22,16 +22,15 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-PyYAML < 6.1
-Requires:       python%{python3_pkgversion}-PyYAML >= 5.3
 Requires:       python%{python3_pkgversion}-click >= 8.0.0
-Requires:       python%{python3_pkgversion}-click < 8.4
-Requires:       python%{python3_pkgversion}-pygments >= 2.17.2
-Requires:       python%{python3_pkgversion}-schema < 0.8
+Requires:       python%{python3_pkgversion}-click < 8.6
+Requires:       python%{python3_pkgversion}-pulp-glue == 0.40.6
+Requires:       python%{python3_pkgversion}-PyYAML >= 5.3
+Requires:       python%{python3_pkgversion}-PyYAML < 6.1
 Requires:       python%{python3_pkgversion}-schema >= 0.7.5
+Requires:       python%{python3_pkgversion}-schema < 0.8
 Requires:       python%{python3_pkgversion}-tomli_w >= 1.0.0
 Requires:       python%{python3_pkgversion}-tomli_w < 2
-Requires:       python%{python3_pkgversion}-pulp-glue == %{version}
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -68,6 +67,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 15 17:54:47 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.40.6-1
+- Update to 0.40.6
+
 * Tue Sep 01 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-4
 - Remove pygments < 2.21 upper bound to allow pygments 2.21.0
 
