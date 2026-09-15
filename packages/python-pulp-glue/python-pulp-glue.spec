@@ -6,8 +6,8 @@
 %global pypi_name_u pulp_glue
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.39.1
-Release:        3%{?dist}
+Version:        0.40.6
+Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
 License:        GPLv2+
@@ -26,8 +26,8 @@ Requires:       python%{python3_pkgversion}-multidict < 6.8
 Requires:       python%{python3_pkgversion}-packaging >= 22.0
 Requires:       python%{python3_pkgversion}-packaging <= 26.2
 Requires:       python%{python3_pkgversion}-pydantic >= 2.9.2
-Requires:       python%{python3_pkgversion}-pydantic < 2.14
-Requires:       python%{python3_pkgversion}-requests >= 2.24.0
+Requires:       python%{python3_pkgversion}-pydantic < 3
+Requires:       python%{python3_pkgversion}-requests >= 2.25.1
 Requires:       python%{python3_pkgversion}-requests < 2.34
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 15 17:54:51 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.40.6-1
+- Update to 0.40.6
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 0.39.1-3
 - Bump release for EL10 rebuild
 
