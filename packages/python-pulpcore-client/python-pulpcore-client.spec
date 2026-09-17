@@ -6,7 +6,7 @@
 %global src_name pulpcore_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.19
+Version:        3.118.0
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -21,11 +21,11 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-dateutil
-Requires:       python%{python3_pkgversion}-lazy-imports >= 1
-Requires:       python%{python3_pkgversion}-lazy-imports < 2
-Requires:       python%{python3_pkgversion}-six >= 1.10
-Requires:       python%{python3_pkgversion}-urllib3 >= 1.15
+Requires:       python%{python3_pkgversion}-dateutil >= 2.8.2
+Requires:       python%{python3_pkgversion}-pydantic >= 2
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.7.1
+Requires:       python%{python3_pkgversion}-urllib3 >= 2.1.0
+Requires:       python%{python3_pkgversion}-urllib3 < 3.0.0
 
 Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 17 17:34:39 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.0-1
+- Update to 3.118.0
+
 * Thu Sep 03 2026 Odilon Sousa <osousa@redhat.com> - 3.105.19-1
 - Release python-pulpcore-client 3.105.19
 
