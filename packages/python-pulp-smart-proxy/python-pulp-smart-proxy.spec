@@ -6,8 +6,8 @@
 %global src_name pulp_smart_proxy
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.4.0
-Release:        2%{?dist}
+Version:        0.6.0
+Release:        1%{?dist}
 Summary:        Smart Proxy plugin for the Pulp Project
 
 License:        GPLv2+
@@ -22,7 +22,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.49.0
-Requires:       python%{python3_pkgversion}-pulpcore < 3.106
+Requires:       python%{python3_pkgversion}-pulpcore < 3.130
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 17 17:34:30 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.6.0-1
+- Update to 0.6.0
+
 * Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 0.4.0-2
 - Bump release for EL10 rebuild
 
