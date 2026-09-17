@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.19
+Version:        3.118.0
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -22,94 +22,90 @@ BuildRequires:  python%{python3_pkgversion}-wheel >= 0.29.0
 BuildRequires:  pyproject-rpm-macros
 
 
-Requires:       python%{python3_pkgversion}-setuptools
-Requires:       python%{python3_pkgversion}-django >= 4.2.24
-Conflicts:      python%{python3_pkgversion}-django == 5.0
-Conflicts:      python%{python3_pkgversion}-django == 5.1
-Requires:       python%{python3_pkgversion}-django < 5.3
-Requires:       python%{python3_pkgversion}-aiodns >= 3.3.0
-Requires:       python%{python3_pkgversion}-aiodns < 3.7
 Requires:       python%{python3_pkgversion}-aiofiles >= 22.1
 Requires:       python%{python3_pkgversion}-aiofiles <= 25.1.0
 Requires:       python%{python3_pkgversion}-aiohttp >= 3.10.10
 Requires:       python%{python3_pkgversion}-aiohttp < 3.15
 Requires:       python%{python3_pkgversion}-asyncio-throttle >= 1.0
-Requires:       python%{python3_pkgversion}-asyncio-throttle < 1.0.3
+Requires:       python%{python3_pkgversion}-asyncio-throttle <= 1.0.2
 Requires:       python%{python3_pkgversion}-backoff >= 2.1.2
 Requires:       python%{python3_pkgversion}-backoff < 2.3
 Requires:       python%{python3_pkgversion}-click >= 8.1.0
-Requires:       python%{python3_pkgversion}-click < 8.4
+Requires:       python%{python3_pkgversion}-click < 8.6
 Requires:       python%{python3_pkgversion}-cryptography >= 49.0.0
 Requires:       python%{python3_pkgversion}-cryptography < 51.0
-Requires:       python%{python3_pkgversion}-django-filter >= 23.1
-Requires:       python%{python3_pkgversion}-django-filter <= 25.2
-Requires:       python%{python3_pkgversion}-django-guid >= 3.3
-Requires:       python%{python3_pkgversion}-django-guid < 3.6
+Requires:       python%{python3_pkgversion}-django >= 5.2.0
+Requires:       python%{python3_pkgversion}-django < 5.3
+Requires:       python%{python3_pkgversion}-django-filter >= 24.3
+Requires:       python%{python3_pkgversion}-django-filter <= 26.1
+Requires:       python%{python3_pkgversion}-django-guid >= 3.4.0
+Requires:       python%{python3_pkgversion}-django-guid < 3.7
 Requires:       python%{python3_pkgversion}-django-import-export >= 2.9
 Requires:       python%{python3_pkgversion}-django-import-export < 5.0
-Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
-Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.2.7
+Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0
+Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.3.0
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
-Requires:       python%{python3_pkgversion}-djangorestframework < 3.18
-Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
+Requires:       python%{python3_pkgversion}-djangorestframework < 3.19
+Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields <= 1.1.0
 Requires:       python%{python3_pkgversion}-drf-access-policy >= 1.1.2
-Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
+Requires:       python%{python3_pkgversion}-drf-access-policy < 1.5.1
 Requires:       python%{python3_pkgversion}-drf-nested-routers >= 0.93.4
-Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.95.0
+Requires:       python%{python3_pkgversion}-drf-nested-routers <= 0.95.3
 Requires:       python%{python3_pkgversion}-drf-spectacular >= 0.27.2
 Requires:       python%{python3_pkgversion}-drf-spectacular < 0.30
-Requires:       python%{python3_pkgversion}-dynaconf >= 3.2.5
-Requires:       python%{python3_pkgversion}-dynaconf < 3.3.0
+Requires:       python%{python3_pkgversion}-dynaconf >= 3.3.0
+Requires:       python%{python3_pkgversion}-dynaconf < 3.4
 Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
-Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
-Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.35
-Requires:       python%{python3_pkgversion}-pysequoia < 0.2
+Requires:       python%{python3_pkgversion}-gitpython < 3.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 22.0
-Requires:       python%{python3_pkgversion}-gunicorn < 25.2.0
+Requires:       python%{python3_pkgversion}-gunicorn < 26.3.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
 Requires:       python%{python3_pkgversion}-jinja2 <= 3.1.6
-Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
-Requires:       python%{python3_pkgversion}-json_stream < 2.5
 Requires:       python%{python3_pkgversion}-jq >= 1.6.0
-Requires:       python%{python3_pkgversion}-jq < 1.12.0
-Requires:       python%{python3_pkgversion}-pulp-glue >= 0.30.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.40
-Requires:       python%{python3_pkgversion}-pyOpenSSL >= 26.3.0
-Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
-Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.41
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.41
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.41
+Requires:       python%{python3_pkgversion}-jq < 1.13.0
+Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
+Requires:       python%{python3_pkgversion}-json_stream < 2.6
+Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27.0
+Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.45
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27.0
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.45
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.27.0
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.45
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
-Requires:       python%{python3_pkgversion}-protobuf < 7.0
+Requires:       python%{python3_pkgversion}-protobuf < 8.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.3.4
 Requires:       python%{python3_pkgversion}-psycopg < 3.4
-Requires:       python%{python3_pkgversion}-psycopg_c >= 3.3.4
-Requires:       python%{python3_pkgversion}-psycopg_c < 3.4
+Requires:       python%{python3_pkgversion}-pulp-glue >= 0.35.0
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.41
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
-Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
+Requires:       python%{python3_pkgversion}-pygtrie < 2.7
+Requires:       python%{python3_pkgversion}-pyOpenSSL >= 26.3.0
+Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0
 Requires:       python%{python3_pkgversion}-pyparsing < 3.4
+Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.35
+Requires:       python%{python3_pkgversion}-pysequoia < 0.2.0
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
 Requires:       python%{python3_pkgversion}-pyyaml < 6.1
-Requires:       python%{python3_pkgversion}-PyYAML < 6.1
-Requires:       python%{python3_pkgversion}-PyYAML >= 5.1.1
-Requires:       python%{python3_pkgversion}-redis >= 4.3
-Requires:       python%{python3_pkgversion}-redis < 7.2
+Requires:       python%{python3_pkgversion}-redis >= 4.3.0
+Requires:       python%{python3_pkgversion}-redis < 8.2
 Requires:       python%{python3_pkgversion}-tablib >= 3.5.0
 Requires:       python%{python3_pkgversion}-tablib < 4.0
-Conflicts:      python%{python3_pkgversion}-tablib == 3.6
 Requires:       python%{python3_pkgversion}-url-normalize >= 1.4.3
-Requires:       python%{python3_pkgversion}-url-normalize < 2.3
+Requires:       python%{python3_pkgversion}-url-normalize < 3.1
 Requires:       python%{python3_pkgversion}-uuid6 >= 2023.5.2
 Requires:       python%{python3_pkgversion}-uuid6 <= 2025.0.1
-Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
+Requires:       python%{python3_pkgversion}-whitenoise >= 5.0
 Requires:       python%{python3_pkgversion}-whitenoise < 6.13.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.12.0
-Requires:       python%{python3_pkgversion}-yarl < 1.24
+Requires:       python%{python3_pkgversion}-yarl < 1.25
+Conflicts:      python%{python3_pkgversion}-django == 5.0
+Conflicts:      python%{python3_pkgversion}-django == 5.1
+Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
+Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
+Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
+Conflicts:      python%{python3_pkgversion}-tablib == 3.6
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -176,6 +172,9 @@ set -ex
 
 
 %changelog
+* Thu Sep 17 17:34:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.0-1
+- Update to 3.118.0
+
 * Thu Sep 03 2026 Odilon Sousa <osousa@redhat.com> - 3.105.19-1
 - Release python-pulpcore 3.105.19
 
