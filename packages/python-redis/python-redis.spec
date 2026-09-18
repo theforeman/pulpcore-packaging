@@ -5,8 +5,8 @@
 %global pypi_name redis
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        7.1.1
-Release:        2%{?dist}
+Version:        8.1.0
+Release:        1%{?dist}
 Summary:        Python client for Redis database and key-value store
 
 License:        MIT
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:42 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.1.0-1
+- Update to 8.1.0
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 7.1.1-2
 - Bump release for EL10 rebuild
 
