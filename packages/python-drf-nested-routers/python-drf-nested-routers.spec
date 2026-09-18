@@ -6,8 +6,8 @@
 %global src_name drf_nested_routers
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.95.0
-Release:        2%{?dist}
+Version:        0.95.3
+Release:        1%{?dist}
 Summary:        Nested resources for the Django Rest Framework
 
 License:        Apache
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:32 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.95.3-1
+- Update to 0.95.3
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 0.95.0-2
 - Bump release for EL10 rebuild
 
