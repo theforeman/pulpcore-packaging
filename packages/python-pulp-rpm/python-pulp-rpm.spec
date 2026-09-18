@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.35.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -33,7 +33,7 @@ Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
 Requires:       python%{python3_pkgversion}-productmd >= 1.33
 Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.103.0
-Requires:       python%{python3_pkgversion}-pulpcore < 3.115
+Requires:       python%{python3_pkgversion}-pulpcore < 3.130
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Conflicts:      python%{python3_pkgversion}-solv >= 0.8
 
@@ -73,6 +73,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 2026 Odilon Sousa <osousa@redhat.com> - 3.35.3-4
+- Allow the supported pulpcore 3.118 build
+
 * Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 3.35.3-3
 - Bump release for EL10 rebuild
 
