@@ -5,7 +5,7 @@
 %global pypi_name idna
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.19
+Version:        3.20
 Release:        1%{?dist}
 Summary:        Internationalized Domain Names in Applications (IDNA)
 
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:12 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.20-1
+- Update to 3.20
+
 * Thu Aug 27 11:20:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.19-1
 - Update to 3.19
 
