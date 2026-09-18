@@ -3,8 +3,8 @@
 %global pypi_name opentelemetry_semantic_conventions
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.61b0
-Release:        2%{?dist}
+Version:        0.65b0
+Release:        1%{?dist}
 Summary:        OpenTelemetry Semantic Conventions
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -18,6 +18,8 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
+Requires:       python%{python3_pkgversion}-opentelemetry-api == 1.44.0
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.5.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -48,6 +50,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.65b0-1
+- Update to 0.65b0
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.61b0-2
 - Bump release for EL10 rebuild
 
