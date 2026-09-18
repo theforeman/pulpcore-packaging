@@ -5,8 +5,8 @@
 %global pypi_name dynaconf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.2.13
-Release:        2%{?dist}
+Version:        3.3.5
+Release:        1%{?dist}
 Summary:        The dynamic configurator for your Python Project
 
 License:        MIT
@@ -15,7 +15,9 @@ Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools >= 38.6.0
+BuildRequires:  python%{python3_pkgversion}-setuptools >= 42
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -34,12 +36,12 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
@@ -47,10 +49,14 @@ set -ex
 %doc README.md
 %{_bindir}/dynaconf
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
+%{python3_sitelib}/vendor_licenses/
 
 
 %changelog
+* Fri Sep 18 14:13:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.5-1
+- Update to 3.3.5
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 3.2.13-2
 - Bump release for EL10 rebuild
 
