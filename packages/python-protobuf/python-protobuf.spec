@@ -5,8 +5,8 @@
 %global pypi_name protobuf
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        6.33.6
-Release:        2%{?dist}
+Version:        7.36.2
+Release:        1%{?dist}
 Summary:        Protocol Buffers
 
 License:        BSD-3-Clause
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:15 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 7.36.2-1
+- Update to 7.36.2
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 6.33.6-2
 - Bump release for EL10 rebuild
 
