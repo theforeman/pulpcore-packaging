@@ -6,8 +6,8 @@
 %global srcname django_filter
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        25.1
-Release:        2%{?dist}
+Version:        26.1
+Release:        1%{?dist}
 Summary:        Django-filter is a reusable Django application for allowing users to filter querysets dynamically
 
 License:        BSD
@@ -20,7 +20,7 @@ BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core
 
-Requires:       python%{python3_pkgversion}-django >= 3.2
+Requires:       python%{python3_pkgversion}-django >= 5.2
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 26.1-1
+- Update to 26.1
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 25.1-2
 - Bump release for EL10 rebuild
 
