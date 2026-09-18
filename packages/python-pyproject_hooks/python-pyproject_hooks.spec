@@ -3,8 +3,8 @@
 %global pypi_name pyproject_hooks
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.2.0
-Release:        3%{?dist}
+Version:        1.3.3
+Release:        1%{?dist}
 Summary:        Wrappers to call pyproject.toml-based build backend hooks.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -43,6 +43,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Sep 18 14:13:20 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.3.3-1
+- Update to 1.3.3
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.2.0-3
 - Bump release for EL10 rebuild
 
