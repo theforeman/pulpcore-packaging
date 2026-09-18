@@ -6,14 +6,13 @@
 %global srcname django
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        4.2.30
-Release:        2%{?dist}
+Version:        5.2.17
+Release:        1%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com/
 Source0:        https://files.pythonhosted.org/packages/source/d/%{srcname}/%{srcname}-%{version}.tar.gz
-Patch0:         0001-Rollback-setuptools-update-because-EL9-don-t-ship-wi.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -22,10 +21,8 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-asgiref < 4
-Requires:       python%{python3_pkgversion}-asgiref >= 3.3.2
-Requires:       python%{python3_pkgversion}-pytz
-Requires:       python%{python3_pkgversion}-sqlparse >= 0.2.2
+Requires:       python%{python3_pkgversion}-asgiref >= 3.8.1
+Requires:       python%{python3_pkgversion}-sqlparse >= 0.3.1
 
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
@@ -39,7 +36,12 @@ Obsoletes:      python3.11-%{srcname} < %{version}-%{release}
 
 %prep
 set -ex
-%autosetup -p1 -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version}
+# EL9 and EL10 ship setuptools older than Django's declared build-only floor.
+# Both support this project metadata and backend.
+sed -i 's/setuptools>=83/setuptools>=61.0.0/' pyproject.toml
+sed -i 's/license = "BSD-3-Clause"/license = {text = "BSD-3-Clause"}/' pyproject.toml
+sed -i '/^license-files = /d' pyproject.toml
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -67,6 +69,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:26 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 5.2.17-1
+- Update to 5.2.17
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.2.30-2
 - Bump release for EL10 rebuild
 
