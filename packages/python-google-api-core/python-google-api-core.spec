@@ -5,7 +5,7 @@
 %global pypi_name google-api-core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.34.0
+Version:        2.38.0
 Release:        1%{?dist}
 Summary:        Google API client core library
 
@@ -26,16 +26,18 @@ Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.2
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.3
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.4
 Conflicts:      python%{python3_pkgversion}-protobuf = 4.21.5
-Requires:       python%{python3_pkgversion}-google-auth < 3
 Requires:       python%{python3_pkgversion}-google-auth >= 2.14.1
-Requires:       python%{python3_pkgversion}-googleapis-common-protos < 2
+Requires:       python%{python3_pkgversion}-google-auth < 3.0.0
 Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 1.69.2
-Requires:       python%{python3_pkgversion}-proto-plus < 2
+Requires:       python%{python3_pkgversion}-googleapis-common-protos < 2.0.0
+Requires:       python%{python3_pkgversion}-opentelemetry-api >= 1.44.0
+Requires:       python%{python3_pkgversion}-opentelemetry-api < 2.0.0
 Requires:       python%{python3_pkgversion}-proto-plus >= 1.26.1
-Requires:       python%{python3_pkgversion}-protobuf < 8
+Requires:       python%{python3_pkgversion}-proto-plus < 2.0.0
 Requires:       python%{python3_pkgversion}-protobuf >= 6.33.5
-Requires:       python%{python3_pkgversion}-requests < 3
+Requires:       python%{python3_pkgversion}-protobuf < 8.0.0
 Requires:       python%{python3_pkgversion}-requests >= 2.33.0
+Requires:       python%{python3_pkgversion}-requests < 3.0.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -71,6 +73,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:25 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.38.0-1
+- Update to 2.38.0
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.34.0-1
 - Update to 2.34.0
 - Bump stale protobuf, googleapis-common-protos, and proto-plus Requires floors to match upstream 2.34.0
