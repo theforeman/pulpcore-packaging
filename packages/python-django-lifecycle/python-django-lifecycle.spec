@@ -6,8 +6,8 @@
 %global src_name django_lifecycle
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.2.7
-Release:        2%{?dist}
+Version:        1.3.0
+Release:        1%{?dist}
 Summary:        Declarative model lifecycle hooks
 
 License:        MIT
@@ -18,9 +18,7 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-Requires:       python%{python3_pkgversion}-urlman >= 1.2.0
-Requires:       python%{python3_pkgversion}-django >= 2.0
-Requires:       python%{python3_pkgversion}-packaging >= 21.0
+Requires:       python%{python3_pkgversion}-django >= 3.2
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -56,6 +54,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:24 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.3.0-1
+- Update to 1.3.0
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.2.7-2
 - Bump release for EL10 rebuild
 
