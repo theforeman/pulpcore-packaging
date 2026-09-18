@@ -5,7 +5,7 @@
 %global pypi_name importlib-metadata
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        8.7.1
+Version:        9.0.1
 Release:        1%{?dist}
 Summary:        Read metadata from Python packages
 
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 9.0.1-1
+- Update to 9.0.1
+
 * Thu Sep  3 21:40:21 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.7.1-1
 - Update to 8.7.1
 - Switch to the pyproject wheel build
