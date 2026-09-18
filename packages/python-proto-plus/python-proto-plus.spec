@@ -7,7 +7,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.28.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Beautiful, Pythonic protocol buffers.
 
 License:        Apache 2.0
@@ -18,8 +18,8 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-Requires:       python%{python3_pkgversion}-protobuf >= 3.19.0
-Requires:       python%{python3_pkgversion}-protobuf < 7
+Requires:       python%{python3_pkgversion}-protobuf >= 6.33.5
+Requires:       python%{python3_pkgversion}-protobuf < 8
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 2026 Odilon Sousa <osousa@redhat.com> - 1.28.4-2
+- Sync protobuf bounds with upstream metadata
+
 * Thu Aug 27 11:20:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.28.4-1
 - Update to 1.28.4
 
