@@ -5,8 +5,8 @@
 %global pypi_name urllib3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.7.0
-Release:        2%{?dist}
+Version:        2.8.0
+Release:        1%{?dist}
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 
 License:        MIT
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:12 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.8.0-1
+- Update to 2.8.0
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 2.7.0-2
 - Bump release for EL10 rebuild
 
