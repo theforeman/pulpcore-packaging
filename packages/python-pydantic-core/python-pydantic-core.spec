@@ -9,8 +9,8 @@
 %global srcname pydantic_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.46.4
-Release:        3%{?dist}
+Version:        2.46.5
+Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:26 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.46.5-1
+- Update to 2.46.5
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 2.46.4-3
 - Bump release for EL10 rebuild
 
