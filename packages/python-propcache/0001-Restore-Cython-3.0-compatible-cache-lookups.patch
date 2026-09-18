@@ -1,0 +1,100 @@
+From 1edc68a8b2ab7410a1d96a0b50dee7aceb3d6771 Mon Sep 17 00:00:00 2001
+From: Odilon Junior <osousa@redhat.com>
+Date: Fri, 18 Sep 2026 16:38:16 -0300
+Subject: [PATCH] Restore Cython 3.0 compatibility
+
+---
+ packaging/pep517_backend/_backend.py |  2 +-
+ src/propcache/_helpers_c.pyx         | 42 +++++++++++-----------------
+ 2 files changed, 17 insertions(+), 27 deletions(-)
+
+diff --git a/packaging/pep517_backend/_backend.py b/packaging/pep517_backend/_backend.py
+index f4dcb33..606ddf0 100644
+--- a/packaging/pep517_backend/_backend.py
++++ b/packaging/pep517_backend/_backend.py
+@@ -413,7 +413,7 @@ def get_requires_for_build_wheel(
+     if is_pure_python_build:
+         c_ext_build_deps = []
+     else:
+-        c_ext_build_deps = ['Cython >= 3.2.0']
++        c_ext_build_deps = ['Cython >= 3.0']
+ 
+     return _setuptools_get_requires_for_build_wheel(
+         config_settings=config_settings,
+diff --git a/src/propcache/_helpers_c.pyx b/src/propcache/_helpers_c.pyx
+index e8a09dd..af6d9e0 100644
+--- a/src/propcache/_helpers_c.pyx
++++ b/src/propcache/_helpers_c.pyx
+@@ -1,26 +1,18 @@
+ # cython: language_level=3, freethreading_compatible=True
+ from types import GenericAlias
+ 
+-from cpython.dict cimport PyDict_GetItemRef
++from cpython.dict cimport PyDict_GetItem
+ from cpython.object cimport PyObject
+ 
+ 
+-cdef extern from *:
+-    # ``PyDict_GetItemRef`` gives us a new reference to the cached value.
+-    # ``propcache_steal`` hands that reference to Cython as an ``object``
+-    # without another incref, so a cache hit costs a single incref.
+-    """
+-    #define propcache_steal(value) (value)
+-    """
+-    object propcache_steal(PyObject* value)
+-
+-
+ cdef extern from "Python.h":
+     # Call a callable Python object callable with exactly
+     # 1 positional argument arg and no keyword arguments.
+     # Return the result of the call on success, or raise
+     # an exception and return NULL on failure.
+-    object PyObject_CallOneArg(object callable, object arg)
++    PyObject* PyObject_CallOneArg(object callable, object arg) except NULL
++    int PyDict_SetItem(object dict, object key, PyObject* value) except -1
++    void Py_DECREF(PyObject*)
+ 
+ 
+ cdef class under_cached_property:
+@@ -48,13 +40,12 @@ cdef class under_cached_property:
+             return self
+         cdef dict cache = inst._cache
+         cdef PyObject* val
+-        # PyDict_GetItemRef returns a strong reference, a borrowed one
+-        # could be freed by a concurrent eviction on free-threaded builds.
+-        if PyDict_GetItemRef(cache, self.name, &val):
+-            return propcache_steal(val)
+-        result = PyObject_CallOneArg(self.wrapped, inst)
+-        cache[self.name] = result
+-        return result
++        val = PyDict_GetItem(cache, self.name)
++        if val == NULL:
++            val = PyObject_CallOneArg(self.wrapped, inst)
++            PyDict_SetItem(cache, self.name, val)
++            Py_DECREF(val)
++        return <object>val
+ 
+     def __set__(self, inst, value):
+         raise AttributeError("cached property is read-only")
+@@ -100,12 +91,11 @@ cdef class cached_property:
+                 " without calling __set_name__ on it.")
+         cdef dict cache = inst.__dict__
+         cdef PyObject* val
+-        # PyDict_GetItemRef returns a strong reference, a borrowed one
+-        # could be freed by a concurrent eviction on free-threaded builds.
+-        if PyDict_GetItemRef(cache, self.name, &val):
+-            return propcache_steal(val)
+-        result = PyObject_CallOneArg(self.func, inst)
+-        cache[self.name] = result
+-        return result
++        val = PyDict_GetItem(cache, self.name)
++        if val is NULL:
++            val = PyObject_CallOneArg(self.func, inst)
++            PyDict_SetItem(cache, self.name, val)
++            Py_DECREF(val)
++        return <object>val
+ 
+     __class_getitem__ = classmethod(GenericAlias)
+-- 
+2.50.1 (Apple Git-155)
+

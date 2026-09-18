@@ -5,13 +5,15 @@
 %global pypi_name propcache
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.5.2
-Release:        2%{?dist}
+Version:        0.5.4
+Release:        1%{?dist}
 Summary:        Fast property caching.
 
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/propcache
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+
+Patch0:         0001-Restore-Cython-3.0-compatible-cache-lookups.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -29,7 +31,7 @@ BuildRequires:  pyproject-rpm-macros
 
 %prep
 set -ex
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
 
 
 %build
@@ -47,6 +49,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.5.4-1
+- Update to 0.5.4
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 0.5.2-2
 - Bump release for EL10 rebuild
 
