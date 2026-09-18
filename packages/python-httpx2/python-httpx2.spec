@@ -3,7 +3,7 @@
 %global pypi_name httpx2
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.12.0
+Version:        2.13.0
 Release:        1%{?dist}
 Summary:        Next-generation HTTP client for Python
 
@@ -21,8 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-anyio >= 4.10
-Requires:       python%{python3_pkgversion}-httpcore2 >= 2.12
-Requires:       python%{python3_pkgversion}-httpcore2 < 2.13
+Requires:       python%{python3_pkgversion}-httpcore2 == 2.13.0
 Requires:       python%{python3_pkgversion}-idna >= 3.18
 Requires:       python%{python3_pkgversion}-truststore >= 0.10
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.5.0
@@ -57,5 +56,8 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:34 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.0-1
+- Update to 2.13.0
+
 * Fri Sep 04 2026 Odilon Sousa <osousa@redhat.com> - 2.12.0-1
 - Initial package
