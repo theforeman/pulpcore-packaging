@@ -6,8 +6,8 @@
 %global pypi_name yarl
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.23.0
-Release:        2%{?dist}
+Version:        1.24.5
+Release:        1%{?dist}
 Summary:        Yet another URL library
 BuildArch:      noarch
 
@@ -26,7 +26,7 @@ BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-idna >= 2.0
 Requires:       python%{python3_pkgversion}-multidict >= 4.0
-Requires:       python%{python3_pkgversion}-propcache >= 0.2.0
+Requires:       python%{python3_pkgversion}-propcache >= 0.2.1
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:31 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.24.5-1
+- Update to 1.24.5
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.23.0-2
 - Bump release for EL10 rebuild
 
