@@ -3,8 +3,8 @@
 %global pypi_name opentelemetry_exporter_otlp_proto_http
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.40.0
-Release:        2%{?dist}
+Version:        1.44.0
+Release:        1%{?dist}
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -19,17 +19,17 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-Requires:       python%{python3_pkgversion}-deprecated >= 1.2.6
 Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 1.52
 Requires:       python%{python3_pkgversion}-googleapis-common-protos < 2
-Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.15.0
-Requires:       python%{python3_pkgversion}-opentelemetry_api < 2.0.0
-Requires:       python%{python3_pkgversion}-opentelemetry_proto = %{version}
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk  >= %{version}
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk  < 2.0.0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_common = %{version}
+Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.15
+Requires:       python%{python3_pkgversion}-opentelemetry_api < 2
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_common == 1.44.0
+Requires:       python%{python3_pkgversion}-opentelemetry_proto == 1.44.0
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.44.0
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.45
 Requires:       python%{python3_pkgversion}-requests >= 2.7
-Requires:       python%{python3_pkgversion}-requests < 3.0
+Requires:       python%{python3_pkgversion}-requests < 3
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.5.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:26 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.44.0-1
+- Update to 1.44.0
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.40.0-2
 - Bump release for EL10 rebuild
 
