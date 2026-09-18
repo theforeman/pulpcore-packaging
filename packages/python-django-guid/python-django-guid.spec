@@ -6,8 +6,8 @@
 %global src_name django_guid
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.5.2
-Release:        2%{?dist}
+Version:        3.6.1
+Release:        1%{?dist}
 Summary:        Middleware that enables single request-response cycle tracing by injecting a unique ID into project logs
 
 License:        BSD
@@ -19,8 +19,9 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-poetry
 
-Requires:       python%{python3_pkgversion}-django < 5.0.0
-Requires:       python%{python3_pkgversion}-django >= 3.1.1
+Requires:       python%{python3_pkgversion}-django >= 4.2
+Requires:       python%{python3_pkgversion}-django < 6.0
+Requires:       python%{python3_pkgversion}-packaging
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -52,6 +53,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:38 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.6.1-1
+- Update to 3.6.1
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 3.5.2-2
 - Bump release for EL10 rebuild
 
