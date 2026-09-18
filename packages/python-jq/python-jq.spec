@@ -8,8 +8,8 @@
 %global pypi_name jq
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.11.0
-Release:        2%{?dist}
+Version:        1.12.0
+Release:        1%{?dist}
 Summary:        jq is a lightweight and flexible JSON processor
 
 License:        BSD 2-Clause
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:15 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.12.0-1
+- Update to 1.12.0
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.11.0-2
 - Bump release for EL10 rebuild
 
