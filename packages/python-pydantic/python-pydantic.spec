@@ -5,8 +5,8 @@
 %global pypi_name pydantic
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.13.4
-Release:        2%{?dist}
+Version:        2.13.5
+Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
 License:        MIT
@@ -19,9 +19,9 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme >= 22.5.0
 
-Requires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
 Requires:  python%{python3_pkgversion}-annotated-types >= 0.6.0
-Requires:  python%{python3_pkgversion}-pydantic-core == 2.46.4
+Requires:  python%{python3_pkgversion}-pydantic-core == 2.46.5
+Requires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
 Requires:  python%{python3_pkgversion}-typing-inspection >= 0.4.2
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -63,6 +63,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Sep 18 14:13:21 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.5-1
+- Update to 2.13.5
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.13.4-2
 - Bump release for EL10 rebuild
 
