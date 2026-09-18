@@ -5,8 +5,8 @@
 %global pypi_name click
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        8.3.3
-Release:        2%{?dist}
+Version:        8.5.0
+Release:        1%{?dist}
 Summary:        Composable command line interface toolkit
 
 License:        BSD-3-Clause
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.5.0-1
+- Update to 8.5.0
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 8.3.3-2
 - Bump release for EL10 rebuild
 
