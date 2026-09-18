@@ -8,7 +8,7 @@
 %global src_name rfc3161_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.0.8
+Version:        1.0.9
 Release:        1%{?dist}
 Summary:        A client library for RFC 3161 Time-Stamp Protocol
 
@@ -16,9 +16,8 @@ License:        Apache-2.0
 URL:            https://github.com/trailofbits/rfc3161-client
 Source0:        https://files.pythonhosted.org/packages/source/r/%{src_name}/%{src_name}-%{version}.tar.gz
 Source1:        https://downloads.theforeman.org/vendor/%{src_name}-%{version}-vendor.tar.xz
-Patch0:         0001-Replace-git-dep-cryptography-x509-with-vendored-vers.patch
-Patch1:         0002-Add-cargo-vendor-config.patch
-Patch2:         0003-Use-system-openssl-instead-of-vendored.patch
+Patch0:         0002-Add-cargo-vendor-config.patch
+Patch1:         0003-Use-system-openssl-instead-of-vendored.patch
 
 # To create the vendor tarball:
 # tar xf %%{src_name}-%%{version}.tar.gz
@@ -67,6 +66,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:41 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.9-1
+- Update to 1.0.9
+
 * Thu Sep  3 19:43:45 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.0.8-1
 - Update to 1.0.8
 - Regenerate vendor tarball for 1.0.8
