@@ -6,8 +6,8 @@
 %global src_name url_normalize
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.2.1
-Release:        2%{?dist}
+Version:        3.0.0
+Release:        1%{?dist}
 Summary:        URL normalization for Python
 
 License:        MIT
@@ -21,7 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-idna
+Requires:       python%{python3_pkgversion}-idna >= 3.3
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -33,6 +33,10 @@ Requires:       python%{python3_pkgversion}-idna
 %prep
 set -ex
 %autosetup -n %{src_name}-%{version}
+%if 0%{?rhel} >= 9
+# Available RHEL setuptools versions do not support PEP 639 bare SPDX license strings.
+sed -i 's/^license = "\(.*\)"$/license = {text = "\1"}/' pyproject.toml
+%endif
 
 
 %build
@@ -54,6 +58,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:24 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.0.0-1
+- Update to 3.0.0
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.2.1-2
 - Bump release for EL10 rebuild
 
