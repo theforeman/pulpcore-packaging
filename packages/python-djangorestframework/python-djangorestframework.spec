@@ -5,7 +5,7 @@
 %global pypi_name djangorestframework
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.17.2
+Version:        3.18.1
 Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
@@ -20,7 +20,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-django >= 4.2
+Requires:       python%{python3_pkgversion}-django >= 5.2
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:23 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.18.1-1
+- Update to 3.18.1
+
 * Thu Sep  3 21:39:52 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.17.2-1
 - Update to 3.17.2
 - Switch to the pyproject wheel build
