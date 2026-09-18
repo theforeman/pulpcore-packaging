@@ -5,8 +5,8 @@
 %global pypi_name pygtrie
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.5.0
-Release:        7%{?dist}
+Version:        2.6.2
+Release:        1%{?dist}
 Summary:        A pure Python trie data structure implementation
 
 License:        Apache-2.0
@@ -46,6 +46,9 @@ set -ex
 
 
 %changelog
+* Fri Sep 18 14:13:21 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.6.2-1
+- Update to 2.6.2
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 2.5.0-7
 - Bump release for EL10 rebuild
 
