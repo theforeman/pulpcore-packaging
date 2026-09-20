@@ -3,8 +3,8 @@
 %global pypi_name poetry_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.4.0
-Release:        2%{?dist}
+Version:        2.5.0
+Release:        1%{?dist}
 Summary:        Poetry PEP 517 Build Backend
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -19,9 +19,7 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-tomli
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-tomli
 Requires:       pyproject-rpm-macros
-Requires:       python%{python3_pkgversion}-pip
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -47,6 +45,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Sep 20 04:27:01 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.0-1
+- Update to 2.5.0
+
 * Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 2.4.0-2
 - Bump release for EL10 rebuild
 
