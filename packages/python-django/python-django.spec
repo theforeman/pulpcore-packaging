@@ -5,15 +5,21 @@
 %global pypi_name Django
 %global srcname django
 
+# Allow test dependencies and the Django test suite to be omitted only when
+# bootstrapping a new buildroot.
+%bcond_without tests
+
 Name:           python%{python3_pkgversion}-%{srcname}
 Version:        4.2.30
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A high-level Python web framework that encourages rapid development and clean, pragmatic design
 
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com/
 Source0:        https://files.pythonhosted.org/packages/source/d/%{srcname}/%{srcname}-%{version}.tar.gz
 Patch0:         0001-Rollback-setuptools-update-because-EL9-don-t-ship-wi.patch
+Patch1:         0001-Fixed-CVE-2026-15307-Blocked-raster-strings-and-dict.patch
+Patch2:         0002-4.2.x-Fixed-tests-for-raster-lookup-restrictions.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -50,6 +56,27 @@ for file in conf/project_template/manage.py-tpl ; do
 done
 popd
 
+# Use the non-optimized psycopg extra and omit test-only dependencies that
+# aren't packaged for the target buildroot. These match Fedora's Django test
+# preparation.
+sed -i 's/psycopg\[binary\]>=3\.1\.8/psycopg>=3.1.8/' tests/requirements/postgres.txt
+sed -i '/^pywatchman\b/d' tests/requirements/py3.txt
+sed -i '/^tzdata$/d' tests/requirements/py3.txt
+sed -i '/^black\b/d' tests/requirements/py3.txt
+sed -i '/^docutils\b/d' tests/requirements/py3.txt
+sed -i '/^aiosmtpd$/d' tests/requirements/py3.txt
+sed -i '/^argon2-cffi\b/d' tests/requirements/py3.txt
+sed -i '/^bcrypt$/d' tests/requirements/py3.txt
+sed -i '/^pylibmc\b/d' tests/requirements/py3.txt
+sed -i '/^pymemcache\b/d' tests/requirements/py3.txt
+sed -i '/^selenium\b/d' tests/requirements/py3.txt
+sed -i '/^tblib\b/d' tests/requirements/py3.txt
+sed -i '/^mysqlclient\b/d' tests/requirements/mysql.txt
+sed -i '/^cx_oracle\b/d' tests/requirements/oracle.txt
+
+%generate_buildrequires
+%pyproject_buildrequires -r %{?with_tests:tests/requirements/{py3,postgres,mysql,oracle}.txt}
+
 %build
 set -ex
 %pyproject_wheel
@@ -58,6 +85,25 @@ set -ex
 %install
 set -ex
 %pyproject_install
+%pyproject_save_files django
+
+
+%check
+# The import check covers the installed wheel. The upstream suite uses SQLite
+# and includes the regression tests added by the CVE patch series.
+%{pyproject_check_import \
+    -e 'django.contrib.*' \
+    -e 'django.core.serializers.pyyaml' \
+    -e 'django.db.backends.mysql*' \
+    -e 'django.db.backends.oracle*' \
+    -e 'django.db.backends.postgresql*'}
+
+%if %{with tests}
+cd %{_builddir}/%{srcname}-%{version}
+export PYTHONPATH=$(pwd)
+cd tests
+%{python3} runtests.py --settings=test_sqlite --verbosity=2
+%endif
 
 
 %files -n python%{python3_pkgversion}-%{srcname}
@@ -67,6 +113,10 @@ set -ex
 
 
 %changelog
+* Mon Sep 21 2026 Odilon Sousa <osousa@redhat.com> - 4.2.30-3
+- Backport the fix for CVE-2026-15307
+- Run Django's upstream test suite during RPM builds
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.2.30-2
 - Bump release for EL10 rebuild
 

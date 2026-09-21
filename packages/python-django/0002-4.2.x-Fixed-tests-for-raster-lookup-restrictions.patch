@@ -1,0 +1,111 @@
+From 939edb4ba5611a6e507f6d65eee2a70e37b66762 Mon Sep 17 00:00:00 2001
+From: Odilon Junior <osousa@redhat.com>
+Date: Mon, 21 Sep 2026 08:58:36 -0300
+Subject: [PATCH 2/2] [4.2.x] Fixed tests for raster lookup restrictions.
+
+---
+ tests/gis_tests/geoadmin/tests.py |  2 +-
+ tests/gis_tests/geoapp/tests.py   | 57 +++++++++++++++++++++++++++++++
+ 2 files changed, 58 insertions(+), 1 deletion(-)
+
+diff --git a/tests/gis_tests/geoadmin/tests.py b/tests/gis_tests/geoadmin/tests.py
+index 76b69c0580..73d8fa0a95 100644
+--- a/tests/gis_tests/geoadmin/tests.py
++++ b/tests/gis_tests/geoadmin/tests.py
+@@ -68,7 +68,7 @@ class GeoAdminTest(TestCase):
+         self.assertIs(has_changed(initial, data_changed), True)
+ 
+     def test_raster_lookup_not_allowed(self):
+-        geoadmin = self.admin_site.get_model_admin(City)
++        geoadmin = self.admin_site._registry[City]
+         request = RequestFactory().get("/city/", data={"point": "/vsicurl/someurl"})
+         request.user = self.user
+         msg = "Cannot use object '/vsicurl/someurl' for a spatial lookup parameter."
+diff --git a/tests/gis_tests/geoapp/tests.py b/tests/gis_tests/geoapp/tests.py
+index 3cecd70094..95cb52fb9a 100644
+--- a/tests/gis_tests/geoapp/tests.py
++++ b/tests/gis_tests/geoapp/tests.py
+@@ -1,8 +1,11 @@
++import json
+ import tempfile
+ from io import StringIO
++from pathlib import Path
+ 
+ from django.contrib.gis import gdal
+ from django.contrib.gis.db.models import Extent, MakeLine, Union, functions
++from django.contrib.gis.gdal.raster.source import DisallowedRasterLookup
+ from django.contrib.gis.geos import (
+     GeometryCollection,
+     GEOSGeometry,
+@@ -21,6 +24,7 @@ from django.db.models import F, OuterRef, Subquery
+ from django.test import TestCase, skipUnlessDBFeature
+ from django.test.utils import CaptureQueriesContext
+ 
++from ..data.rasters.textrasters import JSON_RASTER
+ from ..utils import skipUnlessGISLookup
+ from .models import (
+     City,
+@@ -591,6 +595,59 @@ class GeoLookupTest(TestCase):
+         )
+         self.assertEqual(qs.get(), multifields)
+ 
++    def test_lookup_rejects_writing_or_fetching_rasters(self):
++        """
++        Raster dictionaries and strings may cause GDAL to write a file or fetch
++        a network resource. Spatial lookups must require explicit GDALRaster()
++        wrapping for those values.
++        """
++        vsimem_path = "/vsimem/raster.tif"
++        # Keep the in-memory raster alive while its path is validated below.
++        _rast = gdal.GDALRaster(  # NOQA: F841
++            {
++                "name": vsimem_path,
++                "driver": "tif",
++                "width": 4,
++                "height": 4,
++                "srid": 4326,
++                "bands": [{"data": range(16)}],
++            }
++        )
++        existing_path = Path(__file__).parent.parent / "data" / "rasters" / "raster.tif"
++        disallowed_cases = [
++            JSON_RASTER,
++            json.loads(JSON_RASTER),
++            "/vsicurl/someurl",
++            "/vsicurl_streaming/someurl",
++            "/vsis3/someurl",
++            vsimem_path,
++            existing_path,
++        ]
++        for obj in disallowed_cases:
++            try:
++                msg_obj = json.loads(obj)
++            except Exception:
++                msg_obj = str(obj) if isinstance(obj, Path) else obj
++            msg = (
++                f"Cannot use object {msg_obj!r} for a spatial lookup parameter. "
++                "If this is a raster, wrap it with GDALRaster() before using "
++                "it in a lookup to enable writing or fetching."
++            )
++            with self.subTest(obj=obj), self.assertRaisesMessage(
++                DisallowedRasterLookup, msg
++            ):
++                City.objects.filter(point__contained=obj)
++
++        # Non-raster strings keep their original generic validation error.
++        for obj in (str(existing_path), "invalid"):
++            msg = "String input unrecognized as WKT EWKT, and HEXEWKB."
++            with self.subTest(obj=obj), self.assertRaisesMessage(ValueError, msg):
++                City.objects.filter(point__contained=obj)
++
++    def test_lookup_allows_geos_geometry_string(self):
++        geojson = json.dumps({"type": "Point", "coordinates": [2, 49]})
++        City.objects.filter(point__contained=geojson).query
++
+ 
+ class GeoQuerySetTest(TestCase):
+     # TODO: GeoQuerySet is removed, organize these test better.
+-- 
+2.55.0
+
+
