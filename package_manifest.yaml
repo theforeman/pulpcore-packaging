@@ -308,6 +308,8 @@ tier4_packages:
     python-opentelemetry_proto: {}
     python-productmd: {}
     python-prometheus-client: {}
+    python-rpm-rs: {}
+    python-rpmrepo-metadata: {}
     python-pycares: {}
     python-pycodestyle: {}
     python-pycparser: {}
