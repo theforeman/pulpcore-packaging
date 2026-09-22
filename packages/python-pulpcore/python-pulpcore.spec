@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.118.0
+Version:        3.118.1
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -122,7 +122,6 @@ Provides:       python%{python3_pkgversion}-pulp-certguard = %{version}
 Provides:       pulpcore-plugin(certguard) = %{version}
 
 # this is a soft-dependency in certguard, but for Katello we always want it
-Requires:       python%{python3_pkgversion}-rhsm
 
 
 %description
@@ -172,6 +171,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 22 13:47:16 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.1-1
+- Update to 3.118.1
+
 * Thu Sep 17 17:34:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.0-1
 - Update to 3.118.0
 
