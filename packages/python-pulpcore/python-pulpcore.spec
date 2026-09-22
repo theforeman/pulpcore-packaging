@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.118.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -104,7 +104,6 @@ Conflicts:      python%{python3_pkgversion}-django == 5.0
 Conflicts:      python%{python3_pkgversion}-django == 5.1
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
 Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
-Conflicts:      python%{python3_pkgversion}-pygtrie >= 2.6
 Conflicts:      python%{python3_pkgversion}-tablib == 3.6
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -171,6 +170,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 22 19:36:30 UTC 2026 Odilon Sousa <osousa@redhat.com> - 3.118.1-2
+- Remove the stale pygtrie conflict; pulpcore supports pygtrie 2.6
+
 * Tue Sep 22 13:47:16 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.1-1
 - Update to 3.118.1
 
