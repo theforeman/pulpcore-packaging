@@ -121,6 +121,8 @@ Provides:       python%{python3_pkgversion}-pulp-certguard = %{version}
 Provides:       pulpcore-plugin(certguard) = %{version}
 
 # this is a soft-dependency in certguard, but for Katello we always want it
+# update-deps: preserve-require
+Requires:       python%{python3_pkgversion}-rhsm
 
 
 %description

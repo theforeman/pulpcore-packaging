@@ -54,6 +54,17 @@ def conditional_dependency_names(spec_file):
     return names
 
 
+def preserved_dependency_names(spec_file):
+    with open(spec_file) as handle:
+        lines = []
+        for line in handle:
+            if line.startswith("%description"):
+                break
+            lines.append(line)
+    _indexes, names = update_deps.preserved_requirements(lines)
+    return names
+
+
 def diff_table(spec_requires, pypi_requires):
     added = sorted(pypi_requires - spec_requires)
     removed = sorted(spec_requires - pypi_requires)
@@ -78,7 +89,9 @@ def main():
     except update_deps.MetadataError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
-    protected_names = conditional_dependency_names(spec_file)
+    conditional_names = conditional_dependency_names(spec_file)
+    preserved_names = preserved_dependency_names(spec_file)
+    protected_names = conditional_names | preserved_names
     pypi_requires = {
         requirement
         for requirement in pypi_requires
@@ -88,9 +101,13 @@ def main():
     output = diff_table(
         parse_spec_requires(spec_file, protected_names), pypi_requires
     )
-    if protected_names:
+    if conditional_names:
         output += "\n_Conditional requirements preserved for manual policy review: "
-        output += ", ".join(f"`{name}`" for name in sorted(protected_names))
+        output += ", ".join(f"`{name}`" for name in sorted(conditional_names))
+        output += "._\n"
+    if preserved_names:
+        output += "\n_Explicitly marked requirements preserved by packaging policy: "
+        output += ", ".join(f"`{name}`" for name in sorted(preserved_names))
         output += "._\n"
     print(output, end="")
     return 0
