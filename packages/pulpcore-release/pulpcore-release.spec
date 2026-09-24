@@ -5,10 +5,10 @@
 
 %global prereleasesource nightly
 %global prerelease %{?prereleasesource:.}%{?prereleasesource}
-%global release 2
+%global release 1
 
 Name:           pulpcore-release
-Version:        3.105
+Version:        3.118
 Release:        %{?prerelease:0.}%{release}%{?prerelease}%{?dist}
 Summary:        Definition of yum repositories for Pulp
 
@@ -66,6 +66,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Thu Sep 24 2026 Odilon Sousa <osousa@redhat.com> - 3.118-0.1.nightly
+- Release pulpcore-release 3.118
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.105-0.2.nightly
 - Bump release for EL10 rebuild
 
