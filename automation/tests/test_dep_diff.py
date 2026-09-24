@@ -33,6 +33,19 @@ def test_conditional_dependencies_can_be_excluded_from_diff(tmp_path):
     assert dd.parse_spec_requires(spec, protected) == {"python3.12-bar >= 1"}
 
 
+def test_marked_dependencies_can_be_excluded_from_diff(tmp_path):
+    spec = tmp_path / "example.spec"
+    spec.write_text(
+        "# update-deps: preserve-require\n"
+        "Requires: python%{python3_pkgversion}-rhsm\n"
+        "Requires: python%{python3_pkgversion}-bar >= 1\n"
+        "%description\n"
+    )
+    protected = dd.preserved_dependency_names(spec)
+    assert protected == {"rhsm"}
+    assert dd.parse_spec_requires(spec, protected) == {"python3.12-bar >= 1"}
+
+
 def test_diff_table_reports_constraint_changes():
     table = dd.diff_table(
         {"python3.12-foo >= 1"},
