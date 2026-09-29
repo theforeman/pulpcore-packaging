@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.3.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        PostgreSQL database adapter for Python - C extension
 
 License:        LGPL-3.0-only
@@ -21,7 +21,7 @@ BuildRequires:  pyproject-rpm-macros
 
 BuildRequires:  python%{python3_pkgversion}-Cython
 BuildRequires:  gcc
-BuildRequires:  postgresql-devel
+BuildRequires:  libpq-devel
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -58,6 +58,9 @@ set -ex
 
 
 %changelog
+* Tue Sep 29 2026 Odilon Sousa <osousa@redhat.com> - 3.3.6-2
+- Require libpq-devel explicitly for the PostgreSQL client build dependency
+
 * Fri Sep 18 14:13:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.3.6-1
 - Update to 3.3.6
 
