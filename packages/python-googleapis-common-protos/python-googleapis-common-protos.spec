@@ -6,8 +6,8 @@
 %global srcname googleapis_common_protos
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.75.3
-Release:        2%{?dist}
+Version:        1.75.5
+Release:        1%{?dist}
 Summary:        Common protobufs used in Google APIs
 
 License:        Apache-2.0
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 30 04:31:26 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.75.5-1
+- Update to 1.75.5
+
 * Wed Sep 09 2026 Odilon Sousa <osousa@redhat.com> - 1.75.3-2
 - Fix PEP 639 license metadata for RHEL 9/10 setuptools compatibility
 
