@@ -5,7 +5,7 @@
 %global pypi_name google-cloud-storage
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.14.1
+Version:        3.15.1
 Release:        1%{?dist}
 Summary:        Google Cloud Storage API client library
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 30 04:31:06 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.15.1-1
+- Update to 3.15.1
+
 * Wed Sep  9 04:27:50 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.14.1-1
 - Update to 3.14.1
 
