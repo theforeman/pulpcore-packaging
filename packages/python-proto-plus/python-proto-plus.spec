@@ -6,8 +6,8 @@
 %global src_name proto_plus
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.28.4
-Release:        2%{?dist}
+Version:        1.29.0
+Release:        1%{?dist}
 Summary:        Beautiful, Pythonic protocol buffers.
 
 License:        Apache 2.0
@@ -19,7 +19,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
 Requires:       python%{python3_pkgversion}-protobuf >= 6.33.5
-Requires:       python%{python3_pkgversion}-protobuf < 8
+Requires:       python%{python3_pkgversion}-protobuf < 8.0.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Wed Sep 30 04:31:01 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.29.0-1
+- Update to 1.29.0
+
 * Fri Sep 18 2026 Odilon Sousa <osousa@redhat.com> - 1.28.4-2
 - Sync protobuf bounds with upstream metadata
 
