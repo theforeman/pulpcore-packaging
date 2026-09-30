@@ -228,6 +228,45 @@ def test_conditional_main_requires_are_preserved_while_other_deps_update(tmp_pat
     assert "Requires:       python%{python3_pkgversion}-bar >= 1" in result
 
 
+def test_marked_requires_survives_dependency_rewrite(tmp_path):
+    spec = tmp_path / "example.spec"
+    spec.write_text(textwrap.dedent("""\
+        Requires:       python%{python3_pkgversion}-old
+        # update-deps: preserve-require
+        Requires:       python%{python3_pkgversion}-rhsm
+        %description
+        Example.
+    """))
+    ud.rewrite_requires(spec, ["python%{python3_pkgversion}-new >= 1"])
+    result = spec.read_text()
+    assert "python%{python3_pkgversion}-old" not in result
+    assert "Requires:       python%{python3_pkgversion}-new >= 1" in result
+    assert (
+        "# update-deps: preserve-require\n"
+        "Requires:       python%{python3_pkgversion}-rhsm\n"
+    ) in result
+
+
+@pytest.mark.parametrize("requirements", [
+    "python%{python3_pkgversion}-foo python%{python3_pkgversion}-bar",
+    "python%{python3_pkgversion}-foo >= 1 python%{python3_pkgversion}-bar < 2",
+    "python%{python3_pkgversion}-foo /etc/mime.types",
+])
+def test_marked_multiple_requires_are_rejected_without_changes(tmp_path, requirements):
+    spec = tmp_path / "example.spec"
+    original = (
+        "# update-deps: preserve-require\n"
+        f"Requires: {requirements}\n"
+        "%description\nExample.\n"
+    )
+    spec.write_text(original)
+
+    with pytest.raises(ud.UnsafeSpecError, match="exactly one dependency"):
+        ud.rewrite_requires(spec, ["python%{python3_pkgversion}-new"])
+
+    assert spec.read_text() == original
+
+
 def test_mixed_requires_line_is_rejected_without_changes(tmp_path):
     spec = tmp_path / "example.spec"
     original = "Requires: python%{python3_pkgversion}-foo /etc/mime.types\n%description\nx\n"
