@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.118.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -76,6 +76,8 @@ Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 8.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.3.4
 Requires:       python%{python3_pkgversion}-psycopg < 3.4
+Requires:       python%{python3_pkgversion}-psycopg_c >= 3.3.4
+Requires:       python%{python3_pkgversion}-psycopg_c < 3.4
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.35.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.41
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
@@ -144,8 +146,8 @@ rm -rf %{pypi_name}.egg-info
 # Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
 sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 
-# psycopg 'binary' extra isn't needed in production
-sed -i 's/psycopg\[binary\]/psycopg/' pyproject.toml
+# Replace the binary wheel extra with the separately packaged C distribution.
+sed -i 's/psycopg\[binary\]/psycopg-c/' pyproject.toml
 
 
 %build
@@ -170,6 +172,10 @@ set -ex
 
 
 %changelog
+* Thu Oct 01 2026 Odilon Sousa <osousa@redhat.com> - 3.118.1-3
+- Restore psycopg_c runtime dependency for OCI images
+- Declare psycopg-c in wheel metadata for RPM rich dependency generation
+
 * Tue Sep 22 19:36:30 UTC 2026 Odilon Sousa <osousa@redhat.com> - 3.118.1-2
 - Remove the stale pygtrie conflict; pulpcore supports pygtrie 2.6
 
