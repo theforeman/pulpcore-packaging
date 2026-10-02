@@ -1,11 +1,9 @@
-%global pulpcore_version nightly
+%global pulpcore_version 3.105
 
 %define repo_dir %{_sysconfdir}/yum.repos.d
 %define repo_dist %{dist}
 
-%global prereleasesource nightly
-%global prerelease %{?prereleasesource:.}%{?prereleasesource}
-%global release 2
+%global release 1
 
 Name:           pulpcore-release
 Version:        3.105
@@ -66,6 +64,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Fri Oct 02 2026 Odilon Sousa <osousa@redhat.com> - 3.105-1
+- Use the stable pulpcore 3.105 repository
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 3.105-0.2.nightly
 - Bump release for EL10 rebuild
 
