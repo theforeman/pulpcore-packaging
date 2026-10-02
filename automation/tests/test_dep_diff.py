@@ -33,6 +33,35 @@ def test_conditional_dependencies_can_be_excluded_from_diff(tmp_path):
     assert dd.parse_spec_requires(spec, protected) == {"python3.12-bar >= 1"}
 
 
+def test_marked_dependencies_can_be_excluded_from_diff(tmp_path):
+    spec = tmp_path / "example.spec"
+    spec.write_text(
+        "# update-deps: preserve-require\n"
+        "Requires: python%{python3_pkgversion}-rhsm\n"
+        "Requires: python%{python3_pkgversion}-bar >= 1\n"
+        "%description\n"
+    )
+    protected = dd.preserved_dependency_names(spec)
+    assert protected == {"rhsm"}
+    assert dd.parse_spec_requires(spec, protected) == {"python3.12-bar >= 1"}
+
+
+def test_main_reports_invalid_preserve_marker(tmp_path, monkeypatch, capsys):
+    spec = tmp_path / "example.spec"
+    spec.write_text("# update-deps: preserve-require\n%description\n")
+    monkeypatch.setattr(dd, "pypi_mandatory_deps", lambda *_args: set())
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["dep_diff.py", str(spec), "example", "1.0"],
+    )
+
+    assert dd.main() == 1
+    assert capsys.readouterr().err == (
+        "ERROR: # update-deps: preserve-require must be immediately followed by Requires\n"
+    )
+
+
 def test_diff_table_reports_constraint_changes():
     table = dd.diff_table(
         {"python3.12-foo >= 1"},
