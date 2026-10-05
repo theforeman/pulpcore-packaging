@@ -3,10 +3,12 @@
 %define repo_dir %{_sysconfdir}/yum.repos.d
 %define repo_dist %{dist}
 
-%global release 1
+%global release 2
 
 Name:           pulpcore-release
 Version:        3.105
+Provides:       pulpcore-release = %{version}
+Provides:       pulpcore-release
 Release:        %{?prerelease:0.}%{release}%{?prerelease}%{?dist}
 Summary:        Definition of yum repositories for Pulp
 
@@ -64,6 +66,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Mon Oct 05 2026 Odilon Sousa <osousa@redhat.com> - 3.105-2
+- Rebuild the stable pulpcore-release package
+
 * Fri Oct 02 2026 Odilon Sousa <osousa@redhat.com> - 3.105-1
 - Use the stable pulpcore 3.105 repository
 
