@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.118.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -136,6 +136,20 @@ Using Pulp you can:
 - Promote content through different repos in an organized way
 
 
+%package -n python%{python3_pkgversion}-%{pypi_name}+s3
+Summary:        Metapackage for the Pulpcore S3 storage extra
+Requires:       python%{python3_pkgversion}-%{pypi_name} = %{version}-%{release}
+Requires:       python%{python3_pkgversion}-django-storages+boto3
+Provides:       pulpcore-storage-s3 = %{version}-%{release}
+
+%description -n python%{python3_pkgversion}-%{pypi_name}+s3
+This metapackage installs Pulpcore's optional dependencies for S3 and
+S3-compatible object storage. It contains no code.
+
+%files -n python%{python3_pkgversion}-%{pypi_name}+s3
+%ghost %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
+
+
 
 %prep
 set -ex
@@ -172,6 +186,9 @@ set -ex
 
 
 %changelog
+* Sat Oct 03 2026 Jakub Duchek <jakduch@users.noreply.github.com> - 3.118.1-4
+- Add the S3 storage extra metapackage
+
 * Thu Oct 01 2026 Odilon Sousa <osousa@redhat.com> - 3.118.1-3
 - Restore psycopg_c runtime dependency for OCI images
 - Declare psycopg-c in wheel metadata for RPM rich dependency generation
