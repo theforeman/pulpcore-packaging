@@ -5,8 +5,8 @@
 %global pypi_name zipp
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.1.0
-Release:        3%{?dist}
+Version:        4.1.1
+Release:        1%{?dist}
 Summary:        Backport of pathlib-compatible object wrapper for zip files
 
 License:        MIT
@@ -51,6 +51,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:04 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.1.1-1
+- Update to 4.1.1
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 4.1.0-3
 - Bump release for EL10 rebuild
 
