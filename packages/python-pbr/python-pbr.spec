@@ -5,7 +5,7 @@
 %global pypi_name pbr
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        7.1.1
+Version:        7.1.3
 Release:        1%{?dist}
 Summary:        Python Build Reasonableness
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:15 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 7.1.3-1
+- Update to 7.1.3
+
 * Mon Aug 24 19:46:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 7.1.1-1
 - Update to 7.1.1
 
