@@ -5,7 +5,7 @@
 %global pypi_name wcmatch
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        11.0.1
+Version:        11.1
 Release:        1%{?dist}
 Summary:        Wildcard/glob file name matcher
 
@@ -19,7 +19,7 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-Requires:       python%{python3_pkgversion}-bracex >= 2.1.1
+Requires:       python%{python3_pkgversion}-bracex >= 3.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -47,6 +47,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:24 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 11.1-1
+- Update to 11.1
+
 * Thu Aug 27 11:20:27 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 11.0.1-1
 - Update to 11.0.1
 
