@@ -5,7 +5,7 @@
 %global pypi_name djangorestframework
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.18.1
+Version:        3.18.3
 Release:        1%{?dist}
 Summary:        Web APIs for Django, made easy
 
@@ -57,6 +57,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:06 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.18.3-1
+- Update to 3.18.3
+
 * Fri Sep 18 14:13:23 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.18.1-1
 - Update to 3.18.1
 
