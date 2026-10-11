@@ -5,8 +5,8 @@
 %global pypi_name pycparser
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.0
-Release:        2%{?dist}
+Version:        3.11
+Release:        1%{?dist}
 Summary:        C parser in Python
 
 License:        BSD
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:16 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.11-1
+- Update to 3.11
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 3.0-2
 - Bump release for EL10 rebuild
 
