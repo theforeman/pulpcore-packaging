@@ -9,7 +9,7 @@
 %global srcname backports-zstd
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.7.0
+Version:        1.8.0
 Release:        1%{?dist}
 Summary:        Backport of the Python 3.14 compression.zstd module
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:19 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.8.0-1
+- Update to 1.8.0
+
 * Sun Aug 30 04:26:26 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.7.0-1
 - Update to 1.7.0
 
