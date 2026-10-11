@@ -5,7 +5,7 @@
 %global pypi_name pydantic
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.13.5
+Version:        2.14.0
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -20,9 +20,9 @@ BuildRequires:  python%{python3_pkgversion}-hatchling
 BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme >= 22.5.0
 
 Requires:  python%{python3_pkgversion}-annotated-types >= 0.6.0
-Requires:  python%{python3_pkgversion}-pydantic-core == 2.46.5
-Requires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
-Requires:  python%{python3_pkgversion}-typing-inspection >= 0.4.2
+Requires:  python%{python3_pkgversion}-pydantic-core == 2.50.0
+Requires:  python%{python3_pkgversion}-typing-extensions >= 4.16.0
+Requires:  python%{python3_pkgversion}-typing-inspection >= 0.4.4
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -63,6 +63,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Oct 11 04:31:19 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.14.0-1
+- Update to 2.14.0
+
 * Fri Sep 18 14:13:21 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.5-1
 - Update to 2.13.5
 
