@@ -7,7 +7,7 @@
 %global pypi_name dulwich
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.2.15
+Version:        1.2.17
 Release:        1%{?dist}
 Summary:        Python Git Library
 
@@ -62,6 +62,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:24 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.17-1
+- Update to 1.2.17
+
 * Fri Sep 18 14:13:31 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.15-1
 - Update to 1.2.15
 
