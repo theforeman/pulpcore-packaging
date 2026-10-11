@@ -5,8 +5,8 @@
 %global pypi_name dnspython
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.8.0
-Release:        2%{?dist}
+Version:        2.9.0
+Release:        1%{?dist}
 Summary:        DNS toolkit for Python
 
 License:        ISC
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:25 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.0-1
+- Update to 2.9.0
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 2.8.0-2
 - Bump release for EL10 rebuild
 
