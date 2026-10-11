@@ -5,7 +5,7 @@
 %global pypi_name pycairo
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.29.1
+Version:        1.29.2
 Release:        1%{?dist}
 Summary:        Python interface for cairo
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:18 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.29.2-1
+- Update to 1.29.2
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.29.1-1
 - Update to 1.29.1
 
