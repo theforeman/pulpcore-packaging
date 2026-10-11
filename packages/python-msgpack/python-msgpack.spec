@@ -5,7 +5,7 @@
 %global pypi_name msgpack
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.2.2
+Version:        1.2.3
 Release:        1%{?dist}
 Summary:        MessagePack serializer
 
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 11 04:31:24 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.3-1
+- Update to 1.2.3
+
 * Thu Aug 27 11:20:35 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.2-1
 - Update to 1.2.2
 
