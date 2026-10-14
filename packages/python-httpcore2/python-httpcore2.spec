@@ -3,7 +3,7 @@
 %global pypi_name httpcore2
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.13.0
+Version:        2.13.1
 Release:        1%{?dist}
 Summary:        Minimal low-level HTTP client
 
@@ -52,6 +52,10 @@ set -ex
 
 
 %changelog
+* Wed Oct 14 04:28:50 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.1-1
+- Update to 2.13.1
+- Match the static version in the pyproject patch to the new release
+
 * Fri Sep 18 14:13:31 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.13.0-1
 - Update to 2.13.0
 
