@@ -3,7 +3,7 @@
 %global pypi_name truststore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.10.4
+Version:        0.10.5
 Release:        1%{?dist}
 Summary:        Verify certificates using native system trust stores
 
@@ -48,5 +48,8 @@ set -ex
 
 
 %changelog
+* Wed Oct 14 04:28:49 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.10.5-1
+- Update to 0.10.5
+
 * Fri Sep 04 2026 Odilon Sousa <osousa@redhat.com> - 0.10.4-1
 - Initial package
