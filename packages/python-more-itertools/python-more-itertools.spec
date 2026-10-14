@@ -4,8 +4,8 @@
 %global src_name more_itertools
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        11.1.0
-Release:        2%{?dist}
+Version:        11.2.0
+Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -45,6 +45,9 @@ set -ex
 %{python3_sitelib}/more_itertools-%{version}.dist-info/
 
 %changelog
+* Wed Oct 14 04:28:48 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 11.2.0-1
+- Update to 11.2.0
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 11.1.0-2
 - Bump release for EL10 rebuild
 
