@@ -7,8 +7,8 @@
 %global pypi_name google-crc32c
 
 Name:          python%{python3_pkgversion}-%{pypi_name}
-Version:        1.8.0
-Release:        2%{?dist}
+Version:        1.9.0
+Release:        1%{?dist}
 Summary:        A python wrapper of the C library 'Google CRC32C'
 BuildArch:      noarch
 
@@ -37,6 +37,7 @@ rm -rf %{pypi_name}.egg-info
 # Defer license/authors/classifiers/dependencies/optional-dependencies to
 # setup.cfg — the minimal [project] table here otherwise makes setuptools
 # try (and crash on el10's 69.0.3) to reconcile them itself
+sed -i '/^\[project\]/,/^\[/{ /^license = /d; /^dynamic = /d; }' pyproject.toml
 sed -i '/^\[project\]/a dynamic = ["license", "authors", "classifiers", "dependencies", "optional-dependencies"]' pyproject.toml
 
 
@@ -58,6 +59,10 @@ set -ex
 
 
 %changelog
+* Wed Oct 14 04:29:03 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.9.0-1
+- Update to 1.9.0
+- Keep one PEP 621 dynamic field and defer license metadata to setup.cfg
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 1.8.0-2
 - Bump release for EL10 rebuild
 
