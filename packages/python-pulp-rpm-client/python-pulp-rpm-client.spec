@@ -6,7 +6,7 @@
 %global src_name pulp_rpm_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.39.0
+Version:        3.39.1
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -59,6 +59,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 16 13:11:07 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.39.1-1
+- Update to 3.39.1
+
 * Mon Sep 14 15:42:38 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.39.0-1
 - Update to 3.39.0
 
