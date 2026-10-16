@@ -7,28 +7,43 @@
 %global srcname uv_build
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.9.7
-Release:        2%{?dist}
+Version:        0.9.21
+Release:        1%{?dist}
 Summary:        The uv build backend
 
-License:        MIT OR Apache-2.0
+License:        %{shrink:
+                0BSD AND
+                (0BSD OR Apache-2.0 OR MIT) AND
+                (Apache-2.0 OR BSL-1.0) AND
+                (Apache-2.0 OR MIT OR Zlib) AND
+                Apache-2.0 AND
+                (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND
+                (Apache-2.0 OR MIT) AND
+                ((Apache-2.0 OR MIT) AND BSD-3-Clause) AND
+                ((MIT OR Apache-2.0) AND Unicode-3.0) AND
+                (CC0-1.0 OR MIT-0 OR Apache-2.0) AND
+                (MIT OR Apache-2.0 OR LGPL-2.1-or-later) AND
+                (MIT OR Apache-2.0 OR Zlib) AND
+                (MIT OR Apache-2.0) AND
+                (MIT OR Zlib OR Apache-2.0) AND
+                MPL-2.0 AND
+                Unicode-3.0 AND
+                (Unlicense OR MIT) AND
+                Zlib
+                }
 URL:            https://github.com/astral-sh/uv
 Source0:        https://files.pythonhosted.org/packages/source/u/%{srcname}/%{srcname}-%{version}.tar.gz
 
-# Shared vendor tarball with python-uv 0.9.7 (same Cargo workspace)
-# Generated with: tar xf uv-0.9.7.tar.gz; pushd uv-0.9.7;
-# cargo vendor-filterer --platform=x86_64-unknown-linux-gnu &&
-# tar Jcvf ../uv-0.9.7-vendor.tar.xz vendor/ ; popd
-Source1:        https://downloads.theforeman.org/vendor/uv-%{version}-vendor.tar.xz
-
-Patch0:         0001-Patch-Cargo.toml-for-build-with-vendored-libs.patch
+# Generated from the uv_build source distribution in the CS10 sat-pkg-tools
+# container with cargo vendor-filterer --all-features. Its Cargo.lock differs
+# from uv's, so it needs a separate vendor archive.
+Source1:        https://downloads.theforeman.org/vendor/uv_build-%{version}-vendor.tar.xz
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-maturin >= 1
 BuildRequires:  python%{python3_pkgversion}-maturin < 2
 BuildRequires:  pyproject-rpm-macros
-
 BuildRequires:  rust-toolset
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
@@ -55,12 +70,18 @@ set -ex
 %pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
+%license LICENSE-APACHE LICENSE-MIT
 %{_bindir}/uv-build
 %{python3_sitearch}/%{srcname}
 %{python3_sitearch}/%{srcname}-%{version}.dist-info/
 
 
 %changelog
+* Fri Oct 16 2026 Odilon Sousa <osousa@redhat.com> - 0.9.21-1
+- Update python-uv-build to 0.9.21
+- Use its own vendor archive and drop the obsolete Git dependency patch
+- Record the vendored Rust dependency licenses without cargo-rpm-macros
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.9.7-2
 - Bump release for EL10 rebuild
 
