@@ -1,0 +1,28 @@
+From da9194503ab36e97a7f424edf89bbf566ae093a5 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Sun, 23 Jun 2024 16:29:05 -0400
+Subject: [PATCH] Downstream: Always find the system-wide uv executable
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+“Should uv.find_uv_bin() be able to find /usr/bin/uv?”
+https://github.com/astral-sh/uv/issues/4451
+---
+ python/uv/_find_uv.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/python/uv/_find_uv.py b/python/uv/_find_uv.py
+index ebe6b8d5a..e25a2e28c 100644
+--- a/python/uv/_find_uv.py
++++ b/python/uv/_find_uv.py
+@@ -38,1 +38,9 @@ def find_uv_bin() -> str:
++    # Downstream patch: always find the system-wide uv executable
++    #
++    # “Should uv.find_uv_bin() be able to find /usr/bin/uv?”
++    #  https://github.com/astral-sh/uv/issues/4451
++    bindir_path = sysconfig.get_config_var("BINDIR")
++    if bindir_path is not None:
++        targets.insert(0, os.path.join(bindir_path, uv_exe))
++
+     seen = []

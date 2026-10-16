@@ -6,8 +6,8 @@
 %global pypi_name uv
 
 Name:           %{pypi_name}
-Version:        0.9.7
-Release:        2%{?dist}
+Version:        0.9.21
+Release:        1%{?dist}
 Summary:        An extremely fast Python package and project manager, written in Rust.
 
 
@@ -115,6 +115,8 @@ License:        %{shrink:
                 (Apache-2.0 WITH LLVM-exception) AND
                 (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND
                 BSD-3-Clause AND
+                CC0-1.0 AND
+                CDLA-Permissive-2.0 AND
                 ISC AND
                 (LGPL-3.0-or-later OR MIT) AND
                 (LGPL-3.0-or-later OR MPL-2.0) AND
@@ -130,13 +132,12 @@ License:        %{shrink:
 URL:            https://github.com/astral-sh/uv
 Source0:        https://files.pythonhosted.org/packages/source/u/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
-# Generated with tar xf uv-%%{version}.tar.gz ;
-# pushd uv-%%{version} ; cargo vendor-filterer --platform=x86_64-unknown-linux-gnu
-# && tar Jcvf ../uv-%%{version}-vendor.tar.xz vendor/ ; popd
+# Generated from the uv source distribution in the CS10 sat-pkg-tools
+# container with cargo vendor-filterer --all-features.
 
 Source1:        https://downloads.theforeman.org/vendor/%{pypi_name}-%{version}-vendor.tar.xz
 
-Patch0:         0001-Patch-Cargo.toml-for-build-with-vendored-libs.patch
+Patch0:         0001-Always-find-system-uv-executable.patch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
@@ -193,6 +194,7 @@ set -ex
 %pyproject_install
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
+%license LICENSE-APACHE LICENSE-MIT
 %{_bindir}/uv
 # Equivalent to “uv tool run”:
 %{_bindir}/uvx
@@ -205,6 +207,12 @@ set -ex
 
 
 %changelog
+* Fri Oct 16 2026 Odilon Sousa <osousa@redhat.com> - 0.9.21-1
+- Update python-uv to 0.9.21
+- Refresh the vendor archive and drop the obsolete Git dependency patch
+- Make uv.find_uv_bin() prefer the system-wide executable
+- Keep the static Rust dependency license expression for RHEL compatibility
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.9.7-2
 - Bump release for EL10 rebuild
 - Exclude rust-toolchain.toml and crates/ vendor metadata now bundled into
