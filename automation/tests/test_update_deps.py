@@ -187,6 +187,23 @@ def test_real_botocore_conditional_policy_is_byte_identical(tmp_path):
     assert spec.read_text() == original
 
 
+def test_botocore_keeps_packaged_python312_dateutil_epochless():
+    repository = Path(__file__).resolve().parents[2]
+    spec = (
+        repository / "packages/python-botocore/python-botocore.spec"
+    ).read_text()
+    epoch_branch, packaged_python_branch = spec.split("%else", 1)
+    packaged_python_branch = packaged_python_branch.split("%endif", 1)[0]
+    assert (
+        '%if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.12"'
+        in epoch_branch
+    )
+    assert "python%{python3_pkgversion}-dateutil < 1:3.0.0" in epoch_branch
+    assert "python%{python3_pkgversion}-dateutil >= 1:2.1" in epoch_branch
+    assert "python%{python3_pkgversion}-dateutil < 3.0.0" in packaged_python_branch
+    assert "python%{python3_pkgversion}-dateutil >= 2.1" in packaged_python_branch
+
+
 def test_rewrite_does_not_touch_subpackage_requires(tmp_path):
     spec = tmp_path / "example.spec"
     spec.write_text(textwrap.dedent("""\
