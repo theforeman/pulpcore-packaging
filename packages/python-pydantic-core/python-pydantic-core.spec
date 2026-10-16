@@ -9,7 +9,7 @@
 %global srcname pydantic_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.46.5
+Version:        2.50.1
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -35,7 +35,7 @@ BuildRequires:  rust-toolset
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
 
-Requires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
+Requires:  python%{python3_pkgversion}-typing-extensions >= 4.16.0
 
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 16 18:55:51 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.50.1-1
+- Update to 2.50.1
+
 * Fri Sep 18 14:13:26 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.46.5-1
 - Update to 2.46.5
 
