@@ -6,7 +6,7 @@
 %global srcname rpmrepo_metadata
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.7.0
+Version:        0.8.3
 Release:        1%{?dist}
 Summary:        Python bindings for rpmrepo_metadata: create and parse RPM repository metadata
 
@@ -63,5 +63,8 @@ set -ex
 
 
 %changelog
+* Fri Oct 16 2026 Odilon Junior <osousa@redhat.com> - 0.8.3-1
+- Update to 0.8.3
+
 * Mon Sep 21 2026 Odilon Junior <osousa@redhat.com> - 0.7.0-1
 - Initial package.
