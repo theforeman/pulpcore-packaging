@@ -8,7 +8,7 @@
 %global pypi_name cryptography
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        50.0.1
+Version:        50.0.2
 Release:        1%{?dist}
 Summary:        cryptography is a package which provides cryptographic recipes and primitives to Python developers
 
@@ -76,6 +76,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 16 18:54:30 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 50.0.2-1
+- Update to 50.0.2
+
 * Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 50.0.1-1
 - Update to 50.0.1, needed for pulpcore 3.105.17's cryptography>=49.0.0,<51.0
 - Regenerate vendored Rust crates for 50.0.1
