@@ -6,7 +6,7 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.39.0
+Version:        3.39.1
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -22,26 +22,31 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
+Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc < 1.6
 Requires:       python%{python3_pkgversion}-createrepo_c >= 1.2.3
-Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.3
+Requires:       python%{python3_pkgversion}-createrepo_c < 1.3
 Requires:       python%{python3_pkgversion}-django-readonly-field >= 1.1.1
-Conflicts:      python%{python3_pkgversion}-django-readonly-field >= 1.2
-Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
-Conflicts:      python%{python3_pkgversion}-jsonschema >= 5.0
-Requires:       python%{python3_pkgversion}-libcomps >= 0.1.23
-Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
-Requires:       python%{python3_pkgversion}-productmd >= 1.33
-Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
-Requires:       python%{python3_pkgversion}-pulpcore >= 3.116.0
-Requires:       python%{python3_pkgversion}-pulpcore < 3.130
-Requires:       python%{python3_pkgversion}-solv >= 0.7.21
-Conflicts:      python%{python3_pkgversion}-solv >= 0.8
+Requires:       python%{python3_pkgversion}-django-readonly-field < 1.2
 Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
 Requires:       python%{python3_pkgversion}-importlib-resources < 6.5
-Requires:       python%{python3_pkgversion}-rpm-rs >= 0.27
-Requires:       python%{python3_pkgversion}-rpm-rs < 0.28
-Requires:       python%{python3_pkgversion}-rpmrepo-metadata >= 0.7
-Requires:       python%{python3_pkgversion}-rpmrepo-metadata < 0.8
+Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
+Requires:       python%{python3_pkgversion}-jsonschema < 5.0
+Requires:       python%{python3_pkgversion}-productmd >= 1.33.0
+Requires:       python%{python3_pkgversion}-productmd < 1.34
+Requires:       python%{python3_pkgversion}-pulpcore >= 3.118.0
+Requires:       python%{python3_pkgversion}-pulpcore < 3.130
+Requires:       python%{python3_pkgversion}-rpm-rs >= 0.30
+Requires:       python%{python3_pkgversion}-rpm-rs < 0.31
+Requires:       python%{python3_pkgversion}-rpmrepo-metadata >= 0.8.2
+Requires:       python%{python3_pkgversion}-rpmrepo-metadata < 0.9.0
+Requires:       python%{python3_pkgversion}-solv >= 0.7.21
+Requires:       python%{python3_pkgversion}-solv < 0.8
+Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.3
+Conflicts:      python%{python3_pkgversion}-django-readonly-field >= 1.2
+Conflicts:      python%{python3_pkgversion}-jsonschema >= 5.0
+Conflicts:      python%{python3_pkgversion}-libcomps >= 0.2
+Conflicts:      python%{python3_pkgversion}-productmd >= 1.34
+Conflicts:      python%{python3_pkgversion}-solv >= 0.8
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -79,6 +84,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 16 13:25:40 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.39.1-1
+- Update to 3.39.1
+
 * Tue Sep 22 2026 Odilon Sousa <osousa@redhat.com> - 3.39.0-1
 - Release python-pulp-rpm 3.39.0
 
