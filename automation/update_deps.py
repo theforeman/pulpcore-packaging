@@ -20,6 +20,7 @@ from packaging.version import Version
 
 PYTHON_VER = "3.12"
 PYTHON_RPM_PREFIX = "python%{python3_pkgversion}"
+PRESERVE_REQUIRE_MARKER = "# update-deps: preserve-require"
 _SEP_RE = re.compile(r"[-_.]+")
 _RPM_MACRO_RE = re.compile(r"%\{python3_pkgversion\}|%\{python3_abi\}")
 
@@ -296,6 +297,37 @@ def conditional_requirements(lines):
     return indexes, dependency_names
 
 
+def preserved_requirements(lines):
+    """Return Requires indexes and names protected by an explicit marker."""
+    indexes = set()
+    dependency_names = set()
+    for index, line in enumerate(lines):
+        if line.strip() != PRESERVE_REQUIRE_MARKER:
+            continue
+        requirement_index = index + 1
+        if requirement_index >= len(lines):
+            raise UnsafeSpecError(
+                f"{PRESERVE_REQUIRE_MARKER} must be immediately followed by Requires"
+            )
+        stripped = lines[requirement_index].strip()
+        if not stripped.startswith("Requires:"):
+            raise UnsafeSpecError(
+                f"{PRESERVE_REQUIRE_MARKER} must be immediately followed by Requires"
+            )
+        entries = parse_requires_entries(stripped[len("Requires:"):].strip())
+        if not entries:
+            raise UnsafeSpecError(
+                f"{PRESERVE_REQUIRE_MARKER} cannot protect an empty Requires"
+            )
+        indexes.add(requirement_index)
+        dependency_names.update(
+            dependency_name
+            for name, _constraint in entries
+            if (dependency_name := rpm_dependency_name(name)) is not None
+        )
+    return indexes, dependency_names
+
+
 def _unconditional_dependency_indexes(lines):
     indexes = []
     conditional_depth = 0
@@ -320,7 +352,9 @@ def rewrite_requires(spec_file, new_requires):
         len(lines),
     )
     preamble = lines[:description_index]
-    conditional_indexes, protected_names = conditional_requirements(preamble)
+    conditional_indexes, conditional_names = conditional_requirements(preamble)
+    preserved_indexes, preserved_names = preserved_requirements(preamble)
+    protected_names = conditional_names | preserved_names
     version_match = next(
         (
             re.match(r"^Version:\s*(\S+)", line)
@@ -353,7 +387,8 @@ def rewrite_requires(spec_file, new_requires):
         if (
             dependency_names
             and index not in conditional_indexes
-            and not dependency_names.intersection(protected_names)
+            and index not in preserved_indexes
+            and not dependency_names.intersection(conditional_names)
         ):
             library_indexes.append(index)
             existing_updatable_entries.extend(
@@ -367,10 +402,16 @@ def rewrite_requires(spec_file, new_requires):
         for requirement in new_requires
         if rpm_dependency_name(requirement.partition(" ")[0]) not in protected_names
     ]
-    if protected_names:
+    if conditional_names:
         print(
             "INFO: preserving conditional Requires for: "
-            + ", ".join(sorted(protected_names)),
+            + ", ".join(sorted(conditional_names)),
+            file=sys.stderr,
+        )
+    if preserved_names:
+        print(
+            "INFO: preserving explicitly marked Requires for: "
+            + ", ".join(sorted(preserved_names)),
             file=sys.stderr,
         )
     new_updatable_entries = [
