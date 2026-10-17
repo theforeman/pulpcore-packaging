@@ -6,7 +6,7 @@
 %global srcname rpm_rs
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.27.1
+Version:        0.30.2
 Release:        1%{?dist}
 Summary:        Python bindings for rpm-rs: build, parse, sign and inspect RPM packages
 
@@ -60,6 +60,9 @@ set -ex
 
 
 %changelog
+* Sat Oct 17 2026 Odilon Sousa <osousa@redhat.com> - 0.30.2-1
+- Update to 0.30.2.
+
 * Fri Oct 16 18:57:05 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.27.1-1
 - Update to 0.27.1
 
