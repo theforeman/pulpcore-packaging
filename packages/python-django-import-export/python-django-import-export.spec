@@ -7,8 +7,8 @@
 %global src_name django_import_export
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.4.1
-Release:        2%{?dist}
+Version:        4.4.2
+Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
 License:        BSD License
@@ -23,9 +23,9 @@ BuildRequires:  python%{python3_pkgversion}-setuptools-scm
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-django >= 3.2
-Requires:       python%{python3_pkgversion}-diff-match-patch
-Requires:       python%{python3_pkgversion}-tablib >= 3.2.1
+Requires:       python%{python3_pkgversion}-diff-match-patch == 20241021
+Requires:       python%{python3_pkgversion}-django >= 4.2
+Requires:       python%{python3_pkgversion}-tablib >= 3.7.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 18 04:26:10 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.4.2-1
+- Update to 4.4.2
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 4.4.1-2
 - Bump release for EL10 rebuild
 
