@@ -4,7 +4,7 @@
 %global src_name more_itertools
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        11.2.0
+Version:        11.2.1
 Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
@@ -45,6 +45,9 @@ set -ex
 %{python3_sitelib}/more_itertools-%{version}.dist-info/
 
 %changelog
+* Sun Oct 18 04:26:14 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 11.2.1-1
+- Update to 11.2.1
+
 * Wed Oct 14 04:28:48 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 11.2.0-1
 - Update to 11.2.0
 
