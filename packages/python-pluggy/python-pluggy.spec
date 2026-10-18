@@ -5,8 +5,8 @@
 %global pypi_name pluggy
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.6.0
-Release:        2%{?dist}
+Version:        1.7.0
+Release:        1%{?dist}
 Summary:        plugin and hook calling mechanisms for python
 
 License:        MIT
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sun Oct 18 04:26:19 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.7.0-1
+- Update to 1.7.0
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 1.6.0-2
 - Bump release for EL10 rebuild
 
