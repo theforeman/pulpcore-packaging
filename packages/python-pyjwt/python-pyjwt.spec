@@ -6,8 +6,8 @@
 %global srcname pyjwt
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        2.13.0
-Release:        2%{?dist}
+Version:        2.15.1
+Release:        1%{?dist}
 Summary:        JSON Web Token implementation in Python
 
 License:        MIT
@@ -69,6 +69,9 @@ set -ex
 
 
 %changelog
+* Sun Oct 18 04:26:06 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.15.1-1
+- Update to 2.15.1
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 2.13.0-2
 - Bump release for EL10 rebuild
 
