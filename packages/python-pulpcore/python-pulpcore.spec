@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.118.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -76,6 +76,8 @@ Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 8.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.3.4
 Requires:       python%{python3_pkgversion}-psycopg < 3.4
+Requires:       python%{python3_pkgversion}-psycopg_c >= 3.3.4
+Requires:       python%{python3_pkgversion}-psycopg_c < 3.4
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.35.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.41
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
@@ -184,6 +186,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 19 13:10:30 UTC 2026 Odilon Sousa <osousa@redhat.com> - 3.118.3-2
+- Restore psycopg_c runtime dependency for OCI images
+
 * Mon Oct 19 12:02:35 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.3-1
 - Update to 3.118.3
 
