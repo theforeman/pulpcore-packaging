@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.118.1
-Release:        4%{?dist}
+Version:        3.118.3
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -57,7 +57,7 @@ Requires:       python%{python3_pkgversion}-drf-spectacular < 0.30
 Requires:       python%{python3_pkgversion}-dynaconf >= 3.3.0
 Requires:       python%{python3_pkgversion}-dynaconf < 3.4
 Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
-Requires:       python%{python3_pkgversion}-gitpython < 3.2
+Requires:       python%{python3_pkgversion}-gitpython < 3.3
 Requires:       python%{python3_pkgversion}-gunicorn >= 22.0
 Requires:       python%{python3_pkgversion}-gunicorn < 26.3.0
 Requires:       python%{python3_pkgversion}-jinja2 >= 3.1
@@ -76,8 +76,6 @@ Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 8.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.3.4
 Requires:       python%{python3_pkgversion}-psycopg < 3.4
-Requires:       python%{python3_pkgversion}-psycopg_c >= 3.3.4
-Requires:       python%{python3_pkgversion}-psycopg_c < 3.4
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.35.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.41
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
@@ -186,6 +184,9 @@ set -ex
 
 
 %changelog
+* Mon Oct 19 12:02:35 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.3-1
+- Update to 3.118.3
+
 * Sat Oct 03 2026 Jakub Duchek <jakduch@users.noreply.github.com> - 3.118.1-4
 - Add the S3 storage extra metapackage
 
