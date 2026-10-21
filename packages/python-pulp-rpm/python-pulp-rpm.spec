@@ -6,8 +6,8 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.39.1
-Release:        2%{?dist}
+Version:        3.39.2
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -23,7 +23,7 @@ BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc < 1.6
-Requires:       python%{python3_pkgversion}-createrepo_c >= 1.2.3
+Requires:       python%{python3_pkgversion}-createrepo_c >= 1.2.5
 Requires:       python%{python3_pkgversion}-createrepo_c < 1.3
 Requires:       python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       python%{python3_pkgversion}-django-readonly-field < 1.2
@@ -31,7 +31,7 @@ Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
 Requires:       python%{python3_pkgversion}-importlib-resources < 6.5
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
 Requires:       python%{python3_pkgversion}-jsonschema < 5.0
-Requires:       python%{python3_pkgversion}-productmd >= 1.33
+Requires:       python%{python3_pkgversion}-productmd >= 1.33.0
 Requires:       python%{python3_pkgversion}-productmd < 1.34
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.118.0
 Requires:       python%{python3_pkgversion}-pulpcore < 3.130
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Wed Oct 21 12:32:41 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.39.2-1
+- Update to 3.39.2
+
 * Sat Oct 17 00:56:32 UTC 2026 Odilon Sousa <osousa@redhat.com> - 3.39.1-2
 - Match the productmd lower bound to its 1.33 release version
 
