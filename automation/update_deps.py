@@ -141,7 +141,17 @@ def pypi_mandatory_deps(pypi_name, version):
 
 
 def update_pypi_source_filename(spec_file, release_data, version):
-    """Match a conventional PyPI Source URL to the release's real sdist name."""
+    """Update a conventional PyPI source URL, leaving other source URLs alone."""
+    path = Path(spec_file)
+    lines = path.read_text().splitlines(keepends=True)
+    source_indexes = [
+        index for index, line in enumerate(lines)
+        if re.match(r"^Source\d*:\s*", line)
+        and "files.pythonhosted.org/packages/source/" in line
+    ]
+    if not source_indexes:
+        return
+
     sdists = [
         item for item in release_data.get("urls", [])
         if item.get("packagetype") == "sdist" and item.get("filename")
@@ -158,8 +168,6 @@ def update_pypi_source_filename(spec_file, release_data, version):
     filename_prefix, filename_suffix = sdist_filename.rsplit(version, 1)
     macro_filename = f"{filename_prefix}%{{version}}{filename_suffix}"
 
-    path = Path(spec_file)
-    lines = path.read_text().splitlines(keepends=True)
     macros = {}
     for line in lines:
         match = re.match(r"^%global\s+(\w+)\s+(\S+)", line)

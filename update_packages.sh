@@ -21,9 +21,10 @@ bump_spec() {
     pkg=$1
     NEW_VERSION=$2
 
-    # Resolve PyPI name → on-disk directory (handles separator/prefix mismatches like ruamel.yaml)
+    # Resolve the PyPI name to its on-disk spec directory, including native packages
+    # that ship Python bindings (such as createrepo_c).
     PKG_DIR=$(python3 find_package.py --resolve-dir "$pkg") || {
-        echo "ERROR: cannot resolve '$pkg' to any packages/python-*/ directory" >&2
+        echo "ERROR: cannot resolve '$pkg' to a supported package spec directory" >&2
         exit 1
     }
     SPEC_FILE="packages/$PKG_DIR/$PKG_DIR.spec"
