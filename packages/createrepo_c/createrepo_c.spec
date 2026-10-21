@@ -45,7 +45,7 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        1.2.3
+Version:        1.2.5
 Release:        1%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
@@ -266,7 +266,7 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %files -n python%{python3_pkgversion}-%{name}
 %doc examples/python/*
 %{python3_sitearch}/%{name}/
-%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{name}-%{version}.dist-info/
 
 %if %{with python36}
 %files -n python3-%{name}
@@ -275,6 +275,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Wed Oct 21 13:52:13 UTC 2026 Odilon Sousa <osousa@redhat.com> - 1.2.5-1
+- Update to createrepo_c 1.2.5 and package upstream dist-info metadata
+
 * Tue Sep 22 2026 Odilon Sousa <osousa@redhat.com> - 1.2.3-1
 - Release createrepo_c 1.2.3
 
