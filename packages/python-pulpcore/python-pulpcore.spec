@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.118.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -107,7 +107,6 @@ Requires:       python%{python3_pkgversion}-yarl < 1.25
 Conflicts:      python%{python3_pkgversion}-django == 5.0
 Conflicts:      python%{python3_pkgversion}-django == 5.1
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
-Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
 Conflicts:      python%{python3_pkgversion}-tablib == 3.6
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -188,6 +187,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 22 21:48:25 UTC 2026 Odilon Sousa <osousa@redhat.com> - 3.118.4-2
+- Remove the obsolete GitPython >= 3.2 conflict
+
 * Thu Oct 22 12:12:23 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.4-1
 - Update to 3.118.4
 - Retain the explicit psycopg_c runtime requirements for OCI images
