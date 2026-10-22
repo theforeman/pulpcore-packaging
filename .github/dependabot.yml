@@ -6,6 +6,9 @@ updates:
     directory: "/automation"
     schedule:
       interval: "daily"
+    # Keep automation requirements current as soon as releases are available.
+    cooldown:
+      default-days: 0
     commit-message:
       prefix: "[dependabot]"
     # Add labels for dependabot bumps
