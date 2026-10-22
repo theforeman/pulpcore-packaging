@@ -6,8 +6,8 @@
 %global srcname pillow
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        12.3.0
-Release:        2%{?dist}
+Version:        13.0.0
+Release:        1%{?dist}
 Summary:        Python Imaging Library (Fork)
 
 License:        HPND
@@ -54,6 +54,9 @@ set -ex
 %{python3_sitearch}/%{srcname}-%{version}.dist-info/
 
 %changelog
+* Thu Oct 22 15:49:37 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 13.0.0-1
+- Update to 13.0.0
+
 * Wed Jul 29 2026 Odilon Sousa <osousa@redhat.com> - 12.3.0-2
 - Bump release for EL10 rebuild
 
