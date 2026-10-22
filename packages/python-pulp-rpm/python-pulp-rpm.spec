@@ -6,8 +6,8 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.39.2
-Release:        2%{?dist}
+Version:        3.39.3
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -84,6 +84,10 @@ set -ex
 
 
 %changelog
+* Thu Oct 22 11:41:27 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.39.3-1
+- Update to 3.39.3
+- Keep the productmd minimum at its published 1.33 release version
+
 * Wed Oct 21 13:36:35 UTC 2026 Odilon Sousa <osousa@redhat.com> - 3.39.2-2
 - Match productmd lower bound to its 1.33 release version
 
