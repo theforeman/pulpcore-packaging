@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'find_package.py'
+      - 'collect-pip-libs.sh'
 
 env:
   GIT_AUTHOR_NAME: Foreman Packaging Automation

@@ -7,6 +7,7 @@ import glob
 
 PACKAGES_DIR = "packages"
 PYTHON_PREFIX = "python-"
+NATIVE_PACKAGE_DIRS = {"createrepo-c": "createrepo_c"}
 
 
 def canonicalize(name):
@@ -73,6 +74,29 @@ def resolve_package_dir(pkg, directory_index=None):
     return None
 
 
+def resolve_package_target(pkg, directory_index=None):
+    """Return the update name and spec directory for a packaged PyPI project.
+
+    Python libraries use packages/python-<suffix>. A small number of projects,
+    such as createrepo_c, ship their Python bindings from a native RPM spec
+    directory instead.
+    """
+    if directory_index is None:
+        directory_index = build_directory_index()
+
+    suffix = resolve_package_dir(pkg, directory_index)
+    if suffix is not None:
+        return suffix, f"{PYTHON_PREFIX}{suffix}"
+
+    native_dir = NATIVE_PACKAGE_DIRS.get(canonicalize(pkg))
+    if native_dir is not None and glob.glob(
+        f"{PACKAGES_DIR}/{native_dir}/{native_dir}.spec"
+    ):
+        return native_dir, native_dir
+
+    return None, None
+
+
 def parse_package_list(lines):
     for line in lines:
         line = line.strip()
@@ -86,13 +110,13 @@ def parse_package_list(lines):
 
 
 def find_packages(pkg, new_version, directory_index=None):
-    dir_pkg_name = resolve_package_dir(pkg, directory_index)
+    package_name, spec_dir = resolve_package_target(pkg, directory_index)
 
-    if dir_pkg_name is None:
+    if spec_dir is None:
         print(f"Spec file not found for package {pkg} (no packages/python-* directory matches)")
         return
 
-    spec_file = f"{PACKAGES_DIR}/python-{dir_pkg_name}/python-{dir_pkg_name}.spec"
+    spec_file = f"{PACKAGES_DIR}/{spec_dir}/{spec_dir}.spec"
 
     # Retrieve the current RPM version from the spec file
     try:
@@ -106,17 +130,17 @@ def find_packages(pkg, new_version, directory_index=None):
     vercmp_cmd = ["rpmdev-vercmp", rpm_version, new_version]
     exit_code = subprocess.run(vercmp_cmd).returncode
 
-    # The resolved directory suffix (not the raw PyPI name) is what downstream tooling
-    # (update_packages.sh, PR title/branch name) expects, since it builds spec paths the
-    # same naive "packages/python-$pkg/python-$pkg.spec" way without re-resolving names.
+    # Python packages use their resolved directory suffix as the update name. Native
+    # package targets retain their PyPI name; downstream tooling resolves either form
+    # back to the actual spec directory.
     if exit_code == 12:
-        print(f"RPM for Package {dir_pkg_name} needs to be updated from {rpm_version} to {new_version}")
+        print(f"RPM for Package {package_name} needs to be updated from {rpm_version} to {new_version}")
         with open("packages-to-update.txt", "a") as file:
-            file.write(f"{dir_pkg_name} {new_version}\n")
+            file.write(f"{package_name} {new_version}\n")
     elif exit_code == 0:
-        print(f"Package {dir_pkg_name} version is the same as the packaged RPM")
+        print(f"Package {package_name} version is the same as the packaged RPM")
     elif exit_code == 11:
-        print(f"Packaged {dir_pkg_name} RPM is newer than the version in requirements")
+        print(f"Packaged {package_name} RPM is newer than the version in requirements")
 
 
 def main():
@@ -128,14 +152,14 @@ def main():
                 f"No package directories found under '{PACKAGES_DIR}/python-*/'. "
                 "Run this script from the repository root."
             )
-        suffix = resolve_package_dir(pkg, directory_index)
-        if suffix is None:
+        _package_name, spec_dir = resolve_package_target(pkg, directory_index)
+        if spec_dir is None:
             print(
-                f"ERROR: cannot resolve '{pkg}' to any packages/python-*/ directory",
+                f"ERROR: cannot resolve '{pkg}' to a package spec directory",
                 file=sys.stderr,
             )
             sys.exit(1)
-        print(f"python-{suffix}")
+        print(spec_dir)
         return
 
     packages = list(parse_package_list(sys.stdin.readlines()))
