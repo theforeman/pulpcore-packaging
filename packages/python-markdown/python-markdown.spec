@@ -6,7 +6,7 @@
 %global srcname markdown
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.11.1
+Version:        3.11.2
 Release:        1%{?dist}
 Summary:        Python implementation of Markdown
 
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 22 15:55:03 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.2-1
+- Update to 3.11.2
+
 * Wed Oct 14 04:28:44 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.11.1-1
 - Update to 3.11.1
 
