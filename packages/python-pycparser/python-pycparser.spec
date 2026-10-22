@@ -5,7 +5,7 @@
 %global pypi_name pycparser
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.11
+Version:        3.12
 Release:        1%{?dist}
 Summary:        C parser in Python
 
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 22 15:49:55 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.12-1
+- Update to 3.12
+
 * Wed Oct 14 04:28:46 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.11-1
 - Update to 3.11
 
