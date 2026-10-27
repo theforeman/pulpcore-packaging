@@ -6,8 +6,8 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.35.3
-Release:        3%{?dist}
+Version:        3.35.4
+Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
 License:        GPLv2+
@@ -73,6 +73,10 @@ set -ex
 
 
 %changelog
+* Tue Oct 27 2026 David Davis <86290+daviddavis@users.noreply.github.com> - 3.35.4-1
+- Update to 3.35.4
+- Fix the PostgreSQL parameter limit in the content copy API
+
 * Fri Jul 31 2026 Odilon Sousa <osousa@redhat.com> - 3.35.3-3
 - Bump release for EL10 rebuild
 
