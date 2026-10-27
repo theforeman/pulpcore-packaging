@@ -6,8 +6,8 @@
 %global srcname brotli
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.2.0
-Release:        2%{?dist}
+Version:        1.2.1
+Release:        1%{?dist}
 Summary:        Python bindings for the Brotli compression library
 
 License:        MIT
@@ -50,6 +50,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 27 2026 Odilon Sousa <osousa@redhat.com> - 1.2.1-1
+- Release python-brotli 1.2.1
+
 * Tue Jul 28 2026 Odilon Sousa <osousa@redhat.com> - 1.2.0-2
 - Bump release for EL10 rebuild
 
