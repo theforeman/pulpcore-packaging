@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.43.114
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Low-level, data-driven core of boto 3
 
 License:        Apache License 2.0
@@ -17,12 +17,12 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-%if 0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.12"
-Requires:       python%{python3_pkgversion}-dateutil < 1:3.0.0
-Requires:       python%{python3_pkgversion}-dateutil >= 1:2.1
+# EL10's native Python 3.12 provider and EL9's system Python use epoch 1.
+# Pulpcore's separate Python 3.12 build on EL9 remains epochless.
+%if 0%{?rhel} == 10 || (0%{?rhel} == 9 && "%{?python3_pkgversion}" != "3.12")
+Requires:       (python%{python3_pkgversion}-dateutil >= 1:2.1 with python%{python3_pkgversion}-dateutil < 1:3.0.0)
 %else
-Requires:       python%{python3_pkgversion}-dateutil < 3.0.0
-Requires:       python%{python3_pkgversion}-dateutil >= 2.1
+Requires:       (python%{python3_pkgversion}-dateutil >= 2.1 with python%{python3_pkgversion}-dateutil < 3.0.0)
 %endif
 Requires:       python%{python3_pkgversion}-jmespath < 2.0.0
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 27 2026 Jakub Duchek <jakduch@seznam.cz> - 1.43.114-2
+- Use the native epoch-aware dateutil provider on EL10
+
 * Sun Oct 18 04:26:05 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.43.114-1
 - Update to 1.43.114
 

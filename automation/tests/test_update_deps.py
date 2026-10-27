@@ -1,6 +1,7 @@
 """Regression tests for in-place dependency updates."""
 
 import json
+import subprocess
 import sys
 import textwrap
 from io import BytesIO
@@ -185,6 +186,29 @@ def test_real_botocore_conditional_policy_is_byte_identical(tmp_path):
         'urllib3!=2.2.0,<3,>=1.25.4; python_version >= "3.10"',
     ]))
     assert spec.read_text() == original
+
+
+@pytest.mark.parametrize("rhel,python_version,epoch", [
+    (9, "3.12", ""),
+    (9, "3.9", "1:"),
+    (10, "3.12", "1:"),
+])
+def test_botocore_dateutil_provider_policy(tmp_path, rhel, python_version, epoch):
+    repository = Path(__file__).resolve().parents[2]
+    source = (repository / "packages/python-botocore/python-botocore.spec").read_text()
+    spec = tmp_path / "botocore.spec"
+    spec.write_text(source.replace(
+        "%global python3_pkgversion 3.12", f"%global python3_pkgversion {python_version}"
+    ))
+
+    expanded = subprocess.check_output(
+        ["rpmspec", "--parse", "--define", f"rhel {rhel}", str(spec)], text=True
+    )
+    requirements = [line.split(":", 1)[1].strip() for line in expanded.splitlines()
+                    if line.startswith("Requires:") and "dateutil" in line]
+
+    name = f"python{python_version}-dateutil"
+    assert requirements == [f"({name} >= {epoch}2.1 with {name} < {epoch}3.0.0)"]
 
 
 def test_rewrite_does_not_touch_subpackage_requires(tmp_path):

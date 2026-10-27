@@ -33,6 +33,21 @@ def test_conditional_dependencies_can_be_excluded_from_diff(tmp_path):
     assert dd.parse_spec_requires(spec, protected) == {"python3.12-bar >= 1"}
 
 
+def test_conditional_rich_dependency_can_be_excluded_from_diff(tmp_path):
+    spec = tmp_path / "example.spec"
+    spec.write_text(
+        "%if 0%{?rhel} == 10\n"
+        "Requires: (python%{python3_pkgversion}-dateutil >= 1:2.1 "
+        "with python%{python3_pkgversion}-dateutil < 1:3.0.0)\n"
+        "%endif\n"
+        "Requires: python%{python3_pkgversion}-jmespath >= 0.7.1\n"
+        "%description\nx\n"
+    )
+    protected = dd.conditional_dependency_names(spec)
+    assert protected == {"dateutil"}
+    assert dd.parse_spec_requires(spec, protected) == {"python3.12-jmespath >= 0.7.1"}
+
+
 def test_marked_dependencies_can_be_excluded_from_diff(tmp_path):
     spec = tmp_path / "example.spec"
     spec.write_text(
