@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.118.4
-Release:        2%{?dist}
+Version:        3.118.5
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -67,19 +67,15 @@ Requires:       python%{python3_pkgversion}-jq < 1.13.0
 Requires:       python%{python3_pkgversion}-json_stream >= 2.3.2
 Requires:       python%{python3_pkgversion}-json_stream < 2.6
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27.0
-Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.45
+Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.46
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27.0
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.45
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.46
 Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.27.0
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.45
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.46
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 8.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.3.4
 Requires:       python%{python3_pkgversion}-psycopg < 3.4
-# update-deps: preserve-require
-Requires:       python%{python3_pkgversion}-psycopg_c >= 3.3.4
-# update-deps: preserve-require
-Requires:       python%{python3_pkgversion}-psycopg_c < 3.4
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.35.0
 Requires:       python%{python3_pkgversion}-pulp-glue < 0.41
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
@@ -104,6 +100,10 @@ Requires:       python%{python3_pkgversion}-whitenoise >= 5.0
 Requires:       python%{python3_pkgversion}-whitenoise < 6.13.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.12.0
 Requires:       python%{python3_pkgversion}-yarl < 1.25
+# update-deps: preserve-require
+Requires:       python%{python3_pkgversion}-psycopg_c >= 3.3.4
+# update-deps: preserve-require
+Requires:       python%{python3_pkgversion}-psycopg_c < 3.4
 Conflicts:      python%{python3_pkgversion}-django == 5.0
 Conflicts:      python%{python3_pkgversion}-django == 5.1
 Conflicts:      python%{python3_pkgversion}-drf-access-policy >= 1.5.1
@@ -187,6 +187,9 @@ set -ex
 
 
 %changelog
+* Tue Oct 27 12:04:17 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.5-1
+- Update to 3.118.5
+
 * Thu Oct 22 21:48:25 UTC 2026 Odilon Sousa <osousa@redhat.com> - 3.118.4-2
 - Remove the obsolete GitPython >= 3.2 conflict
 
