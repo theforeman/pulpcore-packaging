@@ -373,6 +373,9 @@ def rewrite_requires(spec_file, new_requires):
     existing_updatable_entries = []
     library_indexes = []
     for index, line in enumerate(preamble):
+        # Conditional expressions are maintained manually, including rich deps.
+        if index in conditional_indexes:
+            continue
         stripped = line.rstrip()
         if not stripped.startswith("Requires:"):
             continue
