@@ -6,7 +6,7 @@
 %global src_name pulp_rpm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.39.3
+Version:        3.39.5
 Release:        1%{?dist}
 Summary:        RPM plugin for the Pulp Project
 
@@ -23,7 +23,7 @@ BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc >= 1.5.0
 Requires:       python%{python3_pkgversion}-aiohttp-xmlrpc < 1.6
-Requires:       python%{python3_pkgversion}-createrepo_c >= 1.2.5
+Requires:       python%{python3_pkgversion}-createrepo_c >= 1.2.6
 Requires:       python%{python3_pkgversion}-createrepo_c < 1.3
 Requires:       python%{python3_pkgversion}-django-readonly-field >= 1.1.1
 Requires:       python%{python3_pkgversion}-django-readonly-field < 1.2
@@ -31,14 +31,14 @@ Requires:       python%{python3_pkgversion}-importlib-resources >= 6.4.0
 Requires:       python%{python3_pkgversion}-importlib-resources < 6.5
 Requires:       python%{python3_pkgversion}-jsonschema >= 4.6
 Requires:       python%{python3_pkgversion}-jsonschema < 5.0
-Requires:       python%{python3_pkgversion}-productmd >= 1.33
+Requires:       python%{python3_pkgversion}-productmd >= 1.33.0
 Requires:       python%{python3_pkgversion}-productmd < 1.34
 Requires:       python%{python3_pkgversion}-pulpcore >= 3.118.0
 Requires:       python%{python3_pkgversion}-pulpcore < 3.130
 Requires:       python%{python3_pkgversion}-rpm-rs >= 0.30
 Requires:       python%{python3_pkgversion}-rpm-rs < 0.31
-Requires:       python%{python3_pkgversion}-rpmrepo-metadata >= 0.8.2
-Requires:       python%{python3_pkgversion}-rpmrepo-metadata < 0.9.0
+Requires:       python%{python3_pkgversion}-rpmrepo-metadata >= 0.9.1
+Requires:       python%{python3_pkgversion}-rpmrepo-metadata < 0.10.0
 Requires:       python%{python3_pkgversion}-solv >= 0.7.21
 Requires:       python%{python3_pkgversion}-solv < 0.8
 Conflicts:      python%{python3_pkgversion}-createrepo_c >= 1.3
@@ -84,6 +84,9 @@ set -ex
 
 
 %changelog
+* Thu Oct 29 11:25:43 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.39.5-1
+- Update to 3.39.5
+
 * Thu Oct 22 11:41:27 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.39.3-1
 - Update to 3.39.3
 - Keep the productmd minimum at its published 1.33 release version
