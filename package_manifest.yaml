@@ -302,6 +302,7 @@ tier4_packages:
     python-odfpy: {}
     python-openpyxl: {}
     python-opentelemetry_api: {}
+    python-opentelemetry_exporter_http_transport: {}
     python-opentelemetry_exporter_otlp_common: {}
     python-opentelemetry_exporter_otlp_proto_common: {}
     python-opentelemetry_exporter_otlp_proto_http: {}
