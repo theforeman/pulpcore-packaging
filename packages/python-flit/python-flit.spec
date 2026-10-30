@@ -4,7 +4,7 @@
 %global pypi_name flit
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.1.0
+Version:        4.2.0
 Release:        1%{?dist}
 Summary:        Distribution-building parts of Flit. See flit package for more information
 
@@ -22,7 +22,7 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-flit_core >= %{version}
 
 Requires:       python%{python3_pkgversion}-docutils
-Requires:       python%{python3_pkgversion}-flit_core >= 4.1.0
+Requires:       python%{python3_pkgversion}-flit_core >= 4.2.0
 Requires:       python%{python3_pkgversion}-pip
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-tomli_w
@@ -55,6 +55,9 @@ set -ex
 %{_bindir}/flit
 
 %changelog
+* Fri Oct 30 13:52:27 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.0-1
+- Update to 4.2.0
+
 * Fri Sep 18 14:13:28 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.1.0-1
 - Update to 4.1.0
 
