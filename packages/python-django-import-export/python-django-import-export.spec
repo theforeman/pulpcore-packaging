@@ -7,7 +7,7 @@
 %global src_name django_import_export
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.4.3
+Version:        4.4.4
 Release:        1%{?dist}
 Summary:        Django application and library for importing and exporting data with included admin integration
 
@@ -61,6 +61,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 30 13:52:41 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.4.4-1
+- Update to 4.4.4
+
 * Thu Oct 22 15:49:43 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.4.3-1
 - Update to 4.4.3
 
