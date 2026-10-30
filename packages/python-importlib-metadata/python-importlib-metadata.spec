@@ -5,7 +5,7 @@
 %global pypi_name importlib-metadata
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        9.0.1
+Version:        10.1.0
 Release:        1%{?dist}
 Summary:        Read metadata from Python packages
 
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 30 13:52:22 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 10.1.0-1
+- Update to 10.1.0
+
 * Fri Sep 18 14:13:29 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 9.0.1-1
 - Update to 9.0.1
 
