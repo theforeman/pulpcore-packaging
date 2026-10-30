@@ -9,7 +9,7 @@
 %global srcname pydantic_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.50.1
+Version:        2.50.2
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -68,6 +68,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 30 20:36:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.50.2-1
+- Update to 2.50.2
+
 * Fri Oct 16 18:55:51 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.50.1-1
 - Update to 2.50.1
 
