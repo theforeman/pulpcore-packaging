@@ -3,7 +3,7 @@
 %global pypi_name opentelemetry_exporter_otlp_proto_common
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.44.0
+Version:        1.45.2
 Release:        1%{?dist}
 Summary:        OpenTelemetry Protobuf encoding
 
@@ -49,6 +49,9 @@ set -ex
 %{python3_sitelib}/opentelemetry/exporter/otlp
 
 %changelog
+* Fri Oct 30 13:52:04 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.45.2-1
+- Update to 1.45.2
+
 * Fri Sep 18 14:13:23 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.44.0-1
 - Update to 1.44.0
 
