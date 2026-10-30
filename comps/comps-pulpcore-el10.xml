@@ -182,6 +182,8 @@
       <packagereq type="default">python3.12-odfpy</packagereq>
       <packagereq type="default">python3.12-openpyxl</packagereq>
       <packagereq type="default">python3.12-opentelemetry_api</packagereq>
+      <packagereq type="default">python3.12-opentelemetry_exporter_otlp_common</packagereq>
+      <packagereq type="default">python3.12-opentelemetry_exporter_otlp_common+http</packagereq>
       <packagereq type="default">python3.12-opentelemetry_exporter_otlp_proto_common</packagereq>
       <packagereq type="default">python3.12-opentelemetry_exporter_otlp_proto_http</packagereq>
       <packagereq type="default">python3.12-opentelemetry_proto</packagereq>
