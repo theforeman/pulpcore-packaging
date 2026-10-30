@@ -14,13 +14,13 @@
 -fallback-version = "0.0.0"
 -
 @@ -15,0 +7 @@
-+version = "2.13.1"
++version = "2.16.0"
 @@ -44,3 +35,0 @@
 -dynamic = ["readme", "version", "dependencies"]
 -
 -[tool.hatch.metadata.hooks.uv-dynamic-versioning]
 @@ -49 +38 @@
 -    "httpcore2=={{ version }}; sys_platform != 'emscripten'",
-+    "httpcore2==2.13.*; sys_platform != 'emscripten'",
++    "httpcore2==2.16.*; sys_platform != 'emscripten'",
 @@ -54,0 +44 @@
 +dynamic = ["readme"]
