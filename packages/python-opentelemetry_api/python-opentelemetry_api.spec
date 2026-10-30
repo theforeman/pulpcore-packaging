@@ -3,8 +3,8 @@
 %global pypi_name opentelemetry_api
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.44.0
-Release:        2%{?dist}
+Version:        1.45.2
+Release:        1%{?dist}
 Summary:        OpenTelemetry Python API.
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -50,6 +50,9 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Oct 30 13:52:12 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.45.2-1
+- Update to 1.45.2
+
 * Tue Sep 22 2026 Odilon Sousa <osousa@redhat.com> - 1.44.0-2
 - Provide the hyphenated package alias required by generated RPM dependencies
 
