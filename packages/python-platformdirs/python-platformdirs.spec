@@ -5,7 +5,7 @@
 %global pypi_name platformdirs
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.13.4
+Version:        4.14.0
 Release:        1%{?dist}
 Summary:        A small Python module for determining appropriate platform-specific dirs, e
 
@@ -16,6 +16,7 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-hatchling
+BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme
 BuildRequires:  python%{python3_pkgversion}-hatch_vcs
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-tomli
@@ -45,6 +46,10 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Fri Oct 30 20:36:41 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.14.0-1
+- Update to 4.14.0
+- Add the hatch-fancy-pypi-readme build requirement.
+
 * Sun Oct 18 04:26:08 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.13.4-1
 - Update to 4.13.4
 
