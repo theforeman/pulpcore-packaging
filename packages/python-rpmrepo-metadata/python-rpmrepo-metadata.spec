@@ -6,7 +6,7 @@
 %global srcname rpmrepo_metadata
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.8.3
+Version:        0.9.1
 Release:        1%{?dist}
 Summary:        Python bindings for rpmrepo_metadata: create and parse RPM repository metadata
 
@@ -63,6 +63,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 30 20:36:14 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.9.1-1
+- Update to 0.9.1
+
 * Fri Oct 16 2026 Odilon Junior <osousa@redhat.com> - 0.8.3-1
 - Update to 0.8.3
 
