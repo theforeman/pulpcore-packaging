@@ -45,7 +45,7 @@
 
 Summary:        Creates a common metadata repository
 Name:           createrepo_c
-Version:        1.2.5
+Version:        1.2.6
 Release:        1%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/createrepo_c
@@ -275,6 +275,9 @@ ln -sr %{buildroot}%{_bindir}/modifyrepo_c %{buildroot}%{_bindir}/modifyrepo
 %endif
 
 %changelog
+* Fri Oct 30 20:36:19 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.2.6-1
+- Update to 1.2.6
+
 * Wed Oct 21 13:52:13 UTC 2026 Odilon Sousa <osousa@redhat.com> - 1.2.5-1
 - Update to createrepo_c 1.2.5 and package upstream dist-info metadata
 
