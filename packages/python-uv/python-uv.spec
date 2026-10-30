@@ -6,7 +6,7 @@
 %global pypi_name uv
 
 Name:           %{pypi_name}
-Version:        0.9.21
+Version:        0.9.30
 Release:        1%{?dist}
 Summary:        An extremely fast Python package and project manager, written in Rust.
 
@@ -207,6 +207,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 30 20:36:37 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.9.30-1
+- Update to 0.9.30
+
 * Fri Oct 16 2026 Odilon Sousa <osousa@redhat.com> - 0.9.21-1
 - Update python-uv to 0.9.21
 - Refresh the vendor archive and drop the obsolete Git dependency patch
