@@ -3,7 +3,7 @@
 %global pypi_name hatchling 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.32.4
+Version:        1.33.0
 Release:        1%{?dist}
 Summary:        This is the extensible, standards compliant build backend used by Hatch.
 
@@ -57,6 +57,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Fri Oct 30 13:52:03 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.33.0-1
+- Update to 1.33.0
+
 * Wed Oct 14 04:29:02 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.32.4-1
 - Update to 1.32.4
 
