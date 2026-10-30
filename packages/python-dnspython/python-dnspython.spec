@@ -5,7 +5,7 @@
 %global pypi_name dnspython
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.9.0
+Version:        2.9.1
 Release:        1%{?dist}
 Summary:        DNS toolkit for Python
 
@@ -29,8 +29,6 @@ BuildRequires:  pyproject-rpm-macros
 %prep
 set -ex
 %autosetup -n %{pypi_name}-%{version}
-# Fix PEP 639 license field (RHEL 9 pip does not support SPDX string format)
-sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 
 
 %build
@@ -52,6 +50,10 @@ install -Dpm 0644 %{SOURCE1} %{buildroot}%{_licensedir}/%{name}/LICENSE
 
 
 %changelog
+* Fri Oct 30 20:36:25 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.1-1
+- Update to 2.9.1
+- Keep the SPDX license string when license-files is present.
+
 * Wed Oct 14 04:28:46 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.0-1
 - Update to 2.9.0
 - Use uv-build as the build backend
