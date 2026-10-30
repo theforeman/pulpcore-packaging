@@ -5,7 +5,7 @@
 %global pypi_name filelock
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.2.4
+Version:        4.2.5
 Release:        1%{?dist}
 Summary:        A platform independent file lock
 
@@ -18,6 +18,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatch_vcs
 BuildRequires:  python%{python3_pkgversion}-hatchling
+BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme
 BuildRequires:  python%{python3_pkgversion}-tomli
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
@@ -46,6 +47,10 @@ set -ex
 
 
 %changelog
+* Fri Oct 30 20:36:30 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.5-1
+- Update to 4.2.5
+- Add the hatch-fancy-pypi-readme build requirement.
+
 * Thu Oct 22 15:49:43 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.4-1
 - Update to 4.2.4
 
