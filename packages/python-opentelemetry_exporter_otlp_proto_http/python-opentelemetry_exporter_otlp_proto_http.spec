@@ -3,7 +3,7 @@
 %global pypi_name opentelemetry_exporter_otlp_proto_http
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.44.0
+Version:        1.45.2
 Release:        1%{?dist}
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 
@@ -23,10 +23,10 @@ Requires:       python%{python3_pkgversion}-googleapis-common-protos >= 1.52
 Requires:       python%{python3_pkgversion}-googleapis-common-protos < 2
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.15
 Requires:       python%{python3_pkgversion}-opentelemetry_api < 2
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_common == 1.44.0
-Requires:       python%{python3_pkgversion}-opentelemetry_proto == 1.44.0
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.44.0
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.45
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_common == 1.45.2
+Requires:       python%{python3_pkgversion}-opentelemetry_proto == 1.45.2
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.45.2
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.46
 Requires:       python%{python3_pkgversion}-requests >= 2.7
 Requires:       python%{python3_pkgversion}-requests < 3
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.5.0
@@ -59,6 +59,10 @@ set -ex
 
 
 %changelog
+* Sat Oct 31 2026 Odilon Sousa <osousa@redhat.com> - 1.45.2-1
+- Update to 1.45.2 and align its OpenTelemetry runtime dependencies.
+- Match the protocol common, proto, and SDK pins to upstream 1.45.2 metadata.
+
 * Fri Sep 18 14:13:26 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.44.0-1
 - Update to 1.44.0
 
