@@ -6,7 +6,7 @@
 %global srcname socks
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        3.0.0
+Version:        3.2.0
 Release:        1%{?dist}
 Summary:        Core proxy (SOCKS4, SOCKS5, HTTP tunneling) functionality for Python
 
@@ -66,6 +66,9 @@ set -ex
 
 
 %changelog
+* Sat Oct 31 2026 Odilon Sousa <osousa@redhat.com> - 3.2.0-1
+- Release python-socks 3.2.0
+
 * Thu Aug 27 2026 Odilon Sousa <osousa@redhat.com> - 3.0.0-1
 - Update to 3.0.0
 - Fix PEP 639 license field: upstream 3.0.0 switched to SPDX string format
