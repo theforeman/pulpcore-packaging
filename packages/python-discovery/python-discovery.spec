@@ -5,7 +5,7 @@
 %global srcname discovery
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        1.6.0
+Version:        1.7.0
 Release:        1%{?dist}
 Summary:        A utility to discover Python interpreters
 
@@ -15,12 +15,13 @@ Source0:        https://files.pythonhosted.org/packages/source/p/python-discover
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-hatchling
-BuildRequires:  python%{python3_pkgversion}-hatch_vcs
+BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme >= 25.1
+BuildRequires:  python%{python3_pkgversion}-hatch_vcs >= 0.5
+BuildRequires:  python%{python3_pkgversion}-hatchling >= 1.28
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-filelock >= 3.15.4
+Requires:       python%{python3_pkgversion}-filelock >= 3.16.1
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
@@ -51,6 +52,11 @@ set -ex
 
 
 %changelog
+* Sat Oct 31 2026 Odilon Sousa <osousa@redhat.com> - 1.7.0-1
+- Release python-discovery 1.7.0
+- Match upstream build dependency minimums
+- Require filelock 3.16.1 or newer
+
 * Sun Aug 30 04:26:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.6.0-1
 - Update to 1.6.0
 
