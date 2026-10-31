@@ -83,7 +83,8 @@ def main():
     if len(sys.argv) != 4:
         print(f"Usage: {sys.argv[0]} <spec_file> <pypi_name> <version>", file=sys.stderr)
         return 2
-    spec_file, pypi_name, version = sys.argv[1], sys.argv[2], sys.argv[3]
+    spec_file, package_name, version = sys.argv[1], sys.argv[2], sys.argv[3]
+    pypi_name = update_deps.pypi_name_from_spec(spec_file, package_name)
     try:
         pypi_requires = pypi_mandatory_deps(pypi_name, version)
         conditional_names = conditional_dependency_names(spec_file)

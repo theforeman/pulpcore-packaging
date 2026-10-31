@@ -135,6 +135,15 @@ def pypi_release_data(pypi_name, version):
     ) from last_error
 
 
+def pypi_name_from_spec(spec_file, fallback):
+    """Use a spec's PyPI project name instead of its RPM directory suffix."""
+    for line in Path(spec_file).read_text().splitlines():
+        match = re.match(r"^%global\s+pypi_name\s+(\S+)", line)
+        if match:
+            return match.group(1)
+    return fallback
+
+
 def pypi_mandatory_deps(pypi_name, version):
     """Fetch mandatory runtime requirements for Python 3.12/Linux."""
     data = pypi_release_data(pypi_name, version)
@@ -468,7 +477,8 @@ def main():
         print(f"Usage: {sys.argv[0]} <spec_file> <pypi_name> <version>", file=sys.stderr)
         return 2
 
-    spec_file, pypi_name, version = sys.argv[1], sys.argv[2], sys.argv[3]
+    spec_file, package_name, version = sys.argv[1], sys.argv[2], sys.argv[3]
+    pypi_name = pypi_name_from_spec(spec_file, package_name)
     original_spec = Path(spec_file).read_text()
     try:
         release_data = pypi_release_data(pypi_name, version)
