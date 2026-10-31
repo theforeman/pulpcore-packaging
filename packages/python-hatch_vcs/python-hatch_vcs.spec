@@ -4,8 +4,8 @@
 
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.3.0
-Release:        7%{?dist}
+Version:        0.5.0
+Release:        1%{?dist}
 Summary:        Hatch plugin for versioning with your preferred VCS
 
 # Check if the automatically generated License and its spelling is correct for Fedora
@@ -16,13 +16,13 @@ Source:         https://files.pythonhosted.org/packages/source/h/%{pypi_name}/%{
 
 BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools-scm
-BuildRequires:  python%{python3_pkgversion}-hatchling
+BuildRequires:  python%{python3_pkgversion}-setuptools-scm >= 8.2.0
+BuildRequires:  python%{python3_pkgversion}-hatchling >= 1.1.0
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-tomli
 
-Requires:  python%{python3_pkgversion}-hatchling
-Requires:  python%{python3_pkgversion}-setuptools-scm
+Requires:  python%{python3_pkgversion}-hatchling >= 1.1.0
+Requires:  python%{python3_pkgversion}-setuptools-scm >= 8.2.0
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -51,6 +51,10 @@ set -ex
 %{python3_sitelib}/%{pypi_name}-%{version}.dist-info/
 
 %changelog
+* Sat Oct 31 2026 Odilon Sousa <osousa@redhat.com> - 0.5.0-1
+- Release python-hatch_vcs 0.5.0
+- Require setuptools-scm 8.2.0 or newer
+
 * Mon Jul 27 2026 Odilon Sousa <osousa@redhat.com> - 0.3.0-7
 - Bump release for EL10 rebuild
 
