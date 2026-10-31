@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        1.33
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Product, compose and installation media metadata library
 
 License:        LGPLv2.1
@@ -16,6 +16,8 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
+
+Provides:       python%{python3_pkgversion}-%{pypi_name} = 1.33.0
 
 Requires:       python%{python3_pkgversion}-six
 
@@ -50,6 +52,9 @@ set -ex
 
 
 %changelog
+* Fri Oct 30 2026 Odilon Sousa <osousa@redhat.com> - 1.33-10
+- Provide the normalized 1.33.0 RPM package capability.
+
 * Thu Jul 30 2026 Odilon Sousa <osousa@redhat.com> - 1.33-9
 - Bump release for EL10 rebuild
 
