@@ -6,12 +6,12 @@
 %global pypi_name yarl
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.24.5
+Version:        1.25.1
 Release:        1%{?dist}
 Summary:        Yet another URL library
 BuildArch:      noarch
 
-License:        Apache 2
+License:        Apache-2.0
 URL:            https://github.com/aio-libs/yarl/
 Source0:        https://files.pythonhosted.org/packages/source/y/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 04 2026 Odilon Sousa <osousa@redhat.com> - 1.25.1-1
+- Release python-yarl 1.25.1
+
 * Fri Sep 18 14:13:31 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.24.5-1
 - Update to 1.24.5
 
