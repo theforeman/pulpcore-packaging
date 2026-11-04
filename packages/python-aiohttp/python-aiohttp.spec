@@ -5,22 +5,22 @@
 %global pypi_name aiohttp
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.14.3
+Version:        3.14.4
 Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
-License:        Apache 2
+License:        Apache-2.0 AND MIT
 URL:            https://github.com/aio-libs/aiohttp
 Source0:        https://files.pythonhosted.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-setuptools >= 68
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-brotli
-Requires:       python%{python3_pkgversion}-aiodns >= 2.3.0
+Requires:       python%{python3_pkgversion}-brotli >= 1.2
+Requires:       python%{python3_pkgversion}-aiodns >= 3.3.0
 Requires:       python%{python3_pkgversion}-aiohappyeyeballs >= 2.5.0
 Requires:       python%{python3_pkgversion}-aiosignal >= 1.4.0
 Requires:       python%{python3_pkgversion}-attrs >= 17.3.0
@@ -29,7 +29,7 @@ Requires:       python%{python3_pkgversion}-multidict < 7.0
 Requires:       python%{python3_pkgversion}-multidict >= 4.5
 Requires:       python%{python3_pkgversion}-propcache >= 0.2.0
 Requires:       python%{python3_pkgversion}-yarl < 2.0
-Requires:       python%{python3_pkgversion}-yarl >= 1.17.0
+Requires:       python%{python3_pkgversion}-yarl >= 1.25.1
 # aiohttp depends on stdlib's mimetypes which reads /etc/mime.types
 Requires:       /etc/mime.types
 
@@ -42,6 +42,13 @@ Requires:       /etc/mime.types
 %prep
 set -ex
 %autosetup -p1 -n %{pypi_name}-%{version}
+# RHEL 9's setuptools does not support PEP 639 license metadata.
+sed -i 's/^license *= *"\(.*\)"$/license = {text = "\1"}/' pyproject.toml
+sed -i '/^license-files/,/^\]/d' pyproject.toml
+sed -i '/setuptools >= 77\.0 required for PEP 639 SPDX license metadata/d' pyproject.toml
+sed -i '/it also covers the >= 67\.0 floor needed for Python 3\.12+ support/d' pyproject.toml
+# Keep the build requirement within the setuptools version available on RHEL 9.
+sed -i 's/setuptools >= 77\.0/setuptools >= 68/' pyproject.toml
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -60,6 +67,10 @@ set -ex
 
 
 %changelog
+* Wed Nov 04 2026 Odilon Sousa <osousa@redhat.com> - 3.14.4-1
+- Release python-aiohttp 3.14.4
+- Patch PEP 639 metadata and setuptools requirement for RHEL 9
+
 * Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.14.3-1
 - Update to 3.14.3
 
