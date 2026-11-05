@@ -5,7 +5,7 @@
 %global pypi_name pysequoia
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.1.35
+Version:        0.1.36
 Release:        1%{?dist}
 Summary:        Provides OpenPGP facilities using Sequoia-PGP library
 
@@ -64,6 +64,9 @@ set -ex
 
 
 %changelog
+* Thu Nov  5 21:27:37 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.1.36-1
+- Update to 0.1.36
+
 * Wed Sep  2 19:02:18 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.1.35-1
 - Update to 0.1.35
 - Regenerate vendor tarball for 0.1.35
