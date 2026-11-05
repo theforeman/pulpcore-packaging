@@ -6,8 +6,8 @@
 %global pypi_name setuptools-scm
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        7.1.0
-Release:        6%{?dist}
+Version:        9.2.2
+Release:        1%{?dist}
 Summary:        the blessed package to manage your versions by scm tags
 
 License:        MIT
@@ -17,6 +17,9 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-wheel
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}-packaging >= 20.0
 
 Requires:       python%{python3_pkgversion}-setuptools >= 45
@@ -44,22 +47,29 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 set -ex
-%py3_build
+%pyproject_wheel
 
 
 %install
 set -ex
-%py3_install
+%pyproject_install
 
 
 %files -n python%{python3_pkgversion}-%{pypi_name}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python3_sitelib}/setuptools_scm
-%{python3_sitelib}/setuptools_scm-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/setuptools_scm-%{version}.dist-info/
+%exclude %{_bindir}/setuptools-scm
 
 
 %changelog
+* Sat Oct 31 2026 Odilon Sousa <osousa@redhat.com> - 9.2.2-1
+- Release python-setuptools-scm 9.2.2
+- Build from the PEP 517 project metadata; upstream no longer ships setup.py.
+- List the README.md file shipped in the 9.2.2 source archive.
+- Exclude the console script to avoid file conflicts during package upgrades.
+
 * Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 7.1.0-6
 - Bump release for EL10 rebuild
 
