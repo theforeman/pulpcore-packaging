@@ -5,7 +5,7 @@
 %global pypi_name aiohttp
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.14.4
+Version:        3.14.5
 Release:        1%{?dist}
 Summary:        Async http client/server framework (asyncio)
 
@@ -19,17 +19,16 @@ BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-brotli >= 1.2
-Requires:       python%{python3_pkgversion}-aiodns >= 3.3.0
 Requires:       python%{python3_pkgversion}-aiohappyeyeballs >= 2.5.0
 Requires:       python%{python3_pkgversion}-aiosignal >= 1.4.0
 Requires:       python%{python3_pkgversion}-attrs >= 17.3.0
 Requires:       python%{python3_pkgversion}-frozenlist >= 1.1.1
-Requires:       python%{python3_pkgversion}-multidict < 7.0
 Requires:       python%{python3_pkgversion}-multidict >= 4.5
+Requires:       python%{python3_pkgversion}-multidict < 8.0
 Requires:       python%{python3_pkgversion}-propcache >= 0.2.0
-Requires:       python%{python3_pkgversion}-yarl < 2.0
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.4
 Requires:       python%{python3_pkgversion}-yarl >= 1.25.1
+Requires:       python%{python3_pkgversion}-yarl < 2.0
 # aiohttp depends on stdlib's mimetypes which reads /etc/mime.types
 Requires:       /etc/mime.types
 
@@ -67,6 +66,9 @@ set -ex
 
 
 %changelog
+* Thu Nov  5 21:27:40 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.14.5-1
+- Update to 3.14.5
+
 * Wed Nov 04 2026 Odilon Sousa <osousa@redhat.com> - 3.14.4-1
 - Release python-aiohttp 3.14.4
 - Patch PEP 639 metadata and setuptools requirement for RHEL 9
