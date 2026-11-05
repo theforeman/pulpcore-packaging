@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.118.5
+Version:        3.118.6
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -84,7 +84,7 @@ Requires:       python%{python3_pkgversion}-pyOpenSSL >= 26.3.0
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
 Requires:       python%{python3_pkgversion}-pyparsing >= 3.1.0
 Requires:       python%{python3_pkgversion}-pyparsing < 3.4
-Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.35
+Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.36
 Requires:       python%{python3_pkgversion}-pysequoia < 0.2.0
 Requires:       python%{python3_pkgversion}-pyyaml >= 5.1.1
 Requires:       python%{python3_pkgversion}-pyyaml < 6.1
@@ -99,7 +99,7 @@ Requires:       python%{python3_pkgversion}-uuid6 <= 2025.0.1
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0
 Requires:       python%{python3_pkgversion}-whitenoise < 6.13.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.12.0
-Requires:       python%{python3_pkgversion}-yarl < 1.25
+Requires:       python%{python3_pkgversion}-yarl < 1.26
 # update-deps: preserve-require
 Requires:       python%{python3_pkgversion}-psycopg_c >= 3.3.4
 # update-deps: preserve-require
@@ -187,6 +187,9 @@ set -ex
 
 
 %changelog
+* Thu Nov  5 21:01:27 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.6-1
+- Update to 3.118.6
+
 * Tue Oct 27 12:04:17 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.5-1
 - Update to 3.118.5
 
