@@ -3,7 +3,7 @@
 %global pypi_name anyio
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.15.1
+Version:        4.16.0
 Release:        1%{?dist}
 Summary:        High level compatibility layer for multiple asynchronous event loop implementations
 
@@ -54,6 +54,9 @@ set -ex
 
 
 %changelog
+* Thu Nov  5 21:19:54 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.16.0-1
+- Update to 4.16.0
+
 * Sun Sep  6 04:26:18 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.15.1-1
 - Update to 4.15.1
 
