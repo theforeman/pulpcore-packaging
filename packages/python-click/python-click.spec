@@ -5,7 +5,7 @@
 %global pypi_name click
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        8.5.0
+Version:        8.5.1
 Release:        1%{?dist}
 Summary:        Composable command line interface toolkit
 
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Mon Nov  9 11:48:49 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.5.1-1
+- Update to 8.5.1
+
 * Fri Sep 18 14:13:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 8.5.0-1
 - Update to 8.5.0
 
