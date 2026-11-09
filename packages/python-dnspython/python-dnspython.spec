@@ -5,7 +5,7 @@
 %global pypi_name dnspython
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.9.1
+Version:        2.9.2
 Release:        1%{?dist}
 Summary:        DNS toolkit for Python
 
@@ -50,6 +50,9 @@ install -Dpm 0644 %{SOURCE1} %{buildroot}%{_licensedir}/%{name}/LICENSE
 
 
 %changelog
+* Mon Nov  9 11:46:07 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.2-1
+- Update to 2.9.2
+
 * Fri Oct 30 20:36:25 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.9.1-1
 - Update to 2.9.1
 - Keep the SPDX license string when license-files is present.
