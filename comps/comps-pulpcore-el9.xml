@@ -147,6 +147,7 @@
       <packagereq type="default">python3.12-inflection</packagereq>
       <packagereq type="default">python3.12-iniparse</packagereq>
       <packagereq type="default">python3.12-installer</packagereq>
+      <packagereq type="default">python3.12-packageurl-python</packagereq>
       <packagereq type="default">python3.12-isodate</packagereq>
       <packagereq type="default">python3.12-jaraco.classes</packagereq>
       <packagereq type="default">python3.12-jaraco_context</packagereq>
