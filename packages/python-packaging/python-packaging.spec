@@ -5,8 +5,8 @@
 %global pypi_name packaging
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        26.2
-Release:        2%{?dist}
+Version:        26.3
+Release:        1%{?dist}
 Summary:        Core utilities for Python packages
 
 License:        BSD-2-Clause or Apache-2.0
@@ -16,6 +16,7 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-flit-core
 BuildRequires:  pyproject-rpm-macros
 
@@ -53,6 +54,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 10 2026 Odilon Sousa <osousa@redhat.com> - 26.3-1
+- Release python-packaging 26.3
+
 * Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 26.2-2
 - Bump release for EL10 rebuild
 
