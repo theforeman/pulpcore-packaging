@@ -9,7 +9,7 @@
 %global srcname pydantic_core
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.50.2
+Version:        2.50.4
 Release:        1%{?dist}
 Summary:        Data validation using Python type hints
 
@@ -27,6 +27,7 @@ Source1:        https://downloads.theforeman.org/vendor/%{srcname}-%{version}-ve
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-maturin
 BuildRequires:  python%{python3_pkgversion}-typing-extensions >= 4.14.1
 BuildRequires:  pyproject-rpm-macros
@@ -68,6 +69,10 @@ set -ex
 
 
 %changelog
+* Tue Nov 10 11:42:56 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.50.4-1
+- Update to 2.50.4
+- Require Python packaging for pyproject wheel file processing on EL9
+
 * Fri Oct 30 20:36:33 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.50.2-1
 - Update to 2.50.2
 
