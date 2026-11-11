@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        3.118.6
-Release:        1%{?dist}
+Release:        4%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -77,7 +77,7 @@ Requires:       python%{python3_pkgversion}-protobuf < 8.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.3.4
 Requires:       python%{python3_pkgversion}-psycopg < 3.4
 Requires:       python%{python3_pkgversion}-pulp-glue >= 0.35.0
-Requires:       python%{python3_pkgversion}-pulp-glue < 0.41
+Requires:       python%{python3_pkgversion}-pulp-glue < 0.42
 Requires:       python%{python3_pkgversion}-pygtrie >= 2.5
 Requires:       python%{python3_pkgversion}-pygtrie < 2.7
 Requires:       python%{python3_pkgversion}-pyOpenSSL >= 26.3.0
@@ -163,6 +163,8 @@ sed -i 's/^license = "\(.*\)"/license = {text = "\1"}/' pyproject.toml
 
 # Replace the binary wheel extra with the separately packaged C distribution.
 sed -i 's/psycopg\[binary\]/psycopg-c/' pyproject.toml
+# Keep automatic Python requirements aligned with the RPM glue 0.41 allowance.
+sed -i 's/pulp-glue>=0\.35\.0,<0\.41/pulp-glue>=0.35.0,<0.42/' pyproject.toml
 
 
 %build
@@ -187,6 +189,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.6-4
+- Allow pulp-glue 0.41 series after compatibility validation
+
 * Thu Nov  5 21:01:27 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.6-1
 - Update to 3.118.6
 
