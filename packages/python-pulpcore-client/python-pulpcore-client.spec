@@ -6,7 +6,7 @@
 %global src_name pulpcore_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.118.6
+Version:        3.118.7
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -17,6 +17,7 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
@@ -55,6 +56,10 @@ set -ex
 
 
 %changelog
+* Wed Nov 11 2026 Odilon Sousa <osousa@redhat.com> - 3.118.7-1
+- Release python-pulpcore-client 3.118.7
+- Provide Python packaging for EL9 pyproject RPM metadata processing
+
 * Thu Nov  5 21:02:06 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.6-1
 - Update to 3.118.6
 
