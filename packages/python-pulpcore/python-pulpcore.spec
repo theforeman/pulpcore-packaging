@@ -5,8 +5,8 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.118.6
-Release:        4%{?dist}
+Version:        3.118.7
+Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
 License:        GPLv2+
@@ -18,6 +18,7 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools >= 40.8.0
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-wheel >= 0.29.0
 BuildRequires:  pyproject-rpm-macros
 
@@ -189,6 +190,10 @@ set -ex
 
 
 %changelog
+* Wed Nov 11 2026 Odilon Sousa <osousa@redhat.com> - 3.118.7-1
+- Release python-pulpcore 3.118.7
+- Provide Python packaging for EL9 pyproject RPM metadata processing
+
 * Wed Nov 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.118.6-4
 - Allow pulp-glue 0.41 series after compatibility validation
 
