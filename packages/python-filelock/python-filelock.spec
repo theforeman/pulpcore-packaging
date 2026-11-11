@@ -5,7 +5,7 @@
 %global pypi_name filelock
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.2.9
+Version:        4.2.10
 Release:        1%{?dist}
 Summary:        A platform independent file lock
 
@@ -18,6 +18,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-hatch_vcs
 BuildRequires:  python%{python3_pkgversion}-hatchling
+BuildRequires:  python%{python3_pkgversion}-sbom >= 0.1.2
 BuildRequires:  python%{python3_pkgversion}-hatch_fancy_pypi_readme
 BuildRequires:  python%{python3_pkgversion}-tomli
 
@@ -47,6 +48,10 @@ set -ex
 
 
 %changelog
+* Wed Nov 11 04:19:56 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.10-1
+- Update to 4.2.10
+- Require python-sbom Hatchling hook for wheel metadata generation
+
 * Mon Nov  9 11:46:16 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.2.9-1
 - Update to 4.2.9
 
