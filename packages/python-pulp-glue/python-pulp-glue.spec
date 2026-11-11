@@ -6,7 +6,7 @@
 %global pypi_name_u pulp_glue
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.40.6
+Version:        0.41.1
 Release:        1%{?dist}
 Summary:        Version agnostic glue library to talk to pulpcore's REST API
 
@@ -17,6 +17,7 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
@@ -24,7 +25,7 @@ BuildRequires:  pyproject-rpm-macros
 Requires:       python%{python3_pkgversion}-multidict >= 6.0.5
 Requires:       python%{python3_pkgversion}-multidict < 6.8
 Requires:       python%{python3_pkgversion}-packaging >= 22.0
-Requires:       python%{python3_pkgversion}-packaging <= 26.2
+Requires:       python%{python3_pkgversion}-packaging <= 26.3
 Requires:       python%{python3_pkgversion}-pydantic >= 2.9.2
 Requires:       python%{python3_pkgversion}-pydantic < 3
 Requires:       python%{python3_pkgversion}-requests >= 2.25.1
@@ -63,6 +64,10 @@ set -ex
 
 
 %changelog
+* Wed Nov 11 2026 Odilon Sousa <osousa@redhat.com> - 0.41.1-1
+- Release python-pulp-glue 0.41.1 with packaging 26.3 support
+- Ensure Python packaging is available to pyproject RPM macros on EL9
+
 * Tue Sep 15 17:54:51 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 0.40.6-1
 - Update to 0.40.6
 
