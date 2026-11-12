@@ -1,11 +1,9 @@
-%global pulpcore_version nightly
+%global pulpcore_version 3.118
 
 %define repo_dir %{_sysconfdir}/yum.repos.d
 %define repo_dist %{dist}
 
-%global prereleasesource nightly
-%global prerelease %{?prereleasesource:.}%{?prereleasesource}
-%global release 2
+%global release 1
 
 Name:           pulpcore-release
 Version:        3.118
@@ -68,6 +66,9 @@ rm -rf %{buildroot}
 %config %{repo_dir}/*.repo
 
 %changelog
+* Thu Nov 12 2026 Odilon Sousa <osousa@redhat.com> - 3.118-1
+- Configure the stable Pulpcore 3.118 repository and published GPG key
+
 * Mon Oct 05 2026 Odilon Sousa <osousa@redhat.com> - 3.118-0.2.nightly
 - Rebuild the nightly pulpcore-release package
 
