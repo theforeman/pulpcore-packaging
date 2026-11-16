@@ -6,7 +6,7 @@
 %global src_name pulp_python
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.27.6
+Version:        3.27.9
 Release:        1%{?dist}
 Summary:        pulp-python plugin for the Pulp Project
 
@@ -16,6 +16,7 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{s
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:	python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-pip
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
@@ -63,6 +64,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 16 2026 ianballou <ianballou67@gmail.com> - 3.27.9-1
+- Update to 3.27.9
+
 * Tue Aug 11 2026 Foreman Packaging Automation <packaging@theforeman.org> - 3.27.6-1
 - Update to 3.27.6
 
