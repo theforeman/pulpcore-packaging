@@ -6,7 +6,7 @@
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
 Version:        2.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Foreign Function Interface for Python calling C code
 
 License:        MIT
@@ -20,6 +20,12 @@ BuildRequires:  libffi-devel
 BuildRequires:  gcc
 
 Requires:       python%{python3_pkgversion}-pycparser
+
+%if 0%{?rhel} >= 10
+Obsoletes: python3-%{pypi_name} < %{version}-%{release}
+Provides:  python3-%{pypi_name} = %{version}-%{release}
+Provides:  python3-%{pypi_name}%{?_isa} = %{version}-%{release}
+%endif
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -57,6 +63,9 @@ set -ex
 
 
 %changelog
+* Mon Nov 16 2026 Odilon Sousa <osousa@redhat.com> - 2.1.1-2
+- Provide python3-cffi and obsolete older EL10 package versions
+
 * Sun Aug 09 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.1.1-1
 - Update to 2.1.1
 
