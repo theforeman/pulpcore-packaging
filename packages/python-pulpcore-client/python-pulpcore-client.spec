@@ -6,7 +6,7 @@
 %global src_name pulpcore_client
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.19
+Version:        3.105.28
 Release:        1%{?dist}
 Summary:        Pulp 3 API
 
@@ -17,15 +17,19 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
-Requires:       python%{python3_pkgversion}-dateutil
+Requires:       python%{python3_pkgversion}-dateutil >= 2.8.2
+Requires:       python%{python3_pkgversion}-pydantic >= 2
+Requires:       python%{python3_pkgversion}-typing-extensions >= 4.7.1
 Requires:       python%{python3_pkgversion}-lazy-imports >= 1
 Requires:       python%{python3_pkgversion}-lazy-imports < 2
 Requires:       python%{python3_pkgversion}-six >= 1.10
-Requires:       python%{python3_pkgversion}-urllib3 >= 1.15
+Requires:       python%{python3_pkgversion}-urllib3 >= 2.1.0
+Requires:       python%{python3_pkgversion}-urllib3 < 3.0.0
 
 Obsoletes:      python3.11-%{pypi_name} < %{version}-%{release}
 
@@ -55,6 +59,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 17 2026 Odilon Sousa <osousa@redhat.com> - 3.105.28-1
+- Release python-pulpcore-client 3.105.28
+
 * Thu Sep 03 2026 Odilon Sousa <osousa@redhat.com> - 3.105.19-1
 - Release python-pulpcore-client 3.105.19
 
