@@ -7,7 +7,7 @@
 %global src_name pulp_ansible
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        0.30.3
+Version:        0.30.4
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Pulp plugin to manage Ansible content, e.g. roles
@@ -70,6 +70,9 @@ set -ex
 
 
 %changelog
+* Thu Nov 12 11:15:58 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.30.4-1
+- Update to 0.30.4
+
 * Thu Oct 22 12:07:06 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1:0.30.3-1
 - Update to 0.30.3
 
