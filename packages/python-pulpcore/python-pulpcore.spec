@@ -5,7 +5,7 @@
 %global pypi_name pulpcore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        3.105.19
+Version:        3.105.28
 Release:        1%{?dist}
 Summary:        Pulp Django Application and Related Modules
 
@@ -18,6 +18,7 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools >= 40.8.0
 BuildRequires:  python%{python3_pkgversion}-pip
+BuildRequires:  python%{python3_pkgversion}-packaging
 BuildRequires:  python%{python3_pkgversion}-wheel >= 0.29.0
 BuildRequires:  pyproject-rpm-macros
 
@@ -50,7 +51,7 @@ Requires:       python%{python3_pkgversion}-django-import-export < 5.0
 Requires:       python%{python3_pkgversion}-django-lifecycle >= 1.0.0
 Requires:       python%{python3_pkgversion}-django-lifecycle <= 1.2.7
 Requires:       python%{python3_pkgversion}-djangorestframework >= 3.14.0
-Requires:       python%{python3_pkgversion}-djangorestframework < 3.18
+Requires:       python%{python3_pkgversion}-djangorestframework < 3.19
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields >= 1.0.0
 Requires:       python%{python3_pkgversion}-djangorestframework-queryfields <= 1.1.0
 Requires:       python%{python3_pkgversion}-drf-access-policy >= 1.1.2
@@ -62,8 +63,8 @@ Requires:       python%{python3_pkgversion}-drf-spectacular < 0.30
 Requires:       python%{python3_pkgversion}-dynaconf >= 3.2.5
 Requires:       python%{python3_pkgversion}-dynaconf < 3.3.0
 Requires:       python%{python3_pkgversion}-gitpython >= 3.1.24
-Conflicts:      python%{python3_pkgversion}-gitpython >= 3.2
-Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.35
+Requires:       python%{python3_pkgversion}-gitpython < 3.3
+Requires:       python%{python3_pkgversion}-pysequoia >= 0.1.36
 Requires:       python%{python3_pkgversion}-pysequoia < 0.2
 Requires:       python%{python3_pkgversion}-gunicorn >= 22.0
 Requires:       python%{python3_pkgversion}-gunicorn < 25.2.0
@@ -78,11 +79,11 @@ Requires:       python%{python3_pkgversion}-pulp-glue < 0.40
 Requires:       python%{python3_pkgversion}-pyOpenSSL >= 26.3.0
 Requires:       python%{python3_pkgversion}-pyOpenSSL < 27.0
 Requires:       python%{python3_pkgversion}-opentelemetry_api >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.41
+Requires:       python%{python3_pkgversion}-opentelemetry_api < 1.46
 Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.41
+Requires:       python%{python3_pkgversion}-opentelemetry_exporter_otlp_proto_http < 1.46
 Requires:       python%{python3_pkgversion}-opentelemetry_sdk >= 1.27
-Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.41
+Requires:       python%{python3_pkgversion}-opentelemetry_sdk < 1.46
 Requires:       python%{python3_pkgversion}-protobuf >= 4.21.1
 Requires:       python%{python3_pkgversion}-protobuf < 7.0
 Requires:       python%{python3_pkgversion}-psycopg >= 3.3.4
@@ -109,7 +110,7 @@ Requires:       python%{python3_pkgversion}-uuid6 <= 2025.0.1
 Requires:       python%{python3_pkgversion}-whitenoise >= 5.0.0
 Requires:       python%{python3_pkgversion}-whitenoise < 6.13.0
 Requires:       python%{python3_pkgversion}-yarl >= 1.12.0
-Requires:       python%{python3_pkgversion}-yarl < 1.24
+Requires:       python%{python3_pkgversion}-yarl < 1.26
 
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
 
@@ -176,6 +177,9 @@ set -ex
 
 
 %changelog
+* Tue Nov 17 2026 Odilon Sousa <osousa@redhat.com> - 3.105.28-1
+- Release python-pulpcore 3.105.28
+
 * Thu Sep 03 2026 Odilon Sousa <osousa@redhat.com> - 3.105.19-1
 - Release python-pulpcore 3.105.19
 
