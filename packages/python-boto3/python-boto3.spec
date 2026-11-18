@@ -5,7 +5,7 @@
 %global pypi_name boto3
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        1.44.0
+Version:        1.44.5
 Release:        1%{?dist}
 Summary:        The AWS SDK for Python
 
@@ -17,7 +17,7 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 
-Requires:       python%{python3_pkgversion}-botocore >= 1.44.0
+Requires:       python%{python3_pkgversion}-botocore >= 1.44.5
 Requires:       python%{python3_pkgversion}-botocore < 1.45.0
 Requires:       python%{python3_pkgversion}-jmespath >= 0.7.1
 Requires:       python%{python3_pkgversion}-jmespath < 2.0.0
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 18 04:17:58 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.44.5-1
+- Update to 1.44.5
+
 * Wed Nov 11 04:19:55 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 1.44.0-1
 - Update to 1.44.0
 
