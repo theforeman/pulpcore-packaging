@@ -3,7 +3,7 @@
 %global pypi_name httpcore2
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.16.0
+Version:        2.16.2
 Release:        1%{?dist}
 Summary:        Minimal low-level HTTP client
 
@@ -52,6 +52,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 18 04:18:01 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.16.2-1
+- Update to 2.16.2
+
 * Fri Oct 30 20:36:24 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.16.0-1
 - Update to 2.16.0
 - Match the static wheel version to 2.16.0.
