@@ -3,7 +3,7 @@
 %global pypi_name httpx2
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.16.0
+Version:        2.16.2
 Release:        1%{?dist}
 Summary:        Next-generation HTTP client for Python
 
@@ -21,7 +21,7 @@ BuildRequires:  python%{python3_pkgversion}-wheel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python%{python3_pkgversion}-anyio >= 4.10
-Requires:       python%{python3_pkgversion}-httpcore2 == 2.16.0
+Requires:       python%{python3_pkgversion}-httpcore2 == 2.16.2
 Requires:       python%{python3_pkgversion}-idna >= 3.18
 Requires:       python%{python3_pkgversion}-truststore >= 0.10
 Requires:       python%{python3_pkgversion}-typing-extensions >= 4.5.0
@@ -56,6 +56,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 18 04:18:04 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.16.2-1
+- Update to 2.16.2
+
 * Fri Oct 30 20:36:23 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.16.0-1
 - Update to 2.16.0
 - Match the static wheel version and httpcore2 requirement to 2.16.0.
