@@ -5,7 +5,7 @@
 %global pypi_name sigstore
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        4.5.1
+Version:        4.6.0
 Release:        1%{?dist}
 Summary:        A tool for signing and verifying Python package distributions
 
@@ -27,17 +27,19 @@ Requires:       python%{python3_pkgversion}-platformdirs < 5
 Requires:       python%{python3_pkgversion}-pydantic >= 2
 Requires:       python%{python3_pkgversion}-pydantic < 3
 Requires:       python%{python3_pkgversion}-pyjwt >= 2.1
-Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-rfc3161-client >= 1.0.3
 Requires:       python%{python3_pkgversion}-rfc3161-client < 1.1.0
 Requires:       python%{python3_pkgversion}-rfc8785 >= 0.1.2
 Requires:       python%{python3_pkgversion}-rfc8785 < 0.2
 Requires:       python%{python3_pkgversion}-rich >= 13
 Requires:       python%{python3_pkgversion}-rich < 16
+Requires:       python%{python3_pkgversion}-securesystemslib
 Requires:       python%{python3_pkgversion}-sigstore-models == 0.0.6
 Requires:       python%{python3_pkgversion}-sigstore-rekor-types == 0.0.18
 Requires:       python%{python3_pkgversion}-tuf >= 6
 Requires:       python%{python3_pkgversion}-tuf < 8
+Requires:       python%{python3_pkgversion}-urllib3 >= 2
+Requires:       python%{python3_pkgversion}-urllib3 < 3
 Conflicts:      python%{python3_pkgversion}-pyasn1 >= 0.7
 Conflicts:      python%{python3_pkgversion}-pydantic >= 3
 Conflicts:      python%{python3_pkgversion}-rfc8785 >= 0.2
@@ -74,6 +76,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 25 04:20:37 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.6.0-1
+- Update to 4.6.0
+
 * Fri Oct 30 20:36:22 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 4.5.1-1
 - Update to 4.5.1
 - Add uv-build as a build requirement.
