@@ -3,7 +3,7 @@
 %global pypi_name poetry
 
 Name:           python%{python3_pkgversion}-%{pypi_name}
-Version:        2.5.1
+Version:        2.5.2
 Release:        1%{?dist}
 Summary:        Python dependency management and packaging made easy.
 
@@ -39,7 +39,7 @@ Requires:       python%{python3_pkgversion}-keyring < 26.0.0
 Requires:       python%{python3_pkgversion}-packaging >= 24.2
 Requires:       python%{python3_pkgversion}-pbs_installer >= 2025.6.10
 Requires:       python%{python3_pkgversion}-pkginfo >= 1.12
-Requires:       python%{python3_pkgversion}-pkginfo < 2.0
+Requires:       python%{python3_pkgversion}-pkginfo < 3.0
 Requires:       python%{python3_pkgversion}-platformdirs >= 3.0.0
 Requires:       python%{python3_pkgversion}-platformdirs < 5
 Requires:       python%{python3_pkgversion}-poetry_core == 2.5.0
@@ -80,6 +80,9 @@ set -ex
 %{_bindir}/%{pypi_name}
 
 %changelog
+* Wed Nov 25 04:20:23 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.2-1
+- Update to 2.5.2
+
 * Wed Oct 14 04:29:12 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2.5.1-1
 - Update to 2.5.1
 
