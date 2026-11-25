@@ -7,8 +7,8 @@
 %global srcname pyyaml
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        6.0.3
-Release:        2%{?dist}
+Version:        6.0.4
+Release:        1%{?dist}
 Summary:        YAML parser and emitter for Python
 
 License:        MIT
@@ -55,6 +55,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 25 04:20:22 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 6.0.4-1
+- Update to 6.0.4
+
 * Fri Jul 24 2026 Odilon Sousa <osousa@redhat.com> - 6.0.3-2
 - Bump release for EL10 rebuild
 
