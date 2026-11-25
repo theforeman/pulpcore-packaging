@@ -9,7 +9,7 @@
 %global srcname pbs_installer
 
 Name:           python%{python3_pkgversion}-%{srcname}
-Version:        2026.10.25
+Version:        2026.11.24
 Release:        1%{?dist}
 Summary:        Installer for Python Build Standalone
 BuildArch:      noarch
@@ -74,6 +74,9 @@ set -ex
 
 
 %changelog
+* Wed Nov 25 04:20:31 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2026.11.24-1
+- Update to 2026.11.24
+
 * Fri Oct 30 13:52:16 UTC 2026 Foreman Packaging Automation <packaging@theforeman.org> - 2026.10.25-1
 - Update to 2026.10.25
 
